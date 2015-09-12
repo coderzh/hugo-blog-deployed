@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>思考感悟 on CoderZh&#39;s Blog</title>
+        <link>http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</link>
+        <language>zh-CN</language>
+        <author>CoderZh</author>
+        <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
+        <updated>Sat, 05 Sep 2015 23:44:48 CST</updated>
+        
+        <item>
+            <title>周末折腾的各种东西</title>
+            <link>http://blog.coderzh.com/2015/09/05/busy-weekend</link>
+            <pubDate>Sat, 05 Sep 2015 23:44:48 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/05/busy-weekend</guid>
+            <description>
+
+&lt;p&gt;这个周末放了3天假，第一天当然是要看盛大的阅兵仪式了，剩下的时间一半多是在折腾博客系统Hugo，剩下的时间在折腾各种工具、IDE，还有学习了一下Unity。&lt;/p&gt;
+
+&lt;h3 id=&#34;折腾hugo:0c17b4d209ef6269100e3287d9d742ad&#34;&gt;折腾Hugo&lt;/h3&gt;
+
+&lt;p&gt;上次给Hugo提了个Pull Request，提供了路径是否转换为小写的配置功能，最后被接受了，走过了一次完整的Pull Request流程，学到不少东西。周末继续折腾Hugo，又发现一个问题，文章的字数统计和70个字的摘要在我的博客里明显是不准确的，而且错的离谱。&lt;/p&gt;
+
+&lt;p&gt;于是看了下Hugo的代码实现，发现字数统计只是简单的根据空格统计单词的总数。而我们中文的语言，哪来那么多空格，文字都是一个挨着一个，按照英文的字数统计方法，一个几千字的文章最后被统计出来只有一百字也是经常的事情。&lt;/p&gt;
+
+&lt;p&gt;还有摘要的功能，如果没有主动使用``作为摘要的分隔符，Hugo会自动截取文章的前70个单词，并且保证截取的文字最后是一个完整的句子。数多少个单词的方法和字数统计是一样的，截取完整句子是往后找，直到找到下一个句号问号之类的。在中文博客里，这样的摘要截取方法常常导致把整篇文章当做了摘要。这也是不可接受的。&lt;/p&gt;
+
+&lt;p&gt;于是，我尝试去修改字数统计和摘要截取算法，让它能适应中文、日文或者其他类似语言。首先是字数统计，比如“Hello 中国”应该被识别为3个词：Hello、中、国。怎么做呢？Golang里unicode/utf8的Package，提供了方法计算有多少个Rune，而Rune并不是Word，只是字符，比如“Hello 中国”调用RuneCountInString的结果会是8。&lt;/p&gt;
+
+&lt;p&gt;于是，我借助utf8库里的一些方法，近似的实现了中英文文字的字数统计和摘要截取算法。说近似，因为实现方法不是很严谨，我不懂其他国家的语言，不知道其他国家语言在这样的算法下是否能保证正确。但我还是抱着试一试的态度，将我的修改给Hugo又提了一个Pull Request。&lt;/p&gt;
+
+&lt;p&gt;在和Hugo主要维护者之一bep多次沟通之后，他提出，我的实现的确不是很严谨，不能保证所有语言都适用。而且，关于字数统计，他之前已经实现过一个类似的方法：RuneCount。于是我又回去把漏看的代码又看了一遍，果然已经有一个RuneCount的方法，用来统计有多个Rune。对，是Rune，不是Word，所以“Hello 中国”RuneCount的结果是7（空格会被忽略）。而我要的结果是3啊。&lt;/p&gt;
+
+&lt;p&gt;后来我仔细一想，我真的这么在意有多少个英文单词和汉字吗？我在意的只是不要简单的根据空格分隔来统计字数，在意的只是说好的70个字的摘要，结果把整篇给做成了摘要。所以，使用RuneCount也OK啊，于是我就把之前的字数统计代码的改动还原了。bep提供了按Rune统计字数，但是没有提供按Rune截取摘要，于是我把之前稍微有些复杂的改动还原，提供了一个简短的按字符截取摘要的方法，并且补充了相应的测试案例。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TruncateStringByRune(str string, max int) (string, bool) {
+    str = strings.Join(strings.Fields(str), &amp;quot; &amp;quot;)
+    count := 0
+    for index, rune := range str {
+        if count &amp;gt;= max {
+            return str[:index], true
+        }
+        if !IsWhitespace(rune) {
+            count++
+        }
+    }
+ 
+    return str, false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;做完这次修改后，继续Pull Request啊，可是现在的Pull Request状态显示我有两次commit，而且前一次已经Push了。于是又学了一招如何将新的commit和之前已经Push的commit合并成一个commit。首先我的修改是在单独分支commit和push的，当前的master是并没有这两次commit，这时就可以通过&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git rebase -i master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后编辑里面的commits，将需要被合并的pick改成squash，保存退出后再重新编辑commit message，然后就变成了一个commit，这时再来个强制push：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git push origin coderzh-hugo -f
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;于是一开始了和挪威程序员bep的多次交涉，他又提出他开始后悔当初提供了RuneCount方法，他认为Hugo提供的方法应该越少越好，干同样一件事情不应该有多个不同的实现版本。而且他不但不认为我又加了一个RuneSummary方法是对的，他还打算把原来的RuneCount方法也删除，并且他十分确信能提供一个统一的版本，既能处理西方文字也能正确的处理中文、日文等其他语言文字。&lt;/p&gt;
+
+&lt;p&gt;我虽然有些沮丧，但还是同意他的，于是我给他回复了我的想法（当然，原回复是英文的）&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“我完全同意你的观点。但是我加了个RuneSummary方法也是有我的考虑的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;统计中文类语言的字数和摘要截取需要消耗更多一点的性能。我提供两个版本的实现，可以让英语系的用户还是原来的方法而不会损耗性能。&lt;/li&gt;
+&lt;li&gt;摘要截取时，我不认为必须严格按照70个单词以及文字需要保证是一个完整的句子的方式来截取。因为一旦单词或句子很长时，整个摘要内容将会变的很长。而我需要的，仅仅是让所有的摘要都变得一样长，我才不在乎句子被截断。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;但是，我还是完全同意你的观点并且期待你的更好的统一的实现方式。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后bep有点被我说动了，回了一句：Let me think a little about this.&lt;/p&gt;
+
+&lt;p&gt;至少，我的修改版本是适用于我的，所以我自己用着就好啦，至于Hugo官方如何来提供，还是等等吧。&lt;/p&gt;
+
+&lt;h3 id=&#34;visual-studio-2015:0c17b4d209ef6269100e3287d9d742ad&#34;&gt;Visual Studio 2015&lt;/h3&gt;
+
+&lt;p&gt;我之前用Unity开发游戏时的版本记得还是4.6，现在已经出了5.1.3版本了。社区免费版本已经几乎提供了所有功能，学习把玩已经足够了。Unity自带的MonoDevelop是很难用的，还是Visual Studio好用，毕竟是世界上最好的IDE（笑~）。在VS里装个UnityVS简直可以走遍天下了。我之前一直用的是Visual Studio 2013，打开UnityVS的下载地址一看，默认只提供了Visual Studio 2015的UnityVS插件。哦？嘿嘿，趁这个机会，我也升个Visual Studio 2015试试。VS2015同样是Community版本提供了所有我需要的功能，所以完全不需要其他版本和破解序列号了。&lt;/p&gt;
+
+&lt;p&gt;装完VS2015，装好UnityVS插件，还需要安装另外两个神器啊，没有这两个神器，代码还怎么写？！一个是Visual Assist，一个是Viemu。作为一个Vimer，即使在IDE里也是要开启Vim模式的，毕竟，Vim才是世界上最好的编辑器啊（逃~）。&lt;/p&gt;
+
+&lt;p&gt;该装的都装好了，是不是可以愉快的写代码了？字体！对了，听说有一种专门为程序员设置的字体，我一定要试试。于是去下载了&lt;a href=&#34;http://sourcefoundry.org/hack/&#34;&gt;Hack&lt;/a&gt;  字体。果然一使用就爱上了这种字体。如果想看效果，在网页里打开这篇博客，上面的代码高亮部分就是Hack字体。&lt;/p&gt;
+
+&lt;p&gt;最后，终于可以愉快的玩耍了。&lt;/p&gt;
+
+&lt;h3 id=&#34;markdown-here:0c17b4d209ef6269100e3287d9d742ad&#34;&gt;Markdown Here&lt;/h3&gt;
+
+&lt;p&gt;这是另外一个神器，简直要节省我N多N多的编辑排版时间啊。之前我写好的Markdown格式的文章贴到微信公众平台的编辑器里，还要再编辑很久才能达到最终效果。而使用&lt;a href=&#34;https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa/reviews&#34;&gt;Markdown Here&lt;/a&gt;  这个Chrome插件，只需要在我将Markdown格式的文字拷贝到微信公众平台的编辑器里之后，按CTRL+ALT+M，立即会变成排版精良的有格式文字，而且几乎不需要再加工。其他地方的编辑器里也适用哦，谁用谁知道。&lt;/p&gt;
+
+&lt;p&gt;希望我折腾的东西对你有些许帮助，我也心满意足了。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>你说我是错的，那你最好证明你是对的</title>
+            <link>http://blog.coderzh.com/2015/08/08/IDonnotCare</link>
+            <pubDate>Sat, 08 Aug 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/08/IDonnotCare</guid>
+            <description>&lt;p&gt;&amp;ldquo;你说我是错的，那你最好证明你是对的&amp;rdquo; &amp;ndash; Michael Jackson&lt;/p&gt;
+
+&lt;p&gt;这句话曾经出现在微信的启动封面上，后来被换下了。但在QQ邮箱的登录界面，还一直使用了这句MJ的名言：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeLQ3MhKKGn1ERadHibEwA2Y2TWxUC5IQCCZVEsMm0YRPp4mn1jOiapIJllPFfvauxCMqsaytYibgehcA/0?wx_fmt=png&#34; alt=&#34;mj&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这句话的逻辑成立吗？“你说我是错的，那你最好证明你是对的”，显然不成立！&lt;/p&gt;
+
+&lt;p&gt;因为即便你证明了你是对的，但也说明不了问题，可能我也是对的。咱俩都对。&lt;/p&gt;
+
+&lt;p&gt;当然，也有另外一个理解。你说我是错的，那你最好证明“我是错的”是对的。显然你证明不了我是错的。&lt;/p&gt;
+
+&lt;p&gt;总之，你证明不了我是错的，也证明不了你是对的，即使证明了你是对的，也证明不了我是错的。（是不是很绕啊）&lt;/p&gt;
+
+&lt;p&gt;为什么要说的这么绕呢？本质原因是，我也证明不了我是对的。&lt;/p&gt;
+
+&lt;p&gt;这只是一种态度：&lt;strong&gt;你证明不了我是错的，我也证明不了我是对的，也许时间能证明。但我现在就要这样做，你就不要瞎BB了。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这一定是内心挣扎过才会想发出的声音，作为QQ邮箱的封面，有什么特殊的含义吗？是一种思想，境界，或是情怀？还是表达了个人的内心情感诉求。&lt;/p&gt;
+
+&lt;p&gt;其实，用户根本不会在意。They don&amp;rsquo;t care.&lt;/p&gt;
+
+&lt;p&gt;最近我在一个程序群里参加了一个讨论，内容很俗套，老生常谈并无新意，但最后给了我一些反思。&lt;/p&gt;
+
+&lt;p&gt;讨论的内容是敲代码还是IDE好用，VIM什么的没什么卵用。&lt;/p&gt;
+
+&lt;p&gt;我看讨论比较激烈，也掺和了一脚：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CoderZh: 我在VS里也用vim模式啊。
+Z：vs本身的快捷键就很高效啊。
+CoderZh：dd o dw gg G等等，还是vim敲的快
+Z：又不是打字员，脑子跟不上手。
+CoderZh：不想一直换鼠标和按左右键而已。
+X：F以前说，敲代码的时间只占整个开发的时间的比例很少吧，所以敲快敲慢意义不大。
+Z：是啊，这种氛围本身就有埋头拉车的倾向。
+L：敲得快不碍事啊
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;讨论到这里，除了被扣一个埋头拉车的帽子，好像还算正常。接下来继续：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CoderZh：你想到什么能很快敲出来，而不用浪费时间而已。
+Z：你把QQ关了，不知道可以节省多少时间。
+L：敲得快跟节省时间没关系，性子比较急的话，就喜欢快点敲罗
+Z：性急的人不太适合当程序员。
+L：呵呵
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，又被扣了一个不适合当程序员的帽子。L君用呵呵回应，我却有点忍不了，觉得这还有什么好讨论的，Z一直给别人扣帽子，显得自己很有主见。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CoderZh：好了，各有所好，没什么讨论的。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;讨论很不愉快的结束了，导致以后我也不想参与类似的讨论了。其实，上面逻辑很容易理顺：&lt;strong&gt;把QQ关了敲代码，可以节省很多时间。在认真敲代码的时间里，使用VIM可以做到更高效。&lt;/strong&gt; 仅此而已，而正因为对方对VIM有偏见，自己又不用，就要大肆抨击别人。我本也可以回复一个呵呵一走了之的，但还是没忍住有了一点情绪。&lt;/p&gt;
+
+&lt;p&gt;后来想想，其实每个人站在自己的角度，说的话都是有道理的。如果你站在他一样的角度，其实也说的通的。&lt;/p&gt;
+
+&lt;p&gt;我想到《创业维艰》里的几个小故事：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;在公司陷入窘境的时候，Ben（作者名）决定孤注一掷开展“氧化物”计划。很快，两个毕业于斯坦福商学院的高材生员工专程来见Ben，用一大堆幻灯片详细说明为什么“氧化物”计划只是一个空想，注定要失败。在45张幻灯片全部展示完后，Ben立即转入了战斗状态：是我让你们放这些幻灯片的吗？&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;从员工的角度，仔细的去思考“氧化物”计划的利弊，技术层面、公司资源层面、市场层面等等，其实都是对的，无可挑剔。但是，最后Ben还是要坚持那么做。为什么？&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;除我以外，没有人清楚公司的发展全局，没有人能令公司摆脱困境。如果我任凭那些根本不了解具体情况的人对公司的发展大计指手画脚，那我就无药可救了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;是的，你说的有道理，但是我统统不在乎。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You are right, but I don&amp;rsquo;t care!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ben在公司又一次陷入绝境的时候，为了搞定一个大客户，决定要收购一家叫Tangram的公司。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;大家一致认为，收购Tangram公司是个糟糕的点子：技术上很难兼容，而且价值不大，地理位置也不理想，成立时间较久，技术也很老旧。财务团队认为，这项收购肯定会赔钱。听完这些意见，我告诉大家，他们所说的这些反对理由我并不在乎，我们一定要收购Tangram公司。团队成员似乎非常震惊，但并没有和我争辩。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;You are right, but I don&amp;rsquo;t care!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;最后Ben成功的通过收购取悦了大客户，公司得以生存。&lt;/p&gt;
+
+&lt;p&gt;在Ben引进天才销售主管克兰尼时，也遇到了麻烦。董事会对克兰尼的印象依然不好：长相和声音都不适合当一名销售主管，毕业学校名不见经传，令董事会不舒服。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;认真听完董事会马克的抱怨之后，Ben回答说：”你说的每一条，我都同意。但是，克兰尼是一个销售专家，他的销售管理水平远远超过我所认识的每一个人。如果他身上没有你说的这些毛病，他也不会愿意加入我们这样的公司，说不定他会成为IBM的CEO呢！“  马克很快说：”明白了，就他了！“&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;You are totally right, but I don&amp;rsquo;t care!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;也许，下次再有类似争执的时候，我不会说：你说我是错的，那你最好证明你是对的。&lt;/p&gt;
+
+&lt;p&gt;我会告诉他：You are right, but I don&amp;rsquo;t care.&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>小记：网易游戏学院第二届公开日</title>
+            <link>http://blog.coderzh.com/2015/06/28/163GameOpenDay</link>
+            <pubDate>Sun, 28 Jun 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/06/28/163GameOpenDay</guid>
+            <description>
+
+&lt;p&gt;昨天参加了网易游戏学院的公开日《技术进步引发的灵感革命》，干货十足，期间做了一些笔记，分享一下。&lt;/p&gt;
+
+&lt;p&gt;在广州好几年了，也是第一次到科韵路信息港，下午去的早了些就在周围逛了逛，熟悉了一下地形和周边的小吃（主要是没吃午饭，到处找吃，只找到一家全家）。太热了又逛的差不多了，就来到了网易大厦。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVfTsg3H6yzZyHTicJIoc3iccRLLcn7RDsn9QQvU4RIhElW7vU4ZEkKZ8Q/0?wx_fmt=jpeg&#34; alt=&#34;163game&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我去的太早，还担心里面没人。进去之后，发现好多漂亮的礼仪小姐早已经在迎接嘉宾了（可惜没拍照）。进入会场，大屏幕，电影院的感觉，找了个好位置开始看网易的宣传片。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVHfyibWuPH8hNXia2MiaMIFSiaHO9Q3UBq62H49c8UQ9UBZup5IjcJdPOfw/0?wx_fmt=jpeg&#34; alt=&#34;163game2&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;演讲开始~&lt;/p&gt;
+
+&lt;h3 id=&#34;1-自研引擎力作-乱斗西游-开发经验:3588ff76d10bf10d678f4491e7de2978&#34;&gt;1.自研引擎力作《乱斗西游》开发经验&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;《乱斗西游》是一款完美融合MOBA和ARPG玩法的革命性3D动作手游，上市以来表现优异，多次获得苹果官方推荐并入选“App Store 2014年度精选”。作为网易第一款3D手游，在自研引擎NeoX上如何做多线程渲染方案？采用了哪些跨平台/渲染/网络同步/存储方案？如何为跨服设计服务器架构？诸多难题，本次由该项目主程陈伊力为您一一详解。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;PPT： &lt;a href=&#34;http://www.youxituoluo.com/78062.html&#34;&gt;http://www.youxituoluo.com/78062.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;注意NeoX的发音，没错，就是牛X引擎，名字够牛。乱斗西游在立项初期，在游戏引擎选择上面也考虑了诸多，比如商业的Unity, Unreal等，也包括网易自研的引擎，最后，他们选择了自研的牛X引擎。服务端架构方面使用了MobileServer多服架构（主要语言Python，没有过多介绍）。数据库使用mongodb，目前乱斗西游4台服务器可支持10万玩家。&lt;/p&gt;
+
+&lt;p&gt;在提供客户端效率方面，采用了多线程渲染。将逻辑线程和渲染线程分离。线程消息队列使用了无锁的RingBuffer和Double Buffer（双缓存交换队列）。通过Profile分析瓶颈，性能得到不断优化。&lt;/p&gt;
+
+&lt;p&gt;同步技术的迭代，这也是我比较关心的内容。在项目初期，考虑到当时的手机网络环境，乱斗西游只考虑了异步对战（即不是很真实的玩家实时对战，对战的只是带有一份玩家数据的机器人）。但是，他们非常的清楚，异步对战不是未来，同期也越来越多游戏加入了同步对战。所以，在同步对战方面，乱斗西游采取了分步骤迭代的方式，不久后推出了WIFI对战功能，即在同一WIFI网络下实现的同步对战功能。实现的方式是主客机的方式，即其中一台机器做主机，另外一台机器做客机，只在WIFI网络内传输数据。再后来，为了跨服跨网络的同步对战，使用了Router服的方式来实现。即玩家连接到Router服，Router服只负责转发。这几种同步对战方式我之前都考虑过，在上家公司做服务端主程时都给出过具体的方案。我也清楚的知道，这也都不是未来，这些方案主要特点是简单，能够快速开发并上线，未来一定是基于服务端计算的真实同步PVP。目前， 乱斗西游正在实现真实同步PVP。&lt;/p&gt;
+
+&lt;p&gt;在同步的实现和优化方面，乱斗西游采取了客户端先行，服务端矫正的方式。比如客户端的移动先行，在位置出现偏差时，采取一种比较温和的方式进行矫正。比如，在角色被强制位移时进行矫正，位移速度根据误差进行缩放等等。&lt;/p&gt;
+
+&lt;p&gt;同步的实现方式，一种是像War3星际的帧同步（帧锁定）方式。这种方式要求严格控帧，服务端和客户端必须步调一致，断线重连比较复杂，落后需要补帧。由于MoibleServer中Python大量使用了dictionary，遍历的时候是无序，使用帧同步方式很难保证每次遍历的顺序都是一致的，再加上其他很多原因，乱斗西游未采取帧同步的方式。&lt;/p&gt;
+
+&lt;p&gt;另外一种同步实现的方式，就是LOL、Dota2等的实现方式，状态同步，服务端承载了所有运算，客户端只负责发出指令和显示。目前乱斗西游采取的是这种方式。&lt;/p&gt;
+
+&lt;p&gt;在同步战斗的网络协议方面，乱斗西游采取了UDP的方式。原因是TCP的滑动窗口流量控制机制太不可控，采用UDP的方式可以做到更加高效，对丢包的处理更加可控。&lt;/p&gt;
+
+&lt;p&gt;优化方面，使用Neon指令集（ARM Cortex™-A 系列处理器的 128 位 SIMD单指令多数据架构扩展）。&lt;/p&gt;
+
+&lt;p&gt;Python常量使用优化（Python并没有提供常量支持，实际使用时会被当做字典的项来进行查找，影响效率，所以上线前将常量自动替换为实际的数值提供效率）。&lt;/p&gt;
+
+&lt;p&gt;为了防止脚本被破解，通过修改脚本虚拟机，将OpCode（字节码）打乱。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-无尽战区-渲染方案迭代分享:3588ff76d10bf10d678f4491e7de2978&#34;&gt;2.《无尽战区》渲染方案迭代分享&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;作为网易首款TPS视角MOBA游戏，《无尽战区》不仅在玩法上做出了突破，同时在画面效果和品质上也在不断探索和迭代：日式动漫还是美式卡通？虚幻还是真实？在从无到有的紧张开发期中如何打破层层迷障，创造出有自己特色的渲染方案？本次Inception工作室的李冰将为大家分享，在《无尽战区》画面效果迭代中积累的点点滴滴。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;天下引擎，需求：重视手感，响应迅速。风格参考了Team Fortness2。分享了卡通角色渲染方案的迭代过程，最后的渲染效果的确很赞。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-全局光照利器cloudgi技术全解析:3588ff76d10bf10d678f4491e7de2978&#34;&gt;3.全局光照利器CloudGI技术全解析&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;CloudGI是一款网易自研的烘培器，它可以在数秒钟内计算完软影、AO、间接光照、体光源等全局光照效果（一台机器），已经为网易内部数十款游戏提供烘培服务。本次由CloudGI的开发者李文耀，为大家介绍如何利用GPU把烘培时间减少到几秒的级别，包括烘培基本算法、烘培直接光照、烘培间接光照三个部分。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;很牛逼，能把耗时的烘焙时间减小到10秒，不过只能针对网易自研的引擎烘焙优化。&lt;/p&gt;
+
+&lt;h3 id=&#34;4-次世代无缝大世界-天谕-自研引擎分享:3588ff76d10bf10d678f4491e7de2978&#34;&gt;4.次世代无缝大世界 ——《天谕》自研引擎分享&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;次世代的画面表现对资源的需求量是巨大的，如何在符合国内玩家软硬件水准的情况下，驱动一个巨大的无缝游戏世界？《天谕》的自研引擎通过严格的Budget系统和细致的Streaming/LOD/Proxy等技术，将大世界渲染中所需的资源降低了1-2个数量级。其中的技术细节和心得体会，会在此逐一道来。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;PPT: &lt;a href=&#34;http://www.youxituoluo.com/78063.html&#34;&gt;http://www.youxituoluo.com/78063.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;天谕的大世界有150平方公里，比魔兽世界的卡利姆多大陆还大（100平方公里）。一同随去的天鸿同学直呼《天谕》引擎的伟大。要求美术所有贴图都有一张替代贴图，场景任意时刻和位置面数不能超过50万面。运用科学的方法，通过机器人跑遍整个场景进行离线分析和LOD优化。通过Proxy技术将场景切分为一个个立方体，对立方体内的模型物件进行整体的LOD优化。在保证了帧数流畅的前提下， 也保证了画面的精致。&lt;/p&gt;
+
+&lt;h3 id=&#34;5-百万在线的基石-梦幻手游服务器架构:3588ff76d10bf10d678f4491e7de2978&#34;&gt;5.百万在线的基石 ——梦幻手游服务器架构&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;说到手游中的重度游戏MMO，如何提供一个稳定高效的手游MMO服务器引擎？梦幻西游手游如何做到万人同时在线？手游和端游在MMO上有何不同？AOI如何实现？通过什么样的开发流程就可以保证在产品上线时稳定，不会出现大面积DOWN机的情况？ 一整套解决方案，你值得拥有。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;PPT: &lt;a href=&#34;http://www.youxituoluo.com/78130.html&#34;&gt;http://www.youxituoluo.com/78130.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;梦幻手游服务端架构来自端游的服务器架构，支持单服2.2W人，最高在线达到200W人。服务端架构如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVgX73V5MdqZ9HqNkJIbP5UfaBz2vVeC32lGh3COwGn00pVkiaXjL6zsw/0?wx_fmt=jpeg&#34; alt=&#34;MengHuangServer&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由于是沿用端游的架构吧，这是一种早期比较常见的服务端架构。Server采用单进程多线程的方式，同时保证写逻辑代码时只在单一线程，不需要考虑多线程问题。AOI（Area Of Interest）的实现主要有两种：格子和十字链表。梦幻手游采用的是九宫格的格子算法。（AOI算法主要解决NPC和玩家位置同步，AI事件触发的算法问题，可以这样理解，最简单直接的算法，是遍历整个场景的NPC或玩家，将位置信息同步给玩家。显然这样的效率是很低的，因为离你很远的玩家的位置其实是不需要的。） 数据存储使用udb，nosql，binlog。AI使用行为树，将AI的设定全部交给了策划同学。&lt;/p&gt;
+
+&lt;p&gt;使用valgrind追踪内存泄露问题，统计脚本虚拟机object数量分析瓶颈。IO操作全部异步化。项目管理采用不强制的CodeReview，有自动化的协议测试Case，分析CodeCoverage，使用代码静态分析工具。&lt;/p&gt;
+
+&lt;h3 id=&#34;小结:3588ff76d10bf10d678f4491e7de2978&#34;&gt;小结&lt;/h3&gt;
+
+&lt;p&gt;公开日组织的不错，演讲嘉宾的内容也干货十足。中间和最后有抽奖环节，可惜没中。。在游戏自研领域，网易体现了其强大的研发实力。总的来说，受益匪浅，不虚此行。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>强制链接静态库所有符号(包括未被使用的)</title>
+            <link>http://blog.coderzh.com/2015/06/14/LinkAllSymbols</link>
+            <pubDate>Sun, 14 Jun 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/06/14/LinkAllSymbols</guid>
+            <description>
+
+&lt;p&gt;C++程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。&lt;/p&gt;
+
+&lt;p&gt;为什么会有这样的需求？的确，存在这种需求的是少数情况，但是一旦你遇到下面的需求，就变得必须了。比如：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;动态插件机制。代码中没有直接调用某方法，但是希望能在运行时动态加载执行某方法。&lt;/li&gt;
+&lt;li&gt;执行代码覆盖率统计。需要统计静态库所有代码的覆盖情况，而不只是被使用到的代码覆盖情况。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果是gcc编译，比较好办，只需要加上&lt;strong&gt;&amp;ndash;whole-archive&lt;/strong&gt;链接选项。但是在Windows平台，微软的编译器没有这样的选项，一个最接近的选项是&lt;strong&gt;/OPT:NOREF&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;文档见：&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/bxwfs976.aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/bxwfs976.aspx&lt;/a&gt;
+说明：/OPT:REF eliminates functions and data that are never referenced; /OPT:NOREF keeps functions and data that are never referenced.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;/OPT:NOREF在Debug下是默认打开的，而且只能强制保留本工程未被使用到的函数和变量。对于引用的静态库的未被使用的函数和变量是不生效的。甚至有人认为这是微软的BUG在这个帖子里热烈讨论过：&lt;a href=&#34;https://social.msdn.microsoft.com/Forums/vstudio/en-US/2aa2e1b7-6677-4986-99cc-62f463c94ef3/linkexe-bug-optnoref-option-doesnt-work?forum=vclanguage&#34;&gt;LINK.EXE BUG: /OPT:NOREF option doesn&amp;rsquo;t work!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;遇到同样问题的可不止我一个人，比如StackOverFlow里就有人问：&lt;a href=&#34;http://stackoverflow.com/questions/3867254/what-is-the-visual-studio-equivalent-to-gnu-ld-option-whole-archive&#34;&gt;What is the Visual studio equivalent to GNU ld option &amp;ndash;whole-archive&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;有人建议他用/INCLUDE 选项强制链接未使用的符号，也有人说使用/OPT:NOREF（显然不行）。&lt;/p&gt;
+
+&lt;p&gt;使用/INCLUDE 指定某个符号强制链接是可以的。但是，假如静态库中有成百上千个符号需要强制/INCLUDE，怎么办？&lt;/p&gt;
+
+&lt;p&gt;所以，最好的方法，也是上面讨论/OPT:NOREF BUG的帖子里有人提到的方法，就是在代码中使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#pragma comment(linker, &amp;quot;/include:?emptyreference@Noisy@@QAEXXZ&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过上面的方法，可以让链接器强制include一个符号，include:后面的是符号名称。如果要强制include静态库中所有符号，需要把静态库中的所有符号找出来，然后通过上面的方法强制include。&lt;/p&gt;
+
+&lt;p&gt;人手工找出所有Symbols，然后添加上面的代码是不太靠谱的。一方面Symbols的格式可读性太差不好维护，另一方面假如静态库符号信息修改了，这个维护代价就更大了。所以，必须让这个过程自动完成。&lt;/p&gt;
+
+&lt;p&gt;查看静态库所有符号列表，Linux里可以使用&lt;a href=&#34;https://sourceware.org/binutils/docs/binutils/nm.html&#34;&gt;nm&lt;/a&gt; ，Windows平台可以使用&lt;a href=&#34;https://support.microsoft.com/en-us/kb/177429&#34;&gt;dumpbin&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;执行dumbin.exe需要注意，必须在Visual Studio的开发命令行环境才能执行。不过有个小技巧可以让你不必在Developer Command Prompt执行，就是假如是VS2013环境，建一个批处理，在开头加上：
+&lt;code&gt;
+@echo off
+if defined VS120COMNTOOLS (
+    call &amp;quot;%VS120COMNTOOLS%\vsvars32.bat&amp;quot;)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;我们使用dumpbin /LINKERMEMBER xxx.lib，可以列出所有的符号名字，比如查看静态库MyLib.lib所有符号：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;d:\Code\Cpp\LinkAllSymbols\Debug&amp;gt;dumpbin.exe /linkermember:1 MyLib.lib
+Microsoft (R) COFF/PE Dumper Version 12.00.30501.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+ 
+ 
+Dump of file MyLib.lib
+ 
+File Type: LIBRARY
+ 
+Archive member name at 8: /
+557D4C17 time/date Sun Jun 14 17:40:39 2015
+         uid
+         gid
+       0 mode
+      ED size
+correct header end
+ 
+    9 public symbols
+ 
+      328 ??4Turtle@@QAEAAV0@ABV0@@Z
+      328 ??_C@_0M@KEAKLOKJ@Turtle?5run?4?$AA@
+      328 ?Download@@YAHXZ
+      328 ?Run@Turtle@@QAEXXZ
+     19CE ?FishRun@@YAXXZ
+     19CE ?Run@Fish@@QAEXXZ
+     2D16 ??_C@_08EMEDHABH@Dog?5run?4?$AA@
+     2D16 ?Foo@@YAHXZ
+     2D16 ?Run@Dog@@QAEXXZ
+ 
+  Summary
+ 
+        28B4 .debug$S
+          F0 .debug$T
+         102 .drectve
+          15 .rdata
+           C .rtc$IMZ
+           C .rtc$TMZ
+         15A .text$mn
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;因此，只需要执行dumpbin，并且在输出结果中抽取出所有的符号名称，然后自动生成#pragma comment(linker, &amp;ldquo;/include:xxx&amp;rdquo;)代码即可。&lt;/p&gt;
+
+&lt;p&gt;于是，我写了一个Python脚本，执行dumpbin，然后通过正则表达式拿到所有符号名称，自动生成强制include了所有符号的头文件。关键代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import re
+ 
+regex = re.compile(r&amp;quot;\s+.*\s([\?_]+.*)&amp;quot;)
+ 
+exclude = []
+ 
+def gen_header_file_for_lib(lib_path, header_path):
+    cmd = [&#39;dumpbin.exe&#39;,&#39;/linkermember:1&#39;, lib_path]
+    lines = execute_command(cmd)
+    symbols = find_matches(lines, regex, exclude)
+ 
+    with open(header_path, &#39;w&#39;) as f:
+        header_guard = &amp;quot;LINK_ALL_SYMBOLS_H_&amp;quot;
+        f.write(&amp;quot;#ifndef &amp;quot; + header_guard + &#39;\n&#39;)
+        f.write(&amp;quot;#define &amp;quot; + header_guard + &#39;\n&#39;)
+        f.write(&amp;quot;// Generated by GenLinkerSymbols.py. Do not modify! \n\n&amp;quot;)
+ 
+        for symbol in symbols:
+            pragma_line = &#39;#pragma comment(linker, &amp;quot;/include:&#39; + symbol + &#39;&amp;quot;)&#39;
+            f.write(pragma_line + &#39;\n&#39;)
+        f.write(&amp;quot;\n#endif // &amp;quot; + header_guard + &#39;\n&#39;)
+ 
+    print(&amp;quot;Link symbols count: %s&amp;quot; % len(symbols))
+ 
+def find_matches(lines, regex, exclude_list):
+    def match(line):
+        m = regex.match(line)
+        if m:
+            return m.group(1).split()[0]
+        return None
+ 
+    def exclude_filter(line):
+        if not line:
+            return False
+ 
+        for exclude in exclude_list:
+            if line.find(exclude) &amp;gt;= 0:
+                return False
+        return True
+ 
+    matches = filter(exclude_filter, map(match, lines))
+    return list(set(matches))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结合Visual Studio工程配置里的Post-Build Event，就可以在编译静态库之后自动更新头文件了。比如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python ..\GenSymbolsHeader.py $(OutDir)$(TargetName)$(TargetExt) ..\Include\LinkAllSymbols.h
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在使用该静态库的工程代码中，只需要#include &amp;ldquo;LinkAllSymbols.h&amp;rdquo; 就可以了。&lt;/p&gt;
+
+&lt;h3 id=&#34;对比:179e17d63a7cb0a81de7975037280b66&#34;&gt;对比&lt;/h3&gt;
+
+&lt;p&gt;使用OpenCppCoverage进行代码覆盖率测试，对比如下：&lt;/p&gt;
+
+&lt;p&gt;正常情况下，不强制在linker时include静态库所有符号时，代码覆盖率结果为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIROs6sgW5VjmNkRl4yeDiccDhmfsroV7ebToMjAzYnUU5icLMbKZdRXqNXbcD14EJP0GRhE06b8rsg/0?wx_fmt=png&#34; alt=&#34;noinclude&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过上面的方法，自动生成LinkAllSymbols.h并#include &amp;ldquo;LinkAllSymbols.h&amp;rdquo;，覆盖率结果为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIROs6sgW5VjmNkRl4yeDiccRxCnjVCCsUa3awNpf6AjtYiasS1OMsGD3IBD5JftyLmLAI2Pla46eqw/0?wx_fmt=png&#34; alt=&#34;included&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;github:179e17d63a7cb0a81de7975037280b66&#34;&gt;github&lt;/h3&gt;
+
+&lt;p&gt;所有代码见：&lt;a href=&#34;https://github.com/coderzh/LinkAllSymbols&#34;&gt;https://github.com/coderzh/LinkAllSymbols&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>开启Github之旅</title>
+            <link>http://blog.coderzh.com/2015/06/13/StartGithub</link>
+            <pubDate>Sat, 13 Jun 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/06/13/StartGithub</guid>
+            <description>
+
+&lt;p&gt;在那个远古时代，我以为可以用GoogleCode干点事，结果啥也没干好。如今，Github已经成为了业界标杆，就连Google、微软、Facebook的开源项目都往Github搬。Github作为全球最大的同性交友网站，假如你在上面有几个加星数不错的Project，一定会为你的简历增色不少。&lt;/p&gt;
+
+&lt;h3 id=&#34;远古时期的我:f7ad1288d288dad02bdbde7763a601e9&#34;&gt;远古时期的我&lt;/h3&gt;
+
+&lt;p&gt;在那个远古时代，我还用着Google Code尝试着做一些开源代码。比如这个：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkoHQlGAjahxkoarOsAibfbib4YFdQIL4CVocDPq0Ntru9nYUY2YcsXWhw/0?wx_fmt=png&#34; alt=&#34;NancyWikiLogo&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一个用Python实现的基于GAE写的一个Wiki系统，现在看看界面截图，简洁美观大方，还是很不错的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQklgp8Dw481fPUuVnicAvIyJfPDeDSKiccK1tYHIGdoReAXGO6sMSgZHwg/0?wx_fmt=jpeg&#34; alt=&#34;NancyWiki&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然而新鲜一阵之后我再也没有使用过这个系统，而且再也没有维护过。甚至有个用户给我提了个Issue也被我忽略掉了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkEnguazW4ibqtiaSnbwJaP8yWftpsLXhuPzKpgXDk3AuRd8wv3g9cdH7g/0?wx_fmt=png&#34; alt=&#34;NancyWikiIssue&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;时隔几年了，我自己的NancyWiki的网站已经各种链接失效无法使用了。让我吃惊的是，给我提Issue的同学用NancyWiki建的Wiki网站还能正常访问 &lt;a href=&#34;http://mayxwiki.appspot.com/&#34;&gt;http://mayxwiki.appspot.com/&lt;/a&gt;， 不过看他也早已经没有再更新过内容了。&lt;/p&gt;
+
+&lt;p&gt;同样的待遇的，还有以下几个项目：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;NancyBlog：Python实现的基于Google App Engine的开源博客系统 &lt;a href=&#34;https://code.google.com/p/nancyblog/&#34;&gt;https://code.google.com/p/nancyblog/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NancyGLines：Python实现的基于PyGame开发的GLines游戏。类似Ubuntu里的GLines游戏。&lt;a href=&#34;https://code.google.com/p/nancyglines/&#34;&gt;https://code.google.com/p/nancyglines/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PyGrid：PyQT实现的一个财务表格统计小软件。&lt;a href=&#34;https://code.google.com/p/pygrid/&#34;&gt;https://code.google.com/p/pygrid/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PySpy++：Python实现的Spy++工具。&lt;a href=&#34;https://code.google.com/p/pyspyplusplus/&#34;&gt;https://code.google.com/p/pyspyplusplus/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;目前为止各项目下载情况（有的只提供了SVN代码所以没统计到）：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkdpIKzkztmfrktGFMLPw0Xa84NqsT7uJoriayfKTGRtPf4dcVbwkUrBg/0?wx_fmt=png&#34; alt=&#34;GoogleCodeDownload&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2010年后，我就再也没有更新和维护过它们，甚至忘记了它们的存在！我不是一个合格的代码开源作者，我只是把东西做出来，往上一丢，然后就忘记了这件事。。。（囧）下载过我的代码或者使用过我的项目的人估计会失望吧。。。我这作者也太不靠谱了吧。。。&lt;/p&gt;
+
+&lt;p&gt;好了，自我反省结束了。经过这几年的厮杀，这个不存在的网站也宣告向Github投降了，GoogleCode马上就要关闭了，并提供一键迁移到GitHub的功能。Google App Engine也一直没有起来，甚至已经没落了。所以之前的GAE项目理论上也没人用了，我也不再打算维护了（说的好像维护过一样）。不过为了做个纪念，我都已经迁移到了我的GitHub中。&lt;/p&gt;
+
+&lt;h3 id=&#34;开启github:f7ad1288d288dad02bdbde7763a601e9&#34;&gt;开启Github&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkic1MPQibIicyZfjSWZcaiatrZvxeKcXDLMPibL1sztNm1pTOXdzJoUIkyBw/0?wx_fmt=png&#34; alt=&#34;github&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我的主页：&lt;a href=&#34;https://github.com/coderzh&#34;&gt;https://github.com/coderzh&lt;/a&gt;    (我才发现我2010年就注册了这个全球最大的同性交友网站)&lt;/p&gt;
+
+&lt;p&gt;现在的我，打算认认真真的开始做个真正的开源项目。想做好一个开源项目实属不易，一方面需要自己大量的技术积累（能让自己保持持续学习），另一方面很多东西都需要给自己提出更高的要求。比如，代码结构需要尽可能清晰简洁，每一行代码都暴露给别人，排版，命名都要尽量做到最好，项目文档需要清晰完整并保持更新。需要保持活跃，积极的处理用户提的Issue，最好能吸引到更多小伙伴Fork你的代码，不断的给你提Pull Request。&lt;/p&gt;
+
+&lt;p&gt;所以，我打算从一个简单的开源项目做起，由于够简单，所以我可以尽量去做到尽善尽美。以一个简单项目为开端，为以后做一些更大的更好玩的项目做些准备。&lt;/p&gt;
+
+&lt;p&gt;项目虽简单，但很实用，具体介绍敬请阅读下一篇博文。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>最近的一些变化</title>
+            <link>http://blog.coderzh.com/2015/05/11/NewChange</link>
+            <pubDate>Mon, 11 May 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/05/11/NewChange</guid>
+            <description>&lt;p&gt;有关注我博客的朋友也许会发现，从3月份开始，我的博客又活跃了起来，平均每周会有一篇，而且，我也开通了微信公众号：一个程序员的思考。为什么会有这个变化呢？因为，我换工作了。工作内容有了很大的变化，平时的生活娱乐方式也有了一定的变化。&lt;/p&gt;
+
+&lt;p&gt;首先，工作方面，我离开了创业4年的游戏公司。有很多人都不理解，作为手游服务端主程，为什么选择在几个月后游戏即将上线前离开。在面试腾讯的过程中，几乎每个面试官都问了同样的问题。在我内心中，也在不断的问自己。最后总结为一个词，就是累觉不爱了。&lt;/p&gt;
+
+&lt;p&gt;曾经我们有很多优秀的同事，但是在产品大方向上，我们犯了一个又一个错误，导致人才逐渐流失。游戏定位和核心玩法上，我们经常摇摆不定，不断的推翻重来，上线时间一再推迟。这几年网游发展飞速，手游崛起，我们坚持了3年多3D端游，最后却不得不放弃，公司错过了手游转型的最好时机。现在市面上的游戏大多是跟风之作，我们也不例外。我们几乎有段时间，市面上火了一个游戏，我们就抄一个游戏，最后导致大量的推翻重做，改来改去，浪费了大量的工时。推了几次封闭测试，数据也不理想。&lt;/p&gt;
+
+&lt;p&gt;在程序开发上面，我们也犯了不少错误。我们过于追求完美。我们曾经为了一个宏的名称及定义讨论了不下10次，我们不止一次的因为某处的设计不合理而进行大量重构。重构的结果是花费了大量的时间，最后发现我们对原来的代码的理解也不够，不断的引出了新的BUG，然后我们又花费大量的时间去解决新的BUG。这样做的好处是程序锻炼了技术，对代码结构和流程了解的更透彻，设计的更合理，未来引入的BUG将会大大减少。但是，我们付出了大量的时间，而策划需求又经常变化， 经常这样伤筋动骨的改代码，效率实在不高。从程序和未来的角度去长远考虑，这样做是没有问题的，但是从创业项目，第一个版本还未推出的情况下，是不合时宜的。随着时间的推移，我的这种感觉越来越强烈。我以前也是追求完美的程序员，但我越来越感觉到，在项目时间紧迫的创业前期，我必须接受不完美。没有能上线的产品，代码设计的再完美也是白搭。&lt;/p&gt;
+
+&lt;p&gt;还有其他一些原因，我就不细说了。现在还有兄弟们在奋斗着，希望他们越来越好吧。&lt;/p&gt;
+
+&lt;p&gt;新的工作，是微信的测试开发。测试开发是一个极具挑战的工作，它对于我来说，具有以下几个意义：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;更全面的技术学习。能学习到从客户端到后台，以及运营的全面的细节。（如果是开发的话，一般只专注于其中一小部分的开发）&lt;/li&gt;
+&lt;li&gt;测试开发的大部分需求是自己提出来的，我们十分清楚自己要做什么，不要做什么，避免被折腾。（不再受制于产品人员或者类似游戏的策划）&lt;/li&gt;
+&lt;li&gt;可以大胆尝试新语言新技术新框架，可以大胆放心重构，提升技术。（上线产品的开发总是用着老旧版本的库不敢升级，新的技术推广使用周期也很漫长）&lt;/li&gt;
+&lt;li&gt;测试开发的主要目的是通过技术手段保证产品质量，提高开发和测试的效率，有挑战并且很有意义。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;生活娱乐方面，近期我也有了不少变化。我现在已经不怎么玩游戏了，唯一玩一玩的是类似纪念碑谷这样的轻型精品游戏。之前的几年时间里，游戏占据了我大量的时间，除了开发游戏，业余的时间也几乎都花在玩游戏上。都说玩物丧志，一点没错。当然，如果你的职业和志向就是游戏，是没有问题的。但是，很多人玩游戏，还是和我一样，因为没有找到更有意义的事情去做。而玩游戏是最容易最直接最快得到刺激的方式。强制说不再玩游戏是没有意义的，如果你真的找到了有意义的事情，同样有限的时间内，我相信你不会把时间用在玩游戏上。如果你没有感觉到时间不够用时，你多半正在虚度光阴。&lt;/p&gt;
+
+&lt;p&gt;业余的时间，我开始花更多的时间去阅读。阅读不是看知乎、微博、博客，而是完完整整的去看一本书。知乎博客的东西是很碎片化的，只有看书，才能对一个事物有系统的了解。从书里，你才能真正完整的了解作者的思想。最近看过以及正在看的书有：《黑客与画家》、《马化腾的腾讯帝国》、《从0到1》、《程序员的思维训练》、《成大事者不纠结》、《从零开始学炒股》、《编写高质量代码 改善Python程序的91个建议》、《C++ Concurrency in Action》、《Game Coding Complete》、《笑傲江湖》、《失控》、《解忧杂货店》&lt;/p&gt;
+
+&lt;p&gt;除了阅读，就是写作，把看书的笔记、平时工作学习的总结、生活的感悟通过文字重新组织表达出来，在我的博客和微信公众号里同时发布。我的微信公众号也才开通不久，希望大家多多支持。扫描下面的二维码或者直接关注：hacker-thinking （一个程序员的思考）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqyq5xAdRWJT3IQnSpVagmm0VvwRsatnGJibrgp35lnLnnufxic0d1XZ9Fg/0&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;另外，希望我能把跑步坚持下来，加油吧。&lt;/p&gt;
+
+&lt;p&gt;就是这么多了，未来是什么我不知道，我知道的是做好当前。引用曾国藩的话，就是：未来不迎，当时不杂，过往不恋。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>新的开始，新的挑战</title>
+            <link>http://blog.coderzh.com/2015/03/15/NewStart</link>
+            <pubDate>Sun, 15 Mar 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/03/15/NewStart</guid>
+            <description>&lt;p&gt;人的选择，有时候看上去是有规律或刻意的，有时候又像是自然而然的。既然选择了远方，就要鼓足勇气去面对挑战。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKERtH8iafPictOuic7yibcdNLHvwU0rZEW7EFgdGpBYhiamrGCCz9Nnq8UhKyAX2KBIJyc0cRFNWy6oqw/0&#34; alt=&#34;NewStart&#34; width=&#34;800&#34; height=&#34;360&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2007年，我学习了四年的土木工程之后，加入了金山软件做了一名程序员。&lt;/p&gt;
+
+&lt;p&gt;2011年，我钻研了四年的测试开发之后，加入了创业公司做了一名游戏开发程序员。&lt;/p&gt;
+
+&lt;p&gt;2015年，我摸索了四年的游戏开发之后，加入了一家汇集了众多优秀程序员的大型互联网公司。&lt;/p&gt;
+
+&lt;p&gt;不断的推翻自己过去的积累沉淀，放弃自己熟悉的领域，放弃让自己安逸的环境，换个领域，从头开始，迎接全新的挑战。&lt;/p&gt;
+
+&lt;p&gt;自然界有两个神奇的数字，一个是自然数e，一个圆周率PI。昨天是3月14日，称之π日。本想在π日入职新公司的，无奈刚好周六，所以，就在3月13日入职了。&lt;/p&gt;
+
+&lt;p&gt;第一天，签合同，装电脑，开账号，了解规章制度，新人介绍，一切都按部就班。直到下午参加了一个单元测试的讨论会议，接着给我介绍公司的开发流程，产品架构，我的工作任务，我才意识到，我来到了一个和以前完全不同的工作环境，这里的人有着完全不同的工作习惯和思维方式。&lt;/p&gt;
+
+&lt;p&gt;我甚至开始问自己，我为什么要来到这里？上一份工作中，公司的技术方向甚至产品的设计，我都可以起到主导作用。对代码的每一个细节，我都可以做到了如指掌。周末完全不用去想下周一的事情，到了周一，可以轻松倒上一杯热水，刷刷知乎，刷刷微博，然后回想一下上周做到哪了，这周都做些什么，到了休息时间打一把LOL。每天工作的内容是开发游戏，改BUG，讨论的话题是游戏的玩法，业余的时间是大家一起玩游戏，其乐融融。&lt;/p&gt;
+
+&lt;p&gt;但是，在一个让自己熟悉舒适的环境呆久了，有时候会渐渐磨灭自己的斗志，甚至每日周而复始，感觉有些虚度光阴。就像有人说的，应该多去陌生的地方旅行，到了一个全新的地方，问路、探索、欣赏到更美的风景或是面临恐惧和无助，这时，你的感官才会全面的调动起来。&lt;/p&gt;
+
+&lt;p&gt;过去的四年，我的博客几乎处于了停滞状态。每日重复的工作让我有些不思进取，业余时间也都消磨在了LOL中。虽然，最近的半年多公司转到了手游领域，一下刺激到了自己的感官，重新把学习的积极性调动了起来。但是，让我明白了，也许，我需要一个更大的改变。&lt;/p&gt;
+
+&lt;p&gt;来到新的环境，这里的人都是陌生的，很多东西都要熟悉和学习，自己的影响力，同事对自己的信任都要重新构建。这是一个有压力的开始，我定会努力适应和进取。希望是一个好的开始。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>关于创业</title>
+            <link>http://blog.coderzh.com/2015/02/18/Starup</link>
+            <pubDate>Wed, 18 Feb 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/02/18/Starup</guid>
+            <description>
+
+&lt;p&gt;有人说，现在是创业的黄金时代。有个不错的idea，有差不多靠谱的团队，一个简单的demo甚至只有想法，就可以拉来一笔投资开始干了。其实并非如此容易，至少我现在还没这勇气魄力和这分自信。不过也的确没有那么难，不然哪来这么多雨后春笋般的创业公司。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKUkJZFHHIHgsGuOzSibFPld1Cv5FElsPFXe5yKZYICq3kCPTaTEjYRticdhA9ke7aiajem0lHyiatWhQ/0&#34; alt=&#34;StartUp&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;选择:6c248a2a6ac8ed9d6cc1ddb97d67950d&#34;&gt;选择&lt;/h3&gt;
+
+&lt;p&gt;四年多前，我也曾作为主创人员创业，直到现在。坦率来讲，目前为止公司并不成功。这四年里，无数个风风雨雨，悲欢离合，一切都历历在目。朋友问我，假如回到过去，你还会选择出来吗？还是继续呆在金山？我的回答非常肯定，丝毫也没有犹豫。因为如果我不出来，就没法看到一个更大的世界。这几年的奔波，也是一笔难得的经验和财富。&lt;/p&gt;
+
+&lt;h3 id=&#34;思考:6c248a2a6ac8ed9d6cc1ddb97d67950d&#34;&gt;思考&lt;/h3&gt;
+
+&lt;p&gt;创业总有成功，也总有失败，而且失败的居多。成功的原因有百上千，失败的原因更有千千万，而成王败寇的思想根深蒂固，人们都喜欢追随成功者，从成功者身上学习成功之道，成功人士也乐于传道授业解惑，方法论、大局观铺天盖地。而我认为从失败中总结的经验更加难能可贵。&lt;/p&gt;
+
+&lt;p&gt;假设前面有100条路，需要从中找出通往成功之路。有人成功了，把通往成功的捷径告诉别人。别人走同样的路也未必能成功，因为这条路只适合那个人，因为那条路需要摩擦摩擦，而你没有那双滑板鞋。那条路路程虽近但大江相隔需要游泳，而你水性不佳。反过来，假如一个失败者告诉你，前方是悬崖峭壁无路可走，你听了肯定不会误入歧途。假如有人告诉你前方沙漠干旱无比，而你肯定会可调整策略绕路而行或备齐水和干粮做有准备之战。&lt;/p&gt;
+
+&lt;p&gt;所以来说，失败并不可怕，可怕的是失败了不吸取教训，不总结不思考。失败后每反思一次，都离成功更近一步。假设别人知道通往成功的几种方法，而你知道导致失败的成百上千种原因，相信一旦面对突发复杂的情况，你会更加的应对自如。&lt;/p&gt;
+
+&lt;h3 id=&#34;奔跑吧-兄弟:6c248a2a6ac8ed9d6cc1ddb97d67950d&#34;&gt;奔跑吧，兄弟&lt;/h3&gt;
+
+&lt;p&gt;既然选择了就不会后悔，虽然路途坎坷，但是沿途风景很美。曾经一起奔跑的兄弟，很多已各奔东西，愿在各自不同的道路上，跑出自己的精彩。奔跑吧，兄弟~&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>你好2015</title>
+            <link>http://blog.coderzh.com/2015/01/10/2015Jekyll</link>
+            <pubDate>Sat, 10 Jan 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/01/10/2015Jekyll</guid>
+            <description>
+
+&lt;p&gt;2015已经到来，转眼间已步入而立之年。不畏将来，不念过去。2015年是一个新的开始，正如我又将这博客从WordPress转移到了Jekyll，而且很顺利的将之前博客园的博文导入到了这个博客中。2015，对于我的独立博客来说，是个全新的开始。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://cms.csdnimg.cn/articlev1/uploads/allimg/120710/119_120710082430_1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;为什么是jekyll:f25f79079a1fd073e6c71202297f99e3&#34;&gt;为什么是Jekyll&lt;/h3&gt;
+
+&lt;p&gt;看到很多人说：每个人都应该有个Jekyll博客。做为一个程序员，有个基于Github Pages的Jekyll博客是一件很高逼格的事情。我选择Jekyll的原因主要有三个：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Markdwon格式编写文章&lt;/li&gt;
+&lt;li&gt;文章托管在Github上，不用担心丢失和备份的事情。&lt;/li&gt;
+&lt;li&gt;博客网站托管在Github Pages上，不再关心服务器的事情。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;jekyll搭建:f25f79079a1fd073e6c71202297f99e3&#34;&gt;Jekyll搭建&lt;/h3&gt;
+
+&lt;p&gt;很多人都觉得Jekyll搭建起来太麻烦，所有望而却步。的确，我也整整折腾了一天的时间，才把所有的东西弄妥当。包括本地调试、部署、找主题、修改主题、导入博客园文章、增加多说评论插件等等。如果你有兴趣，可以参照我下面的经验也来搭建一个。&lt;/p&gt;
+
+&lt;p&gt;搭建教程参考：&lt;a href=&#34;http://www.cellier.me/2015/01/04/jekyll搭建博客教程/&#34;&gt;http://www.cellier.me/2015/01/04/jekyll搭建博客教程/&lt;/a&gt;  (实际搭建过程，会遇到各种不同的问题)&lt;/p&gt;
+
+&lt;h3 id=&#34;觉得不错的皮肤:f25f79079a1fd073e6c71202297f99e3&#34;&gt;觉得不错的皮肤&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/poole/lanyon&#34;&gt;https://github.com/poole/lanyon&lt;/a&gt; （我的博客基于这个皮肤简单改了改）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/niushuai/reading&#34;&gt;https://github.com/niushuai/reading&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://github.thinkingbar.com&#34;&gt;http://github.thinkingbar.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.stbioinf.com/&#34;&gt;http://www.stbioinf.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;链接:f25f79079a1fd073e6c71202297f99e3&#34;&gt;链接&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.zhihu.com/question/20223939&#34;&gt;有推荐的简洁明快的jekyll模板吗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jekyllbootstrap.com/usage/jekyll-quick-start.html&#34;&gt;http://jekyllbootstrap.com/usage/jekyll-quick-start.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://nanqi.info/blog/2012/11/16/jekyll/&#34;&gt;category不能为中文&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ituring.com.cn/article/114888&#34;&gt;多说阅读接入&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;细节优化:f25f79079a1fd073e6c71202297f99e3&#34;&gt;细节优化&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;需要转义时：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;{ % raw % } { % endraw % }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;删除google字体：  _includes\head.html里删除&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;博客园-cnblogs-导出到markdown:f25f79079a1fd073e6c71202297f99e3&#34;&gt;博客园(CnBlogs)导出到MarkDown&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;第一次折腾Node.js，安装和下载依赖包就花了不少时间。最后还执行失败，说找不到feedparser.parseFile方法。原来此feedparser非彼feedparser，而是需要ortoo-feedparser。
+所有，将feedparser改成ortoo-feedparser就好了。再次感谢&lt;a href=&#34;https://gist.github.com/zohooo&#34;&gt;zohooo&lt;/a&gt;的node.js脚本。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;链接：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/zohooo/5704672&#34;&gt;https://gist.github.com/zohooo/5704672&lt;/a&gt;  （将文件放到node.exe当前目录，执行node.exe cnblogs.js即可）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://nodejs.org/&#34;&gt;http://nodejs.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.npmjs.com/package/ortoo-feedparser&#34;&gt;https://www.npmjs.com/package/ortoo-feedparser&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>如何看待：微软将以25亿美元收购Minecraft开发商Mojang</title>
+            <link>http://blog.coderzh.com/2014/09/10/mincraft</link>
+            <pubDate>Wed, 10 Sep 2014 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2014/09/10/mincraft</guid>
+            <description>
+
+&lt;h3 id=&#34;背景:a2656c086b4e7cfeefd12aa41391c90d&#34;&gt;背景&lt;/h3&gt;
+
+&lt;p&gt;相信很多人已经玩过《Minecraft》，这是一款3D沙盒游戏，玩家通过采集不同的材料，使用不同的公式合成各种其他材料。然后像搭积木一般将这些方块状的材料搭建出各种木屋，城堡，宏伟的建筑，并且可以加入脚本，设计各种关卡玩法，可谓自由度极高。&lt;/p&gt;
+
+&lt;p&gt;Minecraft最初是一款独立游戏，是由瑞典人马库斯·佩尔松（Notch）单独开发的，后成立公司Mojang AB。2009年5月17日发布第一个测试版，直到在2013年6月，这款游戏已经卖出 1100 万套，去年Mojang AB净利润超过了 1 亿美元。马库斯·佩尔松成了独立开发者的偶像，他坚持保持40人小团队，并且拒绝风险投资。更有趣的是，他一直是微软的抨击者，称Windows 8操作系统“可能非常不利于独立游戏”。&lt;/p&gt;
+
+&lt;p&gt;然而，面对微软的25亿美金，马库斯·佩尔松最终还是打算将公司出售。不管出于什么目的，至少Minecraft的价值通过这次收购得到了充分的肯定。&lt;/p&gt;
+
+&lt;p&gt;本人也是游戏开发从业人员，也经常和别人讨论游戏设计相关的内容。通过这次Minecraft的收购，让我再回头思考以下几个问题。&lt;/p&gt;
+
+&lt;h3 id=&#34;独立游戏-vs-团队开发游戏:a2656c086b4e7cfeefd12aa41391c90d&#34;&gt;独立游戏 VS 团队开发游戏&lt;/h3&gt;
+
+&lt;p&gt;有人和我说过：“团队对个人极其重要，脱离了团队，个人的价值无法得到认可。个人的力量是有限的，你去帮助团队成长，你成就了团队，团队才反过来成就你。”&lt;/p&gt;
+
+&lt;p&gt;关于团队的重要性，是无可辩驳的。但是，这个世界并不是单一的。我们肯定了其中一个东西的重要性，但我们也无需去评判另外一个东西是没有价值的。我一直以来，都是对制作独立游戏的人抱有崇敬之情。&lt;/p&gt;
+
+&lt;p&gt;据我了解，独立游戏制作者表面光鲜，其实背后的辛酸、挑战是很多人无法理解的。从《Indie Game 独立游戏大电影》里就可以看出来。制作独立游戏，意味着你要放弃一份稳定的薪水，意味着看似自由支配的工作时间实际上比所谓的996工作制强度更大，意味着你需要掌握更多的技能，意味着你需要承受更大压力去应付更多的挑战。当然，重要的是，换来了对梦想追求的自由，以及可能带来的财务自由。&lt;/p&gt;
+
+&lt;p&gt;独立游戏很多都是有梦想的，独立游戏也不都是单打独斗的，独立游戏是需要勇气和毅力的，独立游戏是值得尊敬和肯定的。&lt;/p&gt;
+
+&lt;h3 id=&#34;自由沙盒游戏-vs-简单无脑游戏:a2656c086b4e7cfeefd12aa41391c90d&#34;&gt;自由沙盒游戏 VS 简单无脑游戏&lt;/h3&gt;
+
+&lt;p&gt;也有人和我说过:”自由探索的沙盒游戏太小众，现在已经没有市场。像魔兽世界这样在地图上自由探索的游戏已经不适应了，我们需要自动寻路，我们需要傻瓜式的操作，我们要大众化，难度低，我们要让从不玩游戏的妹子也能容易上手。”&lt;/p&gt;
+
+&lt;p&gt;我一直都是反对这个观点的。如果按照上面的逻辑推理，Minecraft是永远不会成功的，激战这样的游戏不应该存在，剑灵没有自动寻路是不可接受的。&lt;/p&gt;
+
+&lt;p&gt;探索的心是每个人都有的，只是强烈程度不同。有人认为自由探索式的游戏太小众，目标缺失，难度太高，挫败感太强。他们可以自己不做这样类型的游戏，但他们不应该去否定这样它。通过探索激发了人们心底的探索欲，通过自由的沙盒满足了人们心底的创造欲。一个好玩的游戏，不需要符合所有人的胃口，只需要针对喜欢这种类型游戏的人群，把它做到极致，它就可以很成功。&lt;/p&gt;
+
+&lt;h3 id=&#34;总结:a2656c086b4e7cfeefd12aa41391c90d&#34;&gt;总结&lt;/h3&gt;
+
+&lt;p&gt;独立游戏很有前途。尽管做自己喜欢的游戏吧，即使别人认为很小众。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>创业感悟</title>
+            <link>http://blog.coderzh.com/2014/09/07/startup</link>
+            <pubDate>Sun, 07 Sep 2014 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2014/09/07/startup</guid>
+            <description>
+
+&lt;p&gt;时光飞逝，转眼间距离上一篇博客已经快三年时间。这三年里，人们逐渐从博客转移到了微博，看的人少了，写的人也少了。以前，写博客是一种潮流，现在，写博客已经是一种坚持了。连Google都放弃了RSS，我不知道那些曾经订阅过我博客的朋友，你们还在坚持用RSS看文章吗？我写的这篇文章，你们在用Google Reader的替代品看到我的文章吗？如果有看到，并且我的文章对你有帮助，请留言告诉我。这会是我更新博客很好的动力。&lt;/p&gt;
+
+&lt;h3 id=&#34;编程-游戏:5db9befb7313d7d2c50bf8f9b67bc9db&#34;&gt;编程，游戏&lt;/h3&gt;
+
+&lt;p&gt;也许是缘分，和游戏结下了不解之缘。从小，我就是个爱玩游戏的小孩。小学时因考三好学生，家人奖励了我一台小霸王游戏机，从此爱不释手。家人怕影响我学习，只有寒暑假才能拿出来玩，所以每次玩有格外珍惜。后来，电脑开始慢慢普及，网络开始盛行。人们开始成群的挤在网吧，玩大富翁4，红警，仙剑，FIFA99。我这时正读初中，参加了QB编程竞赛小组。&lt;/p&gt;
+
+&lt;p&gt;那时候的学习资源很有限，走遍整个小县城的书店也找不到几本关于编程的书。竞赛的结果并不理想，但是通过编程小组，让我在很早的时候就接触到了计算机，并且被编程所吸引。不知小叔从哪里找来的一台比386还旧的电脑，于是我就在这台电脑上折腾DOS、QB、WPS。当时编了一个小游戏，随机生成几个字母从左到右移动然后消失，然后需要玩家通过记忆输入刚才出现过的字母，玩的不亦乐乎。&lt;/p&gt;
+
+&lt;p&gt;高中时去租电脑光碟，偶然听老板说了一句：现在不用QB了，都流行用VB了。于是开始学VB。高二时还给英语老师做了一套英语听力教学系统，老师讲解一道题，然后出现四个选项，勾选后会出现对错的结果。当时的自豪感还杠杠的。&lt;/p&gt;
+
+&lt;p&gt;然而，高考的压力，我并未选择喜欢的计算机专业，而是保守的选择了招生最多的土木工程专业，中南大学的土木系在全国还能排在前几名，但是我不喜欢。于是我开始玩游戏，肆无忌惮的玩游戏，通宵达旦的玩剑一，每天晚上宋金战场抢夺BOSS人头总有我的身影，游戏里拉帮结派，抢地盘，打群架，做买卖。记得有一个帮会的人和我们打了一天架后，居然成了好朋友。至今还记得他们的帮会名字叫洪兴十三妹什么的。也有人被我们欺负后说要来长沙找我人肉PK，当时还真有那么一点害怕。&lt;/p&gt;
+
+&lt;p&gt;游戏中有太多有意思的回忆，在此就略过了。从那时起，我才真正意识到一个虚拟的网络世界真的会让人沉迷，忘记了吃饭睡觉，不去上课，考试挂科，对现实世界麻木不仁。当时我也很讨厌自己，为什么会这么没出息？我这学业还能不能完成，我是不是一直在辜负家人的期望。我想改变，但是发现很难。游戏里，我是快乐的，自豪的，精力无限充沛的，而现实中是麻木的，自责的，没精打采的。这种游戏的状态和感受，多年后也不曾再出现过。&lt;/p&gt;
+
+&lt;p&gt;游戏之余，同样有个东西吸引着我，那就是编程。并且很幸运加入了学校的学子天空网（中国大学生创业网）。在那里我遇到了很多优秀的同学，学习到太多的东西。它给了我信心，告诉我，也许，土木工程不一定是我的唯一出路。也许，我毕业后可以做自己喜欢的事情，那就是编程。&lt;/p&gt;
+
+&lt;p&gt;大学临近毕业了，我们专业的就业机会是很多的，而且各大铁路局都抢着要人。同学们纷纷签订了中铁XX局，XX设计院。而我一直在等待，等待着一个机会。有一天，偶然的机会，我看到金山软件在校本部举行校园招聘的消息。室友陪我一起逃课去参加了招聘会。我选择了WPS的自动化测试工程师，因为只有这个职位需要我熟悉的C#语言。我同学当时选了游戏策划，笔试完后，他异常兴奋，他说这是他从小到大答过的最爽的一次考试，里面问的全是游戏怎么好玩的问题。然而兴奋之余，他竟然在联系电话一栏忘记了填。&lt;/p&gt;
+
+&lt;p&gt;后来，我来到了金山软件。他在外面干了几年建筑设计后来回到老家进了个不错的设计院。我来到金山，成为金山训练营第一批成员，从此开始了我的编程生涯。之后从金山WPS，到金山毒霸，后来到西山居，有太多优秀的同事，给予了我巨大的帮助。在金山的这几年，是我学习积累非常重要的几年。测试开发的工作，没有太多项目的压力，不需要加班，可以尽情的利用业余时间去研究各种新奇好玩的技术。我的大部分技术博客，也是在那段时间完成的。&lt;/p&gt;
+
+&lt;p&gt;测试开发的工作，主要是编写一些测试代码去对产品代码进行测试，保证其功能的正确性，稳定性，安全性等。其实在我心里，一直都很羡慕直接参与产品开发的程序员。虽然我知道就编程来说，他们的工作其实和我的并没有多大的区别。但是，看着用户在使用着你的产品，关注着你的产品，作为一个产品直接的开发人员，自豪感是更强的。我告诉自己，我不想再测试别人的代码了，我想自己来写！&lt;/p&gt;
+
+&lt;p&gt;我一直在寻找和等待着这样一个机会，并且也做了不少的尝试。某天，当我听到我原来的技术老大鱼头要出来创业做游戏时，我已经按捺不住兴奋的心情了。于是我放弃了金山安逸的生活，来到了广州，开始了我的游戏开发的生涯，开始了我的创业生涯。&lt;/p&gt;
+
+&lt;h3 id=&#34;创业:5db9befb7313d7d2c50bf8f9b67bc9db&#34;&gt;创业&lt;/h3&gt;
+
+&lt;p&gt;公司初创人员有10几个， 大都来自金山内部。我经历了公司从无到有的整个过程，从申请营业执照，到选取办公地点、办公设备，申请域名，搭建Git，RTX，Wiki，项目管理平台Redmine，持续构建CCNet…… 这些都是一个公司必要的支持。而对于我来说，还是蛮新鲜的，能接触到一些平时不容易接触到的东西，初创人员也是激情四溢，各擅所长，感觉平时听他们聊天都能学习到不少的知识。&lt;/p&gt;
+
+&lt;p&gt;即使我平时游戏玩的够多，自认为也算是个中高端游戏玩家。但做为一个刚刚涉入游戏开发领域的新人，心中还是有一些胆怯的，所以我更多的是去听他们的想法，然后在心里理解分析。&lt;/p&gt;
+
+&lt;p&gt;关于游戏定位的讨论一开始就进行了。我们认真去玩并且分析了当时市面上刚出的几款端游。比如《征途2》、《凡人修仙传》等。最终，我们给出了我们游戏的定位：面向低端玩家的电脑配置要求低、易上手操作简单的道具收费玄幻题材的3DMMORPG。好吧，前面这句话是我自己总结的，大致是符合当时的想法的。我对于游戏定位的思考，一直贯穿着整个创业过程。但是在当时，身边都是比我有游戏经验的同事，我其实是没有太多的想法的。我的想法就是，信任他们。&lt;/p&gt;
+
+&lt;p&gt;为了实现游戏的配置低的目标，我们想出一个办法。就是给所有人的电脑配置都比较低，价格控制在3000块左右。一旦一个不合理的算法出现，或者不合理的美术资源添加，将直接影响到我们自己的游戏体验，从而督促着我们去修改。当时的我配置甚至是一台联想笔记本，在上面开发着3D游戏。&lt;/p&gt;
+
+&lt;p&gt;关于这种做法，当时我是纠结的。它的好处是明显的，开发环境和玩家环境一致，可以时刻督促我们的游戏在配置上不至于跑偏。当然，也有另外一个好处就是帮老板省钱。它的坏处也是明显的，严重影响了我们的开发效率。实际上，这条规则并没有一直贯穿执行下去，老同事用着慢如蜗牛的机器，用幻灯片的方式艰难的玩着LOL。新来的同事的配置调到最高却依然满帧。就在前几天，我们给所有程序的电脑升级到8G的内存，并且配置240G的SSD（固态硬盘），我使用了3年的老旧电脑也被替换了下来。用这种极端的方式控制游戏的性能，我也不能完全说是对是错，至少这是我们走过的路。&lt;/p&gt;
+
+&lt;p&gt;开始阶段，我负责整个游戏的UI脚本和表现逻辑部分。这在西山居可是两个组干的活，而且我还是个新手，需要不断的在摸索中学习。很快，我就已经上手。UI需要直接和游戏逻辑交互，表现逻辑需要直接和3D引擎交互，很快，我又担当起了游戏逻辑组的重担，并且在3D引擎组打了一手酱油。如今，我已经成为了程序组内的Full Stack，对整体开发环节最了解的一个。&lt;/p&gt;
+
+&lt;p&gt;写这篇文章，并不是从程序角度对写过的代码和模块进行总结。而是通过回忆一路走过的创业历程，让自己重新去思考，公司和人员是如何变化的，游戏产品是如何演变的，当然最重要的，是自己的心态和思维方式是如何改变的。&lt;/p&gt;
+
+&lt;p&gt;（未完待续……）&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>启程2011</title>
+            <link>http://blog.coderzh.com/2011/01/06/start2011</link>
+            <pubDate>Thu, 06 Jan 2011 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2011/01/06/start2011</guid>
+            <description>&lt;p&gt;2011年已经来临，我甚至还来不及对2010年做个总结，过去的2010年是折腾的一年。回顾了09年的总结，2010年我主要完成做了：&lt;/p&gt;
+
+&lt;p&gt;　1. 博客61篇，相对去年49篇，一定的进步。完成了平均每周一篇的目标。&lt;/p&gt;
+
+&lt;p&gt;　2. 博客园排名从220名前进到128名，离目标100名还有点差距。2011年争取有更好的成绩吧。&lt;/p&gt;
+
+&lt;p&gt;　3. Google Reader中统计的博客订阅数达到544。感谢订阅的朋友，我会更加努力，完成更多更有价值的文章。&lt;/p&gt;
+
+&lt;p&gt;　4. 开源项目：&lt;a href=&#34;http://code.google.com/p/nancywiki/&#34;&gt;NancyWiki&lt;/a&gt;，基于Google App Engine的个人Wiki系统。最新版本已经有近200个下载。&lt;/p&gt;
+
+&lt;p&gt;　5. 对Android开发有个粗浅的认识，写了一个简单的小游戏&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/03/23/android-nancyglines-design.html&#34;&gt;NancyGLines&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;　6. 学习了两门新的编程语言：Ruby和Lua。都还不是很熟，今年要重点攻Lua了。&lt;/p&gt;
+
+&lt;p&gt;2010年，我的工作有些起伏：&lt;/p&gt;
+
+&lt;p&gt;　1. 金山毒霸（1~6月份）&lt;/p&gt;
+
+&lt;p&gt;　2. 金山快快的秘密项目研究（7、8月，一段神奇的经历）&lt;/p&gt;
+
+&lt;p&gt;　3. 金山软件管家开发（8月，十分短暂的时间，这个项目后来被无情的拿掉了）&lt;/p&gt;
+
+&lt;p&gt;　4. 西山居月影传说Online（9~12月，转身进入网游界）&lt;/p&gt;
+
+&lt;p&gt;　5. 。。。&lt;/p&gt;
+
+&lt;p&gt;2010年的一篇《&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/03/27/three-years-work-thinking.html&#34;&gt;三年之痒&lt;/a&gt;》，加上公司上上下下的变化，我换了好几个岗位。期间，考虑过去令人向往的ThoughtWorks，面试之后，感觉自己英语水平和表达能力有待提高，同时也希望自己在行业再多一些积累经验，最后，我主动放弃了。再次感谢&lt;a href=&#34;http://www.google.com/profiles/mechiland#buzz&#34;&gt;Michael Chen&lt;/a&gt;的推荐。期间，我还考虑过去金山快盘做服务端开发，本身自己也不太乐意去做Java开发，面试时被一句&amp;#8220;只要Java熟手，不给学习时间&amp;#8221;回绝，于是回去狠心把快盘卸载，从此不再使用。只注重当前的业务能力，而不注重之后的潜力，也许这是快盘的损失。期间，还考虑过加入赖勇浩的创业团队，最后，我还是选择了去西山居。&lt;/p&gt;
+
+&lt;p&gt;2010年9月，我加入了西山居。曾经的我，也是一个在网游的世界里迷途的孩子，让我迷途的游戏，正是金山西山居的网游。时光轮回，我自己加入了西山居。有同事开玩笑说，我们曾经都被游戏毒害过，所以我们是来报复社会的。在西山居，如果你真正接触那些满怀梦想，而富有激情的同事，你就会明白，他们为之付出青春的原因。与西山居CTO&lt;a href=&#34;http://t.qq.com/freewaychen&#34;&gt;陈飞舟&lt;/a&gt;的接触和了解，让我顿时对他产生了巨大的崇敬和敬仰之情。他技术超群，充满梦想，剑网三良好的技术架构和代码规范由他把控的如此完美。身兼CTO及副总裁的他，仍然坚持在一线写代码，就这一点，也让很多CTO感到羞愧。&lt;/p&gt;
+
+&lt;p&gt;然而，这是一个残酷的时代。理想主义者把游戏当做艺术品来做，在商业上就不会太成功。剑网三的高调亮相和后来的表现平平已经很好的说明了这一点。反而是那些想方设法坑钱的IB游戏大行其道，获取了商业上巨大的成功。于是越来越多的人涌入网游这个市场，使得整个行业变得非常的浮躁。游戏的寿命越来越短，坑钱的手段越来越多，甚至还些还使用心理营销，让用户心里知道被骗，嘴里骂着游戏厂商，但手上还是不断的给游戏厂商送钱。&lt;/p&gt;
+
+&lt;p&gt;从《&lt;a href=&#34;http://book.douban.com/subject/1152971/&#34;&gt;DOOM启世录&lt;/a&gt;》里，我看到了天才、激情与梦想，在&lt;a href=&#34;http://www.popcap.com/&#34;&gt;Popcap&lt;/a&gt;身上，我看到了创意、执着与成功。浮躁的是这个行业，静下心来研究游戏开发技术才是我的乐趣源泉。我要感谢将我带入这一行业的同事，感谢你们对我的支持和认可。还有一直在默默支持我的老婆，我爱你！&lt;/p&gt;
+
+&lt;p&gt;2011年，我的目标简单一点：争取能看懂大部分《&lt;a href=&#34;http://book.douban.com/subject_search?search_text=%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E7%B2%BE%E7%B2%B9&amp;amp;amp;cat=1001&#34;&gt;游戏编程精粹&lt;/a&gt;》里的文章。同时希望在下次年终总结时，会有一款出色的游戏出来！&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2011/01/06/start2011.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2011/01/06/start2011.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>多彩的程序人生</title>
+            <link>http://blog.coderzh.com/2010/07/12/programming-life</link>
+            <pubDate>Mon, 12 Jul 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/07/12/programming-life</guid>
+            <description>
+
+&lt;p&gt;常常想程序人生的问题，也常常在网上看程序人生相关的话题，但听大师讲程序人生，还是第一次。这位大师，就是侯捷。&lt;/p&gt;
+
+&lt;p&gt;侯捷，两岸著名技术教育者，计算机图书作者、译者、书评人，著有《深入浅出MFC》、《多型与虚拟》、《STL源码剖析》、《无责任书评》三卷，译有众多脍炙人口的高阶技术书籍，包括Meyers所著的&amp;#8220;Effective C++&amp;#8221;系列&amp;#8230;&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;侯老师的人生经历非常丰富，从土木工程师，机械研究员，到程序员，再到自由写译，高校兼职讲师。从他的经历中，我们可以体会到一个非常鲜活、丰富而多彩的程序人生。同时，他对生活的态度，也另我们受益颇多。&lt;/p&gt;
+
+&lt;p&gt;和侯老师一样，我也是土木工程毕业的，不过我从毕业开始就告别了学习了四年的土木工程。侯老师说，一定要追随自己的兴趣，最自己喜欢的事情。我放弃土木工程，走上程序员这条路，对我来说也是非常激动和兴奋的，因为我找到了自己喜欢的事情。
+侯老师讲的过程，我做了一些笔记，记录一下：&lt;/p&gt;
+
+&lt;h4 id=&#34;1-文档和总结:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;1. 文档和总结&lt;/h4&gt;
+
+&lt;p&gt;印象很深的一点是，即使学习很累，每天晚上睡前再多坚持半小时，把所学的东西总结一下记下来，将来会非常有用。所以，以后也不要找借口没时间总结了，因此只是差再坚持半小时而已。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-和人交谈:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;2. 和人交谈&lt;/h4&gt;
+
+&lt;p&gt;程序员比较喜欢做自己的事情，不太关注别人，是不对的。和别人交谈过程中，能获得很多有效的信息。&lt;/p&gt;
+
+&lt;h4 id=&#34;3-兴趣为根本:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;3. 兴趣为根本&lt;/h4&gt;
+
+&lt;p&gt;侯老师曾经在非常令人羡慕的公司工作，但最后都选择了追随自己的兴趣，做自己感兴趣的事情，非常重要。&lt;/p&gt;
+
+&lt;h4 id=&#34;4-忠于自己内心的声音:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;4. 忠于自己内心的声音&lt;/h4&gt;
+
+&lt;h4 id=&#34;5-兴趣-热情:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;5. 兴趣/热情&lt;/h4&gt;
+
+&lt;p&gt;年轻的时候，肯定会有令自己疯狂的时期，也是人生的一段宝贵的经历。&lt;/p&gt;
+
+&lt;h4 id=&#34;6-执着:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;6. 执着&lt;/h4&gt;
+
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;不信青春唤不回，不容青史尽成灰&lt;/span&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;7-毅力:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;7. 毅力&lt;/h4&gt;
+
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;人生是一场马拉松，不是百米匆匆&lt;/span&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;8-专业:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;8. 专业&lt;/h4&gt;
+
+&lt;p&gt;想要做到&amp;#8220;&lt;span style=&#34;color: red;&#34;&gt;为学当如金字塔，要能深来要能广。&lt;/span&gt;&amp;#8221;其实是很难的。即使我们非常用功，天赋也不错，也可能成不了爱因斯坦，牛顿。所以，何不防释然一些，&amp;#8220;&lt;span style=&#34;color: red;&#34;&gt;弱水三千，取一瓢饮&lt;/span&gt;&amp;#8221;。在自己的专业领域，有所研究，略有收获，亦悠哉悠哉。最切忌的是浮躁，&amp;#8220;&lt;span style=&#34;color: red;&#34;&gt;勿在浮砂筑高台&lt;/span&gt;&amp;#8221;。有了这种心态，我想渐渐的也会在专业领域越走越远，越研究越深。&lt;/p&gt;
+
+&lt;h4 id=&#34;9-用功:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;9. 用功&lt;/h4&gt;
+
+&lt;h4 id=&#34;10-态度:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;10. 态度&lt;/h4&gt;
+
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;宁拙勿巧，宁下勿高，宁远勿近，宁繁勿略&lt;/span&gt; - 朱熹
+&lt;span style=&#34;color: red;&#34;&gt;永远正面思考&lt;/span&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;11-问道:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;11. 问道&lt;/h4&gt;
+
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;山不走来，我向山走去&lt;/span&gt;
+&lt;span style=&#34;color: red;&#34;&gt;大扣大鸣，小扣小鸣，不扣不鸣&lt;/span&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;12-勤勉:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;12. 勤勉&lt;/h4&gt;
+
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;读过千赋亦能赋，观过千剑亦能剑&lt;/span&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;13-不怕与人异:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;13. 不怕与人异&lt;/h4&gt;
+
+&lt;p&gt;侯老师非常喜欢的一首诗歌：&lt;a href=&#34;http://e.iciba.com/space-4258059-do-thread-id-76301.html&#34;&gt;The road not taken&lt;/a&gt;。这里节选最后一段：&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;#8221;&lt;/span&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;也许多少年后在某个地方，  &lt;/span&gt;
+&lt;div&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;nbsp;我将轻声叹息将往事回顾： &lt;/span&gt;&lt;/div&gt; &lt;div&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;nbsp;一片树林里分出两条路 &lt;/span&gt;&lt;/div&gt; &lt;div&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;nbsp;而我选择了人迹更少的一条， &lt;/span&gt;&lt;/div&gt; &lt;div&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;nbsp;从此决定了我一生的道路。&lt;/span&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt; &amp;#8220;&lt;/span&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;侯老师感叹，中国的传统教育，使得我们非常害怕与人不同，比如你独特的装扮，不同的兴趣等等。而国外的教育，是鼓励你与别人有所不同的。你独特的经历，独特的兴趣爱好，会给你加分不少。所以，我们也应该打破传统，不要害怕与人不同，做自己喜欢的事情，不要太多顾忌。&lt;/p&gt;
+
+&lt;h4 id=&#34;14-品格:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;14. 品格&lt;/h4&gt;
+
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;期许自己是&amp;#8220;贵族&amp;#8221;&lt;/span&gt;。&amp;#8220;贵族&amp;#8221;这里是指正直，道德高尚的人。&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;我在睡前花了半个小时整理了这篇博文，也许多年以后，我也不会记得侯老师的这次讲座的内容，但是这篇文章会帮我记住。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/07/12/programming-life.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/07/12/programming-life.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>人人都是全面手还是专业分工</title>
+            <link>http://blog.coderzh.com/2010/06/15/1758489</link>
+            <pubDate>Tue, 15 Jun 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/06/15/1758489</guid>
+            <description>&lt;p&gt;美国当年打越南，武力装备都在越南之上，最终还是失败告终。有人总结了这样一个说法：美国军队虽然总人数占优，但由于其专业的分工，一个战士还配个医疗兵，最终实际参与战斗的人其实不多。而越南兵根本没什么专业分工，前线的战士受伤了自己包扎一下就继续上，只要为了胜利，管它专业不专业，每个人都是全能手，倾尽所能全力战斗。美国需要反省，反省什么？&lt;/p&gt;
+
+&lt;p&gt;初创的软件公司，三五个人十条枪，没有产品，没有运营，没有自动化测试，管它专业不专业，用户爽就是好。成熟的大公司，职能分工很明确，专业技能造诣也深。最终小公司却给大公司沉痛一击，大公司也需要反省，反省什么？&lt;/p&gt;
+
+&lt;p&gt;世界杯正在进行，举个足球的例子：
+假设球队A，队员都经过专业训练，专业的动作，专业的体能教练，专业的战术指挥，专业的球场统计，专业的队医&amp;#8230;&amp;#8230;
+假设球队B，队员各种训练条件很差，未经过严格的专业训练，动作也不规范，也没有什么专业的战术指挥，但是个个冲劲十足，没有自己的固定位置，哪里空了补哪里。
+比赛的结果却是球队B获胜，球队A也要反省，反省什么？&lt;/p&gt;
+
+&lt;p&gt;反省什么？是专业分工的错吗？因此就要向对手学习这种不规范的管理吗？要让一个后卫队员随时冲到前面射门吗？&lt;/p&gt;
+
+&lt;p&gt;战争失败的原因其实有很多，球队输球的原因也有很多。有可能球队B买通了裁判，或是好的一面，比如他们有更强的冲劲，对进球的欲望，他们可以拼了老命，不顾一切，而专业队伍的球员甚至需要给自己的脚买保险。&lt;/p&gt;
+
+&lt;p&gt;所以问题根本就不在专业分工，人人都是产品经理的想法虽好，但是什么事情都去做，未必能达到最好的效果，还丢了自己最擅长的东西。真正需要反省的是如何加强各个团队的产品意识，和加强团队之间的高效配合。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/06/15/1758489.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/06/15/1758489.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>三年之痒</title>
+            <link>http://blog.coderzh.com/2010/03/27/three-years-work-thinking</link>
+            <pubDate>Sat, 27 Mar 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/03/27/three-years-work-thinking</guid>
+            <description>&lt;p&gt;眼看就要工作满三年了，对于大多数人来说是一个特殊的时期，对于我来说，也不例外。我也常常在想，我自己的定位是什么，我以后想要做什么，我该怎么选择，才能实现自己的价值和梦想。&lt;/p&gt;
+
+&lt;p&gt;　　思绪回到三年前&amp;#8230;&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;　　我毕业于当时全国排名14左右的中南大学，学的专业是也是该校专业排名仅次于同济清华的土木工程。我没有像大多数人一样，选择去设计院，或者铁路局，工程局。我义无反顾的选择了金山软件，当时的我，几乎没有任何的犹豫。因为我相信，这就是我未来要走的路。&lt;/p&gt;
+
+&lt;p&gt;　　金山软件是我梦想的地方，很早之前求伯君就是我的偶像。在高中时代，我就用过金山的WPS，毒霸，玩过剑侠情缘系列。在我看来，金山软件是一个值得自豪的公司，我能加入金山软件，更是一件自豪的事情。&lt;/p&gt;
+
+&lt;p&gt;　　初中时期我开始学习QB，参加过奥赛，但是没有拿过什么名次。现在想来，当时经常获奖的几个同学，现在都没有在搞计算机了，也只有我是坚持了下来。正是因为这种坚持，让我有了机会来到金山。&lt;/p&gt;
+
+&lt;p&gt;　　我所从事的是自动化测试工作，就是为WPS产品编写自动化测试案例或者测试工具。当时我加入时，产品的自动化测试程度还不是很高，后来我们使用QTP编写了大量的自动化测试案例，接着又打造了Box自动化测试平台，一个集任务发布、机器分配、环境准备、案例执行、报告收集、结果展示的分布式自动化测试平台。&lt;/p&gt;
+
+&lt;p&gt;　　当时我还写过很多测试工具，最让我引以自豪的工具是用C#写的对话框检查工具(DialogCheck)，功能是自动去打开所有WPS的对话框，检查窗口是否正确弹出。当时我对这个工具进行了精心的设计，后来我才发现，我的代码中使用了一些设计模式，比如：模板方法，反射工厂等。接着，我对设计模式产生了极大的兴趣，从《大话设计模式》、《Head First 设计模式》到《设计模式 - 可复用面向对象软件的基础》，让我受益颇多。&lt;/p&gt;
+
+&lt;p&gt;　　后来，我开始意识到，由于非计算机专业毕业，基础知识自然成了我的薄弱环节，比如数据结构、算法、编译原理。我不能只停留在C#这种高级语言的层次。于是，我开始自学。为了证明自己学习的成果，我报考了国家软件设计师的考试，几个月的备战后，我非常顺利的通过了这个证明自己的考试。软件设计师原名高级程序员，这对我一个非科班出身的人来说，是一个极大的激励。&lt;/p&gt;
+
+&lt;p&gt;　　公司组织结构几经调整，一直到现在，我所属的是金山互联网安全公司，负责测试金山毒霸等安全类产品。作为一个测试工程师，最令我引以自豪的是，我接触过软件测试的各个环节的具体工作。从界面层的QTP集成测试、基于C++底层接口的接口测试、测试工具及平台的开发、到性能测试，再到安全性测试。每一次转变，对我来说都是极大的提高。之前，公司并没有人专门做性能测试和安全性测试，我接到这个任务，并且开始了有趣的探索。比如性能测试工具LoadRunner、Silkperformer、OpenSTA、JMeter等等，甚至当时我蠢蠢欲动的打算自己实现一个性能测试工具。安全性测试中，我们研究了各种攻击方式，安全威胁，研究了各种安全扫描工具：FindBugs、PMD、LAPSE、Fortify SCA等等。我的&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2008/09/06/1285500.html&#34;&gt;(原创)攻击方式学习之&lt;/a&gt;XXX系列也是那时完成的。&lt;/p&gt;
+
+&lt;p&gt;　　后来，性能测试逐步走向正轨，我开始负责毒霸C++模块的接口测试，属于白盒测试，我们都统一称作模块测试。当时我加入的时候，模块测试已经做了很长一段时间了，当时我们使用的测试框架是自己开发的CppTestFramework，我使用了几周后，发现CppTestFramework有很多不尽人意的地方，有的时候还会出现Bug，让我不得不停下案例编写的脚步去修正CppTestFramework的Bug。于是我想是否可以使用一些现成的测试框架，比如CppUnit之类的。后来，我发现了Google Test，简称gtest。这让我异常兴奋，gtest的简洁、易用，让我毫不犹豫的选择了它。所以你会看到现在还一直置顶的《&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2009/04/06/1426755.html&#34;&gt;玩转GTest系列&lt;/a&gt;》的文章。&lt;/p&gt;
+
+&lt;p&gt;　　玩转GTest系列的文章很快就被gtest的作者&lt;a href=&#34;http://code.google.com/u/zhanyong.wan/&#34;&gt;zhanyong.wan&lt;/a&gt;发现，在他的鼓励下，我在极短的时间内完成了整个系列。现在的gtest官方主页右侧，还保留着我的文章链接。这个链接为我带来了可观的流量，更给我带来了极大的信心。&lt;/p&gt;
+
+&lt;p&gt;　　接下来，就需要说服团队中的每个人，切换测试框架到gtest上来。于是，我特意举行了几次关于gtest的技术交流，向他们介绍gtest的特点和优势，并且从头开始介绍gtest的用法，以及一些能够吸引他们眼球的东西，比如：参数化测试，死亡测试，案例分布执行等等。渐渐的，大家都接受了gtest，于是，我用了1，2天的时间，写了个脚本，将以前所有基于CppTestFramework的测试案例代码自动升级成了gtest测试案例。&lt;/p&gt;
+
+&lt;p&gt;　　模块测试的主要工作，是调用毒霸DLL的导出函数，尝试各种输入，然后检查是否达到预期的结果。有时候，我们还会对产品代码做一些单元测试。直接取下毒霸产品的代码，进行阅读、测试，让我对产品有了更深的了解。我对自己的代码要求很高，也容不得别人代码的瑕疵，所以，我很喜欢挑刺。我无法容忍开发人员命名时随意使用的缩写，我会给开发人员报变量命名的Bug，仅仅因为开发将Client写成了Clien。虽然Bugs数并不在我们的考核指标范围内，但我搜了一下，我发现的Bug数在整个测试团队（包括手工测试）中是排在前列的，虽然有很多Bug的优先级并不是很高。&lt;/p&gt;
+
+&lt;p&gt;　　我是一个追求完美的人，我给开发提的一点点小的BUG，虽然不是立竿见影，但是是对开发代码有长远的促进作用。当我发现一个Bug时，我不是立即将它录到Bug库提交给开发，而是直接编译开发的代码，进行调试，找到Bug的根源。所以，我提交的Bug，基本上都会指出导致这个Bug的代码在哪个文件，第几行，以及，修复这个Bug的方法。也许开发不太喜欢过于强势的测试人员，我发现很多开发人员看了我的修复建议后，都要使用另外一种方式去修复它。这的确非常有趣。&lt;/p&gt;
+
+&lt;p&gt;　　回到现在&amp;#8230;&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;　　我一直在思考，我的未来发展方向是什么。我是一个喜欢和代码打交道的人，也是一个愿意写代码一直到60岁的人。所以，一直以来，架构师是我梦寐以求的。我在测试领域的这三年，让我深刻的领悟到了软件测试的点点滴滴。我也在想，我是否需要坚持在测试这个领域继续发展。&lt;/p&gt;
+
+&lt;p&gt;　　我心里怀着一个梦想，开发一款卓越的软件，让全世界为之受益。软件测试始终是在测试别人的代码，无法创造真正属于自己的产品。于是，业余的时间，成了我的快乐时光。我疯狂的学习、读书、写Blog，Coding。这一点来说，我非常的宅，不过我有一个喜欢和我一起宅的女朋友。一直以来，她对我的鼓励，支持都令我非常感动。我写了很多东西，都是用她的名字命名的，比如：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2008/07/28/1255061.html&#34;&gt;NancyTetris&lt;/a&gt;，&lt;a href=&#34;http://code.google.com/p/nancyblog/&#34;&gt;NancyBlog&lt;/a&gt;，&lt;a href=&#34;http://code.google.com/p/nancyglines/&#34;&gt;NancyGLines&lt;/a&gt;等等。&lt;/p&gt;
+
+&lt;p&gt;　　Python是我业余时间时间学习并喜欢上的编程语言。我喜欢它的简洁和优美。我的很多工程都是使用Python来编写的，并且所以的代码都托管在Google Code中，以开源的方式提供着。我喜欢这种哲学。如果让我做一个职业Python程序员，会让我非常兴奋。&lt;/p&gt;
+
+&lt;p&gt;　　我也想过做一个自由职业者。这样我就有大量的时间做自己喜欢的事情，专研自己喜欢的技术，前提是有某个东西能够给我带来稳定的收入维持生计。当然，我可以选择创业。我有一些想法，但是都没有坚持实施下来。&lt;/p&gt;
+
+&lt;p&gt;　　我想，做一个Consultant也不错。据说这是一个在国外很火的职业。Consultant会遇到各种各样的环境，面对各种各样的难题，从事的是一个非常有挑战的工作，需要具备很强的解决问题的能力。&lt;/p&gt;
+
+&lt;p&gt;　　也许，研究院会更适合我。我有着对那些未知领域无穷的求知欲望，我非常享受沉浸在研究中的快乐。同时，这也能让我找到自己专攻的方向，将某一门技术研究的更深更透。&lt;/p&gt;
+
+&lt;p&gt;　　一个人想在某方面成为大师，需要在上面花费1万小时的努力。我希望我能找到自己的方向，并且坚定的走下去。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/03/27/three-years-work-thinking.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/03/27/three-years-work-thinking.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

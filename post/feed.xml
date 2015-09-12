@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on CoderZh&#39;s Blog</title>
+        <link>http://blog.coderzh.com/post/</link>
+        <language>zh-CN</language>
+        <author>CoderZh</author>
+        <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
+        <updated>Sat, 05 Sep 2015 23:44:48 CST</updated>
+        
+        <item>
+            <title>周末折腾的各种东西</title>
+            <link>http://blog.coderzh.com/2015/09/05/busy-weekend</link>
+            <pubDate>Sat, 05 Sep 2015 23:44:48 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/05/busy-weekend</guid>
+            <description>
+
+&lt;p&gt;这个周末放了3天假，第一天当然是要看盛大的阅兵仪式了，剩下的时间一半多是在折腾博客系统Hugo，剩下的时间在折腾各种工具、IDE，还有学习了一下Unity。&lt;/p&gt;
+
+&lt;h3 id=&#34;折腾hugo:0c17b4d209ef6269100e3287d9d742ad&#34;&gt;折腾Hugo&lt;/h3&gt;
+
+&lt;p&gt;上次给Hugo提了个Pull Request，提供了路径是否转换为小写的配置功能，最后被接受了，走过了一次完整的Pull Request流程，学到不少东西。周末继续折腾Hugo，又发现一个问题，文章的字数统计和70个字的摘要在我的博客里明显是不准确的，而且错的离谱。&lt;/p&gt;
+
+&lt;p&gt;于是看了下Hugo的代码实现，发现字数统计只是简单的根据空格统计单词的总数。而我们中文的语言，哪来那么多空格，文字都是一个挨着一个，按照英文的字数统计方法，一个几千字的文章最后被统计出来只有一百字也是经常的事情。&lt;/p&gt;
+
+&lt;p&gt;还有摘要的功能，如果没有主动使用``作为摘要的分隔符，Hugo会自动截取文章的前70个单词，并且保证截取的文字最后是一个完整的句子。数多少个单词的方法和字数统计是一样的，截取完整句子是往后找，直到找到下一个句号问号之类的。在中文博客里，这样的摘要截取方法常常导致把整篇文章当做了摘要。这也是不可接受的。&lt;/p&gt;
+
+&lt;p&gt;于是，我尝试去修改字数统计和摘要截取算法，让它能适应中文、日文或者其他类似语言。首先是字数统计，比如“Hello 中国”应该被识别为3个词：Hello、中、国。怎么做呢？Golang里unicode/utf8的Package，提供了方法计算有多少个Rune，而Rune并不是Word，只是字符，比如“Hello 中国”调用RuneCountInString的结果会是8。&lt;/p&gt;
+
+&lt;p&gt;于是，我借助utf8库里的一些方法，近似的实现了中英文文字的字数统计和摘要截取算法。说近似，因为实现方法不是很严谨，我不懂其他国家的语言，不知道其他国家语言在这样的算法下是否能保证正确。但我还是抱着试一试的态度，将我的修改给Hugo又提了一个Pull Request。&lt;/p&gt;
+
+&lt;p&gt;在和Hugo主要维护者之一bep多次沟通之后，他提出，我的实现的确不是很严谨，不能保证所有语言都适用。而且，关于字数统计，他之前已经实现过一个类似的方法：RuneCount。于是我又回去把漏看的代码又看了一遍，果然已经有一个RuneCount的方法，用来统计有多个Rune。对，是Rune，不是Word，所以“Hello 中国”RuneCount的结果是7（空格会被忽略）。而我要的结果是3啊。&lt;/p&gt;
+
+&lt;p&gt;后来我仔细一想，我真的这么在意有多少个英文单词和汉字吗？我在意的只是不要简单的根据空格分隔来统计字数，在意的只是说好的70个字的摘要，结果把整篇给做成了摘要。所以，使用RuneCount也OK啊，于是我就把之前的字数统计代码的改动还原了。bep提供了按Rune统计字数，但是没有提供按Rune截取摘要，于是我把之前稍微有些复杂的改动还原，提供了一个简短的按字符截取摘要的方法，并且补充了相应的测试案例。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func TruncateStringByRune(str string, max int) (string, bool) {
+    str = strings.Join(strings.Fields(str), &amp;quot; &amp;quot;)
+    count := 0
+    for index, rune := range str {
+        if count &amp;gt;= max {
+            return str[:index], true
+        }
+        if !IsWhitespace(rune) {
+            count++
+        }
+    }
+ 
+    return str, false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;做完这次修改后，继续Pull Request啊，可是现在的Pull Request状态显示我有两次commit，而且前一次已经Push了。于是又学了一招如何将新的commit和之前已经Push的commit合并成一个commit。首先我的修改是在单独分支commit和push的，当前的master是并没有这两次commit，这时就可以通过&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git rebase -i master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后编辑里面的commits，将需要被合并的pick改成squash，保存退出后再重新编辑commit message，然后就变成了一个commit，这时再来个强制push：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git push origin coderzh-hugo -f
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;于是一开始了和挪威程序员bep的多次交涉，他又提出他开始后悔当初提供了RuneCount方法，他认为Hugo提供的方法应该越少越好，干同样一件事情不应该有多个不同的实现版本。而且他不但不认为我又加了一个RuneSummary方法是对的，他还打算把原来的RuneCount方法也删除，并且他十分确信能提供一个统一的版本，既能处理西方文字也能正确的处理中文、日文等其他语言文字。&lt;/p&gt;
+
+&lt;p&gt;我虽然有些沮丧，但还是同意他的，于是我给他回复了我的想法（当然，原回复是英文的）&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“我完全同意你的观点。但是我加了个RuneSummary方法也是有我的考虑的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;统计中文类语言的字数和摘要截取需要消耗更多一点的性能。我提供两个版本的实现，可以让英语系的用户还是原来的方法而不会损耗性能。&lt;/li&gt;
+&lt;li&gt;摘要截取时，我不认为必须严格按照70个单词以及文字需要保证是一个完整的句子的方式来截取。因为一旦单词或句子很长时，整个摘要内容将会变的很长。而我需要的，仅仅是让所有的摘要都变得一样长，我才不在乎句子被截断。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;但是，我还是完全同意你的观点并且期待你的更好的统一的实现方式。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后bep有点被我说动了，回了一句：Let me think a little about this.&lt;/p&gt;
+
+&lt;p&gt;至少，我的修改版本是适用于我的，所以我自己用着就好啦，至于Hugo官方如何来提供，还是等等吧。&lt;/p&gt;
+
+&lt;h3 id=&#34;visual-studio-2015:0c17b4d209ef6269100e3287d9d742ad&#34;&gt;Visual Studio 2015&lt;/h3&gt;
+
+&lt;p&gt;我之前用Unity开发游戏时的版本记得还是4.6，现在已经出了5.1.3版本了。社区免费版本已经几乎提供了所有功能，学习把玩已经足够了。Unity自带的MonoDevelop是很难用的，还是Visual Studio好用，毕竟是世界上最好的IDE（笑~）。在VS里装个UnityVS简直可以走遍天下了。我之前一直用的是Visual Studio 2013，打开UnityVS的下载地址一看，默认只提供了Visual Studio 2015的UnityVS插件。哦？嘿嘿，趁这个机会，我也升个Visual Studio 2015试试。VS2015同样是Community版本提供了所有我需要的功能，所以完全不需要其他版本和破解序列号了。&lt;/p&gt;
+
+&lt;p&gt;装完VS2015，装好UnityVS插件，还需要安装另外两个神器啊，没有这两个神器，代码还怎么写？！一个是Visual Assist，一个是Viemu。作为一个Vimer，即使在IDE里也是要开启Vim模式的，毕竟，Vim才是世界上最好的编辑器啊（逃~）。&lt;/p&gt;
+
+&lt;p&gt;该装的都装好了，是不是可以愉快的写代码了？字体！对了，听说有一种专门为程序员设置的字体，我一定要试试。于是去下载了&lt;a href=&#34;http://sourcefoundry.org/hack/&#34;&gt;Hack&lt;/a&gt;  字体。果然一使用就爱上了这种字体。如果想看效果，在网页里打开这篇博客，上面的代码高亮部分就是Hack字体。&lt;/p&gt;
+
+&lt;p&gt;最后，终于可以愉快的玩耍了。&lt;/p&gt;
+
+&lt;h3 id=&#34;markdown-here:0c17b4d209ef6269100e3287d9d742ad&#34;&gt;Markdown Here&lt;/h3&gt;
+
+&lt;p&gt;这是另外一个神器，简直要节省我N多N多的编辑排版时间啊。之前我写好的Markdown格式的文章贴到微信公众平台的编辑器里，还要再编辑很久才能达到最终效果。而使用&lt;a href=&#34;https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa/reviews&#34;&gt;Markdown Here&lt;/a&gt;  这个Chrome插件，只需要在我将Markdown格式的文字拷贝到微信公众平台的编辑器里之后，按CTRL+ALT+M，立即会变成排版精良的有格式文字，而且几乎不需要再加工。其他地方的编辑器里也适用哦，谁用谁知道。&lt;/p&gt;
+
+&lt;p&gt;希望我折腾的东西对你有些许帮助，我也心满意足了。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>给Hugo提交了一个PR</title>
+            <link>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request</link>
+            <pubDate>Thu, 03 Sep 2015 08:55:31 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request</guid>
+            <description>&lt;p&gt;给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。&lt;/p&gt;
+
+&lt;p&gt;在上一篇博客&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;使用hugo搭建个人博客站点&lt;/a&gt;  里提到，Hugo强制将所有路径都变成了小写。小写路径虽好，但是如果之前你的网站路径不是全小写的，迁移过来路径发生变化，将会导致路径失效，是不可接受的。&lt;/p&gt;
+
+&lt;p&gt;上文提到，我硬改了Hugo代码，让它不要强制转换小写路径。这样的做法不够优雅，假如别人也和我有一样的需求怎么办？我们还是希望Hugo本身就能够提供这样的功能。于是，我决定把代码改的优雅一些，给Hugo作者提交一个Pull Request，将这个功能合并到Hugo代码里。&lt;/p&gt;
+
+&lt;p&gt;于是，我在config文件里增加了一个选项：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Do not make the url/path to lowercase
+disablePathToLower: true 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;增加一个开关其实很简单，只需要在command/hugo.go里的LoadDefaultSettings函数里增加一行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;viper.SetDefault(&amp;quot;DisablePathToLower&amp;quot;, false)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;开关生效的实现也很简单，找到最终转换为小写的函数，加入disablePathToLower开关的判断：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func MakePathSanitized(s string) string {
+    if viper.GetBool(&amp;quot;DisablePathToLower&amp;quot;) {
+        return MakePath(s)
+    } else {
+        return strings.ToLower(MakePath(s))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之前的函数名叫MakePathToLower，由于我在内部加了个开关，于是名字不适用了，于是修改为了：MakePathSanitized。&lt;/p&gt;
+
+&lt;p&gt;修改完成之后，需要把测试案例跑一遍，保证你的修改不会破坏原来的逻辑。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;go test ./...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然，也要保证编译是成功的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;go build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在我修改的第一个版本时，我犯了一个错误，导致测试案例没有通过。原因是第一个版本我增加的配置选项是PathToLower，默认值是true。而有些测试案例是没有去设置PathToLower的，默认读到的会是false，从而导致执行失败的执行结果。所以，config里增加的选项，默认值尽量是false吧，也会好理解一些。于是就有了：disablePathToLower&lt;/p&gt;
+
+&lt;p&gt;提交Pull Request时，有几点需要注意的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将自己的修改合并成一个commit再提交Pull Request。（这样在主Resp里更加规范和整洁）&lt;/li&gt;
+&lt;li&gt;commit message里的描述尽量简洁清晰，如果有对应的issue ID，最好加上：See #1234 or Fixes #1234 之类的。这样可以自动关联起来。&lt;/li&gt;
+&lt;li&gt;不要在自己的master分支上修改提交PR，而是应该自己开一个单独分支，由该分支提交Pull Request到原Repo的master。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;最后，我提交了这么一个Pull Request：&lt;a href=&#34;https://github.com/spf13/hugo/pull/1392&#34;&gt;add configuration variable: &amp;ldquo;disablePathToLower&amp;rdquo; See #557&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;不久后，Hugo的主要维护者之一通过了我的PR，很友善的将我蹩脚的中国式英语的commit message调整了一下合并到了Hugo的master：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK2oIvPRfSyclntiaZrnUIENfFbCaQ5maGFjF42Qdia2ic2YcicBzH3JZEZjL11sVV9owD9CXbM2bw9ag/0?wx_fmt=png&#34; alt=&#34;HugoPR&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;commit: &lt;a href=&#34;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&#34;&gt;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这就是开源项目的好处，开源社区的魅力所在：&lt;strong&gt;你可以使用它，修改它，贡献自己的代码，参与其中，让它变好，让所有人受益&lt;/strong&gt;。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>使用hugo搭建个人博客站点</title>
+            <link>http://blog.coderzh.com/2015/08/29/hugo</link>
+            <pubDate>Sat, 29 Aug 2015 16:52:15 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/29/hugo</guid>
+            <description>
+
+&lt;p&gt;Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。&lt;/p&gt;
+
+&lt;p&gt;Hugo生成静态页面的效率很高，我的260多篇博客文章生成几乎是瞬间完成的，而之前用Jekyll需要等待10秒左右。&lt;/p&gt;
+
+&lt;p&gt;Hugo自带watch的调试模式，可以在我修改MarkDown文章之后切换到浏览器，页面会检测到更新并且自动刷新，呈现出最终效果，能极大的提高博客书写效率。再加上Hugo是使用Go语言编写，已经没有任何理由不使用Hugo来代替Jekyll作为我的个人博客站点生成器了。&lt;/p&gt;
+
+&lt;h3 id=&#34;静态网站生成器:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;静态网站生成器&lt;/h3&gt;
+
+&lt;p&gt;什么是静态网站生成器？如果追溯到最早的网站形式，那时候的网页都是静态的，即一个内容不变的html文件放在服务器上，人们通过互联网访问浏览的都是这个一成不变的页面。后来，人们发现，需要和网页进行交互，能根据用户的输入动态呈现出相应的内容，这就是动态网站。那，为什么现在又回归使用静态网站呢？特别是对于博客网站这种特殊的形式。我的理解是：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;访问速度提升。静态页面不需要像动态页面那样经常去查询数据库，而是直接将最终页面内容返回。&lt;/li&gt;
+&lt;li&gt;搜素引擎友好。便于搜索引擎索引，比如很多动态网站的页面地址是一样的，只是后面传入的参数不一样，容易让搜索引擎误认为是同一个页面。（虽然不会）&lt;/li&gt;
+&lt;li&gt;可以完全抛弃数据库，减少复杂度，将最复杂的一步交给静态网站生成器，自己只专注写作、生成、发布三个步骤。&lt;/li&gt;
+&lt;li&gt;博客文章可以以文本文件的方式（MarkDown）在本地维护管理，不需要像之前那样在网页的编辑器里提交到网站数据库。你可以方便的使用github管理你的博客文章，不会丢失，又能追溯到每一次的内容变更。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;目前最流行的静态网站生成器是Jekyll，它是github创始人自己实现的一套ruby的静态网站生成器。一经推出，各个程序哥竞相效仿，一时间使用Jekyll搭建自己的博客变成了一件很高逼格的事情。&lt;/p&gt;
+
+&lt;p&gt;我也是跟风者之一，在Jekyll之前，我主要也是在博客园写文章，同时独立博客这块也尝试过自己实现的博客程序，用GAE写过，后来又用Tornado写过，都是动态网站。自己实现博客程序，总是在开始一段时间内很狂热，当一切实现完成，细节修缮好之后很快就失去了兴趣。因为你的注意力从只是写文章，经常转移到其他地方去。比如网站不好看，需要去改一改网站的风格样式，修复BUG，加一加功能等等。&lt;/p&gt;
+
+&lt;p&gt;所以，如果只是专注于写作，还是找一个稳定一些，提供大量现成皮肤，有稳定专业的组织维护更新的博客系统。使用Jekyll确实让我眼前一亮，原来博客程序可以这么玩。于是利用周末的时间，我将我之前所有的文章，包括博客园的文章，都迁移到了Jekyll上来。自从有了Jekyll，我终于可以开开心心的专注的写文章了，而且使用喜欢的MarkDown格式。：）&lt;/p&gt;
+
+&lt;p&gt;在使用了Jekyll一段时间后，它的问题也逐渐暴露出来：静态页面生成的效率不够高。因为我把以前的文章都导入了过来，一共有260来篇，每次编辑文章后，需要等等10秒，待它将所有页面检查并生成完成之后，才能看到最终的效果。这是我最不能忍受的一点。对于初学者，Jekyll还有很多问题，比如环境搭建非常复杂，导致使用Jekyll的人大都是一些喜欢折腾，不怕折腾的程序哥。&lt;/p&gt;
+
+&lt;p&gt;随着Go1.5版本的发布，让我意识到是时候好好玩一玩Go语言了。使用Go语言实现的静态网站生成器Hugo（雨果）立即吸引了我，它解决了我最大的痛点：生成的效率。文档、社区各方面的支持都不错，使用起来非常简单，各种皮肤直接套用，于是我又开始了Jekyll迁移到Hugo的漫漫长路。（一个周末的时间）&lt;/p&gt;
+
+&lt;p&gt;即使迁移到了Hugo，我还保留着原来的Jekyll博客，只是不会再更新了，用来怀念？还是哪天突然又跳回来也不一定。&lt;/p&gt;
+
+&lt;p&gt;我的Jeklly博客：&lt;a href=&#34;http://jekyll.coderzh.com&#34;&gt;http://jekyll.coderzh.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我的Hugo博客：&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;http://blog.coderzh.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;github-pages:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;GitHub Pages&lt;/h3&gt;
+
+&lt;p&gt;使用静态网站生成器生成好静态页面之后，需要把文件放到服务器上供别人浏览。比较传统的方式是租用VPS虚拟服务器，比如：linode、digitalocean。将生成好的静态页面手工上传到服务器上。如果你习惯这种方式部署，推荐你使用&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;digitalocean&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;当然， 还有更好的方式，就是直接把网站托管到GitHub Pages。你只需要在GitHub上创建一个项目，然后将生成出来的静态页面文件push到这个项目的gh-pages分支，保证根目录有一个index.html文件即可。这样，一个免费、无限流量的博客系统就搭建完成了。同时，通过github你可以方便对博客文章进行管理和追踪。&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;Hugo&lt;/h3&gt;
+
+&lt;p&gt;前面的铺垫介绍的差不多了，该主角上场了。Hugo是什么？它主要做了什么？&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe）&lt;/li&gt;
+&lt;li&gt;Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。&lt;/li&gt;
+&lt;li&gt;Hugo内置web服务器，可以方便的用于本地调试。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;hello-hugo:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;Hello Hugo&lt;/h3&gt;
+
+&lt;p&gt;Hugo官方主页：&lt;a href=&#34;https://gohugo.io/&#34;&gt;https://gohugo.io/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hugo的安装方式有两种，一种是直接下载编译好的Hugo二进制文件。如果只是使用Hugo推荐用这种方式。另一种方式是获取Hugo的源码，自己编译。由于各种不可预料的网络问题，第二种方式不是那么轻易能成功，虽然最后我还是折腾出来了。&lt;/p&gt;
+
+&lt;p&gt;Hugo二进制下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;下载下来后，只有一个叫hugo或者hugo.exe的程序，接下来开始生成自己的站点：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new site /path/to/site
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后hugo会自动生成这样一个目录结构：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  ▸ archetypes/
+  ▸ content/
+  ▸ layouts/
+  ▸ static/
+    config.toml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;简要介绍一下，config.toml是网站的配置文件，这是一个TOML文件，全称是Tom&amp;rsquo;s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。如果你不喜欢这种格式，你可以将config.toml替换为YAML格式的config.yaml，或者json格式的config.json。hugo都支持。&lt;/p&gt;
+
+&lt;p&gt;content目录里放的是你写的markdown文章，layouts目录里放的是网站的模板文件，static目录里放的是一些图片、css、js等资源。&lt;/p&gt;
+
+&lt;p&gt;创建一个页面：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new about.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果是博客日志，最好将md文件放在content的post目录里。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new post/first.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行完后，会在content/post目录自动生成一个MarkDown格式的first.md文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+date = &amp;quot;2015-01-08T08:36:54-07:00&amp;quot;
+draft = true
+title = &amp;quot;first&amp;quot;
+ 
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;+++可以替换为Jekyll一样的---，里面的内容是这篇文章的一些信息。下面就可以开始写你的文章内容，比如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+date = &amp;quot;2015-01-08T08:36:54-07:00&amp;quot;
+draft = true
+title = &amp;quot;first&amp;quot;
+ 
++++
+
+### Hello Hugo
+
+ 1. aaa
+ 1. bbb
+ 1. ccc
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK，刚才的about.md也有内容，该看看最后的效果了。然后你屁颠屁颠的使用hugo server启动，打开浏览器里一看，发现毛都没有！这是肿么了！&lt;/p&gt;
+
+&lt;p&gt;这是Hugo对初学者非常不友好的地方，默认生成的网站是没有任何皮肤模板的。为了看看第一个写的示例，还得去Github上把一个网页模板下载下来。如果你网络够好，网速够快，你可以在刚才的目录将Hugo官方的所有模板都下载下来：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git clone --recursive https://github.com/spf13/hugoThemes themes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我尝试过，也失败过，且从未成功一次性将所有的模板下载下来。所以，我们还是老老实实只下载其中一个模板来看看效果吧：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd themes
+$ git clone https://github.com/spf13/hyde.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;启动本地调试：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo server --theme=hyde --buildDrafts --watch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;浏览器里打开：&lt;a href=&#34;http://127.0.0.1:1313&#34;&gt;http://127.0.0.1:1313&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKAMQ4BG3zdDBPKa2vBBR205C0HSCzibticmp8eOVXyQY3vhYgG8qMiaZZiaSYFyYe2Hr3TvAFN1VeRmg/0?wx_fmt=png&#34; alt=&#34;HugoFirstPost&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动去刷新浏览器，不需要自己手工去刷新浏览器，非常方便。&lt;/p&gt;
+
+&lt;p&gt;如果你看了上面的说明已经有冲动去试一试Hugo了，我的目的也算达到了，接下来你需要的只是查看官方的说明文档就够了，所以具体的一些设置我就不重复了。&lt;/p&gt;
+
+&lt;p&gt;官方文档：&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;https://gohugo.io/overview/introduction/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;皮肤列表：&lt;a href=&#34;https://github.com/spf13/hugoThemes&#34;&gt;https://github.com/spf13/hugoThemes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;常用文档：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/overview/configuration/&#34;&gt;Configuring Hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/content/front-matter/&#34;&gt;Front Matter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/extras/menus/&#34;&gt;Menus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/templates/variables/&#34;&gt;Template Variables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/tutorials/github-pages-blog/&#34;&gt;Hosting on GitHub Pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;遇到的问题:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;遇到的问题&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;默认的ServerSide的代码着色会有问题，有些字的颜色会和背景色一样导致看不见。&lt;br /&gt;
+解决方法：使用ClientSide的代码着色方案即可解决。（见：&lt;a href=&#34;https://gohugo.io/extras/highlighting/#client-side:c4210b265c792cac9a6cf6a5f53b671d&#34;&gt;Client-side Syntax Highlighting&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;URL全部被转成了小写，如果是旧博客迁移过来，将是无法接受的。&lt;br /&gt;
+解决方法：&lt;del&gt;我是直接改了Hugo的代码，将URL强制转换为小写那段逻辑去掉了，之后考虑在config里提供配置开关，然后给Hugo提一个PR。如果是Windows用户可以直接&lt;a href=&#34;https://github.com/coderzh/ConvertToHugo&#34;&gt;https://github.com/coderzh/ConvertToHugo&lt;/a&gt; 下载到我修改后的版本myhugo.exe。&lt;/del&gt;&lt;br /&gt;
+Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pull/1392&#34;&gt;PR&lt;/a&gt;并&lt;a href=&#34;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&#34;&gt;commit&lt;/a&gt;到Hugo，最新版本只需要在config里增加：&lt;br /&gt;
+&lt;code&gt;disablePathToLower: true&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;文章的内容里不能像Jekyll一样可以内嵌代码模板了。最终会生成哪些页面，有一套相对固定而复杂的规则，你会发现想创建一个自定义界面会非常的困难。&lt;br /&gt;
+解决方法：无，看文档，了解它的规则。博客程序一般也不需要特别的自定义界面。Hugo本身已经支持了类似posts, tags, categories等内容聚合的页面，同时支持rss.xml，404.html等。如果你的博客程序复杂到需要其他的页面，好好想想是否必须吧。&lt;/li&gt;
+&lt;li&gt;如何将rss.xml替换为feed.xml？&lt;br /&gt;
+解决方法：在config.yaml里加入：&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt; rssuri: &amp;quot;feed.xml&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;jekyll迁移到hugo:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;Jekyll迁移到Hugo&lt;/h3&gt;
+
+&lt;p&gt;Jekyll的文章内容迁移到Hugo中，大部分内容是兼容的，但也有一些地方是不兼容的。主要有以下几个地方需要修改：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Jekyll文章能从文件名里的日期部分读取到日期，并将剩余的部分当做的页面url的名称，比如：2015-08-29-first.md。而Hugo只认md文件里的date字段，url的名称如果用文件名的话将会使用完整的文件名（不会去除日期部分）。为了兼容，必须在md的Front Matter里写入url字段，用来说明该页面的相对url地址，从而保持兼容。&lt;/li&gt;
+&lt;li&gt;tags, categories等字段必须用列表的方式，不像Jekyll中那样随意了。&lt;/li&gt;
+&lt;li&gt;{% raw %} {% endraw %}将不需要了。&lt;/li&gt;
+&lt;li&gt;{% highlight ruby %} 变成了{{&amp;lt; highlight ruby &amp;gt;}} 。不过我还是推荐使用``` ruby ```形式，然后使用ClientSide的Highlight，这样两边都兼容。&lt;/li&gt;
+&lt;li&gt;需要将Jekyll里的public里的文件拷贝到Hugo的static目录里。&lt;/li&gt;
+&lt;li&gt;Jekyll的文章必须放到Hugo的content/post目录里。&lt;/li&gt;
+&lt;li&gt;Jekyll只需要push文章内容到github，服务器会自动生成静态页面。毕竟是github的亲儿子。而Hugo需要你将生成的public目录里的内容做为gh-pages分支push上去。具体的简便的方法见：&lt;a href=&#34;https://gohugo.io/tutorials/github-pages-blog/&#34;&gt;Hosting on GitHub Pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;假如你之前的博客和我一样是Jekyll的，可以尝试使用我写的&lt;a href=&#34;https://github.com/coderzh/ConvertToHugo/blob/master/ConvertToHugo.py&#34;&gt;ConvertToHugo.py&lt;/a&gt; 工具。这个转换工具逻辑相对比较简单和清晰，如果满足不了你的需求你也可以轻易在此基础上做些修改，如果我能收到PR当然是最好了。&lt;/p&gt;
+
+&lt;p&gt;反正，我是完全使用CovertToHugo.py将我原来的Jekyll博客全部转过来了。而且，我找到了一个非常炫酷的主题，并且在此基础稍微修改下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKAMQ4BG3zdDBPKa2vBBR20hnPXA1PdrfOB2cIveaTh58IMIRkFYzFrCDD70YIhJSnPjfloueBziaA/0?wx_fmt=jpeg&#34; alt=&#34;HugoBlog&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Blog地址：&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;http://blog.coderzh.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Github: &lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>最近读的几本书</title>
+            <link>http://blog.coderzh.com/2015/08/16/Books</link>
+            <pubDate>Sun, 16 Aug 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/16/Books</guid>
+            <description>
+
+&lt;p&gt;由于我住的比较远，每天上下班单程需要1个半小时左右。因此，车上和地铁的时间成了我每天阅读的时间。&lt;/p&gt;
+
+&lt;p&gt;下面几本是我最近读过的书，分享一下：&lt;/p&gt;
+
+&lt;h3 id=&#34;1-创业维艰-hard-thing-about-hard-thing:7e00911045293764b501e3f40792557f&#34;&gt;1. 《创业维艰》 - Hard Thing About Hard Thing&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOFSeOx7N8UoyFIw8LOmlEKiagUvVZP0QAurUniasT1DAmV20oE7AzNibcw/0?wx_fmt=jpeg&#34; alt=&#34;HardThingAboutHardThing&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我觉得每个创业者都必须看的好书。和其他大谈道理方法论的书不同，作者都是从自身的经历说起，通过一个又一个活生生的例子，通过切身体会得出的人生感悟和管理哲学。而且，作者很有名气，最后也非常成功。书前半部分的故事非常精彩，看的非常有感觉。后半部分的管理哲学也是受益匪浅。保证看过的都说好。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-rework重来:7e00911045293764b501e3f40792557f&#34;&gt;2. 《Rework重来》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOsBJNuS9qI6Qh1wBYjxpgr799STrg2Ct0OLkSnOJpMezlkMzrh1Zxvw/0?wx_fmt=jpeg&#34; alt=&#34;Rework&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这本书道理讲的有点多，而且，大多数道理都有点奇葩，反常理。比如，保持小公司，不要想着公司变大。不要想着以后会想到办法赚钱。不要怀着被收购的想法去创业等等。仔细一想，挺有道理的。喜欢的人会很喜欢。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-乌合之众:7e00911045293764b501e3f40792557f&#34;&gt;3. 《乌合之众》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yO80ib8cPNjvA02rJsObpzm0yd2PeZwhoFEkh5KoxTfSdvrsV5DHfLrLQ/0?wx_fmt=jpeg&#34; alt=&#34;TheCrowd&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;研究群体心理的著作。群体是感性的、本能的情绪特别容易受传染，而理智的、冷静的情绪不起丝毫作用。群体的人会感受到一种强烈的“正义”力量，抱着“法不责众”的想法，会理直气壮的做出平时不可能做出的举动。群体敬畏权威和强权，容易受暗示影响，而且情绪多变。（张小龙对这本书非常推崇，对群体心理这么了解，才做出微信这样的产品吧。）&lt;/p&gt;
+
+&lt;h3 id=&#34;4-改变未来的九大算法:7e00911045293764b501e3f40792557f&#34;&gt;4. 《改变未来的九大算法》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOVm4byM2RhVayQJyPYWm4q7Hcn9icibhWEZQpiabwTUOqtWQhQ0jibJicwWA/0?wx_fmt=jpeg&#34; alt=&#34;NineAlgo&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这本书属于科普吧，并不是给程序员看的那类算法书。最大的特点是把复杂的算法简化，形象成一个又一个简单可理解的小例子。让复杂的算法走下神坛，让我们明白，再复杂的算法也是由一个又一个简单大家都懂的道理衍生而来的。九大算法主要是：
+ 1. 搜索引擎索引
+ 1. 网页排名PageRank
+ 1. 公钥加密（PS: 颜料混合的例子特别形象生动）
+ 1. 纠错码
+ 1. 图形识别算法（PS: 机器学习原来是这么回事）
+ 1. 压缩算法
+ 1. 数据库用到的基础算法
+ 1. 数字签名
+ 1. 特别伟大解决一切问题的算法并不存在（PS: 我可以说第九个是凑数的吗？）&lt;/p&gt;
+
+&lt;h3 id=&#34;5-mactalk人生元编程:7e00911045293764b501e3f40792557f&#34;&gt;5. 《MacTalk人生元编程》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOncAdXTicFFAQvjQbsbpNG39Gk5y4P2GBdHb6Q4eJRsgVpAsrniapGsww/0?wx_fmt=jpeg&#34; alt=&#34;MacTalk&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;作者迟建强前段时间刚加入了锤子科技，看迟建强的文章和头像，每次都容易让我联想到以前一个朋友，形象和气质都和他很像。这本书主要介绍一些Mac的历史、故事、技巧，当然，还有更精彩的作者的编程经历和人生感悟。&lt;/p&gt;
+
+&lt;h3 id=&#34;6-程序员跳槽全攻略:7e00911045293764b501e3f40792557f&#34;&gt;6. 《程序员跳槽全攻略》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOuHUzgtqiaKpIibC0CQEOIA4G63KqWogkWAw0STzUzAfSAWvsFUalLzSA/0?wx_fmt=jpeg&#34; alt=&#34;JobDeer&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这本书有点小坑了，只要1块钱就买来看了，1个小时不到就可以读完，然后感慨一下，这样也可以出一本书？ 虽然如此，假如你看一本书，哪怕只有一点点收货，也算是很值了。我觉得书里的这幅图还是挺有意思的，程序员职业发展四大象限：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOgFThicsZc6f5CNNxvXa4p2Ck83o3iclzia48SS4iafrcwo7ibb8oyqGyrFA/0?wx_fmt=jpeg&#34; alt=&#34;JobDeerEBSI&#34; /&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>使用Jekyll官方的ReadMore摘要功能</title>
+            <link>http://blog.coderzh.com/2015/08/15/JekyllReadMore</link>
+            <pubDate>Sat, 15 Aug 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/15/JekyllReadMore</guid>
+            <description>
+
+&lt;p&gt;今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。&lt;/p&gt;
+
+&lt;p&gt;我之前的方法，在index.html中&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; {{ post.content ||split:&#39;&#39; | first }} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在Post里，需要分隔的摘要后面加&lt;code&gt;。&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;摘要内容...
+
+正文内容...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;官方做法-excerpt:b34704c1c1176e970544bf334bae729d&#34;&gt;官方做法: excerpt&lt;/h3&gt;
+
+&lt;p&gt;官方的方法是，在_config.yml里，指定摘要的分隔符：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;excerpt_separator:  &#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，在index.html中：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; {{ post.excerpt }} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一般情况下，摘要需要去掉html标签，所以一般这样用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;  {{ post.excerpt | strip_html }} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，和前一种方法一样，在摘要后面加``  即可。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>使用ThreadSanitizer线程检查工具</title>
+            <link>http://blog.coderzh.com/2015/08/15/ThreadSanitizer</link>
+            <pubDate>Sat, 15 Aug 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/15/ThreadSanitizer</guid>
+            <description>
+
+&lt;p&gt;ThreadSanitizer又叫TSan，是一个检查线程Data Race的C/C++工具。它集成在新版的gcc和clang中，通过编译时加-fsanitize=thread，可以在运行时检测出Data Race的问题。&lt;/p&gt;
+
+&lt;p&gt;ThreadSanitizer官网：&lt;a href=&#34;https://code.google.com/p/thread-sanitizer&#34;&gt;https://code.google.com/p/thread-sanitizer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;data-race:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;Data Race&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOd04btFpRmIibfk0kMfT29nrzBmcvchJdib8I3BNqK0NaCNMu3HmM24Kg/0?wx_fmt=jpeg&#34; alt=&#34;DataRace&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Data Race是指多个线程在没有正确加锁的情况下，同时访问同一块数据，并且至少有一个线程是写操作，对数据的读取和修改产生了竞争，从而导致各种不可预计的问题。&lt;/p&gt;
+
+&lt;p&gt;Data Race的问题非常难查，Data Race一旦发生，结果是不可预期的，也许直接就Crash了，也许导致执行流程错乱了，也许把内存破坏导致之后某个时刻突然Crash了。&lt;/p&gt;
+
+&lt;h3 id=&#34;环境要求:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;环境要求&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Linux x86_64，内核版本不要太旧。（经测试，公司旧的开发机Linux内核是2.6.16是跑不了的，新的tlinux内核3.10.0可以）&lt;/li&gt;
+&lt;li&gt;gcc 4.8版本以上（clang也集成了，3.2版本以上）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;官方示例:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;官方示例&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;$ cat simple_race.cc
+#include &amp;lt;pthread.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+ 
+int Global;
+ 
+void *Thread1(void *x) {
+  Global++;
+  return NULL;
+}
+ 
+void *Thread2(void *x) {
+  Global--;
+  return NULL;
+}
+ 
+int main() {
+  pthread_t t[2];
+  pthread_create(&amp;amp;t[0], NULL, Thread1, NULL);
+  pthread_create(&amp;amp;t[1], NULL, Thread2, NULL);
+  pthread_join(t[0], NULL);
+  pthread_join(t[1], NULL);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的代码在不加锁的情况下，两个线程同时去修改Global变量，从而导致Data Race。使用gcc的-fsanitize=thread 编译，执行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;$ g++ simple_race.cc -fsanitize=thread -fPIE -pie -g
+$ ./a.out
+==================
+WARNING: ThreadSanitizer: data race (pid=26327)
+  Write of size 4 at 0x7f89554701d0 by thread T1:
+    #0 Thread1(void*) simple_race.cc:8 (exe+0x000000006e66)
+ 
+  Previous write of size 4 at 0x7f89554701d0 by thread T2:
+    #0 Thread2(void*) simple_race.cc:13 (exe+0x000000006ed6)
+ 
+  Thread T1 (tid=26328, running) created at:
+    #0 pthread_create tsan_interceptors.cc:683 (exe+0x00000001108b)
+    #1 main simple_race.cc:19 (exe+0x000000006f39)
+ 
+  Thread T2 (tid=26329, running) created at:
+    #0 pthread_create tsan_interceptors.cc:683 (exe+0x00000001108b)
+    #1 main simple_race.cc:20 (exe+0x000000006f63)
+==================
+ThreadSanitizer: reported 1 warnings
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行程序，如果发生Data Race，错误信息会直接输出出来。如果错误信息比较多，重定向输出流到文件里，慢慢分析：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./a.out &amp;gt;result.txt 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;关键要点:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;关键要点&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;除了加-fsanitize=thread外，一定要加-fPIE -pie。&lt;/li&gt;
+&lt;li&gt;-g 是为了能显示文件名和行号。&lt;/li&gt;
+&lt;li&gt;如果分生成obj(-c)和link两个步骤，每一步都加：thread -fPIE -pie -g，并且在link的时候加-ltsan&lt;/li&gt;
+&lt;li&gt;只支持64位，最好指定编译64位(-m64)&lt;/li&gt;
+&lt;li&gt;如果依赖其他静态库，其他静态库编译时必须指定-fPIC（如果不是请重编）&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>你说我是错的，那你最好证明你是对的</title>
+            <link>http://blog.coderzh.com/2015/08/08/IDonnotCare</link>
+            <pubDate>Sat, 08 Aug 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/08/IDonnotCare</guid>
+            <description>&lt;p&gt;&amp;ldquo;你说我是错的，那你最好证明你是对的&amp;rdquo; &amp;ndash; Michael Jackson&lt;/p&gt;
+
+&lt;p&gt;这句话曾经出现在微信的启动封面上，后来被换下了。但在QQ邮箱的登录界面，还一直使用了这句MJ的名言：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeLQ3MhKKGn1ERadHibEwA2Y2TWxUC5IQCCZVEsMm0YRPp4mn1jOiapIJllPFfvauxCMqsaytYibgehcA/0?wx_fmt=png&#34; alt=&#34;mj&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这句话的逻辑成立吗？“你说我是错的，那你最好证明你是对的”，显然不成立！&lt;/p&gt;
+
+&lt;p&gt;因为即便你证明了你是对的，但也说明不了问题，可能我也是对的。咱俩都对。&lt;/p&gt;
+
+&lt;p&gt;当然，也有另外一个理解。你说我是错的，那你最好证明“我是错的”是对的。显然你证明不了我是错的。&lt;/p&gt;
+
+&lt;p&gt;总之，你证明不了我是错的，也证明不了你是对的，即使证明了你是对的，也证明不了我是错的。（是不是很绕啊）&lt;/p&gt;
+
+&lt;p&gt;为什么要说的这么绕呢？本质原因是，我也证明不了我是对的。&lt;/p&gt;
+
+&lt;p&gt;这只是一种态度：&lt;strong&gt;你证明不了我是错的，我也证明不了我是对的，也许时间能证明。但我现在就要这样做，你就不要瞎BB了。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这一定是内心挣扎过才会想发出的声音，作为QQ邮箱的封面，有什么特殊的含义吗？是一种思想，境界，或是情怀？还是表达了个人的内心情感诉求。&lt;/p&gt;
+
+&lt;p&gt;其实，用户根本不会在意。They don&amp;rsquo;t care.&lt;/p&gt;
+
+&lt;p&gt;最近我在一个程序群里参加了一个讨论，内容很俗套，老生常谈并无新意，但最后给了我一些反思。&lt;/p&gt;
+
+&lt;p&gt;讨论的内容是敲代码还是IDE好用，VIM什么的没什么卵用。&lt;/p&gt;
+
+&lt;p&gt;我看讨论比较激烈，也掺和了一脚：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CoderZh: 我在VS里也用vim模式啊。
+Z：vs本身的快捷键就很高效啊。
+CoderZh：dd o dw gg G等等，还是vim敲的快
+Z：又不是打字员，脑子跟不上手。
+CoderZh：不想一直换鼠标和按左右键而已。
+X：F以前说，敲代码的时间只占整个开发的时间的比例很少吧，所以敲快敲慢意义不大。
+Z：是啊，这种氛围本身就有埋头拉车的倾向。
+L：敲得快不碍事啊
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;讨论到这里，除了被扣一个埋头拉车的帽子，好像还算正常。接下来继续：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CoderZh：你想到什么能很快敲出来，而不用浪费时间而已。
+Z：你把QQ关了，不知道可以节省多少时间。
+L：敲得快跟节省时间没关系，性子比较急的话，就喜欢快点敲罗
+Z：性急的人不太适合当程序员。
+L：呵呵
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，又被扣了一个不适合当程序员的帽子。L君用呵呵回应，我却有点忍不了，觉得这还有什么好讨论的，Z一直给别人扣帽子，显得自己很有主见。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CoderZh：好了，各有所好，没什么讨论的。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;讨论很不愉快的结束了，导致以后我也不想参与类似的讨论了。其实，上面逻辑很容易理顺：&lt;strong&gt;把QQ关了敲代码，可以节省很多时间。在认真敲代码的时间里，使用VIM可以做到更高效。&lt;/strong&gt; 仅此而已，而正因为对方对VIM有偏见，自己又不用，就要大肆抨击别人。我本也可以回复一个呵呵一走了之的，但还是没忍住有了一点情绪。&lt;/p&gt;
+
+&lt;p&gt;后来想想，其实每个人站在自己的角度，说的话都是有道理的。如果你站在他一样的角度，其实也说的通的。&lt;/p&gt;
+
+&lt;p&gt;我想到《创业维艰》里的几个小故事：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;在公司陷入窘境的时候，Ben（作者名）决定孤注一掷开展“氧化物”计划。很快，两个毕业于斯坦福商学院的高材生员工专程来见Ben，用一大堆幻灯片详细说明为什么“氧化物”计划只是一个空想，注定要失败。在45张幻灯片全部展示完后，Ben立即转入了战斗状态：是我让你们放这些幻灯片的吗？&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;从员工的角度，仔细的去思考“氧化物”计划的利弊，技术层面、公司资源层面、市场层面等等，其实都是对的，无可挑剔。但是，最后Ben还是要坚持那么做。为什么？&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;除我以外，没有人清楚公司的发展全局，没有人能令公司摆脱困境。如果我任凭那些根本不了解具体情况的人对公司的发展大计指手画脚，那我就无药可救了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;是的，你说的有道理，但是我统统不在乎。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You are right, but I don&amp;rsquo;t care!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ben在公司又一次陷入绝境的时候，为了搞定一个大客户，决定要收购一家叫Tangram的公司。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;大家一致认为，收购Tangram公司是个糟糕的点子：技术上很难兼容，而且价值不大，地理位置也不理想，成立时间较久，技术也很老旧。财务团队认为，这项收购肯定会赔钱。听完这些意见，我告诉大家，他们所说的这些反对理由我并不在乎，我们一定要收购Tangram公司。团队成员似乎非常震惊，但并没有和我争辩。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;You are right, but I don&amp;rsquo;t care!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;最后Ben成功的通过收购取悦了大客户，公司得以生存。&lt;/p&gt;
+
+&lt;p&gt;在Ben引进天才销售主管克兰尼时，也遇到了麻烦。董事会对克兰尼的印象依然不好：长相和声音都不适合当一名销售主管，毕业学校名不见经传，令董事会不舒服。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;认真听完董事会马克的抱怨之后，Ben回答说：”你说的每一条，我都同意。但是，克兰尼是一个销售专家，他的销售管理水平远远超过我所认识的每一个人。如果他身上没有你说的这些毛病，他也不会愿意加入我们这样的公司，说不定他会成为IBM的CEO呢！“  马克很快说：”明白了，就他了！“&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;You are totally right, but I don&amp;rsquo;t care!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;也许，下次再有类似争执的时候，我不会说：你说我是错的，那你最好证明你是对的。&lt;/p&gt;
+
+&lt;p&gt;我会告诉他：You are right, but I don&amp;rsquo;t care.&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>小记：网易游戏学院第二届公开日</title>
+            <link>http://blog.coderzh.com/2015/06/28/163GameOpenDay</link>
+            <pubDate>Sun, 28 Jun 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/06/28/163GameOpenDay</guid>
+            <description>
+
+&lt;p&gt;昨天参加了网易游戏学院的公开日《技术进步引发的灵感革命》，干货十足，期间做了一些笔记，分享一下。&lt;/p&gt;
+
+&lt;p&gt;在广州好几年了，也是第一次到科韵路信息港，下午去的早了些就在周围逛了逛，熟悉了一下地形和周边的小吃（主要是没吃午饭，到处找吃，只找到一家全家）。太热了又逛的差不多了，就来到了网易大厦。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVfTsg3H6yzZyHTicJIoc3iccRLLcn7RDsn9QQvU4RIhElW7vU4ZEkKZ8Q/0?wx_fmt=jpeg&#34; alt=&#34;163game&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我去的太早，还担心里面没人。进去之后，发现好多漂亮的礼仪小姐早已经在迎接嘉宾了（可惜没拍照）。进入会场，大屏幕，电影院的感觉，找了个好位置开始看网易的宣传片。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVHfyibWuPH8hNXia2MiaMIFSiaHO9Q3UBq62H49c8UQ9UBZup5IjcJdPOfw/0?wx_fmt=jpeg&#34; alt=&#34;163game2&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;演讲开始~&lt;/p&gt;
+
+&lt;h3 id=&#34;1-自研引擎力作-乱斗西游-开发经验:3588ff76d10bf10d678f4491e7de2978&#34;&gt;1.自研引擎力作《乱斗西游》开发经验&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;《乱斗西游》是一款完美融合MOBA和ARPG玩法的革命性3D动作手游，上市以来表现优异，多次获得苹果官方推荐并入选“App Store 2014年度精选”。作为网易第一款3D手游，在自研引擎NeoX上如何做多线程渲染方案？采用了哪些跨平台/渲染/网络同步/存储方案？如何为跨服设计服务器架构？诸多难题，本次由该项目主程陈伊力为您一一详解。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;PPT： &lt;a href=&#34;http://www.youxituoluo.com/78062.html&#34;&gt;http://www.youxituoluo.com/78062.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;注意NeoX的发音，没错，就是牛X引擎，名字够牛。乱斗西游在立项初期，在游戏引擎选择上面也考虑了诸多，比如商业的Unity, Unreal等，也包括网易自研的引擎，最后，他们选择了自研的牛X引擎。服务端架构方面使用了MobileServer多服架构（主要语言Python，没有过多介绍）。数据库使用mongodb，目前乱斗西游4台服务器可支持10万玩家。&lt;/p&gt;
+
+&lt;p&gt;在提供客户端效率方面，采用了多线程渲染。将逻辑线程和渲染线程分离。线程消息队列使用了无锁的RingBuffer和Double Buffer（双缓存交换队列）。通过Profile分析瓶颈，性能得到不断优化。&lt;/p&gt;
+
+&lt;p&gt;同步技术的迭代，这也是我比较关心的内容。在项目初期，考虑到当时的手机网络环境，乱斗西游只考虑了异步对战（即不是很真实的玩家实时对战，对战的只是带有一份玩家数据的机器人）。但是，他们非常的清楚，异步对战不是未来，同期也越来越多游戏加入了同步对战。所以，在同步对战方面，乱斗西游采取了分步骤迭代的方式，不久后推出了WIFI对战功能，即在同一WIFI网络下实现的同步对战功能。实现的方式是主客机的方式，即其中一台机器做主机，另外一台机器做客机，只在WIFI网络内传输数据。再后来，为了跨服跨网络的同步对战，使用了Router服的方式来实现。即玩家连接到Router服，Router服只负责转发。这几种同步对战方式我之前都考虑过，在上家公司做服务端主程时都给出过具体的方案。我也清楚的知道，这也都不是未来，这些方案主要特点是简单，能够快速开发并上线，未来一定是基于服务端计算的真实同步PVP。目前， 乱斗西游正在实现真实同步PVP。&lt;/p&gt;
+
+&lt;p&gt;在同步的实现和优化方面，乱斗西游采取了客户端先行，服务端矫正的方式。比如客户端的移动先行，在位置出现偏差时，采取一种比较温和的方式进行矫正。比如，在角色被强制位移时进行矫正，位移速度根据误差进行缩放等等。&lt;/p&gt;
+
+&lt;p&gt;同步的实现方式，一种是像War3星际的帧同步（帧锁定）方式。这种方式要求严格控帧，服务端和客户端必须步调一致，断线重连比较复杂，落后需要补帧。由于MoibleServer中Python大量使用了dictionary，遍历的时候是无序，使用帧同步方式很难保证每次遍历的顺序都是一致的，再加上其他很多原因，乱斗西游未采取帧同步的方式。&lt;/p&gt;
+
+&lt;p&gt;另外一种同步实现的方式，就是LOL、Dota2等的实现方式，状态同步，服务端承载了所有运算，客户端只负责发出指令和显示。目前乱斗西游采取的是这种方式。&lt;/p&gt;
+
+&lt;p&gt;在同步战斗的网络协议方面，乱斗西游采取了UDP的方式。原因是TCP的滑动窗口流量控制机制太不可控，采用UDP的方式可以做到更加高效，对丢包的处理更加可控。&lt;/p&gt;
+
+&lt;p&gt;优化方面，使用Neon指令集（ARM Cortex™-A 系列处理器的 128 位 SIMD单指令多数据架构扩展）。&lt;/p&gt;
+
+&lt;p&gt;Python常量使用优化（Python并没有提供常量支持，实际使用时会被当做字典的项来进行查找，影响效率，所以上线前将常量自动替换为实际的数值提供效率）。&lt;/p&gt;
+
+&lt;p&gt;为了防止脚本被破解，通过修改脚本虚拟机，将OpCode（字节码）打乱。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-无尽战区-渲染方案迭代分享:3588ff76d10bf10d678f4491e7de2978&#34;&gt;2.《无尽战区》渲染方案迭代分享&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;作为网易首款TPS视角MOBA游戏，《无尽战区》不仅在玩法上做出了突破，同时在画面效果和品质上也在不断探索和迭代：日式动漫还是美式卡通？虚幻还是真实？在从无到有的紧张开发期中如何打破层层迷障，创造出有自己特色的渲染方案？本次Inception工作室的李冰将为大家分享，在《无尽战区》画面效果迭代中积累的点点滴滴。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;天下引擎，需求：重视手感，响应迅速。风格参考了Team Fortness2。分享了卡通角色渲染方案的迭代过程，最后的渲染效果的确很赞。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-全局光照利器cloudgi技术全解析:3588ff76d10bf10d678f4491e7de2978&#34;&gt;3.全局光照利器CloudGI技术全解析&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;CloudGI是一款网易自研的烘培器，它可以在数秒钟内计算完软影、AO、间接光照、体光源等全局光照效果（一台机器），已经为网易内部数十款游戏提供烘培服务。本次由CloudGI的开发者李文耀，为大家介绍如何利用GPU把烘培时间减少到几秒的级别，包括烘培基本算法、烘培直接光照、烘培间接光照三个部分。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;很牛逼，能把耗时的烘焙时间减小到10秒，不过只能针对网易自研的引擎烘焙优化。&lt;/p&gt;
+
+&lt;h3 id=&#34;4-次世代无缝大世界-天谕-自研引擎分享:3588ff76d10bf10d678f4491e7de2978&#34;&gt;4.次世代无缝大世界 ——《天谕》自研引擎分享&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;次世代的画面表现对资源的需求量是巨大的，如何在符合国内玩家软硬件水准的情况下，驱动一个巨大的无缝游戏世界？《天谕》的自研引擎通过严格的Budget系统和细致的Streaming/LOD/Proxy等技术，将大世界渲染中所需的资源降低了1-2个数量级。其中的技术细节和心得体会，会在此逐一道来。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;PPT: &lt;a href=&#34;http://www.youxituoluo.com/78063.html&#34;&gt;http://www.youxituoluo.com/78063.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;天谕的大世界有150平方公里，比魔兽世界的卡利姆多大陆还大（100平方公里）。一同随去的天鸿同学直呼《天谕》引擎的伟大。要求美术所有贴图都有一张替代贴图，场景任意时刻和位置面数不能超过50万面。运用科学的方法，通过机器人跑遍整个场景进行离线分析和LOD优化。通过Proxy技术将场景切分为一个个立方体，对立方体内的模型物件进行整体的LOD优化。在保证了帧数流畅的前提下， 也保证了画面的精致。&lt;/p&gt;
+
+&lt;h3 id=&#34;5-百万在线的基石-梦幻手游服务器架构:3588ff76d10bf10d678f4491e7de2978&#34;&gt;5.百万在线的基石 ——梦幻手游服务器架构&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;说到手游中的重度游戏MMO，如何提供一个稳定高效的手游MMO服务器引擎？梦幻西游手游如何做到万人同时在线？手游和端游在MMO上有何不同？AOI如何实现？通过什么样的开发流程就可以保证在产品上线时稳定，不会出现大面积DOWN机的情况？ 一整套解决方案，你值得拥有。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;PPT: &lt;a href=&#34;http://www.youxituoluo.com/78130.html&#34;&gt;http://www.youxituoluo.com/78130.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;梦幻手游服务端架构来自端游的服务器架构，支持单服2.2W人，最高在线达到200W人。服务端架构如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVgX73V5MdqZ9HqNkJIbP5UfaBz2vVeC32lGh3COwGn00pVkiaXjL6zsw/0?wx_fmt=jpeg&#34; alt=&#34;MengHuangServer&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由于是沿用端游的架构吧，这是一种早期比较常见的服务端架构。Server采用单进程多线程的方式，同时保证写逻辑代码时只在单一线程，不需要考虑多线程问题。AOI（Area Of Interest）的实现主要有两种：格子和十字链表。梦幻手游采用的是九宫格的格子算法。（AOI算法主要解决NPC和玩家位置同步，AI事件触发的算法问题，可以这样理解，最简单直接的算法，是遍历整个场景的NPC或玩家，将位置信息同步给玩家。显然这样的效率是很低的，因为离你很远的玩家的位置其实是不需要的。） 数据存储使用udb，nosql，binlog。AI使用行为树，将AI的设定全部交给了策划同学。&lt;/p&gt;
+
+&lt;p&gt;使用valgrind追踪内存泄露问题，统计脚本虚拟机object数量分析瓶颈。IO操作全部异步化。项目管理采用不强制的CodeReview，有自动化的协议测试Case，分析CodeCoverage，使用代码静态分析工具。&lt;/p&gt;
+
+&lt;h3 id=&#34;小结:3588ff76d10bf10d678f4491e7de2978&#34;&gt;小结&lt;/h3&gt;
+
+&lt;p&gt;公开日组织的不错，演讲嘉宾的内容也干货十足。中间和最后有抽奖环节，可惜没中。。在游戏自研领域，网易体现了其强大的研发实力。总的来说，受益匪浅，不虚此行。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>强制链接静态库所有符号(包括未被使用的)</title>
+            <link>http://blog.coderzh.com/2015/06/14/LinkAllSymbols</link>
+            <pubDate>Sun, 14 Jun 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/06/14/LinkAllSymbols</guid>
+            <description>
+
+&lt;p&gt;C++程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。&lt;/p&gt;
+
+&lt;p&gt;为什么会有这样的需求？的确，存在这种需求的是少数情况，但是一旦你遇到下面的需求，就变得必须了。比如：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;动态插件机制。代码中没有直接调用某方法，但是希望能在运行时动态加载执行某方法。&lt;/li&gt;
+&lt;li&gt;执行代码覆盖率统计。需要统计静态库所有代码的覆盖情况，而不只是被使用到的代码覆盖情况。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果是gcc编译，比较好办，只需要加上&lt;strong&gt;&amp;ndash;whole-archive&lt;/strong&gt;链接选项。但是在Windows平台，微软的编译器没有这样的选项，一个最接近的选项是&lt;strong&gt;/OPT:NOREF&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;文档见：&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/bxwfs976.aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/bxwfs976.aspx&lt;/a&gt;
+说明：/OPT:REF eliminates functions and data that are never referenced; /OPT:NOREF keeps functions and data that are never referenced.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;/OPT:NOREF在Debug下是默认打开的，而且只能强制保留本工程未被使用到的函数和变量。对于引用的静态库的未被使用的函数和变量是不生效的。甚至有人认为这是微软的BUG在这个帖子里热烈讨论过：&lt;a href=&#34;https://social.msdn.microsoft.com/Forums/vstudio/en-US/2aa2e1b7-6677-4986-99cc-62f463c94ef3/linkexe-bug-optnoref-option-doesnt-work?forum=vclanguage&#34;&gt;LINK.EXE BUG: /OPT:NOREF option doesn&amp;rsquo;t work!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;遇到同样问题的可不止我一个人，比如StackOverFlow里就有人问：&lt;a href=&#34;http://stackoverflow.com/questions/3867254/what-is-the-visual-studio-equivalent-to-gnu-ld-option-whole-archive&#34;&gt;What is the Visual studio equivalent to GNU ld option &amp;ndash;whole-archive&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;有人建议他用/INCLUDE 选项强制链接未使用的符号，也有人说使用/OPT:NOREF（显然不行）。&lt;/p&gt;
+
+&lt;p&gt;使用/INCLUDE 指定某个符号强制链接是可以的。但是，假如静态库中有成百上千个符号需要强制/INCLUDE，怎么办？&lt;/p&gt;
+
+&lt;p&gt;所以，最好的方法，也是上面讨论/OPT:NOREF BUG的帖子里有人提到的方法，就是在代码中使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#pragma comment(linker, &amp;quot;/include:?emptyreference@Noisy@@QAEXXZ&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过上面的方法，可以让链接器强制include一个符号，include:后面的是符号名称。如果要强制include静态库中所有符号，需要把静态库中的所有符号找出来，然后通过上面的方法强制include。&lt;/p&gt;
+
+&lt;p&gt;人手工找出所有Symbols，然后添加上面的代码是不太靠谱的。一方面Symbols的格式可读性太差不好维护，另一方面假如静态库符号信息修改了，这个维护代价就更大了。所以，必须让这个过程自动完成。&lt;/p&gt;
+
+&lt;p&gt;查看静态库所有符号列表，Linux里可以使用&lt;a href=&#34;https://sourceware.org/binutils/docs/binutils/nm.html&#34;&gt;nm&lt;/a&gt; ，Windows平台可以使用&lt;a href=&#34;https://support.microsoft.com/en-us/kb/177429&#34;&gt;dumpbin&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;执行dumbin.exe需要注意，必须在Visual Studio的开发命令行环境才能执行。不过有个小技巧可以让你不必在Developer Command Prompt执行，就是假如是VS2013环境，建一个批处理，在开头加上：
+&lt;code&gt;
+@echo off
+if defined VS120COMNTOOLS (
+    call &amp;quot;%VS120COMNTOOLS%\vsvars32.bat&amp;quot;)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;我们使用dumpbin /LINKERMEMBER xxx.lib，可以列出所有的符号名字，比如查看静态库MyLib.lib所有符号：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;d:\Code\Cpp\LinkAllSymbols\Debug&amp;gt;dumpbin.exe /linkermember:1 MyLib.lib
+Microsoft (R) COFF/PE Dumper Version 12.00.30501.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+ 
+ 
+Dump of file MyLib.lib
+ 
+File Type: LIBRARY
+ 
+Archive member name at 8: /
+557D4C17 time/date Sun Jun 14 17:40:39 2015
+         uid
+         gid
+       0 mode
+      ED size
+correct header end
+ 
+    9 public symbols
+ 
+      328 ??4Turtle@@QAEAAV0@ABV0@@Z
+      328 ??_C@_0M@KEAKLOKJ@Turtle?5run?4?$AA@
+      328 ?Download@@YAHXZ
+      328 ?Run@Turtle@@QAEXXZ
+     19CE ?FishRun@@YAXXZ
+     19CE ?Run@Fish@@QAEXXZ
+     2D16 ??_C@_08EMEDHABH@Dog?5run?4?$AA@
+     2D16 ?Foo@@YAHXZ
+     2D16 ?Run@Dog@@QAEXXZ
+ 
+  Summary
+ 
+        28B4 .debug$S
+          F0 .debug$T
+         102 .drectve
+          15 .rdata
+           C .rtc$IMZ
+           C .rtc$TMZ
+         15A .text$mn
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;因此，只需要执行dumpbin，并且在输出结果中抽取出所有的符号名称，然后自动生成#pragma comment(linker, &amp;ldquo;/include:xxx&amp;rdquo;)代码即可。&lt;/p&gt;
+
+&lt;p&gt;于是，我写了一个Python脚本，执行dumpbin，然后通过正则表达式拿到所有符号名称，自动生成强制include了所有符号的头文件。关键代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import re
+ 
+regex = re.compile(r&amp;quot;\s+.*\s([\?_]+.*)&amp;quot;)
+ 
+exclude = []
+ 
+def gen_header_file_for_lib(lib_path, header_path):
+    cmd = [&#39;dumpbin.exe&#39;,&#39;/linkermember:1&#39;, lib_path]
+    lines = execute_command(cmd)
+    symbols = find_matches(lines, regex, exclude)
+ 
+    with open(header_path, &#39;w&#39;) as f:
+        header_guard = &amp;quot;LINK_ALL_SYMBOLS_H_&amp;quot;
+        f.write(&amp;quot;#ifndef &amp;quot; + header_guard + &#39;\n&#39;)
+        f.write(&amp;quot;#define &amp;quot; + header_guard + &#39;\n&#39;)
+        f.write(&amp;quot;// Generated by GenLinkerSymbols.py. Do not modify! \n\n&amp;quot;)
+ 
+        for symbol in symbols:
+            pragma_line = &#39;#pragma comment(linker, &amp;quot;/include:&#39; + symbol + &#39;&amp;quot;)&#39;
+            f.write(pragma_line + &#39;\n&#39;)
+        f.write(&amp;quot;\n#endif // &amp;quot; + header_guard + &#39;\n&#39;)
+ 
+    print(&amp;quot;Link symbols count: %s&amp;quot; % len(symbols))
+ 
+def find_matches(lines, regex, exclude_list):
+    def match(line):
+        m = regex.match(line)
+        if m:
+            return m.group(1).split()[0]
+        return None
+ 
+    def exclude_filter(line):
+        if not line:
+            return False
+ 
+        for exclude in exclude_list:
+            if line.find(exclude) &amp;gt;= 0:
+                return False
+        return True
+ 
+    matches = filter(exclude_filter, map(match, lines))
+    return list(set(matches))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结合Visual Studio工程配置里的Post-Build Event，就可以在编译静态库之后自动更新头文件了。比如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python ..\GenSymbolsHeader.py $(OutDir)$(TargetName)$(TargetExt) ..\Include\LinkAllSymbols.h
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在使用该静态库的工程代码中，只需要#include &amp;ldquo;LinkAllSymbols.h&amp;rdquo; 就可以了。&lt;/p&gt;
+
+&lt;h3 id=&#34;对比:179e17d63a7cb0a81de7975037280b66&#34;&gt;对比&lt;/h3&gt;
+
+&lt;p&gt;使用OpenCppCoverage进行代码覆盖率测试，对比如下：&lt;/p&gt;
+
+&lt;p&gt;正常情况下，不强制在linker时include静态库所有符号时，代码覆盖率结果为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIROs6sgW5VjmNkRl4yeDiccDhmfsroV7ebToMjAzYnUU5icLMbKZdRXqNXbcD14EJP0GRhE06b8rsg/0?wx_fmt=png&#34; alt=&#34;noinclude&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过上面的方法，自动生成LinkAllSymbols.h并#include &amp;ldquo;LinkAllSymbols.h&amp;rdquo;，覆盖率结果为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIROs6sgW5VjmNkRl4yeDiccRxCnjVCCsUa3awNpf6AjtYiasS1OMsGD3IBD5JftyLmLAI2Pla46eqw/0?wx_fmt=png&#34; alt=&#34;included&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;github:179e17d63a7cb0a81de7975037280b66&#34;&gt;github&lt;/h3&gt;
+
+&lt;p&gt;所有代码见：&lt;a href=&#34;https://github.com/coderzh/LinkAllSymbols&#34;&gt;https://github.com/coderzh/LinkAllSymbols&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>开启Github之旅</title>
+            <link>http://blog.coderzh.com/2015/06/13/StartGithub</link>
+            <pubDate>Sat, 13 Jun 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/06/13/StartGithub</guid>
+            <description>
+
+&lt;p&gt;在那个远古时代，我以为可以用GoogleCode干点事，结果啥也没干好。如今，Github已经成为了业界标杆，就连Google、微软、Facebook的开源项目都往Github搬。Github作为全球最大的同性交友网站，假如你在上面有几个加星数不错的Project，一定会为你的简历增色不少。&lt;/p&gt;
+
+&lt;h3 id=&#34;远古时期的我:f7ad1288d288dad02bdbde7763a601e9&#34;&gt;远古时期的我&lt;/h3&gt;
+
+&lt;p&gt;在那个远古时代，我还用着Google Code尝试着做一些开源代码。比如这个：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkoHQlGAjahxkoarOsAibfbib4YFdQIL4CVocDPq0Ntru9nYUY2YcsXWhw/0?wx_fmt=png&#34; alt=&#34;NancyWikiLogo&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一个用Python实现的基于GAE写的一个Wiki系统，现在看看界面截图，简洁美观大方，还是很不错的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQklgp8Dw481fPUuVnicAvIyJfPDeDSKiccK1tYHIGdoReAXGO6sMSgZHwg/0?wx_fmt=jpeg&#34; alt=&#34;NancyWiki&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然而新鲜一阵之后我再也没有使用过这个系统，而且再也没有维护过。甚至有个用户给我提了个Issue也被我忽略掉了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkEnguazW4ibqtiaSnbwJaP8yWftpsLXhuPzKpgXDk3AuRd8wv3g9cdH7g/0?wx_fmt=png&#34; alt=&#34;NancyWikiIssue&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;时隔几年了，我自己的NancyWiki的网站已经各种链接失效无法使用了。让我吃惊的是，给我提Issue的同学用NancyWiki建的Wiki网站还能正常访问 &lt;a href=&#34;http://mayxwiki.appspot.com/&#34;&gt;http://mayxwiki.appspot.com/&lt;/a&gt;， 不过看他也早已经没有再更新过内容了。&lt;/p&gt;
+
+&lt;p&gt;同样的待遇的，还有以下几个项目：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;NancyBlog：Python实现的基于Google App Engine的开源博客系统 &lt;a href=&#34;https://code.google.com/p/nancyblog/&#34;&gt;https://code.google.com/p/nancyblog/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NancyGLines：Python实现的基于PyGame开发的GLines游戏。类似Ubuntu里的GLines游戏。&lt;a href=&#34;https://code.google.com/p/nancyglines/&#34;&gt;https://code.google.com/p/nancyglines/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PyGrid：PyQT实现的一个财务表格统计小软件。&lt;a href=&#34;https://code.google.com/p/pygrid/&#34;&gt;https://code.google.com/p/pygrid/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PySpy++：Python实现的Spy++工具。&lt;a href=&#34;https://code.google.com/p/pyspyplusplus/&#34;&gt;https://code.google.com/p/pyspyplusplus/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;目前为止各项目下载情况（有的只提供了SVN代码所以没统计到）：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkdpIKzkztmfrktGFMLPw0Xa84NqsT7uJoriayfKTGRtPf4dcVbwkUrBg/0?wx_fmt=png&#34; alt=&#34;GoogleCodeDownload&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2010年后，我就再也没有更新和维护过它们，甚至忘记了它们的存在！我不是一个合格的代码开源作者，我只是把东西做出来，往上一丢，然后就忘记了这件事。。。（囧）下载过我的代码或者使用过我的项目的人估计会失望吧。。。我这作者也太不靠谱了吧。。。&lt;/p&gt;
+
+&lt;p&gt;好了，自我反省结束了。经过这几年的厮杀，这个不存在的网站也宣告向Github投降了，GoogleCode马上就要关闭了，并提供一键迁移到GitHub的功能。Google App Engine也一直没有起来，甚至已经没落了。所以之前的GAE项目理论上也没人用了，我也不再打算维护了（说的好像维护过一样）。不过为了做个纪念，我都已经迁移到了我的GitHub中。&lt;/p&gt;
+
+&lt;h3 id=&#34;开启github:f7ad1288d288dad02bdbde7763a601e9&#34;&gt;开启Github&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkic1MPQibIicyZfjSWZcaiatrZvxeKcXDLMPibL1sztNm1pTOXdzJoUIkyBw/0?wx_fmt=png&#34; alt=&#34;github&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我的主页：&lt;a href=&#34;https://github.com/coderzh&#34;&gt;https://github.com/coderzh&lt;/a&gt;    (我才发现我2010年就注册了这个全球最大的同性交友网站)&lt;/p&gt;
+
+&lt;p&gt;现在的我，打算认认真真的开始做个真正的开源项目。想做好一个开源项目实属不易，一方面需要自己大量的技术积累（能让自己保持持续学习），另一方面很多东西都需要给自己提出更高的要求。比如，代码结构需要尽可能清晰简洁，每一行代码都暴露给别人，排版，命名都要尽量做到最好，项目文档需要清晰完整并保持更新。需要保持活跃，积极的处理用户提的Issue，最好能吸引到更多小伙伴Fork你的代码，不断的给你提Pull Request。&lt;/p&gt;
+
+&lt;p&gt;所以，我打算从一个简单的开源项目做起，由于够简单，所以我可以尽量去做到尽善尽美。以一个简单项目为开端，为以后做一些更大的更好玩的项目做些准备。&lt;/p&gt;
+
+&lt;p&gt;项目虽简单，但很实用，具体介绍敬请阅读下一篇博文。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>Cocos2d-x3.6 Android编译问题</title>
+            <link>http://blog.coderzh.com/2015/06/06/Cocos2dx36</link>
+            <pubDate>Sat, 06 Jun 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/06/06/Cocos2dx36</guid>
+            <description>&lt;p&gt;在Cocod2d-x论坛上看到越来越多人吐槽新版本更新太快，改动太大，而且经常有BUG导致升级要折腾很久很久。。但我就是喜欢折腾，喜欢升级到最新版本，看看有了哪些新功能，哪些改进。为此也折腾了不少，遇到一点就记录一点吧。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;3.5版本之后，Android编译的build_native.py改成了直接调用cocos compile，我把所有都升级到了最新版本还是编译不成功，只好放弃，也许是我打开方式不对，还是先使用旧的build_native.py编译吧。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;出现提示找不到“org.cocos2dx.lib.Cocos2dxActivity“， Cocos2dxAcitivy明明在link的libcocos2d里啊，怎么还说找不到。
+解决方法：干脆把libcocos2d删了，重新自己手工添加一个，右键BuildPath-&amp;gt;Link Source&amp;hellip; 添加一次即可。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;CCImage.cpp突然编译不过了，提示找不到uint32，JSAMPROW。
+解决办法：uint32依赖tiff，JSAMPROW依赖jpeg，而之前我为了省一点点包大小，通过-DCC_USE_TIFF=0 -DCC_USE_JPEG=0把这两个东东禁掉了。所以把tiff和jpeg打开就好了。别省了。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;打开eclipse工程后，出现&amp;rdquo;serializing cdt project settings&amp;rdquo;
+解决方法：见 &lt;a href=&#34;http://blog.csdn.net/djvc/article/details/41117677&#34;&gt;http://blog.csdn.net/djvc/article/details/41117677&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;打开eclipse工程后，出现“Lint Error Checking&amp;rdquo;
+解决方法：Windows -&amp;gt; perferences -&amp;gt; Android -&amp;gt; Lint Error Checking，把左边的When saving files,check for errors复选框去掉&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>读《程序员的思维训练》</title>
+            <link>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning</link>
+            <pubDate>Sat, 16 May 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning</guid>
+            <description>&lt;p&gt;《程序员的思维修炼:开发认知潜能的九堂课》 从程序员的角度去认清自己，思考问题，了解我们的大脑，进而发掘潜能。&lt;/p&gt;
+
+&lt;p&gt;作者是亨特(Andy Hunt)，他曾经写过《程序员修炼之道——从小工到专家》，《高效程序员的45个习惯:敏捷开发修炼之道》，《Programming Ruby》，《单元测试之道C#版——使用NUnit 》、《单元测试之道Java版——使用JUnit》、《版本控制之道——使用CVS 》等等。&lt;/p&gt;
+
+&lt;p&gt;没错，他是敏捷宣言首倡者之一，敏捷开发权威人士，Pragmatic Programmers公司创始人。&lt;/p&gt;
+
+&lt;p&gt;以下是读书过程中摘录的部分笔记，以及一点点自己的思考。（以下只是书中部分观点，详情请阅读原版书籍）&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&#34;http://img4.douban.com/lpic/s4548399.jpg&#34; alt=&#34;ThinkingAndLearning&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 1.一个开发人员声称拥有十年的经验，但实际上只是一年的经验重复了九次，那么这就不算是经验。&lt;/p&gt;
+
+&lt;p&gt;我工作快8年了，参与过的产品从WPS，毒霸，月影传说OL，创业做的端游和手游，到现在的微信，做过的工作有测试开发，3D端游客户端，表现逻辑、游戏逻辑开发，Cocos2d-X手游开发，Unity手游服务端开发等等，倒是没有多少重复，但是跨界太多也未必是好事，我应该好好审视自己，如何让自己在某一领域钻的更深。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 2.一个众所周知的极限编程方法的经验之谈是“测试一切可能出错的东西”。&lt;/p&gt;
+
+&lt;p&gt;嗯，怀疑一切。很多人包括我自己，经常都会陷入这样的思维逻辑：“他们都这样做了，应该就没问题了啊。”，如果经常做这样的假定，很多问题都会被你忽略过去。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 3.敏捷开发就是在一个高度协作的环境中，不断地使用反馈进行自我调整和完善。&lt;/p&gt;
+
+&lt;p&gt;这个观点并不新奇，道理大家都懂，是否能做到做好就不一定了。这点其实和雷军说的小步快跑，不断试错道理是一样的。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 4.专家根据直觉工作，而不需要理由。他们可能会对如何得到结论完全说不清楚。他们的确不知道，只是“觉得是正确的”。&lt;/p&gt;
+
+&lt;p&gt;这点我曾深有感触。游戏创业前期，我们曾经有一个专家级制作人兼主策划（个人认为），他提出的一些想法和玩法遭到主要合伙人的质疑，在别人缜密的推理辩证和追问下，他没法解释清楚其中的逻辑，然后，然后他就被请走了。。。后来我和某君交流此事，我感觉这位制作人也许就是凭着多年体验此类游戏的直觉在做判断，当面临一个思维缜密却不怎么玩此类游戏的人的质疑时，未必能PK的过。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 5.专家知道哪些是无关紧要的细节，哪些是非常重要的细节。也许不是有意识的，但是专家知道应该关注哪些细节，可以放心地忽略哪些细节。专家非常擅长做有针对性的特征匹配。&lt;/p&gt;
+
+&lt;p&gt;这点感受颇深，却是不容易做到的。在之前游戏创业过程中，我们曾陷入这样的思维：“我们要做xxx功能，要加xxx玩法，打击感要强，人物模型要精细，场景物件要丰富，远景要有气势，要。。要。。”，我们什么都想要，结果就是我们怎么也完不成。微信第一个版本很简陋就上线了，朋友圈第一个版本连评论功能都没有，朋友圈不做滤镜功能，好友不做分组（现在有了），不做iphone用户在线标签…… 张小龙分享的创业观里，很多都是这个逻辑，我们不做什么。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 6.达尔文说过：“无知往往来自于自信而不是知识。”反过来似乎也是对的。一旦你真的成为了一名专家，你会痛苦地意识到你知道的是多么少。&lt;/p&gt;
+
+&lt;p&gt;我常常都感觉自己很水……&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 7.敏捷开发是非常有效的工具，但它不适用于一个完全由新手和高级新手组成的团队。&lt;/p&gt;
+
+&lt;p&gt;说的太好了。不过，敏捷开发这个东西，已经被沦为了一个口号。即使有非常优秀的团队，也未必能把敏捷开发做好。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 8.根据不同的研究成果，开发人员之间存在20∶1~40∶1的生产力差异&lt;/p&gt;
+
+&lt;p&gt;生产力并不是指代码量，而是解决问题的能力，以及应付未来变化的能力。如果所有的老板都懂这个道理就好了，让优秀的程序员工资也能是其他人的几十倍：）&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 9.新手使用规则，专家使用直觉。大多数人都是高级新手。元认知（metacognitive）能力，或者自我认知的能力，往往在较高的技能层次中才会具有。&lt;/p&gt;
+
+&lt;p&gt;很多人都常常高估了自己。看见别人成功了就会说，这有什么呀，还不是他命好，他怎么怎么的。自己失败了总会给自己找各种理由，一点小成就就高估了自己的作用。我们没法要求别人怎样，但我自己力求做到失败了多找找自己的原因，并且时刻保持一颗谦卑虚心学习的心。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 10.正确自我评估的唯一办法就是提高个人技能层次，这反过来又会提高元认知能力。专家会更多地自我怀疑。&lt;/p&gt;
+
+&lt;p&gt;一山更比一山高啊，只有爬上了这座山，你才能看到后面的巨峰啊。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 11.专家并不总是最好的老师。教学是一门技能，你在某个领域是专家，这并不能保证你可以把它教给别人。你可能发现处在胜任水平的人可能更合适教一名新手。&lt;/p&gt;
+
+&lt;p&gt;如果你已经是专家了，也要好好教教偶们嘛~~~&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 12.一旦你成了某个领域的专家，在别的领域成为专家就会变得更容易。至少你已经有了现成的获取知识的技能和模型构建的能力。&lt;/p&gt;
+
+&lt;p&gt;先努力成为某一领域的专家再说。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 13.保持实践以维持专家水平。&lt;/p&gt;
+
+&lt;p&gt;专家的世界我不懂，反正我每天除了实践，也，只能实践。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 14.捕获所有的想法以从中获益更多。准备好做记录的工具，并随身携带……&lt;/p&gt;
+
+&lt;p&gt;作者提倡随时携带笔和纸记录，但是对我来说太困难了，字写的太丑，很多汉字还写不出。所以，我平时是用手机的为知笔记，随时记录一些想法。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 15.“设计并不是创造美，美来自于选择、共鸣、同化和爱。”&lt;/p&gt;
+
+&lt;p&gt;设计是没有绝对正确的，搞民主投票是错误的。作为主美或者主设计师，你做了一些选择，表达了你的想法，不能让所有人喜欢，但是获得了一些人的共鸣，就是好的设计。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 16.晨写是早晨要做的第一件事——在喝咖啡之前、在收听交通广播之前、在洗澡之前、在送孩子上学之前、在遛狗之前。&lt;/p&gt;
+
+&lt;p&gt;这个习惯不好实施啊，每天起早贪黑，哪有时间喝咖啡听广播。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 17.离开键盘去解决难题。&lt;/p&gt;
+
+&lt;p&gt;当一个问题绞尽脑汁都解决不了的时候，尝试把它完全忘掉，然后出去走走，走的时候不要再去想这件事，也许你放松心情做别的事情的时候，灵感突然就会到来。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 18.使用武术来提高注意力&lt;/p&gt;
+
+&lt;p&gt;小时候没开始练，现在也晚了。。。不过我一个前同事武术很厉害，以前晚上的时候看见过他打拳，还会耍棍子。膜拜~&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 19.百分之七十五的人偏于外向型，剩下百分之二十五的人则希望单独呆着。&lt;/p&gt;
+
+&lt;p&gt;我就是那个希望单独呆着的二十五。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 20.有很多办法来制定出一个解决方案并达成妥协。唯一一个不会起作用的方式是试图改变别人的性格以适合自己。&lt;/p&gt;
+
+&lt;p&gt;不要去尝试改变别人的性格和习惯，要学会观察和了解别人，从而找到好的解决方案&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 21.需要平均20分钟返回到原来的工作状态。&lt;/p&gt;
+
+&lt;p&gt;进入工作状态的时候，把QQ之类的关了吧，手机开着总会弹出来就把Q群屏蔽了，设置接收但不提醒。因为不断被打断的话，效率非常的低。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 22.试图把注意力同时放在几件事情上，意味着你在每件事情上都会处理得很差&lt;/p&gt;
+
+&lt;p&gt;专注，即使同时做两件事，就像单CPU两个线程，每次都要切换上下文，最后导致两件事情效率都不高。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 23.英国的一项有争议的研究：如果你持续中断正在进行的任务，去检查电子邮件或者回复即时消息，你的有效智商会下降10分。&lt;/p&gt;
+
+&lt;p&gt;这果然是“有争议”的研究，也许是对的吧。。。智商减了10，还够用吗？。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 24.我最喜欢的便携式写作工具之一，就是我的夏普Zaurus。在它的生命即将走到尽头时，我去掉了它里面所有的东西，只剩vi编辑器。我卸掉了无线网卡，仅使用CF存储卡同步。此时的设备使我很少分心&lt;/p&gt;
+
+&lt;p&gt;自动用了Kindle，我也能专心的看书了：）&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 25.在Mac上可以使用Think!屏蔽焦点以外的所有程序，或者是DeskTopple，它可以隐藏你的桌面图标，替换你的墙纸，并定时自动隐藏应用程序的窗口。你可以使用QuickSilver工具来设置一些基于按键的快捷命令。&lt;/p&gt;
+
+&lt;p&gt;Mac我还买不起，Windows上的Launchy、TotalCommand、Vim等等还是必不可少的。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 26.反反复复的“你有封信”的提示音也是如此。如果可以的话，把它们全部关闭。加大检查邮件的间隔。不要每分钟都检查邮件。&lt;/p&gt;
+
+&lt;p&gt;工作用的台式机一般是不会有声音的啦。。。每天选择几个固定的时间查看邮件，也许效率会高一些。&lt;/p&gt;
+
+&lt;p&gt;书中还有大段的篇幅介绍了左脑与右脑的区别，如何运用左脑和右脑等，个人认为理论居多，以后有感觉了回头再看看吧。&lt;/p&gt;
+
+&lt;p&gt;欢迎关注我的微信公众号：hacker-thinking，谢谢支持！
+&lt;br /&gt;
+&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJwWnviatnbaAbfz9osz31UPK1wX9TWsF9sNW34SKk1gb6jA7RXXibUZEDJERhdiblJ1dXvqD0K0nptQ/0?wx_fmt=jpeg&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>最近的一些变化</title>
+            <link>http://blog.coderzh.com/2015/05/11/NewChange</link>
+            <pubDate>Mon, 11 May 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/05/11/NewChange</guid>
+            <description>&lt;p&gt;有关注我博客的朋友也许会发现，从3月份开始，我的博客又活跃了起来，平均每周会有一篇，而且，我也开通了微信公众号：一个程序员的思考。为什么会有这个变化呢？因为，我换工作了。工作内容有了很大的变化，平时的生活娱乐方式也有了一定的变化。&lt;/p&gt;
+
+&lt;p&gt;首先，工作方面，我离开了创业4年的游戏公司。有很多人都不理解，作为手游服务端主程，为什么选择在几个月后游戏即将上线前离开。在面试腾讯的过程中，几乎每个面试官都问了同样的问题。在我内心中，也在不断的问自己。最后总结为一个词，就是累觉不爱了。&lt;/p&gt;
+
+&lt;p&gt;曾经我们有很多优秀的同事，但是在产品大方向上，我们犯了一个又一个错误，导致人才逐渐流失。游戏定位和核心玩法上，我们经常摇摆不定，不断的推翻重来，上线时间一再推迟。这几年网游发展飞速，手游崛起，我们坚持了3年多3D端游，最后却不得不放弃，公司错过了手游转型的最好时机。现在市面上的游戏大多是跟风之作，我们也不例外。我们几乎有段时间，市面上火了一个游戏，我们就抄一个游戏，最后导致大量的推翻重做，改来改去，浪费了大量的工时。推了几次封闭测试，数据也不理想。&lt;/p&gt;
+
+&lt;p&gt;在程序开发上面，我们也犯了不少错误。我们过于追求完美。我们曾经为了一个宏的名称及定义讨论了不下10次，我们不止一次的因为某处的设计不合理而进行大量重构。重构的结果是花费了大量的时间，最后发现我们对原来的代码的理解也不够，不断的引出了新的BUG，然后我们又花费大量的时间去解决新的BUG。这样做的好处是程序锻炼了技术，对代码结构和流程了解的更透彻，设计的更合理，未来引入的BUG将会大大减少。但是，我们付出了大量的时间，而策划需求又经常变化， 经常这样伤筋动骨的改代码，效率实在不高。从程序和未来的角度去长远考虑，这样做是没有问题的，但是从创业项目，第一个版本还未推出的情况下，是不合时宜的。随着时间的推移，我的这种感觉越来越强烈。我以前也是追求完美的程序员，但我越来越感觉到，在项目时间紧迫的创业前期，我必须接受不完美。没有能上线的产品，代码设计的再完美也是白搭。&lt;/p&gt;
+
+&lt;p&gt;还有其他一些原因，我就不细说了。现在还有兄弟们在奋斗着，希望他们越来越好吧。&lt;/p&gt;
+
+&lt;p&gt;新的工作，是微信的测试开发。测试开发是一个极具挑战的工作，它对于我来说，具有以下几个意义：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;更全面的技术学习。能学习到从客户端到后台，以及运营的全面的细节。（如果是开发的话，一般只专注于其中一小部分的开发）&lt;/li&gt;
+&lt;li&gt;测试开发的大部分需求是自己提出来的，我们十分清楚自己要做什么，不要做什么，避免被折腾。（不再受制于产品人员或者类似游戏的策划）&lt;/li&gt;
+&lt;li&gt;可以大胆尝试新语言新技术新框架，可以大胆放心重构，提升技术。（上线产品的开发总是用着老旧版本的库不敢升级，新的技术推广使用周期也很漫长）&lt;/li&gt;
+&lt;li&gt;测试开发的主要目的是通过技术手段保证产品质量，提高开发和测试的效率，有挑战并且很有意义。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;生活娱乐方面，近期我也有了不少变化。我现在已经不怎么玩游戏了，唯一玩一玩的是类似纪念碑谷这样的轻型精品游戏。之前的几年时间里，游戏占据了我大量的时间，除了开发游戏，业余的时间也几乎都花在玩游戏上。都说玩物丧志，一点没错。当然，如果你的职业和志向就是游戏，是没有问题的。但是，很多人玩游戏，还是和我一样，因为没有找到更有意义的事情去做。而玩游戏是最容易最直接最快得到刺激的方式。强制说不再玩游戏是没有意义的，如果你真的找到了有意义的事情，同样有限的时间内，我相信你不会把时间用在玩游戏上。如果你没有感觉到时间不够用时，你多半正在虚度光阴。&lt;/p&gt;
+
+&lt;p&gt;业余的时间，我开始花更多的时间去阅读。阅读不是看知乎、微博、博客，而是完完整整的去看一本书。知乎博客的东西是很碎片化的，只有看书，才能对一个事物有系统的了解。从书里，你才能真正完整的了解作者的思想。最近看过以及正在看的书有：《黑客与画家》、《马化腾的腾讯帝国》、《从0到1》、《程序员的思维训练》、《成大事者不纠结》、《从零开始学炒股》、《编写高质量代码 改善Python程序的91个建议》、《C++ Concurrency in Action》、《Game Coding Complete》、《笑傲江湖》、《失控》、《解忧杂货店》&lt;/p&gt;
+
+&lt;p&gt;除了阅读，就是写作，把看书的笔记、平时工作学习的总结、生活的感悟通过文字重新组织表达出来，在我的博客和微信公众号里同时发布。我的微信公众号也才开通不久，希望大家多多支持。扫描下面的二维码或者直接关注：hacker-thinking （一个程序员的思考）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqyq5xAdRWJT3IQnSpVagmm0VvwRsatnGJibrgp35lnLnnufxic0d1XZ9Fg/0&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;另外，希望我能把跑步坚持下来，加油吧。&lt;/p&gt;
+
+&lt;p&gt;就是这么多了，未来是什么我不知道，我知道的是做好当前。引用曾国藩的话，就是：未来不迎，当时不杂，过往不恋。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>成大事者不纠结</title>
+            <link>http://blog.coderzh.com/2015/04/26/Category</link>
+            <pubDate>Sun, 26 Apr 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/04/26/Category</guid>
+            <description>&lt;p&gt;最近在看罗振宇的《成大事者不纠结》，想想自己平时有什么纠结的事情，当我打开为知笔记看着长长的文件夹分类时，我明白了，其实我一直纠结着“分类”。我有一定的分类整理的习惯，当然也不是特别强迫的那种。比如，记录技术文章时，我会分出：C++，Python，Cocos2d-x，GameServer，Linux，……等等，甚至还会分出若干的二级分类。&lt;/p&gt;
+
+&lt;p&gt;这样分类的结果，就是自从被分入某个子类之后，我再也没有打开过它。甚至平时连看都不曾看见过它，好像它从未存在过。&lt;/p&gt;
+
+&lt;p&gt;同样的例子，之前我喜欢在手机里给APP分类：游戏，阅读，新闻，视频，社交，工具，系统，……等等。游戏类别还不够分，再分出：休闲游戏，动作游戏，卡牌游戏，……等等。休闲游戏太多放在一起太乱又分成：休闲游戏1，休闲游戏2，……。最后的结果是，自从一个游戏被纳入了分类文件夹，我就很少再打开过它。&lt;/p&gt;
+
+&lt;p&gt;再举个栗子，之前喜欢在多看里看书（现在转到Kindle了），我也喜欢把下载的书籍分门别类。甚至感觉下载和分类的兴趣大过了阅读的兴趣，找到一本有趣的书，下载并纳入某个分类，像达成了某个成就，而之后根本没有打开阅读过。就像某些人热衷于收集某岛国的片子并分门别类，甚至大过了观赏的兴趣。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;所以，我决定从今天起不再纠结分类。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;原则上，尽可能不要分类。当不分类造成混乱时，只允许进行一级的分类。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;记录笔记时，我只分最大的一级分类，而且保持在5个以内。比如：技术类笔记统一到Programming，工作类笔记统一到Working，灵感记录，收藏备忘等等。&lt;/li&gt;
+&lt;li&gt;Kindle里，我采取不分类的方式。因为同一时刻，我关注的永远是最近的1,2本书。其他的书完全可以通过搜索来找到。&lt;/li&gt;
+&lt;li&gt;手机里，把常用的APP放到桌面上，不常用的就直接删了吧。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;分类太细导致新增时到底分到哪个类别要纠结很久，而且放入某个分类后，就相当于被折叠了，打开它至少需要两步操作，以后关注的也会比较少。试想把微信放到一个文件夹里，每次打开微信都要先进入一个文件夹是多么繁杂的事情。&lt;/p&gt;
+
+&lt;p&gt;如果有个东西你不想再看到它，就把它丢到一个分类吧。当然，最好的方法是直接删掉。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>读《从0到1》</title>
+            <link>http://blog.coderzh.com/2015/04/20/ZeroToOne</link>
+            <pubDate>Mon, 20 Apr 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/04/20/ZeroToOne</guid>
+            <description>
+
+&lt;p&gt;自从入手了Kindle Paper White，现在已经习惯了在Kindle上购买图书了，已经买了好几本了。在Kindle上读书体验就是好啊，自己也变得越来越爱读书了。呵呵。&lt;/p&gt;
+
+&lt;p&gt;利用周末和平时闲暇时间，把《从0到1:开启商业与未来的秘密》读了一遍，书中很多观点不错，耐人深思，记录一下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJ5oYLG0iaoNxdK2PicJibOmbEvIdIwkiaMdVw6kIWfFws0G5D3RQaHNue9GmkgzroiaMBUzHrlHvO5bow/0?wxfmt=jpeg&#34; alt=&#34;ZeroToOne&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;简介:9a56c900e23924928a82a1d8d7925594&#34;&gt;简介&lt;/h3&gt;
+
+&lt;p&gt;硅谷创投教父、PayPal创始人作品，斯坦福大学改变未来的一堂课，为世界创造价值的商业哲学。&lt;/p&gt;
+
+&lt;p&gt;在科技剧烈改变世界的今天，想要成功，你必须在一切发生之前研究结局。&lt;/p&gt;
+
+&lt;p&gt;你必须找到创新的独特方式，让未来不仅仅与众不同，而且更加美好。&lt;/p&gt;
+
+&lt;p&gt;从0到1，为自己创造无限的机会与价值！&lt;/p&gt;
+
+&lt;h3 id=&#34;笔记摘要:9a56c900e23924928a82a1d8d7925594&#34;&gt;笔记摘要&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;成功人士总能在意想不到的地方发现价值，他们遵循的是基本原则，而非秘籍。&lt;/li&gt;
+&lt;li&gt;每个垄断企业都有自己的特色，但它们通常会综合以下几个特点：专利技术、网络效应、规模经济以及品牌优势。&lt;/li&gt;
+&lt;li&gt;创造全新的事物，做出10倍改进，你就可以避开竞争。&lt;/li&gt;
+&lt;li&gt;世界不是静态的沙盒，获得的资源并非必须从别人那里掠夺，而应该从0到1，通过创新可以创造更多的价值。&lt;/li&gt;
+&lt;li&gt;我们所在的世界不是正常的世界，而是处在幂次法则之下：一小部分公司完胜其他所有公司。&lt;/li&gt;
+&lt;li&gt;质疑现有观念，从零开始重新审视自己所从事的业务。&lt;/li&gt;
+&lt;li&gt;最反主流的行动不是抵制潮流，而是在潮流中不丢弃自己的独立思考。&lt;/li&gt;
+&lt;li&gt;如果你想创造并获得持久的价值，不要只是跟风建立一个没有特色的企业。&lt;/li&gt;
+&lt;li&gt;企业成功的原因各有不同：每个垄断企业都是靠解决一个独一无二的问题获得垄断地位；而企业失败的原因却相同：它们都无法逃脱竞争。&lt;/li&gt;
+&lt;li&gt;开始创业时，首先最至关重要的的决定是和谁一起做。选合伙人就像结婚，创始人之间闹矛盾就像离婚一样令人不快。&lt;/li&gt;
+&lt;li&gt;公司做的越好，首席执行官的薪酬就越少：任何情况下，有风险资本注入的初创企业的首席执行官，年薪都不应超过15万美元。&lt;/li&gt;
+&lt;li&gt;公司里绝大多数矛盾都是由同事竞争同一岗位引起的。消除竞争更易于建立长久的纯粹的工作关系以外的交情。&lt;/li&gt;
+&lt;li&gt;一个初创企业完美的目标市场是特定的一小群人，而且几乎没有其他竞争者与你竞争。&lt;/li&gt;
+&lt;li&gt;创始人最大的危险是对自己的神话过于肯定，因而迷失了方向。对于公司，最大的危险是不再相信创始人的神话，错把不信神话当做一种智慧。&lt;/li&gt;
+&lt;li&gt;奇点已经临近，我们唯有做好准备，从0到1。最重要的第一步是独立思考，只有重新认识世界，如同古人第一眼看见这个世界一样新奇，我们才能重构世界，守护未来。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以上观点值得思考，可以结合BAT以及其他互联网公司的发展和现状自行脑补。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

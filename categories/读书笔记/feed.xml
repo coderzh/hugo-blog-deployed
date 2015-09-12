@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>读书笔记 on CoderZh&#39;s Blog</title>
+        <link>http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+        <language>zh-CN</language>
+        <author>CoderZh</author>
+        <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
+        <updated>Sun, 16 Aug 2015 00:00:00 UTC</updated>
+        
+        <item>
+            <title>最近读的几本书</title>
+            <link>http://blog.coderzh.com/2015/08/16/Books</link>
+            <pubDate>Sun, 16 Aug 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/16/Books</guid>
+            <description>
+
+&lt;p&gt;由于我住的比较远，每天上下班单程需要1个半小时左右。因此，车上和地铁的时间成了我每天阅读的时间。&lt;/p&gt;
+
+&lt;p&gt;下面几本是我最近读过的书，分享一下：&lt;/p&gt;
+
+&lt;h3 id=&#34;1-创业维艰-hard-thing-about-hard-thing:7e00911045293764b501e3f40792557f&#34;&gt;1. 《创业维艰》 - Hard Thing About Hard Thing&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOFSeOx7N8UoyFIw8LOmlEKiagUvVZP0QAurUniasT1DAmV20oE7AzNibcw/0?wx_fmt=jpeg&#34; alt=&#34;HardThingAboutHardThing&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我觉得每个创业者都必须看的好书。和其他大谈道理方法论的书不同，作者都是从自身的经历说起，通过一个又一个活生生的例子，通过切身体会得出的人生感悟和管理哲学。而且，作者很有名气，最后也非常成功。书前半部分的故事非常精彩，看的非常有感觉。后半部分的管理哲学也是受益匪浅。保证看过的都说好。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-rework重来:7e00911045293764b501e3f40792557f&#34;&gt;2. 《Rework重来》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOsBJNuS9qI6Qh1wBYjxpgr799STrg2Ct0OLkSnOJpMezlkMzrh1Zxvw/0?wx_fmt=jpeg&#34; alt=&#34;Rework&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这本书道理讲的有点多，而且，大多数道理都有点奇葩，反常理。比如，保持小公司，不要想着公司变大。不要想着以后会想到办法赚钱。不要怀着被收购的想法去创业等等。仔细一想，挺有道理的。喜欢的人会很喜欢。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-乌合之众:7e00911045293764b501e3f40792557f&#34;&gt;3. 《乌合之众》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yO80ib8cPNjvA02rJsObpzm0yd2PeZwhoFEkh5KoxTfSdvrsV5DHfLrLQ/0?wx_fmt=jpeg&#34; alt=&#34;TheCrowd&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;研究群体心理的著作。群体是感性的、本能的情绪特别容易受传染，而理智的、冷静的情绪不起丝毫作用。群体的人会感受到一种强烈的“正义”力量，抱着“法不责众”的想法，会理直气壮的做出平时不可能做出的举动。群体敬畏权威和强权，容易受暗示影响，而且情绪多变。（张小龙对这本书非常推崇，对群体心理这么了解，才做出微信这样的产品吧。）&lt;/p&gt;
+
+&lt;h3 id=&#34;4-改变未来的九大算法:7e00911045293764b501e3f40792557f&#34;&gt;4. 《改变未来的九大算法》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOVm4byM2RhVayQJyPYWm4q7Hcn9icibhWEZQpiabwTUOqtWQhQ0jibJicwWA/0?wx_fmt=jpeg&#34; alt=&#34;NineAlgo&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这本书属于科普吧，并不是给程序员看的那类算法书。最大的特点是把复杂的算法简化，形象成一个又一个简单可理解的小例子。让复杂的算法走下神坛，让我们明白，再复杂的算法也是由一个又一个简单大家都懂的道理衍生而来的。九大算法主要是：
+ 1. 搜索引擎索引
+ 1. 网页排名PageRank
+ 1. 公钥加密（PS: 颜料混合的例子特别形象生动）
+ 1. 纠错码
+ 1. 图形识别算法（PS: 机器学习原来是这么回事）
+ 1. 压缩算法
+ 1. 数据库用到的基础算法
+ 1. 数字签名
+ 1. 特别伟大解决一切问题的算法并不存在（PS: 我可以说第九个是凑数的吗？）&lt;/p&gt;
+
+&lt;h3 id=&#34;5-mactalk人生元编程:7e00911045293764b501e3f40792557f&#34;&gt;5. 《MacTalk人生元编程》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOncAdXTicFFAQvjQbsbpNG39Gk5y4P2GBdHb6Q4eJRsgVpAsrniapGsww/0?wx_fmt=jpeg&#34; alt=&#34;MacTalk&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;作者迟建强前段时间刚加入了锤子科技，看迟建强的文章和头像，每次都容易让我联想到以前一个朋友，形象和气质都和他很像。这本书主要介绍一些Mac的历史、故事、技巧，当然，还有更精彩的作者的编程经历和人生感悟。&lt;/p&gt;
+
+&lt;h3 id=&#34;6-程序员跳槽全攻略:7e00911045293764b501e3f40792557f&#34;&gt;6. 《程序员跳槽全攻略》&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOuHUzgtqiaKpIibC0CQEOIA4G63KqWogkWAw0STzUzAfSAWvsFUalLzSA/0?wx_fmt=jpeg&#34; alt=&#34;JobDeer&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这本书有点小坑了，只要1块钱就买来看了，1个小时不到就可以读完，然后感慨一下，这样也可以出一本书？ 虽然如此，假如你看一本书，哪怕只有一点点收货，也算是很值了。我觉得书里的这幅图还是挺有意思的，程序员职业发展四大象限：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOgFThicsZc6f5CNNxvXa4p2Ck83o3iclzia48SS4iafrcwo7ibb8oyqGyrFA/0?wx_fmt=jpeg&#34; alt=&#34;JobDeerEBSI&#34; /&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>读《程序员的思维训练》</title>
+            <link>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning</link>
+            <pubDate>Sat, 16 May 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning</guid>
+            <description>&lt;p&gt;《程序员的思维修炼:开发认知潜能的九堂课》 从程序员的角度去认清自己，思考问题，了解我们的大脑，进而发掘潜能。&lt;/p&gt;
+
+&lt;p&gt;作者是亨特(Andy Hunt)，他曾经写过《程序员修炼之道——从小工到专家》，《高效程序员的45个习惯:敏捷开发修炼之道》，《Programming Ruby》，《单元测试之道C#版——使用NUnit 》、《单元测试之道Java版——使用JUnit》、《版本控制之道——使用CVS 》等等。&lt;/p&gt;
+
+&lt;p&gt;没错，他是敏捷宣言首倡者之一，敏捷开发权威人士，Pragmatic Programmers公司创始人。&lt;/p&gt;
+
+&lt;p&gt;以下是读书过程中摘录的部分笔记，以及一点点自己的思考。（以下只是书中部分观点，详情请阅读原版书籍）&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;img src=&#34;http://img4.douban.com/lpic/s4548399.jpg&#34; alt=&#34;ThinkingAndLearning&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 1.一个开发人员声称拥有十年的经验，但实际上只是一年的经验重复了九次，那么这就不算是经验。&lt;/p&gt;
+
+&lt;p&gt;我工作快8年了，参与过的产品从WPS，毒霸，月影传说OL，创业做的端游和手游，到现在的微信，做过的工作有测试开发，3D端游客户端，表现逻辑、游戏逻辑开发，Cocos2d-X手游开发，Unity手游服务端开发等等，倒是没有多少重复，但是跨界太多也未必是好事，我应该好好审视自己，如何让自己在某一领域钻的更深。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 2.一个众所周知的极限编程方法的经验之谈是“测试一切可能出错的东西”。&lt;/p&gt;
+
+&lt;p&gt;嗯，怀疑一切。很多人包括我自己，经常都会陷入这样的思维逻辑：“他们都这样做了，应该就没问题了啊。”，如果经常做这样的假定，很多问题都会被你忽略过去。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 3.敏捷开发就是在一个高度协作的环境中，不断地使用反馈进行自我调整和完善。&lt;/p&gt;
+
+&lt;p&gt;这个观点并不新奇，道理大家都懂，是否能做到做好就不一定了。这点其实和雷军说的小步快跑，不断试错道理是一样的。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 4.专家根据直觉工作，而不需要理由。他们可能会对如何得到结论完全说不清楚。他们的确不知道，只是“觉得是正确的”。&lt;/p&gt;
+
+&lt;p&gt;这点我曾深有感触。游戏创业前期，我们曾经有一个专家级制作人兼主策划（个人认为），他提出的一些想法和玩法遭到主要合伙人的质疑，在别人缜密的推理辩证和追问下，他没法解释清楚其中的逻辑，然后，然后他就被请走了。。。后来我和某君交流此事，我感觉这位制作人也许就是凭着多年体验此类游戏的直觉在做判断，当面临一个思维缜密却不怎么玩此类游戏的人的质疑时，未必能PK的过。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 5.专家知道哪些是无关紧要的细节，哪些是非常重要的细节。也许不是有意识的，但是专家知道应该关注哪些细节，可以放心地忽略哪些细节。专家非常擅长做有针对性的特征匹配。&lt;/p&gt;
+
+&lt;p&gt;这点感受颇深，却是不容易做到的。在之前游戏创业过程中，我们曾陷入这样的思维：“我们要做xxx功能，要加xxx玩法，打击感要强，人物模型要精细，场景物件要丰富，远景要有气势，要。。要。。”，我们什么都想要，结果就是我们怎么也完不成。微信第一个版本很简陋就上线了，朋友圈第一个版本连评论功能都没有，朋友圈不做滤镜功能，好友不做分组（现在有了），不做iphone用户在线标签…… 张小龙分享的创业观里，很多都是这个逻辑，我们不做什么。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 6.达尔文说过：“无知往往来自于自信而不是知识。”反过来似乎也是对的。一旦你真的成为了一名专家，你会痛苦地意识到你知道的是多么少。&lt;/p&gt;
+
+&lt;p&gt;我常常都感觉自己很水……&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 7.敏捷开发是非常有效的工具，但它不适用于一个完全由新手和高级新手组成的团队。&lt;/p&gt;
+
+&lt;p&gt;说的太好了。不过，敏捷开发这个东西，已经被沦为了一个口号。即使有非常优秀的团队，也未必能把敏捷开发做好。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 8.根据不同的研究成果，开发人员之间存在20∶1~40∶1的生产力差异&lt;/p&gt;
+
+&lt;p&gt;生产力并不是指代码量，而是解决问题的能力，以及应付未来变化的能力。如果所有的老板都懂这个道理就好了，让优秀的程序员工资也能是其他人的几十倍：）&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 9.新手使用规则，专家使用直觉。大多数人都是高级新手。元认知（metacognitive）能力，或者自我认知的能力，往往在较高的技能层次中才会具有。&lt;/p&gt;
+
+&lt;p&gt;很多人都常常高估了自己。看见别人成功了就会说，这有什么呀，还不是他命好，他怎么怎么的。自己失败了总会给自己找各种理由，一点小成就就高估了自己的作用。我们没法要求别人怎样，但我自己力求做到失败了多找找自己的原因，并且时刻保持一颗谦卑虚心学习的心。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 10.正确自我评估的唯一办法就是提高个人技能层次，这反过来又会提高元认知能力。专家会更多地自我怀疑。&lt;/p&gt;
+
+&lt;p&gt;一山更比一山高啊，只有爬上了这座山，你才能看到后面的巨峰啊。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 11.专家并不总是最好的老师。教学是一门技能，你在某个领域是专家，这并不能保证你可以把它教给别人。你可能发现处在胜任水平的人可能更合适教一名新手。&lt;/p&gt;
+
+&lt;p&gt;如果你已经是专家了，也要好好教教偶们嘛~~~&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 12.一旦你成了某个领域的专家，在别的领域成为专家就会变得更容易。至少你已经有了现成的获取知识的技能和模型构建的能力。&lt;/p&gt;
+
+&lt;p&gt;先努力成为某一领域的专家再说。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 13.保持实践以维持专家水平。&lt;/p&gt;
+
+&lt;p&gt;专家的世界我不懂，反正我每天除了实践，也，只能实践。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 14.捕获所有的想法以从中获益更多。准备好做记录的工具，并随身携带……&lt;/p&gt;
+
+&lt;p&gt;作者提倡随时携带笔和纸记录，但是对我来说太困难了，字写的太丑，很多汉字还写不出。所以，我平时是用手机的为知笔记，随时记录一些想法。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 15.“设计并不是创造美，美来自于选择、共鸣、同化和爱。”&lt;/p&gt;
+
+&lt;p&gt;设计是没有绝对正确的，搞民主投票是错误的。作为主美或者主设计师，你做了一些选择，表达了你的想法，不能让所有人喜欢，但是获得了一些人的共鸣，就是好的设计。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 16.晨写是早晨要做的第一件事——在喝咖啡之前、在收听交通广播之前、在洗澡之前、在送孩子上学之前、在遛狗之前。&lt;/p&gt;
+
+&lt;p&gt;这个习惯不好实施啊，每天起早贪黑，哪有时间喝咖啡听广播。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 17.离开键盘去解决难题。&lt;/p&gt;
+
+&lt;p&gt;当一个问题绞尽脑汁都解决不了的时候，尝试把它完全忘掉，然后出去走走，走的时候不要再去想这件事，也许你放松心情做别的事情的时候，灵感突然就会到来。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 18.使用武术来提高注意力&lt;/p&gt;
+
+&lt;p&gt;小时候没开始练，现在也晚了。。。不过我一个前同事武术很厉害，以前晚上的时候看见过他打拳，还会耍棍子。膜拜~&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 19.百分之七十五的人偏于外向型，剩下百分之二十五的人则希望单独呆着。&lt;/p&gt;
+
+&lt;p&gt;我就是那个希望单独呆着的二十五。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 20.有很多办法来制定出一个解决方案并达成妥协。唯一一个不会起作用的方式是试图改变别人的性格以适合自己。&lt;/p&gt;
+
+&lt;p&gt;不要去尝试改变别人的性格和习惯，要学会观察和了解别人，从而找到好的解决方案&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 21.需要平均20分钟返回到原来的工作状态。&lt;/p&gt;
+
+&lt;p&gt;进入工作状态的时候，把QQ之类的关了吧，手机开着总会弹出来就把Q群屏蔽了，设置接收但不提醒。因为不断被打断的话，效率非常的低。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 22.试图把注意力同时放在几件事情上，意味着你在每件事情上都会处理得很差&lt;/p&gt;
+
+&lt;p&gt;专注，即使同时做两件事，就像单CPU两个线程，每次都要切换上下文，最后导致两件事情效率都不高。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 23.英国的一项有争议的研究：如果你持续中断正在进行的任务，去检查电子邮件或者回复即时消息，你的有效智商会下降10分。&lt;/p&gt;
+
+&lt;p&gt;这果然是“有争议”的研究，也许是对的吧。。。智商减了10，还够用吗？。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 24.我最喜欢的便携式写作工具之一，就是我的夏普Zaurus。在它的生命即将走到尽头时，我去掉了它里面所有的东西，只剩vi编辑器。我卸掉了无线网卡，仅使用CF存储卡同步。此时的设备使我很少分心&lt;/p&gt;
+
+&lt;p&gt;自动用了Kindle，我也能专心的看书了：）&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 25.在Mac上可以使用Think!屏蔽焦点以外的所有程序，或者是DeskTopple，它可以隐藏你的桌面图标，替换你的墙纸，并定时自动隐藏应用程序的窗口。你可以使用QuickSilver工具来设置一些基于按键的快捷命令。&lt;/p&gt;
+
+&lt;p&gt;Mac我还买不起，Windows上的Launchy、TotalCommand、Vim等等还是必不可少的。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&amp;gt; 26.反反复复的“你有封信”的提示音也是如此。如果可以的话，把它们全部关闭。加大检查邮件的间隔。不要每分钟都检查邮件。&lt;/p&gt;
+
+&lt;p&gt;工作用的台式机一般是不会有声音的啦。。。每天选择几个固定的时间查看邮件，也许效率会高一些。&lt;/p&gt;
+
+&lt;p&gt;书中还有大段的篇幅介绍了左脑与右脑的区别，如何运用左脑和右脑等，个人认为理论居多，以后有感觉了回头再看看吧。&lt;/p&gt;
+
+&lt;p&gt;欢迎关注我的微信公众号：hacker-thinking，谢谢支持！
+&lt;br /&gt;
+&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJwWnviatnbaAbfz9osz31UPK1wX9TWsF9sNW34SKk1gb6jA7RXXibUZEDJERhdiblJ1dXvqD0K0nptQ/0?wx_fmt=jpeg&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>成大事者不纠结</title>
+            <link>http://blog.coderzh.com/2015/04/26/Category</link>
+            <pubDate>Sun, 26 Apr 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/04/26/Category</guid>
+            <description>&lt;p&gt;最近在看罗振宇的《成大事者不纠结》，想想自己平时有什么纠结的事情，当我打开为知笔记看着长长的文件夹分类时，我明白了，其实我一直纠结着“分类”。我有一定的分类整理的习惯，当然也不是特别强迫的那种。比如，记录技术文章时，我会分出：C++，Python，Cocos2d-x，GameServer，Linux，……等等，甚至还会分出若干的二级分类。&lt;/p&gt;
+
+&lt;p&gt;这样分类的结果，就是自从被分入某个子类之后，我再也没有打开过它。甚至平时连看都不曾看见过它，好像它从未存在过。&lt;/p&gt;
+
+&lt;p&gt;同样的例子，之前我喜欢在手机里给APP分类：游戏，阅读，新闻，视频，社交，工具，系统，……等等。游戏类别还不够分，再分出：休闲游戏，动作游戏，卡牌游戏，……等等。休闲游戏太多放在一起太乱又分成：休闲游戏1，休闲游戏2，……。最后的结果是，自从一个游戏被纳入了分类文件夹，我就很少再打开过它。&lt;/p&gt;
+
+&lt;p&gt;再举个栗子，之前喜欢在多看里看书（现在转到Kindle了），我也喜欢把下载的书籍分门别类。甚至感觉下载和分类的兴趣大过了阅读的兴趣，找到一本有趣的书，下载并纳入某个分类，像达成了某个成就，而之后根本没有打开阅读过。就像某些人热衷于收集某岛国的片子并分门别类，甚至大过了观赏的兴趣。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;所以，我决定从今天起不再纠结分类。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;原则上，尽可能不要分类。当不分类造成混乱时，只允许进行一级的分类。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;记录笔记时，我只分最大的一级分类，而且保持在5个以内。比如：技术类笔记统一到Programming，工作类笔记统一到Working，灵感记录，收藏备忘等等。&lt;/li&gt;
+&lt;li&gt;Kindle里，我采取不分类的方式。因为同一时刻，我关注的永远是最近的1,2本书。其他的书完全可以通过搜索来找到。&lt;/li&gt;
+&lt;li&gt;手机里，把常用的APP放到桌面上，不常用的就直接删了吧。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;分类太细导致新增时到底分到哪个类别要纠结很久，而且放入某个分类后，就相当于被折叠了，打开它至少需要两步操作，以后关注的也会比较少。试想把微信放到一个文件夹里，每次打开微信都要先进入一个文件夹是多么繁杂的事情。&lt;/p&gt;
+
+&lt;p&gt;如果有个东西你不想再看到它，就把它丢到一个分类吧。当然，最好的方法是直接删掉。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>读《从0到1》</title>
+            <link>http://blog.coderzh.com/2015/04/20/ZeroToOne</link>
+            <pubDate>Mon, 20 Apr 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/04/20/ZeroToOne</guid>
+            <description>
+
+&lt;p&gt;自从入手了Kindle Paper White，现在已经习惯了在Kindle上购买图书了，已经买了好几本了。在Kindle上读书体验就是好啊，自己也变得越来越爱读书了。呵呵。&lt;/p&gt;
+
+&lt;p&gt;利用周末和平时闲暇时间，把《从0到1:开启商业与未来的秘密》读了一遍，书中很多观点不错，耐人深思，记录一下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJ5oYLG0iaoNxdK2PicJibOmbEvIdIwkiaMdVw6kIWfFws0G5D3RQaHNue9GmkgzroiaMBUzHrlHvO5bow/0?wxfmt=jpeg&#34; alt=&#34;ZeroToOne&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;简介:9a56c900e23924928a82a1d8d7925594&#34;&gt;简介&lt;/h3&gt;
+
+&lt;p&gt;硅谷创投教父、PayPal创始人作品，斯坦福大学改变未来的一堂课，为世界创造价值的商业哲学。&lt;/p&gt;
+
+&lt;p&gt;在科技剧烈改变世界的今天，想要成功，你必须在一切发生之前研究结局。&lt;/p&gt;
+
+&lt;p&gt;你必须找到创新的独特方式，让未来不仅仅与众不同，而且更加美好。&lt;/p&gt;
+
+&lt;p&gt;从0到1，为自己创造无限的机会与价值！&lt;/p&gt;
+
+&lt;h3 id=&#34;笔记摘要:9a56c900e23924928a82a1d8d7925594&#34;&gt;笔记摘要&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;成功人士总能在意想不到的地方发现价值，他们遵循的是基本原则，而非秘籍。&lt;/li&gt;
+&lt;li&gt;每个垄断企业都有自己的特色，但它们通常会综合以下几个特点：专利技术、网络效应、规模经济以及品牌优势。&lt;/li&gt;
+&lt;li&gt;创造全新的事物，做出10倍改进，你就可以避开竞争。&lt;/li&gt;
+&lt;li&gt;世界不是静态的沙盒，获得的资源并非必须从别人那里掠夺，而应该从0到1，通过创新可以创造更多的价值。&lt;/li&gt;
+&lt;li&gt;我们所在的世界不是正常的世界，而是处在幂次法则之下：一小部分公司完胜其他所有公司。&lt;/li&gt;
+&lt;li&gt;质疑现有观念，从零开始重新审视自己所从事的业务。&lt;/li&gt;
+&lt;li&gt;最反主流的行动不是抵制潮流，而是在潮流中不丢弃自己的独立思考。&lt;/li&gt;
+&lt;li&gt;如果你想创造并获得持久的价值，不要只是跟风建立一个没有特色的企业。&lt;/li&gt;
+&lt;li&gt;企业成功的原因各有不同：每个垄断企业都是靠解决一个独一无二的问题获得垄断地位；而企业失败的原因却相同：它们都无法逃脱竞争。&lt;/li&gt;
+&lt;li&gt;开始创业时，首先最至关重要的的决定是和谁一起做。选合伙人就像结婚，创始人之间闹矛盾就像离婚一样令人不快。&lt;/li&gt;
+&lt;li&gt;公司做的越好，首席执行官的薪酬就越少：任何情况下，有风险资本注入的初创企业的首席执行官，年薪都不应超过15万美元。&lt;/li&gt;
+&lt;li&gt;公司里绝大多数矛盾都是由同事竞争同一岗位引起的。消除竞争更易于建立长久的纯粹的工作关系以外的交情。&lt;/li&gt;
+&lt;li&gt;一个初创企业完美的目标市场是特定的一小群人，而且几乎没有其他竞争者与你竞争。&lt;/li&gt;
+&lt;li&gt;创始人最大的危险是对自己的神话过于肯定，因而迷失了方向。对于公司，最大的危险是不再相信创始人的神话，错把不信神话当做一种智慧。&lt;/li&gt;
+&lt;li&gt;奇点已经临近，我们唯有做好准备，从0到1。最重要的第一步是独立思考，只有重新认识世界，如同古人第一眼看见这个世界一样新奇，我们才能重构世界，守护未来。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以上观点值得思考，可以结合BAT以及其他互联网公司的发展和现状自行脑补。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>《黑客与画家》杂想</title>
+            <link>http://blog.coderzh.com/2015/03/01/HackerAndPainter</link>
+            <pubDate>Sun, 01 Mar 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/03/01/HackerAndPainter</guid>
+            <description>&lt;p&gt;春节前，入手了个Kindle PaperWhite。之前一直担心Pad看书已经够用了，实际用下来，发现看书还是用Kindle好。因为Kindle能让你专心看书，不易伤眼，而且续航时间很长。&lt;/p&gt;
+
+&lt;p&gt;之前一直想读《黑客与画家》，于是春节假期用Kindle把它读完。这本书备受赞誉，里面很多观点很好，但是我读下来，高预期之后还是有些落差。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJVgmwOrXTASgJibTzObG8S9ibvTgURUxTzb36eK9j9rHqfdItmia7rKKib1e96qvjkuicEz6Cp0XrMYfA/0&#34; alt=&#34;HackersAndPainters&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;首先是书名：黑客与画家。书中关于黑客与画家之间的联系描述的很少，主要总结为：程序员写代码并不是一气呵成，而是像画家一般，先画个轮（框）廓（架），再调整细（功）节（能），然后不然修（缺）缮（陷）。黑客写代码是一件有艺术的活，不是工程的活。&lt;/p&gt;
+
+&lt;p&gt;纵观全书，内容窜起来总结为：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;黑客不是搞破坏的坏人，而是很厉害有追求的程序员。&lt;/li&gt;
+&lt;li&gt;作为一个黑客的我，如何理解中学时被称为书呆子（特质及形成原因）。&lt;/li&gt;
+&lt;li&gt;走出社会后，如何看待这个社会（哪些话不能说）和财富（金钱≠财富，财富是创造出来的）。&lt;/li&gt;
+&lt;li&gt;选择创业后，如何看待创业公司和大公司（要创业不要大公司），创业时用到很酷的技术（Lisp编程语言，运行在服务端的软件），如何管理公司（小团队），如何解决各种技术问题。&lt;/li&gt;
+&lt;li&gt;成功把公司卖掉，然后感叹大公司效率低下。&lt;/li&gt;
+&lt;li&gt;最后再探讨一下程序员编程语言的选择（要动态语言不要静态语言，狂吹Lisp的好）以及大胆设想了100年以后的编程语言是什么样子。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;所以，这本书应该是一本关于&lt;strong&gt;一个小时候被称为书呆子的黑客通过使用Lisp语言创业成功的故事，中间夹杂着各种对社会问题和程序问题的看法的文集。&lt;/strong&gt;将黑客与画家类比，只是其中的一小部分观点而已。&lt;/p&gt;
+
+&lt;p&gt;再写下去，自己都看不下去了，有点感觉在黑这本书的意思。毕竟是Paul Graham，毕竟是硅谷创业之父，书中很多的观点是耐人寻味，引发思考，而且是非常超前的。比如别人都在开发桌面软件时，他们已经看到未来是服务端的时代（当时还未出现智能手机，但有预言到手机时代），选择了一个未来都看起来很酷，设计理念在现在看起来还很超前，很难也很少人用的编程语言Lisp。可惜他写这本书的时候还没有Go语言，不知道他是否觉得Go会更先进一步呢？至少书中多种语言对比的例子里，现在的Python版本已经可以直接用lambda写上一段很简洁的版本了。&lt;/p&gt;
+
+&lt;p&gt;因为是杂想，所以并不打算罗列书中观点。未看过书的同学还是亲自阅读体验，看过书的也可再拿来回味一番。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>程序员的共鸣 - 读《卓有成效的程序员》</title>
+            <link>http://blog.coderzh.com/2009/07/18/1526082</link>
+            <pubDate>Sat, 18 Jul 2009 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2009/07/18/1526082</guid>
+            <description>
+
+&lt;p&gt;最近读了《卓有成效的程序员》，感觉收获颇大。这是一本写给程序员的难得的好书。书中大都是一些浅显的道理，但作者将这些东西加以收集、归纳、总结，并最终成书。作者为了收集各种提高效率的工具和方法，东奔西走，可谓费了一番苦心。&lt;/p&gt;
+
+&lt;p&gt;我觉得此书第一部分总结的一些法则非常好，我提取了一下：&lt;/p&gt;
+
+&lt;h3 id=&#34;法则:75179371ca2253094240bd1a512f3764&#34;&gt;法则：&lt;/h3&gt;
+
+&lt;h4 id=&#34;1-加速法则:75179371ca2253094240bd1a512f3764&#34;&gt;1.加速法则&lt;/h4&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 关注本质，而非形式&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 一个应用程序列表的有用程度与它的长度成反比&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;程序员的很多时间都浪费在找东西上&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 华而不实的东西中看不中用&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 键盘输入总比导航快&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;首选键盘而非鼠标&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 地址栏是Windows资源管理器界面中最高效的部分&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;花点时间来学习你手边的所有隐藏的快捷键&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 环境切换会消耗时间&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;成批复制粘贴要比反复多次复制粘贴快&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 忘记历史就意味着你得再输入一遍&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 嵌入图形化工具的命令提示符让你鱼与熊掌兼得&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 在上下文中学习IDE快捷键，而不要去背长长的列表&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 当你第二次输入一个复杂结构时，将它做成模板&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 如果要对多行文本做同样的操作，就应该找出其中的模式，并把它记录为一个宏&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;不要总是重复输入相同的命令&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 每天花一点点时间来使每一天都更高效&lt;/p&gt;
+
+&lt;h4 id=&#34;2-专注法则:75179371ca2253094240bd1a512f3764&#34;&gt;2.专注法则&lt;/h4&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;精力越集中，思维越缜密&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 排除干扰：隔离策略，关掉不需要的提示，创造安静时间&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;草堆越大，从中找到一根针就越难&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 不要问文件树，要搜索&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 使用多显示器&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 虚拟桌面可以让原本杂乱无章的一大堆窗口变得整洁&lt;/p&gt;
+
+&lt;h4 id=&#34;3-自动化法则:75179371ca2253094240bd1a512f3764&#34;&gt;3.自动化法则&lt;/h4&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 不要重新发明轮子&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 用Selenium浏览网页&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 不要浪费时间动手去做可以被自动化的事情&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 用Windows Power Shell替代批处理文件&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 驯服Subversion命令行&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 以创造性的方式解决问题，有助于在将来解决类似的问题&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;是否应该自动化的关键在于投资回报率和缓解风险&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 研究性的工作应该放在时间盒里做&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 别给牦牛剪毛&lt;/p&gt;
+
+&lt;h4 id=&#34;4-规范性法则:75179371ca2253094240bd1a512f3764&#34;&gt;4.规范性法则&lt;/h4&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; 对于任何你不自己去构建的东西，只在版本控制中保存一份副本&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 使用标准的构建服务器&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;通过复制粘贴来复用是邪恶的，不论你复制粘贴的是什么&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 利用虚拟平台使项目依赖标准化&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 不要让对象 - 关系映射工具（O/R映射器）违反规范原则&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 通过扩展。开放类（open class），或者部分类（partial class） 来为生成的代码增加行为&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 始终保持代码和数据结构的同步&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;过时的文档比没有文档更糟，因为它会主动误导你&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 任何需要费劲创造的东西，都让它的创造者欲罢不能&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;白板 + 数码相机强过任何CASE工具&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 尽量生成所有技术文档&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;重复是软件开发中最大的阻力 &lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;工具:75179371ca2253094240bd1a512f3764&#34;&gt;工具：&lt;/h3&gt;
+
+&lt;p&gt;书中，还提到了大量的提高效率的工具，都是非常不错的。相信很多人都有自己的一个列表，下面是我电脑中必不可少的几款软件：&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 1. FireFox 及其各类插件&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 2. Launchy启动加速器&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 3. Total Commander&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 4. ClipX多重剪切板&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 5. EmEditor文本编辑器&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 6. Vistual Studio的VA插件&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 7. Search And Replace&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 8. Everything&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 9. Miranda IM&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; 10. &amp;hellip;.&lt;/p&gt;
+
+&lt;h3 id=&#34;感触:75179371ca2253094240bd1a512f3764&#34;&gt;感触：&lt;/h3&gt;
+
+&lt;h4 id=&#34;1-愤怒的猴子:75179371ca2253094240bd1a512f3764&#34;&gt;1. 愤怒的猴子&lt;/h4&gt;
+
+&lt;p&gt;在书中的第二部分，提到了很多实践相关的内容。让我感触最深的是&amp;#8220;愤怒的猴子&amp;#8221;的故事：&lt;/p&gt;
+
+&lt;p&gt;&amp;#8220;_早在20世纪60年代（那时候科学家们可以做任何疯狂的事情），行为科学家们进行了一项实验。他们把五只猴子和一架活梯放在一间屋子里，并在天花板上挂了一串香蕉。这些猴子很快就想到它们可以爬上梯子去吃香蕉，但每当它们靠近活梯的时候，科学家们就用冰水浸满整个屋子。我想你能猜到会发生什么：一群愤怒的猴子。很快，再没有一只猴子会去靠近那个梯子了。
+_&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;之后，科学家们将其中一只猴子替换成另一只没有忍受过冰水折磨的新猴子。这只新猴子所做的第一件事就是直奔那架梯子，但当它这么做时其他所有猴子都痛打它。它不明白为什么，但很快就学乖了：不要去靠近那架梯子。科学家们逐渐将最初的那些猴子都替换成新猴子，直到这群猴子中谁都没有被水浸泡过，然而它们还是会去攻击任何靠近梯子的猴子。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;这说明了什么？软件项目中许多惯例之所以存在，就因为&amp;#8221;我们一直是那样做的&amp;#8220;。换句话说，是因为愤怒的猴子。&lt;/em&gt;&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;我们小组在制定C++相关的代码规范时就遇到过无数类似的问题。比如，在制定变量的命名规范时，我们针对是否采用匈牙利命名法争论了很久。有的人认为， 几乎以前看到的所有C++代码都采用了匈牙利命名法，甚至，微软定义的所有API都使用了此类命名法。刚开始，我也是有同样的疑惑。&lt;/p&gt;
+
+&lt;p&gt;后来，我们经过仔细分析C++匈牙利命名法由来，渐渐感觉我们就是那些愤怒的猴子，盲目跟从前人的方式，缺乏打破传统的勇气。C++有着其特殊的历史原因，很多标准一直沉淀下来并很少改变。我们再看看后来新生的那些编程语言，C#, Python&amp;#8230;&amp;#8230; 都抛弃了匈牙利命名法，同时再看看现在C++前沿的C++ 0x以及现在出版的一些书中，也渐渐放弃了对匈牙利命名法的使用。因为类型的意义在对象模型中越来越弱化。因此，最后我们放弃了匈牙利命名法这个老古董。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-敏捷开发:75179371ca2253094240bd1a512f3764&#34;&gt;2. 敏捷开发&lt;/h4&gt;
+
+&lt;p&gt;这本书带有强烈的ThoughtWorks色彩，敏捷的思想贯穿全书，包括测试驱动设计，白板，结对编程。这也让我对敏捷产生了更加强烈的兴趣。 其中有一段测试驱动开发TDD的一段故事：&lt;/p&gt;
+
+&lt;p&gt;&amp;#8220;&lt;em&gt;记得第一次和一些已经习惯于单元测试的开发人员一起动手开始修改代码时，我也是非常紧张，因为大量的修改往往会破坏很多东西，但他们看起来丝毫没有犹豫。逐渐地，我也放下心来，因为我慢慢地认识到：有了测试的保证，完全可以放心大胆地去修改代码。&lt;/em&gt;&amp;#8221;&lt;/p&gt;
+
+&lt;h4 id=&#34;3-有趣的故事:75179371ca2253094240bd1a512f3764&#34;&gt;3. 有趣的故事&lt;/h4&gt;
+
+&lt;p&gt;书中还有一些有趣的故事，比如作者的一个朋友在和别人结对编程时，为了养成同伴使用快捷键的习惯，每当同伴未使用快捷键时，他都会要求将操作撤销，然后要求使用快捷键再重复操作3次。然后，在其凶狠的眼神中，同伴很快掌握了快捷键。&lt;/p&gt;
+
+&lt;h3 id=&#34;总结:75179371ca2253094240bd1a512f3764&#34;&gt;总结：&lt;/h3&gt;
+
+&lt;p&gt;这本书很薄，蕴藏的道理却不少，相信每个读过它的人都会从中收获。读过之后，我们不应该局限于书中提到的某些小技巧， 或是书中某一个细节，毕竟，提供效率的方法有很多很多，法则也有很多很多，一本书很难将其穷举完。我们应该从书中吸取其思想，并在实际工作和学习中不断总结，做一个真正的&amp;#8220;卓有成效的程序员&amp;#8221;！&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2009/07/18/1526082.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2009/07/18/1526082.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,1362 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>技术文章 on CoderZh&#39;s Blog</title>
+        <link>http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</link>
+        <language>zh-CN</language>
+        <author>CoderZh</author>
+        <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
+        <updated>Thu, 03 Sep 2015 08:55:31 CST</updated>
+        
+        <item>
+            <title>给Hugo提交了一个PR</title>
+            <link>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request</link>
+            <pubDate>Thu, 03 Sep 2015 08:55:31 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request</guid>
+            <description>&lt;p&gt;给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。&lt;/p&gt;
+
+&lt;p&gt;在上一篇博客&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;使用hugo搭建个人博客站点&lt;/a&gt;  里提到，Hugo强制将所有路径都变成了小写。小写路径虽好，但是如果之前你的网站路径不是全小写的，迁移过来路径发生变化，将会导致路径失效，是不可接受的。&lt;/p&gt;
+
+&lt;p&gt;上文提到，我硬改了Hugo代码，让它不要强制转换小写路径。这样的做法不够优雅，假如别人也和我有一样的需求怎么办？我们还是希望Hugo本身就能够提供这样的功能。于是，我决定把代码改的优雅一些，给Hugo作者提交一个Pull Request，将这个功能合并到Hugo代码里。&lt;/p&gt;
+
+&lt;p&gt;于是，我在config文件里增加了一个选项：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Do not make the url/path to lowercase
+disablePathToLower: true 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;增加一个开关其实很简单，只需要在command/hugo.go里的LoadDefaultSettings函数里增加一行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;viper.SetDefault(&amp;quot;DisablePathToLower&amp;quot;, false)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;开关生效的实现也很简单，找到最终转换为小写的函数，加入disablePathToLower开关的判断：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func MakePathSanitized(s string) string {
+    if viper.GetBool(&amp;quot;DisablePathToLower&amp;quot;) {
+        return MakePath(s)
+    } else {
+        return strings.ToLower(MakePath(s))
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之前的函数名叫MakePathToLower，由于我在内部加了个开关，于是名字不适用了，于是修改为了：MakePathSanitized。&lt;/p&gt;
+
+&lt;p&gt;修改完成之后，需要把测试案例跑一遍，保证你的修改不会破坏原来的逻辑。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;go test ./...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然，也要保证编译是成功的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;go build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在我修改的第一个版本时，我犯了一个错误，导致测试案例没有通过。原因是第一个版本我增加的配置选项是PathToLower，默认值是true。而有些测试案例是没有去设置PathToLower的，默认读到的会是false，从而导致执行失败的执行结果。所以，config里增加的选项，默认值尽量是false吧，也会好理解一些。于是就有了：disablePathToLower&lt;/p&gt;
+
+&lt;p&gt;提交Pull Request时，有几点需要注意的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将自己的修改合并成一个commit再提交Pull Request。（这样在主Resp里更加规范和整洁）&lt;/li&gt;
+&lt;li&gt;commit message里的描述尽量简洁清晰，如果有对应的issue ID，最好加上：See #1234 or Fixes #1234 之类的。这样可以自动关联起来。&lt;/li&gt;
+&lt;li&gt;不要在自己的master分支上修改提交PR，而是应该自己开一个单独分支，由该分支提交Pull Request到原Repo的master。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;最后，我提交了这么一个Pull Request：&lt;a href=&#34;https://github.com/spf13/hugo/pull/1392&#34;&gt;add configuration variable: &amp;ldquo;disablePathToLower&amp;rdquo; See #557&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;不久后，Hugo的主要维护者之一通过了我的PR，很友善的将我蹩脚的中国式英语的commit message调整了一下合并到了Hugo的master：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK2oIvPRfSyclntiaZrnUIENfFbCaQ5maGFjF42Qdia2ic2YcicBzH3JZEZjL11sVV9owD9CXbM2bw9ag/0?wx_fmt=png&#34; alt=&#34;HugoPR&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;commit: &lt;a href=&#34;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&#34;&gt;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这就是开源项目的好处，开源社区的魅力所在：&lt;strong&gt;你可以使用它，修改它，贡献自己的代码，参与其中，让它变好，让所有人受益&lt;/strong&gt;。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>使用hugo搭建个人博客站点</title>
+            <link>http://blog.coderzh.com/2015/08/29/hugo</link>
+            <pubDate>Sat, 29 Aug 2015 16:52:15 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/29/hugo</guid>
+            <description>
+
+&lt;p&gt;Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。&lt;/p&gt;
+
+&lt;p&gt;Hugo生成静态页面的效率很高，我的260多篇博客文章生成几乎是瞬间完成的，而之前用Jekyll需要等待10秒左右。&lt;/p&gt;
+
+&lt;p&gt;Hugo自带watch的调试模式，可以在我修改MarkDown文章之后切换到浏览器，页面会检测到更新并且自动刷新，呈现出最终效果，能极大的提高博客书写效率。再加上Hugo是使用Go语言编写，已经没有任何理由不使用Hugo来代替Jekyll作为我的个人博客站点生成器了。&lt;/p&gt;
+
+&lt;h3 id=&#34;静态网站生成器:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;静态网站生成器&lt;/h3&gt;
+
+&lt;p&gt;什么是静态网站生成器？如果追溯到最早的网站形式，那时候的网页都是静态的，即一个内容不变的html文件放在服务器上，人们通过互联网访问浏览的都是这个一成不变的页面。后来，人们发现，需要和网页进行交互，能根据用户的输入动态呈现出相应的内容，这就是动态网站。那，为什么现在又回归使用静态网站呢？特别是对于博客网站这种特殊的形式。我的理解是：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;访问速度提升。静态页面不需要像动态页面那样经常去查询数据库，而是直接将最终页面内容返回。&lt;/li&gt;
+&lt;li&gt;搜素引擎友好。便于搜索引擎索引，比如很多动态网站的页面地址是一样的，只是后面传入的参数不一样，容易让搜索引擎误认为是同一个页面。（虽然不会）&lt;/li&gt;
+&lt;li&gt;可以完全抛弃数据库，减少复杂度，将最复杂的一步交给静态网站生成器，自己只专注写作、生成、发布三个步骤。&lt;/li&gt;
+&lt;li&gt;博客文章可以以文本文件的方式（MarkDown）在本地维护管理，不需要像之前那样在网页的编辑器里提交到网站数据库。你可以方便的使用github管理你的博客文章，不会丢失，又能追溯到每一次的内容变更。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;目前最流行的静态网站生成器是Jekyll，它是github创始人自己实现的一套ruby的静态网站生成器。一经推出，各个程序哥竞相效仿，一时间使用Jekyll搭建自己的博客变成了一件很高逼格的事情。&lt;/p&gt;
+
+&lt;p&gt;我也是跟风者之一，在Jekyll之前，我主要也是在博客园写文章，同时独立博客这块也尝试过自己实现的博客程序，用GAE写过，后来又用Tornado写过，都是动态网站。自己实现博客程序，总是在开始一段时间内很狂热，当一切实现完成，细节修缮好之后很快就失去了兴趣。因为你的注意力从只是写文章，经常转移到其他地方去。比如网站不好看，需要去改一改网站的风格样式，修复BUG，加一加功能等等。&lt;/p&gt;
+
+&lt;p&gt;所以，如果只是专注于写作，还是找一个稳定一些，提供大量现成皮肤，有稳定专业的组织维护更新的博客系统。使用Jekyll确实让我眼前一亮，原来博客程序可以这么玩。于是利用周末的时间，我将我之前所有的文章，包括博客园的文章，都迁移到了Jekyll上来。自从有了Jekyll，我终于可以开开心心的专注的写文章了，而且使用喜欢的MarkDown格式。：）&lt;/p&gt;
+
+&lt;p&gt;在使用了Jekyll一段时间后，它的问题也逐渐暴露出来：静态页面生成的效率不够高。因为我把以前的文章都导入了过来，一共有260来篇，每次编辑文章后，需要等等10秒，待它将所有页面检查并生成完成之后，才能看到最终的效果。这是我最不能忍受的一点。对于初学者，Jekyll还有很多问题，比如环境搭建非常复杂，导致使用Jekyll的人大都是一些喜欢折腾，不怕折腾的程序哥。&lt;/p&gt;
+
+&lt;p&gt;随着Go1.5版本的发布，让我意识到是时候好好玩一玩Go语言了。使用Go语言实现的静态网站生成器Hugo（雨果）立即吸引了我，它解决了我最大的痛点：生成的效率。文档、社区各方面的支持都不错，使用起来非常简单，各种皮肤直接套用，于是我又开始了Jekyll迁移到Hugo的漫漫长路。（一个周末的时间）&lt;/p&gt;
+
+&lt;p&gt;即使迁移到了Hugo，我还保留着原来的Jekyll博客，只是不会再更新了，用来怀念？还是哪天突然又跳回来也不一定。&lt;/p&gt;
+
+&lt;p&gt;我的Jeklly博客：&lt;a href=&#34;http://jekyll.coderzh.com&#34;&gt;http://jekyll.coderzh.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我的Hugo博客：&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;http://blog.coderzh.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;github-pages:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;GitHub Pages&lt;/h3&gt;
+
+&lt;p&gt;使用静态网站生成器生成好静态页面之后，需要把文件放到服务器上供别人浏览。比较传统的方式是租用VPS虚拟服务器，比如：linode、digitalocean。将生成好的静态页面手工上传到服务器上。如果你习惯这种方式部署，推荐你使用&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;digitalocean&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;当然， 还有更好的方式，就是直接把网站托管到GitHub Pages。你只需要在GitHub上创建一个项目，然后将生成出来的静态页面文件push到这个项目的gh-pages分支，保证根目录有一个index.html文件即可。这样，一个免费、无限流量的博客系统就搭建完成了。同时，通过github你可以方便对博客文章进行管理和追踪。&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;Hugo&lt;/h3&gt;
+
+&lt;p&gt;前面的铺垫介绍的差不多了，该主角上场了。Hugo是什么？它主要做了什么？&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe）&lt;/li&gt;
+&lt;li&gt;Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。&lt;/li&gt;
+&lt;li&gt;Hugo内置web服务器，可以方便的用于本地调试。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;hello-hugo:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;Hello Hugo&lt;/h3&gt;
+
+&lt;p&gt;Hugo官方主页：&lt;a href=&#34;https://gohugo.io/&#34;&gt;https://gohugo.io/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hugo的安装方式有两种，一种是直接下载编译好的Hugo二进制文件。如果只是使用Hugo推荐用这种方式。另一种方式是获取Hugo的源码，自己编译。由于各种不可预料的网络问题，第二种方式不是那么轻易能成功，虽然最后我还是折腾出来了。&lt;/p&gt;
+
+&lt;p&gt;Hugo二进制下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;下载下来后，只有一个叫hugo或者hugo.exe的程序，接下来开始生成自己的站点：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new site /path/to/site
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后hugo会自动生成这样一个目录结构：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  ▸ archetypes/
+  ▸ content/
+  ▸ layouts/
+  ▸ static/
+    config.toml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;简要介绍一下，config.toml是网站的配置文件，这是一个TOML文件，全称是Tom&amp;rsquo;s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。如果你不喜欢这种格式，你可以将config.toml替换为YAML格式的config.yaml，或者json格式的config.json。hugo都支持。&lt;/p&gt;
+
+&lt;p&gt;content目录里放的是你写的markdown文章，layouts目录里放的是网站的模板文件，static目录里放的是一些图片、css、js等资源。&lt;/p&gt;
+
+&lt;p&gt;创建一个页面：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new about.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果是博客日志，最好将md文件放在content的post目录里。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo new post/first.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行完后，会在content/post目录自动生成一个MarkDown格式的first.md文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+date = &amp;quot;2015-01-08T08:36:54-07:00&amp;quot;
+draft = true
+title = &amp;quot;first&amp;quot;
+ 
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;+++可以替换为Jekyll一样的---，里面的内容是这篇文章的一些信息。下面就可以开始写你的文章内容，比如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+date = &amp;quot;2015-01-08T08:36:54-07:00&amp;quot;
+draft = true
+title = &amp;quot;first&amp;quot;
+ 
++++
+
+### Hello Hugo
+
+ 1. aaa
+ 1. bbb
+ 1. ccc
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OK，刚才的about.md也有内容，该看看最后的效果了。然后你屁颠屁颠的使用hugo server启动，打开浏览器里一看，发现毛都没有！这是肿么了！&lt;/p&gt;
+
+&lt;p&gt;这是Hugo对初学者非常不友好的地方，默认生成的网站是没有任何皮肤模板的。为了看看第一个写的示例，还得去Github上把一个网页模板下载下来。如果你网络够好，网速够快，你可以在刚才的目录将Hugo官方的所有模板都下载下来：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git clone --recursive https://github.com/spf13/hugoThemes themes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我尝试过，也失败过，且从未成功一次性将所有的模板下载下来。所以，我们还是老老实实只下载其中一个模板来看看效果吧：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd themes
+$ git clone https://github.com/spf13/hyde.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;启动本地调试：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo server --theme=hyde --buildDrafts --watch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;浏览器里打开：&lt;a href=&#34;http://127.0.0.1:1313&#34;&gt;http://127.0.0.1:1313&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKAMQ4BG3zdDBPKa2vBBR205C0HSCzibticmp8eOVXyQY3vhYgG8qMiaZZiaSYFyYe2Hr3TvAFN1VeRmg/0?wx_fmt=png&#34; alt=&#34;HugoFirstPost&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动去刷新浏览器，不需要自己手工去刷新浏览器，非常方便。&lt;/p&gt;
+
+&lt;p&gt;如果你看了上面的说明已经有冲动去试一试Hugo了，我的目的也算达到了，接下来你需要的只是查看官方的说明文档就够了，所以具体的一些设置我就不重复了。&lt;/p&gt;
+
+&lt;p&gt;官方文档：&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;https://gohugo.io/overview/introduction/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;皮肤列表：&lt;a href=&#34;https://github.com/spf13/hugoThemes&#34;&gt;https://github.com/spf13/hugoThemes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;常用文档：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/overview/configuration/&#34;&gt;Configuring Hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/content/front-matter/&#34;&gt;Front Matter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/extras/menus/&#34;&gt;Menus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/templates/variables/&#34;&gt;Template Variables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/tutorials/github-pages-blog/&#34;&gt;Hosting on GitHub Pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;遇到的问题:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;遇到的问题&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;默认的ServerSide的代码着色会有问题，有些字的颜色会和背景色一样导致看不见。&lt;br /&gt;
+解决方法：使用ClientSide的代码着色方案即可解决。（见：&lt;a href=&#34;https://gohugo.io/extras/highlighting/#client-side:c4210b265c792cac9a6cf6a5f53b671d&#34;&gt;Client-side Syntax Highlighting&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;URL全部被转成了小写，如果是旧博客迁移过来，将是无法接受的。&lt;br /&gt;
+解决方法：&lt;del&gt;我是直接改了Hugo的代码，将URL强制转换为小写那段逻辑去掉了，之后考虑在config里提供配置开关，然后给Hugo提一个PR。如果是Windows用户可以直接&lt;a href=&#34;https://github.com/coderzh/ConvertToHugo&#34;&gt;https://github.com/coderzh/ConvertToHugo&lt;/a&gt; 下载到我修改后的版本myhugo.exe。&lt;/del&gt;&lt;br /&gt;
+Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pull/1392&#34;&gt;PR&lt;/a&gt;并&lt;a href=&#34;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&#34;&gt;commit&lt;/a&gt;到Hugo，最新版本只需要在config里增加：&lt;br /&gt;
+&lt;code&gt;disablePathToLower: true&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;文章的内容里不能像Jekyll一样可以内嵌代码模板了。最终会生成哪些页面，有一套相对固定而复杂的规则，你会发现想创建一个自定义界面会非常的困难。&lt;br /&gt;
+解决方法：无，看文档，了解它的规则。博客程序一般也不需要特别的自定义界面。Hugo本身已经支持了类似posts, tags, categories等内容聚合的页面，同时支持rss.xml，404.html等。如果你的博客程序复杂到需要其他的页面，好好想想是否必须吧。&lt;/li&gt;
+&lt;li&gt;如何将rss.xml替换为feed.xml？&lt;br /&gt;
+解决方法：在config.yaml里加入：&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt; rssuri: &amp;quot;feed.xml&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;jekyll迁移到hugo:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;Jekyll迁移到Hugo&lt;/h3&gt;
+
+&lt;p&gt;Jekyll的文章内容迁移到Hugo中，大部分内容是兼容的，但也有一些地方是不兼容的。主要有以下几个地方需要修改：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Jekyll文章能从文件名里的日期部分读取到日期，并将剩余的部分当做的页面url的名称，比如：2015-08-29-first.md。而Hugo只认md文件里的date字段，url的名称如果用文件名的话将会使用完整的文件名（不会去除日期部分）。为了兼容，必须在md的Front Matter里写入url字段，用来说明该页面的相对url地址，从而保持兼容。&lt;/li&gt;
+&lt;li&gt;tags, categories等字段必须用列表的方式，不像Jekyll中那样随意了。&lt;/li&gt;
+&lt;li&gt;{% raw %} {% endraw %}将不需要了。&lt;/li&gt;
+&lt;li&gt;{% highlight ruby %} 变成了{{&amp;lt; highlight ruby &amp;gt;}} 。不过我还是推荐使用``` ruby ```形式，然后使用ClientSide的Highlight，这样两边都兼容。&lt;/li&gt;
+&lt;li&gt;需要将Jekyll里的public里的文件拷贝到Hugo的static目录里。&lt;/li&gt;
+&lt;li&gt;Jekyll的文章必须放到Hugo的content/post目录里。&lt;/li&gt;
+&lt;li&gt;Jekyll只需要push文章内容到github，服务器会自动生成静态页面。毕竟是github的亲儿子。而Hugo需要你将生成的public目录里的内容做为gh-pages分支push上去。具体的简便的方法见：&lt;a href=&#34;https://gohugo.io/tutorials/github-pages-blog/&#34;&gt;Hosting on GitHub Pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;假如你之前的博客和我一样是Jekyll的，可以尝试使用我写的&lt;a href=&#34;https://github.com/coderzh/ConvertToHugo/blob/master/ConvertToHugo.py&#34;&gt;ConvertToHugo.py&lt;/a&gt; 工具。这个转换工具逻辑相对比较简单和清晰，如果满足不了你的需求你也可以轻易在此基础上做些修改，如果我能收到PR当然是最好了。&lt;/p&gt;
+
+&lt;p&gt;反正，我是完全使用CovertToHugo.py将我原来的Jekyll博客全部转过来了。而且，我找到了一个非常炫酷的主题，并且在此基础稍微修改下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKAMQ4BG3zdDBPKa2vBBR20hnPXA1PdrfOB2cIveaTh58IMIRkFYzFrCDD70YIhJSnPjfloueBziaA/0?wx_fmt=jpeg&#34; alt=&#34;HugoBlog&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Blog地址：&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;http://blog.coderzh.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Github: &lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>使用Jekyll官方的ReadMore摘要功能</title>
+            <link>http://blog.coderzh.com/2015/08/15/JekyllReadMore</link>
+            <pubDate>Sat, 15 Aug 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/15/JekyllReadMore</guid>
+            <description>
+
+&lt;p&gt;今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。&lt;/p&gt;
+
+&lt;p&gt;我之前的方法，在index.html中&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; {{ post.content ||split:&#39;&#39; | first }} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在Post里，需要分隔的摘要后面加&lt;code&gt;。&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;摘要内容...
+
+正文内容...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;官方做法-excerpt:b34704c1c1176e970544bf334bae729d&#34;&gt;官方做法: excerpt&lt;/h3&gt;
+
+&lt;p&gt;官方的方法是，在_config.yml里，指定摘要的分隔符：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;excerpt_separator:  &#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，在index.html中：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; {{ post.excerpt }} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一般情况下，摘要需要去掉html标签，所以一般这样用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;  {{ post.excerpt | strip_html }} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，和前一种方法一样，在摘要后面加``  即可。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>使用ThreadSanitizer线程检查工具</title>
+            <link>http://blog.coderzh.com/2015/08/15/ThreadSanitizer</link>
+            <pubDate>Sat, 15 Aug 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/08/15/ThreadSanitizer</guid>
+            <description>
+
+&lt;p&gt;ThreadSanitizer又叫TSan，是一个检查线程Data Race的C/C++工具。它集成在新版的gcc和clang中，通过编译时加-fsanitize=thread，可以在运行时检测出Data Race的问题。&lt;/p&gt;
+
+&lt;p&gt;ThreadSanitizer官网：&lt;a href=&#34;https://code.google.com/p/thread-sanitizer&#34;&gt;https://code.google.com/p/thread-sanitizer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;data-race:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;Data Race&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOd04btFpRmIibfk0kMfT29nrzBmcvchJdib8I3BNqK0NaCNMu3HmM24Kg/0?wx_fmt=jpeg&#34; alt=&#34;DataRace&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Data Race是指多个线程在没有正确加锁的情况下，同时访问同一块数据，并且至少有一个线程是写操作，对数据的读取和修改产生了竞争，从而导致各种不可预计的问题。&lt;/p&gt;
+
+&lt;p&gt;Data Race的问题非常难查，Data Race一旦发生，结果是不可预期的，也许直接就Crash了，也许导致执行流程错乱了，也许把内存破坏导致之后某个时刻突然Crash了。&lt;/p&gt;
+
+&lt;h3 id=&#34;环境要求:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;环境要求&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Linux x86_64，内核版本不要太旧。（经测试，公司旧的开发机Linux内核是2.6.16是跑不了的，新的tlinux内核3.10.0可以）&lt;/li&gt;
+&lt;li&gt;gcc 4.8版本以上（clang也集成了，3.2版本以上）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;官方示例:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;官方示例&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;$ cat simple_race.cc
+#include &amp;lt;pthread.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+ 
+int Global;
+ 
+void *Thread1(void *x) {
+  Global++;
+  return NULL;
+}
+ 
+void *Thread2(void *x) {
+  Global--;
+  return NULL;
+}
+ 
+int main() {
+  pthread_t t[2];
+  pthread_create(&amp;amp;t[0], NULL, Thread1, NULL);
+  pthread_create(&amp;amp;t[1], NULL, Thread2, NULL);
+  pthread_join(t[0], NULL);
+  pthread_join(t[1], NULL);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的代码在不加锁的情况下，两个线程同时去修改Global变量，从而导致Data Race。使用gcc的-fsanitize=thread 编译，执行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;$ g++ simple_race.cc -fsanitize=thread -fPIE -pie -g
+$ ./a.out
+==================
+WARNING: ThreadSanitizer: data race (pid=26327)
+  Write of size 4 at 0x7f89554701d0 by thread T1:
+    #0 Thread1(void*) simple_race.cc:8 (exe+0x000000006e66)
+ 
+  Previous write of size 4 at 0x7f89554701d0 by thread T2:
+    #0 Thread2(void*) simple_race.cc:13 (exe+0x000000006ed6)
+ 
+  Thread T1 (tid=26328, running) created at:
+    #0 pthread_create tsan_interceptors.cc:683 (exe+0x00000001108b)
+    #1 main simple_race.cc:19 (exe+0x000000006f39)
+ 
+  Thread T2 (tid=26329, running) created at:
+    #0 pthread_create tsan_interceptors.cc:683 (exe+0x00000001108b)
+    #1 main simple_race.cc:20 (exe+0x000000006f63)
+==================
+ThreadSanitizer: reported 1 warnings
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行程序，如果发生Data Race，错误信息会直接输出出来。如果错误信息比较多，重定向输出流到文件里，慢慢分析：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./a.out &amp;gt;result.txt 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;关键要点:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;关键要点&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;除了加-fsanitize=thread外，一定要加-fPIE -pie。&lt;/li&gt;
+&lt;li&gt;-g 是为了能显示文件名和行号。&lt;/li&gt;
+&lt;li&gt;如果分生成obj(-c)和link两个步骤，每一步都加：thread -fPIE -pie -g，并且在link的时候加-ltsan&lt;/li&gt;
+&lt;li&gt;只支持64位，最好指定编译64位(-m64)&lt;/li&gt;
+&lt;li&gt;如果依赖其他静态库，其他静态库编译时必须指定-fPIC（如果不是请重编）&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>Cocos2d-x3.6 Android编译问题</title>
+            <link>http://blog.coderzh.com/2015/06/06/Cocos2dx36</link>
+            <pubDate>Sat, 06 Jun 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/06/06/Cocos2dx36</guid>
+            <description>&lt;p&gt;在Cocod2d-x论坛上看到越来越多人吐槽新版本更新太快，改动太大，而且经常有BUG导致升级要折腾很久很久。。但我就是喜欢折腾，喜欢升级到最新版本，看看有了哪些新功能，哪些改进。为此也折腾了不少，遇到一点就记录一点吧。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;3.5版本之后，Android编译的build_native.py改成了直接调用cocos compile，我把所有都升级到了最新版本还是编译不成功，只好放弃，也许是我打开方式不对，还是先使用旧的build_native.py编译吧。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;出现提示找不到“org.cocos2dx.lib.Cocos2dxActivity“， Cocos2dxAcitivy明明在link的libcocos2d里啊，怎么还说找不到。
+解决方法：干脆把libcocos2d删了，重新自己手工添加一个，右键BuildPath-&amp;gt;Link Source&amp;hellip; 添加一次即可。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;CCImage.cpp突然编译不过了，提示找不到uint32，JSAMPROW。
+解决办法：uint32依赖tiff，JSAMPROW依赖jpeg，而之前我为了省一点点包大小，通过-DCC_USE_TIFF=0 -DCC_USE_JPEG=0把这两个东东禁掉了。所以把tiff和jpeg打开就好了。别省了。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;打开eclipse工程后，出现&amp;rdquo;serializing cdt project settings&amp;rdquo;
+解决方法：见 &lt;a href=&#34;http://blog.csdn.net/djvc/article/details/41117677&#34;&gt;http://blog.csdn.net/djvc/article/details/41117677&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;打开eclipse工程后，出现“Lint Error Checking&amp;rdquo;
+解决方法：Windows -&amp;gt; perferences -&amp;gt; Android -&amp;gt; Lint Error Checking，把左边的When saving files,check for errors复选框去掉&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>OpenWrt资料汇总</title>
+            <link>http://blog.coderzh.com/2015/04/18/OpenWrt</link>
+            <pubDate>Sat, 18 Apr 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/04/18/OpenWrt</guid>
+            <description>
+
+&lt;p&gt;上周末折腾了一下OpenWrt，打算把Facebook的网络模拟工具部署到上面，最终以失败告终。上github看，发现已经有人给作者提了issue，作者表示部署在OpenWrt上会很有用，但确实在OpenWrt上跑ATC会很困难。&lt;/p&gt;
+
+&lt;p&gt;见：&lt;a href=&#34;https://github.com/facebook/augmented-traffic-control/issues/54&#34;&gt;https://github.com/facebook/augmented-traffic-control/issues/54&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;openwrt:80e8efd1348c6d65716736b932ab53c4&#34;&gt;OpenWrt&lt;/h3&gt;
+
+&lt;p&gt;OpenWrt是适合于嵌入式设备的一个Linux发行版。它减小轻便，我安装完整个系统，初始大小只有10M，但是看上去五脏俱全。是现在主流路由器固件之一（OpenWrt，dd-wrt，tomato）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIpq06x4lPDkpkcEFIgaWy8XJqN6ibXptBsZBtzOGyWvePlOMtqic53ovicb9VMHuZoiaxrkuiajxvGvcA/0?wxfmt=png&#34; alt=&#34;opnwrt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;下面是折腾过程中看的一些参考文章，记录一下：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://downloads.openwrt.org&#34;&gt;OpenWrt Downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sqzr.cc/blog/2013/11/09/openwrt-opkgwu-fa-lian-wang-xia-zai-jie-jue-ban-fa/&#34;&gt;openwrt opkg无法联网下载解决办法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.openwrt.org.cn/bbs/forum.php?mod=viewthread&amp;amp;tid=60&amp;amp;extra=page%3D1&#34;&gt;OpenWrt系列教程汇总&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.csdn.net/phodal/article/details/8521712&#34;&gt;Openwrt python,openwrt上使用Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://scola.github.io/deploy-goagent-on-openwrt-tplink-703n/&#34;&gt;在openwrt-tplink703n路由器上成功部署GoAgent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.phpgao.com/xiaomi_router_python.html&#34;&gt;小米路由器mini折腾之Python篇(OpenWRT,Pandorabox,官方)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.openwrt.org/zh-cn/doc/howto/usb.storage&#34;&gt;挂载USB存储设备&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.sina.com.cn/s/blog_53689eaf0100xksw.html&#34;&gt;VirtualBox扩展虚拟机硬盘&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/xianfangloveyangmei/p/3675385.html&#34;&gt;刷openwrt 挂载u盘&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jyd.me/linux/pip-install-to-different-home/&#34;&gt;pip安装到指定目录&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>C&#43;&#43;开源代码覆盖率工具OpenCppCoverage介绍(Windows)</title>
+            <link>http://blog.coderzh.com/2015/04/10/OpenCppCoverage</link>
+            <pubDate>Fri, 10 Apr 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/04/10/OpenCppCoverage</guid>
+            <description>&lt;p&gt;Windows平台下开源的C++代码覆盖率工具，使用简单，功能齐全而强大。2014年才推出的，只恨没有早点发现。&lt;/p&gt;
+
+&lt;p&gt;关于代码覆盖率统计工具，Linux平台下，gcc内置支持gcov，通过编译时加参数选项，进行代码插桩，从而实现代码覆盖率。在Windows平台下，早在几年前，我还没找到特别好用又开源的覆盖率工具，所以以前公司是自己实现了一套，使用起来也不是很方便。&lt;/p&gt;
+
+&lt;p&gt;最近又遇到同样的问题，不过非常幸运的是，一款开源的Windows平台的C++代码覆盖率工具出现了在我的面前：OpenCppCoverage。使用起来非常简单，它不需要在编译时插桩，只需要有pdb文件，运行时插桩，通过OpenCppCoverage启动进程即可。&lt;/p&gt;
+
+&lt;p&gt;官网：&lt;a href=&#34;https://opencppcoverage.codeplex.com/&#34;&gt;https://opencppcoverage.codeplex.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;功能也比较全，主要特点有：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;不需要重新编译被测程序，只需要使用OpenCppCoverage运行程序。&lt;/li&gt;
+&lt;li&gt;性能开销比较小。&lt;/li&gt;
+&lt;li&gt;按模块、代码路径过滤。&lt;/li&gt;
+&lt;li&gt;自动生成html覆盖率结果报告。&lt;/li&gt;
+&lt;li&gt;支持多个覆盖率结果合并。&lt;/li&gt;
+&lt;li&gt;集成Jenkins&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;使用起来不要太简单，执行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;OpenCppCoverage.exe --sources MySourcePath -- YourProgram.exe arg1 arg2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用文档：&lt;a href=&#34;https://opencppcoverage.codeplex.com/documentation&#34;&gt;https://opencppcoverage.codeplex.com/documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Jenkins集成：&lt;a href=&#34;https://opencppcoverage.codeplex.com/wikipage?title=Jenkins&#34;&gt;https://opencppcoverage.codeplex.com/wikipage?title=Jenkins&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;覆盖率详细结果&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeLysCAtuhz1cP8vL08tZxInJEGnXg0kvcMWWgIgZGdnFwwx9UBmGyF1NOB89JqUA8B2p2iaRut4z6Q/0&#34; alt=&#34;OpenCppCoverage&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Jenkins集成&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeLysCAtuhz1cP8vL08tZxInSibobsDET0XDbeIE8rloZFIiboibwgCPeaqicbbM6zR7eVy4JsgJAKmk7w/0&#34; alt=&#34;JenkinsOpenCppCoverage&#34; /&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>Facebook网络模拟测试工具ATC使用</title>
+            <link>http://blog.coderzh.com/2015/03/29/AugmentedTrafficControl</link>
+            <pubDate>Sun, 29 Mar 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/03/29/AugmentedTrafficControl</guid>
+            <description>&lt;p&gt;就在上周，Facebook在其工程博客（&lt;a href=&#34;https://code.facebook.com/posts/1561127100804165/augmented-traffic-control-a-tool-to-simulate-network-conditions/&#34;&gt;原文&lt;/a&gt;）上宣布开源移动网络测试工具Augmented Traffic Control（&lt;a href=&#34;https://github.com/facebook/augmented-traffic-control&#34;&gt;ATC&lt;/a&gt;），我迅速试用了一番，非常不错，对手游或者其他APP的调试和测试都非常有帮助，介绍给大家。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqy0kFRDzrtvVCw81xFH0wrZgH0ibYljADibliaWsKib6lHaba2Jials5poc2Q/0&#34; alt=&#34;ATC&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;现在已经是APP时代了，由于手机网络的特殊性，移动APP需要面临更加复杂的网络环境。在设计之初就要考虑如何应对各种网络环境，比如很高的延迟，经常丢包，频繁的断线。特别是手游，断线重连机制设计的好坏直接影响到游戏的体验。&lt;/p&gt;
+
+&lt;p&gt;所以，在开发过程中模拟各种网络环境进行测试变得越来越重要。在ATC出来之前，微软曾经有一个网络模拟工具NEWT（Network Emulator for Windows Toolkit），使用起来也是方便。（NEWT的诞生也蛮有意思，见：&lt;a href=&#34;http://blog.sina.com.cn/s/blog_4caedc7a0100g9y6.html&#34;&gt;NEWT的前世今生&lt;/a&gt;）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqyfvibaiciciaXjY6BBa4fqtMJwGibwKzQjELwJ9vQk6PhicIoweFP5pS7NDjw/0&#34; alt=&#34;NEWT&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;那么，对比NEWT，ATC有些什么特点呢？&lt;/p&gt;
+
+&lt;p&gt;ATC有两个最吸引人的特点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;在手机上通过Web界面就可以随时切换不同的网络环境。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多个手机可以连接到同一个WIFI下，相互之间模拟的网络环境各不影响。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可以想象一下这个场景：一群程序猿和测试猴子热火朝天的在办公室忙活着，这时有一个叫ATC WiFi的热点，任何人都可以将手机连接上去，通过Web界面随意切换到各种不同的网络环境下进行调试和测试……&lt;/p&gt;
+
+&lt;p&gt;想想都有点小激动呢，接下来就来试用一把，感受一下ATC的威力。&lt;/p&gt;
+
+&lt;p&gt;ATC只能运行在Linux上，所以搭建部署稍显麻烦一些。本文将介绍在虚拟机里如何搭建ATC环境。大致有以下几个步骤：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;VMWare装个Ubuntu系统吧（以前我常用VirtualBox，各种兼容性问题被坑惨了不敢用了）。&lt;/li&gt;
+&lt;li&gt;除非你的机器有无线网卡，不然找一个USB无线网卡，用来设置WIFI热点。&lt;/li&gt;
+&lt;li&gt;部署ATC&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Ubuntu中设置WiFi热点功能，在系统自带的工具里可以直接开启。但是，由于是Ad-hoc模式，Android手机根本搜不到信号。所以必须设置AP模式才能让Android手机搜到。我折腾了好一阵，最后发现这篇文章最靠谱：&lt;a href=&#34;http://my.oschina.net/eechen/blog/227230&#34;&gt;http://my.oschina.net/eechen/blog/227230&lt;/a&gt;，照着设置一般就OK了。&lt;/p&gt;
+
+&lt;p&gt;接下来是部署ATC，其实也很简单，官方文档上写的也很清楚：&lt;a href=&#34;https://github.com/facebook/augmented-traffic-control&#34;&gt;https://github.com/facebook/augmented-traffic-control&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;首先，必须安装Python2.7以上版本，然后安装pip：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install python-pip python-dev build-essential）
+sudo pip install --upgrade pip 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，使用pip直接安装好ATC所有组件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install atc_thrift atcd django-atc-api django-atc-demo-ui django-atc-profile-storage
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来部署Django的web工程，提供手机访问并用来配置和切换网络用的。&lt;/p&gt;
+
+&lt;p&gt;1.使用django-admin生成一个新的django工程：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;django-admin startproject atcui
+cd atcui
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.修改atcui/settings.py，加入ATC相关的内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;INSTALLED_APPS = (
+    ...
+    # Django ATC API
+    &#39;rest_framework&#39;,
+    &#39;atc_api&#39;,
+    # Django ATC Demo UI
+    &#39;bootstrap_themes&#39;,
+    &#39;django_static_jquery&#39;,
+    &#39;atc_demo_ui&#39;,
+    # Django ATC Profile Storage
+    &#39;atc_profile_storage&#39;,
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.修改atcui/urls.py，urlpatterns 中加入atc的url页面：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;...
+...
+from django.views.generic.base import RedirectView
+ 
+urlpatterns = patterns(&#39;&#39;,
+    ...
+    # Django ATC API
+    url(r&#39;^api/v1/&#39;, include(&#39;atc_api.urls&#39;)),
+    # Django ATC Demo UI
+    url(r&#39;^atc_demo_ui/&#39;, include(&#39;atc_demo_ui.urls&#39;)),
+    # Django ATC profile storage
+    url(r&#39;^api/v1/profiles/&#39;, include(&#39;atc_profile_storage.urls&#39;)),
+    url(r&#39;^$&#39;, RedirectView.as_view(url=&#39;/atc_demo_ui/&#39;, permanent=False)),
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.更新一下数据库：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python manage.py migrate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;万事俱备，就差启动了……&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;前面设置WiFI热点时，你还记得设置的无线网卡的名字吗？嗯，就是wlan0，这个很重要。接下来要启动网络控制的核心组件atcd，需要通过参数指定提供Wifi热点的内网用的网卡名字，外网访问的网卡名默认是eth0（如果不是也需要通过&amp;ndash;atcd-wan指定）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo atcd --atcd-lan wlan0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，启动Django的工程：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo python manage.py runserver 0.0.0.0:8000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;用手机连接上去试试吧。看看虚拟机的IP，比如我设置的是192.168.6.1，手机浏览器里访问：&lt;a href=&#34;http://192.168.6.1:8000&#34;&gt;http://192.168.6.1:8000&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqycIPjpq7icu4ic5n5RlBZ4RXx6TsWKGYvpIp2Cxz4oiaN0yjlic5j298EYQ/0&#34; alt=&#34;NewStart&#34; width=&#34;450&#34; height=&#34;800&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在手机的界面里，你可以分别对网络上行下行进行设置，主要设置的参数有：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;网络带宽（bandwidth）&lt;/li&gt;
+&lt;li&gt;延迟（latency）&lt;/li&gt;
+&lt;li&gt;丢包率（packet loss）&lt;/li&gt;
+&lt;li&gt;错包率（corrupted packets）&lt;/li&gt;
+&lt;li&gt;乱序率（packets ordering）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;通过设置上面的参数，可以模拟出各种常用的网络环境，比如：2G，3G，4G，WiFi等等，同时也可以模拟一些异常情况，比如信号很差，延迟很大，丢包率高的情况。具体有哪些场景和参数设置，欢迎大家一起交流交流，下面是&lt;a href=&#34;https://github.com/tylertreat/Comcast&#34;&gt;Comcast&lt;/a&gt;提供的一份参数配置（国外的网络和国内的很不一样吧，仅供参考，欢迎大家修正和补充）&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;Name&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Latency&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Bandwidth&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Packet-loss&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;GPRS (good)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;50&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;EDGE (good)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;300&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;250&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3G/HSDPA (good)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;250&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;750&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;DIAL-UP (good)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;185&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;DSL (poor)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;70&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;DSL (good)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;WIFI (good)&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Satellite&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>为什么心跳包(HeartBeat)是必须的？</title>
+            <link>http://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded</link>
+            <pubDate>Thu, 05 Mar 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded</guid>
+            <description>
+
+&lt;p&gt;几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKA0dQuDEwUD4DN5ZmOXczgsYdoyVBtvHkXtd9wVDpv3KP9D6aSa3Uia7FacGib9HADALJgLribKge5Q/0&#34; alt=&#34;HeartBeat&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由于连接丢失时，TCP不会立即通知应用程序。比如说，客户端程序断线了，服务端的TCP连接不会检测到断线，而是一直处于连接状态。这就带来了很大的麻烦，明明客户端已经断了，服务端还维护着客户端的连接，照常执行着该玩家的游戏逻辑……&lt;/p&gt;
+
+&lt;p&gt;心跳包就是用来及时检测是否断线的一种机制，通过每间隔一定时间发送心跳数据，来检测对方是否连接。是属于应用程序协议的一部分。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;问题1： TCP为什么不自己提供断线检测？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;首先，断线检测需要轮询发送检测报文，会消耗一定的网络带宽和暂用一定的网络资源。如果把它做成TCP的底层默认功能，那些不需要断线检测的应用程序将会浪费不必要的带宽资源。&lt;/p&gt;
+
+&lt;p&gt;另外，TCP不提供连接丢失及时通知的最重要原因与其主要设计目的目标之一有关：出现网络故障时维护通信的能力。TCP是美国国防部赞助研究的，一种即使发生战争或自然灾害这种严重网络损坏情况下，也能维护可靠网络通信的网络协议。通常，网络故障只是暂时的，有时路由器会在TCP临时连接丢失后默默的重新连上。所以，TCP本身并不提供那么及时的断线检测。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;问题2： TCP的KeepAlive机制可以用来及时检测连接状态吗？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;TCP有个KeepAlive开关，打开后可以用来检测死连接。通常默认是2小时，可以自己设置。但是注意，这是TCP的全局设置。假如为了能更及时的检测出断开的连接，把&lt;code&gt;tcp_keepalive_time&lt;/code&gt;和&lt;code&gt;tcp_keepalive_intvl&lt;/code&gt;的时间改小（参考：&lt;a href=&#34;http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/usingkeepalive.html&#34;&gt;Link&lt;/a&gt;），该机器上所有应用程序的KeepAlive检测间隔都会变小，显然是不能接受的。因为不同应用程序的需求是不一样的。&lt;/p&gt;
+
+&lt;p&gt;(在某些平台的Socket实现已经支持为每条连接单独设置KeepAlive参数)&lt;/p&gt;
+
+&lt;p&gt;KeepAlive本质上来说，是用来检测长时间不活跃的连接的。所以，不适合用来及时检测连接的状态。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;问题3：心跳包（HeartBeat）为什么是好的方式及时检测连接状态？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;具有更大的灵活性，可以自己控制检测的间隔，检测的方式等等。&lt;/li&gt;
+&lt;li&gt;心跳包同时适用于TCP和UDP，在切换TCP和UDP时，上层的心跳包功能都适用。（其实这种情况很少遇到）&lt;/li&gt;
+&lt;li&gt;有些情况下，心跳包可以附带一些其他信息，定时在服务端和客户端之间同步。（比如帧数同步）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;结论:f76865b2306592b0f5c605a6c67f5afe&#34;&gt;结论&lt;/h3&gt;
+
+&lt;p&gt;需要及时检测TCP连接状态，心跳包(HeartBeat)还是必须的。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>skynet Windows开发方式：VirtualBox中共享文件夹</title>
+            <link>http://blog.coderzh.com/2015/01/14/SkynetUbuntuVirtualBox</link>
+            <pubDate>Wed, 14 Jan 2015 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/01/14/SkynetUbuntuVirtualBox</guid>
+            <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/cloudwu/skynet&#34;&gt;skynet&lt;/a&gt;是一个c和lua实现的轻量级actor模型服务端框架。看了所有文档，对skynet有了大致的了解。还需进一步考察看是否合适做为手游mmo服务端框架。&lt;/p&gt;
+
+&lt;p&gt;由于skynet只有linux版本，如果开发平台是windows就会比较麻烦。于是打算使用虚拟机执行skynet程序，lua脚本放在虚拟机的共享目录里。于是lua可以方便的在Windows中编写，在Linux虚拟机里执行。&lt;/p&gt;
+
+&lt;h3 id=&#34;virtualbox:d257e2f4020594dc6ae603b9b5c8c284&#34;&gt;VirtualBox&lt;/h3&gt;
+
+&lt;p&gt;开始我用了个老版本的VirtualBox，增强功能插件总是安装不上，提示：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;grep: /lib/modules/3.13.0-24-generic/build/include/linux/version.h: No such file or directory&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后通过下面的帖子才发现，安装个最新版本的VirtualBox就解决问题了。(&lt;a href=&#34;http://ubuntuforums.org/showthread.php?t=2231775&#34;&gt;http://ubuntuforums.org/showthread.php?t=2231775&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&#34;安装增强功能-install-guest-additions:d257e2f4020594dc6ae603b9b5c8c284&#34;&gt;安装增强功能(Install Guest Additions)&lt;/h3&gt;
+
+&lt;p&gt;直接挂载共享目录，报错：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;unknown filesystem type vboxsf.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;原因是没安装VirtualBox增强功能插件，点击菜单挂载iso：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.stack.imgur.com/ZAIEt.png&#34; alt=&#34;Insall Guest Additions&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;虚拟机中安装依赖的编译环境套件:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;$sudo apt-get install build-essential&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;执行:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;uname -r&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;看装的是哪个kernel type，然后选择性的安装下面3个之一：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{something}-generic-pae = sudo apt-get install linux-headers-generic-pae
+{something}-generic = sudo apt-get install linux-headers-generic
+{something}-server = sudo apt-get install linux-headers-server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;挂载光驱&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;$sudo mount /dev/cdrom /media/cdrom&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;安装增强功能，如果出现以下错误是因为Server未安装图形界面，不影响使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#Installing the Window System drivers ...fail!
+#(Could not find the X.Org or XFree86 Window System.)
+$sudo /media/cdrom/VBoxLinuxAdditions.run
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;卸载cdrom&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;$sudo umount /media/cdrom&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;将共享文件夹(share)挂载到mnt下&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;$sudo mount -t vboxsf share /mnt&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;其他问题:d257e2f4020594dc6ae603b9b5c8c284&#34;&gt;其他问题&lt;/h3&gt;
+
+&lt;p&gt;在mount目录里，sudo执行脚本，总是Read-only file system。google了一会，发现原来是在mount的盘里去写系统路径下的文件就会出这个错。所以，不要执行mount目录的脚本就行了。（拷出来外面执行）&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>自豪的使用上了WordPress</title>
+            <link>http://blog.coderzh.com/2014/09/09/wordpress</link>
+            <pubDate>Tue, 09 Sep 2014 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2014/09/09/wordpress</guid>
+            <description>&lt;p&gt;自从购买了DigitalOcean的VPS，就一直在上面折腾着。首当其冲的，是把我的博客转移到VPS中来，实现自己的独立博客。开始打算的是一切自己DIY，并且我之前也写过一套博客程序，用Python+Tornado+mongodb实现的。虽然很久没有维护，但还是可用的状态。&lt;/p&gt;
+
+&lt;p&gt;最终，我还是放弃了自己写的NancyBlog(&lt;a href=&#34;http://code.google.com/p/nancyblog/)，而是选择了大名鼎鼎的WordPress，原因如下：&#34;&gt;http://code.google.com/p/nancyblog/)，而是选择了大名鼎鼎的WordPress，原因如下：&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;我只是博客的使用者，应该把博客程序的开发交给更加有经验和经历的人。&lt;/li&gt;
+&lt;li&gt;我自己的博客，要换个皮肤比较自己DIY很久。而WordPress有大量的皮肤，随意你切换。&lt;/li&gt;
+&lt;li&gt;WordPress有大量的插件支持，比如使用MarkDown编写博文。能完全满足我写博客的需求。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;开始我是打算把博客园里的博客导入过来的，毕竟我在博客园写博客已经有7年的时间了，积累了不少的文章。网上搜寻了导入的方法，找到一篇文章：将博客园(cnblogs.com)数据导入到wordpress(&lt;a href=&#34;http://levi.cg.am/archives/163)。我安装插件后导入毫无反应，应该是这个插件太久没有更新了，已经不能解析最新的博客园备份文章了。无奈只好先放一放，之后有时间自己实现个导入功能。当然，新的博客，一切从头开始，也未必不是一件好事。&#34;&gt;http://levi.cg.am/archives/163)。我安装插件后导入毫无反应，应该是这个插件太久没有更新了，已经不能解析最新的博客园备份文章了。无奈只好先放一放，之后有时间自己实现个导入功能。当然，新的博客，一切从头开始，也未必不是一件好事。&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;创业艰难，坚持不易，思考和总结不能停，博文还是得继续。给自己加油吧！&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>DigitalOcean上使用Tornado&#43;MongoDB&#43;Nginx&#43;Supervisor&#43;DnsPod快速搭建个人博客</title>
+            <link>http://blog.coderzh.com/2014/05/19/digitalocean</link>
+            <pubDate>Mon, 19 May 2014 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2014/05/19/digitalocean</guid>
+            <description>
+
+&lt;h3 id=&#34;digitalocean:51858cffc176cb478720d9c052e82245&#34;&gt;DigitalOcean&lt;/h3&gt;
+
+&lt;p&gt;之前买了个便宜的VPS并且在上面搭建了我自己写的博客程序，后来VPS里运行MongoDB经常自己挂掉就索性没理了。直到现在VPS已经过期，服务器被强制关掉了。周末在家索性想着把这个博客程序重新搭建起来。&lt;/p&gt;
+
+&lt;p&gt;选择Linode还是云主机（阿里云等等）？阿里云貌似有些贵，而且还有一堆备案的流程。Linode最近推出SSD服务，20刀/月的价格，加量不加价，很是吸引人。但无奈还是花的有些心疼。忽然另外一个VPS服务&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;DigitalOcean&lt;/a&gt;(链接含refcode喔)被我无意发现。DigitalOcean是一家IaaS服务提供商，其特色就是提供快速的固态硬盘服务器，该公司宣称可在55秒之内搭建好一台云服务器，所有的服务器均拥有1G的网络接口，每月基础套餐为1TB，最低套餐费用仅为5美元/月。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://images.cnitblog.com/blog/16913/201405/190032003752557.jpg&#34; alt=&#34;DigitalOcean&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;每个月20刀的配置和Linode的20刀的配置几乎一样。但是DigitalOcean提供了最低5美元/月的配置，而且如果使用优惠码注册，还能免费送10美元。相当于免费使用2个月。于是我选择了5美元的配置，Google了一把优惠码，并且非常顺利的找到了能用的。Google搜索：digitalocean coupon。我是在这里找到： &lt;a href=&#34;http://www.retailmenot.com/view/digitalocean.com&#34;&gt;http://www.retailmenot.com/view/digitalocean.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;注册，填入优惠码，选择5$的主机类型，主机位置我选了旧金山（美国西部，据说比其他的稳定），操作系统选择了Ubuntu 14.04 x64。一切都非常顺利，正如他们的广告所说的，55秒内，一台热乎乎的VPS送到了我的手上。&lt;/p&gt;
+
+&lt;p&gt;有兴趣的同学可以用我的推荐链接注册哦，我也能得到一些好处。注册链接：&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;DigitalOcean&lt;/a&gt;
+用到哪天不想用了，DigitalOcean还提供了生成一个镜像(Image)的功能，然后你取消掉VPS服务器(Droplets)，之后将不收取费用。哪天忽然又想用了再开通它，用之前的镜像一还原，马上就恢复了之前的环境，很是方便。&lt;/p&gt;
+
+&lt;h3 id=&#34;vps安装必要的软件:51858cffc176cb478720d9c052e82245&#34;&gt;VPS安装必要的软件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install git
+sudo apt-get install python-pip
+sudo apt-get install nginx
+sudo apt-get install supervisor
+sudo pip install tornado
+sudo pip install pymongo
+sudo pip install beautifulsoup4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;（我安装了beautifulsoup是因为我做了个工具把博客园的博客导入过来。）
+mongodb 安装：&lt;a href=&#34;http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/&#34;&gt;http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;博客程序:51858cffc176cb478720d9c052e82245&#34;&gt;博客程序&lt;/h3&gt;
+
+&lt;p&gt;之前我用python+tornado+pymongo写了一套博客程序，只是给我自己使用，所以我放在了私有仓库&lt;a href=&#34;http://bitbucket.org&#34;&gt;bitbucket&lt;/a&gt;上。
+网站程序一般放在/var/www目录里。所以我用git clone把我的代码放到了/var/www/coderzh&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo mkdir /var/www
+cd /var/www
+git clone https://xxxxx.xxxx.xxx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;mongodb:51858cffc176cb478720d9c052e82245&#34;&gt;MongoDB&lt;/h3&gt;
+
+&lt;p&gt;由于我的程序没有使用MongoDB默认的端口27017，所以我需要修改端口的设置。找到MongoDB的配置文件，修改port字段：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim /etc/mongodb.conf
+#修改port=27017部分 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;停止和重启mongodb：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo service mongodb stop
+sudo service mongodb start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;运行博客程序:51858cffc176cb478720d9c052e82245&#34;&gt;运行博客程序&lt;/h3&gt;
+
+&lt;p&gt;博客程序运行需要的环境已经基本配置好，这时运行博客程序看是否能正常起来：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo python /var/www/coderzh/main.py --port 8001
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;打开浏览器试试能不能访问: &lt;code&gt;http://服务器IP:8001&lt;/code&gt;   OK，太棒了，一起正常。&lt;/p&gt;
+
+&lt;h3 id=&#34;supervisor:51858cffc176cb478720d9c052e82245&#34;&gt;Supervisor&lt;/h3&gt;
+
+&lt;p&gt;停掉刚才的main.py，这时候要上一个好东西。它就是Supervisor，它是一个进程监控守护程序。它负责开机时自动启动你配置好的程序，并且在你的程序莫名其妙挂掉时，Supervisor会自动去重启他们。可以说，它是网站稳定运行的后勤保障啊。&lt;/p&gt;
+
+&lt;p&gt;新建一个Supervisor配置文件，放到/ect/supervisor/conf.d目录下，因为/etc/supervisor/supervisord.conf里配置了自动读取conf.d目录下的文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim /ect/supervisor/conf.d/coderzh.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编辑coderzh.conf&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[program:coderzh]
+command=python /var/www/coderzh/main.py --port=8001
+directory=/var/www/coderzh
+autorestart=true
+redirect_stderr=true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重载配置，重启Supervisior：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;supervisorctl reload 
+supervisorctl start all
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再次访问: &lt;code&gt;http://服务器IP:8001&lt;/code&gt;   试试，嗯，一起正常。Supervisor工作了。&lt;/p&gt;
+
+&lt;h3 id=&#34;nginx:51858cffc176cb478720d9c052e82245&#34;&gt;Nginx&lt;/h3&gt;
+
+&lt;p&gt;接下来上Nginx，它是一个HTTP和反向代理服务器。最终网站的访问经过域名解析到服务器后，都要通过Nginx将访问请求转到main.py中处理。理解Nginx的配置文件很重要，好吧，说实话，我当初摸Nginx，Apache之类的东西时都是一头雾水的。Nginx的主要配置文件路径在：/etc/nginx/nginx.conf&lt;/p&gt;
+
+&lt;p&gt;为了让Nginx支持多域名，多Web服务。我修改/etc/nginx/nginx.conf 内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;user www-data;
+worker_processes 4;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+    use epoll;
+}
+
+http {
+    types_hash_max_size 2048;
+    server_names_hash_bucket_size 64;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+ 
+    access_log /var/log/nginx/access.log;
+ 
+    keepalive_timeout 65;
+    proxy_read_timeout 200;
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    gzip on;
+    gzip_min_length 1000;
+    gzip_proxied any;
+    gzip_types text/plain application/x-javascript text/css application/xml; 
+
+    include /etc/nginx/conf.d/*;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意最后一行：include /etc/nginx/conf.d/*，所以在conf.d目录里，可以为每个网站都配置一个.conf文件。我为博客程序生产的配置：vim /etc/nginx/conf.d/coderzh.conf&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;upstream coderzh {
+    server 127.0.0.1:8001;
+}
+
+server {
+    listen 80;
+    server_name coderzh.com www.coderzh.com;
+
+    location = /favicon.ico {
+        rewrite (.*) /static/favicon.ico;
+    }
+    location = /robots.txt {
+        rewrite (.*) /static/robots.txt;
+    }
+
+    location / {
+        proxy_pass_header Server;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+        proxy_pass http://coderzh;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重新启动nginx&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;service nginx restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这时已经可以用80端口访问了。&lt;/p&gt;
+
+&lt;h3 id=&#34;dnspod:51858cffc176cb478720d9c052e82245&#34;&gt;DnsPod&lt;/h3&gt;
+
+&lt;p&gt;接下来就是通过DnsPod将域名解析到这台VPS服务器。应该不是什么问题，有问题可以查看DnsPod帮助。&lt;/p&gt;
+
+&lt;h3 id=&#34;部署完成:51858cffc176cb478720d9c052e82245&#34;&gt;部署完成&lt;/h3&gt;
+
+&lt;p&gt;执行导入工具，将博客园的博客导入进来。访问：&lt;a href=&#34;http://www.coderzh.com&#34;&gt;http://www.coderzh.com&lt;/a&gt;。HOHO，大功告成。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>ViEmuVS2013-3.2.1 破解</title>
+            <link>http://blog.coderzh.com/2014/04/02/3640179</link>
+            <pubDate>Wed, 02 Apr 2014 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2014/04/02/3640179</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://images.cnitblog.com/blog/16913/201404/020953210788248.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;VS升级到2013后，作为一个Vimer，自然需要更新最新的ViEmu插件，因为现在离了Vim，写代码已经寸步难行了。&lt;/p&gt;
+
+&lt;p&gt;ViEmu 3.2.1的破解其实和Viemu 3.0.13的破解方法一样。安装前关闭VS，步骤：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;双击安装 ViEmuVS2013-3.2.1.vsix.&lt;/li&gt;
+&lt;li&gt;在 C:\Users\Administrator\AppData\Local\Microsoft\VisualStudio\12.0.xtensions\ 文件夹下，找到 Viemu 的插件目录（目录下的文件名可以看出来）， 将 NGBridge.dll 覆盖。&lt;/li&gt;
+&lt;li&gt;双击导入 viemuvs13.reg.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;另外，新版的ViEmu和VA(Visual Assist X)有冲突，弹不出代码提示。解决方法：&lt;/p&gt;
+
+&lt;p&gt;将修改注册表中：
+HKCU\Software\Whole Tomato\Visual Assist X\VANet12 的TrackCaretVisibility 改为 00 即可（改之前先关闭VS）&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://files.cnblogs.com/coderzh/Viemu3.2.1-%E7%A0%B4%E8%A7%A3%E5%AE%89%E8%A3%85%E5%8C%85.7z&#34;&gt;Viemu3.2.1-破解安装包.7z&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2014/04/02/3640179.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2014/04/02/3640179.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>tornado</title>
+            <link>http://blog.coderzh.com/2013/03/13/2958224</link>
+            <pubDate>Wed, 13 Mar 2013 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2013/03/13/2958224</guid>
+            <description>
+
+&lt;p&gt;wget &lt;a href=&#34;https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea&#34;&gt;https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea&lt;/a&gt;
+sh setuptools_xxx.egg&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;MongoDB官网：&lt;a href=&#34;http://www.linuxidc.com/Linux/2012-08/linux.asp?url=http://www.mongodb.org/&#34;&gt;http://www.mongodb.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;如何在&amp;nbsp;&lt;a href=&#34;http://www.linuxidc.com/topicnews.aspx?tid=2&#34; title=&#34;Ubuntu&#34;&gt;Ubuntu&lt;/a&gt;&amp;nbsp;12.04 (Precise) Server 上安装 MongoDB&lt;/p&gt;
+
+&lt;p&gt;sudo apt-key adv &amp;ndash;keyserver keyserver.ubuntu.com &amp;ndash;recv 7F0CEB10
+echo &amp;ldquo;deb &lt;a href=&#34;http://downloads-distro.mongodb.org/repo/ubuntu-upstart&#34;&gt;http://downloads-distro.mongodb.org/repo/ubuntu-upstart&lt;/a&gt; dist 10gen&amp;rdquo; | tee -a /etc/apt/sources.list.d/10gen.list
+sudo apt-get -y update&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get -y install mongodb-10gen&lt;/p&gt;
+
+&lt;p&gt;配置文件：/etc/mongodb.conf&lt;/p&gt;
+
+&lt;p&gt;对于基于Upstart的系统，控制脚本在/etc/init/mongodb.conf。&lt;/p&gt;
+
+&lt;p&gt;默认数据文件目录：/var/lib/mongodb&lt;/p&gt;
+
+&lt;p&gt;默认日志文件目录： /var/log/mongodb&lt;/p&gt;
+
+&lt;p&gt;启动MongoDB:&amp;nbsp;&amp;nbsp; sudo service mongodb start&lt;/p&gt;
+
+&lt;p&gt;sudo service mongodb stop&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 停止&lt;/p&gt;
+
+&lt;p&gt;sudo service mongodb restart 重启&lt;/p&gt;
+
+&lt;p&gt;测试：在终端上运行mongo打开mongo shell&lt;/p&gt;
+
+&lt;h1 id=&#34;mongo:478d349564ff1867135392f8c92ebb58&#34;&gt;mongo&lt;/h1&gt;
+
+&lt;p&gt;MongoDB shell version: 2.0.7
+connecting to: test&lt;/p&gt;
+
+&lt;p&gt;&amp;gt; db.test.save({a:1})
+&amp;gt; db.test.find()
+{ &amp;ldquo;_id&amp;rdquo; : ObjectId(&amp;ldquo;502b284cd9de55a0e9ca86d9&amp;Prime;), &amp;ldquo;a&amp;rdquo; : 1 }&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h2 id=&#34;span-安装nginx-span:478d349564ff1867135392f8c92ebb58&#34;&gt;&lt;span&gt;安装nginx&lt;/span&gt;&lt;/h2&gt;
+
+&lt;pre&gt;sudo apt-get install nginx&lt;/pre&gt;
+
+&lt;p&gt;Ubuntu安装之后的文件结构大致为：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;所有的配置文件都在/etc/nginx下，并且每个虚拟主机已经安排在了/etc/nginx/sites-available下&lt;/li&gt;
+&lt;li&gt;程序文件在/usr/sbin/nginx&lt;/li&gt;
+&lt;li&gt;日志放在了/var/log/nginx中&lt;/li&gt;
+&lt;li&gt;并已经在/etc/init.d/下创建了启动脚本nginx&lt;/li&gt;
+&lt;li&gt;默认的虚拟主机的目录设置在了/var/www/nginx-default (有的版本 默认的虚拟主机的目录设置在了/var/www, 请参考/etc/nginx/sites-available里的配置)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a name=&#34;.E5.90.AF.E5.8A.A8nginx&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;nbsp:478d349564ff1867135392f8c92ebb58&#34;&gt;&amp;nbsp;&lt;/h2&gt;
+
+&lt;h2 id=&#34;span-启动nginx-span:478d349564ff1867135392f8c92ebb58&#34;&gt;&lt;span&gt;启动nginx&lt;/span&gt;&lt;/h2&gt;
+
+&lt;pre&gt;sudo /etc/init.d/nginx start&lt;/pre&gt;
+
+&lt;p&gt;然后就可以访问了，&lt;a href=&#34;http://localhost/&#34; title=&#34;http://localhost/&#34;&gt;http://localhost/&lt;/a&gt;&amp;nbsp;， 一切正常！如果不能访问，先不要继续，看看是什么原因，解决之后再继续。 （安装完后如出现403错误，那可能是nginx配置文件里的网站路径不正确）&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;mongodb new 安装最新的版本&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;sudo apt-key adv &amp;ndash;keyserver keyserver.ubuntu.com &amp;ndash;recv 7F0CEB10&lt;/p&gt;
+
+&lt;p&gt;添加下面的到 /etc/apt/sources.list&lt;/p&gt;
+
+&lt;p&gt;deb &lt;a href=&#34;http://downloads-distro.mongodb.org/repo/ubuntu-upstart&#34;&gt;http://downloads-distro.mongodb.org/repo/ubuntu-upstart&lt;/a&gt; dist 10gen&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get update&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get install mongodb-10gen&lt;/p&gt;
+
+&lt;p&gt;改完配置文件后，对应的路径要设置权限&lt;/p&gt;
+
+&lt;p&gt;chmod -R 777 /path&lt;/p&gt;
+
+&lt;h1 id=&#34;mongod-dbpath-path-logpath-path-dblog-txt-logappend-directoryperdb-bind-ip-127-0-0-1-auth-master:478d349564ff1867135392f8c92ebb58&#34;&gt;mongod &amp;ndash;dbpath=/path &amp;ndash;logpath=/path/dblog.txt &amp;ndash;logappend &amp;ndash;directoryperdb &amp;ndash;bind_ip=127.0.0.1 &amp;ndash;auth &amp;ndash;master&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;启动 MongoDB&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;sudo /etc/init.d/mongodb start&lt;/p&gt;
+
+&lt;p&gt;easy_install pymongo&lt;/p&gt;
+
+&lt;div&gt;**&amp;nbsp;**&lt;/div&gt;
+&lt;div&gt;**添加安全认证：**&lt;/div&gt;
+
+&lt;p&gt;在admin数据库中使用&lt;strong&gt;db.addUser()&lt;/strong&gt;命令添加了管理员帐号，且使用&lt;strong&gt;&amp;ndash;auth&lt;/strong&gt;参数启动mongod
+mongo.exe
+use admin
+db.addUser(&amp;lsquo;user1name&amp;rsquo;,&amp;lsquo;user1password&amp;rsquo;) #完全权限
+db.addUser(&amp;lsquo;user2name&amp;rsquo;,&amp;lsquo;user2password&amp;rsquo;,True) #只读权限&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;在Windows下安装为服务：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;mongod.exe &amp;ndash;dbpath=c:\MongoDB.Data &amp;ndash;logpath=c:\MongoDB.Data\log.txt &amp;ndash;logappend &amp;ndash;directoryperdb &amp;ndash;auth &amp;ndash;install&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;禁用HTTP的端口&amp;nbsp;(localhost:28017) 使用参数&amp;nbsp;&amp;ndash;nohttpinterface
+全部参数请参照这里&amp;nbsp;&lt;a href=&#34;http://www.mongodb.org/display/DOCS/Command+Line+Parameters&#34;&gt;http://www.mongodb.org/display/DOCS/Command+Line+Parameters&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;启动服务：
+net start &amp;ldquo;MongoDB&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;停止服务：
+net stop &amp;ldquo;MongoDB&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;安装tornado&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;easy_install tornado&lt;/p&gt;
+
+&lt;p&gt;#tornado&lt;/p&gt;
+
+&lt;p&gt;wget &lt;a href=&#34;http://github.com/downloads/facebook/tornado/tornado-2.1.1.tar.gz&#34;&gt;http://github.com/downloads/facebook/tornado/tornado-2.1.1.tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;tar xvzf tornado-2.1.1.tar.gz&lt;/p&gt;
+
+&lt;p&gt;cd tornado-2.1.1&lt;/p&gt;
+
+&lt;p&gt;python setup.py build&lt;/p&gt;
+
+&lt;p&gt;sudo python setup.py install&lt;/p&gt;
+
+&lt;p&gt;修改最大文件上传限制 tornado/iostream.py&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;原来&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;def &lt;strong&gt;init&lt;/strong&gt;(self, socket, io_loop=None, max_buffer_size=104857600,read_chunk_size=4096):&lt;/p&gt;
+
+&lt;p&gt;改成&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;def &lt;strong&gt;init&lt;/strong&gt;(self, socket, io_loop=None, max_buffer_size=1024*1024*1024 , read_chunk_size=8192):&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2013/03/13/2958224.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2013/03/13/2958224.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>从CEGUI源码看代码规范</title>
+            <link>http://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style</link>
+            <pubDate>Sun, 08 May 2011 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style</guid>
+            <description>&lt;p&gt;&lt;a href=&#34;http://www.cegui.org.uk/&#34;&gt;CEGUI&lt;/a&gt;（Crazy Eddie&amp;#8217;s GUI）是一个使用C++实现的基于LGPL协议的的开源GUI库，主要应用于游戏界面。连著名的开源游戏引擎Orge3D也放弃了自己的界面引擎而使用第三方的开源界面引擎CEGUI。&lt;/p&gt;
+
+&lt;p&gt;对于开源的代码工程，我首先会观察它的代码规范。比如，使用什么命名法，是否使用异常等等，这很有用。看不同的开源工程，可以看到各种不同的代码规范，其中有很多是值得借鉴的。&lt;/p&gt;
+
+&lt;p&gt;代码规范本身并没有绝对的对错之分，但我们往往为了某一个代码规范争论的面红耳赤。比如，是否使用匈牙利命名法，使用BOOL还是bool等等。这时，就必须综合考虑团队现有的使用习惯和既有代码的风格，制定出一套适合自己的统一的规范。所以，规范除了对与错，最关键的地方还是要统一。存在即合理，我们不要一味去排斥其他人的使用习惯和规范，而应该多读读别人的代码，看看著名的开源代码，了解别人的做法，然后对自己的做法进行一些反思。这才是面对代码规范正确的心态。&lt;/p&gt;
+
+&lt;p&gt;CEGUI是一套不错的界面库，界面布局使用XML来描述，提供了专用的界面编辑器，让界面制作变得更简单。CEGUI作为一个成熟的开源产品，代码已经经历了无数的千锤百炼，整体风格比较统一，是一个很好的学习范本。接下来，我粗浅的分析一下CEGUI一些值得学习的地方。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Camel命名法&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CEGUI完全摈弃了匈牙利命名法，而使用更贴近语义的不使用变量类型前缀的Camel(骆驼)命名法，这也是现今代码通用的做法。匈牙利命名法在较老的工程中比较常见。无数使用Camel的著名开源工程，很好的告诉了匈牙利命名法的支持者，不使用匈牙利命名法，代码依然清晰可读，甚至会更好。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 成员变量前缀&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CEGUI中无论是class还是struct，成员变量都统一加d_前缀。通常的两种做法是不加前缀和加m_前缀。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. struct&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CEGUI中，struct的命名没有使用全大写，而是和class的大小写命名一样。在struct中，只可能出现数据成员，操作符重载函数，构造函数等。struct只用来数据结构存储使用，不使用任何其他的成员函数。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. 字符串处理&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CEGUI中的字符串处理没有使用char, wchar_t, TCHAR，std:string，ATL::CString，而是自己实现了一套String类（CEGUIString.h）。自己实现的String类优势非常明显，可以让程序员从繁琐的字符指针操作中解脱出来，将更多的精力放在功能的实现上。自定义的String可以实现更多方便、切合实际使用的函数。（比如CEGUI中的find_first_not_of，replace等函数。）如果要实现一个String类，CEGUI中的CEGUIString是一个很好的范本。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5. 使用bool&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;使用bool和BOOL都有各自的理由，CEGUI中全部使用bool，是现在流行，最常见的，也是我喜欢的做法。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6. 异常机制&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CEGUI中完全使用异常机制，通过重载std::exception定义了一套完整的异常机制。通过异常的处理，使得程序员从繁琐的错误检查和错误返回值中解放出来。如果想了解C++中如何能够很好的使用异常，看看CEGUI中异常的实现吧（CEGUIExceptions.h）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7. 不用goto&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;几乎每一本教材都会告诫用户，不要使用goto，这会让你的代码变得凌乱不堪。然而当真正成为一个程序员，加入一个公司甚至大型公司，里面的代码照样充斥了无数的goto语句。goto的滥用是绝对不允许的，goto在某些情况下的确有它的合理之处（比如保证函数单一出口，释放资源）。还是那句话，存在即合理。CEGUI中完全不使用goto，有了错误，立即抛异常，或者直接返回。我本人也是比较喜欢这种提前返回的方式。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;8. 简单易用的Log系统&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;如果想实现一个既简单，又易用的Log系统，就看看CEGUI中的实现吧（CEGUILogger）。支持Log等级（Error，Warning等），输出日期、当前代码行等功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;9. Singleton的实现&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CEGUI中使用了一个通用的Singleton&amp;lt;T&amp;gt;模板基类，这个技巧非常好使。实现也非常简单：&lt;/p&gt;
+
+&lt;div class=&#34;cnblogs_code&#34;&gt;
+&lt;div&gt;&lt;span style=&#34;color: #000000;&#34;&gt;template&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;typename&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;CEGUIEXPORT&amp;nbsp;Singleton
+&lt;br /&gt;
+{
+&lt;br /&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;protected&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&lt;br /&gt;
+#ifdef&amp;nbsp;__MINGW32__
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;CEGUIEXPORT
+&lt;br /&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;#endif&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;ms_Singleton;
+&lt;br /&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ms_Singleton&amp;nbsp;);
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ms_Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;static_cast&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Singleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;ms_Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #800080;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;&amp;nbsp;&amp;nbsp;}
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;getSingleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;}
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;getSingletonPtr(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;}
+&lt;br /&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;private&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;const&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;)&amp;nbsp;{&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;&amp;nbsp;}
+&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;const&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;)&amp;nbsp;{}
+&lt;br /&gt;
+};&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如上面的Logger类，要使用Singleton，则这样定义：&lt;/p&gt;
+
+&lt;div class=&#34;cnblogs_code&#34;&gt;
+&lt;div&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;CEGUIEXPORT&amp;nbsp;Logger&amp;nbsp;:&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Logger&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&lt;br /&gt;
+{
+&lt;br /&gt;
+}&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这样做最大的一个好处是统一，不会在代码中出现各种稀奇古怪不同的Singleton实现。同时哪个class是Singleton也一目了然。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;总结 &amp;nbsp;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;本文仅仅讨论CEGUI中的代码规范，而且也只是其中很小的一部分，如有疏漏欢迎一起讨论。之后我会更加关注CEGUI现细节，如有收获将与大家分享。
+最后，我还是那句话：&lt;span style=&#34;color: red; &#34;&gt;不要完全排斥任何一种规范，将每种规范了解和使用过后，再来思考自己应该怎样做。&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;color: red; &#34;&gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;CEGUI主页：&lt;a href=&#34;http://www.cegui.org.uk/wiki/index.php/Downloads&#34;&gt;http://www.cegui.org.uk&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;源码下载 ：&lt;a href=&#34;http://www.cegui.org.uk/wiki/index.php/Downloads&#34;&gt;http://www.cegui.org.uk/wiki/index.php/Downloads&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2011/05/08/CEGUI_Coding_Style.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2011/05/08/CEGUI_Coding_Style.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,5171 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <script type="text/javascript">
+ 
+(function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X=[].slice,Y={}.hasOwnProperty,Z=function(a,b){function c(){this.constructor=a}for(var d in b)Y.call(b,d)&&(a[d]=b[d]);return c.prototype=b.prototype,a.prototype=new c,a.__super__=b.prototype,a},$=[].indexOf||function(a){for(var b=0,c=this.length;c>b;b++)if(b in this&&this[b]===a)return b;return-1};for(u={catchupTime:100,initialRate:.03,minTime:250,ghostTime:100,maxProgressPerFrame:20,easeFactor:1.25,startOnPageLoad:!0,restartOnPushState:!0,restartOnRequestAfter:500,target:"body",elements:{checkInterval:100,selectors:["body"]},eventLag:{minSamples:10,sampleCount:3,lagThreshold:3},ajax:{trackMethods:["GET"],trackWebSockets:!0,ignoreURLs:[]}},C=function(){var a;return null!=(a="undefined"!=typeof performance&&null!==performance&&"function"==typeof performance.now?performance.now():void 0)?a:+new Date},E=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame,t=window.cancelAnimationFrame||window.mozCancelAnimationFrame,null==E&&(E=function(a){return setTimeout(a,50)},t=function(a){return clearTimeout(a)}),G=function(a){var b,c;return b=C(),(c=function(){var d;return d=C()-b,d>=33?(b=C(),a(d,function(){return E(c)})):setTimeout(c,33-d)})()},F=function(){var a,b,c;return c=arguments[0],b=arguments[1],a=3<=arguments.length?X.call(arguments,2):[],"function"==typeof c[b]?c[b].apply(c,a):c[b]},v=function(){var a,b,c,d,e,f,g;for(b=arguments[0],d=2<=arguments.length?X.call(arguments,1):[],f=0,g=d.length;g>f;f++)if(c=d[f])for(a in c)Y.call(c,a)&&(e=c[a],null!=b[a]&&"object"==typeof b[a]&&null!=e&&"object"==typeof e?v(b[a],e):b[a]=e);return b},q=function(a){var b,c,d,e,f;for(c=b=0,e=0,f=a.length;f>e;e++)d=a[e],c+=Math.abs(d),b++;return c/b},x=function(a,b){var c,d,e;if(null==a&&(a="options"),null==b&&(b=!0),e=document.querySelector("[data-pace-"+a+"]")){if(c=e.getAttribute("data-pace-"+a),!b)return c;try{return JSON.parse(c)}catch(f){return d=f,"undefined"!=typeof console&&null!==console?console.error("Error parsing inline pace options",d):void 0}}},g=function(){function a(){}return a.prototype.on=function(a,b,c,d){var e;return null==d&&(d=!1),null==this.bindings&&(this.bindings={}),null==(e=this.bindings)[a]&&(e[a]=[]),this.bindings[a].push({handler:b,ctx:c,once:d})},a.prototype.once=function(a,b,c){return this.on(a,b,c,!0)},a.prototype.off=function(a,b){var c,d,e;if(null!=(null!=(d=this.bindings)?d[a]:void 0)){if(null==b)return delete this.bindings[a];for(c=0,e=[];c<this.bindings[a].length;)e.push(this.bindings[a][c].handler===b?this.bindings[a].splice(c,1):c++);return e}},a.prototype.trigger=function(){var a,b,c,d,e,f,g,h,i;if(c=arguments[0],a=2<=arguments.length?X.call(arguments,1):[],null!=(g=this.bindings)?g[c]:void 0){for(e=0,i=[];e<this.bindings[c].length;)h=this.bindings[c][e],d=h.handler,b=h.ctx,f=h.once,d.apply(null!=b?b:this,a),i.push(f?this.bindings[c].splice(e,1):e++);return i}},a}(),j=window.Pace||{},window.Pace=j,v(j,g.prototype),D=j.options=v({},u,window.paceOptions,x()),U=["ajax","document","eventLag","elements"],Q=0,S=U.length;S>Q;Q++)K=U[Q],D[K]===!0&&(D[K]=u[K]);i=function(a){function b(){return V=b.__super__.constructor.apply(this,arguments)}return Z(b,a),b}(Error),b=function(){function a(){this.progress=0}return a.prototype.getElement=function(){var a;if(null==this.el){if(a=document.querySelector(D.target),!a)throw new i;this.el=document.createElement("div"),this.el.className="pace pace-active",document.body.className=document.body.className.replace(/pace-done/g,""),document.body.className+=" pace-running",this.el.innerHTML='<div class="pace-progress">\n  <div class="pace-progress-inner"></div>\n</div>\n<div class="pace-activity"></div>',null!=a.firstChild?a.insertBefore(this.el,a.firstChild):a.appendChild(this.el)}return this.el},a.prototype.finish=function(){var a;return a=this.getElement(),a.className=a.className.replace("pace-active",""),a.className+=" pace-inactive",document.body.className=document.body.className.replace("pace-running",""),document.body.className+=" pace-done"},a.prototype.update=function(a){return this.progress=a,this.render()},a.prototype.destroy=function(){try{this.getElement().parentNode.removeChild(this.getElement())}catch(a){i=a}return this.el=void 0},a.prototype.render=function(){var a,b,c,d,e,f,g;if(null==document.querySelector(D.target))return!1;for(a=this.getElement(),d="translate3d("+this.progress+"%, 0, 0)",g=["webkitTransform","msTransform","transform"],e=0,f=g.length;f>e;e++)b=g[e],a.children[0].style[b]=d;return(!this.lastRenderedProgress||this.lastRenderedProgress|0!==this.progress|0)&&(a.children[0].setAttribute("data-progress-text",""+(0|this.progress)+"%"),this.progress>=100?c="99":(c=this.progress<10?"0":"",c+=0|this.progress),a.children[0].setAttribute("data-progress",""+c)),this.lastRenderedProgress=this.progress},a.prototype.done=function(){return this.progress>=100},a}(),h=function(){function a(){this.bindings={}}return a.prototype.trigger=function(a,b){var c,d,e,f,g;if(null!=this.bindings[a]){for(f=this.bindings[a],g=[],d=0,e=f.length;e>d;d++)c=f[d],g.push(c.call(this,b));return g}},a.prototype.on=function(a,b){var c;return null==(c=this.bindings)[a]&&(c[a]=[]),this.bindings[a].push(b)},a}(),P=window.XMLHttpRequest,O=window.XDomainRequest,N=window.WebSocket,w=function(a,b){var c,d,e;e=[];for(d in b.prototype)try{e.push(null==a[d]&&"function"!=typeof b[d]?"function"==typeof Object.defineProperty?Object.defineProperty(a,d,{get:function(){return b.prototype[d]},configurable:!0,enumerable:!0}):a[d]=b.prototype[d]:void 0)}catch(f){c=f}return e},A=[],j.ignore=function(){var a,b,c;return b=arguments[0],a=2<=arguments.length?X.call(arguments,1):[],A.unshift("ignore"),c=b.apply(null,a),A.shift(),c},j.track=function(){var a,b,c;return b=arguments[0],a=2<=arguments.length?X.call(arguments,1):[],A.unshift("track"),c=b.apply(null,a),A.shift(),c},J=function(a){var b;if(null==a&&(a="GET"),"track"===A[0])return"force";if(!A.length&&D.ajax){if("socket"===a&&D.ajax.trackWebSockets)return!0;if(b=a.toUpperCase(),$.call(D.ajax.trackMethods,b)>=0)return!0}return!1},k=function(a){function b(){var a,c=this;b.__super__.constructor.apply(this,arguments),a=function(a){var b;return b=a.open,a.open=function(d,e){return J(d)&&c.trigger("request",{type:d,url:e,request:a}),b.apply(a,arguments)}},window.XMLHttpRequest=function(b){var c;return c=new P(b),a(c),c};try{w(window.XMLHttpRequest,P)}catch(d){}if(null!=O){window.XDomainRequest=function(){var b;return b=new O,a(b),b};try{w(window.XDomainRequest,O)}catch(d){}}if(null!=N&&D.ajax.trackWebSockets){window.WebSocket=function(a,b){var d;return d=null!=b?new N(a,b):new N(a),J("socket")&&c.trigger("request",{type:"socket",url:a,protocols:b,request:d}),d};try{w(window.WebSocket,N)}catch(d){}}}return Z(b,a),b}(h),R=null,y=function(){return null==R&&(R=new k),R},I=function(a){var b,c,d,e;for(e=D.ajax.ignoreURLs,c=0,d=e.length;d>c;c++)if(b=e[c],"string"==typeof b){if(-1!==a.indexOf(b))return!0}else if(b.test(a))return!0;return!1},y().on("request",function(b){var c,d,e,f,g;return f=b.type,e=b.request,g=b.url,I(g)?void 0:j.running||D.restartOnRequestAfter===!1&&"force"!==J(f)?void 0:(d=arguments,c=D.restartOnRequestAfter||0,"boolean"==typeof c&&(c=0),setTimeout(function(){var b,c,g,h,i,k;if(b="socket"===f?e.readyState<2:0<(h=e.readyState)&&4>h){for(j.restart(),i=j.sources,k=[],c=0,g=i.length;g>c;c++){if(K=i[c],K instanceof a){K.watch.apply(K,d);break}k.push(void 0)}return k}},c))}),a=function(){function a(){var a=this;this.elements=[],y().on("request",function(){return a.watch.apply(a,arguments)})}return a.prototype.watch=function(a){var b,c,d,e;return d=a.type,b=a.request,e=a.url,I(e)?void 0:(c="socket"===d?new n(b):new o(b),this.elements.push(c))},a}(),o=function(){function a(a){var b,c,d,e,f,g,h=this;if(this.progress=0,null!=window.ProgressEvent)for(c=null,a.addEventListener("progress",function(a){return h.progress=a.lengthComputable?100*a.loaded/a.total:h.progress+(100-h.progress)/2},!1),g=["load","abort","timeout","error"],d=0,e=g.length;e>d;d++)b=g[d],a.addEventListener(b,function(){return h.progress=100},!1);else f=a.onreadystatechange,a.onreadystatechange=function(){var b;return 0===(b=a.readyState)||4===b?h.progress=100:3===a.readyState&&(h.progress=50),"function"==typeof f?f.apply(null,arguments):void 0}}return a}(),n=function(){function a(a){var b,c,d,e,f=this;for(this.progress=0,e=["error","open"],c=0,d=e.length;d>c;c++)b=e[c],a.addEventListener(b,function(){return f.progress=100},!1)}return a}(),d=function(){function a(a){var b,c,d,f;for(null==a&&(a={}),this.elements=[],null==a.selectors&&(a.selectors=[]),f=a.selectors,c=0,d=f.length;d>c;c++)b=f[c],this.elements.push(new e(b))}return a}(),e=function(){function a(a){this.selector=a,this.progress=0,this.check()}return a.prototype.check=function(){var a=this;return document.querySelector(this.selector)?this.done():setTimeout(function(){return a.check()},D.elements.checkInterval)},a.prototype.done=function(){return this.progress=100},a}(),c=function(){function a(){var a,b,c=this;this.progress=null!=(b=this.states[document.readyState])?b:100,a=document.onreadystatechange,document.onreadystatechange=function(){return null!=c.states[document.readyState]&&(c.progress=c.states[document.readyState]),"function"==typeof a?a.apply(null,arguments):void 0}}return a.prototype.states={loading:0,interactive:50,complete:100},a}(),f=function(){function a(){var a,b,c,d,e,f=this;this.progress=0,a=0,e=[],d=0,c=C(),b=setInterval(function(){var g;return g=C()-c-50,c=C(),e.push(g),e.length>D.eventLag.sampleCount&&e.shift(),a=q(e),++d>=D.eventLag.minSamples&&a<D.eventLag.lagThreshold?(f.progress=100,clearInterval(b)):f.progress=100*(3/(a+3))},50)}return a}(),m=function(){function a(a){this.source=a,this.last=this.sinceLastUpdate=0,this.rate=D.initialRate,this.catchup=0,this.progress=this.lastProgress=0,null!=this.source&&(this.progress=F(this.source,"progress"))}return a.prototype.tick=function(a,b){var c;return null==b&&(b=F(this.source,"progress")),b>=100&&(this.done=!0),b===this.last?this.sinceLastUpdate+=a:(this.sinceLastUpdate&&(this.rate=(b-this.last)/this.sinceLastUpdate),this.catchup=(b-this.progress)/D.catchupTime,this.sinceLastUpdate=0,this.last=b),b>this.progress&&(this.progress+=this.catchup*a),c=1-Math.pow(this.progress/100,D.easeFactor),this.progress+=c*this.rate*a,this.progress=Math.min(this.lastProgress+D.maxProgressPerFrame,this.progress),this.progress=Math.max(0,this.progress),this.progress=Math.min(100,this.progress),this.lastProgress=this.progress,this.progress},a}(),L=null,H=null,r=null,M=null,p=null,s=null,j.running=!1,z=function(){return D.restartOnPushState?j.restart():void 0},null!=window.history.pushState&&(T=window.history.pushState,window.history.pushState=function(){return z(),T.apply(window.history,arguments)}),null!=window.history.replaceState&&(W=window.history.replaceState,window.history.replaceState=function(){return z(),W.apply(window.history,arguments)}),l={ajax:a,elements:d,document:c,eventLag:f},(B=function(){var a,c,d,e,f,g,h,i;for(j.sources=L=[],g=["ajax","elements","document","eventLag"],c=0,e=g.length;e>c;c++)a=g[c],D[a]!==!1&&L.push(new l[a](D[a]));for(i=null!=(h=D.extraSources)?h:[],d=0,f=i.length;f>d;d++)K=i[d],L.push(new K(D));return j.bar=r=new b,H=[],M=new m})(),j.stop=function(){return j.trigger("stop"),j.running=!1,r.destroy(),s=!0,null!=p&&("function"==typeof t&&t(p),p=null),B()},j.restart=function(){return j.trigger("restart"),j.stop(),j.start()},j.go=function(){var a;return j.running=!0,r.render(),a=C(),s=!1,p=G(function(b,c){var d,e,f,g,h,i,k,l,n,o,p,q,t,u,v,w;for(l=100-r.progress,e=p=0,f=!0,i=q=0,u=L.length;u>q;i=++q)for(K=L[i],o=null!=H[i]?H[i]:H[i]=[],h=null!=(w=K.elements)?w:[K],k=t=0,v=h.length;v>t;k=++t)g=h[k],n=null!=o[k]?o[k]:o[k]=new m(g),f&=n.done,n.done||(e++,p+=n.tick(b));return d=p/e,r.update(M.tick(b,d)),r.done()||f||s?(r.update(100),j.trigger("done"),setTimeout(function(){return r.finish(),j.running=!1,j.trigger("hide")},Math.max(D.ghostTime,Math.max(D.minTime-(C()-a),0)))):c()})},j.start=function(a){v(D,a),j.running=!0;try{r.render()}catch(b){i=b}return document.querySelector(".pace")?(j.trigger("start"),j.go()):setTimeout(j.start,50)},"function"==typeof define&&define.amd?define(["pace"],function(){return j}):"object"==typeof exports?module.exports=j:D.startOnPageLoad&&j.start()}).call(this);
+</script>
+<style type="text/css">
+   
+  .pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  .pace.pace-inactive .pace-progress {
+    display: none;
+  }
+
+  .pace .pace-progress {
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 45%;
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .pace .pace-progress:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: .5rem;
+    content: attr(data-progress-text);
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 100;
+    font-size: 5rem;
+    line-height: 1;
+    text-align: right;
+    color: rgba(229, 146, 42, 0.90);
+  }
+</style>
+
+  <title>Posts - CoderZh&#39;s Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="Posts">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="CoderZh&#39;s Blog - Posts">
+<meta itemprop="description" content="Posts">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="Posts - CoderZh&#39;s Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/post/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="Posts" />
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="Posts - CoderZh&#39;s Blog">
+<meta name="twitter:description" content="Posts">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/post/">
+  <link rel='shortlink' href="http://blog.coderzh.com/post/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+  <link href="http://blog.coderzh.com/feed.xml" rel="alternate" type="application/rss+xml" title="CoderZh&#39;s Blog" />
+
+
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="hubinfo" href="http://blog.coderzh.com/assets/hubinfo/dist/hubinfo.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+
+</head>
+
+<body class="archive category col-3cm full-width topbar-enabled chrome">
+
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a href="http://blog.coderzh.com" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a href="http://blog.coderzh.com" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh&#39;s Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <h1><i class="fa fa-folder-open"></i>Category: <span>Posts</span></h1>
+            </div>
+            <div class="pad group">
+              <div class="post-list group">
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年09月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/09/05/busy-weekend" rel="bookmark" title="周末折腾的各种东西">周末折腾的各种东西</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年09月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/09/03/a-hugo-pull-request" rel="bookmark" title="给Hugo提交了一个PR">给Hugo提交了一个PR</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年08月29日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/08/29/hugo" rel="bookmark" title="使用hugo搭建个人博客站点">使用hugo搭建个人博客站点</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年08月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/08/16/Books" rel="bookmark" title="最近读的几本书">最近读的几本书</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年08月15日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/08/15/JekyllReadMore" rel="bookmark" title="使用Jekyll官方的ReadMore摘要功能">使用Jekyll官方的ReadMore摘要功能</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年08月15日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/08/15/ThreadSanitizer" rel="bookmark" title="使用ThreadSanitizer线程检查工具">使用ThreadSanitizer线程检查工具</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年08月08日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/08/08/IDonnotCare" rel="bookmark" title="你说我是错的，那你最好证明你是对的">你说我是错的，那你最好证明你是对的</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年06月28日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/06/28/163GameOpenDay" rel="bookmark" title="小记：网易游戏学院第二届公开日">小记：网易游戏学院第二届公开日</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年06月14日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/06/14/LinkAllSymbols" rel="bookmark" title="强制链接静态库所有符号(包括未被使用的)">强制链接静态库所有符号(包括未被使用的)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年06月13日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/06/13/StartGithub" rel="bookmark" title="开启Github之旅">开启Github之旅</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年06月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/06/06/Cocos2dx36" rel="bookmark" title="Cocos2d-x3.6 Android编译问题">Cocos2d-x3.6 Android编译问题</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年05月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/05/16/ThinkingAndLearning" rel="bookmark" title="读《程序员的思维训练》">读《程序员的思维训练》</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年05月11日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/05/11/NewChange" rel="bookmark" title="最近的一些变化">最近的一些变化</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年04月26日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/04/26/Category" rel="bookmark" title="成大事者不纠结">成大事者不纠结</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年04月20日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/04/20/ZeroToOne" rel="bookmark" title="读《从0到1》">读《从0到1》</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年04月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/04/18/OpenWrt" rel="bookmark" title="OpenWrt资料汇总">OpenWrt资料汇总</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年04月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/04/10/OpenCppCoverage" rel="bookmark" title="C&#43;&#43;开源代码覆盖率工具OpenCppCoverage介绍(Windows)">C&#43;&#43;开源代码覆盖率工具OpenCppCoverage介绍(Windows)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年03月29日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/03/29/AugmentedTrafficControl" rel="bookmark" title="Facebook网络模拟测试工具ATC使用">Facebook网络模拟测试工具ATC使用</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年03月15日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/03/15/NewStart" rel="bookmark" title="新的开始，新的挑战">新的开始，新的挑战</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年03月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded" rel="bookmark" title="为什么心跳包(HeartBeat)是必须的？">为什么心跳包(HeartBeat)是必须的？</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年03月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/03/01/HackerAndPainter" rel="bookmark" title="《黑客与画家》杂想">《黑客与画家》杂想</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年02月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/02/18/Starup" rel="bookmark" title="关于创业">关于创业</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年01月14日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/01/14/SkynetUbuntuVirtualBox" rel="bookmark" title="skynet Windows开发方式：VirtualBox中共享文件夹">skynet Windows开发方式：VirtualBox中共享文件夹</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2015年01月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2015/01/10/2015Jekyll" rel="bookmark" title="你好2015">你好2015</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2014年09月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2014/09/10/mincraft" rel="bookmark" title="如何看待：微软将以25亿美元收购Minecraft开发商Mojang">如何看待：微软将以25亿美元收购Minecraft开发商Mojang</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2014年09月09日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2014/09/09/wordpress" rel="bookmark" title="自豪的使用上了WordPress">自豪的使用上了WordPress</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2014年09月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2014/09/07/startup" rel="bookmark" title="创业感悟">创业感悟</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2014年05月19日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2014/05/19/digitalocean" rel="bookmark" title="DigitalOcean上使用Tornado&#43;MongoDB&#43;Nginx&#43;Supervisor&#43;DnsPod快速搭建个人博客">DigitalOcean上使用Tornado&#43;MongoDB&#43;Nginx&#43;Supervisor&#43;DnsPod快速搭建个人博客</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2014年04月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2014/04/02/3640179" rel="bookmark" title="ViEmuVS2013-3.2.1 破解">ViEmuVS2013-3.2.1 破解</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2013年03月13日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2013/03/13/2958224" rel="bookmark" title="tornado">tornado</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2011年05月08日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style" rel="bookmark" title="从CEGUI源码看代码规范">从CEGUI源码看代码规范</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2011年03月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2011/03/06/flash-android" rel="bookmark" title="Android刷机备忘录">Android刷机备忘录</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2011年01月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2011/01/06/start2011" rel="bookmark" title="启程2011">启程2011</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年12月31日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/12/31/testing-topic" rel="bookmark" title="Google Test交流与测试开发经验总结">Google Test交流与测试开发经验总结</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年12月26日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/12/26/twiki" rel="bookmark" title="TWiki安装和使用心得">TWiki安装和使用心得</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年12月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/12/01/cpp-and-lua" rel="bookmark" title="C&#43;&#43;与Lua互操作学习">C&#43;&#43;与Lua互操作学习</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年11月30日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/11/30/goodby-google-app-engine" rel="bookmark" title="Google App Engine的14宗罪">Google App Engine的14宗罪</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年11月29日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/11/29/lupa" rel="bookmark" title="Lupa - Python中调用Lua">Lupa - Python中调用Lua</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年11月08日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/11/08/nancywiki1_0_1" rel="bookmark" title="NancyWiki1.0.1更新 - 代码自动着色">NancyWiki1.0.1更新 - 代码自动着色</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年10月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/10/07/nxclient-develop" rel="bookmark" title="NX Client开发步骤">NX Client开发步骤</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年10月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/10/07/thinclient-secret-of-nomachine" rel="bookmark" title="瘦客户端那些事 - NoMachine的秘密">瘦客户端那些事 - NoMachine的秘密</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年09月29日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/09/29/version-control" rel="bookmark" title="关于版本控制软件">关于版本控制软件</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年09月24日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/09/24/thinclient-protocol" rel="bookmark" title="瘦客户端那些事 - 远程传输协议">瘦客户端那些事 - 远程传输协议</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年09月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/09/16/build-linked-files-with-web-application" rel="bookmark" title="ASP.NET Web Application中使用链接文件">ASP.NET Web Application中使用链接文件</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年09月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/09/16/Pyjamas-python-write-javascirpt" rel="bookmark" title="Pyjamas - 用python代替javascript编写基于浏览器的应用">Pyjamas - 用python代替javascript编写基于浏览器的应用</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年09月12日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/09/12/nancywiki" rel="bookmark" title="发布基于GAE的个人Wiki系统 - NancyWiki">发布基于GAE的个人Wiki系统 - NancyWiki</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年09月11日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/09/11/thincilent" rel="bookmark" title="瘦客户端那些事 - 开篇">瘦客户端那些事 - 开篇</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年08月27日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/08/27/python-testing" rel="bookmark" title="Python测试开发分享感悟">Python测试开发分享感悟</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年08月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/08/23/custom-python-unittestoutput-as-gtest" rel="bookmark" title="Python 天天美味(37) - 让python的unittest像gtest一样输出">Python 天天美味(37) - 让python的unittest像gtest一样输出</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年08月21日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/08/21/fork" rel="bookmark" title="(转)fork()函数的理解">(转)fork()函数的理解</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年07月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/07/18/chrome-minimum-font-size" rel="bookmark" title="Chrome默认字体太小解决办法">Chrome默认字体太小解决办法</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年07月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/07/17/autossh" rel="bookmark" title="Ubuntu中让SSH自动重连">Ubuntu中让SSH自动重连</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年07月12日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/07/12/programming-life" rel="bookmark" title="多彩的程序人生">多彩的程序人生</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年06月24日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/06/24/AntiXSS" rel="bookmark" title="AntiXSS - 支持Html同时防止XSS攻击">AntiXSS - 支持Html同时防止XSS攻击</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年06月15日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/06/15/1758489" rel="bookmark" title="人人都是全面手还是专业分工">人人都是全面手还是专业分工</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年06月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/06/05/1752141" rel="bookmark" title="Python获取IAccessible接口">Python获取IAccessible接口</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年05月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/05/05/Get-IHTMLDocument2-UIAutomation-Python" rel="bookmark" title="Get IHTMLDocument2 for UI Automation in Python">Get IHTMLDocument2 for UI Automation in Python</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年05月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/05/05/python-IHTMLDocument2-automation" rel="bookmark" title="Python操作IHTMLDocument2用于自动化测试">Python操作IHTMLDocument2用于自动化测试</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年05月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/05/02/python-cookbook-pyspy" rel="bookmark" title="Python天天美味(36) - 用Python实现Spy&#43;&#43;">Python天天美味(36) - 用Python实现Spy&#43;&#43;</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年05月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/05/02/ubuntu-upgrade-from-910-to-1004" rel="bookmark" title="成功将ubuntu9.10升级到了10.04">成功将ubuntu9.10升级到了10.04</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月30日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/30/security" rel="bookmark" title="(原创)攻击方式学习系列（总）">(原创)攻击方式学习系列（总）</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月30日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/30/python-cookbook-lambda" rel="bookmark" title="Python天天美味(35) - 细品lambda">Python天天美味(35) - 细品lambda</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月28日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/28/qcon-beijing-2010-ppt-slideshare" rel="bookmark" title="收集的QCon 北京(Beijing) 2010 PPT 及总结">收集的QCon 北京(Beijing) 2010 PPT 及总结</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月27日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/27/python-cookbook33-Decorators" rel="bookmark" title="Python天天美味(34) - Decorators详解">Python天天美味(34) - Decorators详解</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月26日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/26/PyCharm" rel="bookmark" title="PyCharm - 又一强大Python IDE">PyCharm - 又一强大Python IDE</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月24日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/24/csharp4-new-features" rel="bookmark" title="C# 4.0新特性学习资料汇总">C# 4.0新特性学习资料汇总</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月21日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/21/aspnet4-htmlencoding" rel="bookmark" title="ASP.NET4.0新的语法用于HTML Encoding">ASP.NET4.0新的语法用于HTML Encoding</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月21日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/21/talk-about-agile-continuousIntegration" rel="bookmark" title="三言两语话敏捷(2) - 持续集成">三言两语话敏捷(2) - 持续集成</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年04月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/04/18/talk-about-agile-1" rel="bookmark" title="三言两语话敏捷(1) - 反馈">三言两语话敏捷(1) - 反馈</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年03月27日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/03/27/three-years-work-thinking" rel="bookmark" title="三年之痒">三年之痒</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年03月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/03/23/android-nancyglines-design" rel="bookmark" title="Android游戏开发 - NancyGLines设计">Android游戏开发 - NancyGLines设计</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年03月20日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/03/20/android-first" rel="bookmark" title="Android应用开发初印象">Android应用开发初印象</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年03月19日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/03/19/gtest_demo" rel="bookmark" title="gtest参数化测试代码示例">gtest参数化测试代码示例</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年03月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/03/17/cmd-crash" rel="bookmark" title="把操作系统的cmd命令行搞崩溃">把操作系统的cmd命令行搞崩溃</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年03月13日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/03/13/talk-cloudcomputing" rel="bookmark" title="白话云计算">白话云计算</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年02月28日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/02/28/BDD-By-NBehave" rel="bookmark" title="通过NBehave了解BDD(Behavior Driven Development)">通过NBehave了解BDD(Behavior Driven Development)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年02月22日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/02/22/thinking2010" rel="bookmark" title="春节随想">春节随想</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年02月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/02/07/xUnit-Test-Patterns7-End" rel="bookmark" title="《xUnit Test Patterns》学习笔记7(完) - 总结">《xUnit Test Patterns》学习笔记7(完) - 总结</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月31日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/31/1660390" rel="bookmark" title="VirtualPathProvider注册的问题">VirtualPathProvider注册的问题</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月31日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/31/xUnit-Test-Patterns6-Test-Double" rel="bookmark" title="《xUnit Test Patterns》学习笔记6 - Test Double">《xUnit Test Patterns》学习笔记6 - Test Double</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月26日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/26/Sharing-Master-Pages-By-DLL" rel="bookmark" title="将母版页或ASPX等其他资源编译到DLL，在多个ASP.NET工程中共享">将母版页或ASPX等其他资源编译到DLL，在多个ASP.NET工程中共享</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月24日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/24/xUnit-Test-Patterns-5" rel="bookmark" title="《xUnit Test Patterns》学习笔记5 - xUnit基础">《xUnit Test Patterns》学习笔记5 - xUnit基础</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月24日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/24/win-in-testing" rel="bookmark" title="激动 - 《赢在测试：中国软件测试先行者之道》">激动 - 《赢在测试：中国软件测试先行者之道》</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns-4" rel="bookmark" title="《xUnit Test Patterns》学习笔记4 - Principles of Test Automation">《xUnit Test Patterns》学习笔记4 - Principles of Test Automation</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns" rel="bookmark" title="《xUnit Test Patterns》学习笔记系列">《xUnit Test Patterns》学习笔记系列</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月21日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/21/xUnit-Test-Patterns-3" rel="bookmark" title="《xUnit Test Patterns》学习笔记3 - Philosophy of Test Automation">《xUnit Test Patterns》学习笔记3 - Philosophy of Test Automation</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/18/xUnit-Test-Patterns-2" rel="bookmark" title="《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation">《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/17/xUnit-Test-Patterns-1" rel="bookmark" title="《xUnit Test Patterns》学习笔记1 - Test Smell">《xUnit Test Patterns》学习笔记1 - Test Smell</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月11日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/11/python-googlerank" rel="bookmark" title="Python查询Google PageRank">Python查询Google PageRank</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月09日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/09/beautiful-testcase" rel="bookmark" title="编写优美的GTest测试案例">编写优美的GTest测试案例</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/03/1638096" rel="bookmark" title="时间管理GTD工具">时间管理GTD工具</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/02/1637943" rel="bookmark" title="《深入浅出JavaScript》学习笔记">《深入浅出JavaScript》学习笔记</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/02/MyTestThinking5" rel="bookmark" title="我的测试生活感悟5 - 不要被代码覆盖率蒙蔽双眼">我的测试生活感悟5 - 不要被代码覆盖率蒙蔽双眼</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/01/1637239" rel="bookmark" title="2010年01月01日0时0分 - 总结我的2009">2010年01月01日0时0分 - 总结我的2009</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2010年01月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2010/01/01/Tornado-Unit-Testing" rel="bookmark" title="Tornado Unit Testing - Tornado应用的单元测试">Tornado Unit Testing - Tornado应用的单元测试</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年12月26日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/12/26/emacspythonide" rel="bookmark" title="Emacs中打造强大的Python IDE">Emacs中打造强大的Python IDE</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年12月26日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/12/26/CommonEmacs" rel="bookmark" title="最常用的Emacs的基本操作">最常用的Emacs的基本操作</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年12月25日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/12/25/nancyblog" rel="bookmark" title="NancyBlog - 我的Google App Engine Blog">NancyBlog - 我的Google App Engine Blog</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年12月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/12/07/1618923" rel="bookmark" title="成功将ubuntu8.10升级到了9.10">成功将ubuntu8.10升级到了9.10</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年12月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/12/01/djangocoverage" rel="bookmark" title="Django单元测试案例代码覆盖率统计 - 自定义test runner">Django单元测试案例代码覆盖率统计 - 自定义test runner</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年12月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/12/01/pythoncoverage" rel="bookmark" title="Python 代码覆盖率统计工具 coverage.py">Python 代码覆盖率统计工具 coverage.py</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年11月25日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/11/25/1610939" rel="bookmark" title="google app engine备忘录">google app engine备忘录</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年11月15日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/11/15/1603315" rel="bookmark" title="django单元测试历险记">django单元测试历险记</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年11月14日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/11/14/1603109" rel="bookmark" title="使用UI Automation库用于UI自动化测试">使用UI Automation库用于UI自动化测试</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年11月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/11/10/1599732" rel="bookmark" title="C&#43;&#43;中根据HKey查找当前打开的注册表路径Key Name">C&#43;&#43;中根据HKey查找当前打开的注册表路径Key Name</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年10月20日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/10/20/1586268" rel="bookmark" title="ReaderWriterLock（转）">ReaderWriterLock（转）</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年10月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/10/18/1585553" rel="bookmark" title=".NET Remoting相关的">.NET Remoting相关的</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年10月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/10/18/sharpsvn" rel="bookmark" title="使用SharpSvn方便调用svn">使用SharpSvn方便调用svn</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年10月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/10/18/CallCCNETByRemoting" rel="bookmark" title="通过.NET Remoting调用CCNET接口的方法">通过.NET Remoting调用CCNET接口的方法</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年10月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/10/02/1577396" rel="bookmark" title="《微软的软件测试之道》(How We Test Software at Microsoft)">《微软的软件测试之道》(How We Test Software at Microsoft)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年10月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/10/02/1577408" rel="bookmark" title="我的测试生活感悟4 - 谈谈面试">我的测试生活感悟4 - 谈谈面试</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年09月08日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/09/08/MyTestingThink3" rel="bookmark" title="我的测试生活感悟3 - 淘宝的接口测试白皮书">我的测试生活感悟3 - 淘宝的接口测试白皮书</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年09月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/09/07/MyTestingThink2" rel="bookmark" title="我的测试生活感悟2 - Art Of Unit Testing">我的测试生活感悟2 - Art Of Unit Testing</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年09月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/09/06/MyTestingThink1" rel="bookmark" title="我的测试生活感悟1">我的测试生活感悟1</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年08月09日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/08/09/1542120" rel="bookmark" title="Visual Studio 中创建带有向导的项目模板">Visual Studio 中创建带有向导的项目模板</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年08月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/08/06/1540016" rel="bookmark" title="RubyCocoa">RubyCocoa</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年08月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/08/05/1540005" rel="bookmark" title="以后学习一下Ruby，再了解一下其自动化测试框架Watir">以后学习一下Ruby，再了解一下其自动化测试框架Watir</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年08月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/08/02/1536914" rel="bookmark" title="UI Automation Out of Control">UI Automation Out of Control</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年08月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/08/02/1536901" rel="bookmark" title="gtest中如何跳出当前测试案例">gtest中如何跳出当前测试案例</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年07月26日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/07/26/1531633" rel="bookmark" title="优美的测试代码 - 行为驱动开发(BDD)">优美的测试代码 - 行为驱动开发(BDD)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年07月25日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/07/25/1530840" rel="bookmark" title="文件批量搜索替换工具比较">文件批量搜索替换工具比较</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年07月22日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/07/22/1528249" rel="bookmark" title="期待《 Beautiful Testing 》( 测试之美 )">期待《 Beautiful Testing 》( 测试之美 )</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年07月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/07/18/1526082" rel="bookmark" title="程序员的共鸣 - 读《卓有成效的程序员》">程序员的共鸣 - 读《卓有成效的程序员》</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年07月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/07/16/1525170" rel="bookmark" title="正则表达式 - 你必须掌握的">正则表达式 - 你必须掌握的</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年07月11日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/07/11/1521706" rel="bookmark" title="C&#43;&#43;代码覆盖率工具Coverage Validator">C&#43;&#43;代码覆盖率工具Coverage Validator</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年07月11日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/07/11/1521739" rel="bookmark" title="CoverageMeter中关于“line coverage”不准确的解释">CoverageMeter中关于“line coverage”不准确的解释</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年06月28日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/06/28/1512654" rel="bookmark" title="PyQt4学习资料汇总">PyQt4学习资料汇总</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年06月13日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/06/13/1500042" rel="bookmark" title="程序员的信仰">程序员的信仰</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月12日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/12/1434155" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之八 - 打造自己的单元测试框架">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之八 - 打造自己的单元测试框架</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月12日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/12/1433989" rel="bookmark" title="试用了Eric4，打算在Eric4中使用Pyqt4写个GUI程序">试用了Eric4，打算在Eric4中使用Pyqt4写个GUI程序</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月11日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/11/1433744" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之七 - 深入解析gtest">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之七 - 深入解析gtest</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/10/1432789" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之六 - 运行参数">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之六 - 运行参数</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月08日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/08/1431954" rel="bookmark" title="Google App Engine已经支持JAVA了">Google App Engine已经支持JAVA了</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月08日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/08/1432043" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之五 - 死亡测试">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之五 - 死亡测试</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月08日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/08/1431297" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之四 - 参数化">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之四 - 参数化</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/06/1426755" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)(总)">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)(总)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/06/1426758" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之一 - 初识gtest">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之一 - 初识gtest</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/06/1430396" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之三 - 事件机制">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之三 - 事件机制</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/06/1430364" rel="bookmark" title="玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之二 - 断言">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之二 - 断言</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年04月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/04/05/1429858" rel="bookmark" title="CCNET&#43;MSBuild&#43;SVN实时构建的优化总结">CCNET&#43;MSBuild&#43;SVN实时构建的优化总结</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年03月29日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/03/29/1424344" rel="bookmark" title="代码覆盖率浅谈">代码覆盖率浅谈</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年03月21日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/03/21/1418355" rel="bookmark" title="代码覆盖率工具大全">代码覆盖率工具大全</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年03月19日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/03/19/1416192" rel="bookmark" title="最近遇到个关于接口的奇怪的问题">最近遇到个关于接口的奇怪的问题</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年03月19日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/03/19/1416114" rel="bookmark" title="装上Window7">装上Window7</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年02月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/02/18/1393510" rel="bookmark" title="Mono，想说爱你不容易">Mono，想说爱你不容易</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年02月14日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/02/14/1386531" rel="bookmark" title="Ubuntu8.10安装小记">Ubuntu8.10安装小记</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年02月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/02/02/1382475" rel="bookmark" title="Java学习小记">Java学习小记</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年01月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/01/16/1377140" rel="bookmark" title="ESAPI = Enterprise Security API">ESAPI = Enterprise Security API</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年01月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/01/16/1377152" rel="bookmark" title="JSF简介">JSF简介</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2009年01月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2009/01/05/1368804" rel="bookmark" title="JNDI概述(转载)">JNDI概述(转载)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月31日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/31/1365994" rel="bookmark" title="代码安全系列(2) - Race Condition">代码安全系列(2) - Race Condition</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月21日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/21/1359364" rel="bookmark" title="2008年下半年软考(软件设计师)考试试题及答案">2008年下半年软考(软件设计师)考试试题及答案</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/17/1356473" rel="bookmark" title="Java代码扫描">Java代码扫描</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/17/1357039" rel="bookmark" title="读《Automated Code Review Tools for Security》">读《Automated Code Review Tools for Security》</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月15日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/15/1355530" rel="bookmark" title="代码安全系列(1) - Log的注入">代码安全系列(1) - Log的注入</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月13日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/13/1354381" rel="bookmark" title="Google App Engine 中通过自定义Django的filter解决时区问题">Google App Engine 中通过自定义Django的filter解决时区问题</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/07/1349735" rel="bookmark" title="Python天天美味(33) - 五分钟理解元类（Metaclasses）[转]">Python天天美味(33) - 五分钟理解元类（Metaclasses）[转]</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/03/1346994" rel="bookmark" title="xmlrcp学习 - python中使用xmlrpc">xmlrcp学习 - python中使用xmlrpc</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/03/1347120" rel="bookmark" title="没有计划 - 之CoderZh也流水账">没有计划 - 之CoderZh也流水账</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/01/1345139" rel="bookmark" title="(转)使用Google App Engine Helper for Django">(转)使用Google App Engine Helper for Django</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年12月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/12/01/1345053" rel="bookmark" title="_stdcall与_cdecl的区别">_stdcall与_cdecl的区别</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月30日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/30/1344478" rel="bookmark" title="WingIDE中调试GAE(google app engine)">WingIDE中调试GAE(google app engine)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月29日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/29/1343848" rel="bookmark" title="Zope学习汇总">Zope学习汇总</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月25日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/25/1340790" rel="bookmark" title="C# string与byte[]互转">C# string与byte[]互转</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月25日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/25/1340862" rel="bookmark" title="C# 中使用JSON - DataContractJsonSerializer">C# 中使用JSON - DataContractJsonSerializer</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月25日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/25/1340794" rel="bookmark" title="C# 发送Http请求 - WebClient类">C# 发送Http请求 - WebClient类</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月24日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/24/1340134" rel="bookmark" title="C&#43;&#43;实现发送HTTP请求">C&#43;&#43;实现发送HTTP请求</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/23/1335754" rel="bookmark" title="IE弹出&#34;是否停止运行此脚本&#34;脚本超时时间设置">IE弹出&#34;是否停止运行此脚本&#34;脚本超时时间设置</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/23/1288850" rel="bookmark" title="Oracle Notes">Oracle Notes</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/23/1339310" rel="bookmark" title="wxpython学习笔记">wxpython学习笔记</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/18/1335755" rel="bookmark" title="Linux 命令">Linux 命令</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/18/1335753" rel="bookmark" title="LoadRunner">LoadRunner</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年11月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/11/18/1335752" rel="bookmark" title="jQuery">jQuery</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月22日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/22/1296195" rel="bookmark" title="Python天天美味(32) - python数据结构与算法之堆排序">Python天天美味(32) - python数据结构与算法之堆排序</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月21日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/21/1295434" rel="bookmark" title="Python天天美味(31) - python数据结构与算法之插入排序">Python天天美味(31) - python数据结构与算法之插入排序</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月20日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/20/1294947" rel="bookmark" title="Python天天美味(30) - python数据结构与算法之快速排序">Python天天美味(30) - python数据结构与算法之快速排序</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/17/1292808" rel="bookmark" title="(原创)攻击方式学习之(4) - 拒绝服务(DOS/DDOS/DRDOS)">(原创)攻击方式学习之(4) - 拒绝服务(DOS/DDOS/DRDOS)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月11日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/11/1289302" rel="bookmark" title="博客园仿真足球竞赛平台Python版SDK">博客园仿真足球竞赛平台Python版SDK</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/10/1288044" rel="bookmark" title="Matplotlib Notes">Matplotlib Notes</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/06/1285500" rel="bookmark" title="(原创)攻击方式学习之(1) - 跨站式脚本(Cross-Site Scripting)">(原创)攻击方式学习之(1) - 跨站式脚本(Cross-Site Scripting)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/06/1285556" rel="bookmark" title="(原创)攻击方式学习之(2) - SQL注入(SQL Injection)">(原创)攻击方式学习之(2) - SQL注入(SQL Injection)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/06/1285693" rel="bookmark" title="(原创)攻击方式学习之(3) - 缓冲区溢出(Buffer Overflow)">(原创)攻击方式学习之(3) - 缓冲区溢出(Buffer Overflow)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年09月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/09/05/1285374" rel="bookmark" title="(项目启动)pygogogo性能测试工具(Python)开发">(项目启动)pygogogo性能测试工具(Python)开发</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年08月25日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/08/25/1275508" rel="bookmark" title="解决rhythmbox中文名乱码问题">解决rhythmbox中文名乱码问题</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年08月20日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/08/20/1272022" rel="bookmark" title="ASCII表查看">ASCII表查看</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年08月20日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/08/20/1272183" rel="bookmark" title="经典转载 - 缓冲区溢出的原理和实践(Phrack)">经典转载 - 缓冲区溢出的原理和实践(Phrack)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年08月19日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/08/19/1271347" rel="bookmark" title="gdb调试程序">gdb调试程序</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年08月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/08/05/1261058" rel="bookmark" title="找找看XSS漏洞!!!">找找看XSS漏洞!!!</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年08月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/08/01/1258160" rel="bookmark" title="CoderZh首款Python联机对战游戏 - NancyTetris1.0倾情发布（二）">CoderZh首款Python联机对战游戏 - NancyTetris1.0倾情发布（二）</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年08月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/08/01/1258114" rel="bookmark" title="GAE申请成功！">GAE申请成功！</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月28日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/28/1255061" rel="bookmark" title="CoderZh首款Python联机对战游戏 - NancyTetris1.0倾情发布（一）">CoderZh首款Python联机对战游戏 - NancyTetris1.0倾情发布（一）</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/23/1249919" rel="bookmark" title="Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL)">Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月21日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/21/1248088" rel="bookmark" title="OpenSTA从入门到精通">OpenSTA从入门到精通</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/16/1243990" rel="bookmark" title="Linux下VNCSERVER使用">Linux下VNCSERVER使用</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月15日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/15/1243659" rel="bookmark" title="(LoadRunner)包装一个DLL的经验总结">(LoadRunner)包装一个DLL的经验总结</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月09日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/09/1238995" rel="bookmark" title="(转)g&#43;&#43;和gcc的误区">(转)g&#43;&#43;和gcc的误区</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月09日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/09/1239055" rel="bookmark" title="Ubuntu设置开机自动挂载所有格式硬盘分区">Ubuntu设置开机自动挂载所有格式硬盘分区</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月08日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/08/pythoncookbook" rel="bookmark" title="Python天天美味(总)">Python天天美味(总)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年07月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/07/02/1234269" rel="bookmark" title="Foundations of Python Network Programming - 读书笔记系列(3) - Email Services">Foundations of Python Network Programming - 读书笔记系列(3) - Email Services</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月27日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/27/1230935" rel="bookmark" title="TCP/IP详解卷1，2，3PDF下载">TCP/IP详解卷1，2，3PDF下载</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月24日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/24/1228675" rel="bookmark" title="WebRequest, HttpWebRequest 的用法">WebRequest, HttpWebRequest 的用法</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/23/1228379" rel="bookmark" title="(转)国外人气最旺的软件测试网站">(转)国外人气最旺的软件测试网站</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/23/1228429" rel="bookmark" title="Foundations of Python Network Programming - 读书笔记系列(2) - Web Services">Foundations of Python Network Programming - 读书笔记系列(2) - Web Services</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/18/1224525" rel="bookmark" title="SilkPerformer2008下载">SilkPerformer2008下载</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/16/1223287" rel="bookmark" title="Foundations of Python Network Programming - 读书笔记系列(1) - Low-Level Networking">Foundations of Python Network Programming - 读书笔记系列(1) - Low-Level Networking</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/10/1216962" rel="bookmark" title="Foundations of Python Network Programming - 读书笔记系列(完)">Foundations of Python Network Programming - 读书笔记系列(完)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/07/1215607" rel="bookmark" title="Python天天美味(27) - 网络编程起步(Socket发送消息)">Python天天美味(27) - 网络编程起步(Socket发送消息)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/07/1215657" rel="bookmark" title="Python天天美味(28) - urlopen">Python天天美味(28) - urlopen</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/03/1213078" rel="bookmark" title="开始使用Emacs">开始使用Emacs</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年06月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/06/02/1212410" rel="bookmark" title="SaveFileDialog与Castle(ActiveRecord)有冲突？？">SaveFileDialog与Castle(ActiveRecord)有冲突？？</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月31日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/31/1211422" rel="bookmark" title="做人、做事，做架构师——架构师能力模型解析(转)">做人、做事，做架构师——架构师能力模型解析(转)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月25日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/25/1206931" rel="bookmark" title="Python天天美味(26) - __getattr__与__setattr__">Python天天美味(26) - __getattr__与__setattr__</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月20日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/20/1203574" rel="bookmark" title="开源Granados介绍 - SSH连接远程Linux服务器(C#)">开源Granados介绍 - SSH连接远程Linux服务器(C#)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/18/1201993" rel="bookmark" title="Python天天美味(24) - 初始化多维数组">Python天天美味(24) - 初始化多维数组</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/18/1202040" rel="bookmark" title="Python天天美味(25) - 深入理解yield">Python天天美味(25) - 深入理解yield</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月18日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/18/1201983" rel="bookmark" title="推荐一款非常酷的学习笔记软件 - Basket Note Pads">推荐一款非常酷的学习笔记软件 - Basket Note Pads</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/17/1201449" rel="bookmark" title="Python天天美味(21) - httplib，smtplib">Python天天美味(21) - httplib，smtplib</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/17/1201506" rel="bookmark" title="Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）">Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/17/1201509" rel="bookmark" title="Python天天美味(23) - enumerate遍历数组">Python天天美味(23) - enumerate遍历数组</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/17/1201319" rel="bookmark" title="试用IronPython">试用IronPython</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/16/1201074" rel="bookmark" title="Python天天美味(19) - 时间处理datetime">Python天天美味(19) - 时间处理datetime</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/16/1201079" rel="bookmark" title="Python天天美味(20) - 命令行参数sys.argv">Python天天美味(20) - 命令行参数sys.argv</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月16日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/16/1200880" rel="bookmark" title="决定学习WebLOAD">决定学习WebLOAD</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月13日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/13/1194426" rel="bookmark" title="Ken Thompson 的经典 C 程序">Ken Thompson 的经典 C 程序</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月13日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/13/1194445" rel="bookmark" title="Ken Thompson爷爷的经典复制自身代码程序 - Python版本(只用两行！)">Ken Thompson爷爷的经典复制自身代码程序 - Python版本(只用两行！)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/10/1191410" rel="bookmark" title="Python天天美味(17) - open读写文件">Python天天美味(17) - open读写文件</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/10/1191641" rel="bookmark" title="Python天天美味(18) - linecache.getline()读取文件中特定一行">Python天天美味(18) - linecache.getline()读取文件中特定一行</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/10/1191649" rel="bookmark" title="linecache.py">linecache.py</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月09日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/09/1190173" rel="bookmark" title="Python天天美味(16) - 过滤字符串的技巧,map与itertools.imap">Python天天美味(16) - 过滤字符串的技巧,map与itertools.imap</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月06日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/06/1185755" rel="bookmark" title="Python天天美味(15) - Python正则表达式操作指南(re使用)(转)">Python天天美味(15) - Python正则表达式操作指南(re使用)(转)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/05/1183125" rel="bookmark" title="Linux服务器性能数据收集 - Sysstat介绍">Linux服务器性能数据收集 - Sysstat介绍</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月05日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/05/1183967" rel="bookmark" title="Python天天美味(14) - splitlines">Python天天美味(14) - splitlines</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月04日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/04/1181250" rel="bookmark" title="Python天天美味(10) - 除法小技巧">Python天天美味(10) - 除法小技巧</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月04日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/04/1181340" rel="bookmark" title="Python天天美味(11) - 可爱的大小写">Python天天美味(11) - 可爱的大小写</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月04日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/04/1181416" rel="bookmark" title="Python天天美味(12) - 条件判断的缩写">Python天天美味(12) - 条件判断的缩写</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月04日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/04/1181462" rel="bookmark" title="Python天天美味(13) - struct.unpack">Python天天美味(13) - struct.unpack</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/03/1180563" rel="bookmark" title="Python天天美味(7) - 连接字符串(join %)">Python天天美味(7) - 连接字符串(join %)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/03/1180584" rel="bookmark" title="Python天天美味(8) - 字符串中的字符倒转">Python天天美味(8) - 字符串中的字符倒转</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/03/1180705" rel="bookmark" title="Python天天美味(9) - translator">Python天天美味(9) - translator</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/02/1179593" rel="bookmark" title="Python天天美味(3) - 字符转换">Python天天美味(3) - 字符转换</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/02/1179609" rel="bookmark" title="Python天天美味(4) - isinstance判断对象类型">Python天天美味(4) - isinstance判断对象类型</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/02/1179709" rel="bookmark" title="Python天天美味(5) - ljust rjust center">Python天天美味(5) - ljust rjust center</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年05月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/05/02/1179725" rel="bookmark" title="Python天天美味(6) - strip lstrip rstrip">Python天天美味(6) - strip lstrip rstrip</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年04月30日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/04/30/1177677" rel="bookmark" title="Python天天美味(2) - 字符遍历的艺术">Python天天美味(2) - 字符遍历的艺术</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年04月29日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/04/29/1176878" rel="bookmark" title="Python天天美味(1) - 交换变量">Python天天美味(1) - 交换变量</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年04月07日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/04/07/1140895" rel="bookmark" title="华山论剑 - VB6函数调用">华山论剑 - VB6函数调用</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年04月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/04/02/1135076" rel="bookmark" title="悟透LoadRunner - 如何让多个场景顺序执行？">悟透LoadRunner - 如何让多个场景顺序执行？</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年04月02日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/04/02/1135118" rel="bookmark" title="悟透LoadRunner - 调用外部DLL的点点滴滴">悟透LoadRunner - 调用外部DLL的点点滴滴</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年04月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/04/01/1133637" rel="bookmark" title="悟透LoadRunner - 什么是性能测试？">悟透LoadRunner - 什么是性能测试？</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年04月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/04/01/1133158" rel="bookmark" title="悟透LoadRunner(总)">悟透LoadRunner(总)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年03月09日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/03/09/1097891" rel="bookmark" title="初识UI Automation库进行UI自动化测试">初识UI Automation库进行UI自动化测试</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年02月23日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/02/23/1078968" rel="bookmark" title="2008到了！我的博客由原来的DeViL→Ivy改名为EverGreen！">2008到了！我的博客由原来的DeViL→Ivy改名为EverGreen！</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2008年01月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2008/01/01/1022532" rel="bookmark" title="希望2008">希望2008</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年12月27日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/12/27/1016924" rel="bookmark" title="C#程序实现动态调用DLL的研究(转载)">C#程序实现动态调用DLL的研究(转载)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年12月10日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/12/10/989375" rel="bookmark" title="保证程序只有一个实例运行并且先将旧实例关闭再运行新实例">保证程序只有一个实例运行并且先将旧实例关闭再运行新实例</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年12月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/12/03/981119" rel="bookmark" title="VBS获取本机IP地址">VBS获取本机IP地址</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年11月22日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/11/22/968581" rel="bookmark" title="VBS获取系统路径">VBS获取系统路径</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年11月04日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/11/04/948750" rel="bookmark" title="(收藏)网上搜集的一系列C#面试题(持续更新……)">(收藏)网上搜集的一系列C#面试题(持续更新……)</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年11月04日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/11/04/948769" rel="bookmark" title="《Windows核心编程》学习笔记系列">《Windows核心编程》学习笔记系列</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年10月28日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/10/28/940352" rel="bookmark" title="《C#高级编程》笔记系列--点滴记录（持续更新中……）">《C#高级编程》笔记系列--点滴记录（持续更新中……）</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年10月28日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/10/28/940444" rel="bookmark" title="《C#高级编程》笔记系列第三弹-partial关键字">《C#高级编程》笔记系列第三弹-partial关键字</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年10月27日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/10/27/939702" rel="bookmark" title=".NET代码执行顺序探讨">.NET代码执行顺序探讨</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年10月17日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/10/17/927315" rel="bookmark" title="VBS脚本获取安全标识符SID（Security Identifiers）的方法">VBS脚本获取安全标识符SID（Security Identifiers）的方法</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年10月15日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/10/15/925277" rel="bookmark" title="《C#高级编程》笔记系列">《C#高级编程》笔记系列</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年10月13日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/10/13/922972" rel="bookmark" title="爱如空气">爱如空气</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年10月01日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/10/01/912518" rel="bookmark" title="《C#高级编程》笔记系列第二弹-初探">《C#高级编程》笔记系列第二弹-初探</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2007年09月22日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2007/09/22/902626" rel="bookmark" title="《C#高级编程》笔记系列第一弹-开篇">《C#高级编程》笔记系列第一弹-开篇</a></p>
+</div>
+
+
+
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+</div>
+
+            </div>
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" width="172px" height="172px"/>
+    <p>微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking</p>
+</div>
+
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+    <div id="tag_cloud-2" class="widget widget_tag_cloud"><h3>Tags</h3>
+      <div class="tagcloud">
+        <p class="post-tags">
+          
+              
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+
+  <nav class="nav-container group" id="nav-footer">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap">
+      <ul id="menu-default-menu-1" class="nav container group">
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F">思考感悟</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2015. All Rights Reserved. <br>Powered by
+              <a href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+
+</footer>
+
+</div>
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/hubinfo/dist/hubinfo.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+
+
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+<p style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=1255412532&web_id=1255412532" language="JavaScript"></script>
+</p>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?68fd62d49287d249b4317c5035837c88";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+</body>
+</html>
+
