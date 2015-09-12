@@ -6,7 +6,23 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Thu, 03 Sep 2015 08:55:31 CST</updated>
+        <updated>Sat, 12 Sep 2015 21:05:40 CST</updated>
+        
+        <item>
+            <title>hugo webhook</title>
+            <link>http://blog.coderzh.com/2015/09/12/hugo-web-hook</link>
+            <pubDate>Sat, 12 Sep 2015 21:05:40 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/12/hugo-web-hook</guid>
+            <description>
+
+&lt;p&gt;For Test&lt;/p&gt;
+
+&lt;h3 id=&#34;webhook:4b32e5f076b900eb649a4313c1273768&#34;&gt;WebHook&lt;/h3&gt;
+
+&lt;p&gt;Test&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>给Hugo提交了一个PR</title>
@@ -1227,134 +1243,6 @@ net stop &amp;ldquo;MongoDB&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;&amp;nbsp;&amp;nbsp;def &lt;strong&gt;init&lt;/strong&gt;(self, socket, io_loop=None, max_buffer_size=1024*1024*1024 , read_chunk_size=8192):&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2013/03/13/2958224.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2013/03/13/2958224.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>从CEGUI源码看代码规范</title>
-            <link>http://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style</link>
-            <pubDate>Sun, 08 May 2011 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style</guid>
-            <description>&lt;p&gt;&lt;a href=&#34;http://www.cegui.org.uk/&#34;&gt;CEGUI&lt;/a&gt;（Crazy Eddie&amp;#8217;s GUI）是一个使用C++实现的基于LGPL协议的的开源GUI库，主要应用于游戏界面。连著名的开源游戏引擎Orge3D也放弃了自己的界面引擎而使用第三方的开源界面引擎CEGUI。&lt;/p&gt;
-
-&lt;p&gt;对于开源的代码工程，我首先会观察它的代码规范。比如，使用什么命名法，是否使用异常等等，这很有用。看不同的开源工程，可以看到各种不同的代码规范，其中有很多是值得借鉴的。&lt;/p&gt;
-
-&lt;p&gt;代码规范本身并没有绝对的对错之分，但我们往往为了某一个代码规范争论的面红耳赤。比如，是否使用匈牙利命名法，使用BOOL还是bool等等。这时，就必须综合考虑团队现有的使用习惯和既有代码的风格，制定出一套适合自己的统一的规范。所以，规范除了对与错，最关键的地方还是要统一。存在即合理，我们不要一味去排斥其他人的使用习惯和规范，而应该多读读别人的代码，看看著名的开源代码，了解别人的做法，然后对自己的做法进行一些反思。这才是面对代码规范正确的心态。&lt;/p&gt;
-
-&lt;p&gt;CEGUI是一套不错的界面库，界面布局使用XML来描述，提供了专用的界面编辑器，让界面制作变得更简单。CEGUI作为一个成熟的开源产品，代码已经经历了无数的千锤百炼，整体风格比较统一，是一个很好的学习范本。接下来，我粗浅的分析一下CEGUI一些值得学习的地方。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1. Camel命名法&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI完全摈弃了匈牙利命名法，而使用更贴近语义的不使用变量类型前缀的Camel(骆驼)命名法，这也是现今代码通用的做法。匈牙利命名法在较老的工程中比较常见。无数使用Camel的著名开源工程，很好的告诉了匈牙利命名法的支持者，不使用匈牙利命名法，代码依然清晰可读，甚至会更好。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2. 成员变量前缀&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中无论是class还是struct，成员变量都统一加d_前缀。通常的两种做法是不加前缀和加m_前缀。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3. struct&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中，struct的命名没有使用全大写，而是和class的大小写命名一样。在struct中，只可能出现数据成员，操作符重载函数，构造函数等。struct只用来数据结构存储使用，不使用任何其他的成员函数。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4. 字符串处理&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中的字符串处理没有使用char, wchar_t, TCHAR，std:string，ATL::CString，而是自己实现了一套String类（CEGUIString.h）。自己实现的String类优势非常明显，可以让程序员从繁琐的字符指针操作中解脱出来，将更多的精力放在功能的实现上。自定义的String可以实现更多方便、切合实际使用的函数。（比如CEGUI中的find_first_not_of，replace等函数。）如果要实现一个String类，CEGUI中的CEGUIString是一个很好的范本。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;5. 使用bool&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;使用bool和BOOL都有各自的理由，CEGUI中全部使用bool，是现在流行，最常见的，也是我喜欢的做法。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6. 异常机制&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中完全使用异常机制，通过重载std::exception定义了一套完整的异常机制。通过异常的处理，使得程序员从繁琐的错误检查和错误返回值中解放出来。如果想了解C++中如何能够很好的使用异常，看看CEGUI中异常的实现吧（CEGUIExceptions.h）。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;7. 不用goto&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;几乎每一本教材都会告诫用户，不要使用goto，这会让你的代码变得凌乱不堪。然而当真正成为一个程序员，加入一个公司甚至大型公司，里面的代码照样充斥了无数的goto语句。goto的滥用是绝对不允许的，goto在某些情况下的确有它的合理之处（比如保证函数单一出口，释放资源）。还是那句话，存在即合理。CEGUI中完全不使用goto，有了错误，立即抛异常，或者直接返回。我本人也是比较喜欢这种提前返回的方式。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;8. 简单易用的Log系统&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;如果想实现一个既简单，又易用的Log系统，就看看CEGUI中的实现吧（CEGUILogger）。支持Log等级（Error，Warning等），输出日期、当前代码行等功能。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;9. Singleton的实现&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中使用了一个通用的Singleton&amp;lt;T&amp;gt;模板基类，这个技巧非常好使。实现也非常简单：&lt;/p&gt;
-
-&lt;div class=&#34;cnblogs_code&#34;&gt;
-&lt;div&gt;&lt;span style=&#34;color: #000000;&#34;&gt;template&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;typename&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;CEGUIEXPORT&amp;nbsp;Singleton
-&lt;br /&gt;
-{
-&lt;br /&gt;
-&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;protected&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
-&lt;br /&gt;
-#ifdef&amp;nbsp;__MINGW32__
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;CEGUIEXPORT
-&lt;br /&gt;
-&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;#endif&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;ms_Singleton;
-&lt;br /&gt;
-&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ms_Singleton&amp;nbsp;);
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ms_Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;static_cast&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Singleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;ms_Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #800080;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;&amp;nbsp;&amp;nbsp;}
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;getSingleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;}
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;getSingletonPtr(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;}
-&lt;br /&gt;
-&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;private&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;const&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;)&amp;nbsp;{&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;&amp;nbsp;}
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;const&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;)&amp;nbsp;{}
-&lt;br /&gt;
-};&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;如上面的Logger类，要使用Singleton，则这样定义：&lt;/p&gt;
-
-&lt;div class=&#34;cnblogs_code&#34;&gt;
-&lt;div&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;CEGUIEXPORT&amp;nbsp;Logger&amp;nbsp;:&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Logger&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
-&lt;br /&gt;
-{
-&lt;br /&gt;
-}&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这样做最大的一个好处是统一，不会在代码中出现各种稀奇古怪不同的Singleton实现。同时哪个class是Singleton也一目了然。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;总结 &amp;nbsp;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;本文仅仅讨论CEGUI中的代码规范，而且也只是其中很小的一部分，如有疏漏欢迎一起讨论。之后我会更加关注CEGUI现细节，如有收获将与大家分享。
-最后，我还是那句话：&lt;span style=&#34;color: red; &#34;&gt;不要完全排斥任何一种规范，将每种规范了解和使用过后，再来思考自己应该怎样做。&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: red; &#34;&gt;
-&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI主页：&lt;a href=&#34;http://www.cegui.org.uk/wiki/index.php/Downloads&#34;&gt;http://www.cegui.org.uk&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;源码下载 ：&lt;a href=&#34;http://www.cegui.org.uk/wiki/index.php/Downloads&#34;&gt;http://www.cegui.org.uk/wiki/index.php/Downloads&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2011/05/08/CEGUI_Coding_Style.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2011/05/08/CEGUI_Coding_Style.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         
