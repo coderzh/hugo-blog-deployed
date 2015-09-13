@@ -6,7 +6,152 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Thu, 03 Sep 2015 08:55:31 CST</updated>
+        <updated>Sun, 13 Sep 2015 08:48:52 CST</updated>
+        
+        <item>
+            <title>通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</title>
+            <link>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo</link>
+            <pubDate>Sun, 13 Sep 2015 08:48:52 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo</guid>
+            <description>
+
+&lt;p&gt;本文的主要内容如标题所示，通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages。如果你正好有这个需求，看这篇文章正好，可以节省你不少时间。如果不是，了解一下也无妨。&lt;/p&gt;
+
+&lt;p&gt;首先，必须解释一下，为什么需要自动部署，以及为什么需要需要同时部署到GitHub Pages和GitCafe Pages。&lt;/p&gt;
+
+&lt;h3 id=&#34;为什么要自动部署:f7c51a9b685c2720baf98649c3938c48&#34;&gt;为什么要自动部署&lt;/h3&gt;
+
+&lt;p&gt;使用Hugo生成的静态页面是在public文件夹里，部署的时候需要把public文件夹里的内容push到GitHub的gh-pages分支里。每次写完文章，除了push markdown格式的文章，还需要单独push生成的public文件夹里的东西，步骤稍显麻烦。&lt;/p&gt;
+
+&lt;p&gt;之前参照了官方的做法，使用subtree来push public，步骤简化不少。然而，这还是不够简单。因为每次修改文章之后，必须依赖一个脚本才能正确提交和部署。假如你在手机里浏览时，发现一个错别字，顺手就在GitHub的Web界面就把错别字改了，然而这样并不会重新生成静态页面和部署。有些不方便。&lt;/p&gt;
+
+&lt;p&gt;Hugo生成静态页面和部署的过程应该让机器自动来完成。&lt;strong&gt;写作应该是一个相对单纯的事情，使用Hugo的人应该更专注于写作。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;为什么需要同时部署到github-pages和gitcafe-pages:f7c51a9b685c2720baf98649c3938c48&#34;&gt;为什么需要同时部署到GitHub Pages和GitCafe Pages&lt;/h3&gt;
+
+&lt;p&gt;大公司很喜欢的一个词：容灾。GitHub出现不可访问的事情在国内也是常有的，而GitCafe作为国内的代码托管厂商，是否是一个稳定的存在也不好说。所以，将网站同时部署到这两个上面。通过DnsPod里CNAME设置线路“国内”和“国外”，不仅起到了任何一个挂掉，另一个可以继续工作的目的，还起到了CDN就近访问的作用。&lt;/p&gt;
+
+&lt;p&gt;使用GitCafe还有另外一个原因。GitHub Pages拒绝了一切百度的爬虫，所以，百度无法索引到GitHub Pages的网页。对于国内的搜索市场来说，百度的份额还是比较大的，虽然我认为看我的博客的人都不应该使用百度，但现实总是残酷的。如果希望网站被百度收录，就必须放到GitHub以外的地方。GitCafe就是一种比较好的选择。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gitcafe.com&#34;&gt;http://gitcafe.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;如果，你只是希望使用官方的Hugo自动化部署到GitHub Pages，下面的内容你可以不用看了。你可以直接使用Wercker的服务来自动部署。&lt;/p&gt;
+
+&lt;p&gt;文档见：&lt;a href=&#34;http://gohugo.io/tutorials/automated-deployments/&#34;&gt;
+http://gohugo.io/tutorials/automated-deployments/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;由于Wercker还不支持GitCafe的部署，以及我需要使用特定的修改版本的Hugo来生成静态网页，并且希望这些步骤比较可控，所以，还是自己来折腾整个过程吧。&lt;/p&gt;
+
+&lt;h3 id=&#34;webhook:f7c51a9b685c2720baf98649c3938c48&#34;&gt;webhook&lt;/h3&gt;
+
+&lt;p&gt;webhook是GitHub上提供的Git的一种Hook机制，当代码发生变化时，比如代码被Push到GitHub的Repo时，GitHub会自动请求一个你指定的网页，并且把变更相关的参数都传递过来。入口在Repo的Settings - webhooks &amp;amp; services&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK4zVTH7bX6F0yvbp22ZqJplVmCbq2pZAiaZZTSlr43VUXlgV9r2ZpfrWzRXRKmIySxMTMib5Vd4ickw/0?wx_fmt=png&#34; alt=&#34;webhook&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;说明文档：&lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;https://developer.github.com/webhooks/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;借助webhook的机制，我们就可实现当有新的文章Push之后，自动通知远程的一台机器执行一个脚本，脚本的内容就是生成静态页面和Push部署到最终的服务器。&lt;/p&gt;
+
+&lt;p&gt;webhook的Server接收webhook通知，然后执行一个脚本。这样的需求太普遍了，以至于完全不需要自己来实现。在GitHub里搜webhook可以搜出来很多。我主要挑选了Go语言的版本。主要有两个：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/qiniu/webhook&#34;&gt;https://github.com/qiniu/webhook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/adnanh/webhook&#34;&gt;https://github.com/adnanh/webhook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;第一个是七牛写的，代码很简单，用法也很简单。开始打算用七牛的版本。最后调试的时候发现json解析失败，完全不可用啊！有点坑爹。于是换成了第二个，这个Repo有200多个Star。还是靠谱很多，最后部署，调试，非常顺利。&lt;/p&gt;
+
+&lt;p&gt;用法也很简单，首先安装webhook：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ go get github.com/adnanh/webhook
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;写一个配置文件hooks.json，里面指定需要执行的脚本：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[
+  {
+    &amp;quot;id&amp;quot;: &amp;quot;redeploy-webhook&amp;quot;,
+    &amp;quot;execute-command&amp;quot;: &amp;quot;/var/scripts/redeploy.sh&amp;quot;,
+    &amp;quot;command-working-directory&amp;quot;: &amp;quot;/var/webhook&amp;quot;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;指定端口启动：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ /path/to/webhook -hooks hooks.json -port=9876 -verbose
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后它将接受webhook地址：（把它填到GitHub里的webhook里）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://yourserver:9876/hooks/redeploy-webhook
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;自动部署:f7c51a9b685c2720baf98649c3938c48&#34;&gt;自动部署&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK4zVTH7bX6F0yvbp22ZqJpoWvxWia7iaRg6bXTvcZlsLWXdmKb6NMhOnlIaVxnP51QG0Tx7MmLZsJg/0?wx_fmt=png&#34; alt=&#34;AutoDeploy&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;大致的流程如上图。上图的DigitalOcean是一台VPS服务器，我用了很长时间了，速度和稳定性都不错。需要的同学使用这个链接购买，可以获得10美元的优惠：&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;https://www.digitalocean.com/?refcode=e131e2bba197&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;整个流程中，复杂度主要是在DigitalOcean的VPS上部署服务和脚本。&lt;/p&gt;
+
+&lt;p&gt;部署的脚本可以在我的GitHub上看到：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;需要的同学可以参考下，代码见：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;deploy.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;deploy.py放到你的主工程，也就是你写markdown的Repo下。比如：/var/coderzh-hugo-blog/下&lt;/p&gt;
+
+&lt;p&gt;adnanh-webhook的配置文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[
+  {
+    &amp;quot;id&amp;quot;: &amp;quot;hugo-deploy&amp;quot;,
+    &amp;quot;execute-command&amp;quot;: &amp;quot;/var/webhook/hugo-deploy.sh&amp;quot;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;hugo-deploy.sh里执行deploy.py：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+ 
+python /var/coderzh-hugo-blog/deploy.py --auto
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;剩下的是怎么在DigitalOcean的VPS上把这套东西部署起来。我使用nginx + supervisor搭建webhook的Server。&lt;/p&gt;
+
+&lt;p&gt;关于nginx和supervisor可以参考之前的一篇文章：&lt;a href=&#34;http://blog.coderzh.com/2014/05/19/digitalocean/&#34;&gt;http://blog.coderzh.com/2014/05/19/digitalocean/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;supervisor的配置如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[program:webhook]
+command=/root/gocode/bin/webhook -hooks /var/webhook/hooks.json -verbose -port=9876
+user=root
+directory=/var/webhook
+autorestart=true
+redirect_stderr=true
+environment=HOME=&amp;quot;/root&amp;quot;,USER=&amp;quot;root&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;关于VPS上SSH Key的设置，见：&lt;a href=&#34;https://help.github.com/articles/generating-ssh-keys/&#34;&gt;https://help.github.com/articles/generating-ssh-keys/&lt;/a&gt;  为了自动部署方便，可以不设置密码。&lt;/p&gt;
+
+&lt;p&gt;当然，还有个大前提，在VPS上安装最新版本的golang。推荐使用gvm来安装。（记得安装1.5之前必须先把1.4先装上）&lt;/p&gt;
+
+&lt;p&gt;golang 安装：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bash &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+source ~/.bashrc
+gvm version
+gvm install go1.4
+gvm install go1.5.1
+gvm use go1.5.1 --default
+go version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后，Good Luck！&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>给Hugo提交了一个PR</title>
@@ -1227,134 +1372,6 @@ net stop &amp;ldquo;MongoDB&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;&amp;nbsp;&amp;nbsp;def &lt;strong&gt;init&lt;/strong&gt;(self, socket, io_loop=None, max_buffer_size=1024*1024*1024 , read_chunk_size=8192):&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2013/03/13/2958224.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2013/03/13/2958224.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>从CEGUI源码看代码规范</title>
-            <link>http://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style</link>
-            <pubDate>Sun, 08 May 2011 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style</guid>
-            <description>&lt;p&gt;&lt;a href=&#34;http://www.cegui.org.uk/&#34;&gt;CEGUI&lt;/a&gt;（Crazy Eddie&amp;#8217;s GUI）是一个使用C++实现的基于LGPL协议的的开源GUI库，主要应用于游戏界面。连著名的开源游戏引擎Orge3D也放弃了自己的界面引擎而使用第三方的开源界面引擎CEGUI。&lt;/p&gt;
-
-&lt;p&gt;对于开源的代码工程，我首先会观察它的代码规范。比如，使用什么命名法，是否使用异常等等，这很有用。看不同的开源工程，可以看到各种不同的代码规范，其中有很多是值得借鉴的。&lt;/p&gt;
-
-&lt;p&gt;代码规范本身并没有绝对的对错之分，但我们往往为了某一个代码规范争论的面红耳赤。比如，是否使用匈牙利命名法，使用BOOL还是bool等等。这时，就必须综合考虑团队现有的使用习惯和既有代码的风格，制定出一套适合自己的统一的规范。所以，规范除了对与错，最关键的地方还是要统一。存在即合理，我们不要一味去排斥其他人的使用习惯和规范，而应该多读读别人的代码，看看著名的开源代码，了解别人的做法，然后对自己的做法进行一些反思。这才是面对代码规范正确的心态。&lt;/p&gt;
-
-&lt;p&gt;CEGUI是一套不错的界面库，界面布局使用XML来描述，提供了专用的界面编辑器，让界面制作变得更简单。CEGUI作为一个成熟的开源产品，代码已经经历了无数的千锤百炼，整体风格比较统一，是一个很好的学习范本。接下来，我粗浅的分析一下CEGUI一些值得学习的地方。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1. Camel命名法&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI完全摈弃了匈牙利命名法，而使用更贴近语义的不使用变量类型前缀的Camel(骆驼)命名法，这也是现今代码通用的做法。匈牙利命名法在较老的工程中比较常见。无数使用Camel的著名开源工程，很好的告诉了匈牙利命名法的支持者，不使用匈牙利命名法，代码依然清晰可读，甚至会更好。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2. 成员变量前缀&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中无论是class还是struct，成员变量都统一加d_前缀。通常的两种做法是不加前缀和加m_前缀。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3. struct&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中，struct的命名没有使用全大写，而是和class的大小写命名一样。在struct中，只可能出现数据成员，操作符重载函数，构造函数等。struct只用来数据结构存储使用，不使用任何其他的成员函数。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4. 字符串处理&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中的字符串处理没有使用char, wchar_t, TCHAR，std:string，ATL::CString，而是自己实现了一套String类（CEGUIString.h）。自己实现的String类优势非常明显，可以让程序员从繁琐的字符指针操作中解脱出来，将更多的精力放在功能的实现上。自定义的String可以实现更多方便、切合实际使用的函数。（比如CEGUI中的find_first_not_of，replace等函数。）如果要实现一个String类，CEGUI中的CEGUIString是一个很好的范本。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;5. 使用bool&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;使用bool和BOOL都有各自的理由，CEGUI中全部使用bool，是现在流行，最常见的，也是我喜欢的做法。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6. 异常机制&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中完全使用异常机制，通过重载std::exception定义了一套完整的异常机制。通过异常的处理，使得程序员从繁琐的错误检查和错误返回值中解放出来。如果想了解C++中如何能够很好的使用异常，看看CEGUI中异常的实现吧（CEGUIExceptions.h）。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;7. 不用goto&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;几乎每一本教材都会告诫用户，不要使用goto，这会让你的代码变得凌乱不堪。然而当真正成为一个程序员，加入一个公司甚至大型公司，里面的代码照样充斥了无数的goto语句。goto的滥用是绝对不允许的，goto在某些情况下的确有它的合理之处（比如保证函数单一出口，释放资源）。还是那句话，存在即合理。CEGUI中完全不使用goto，有了错误，立即抛异常，或者直接返回。我本人也是比较喜欢这种提前返回的方式。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;8. 简单易用的Log系统&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;如果想实现一个既简单，又易用的Log系统，就看看CEGUI中的实现吧（CEGUILogger）。支持Log等级（Error，Warning等），输出日期、当前代码行等功能。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;9. Singleton的实现&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI中使用了一个通用的Singleton&amp;lt;T&amp;gt;模板基类，这个技巧非常好使。实现也非常简单：&lt;/p&gt;
-
-&lt;div class=&#34;cnblogs_code&#34;&gt;
-&lt;div&gt;&lt;span style=&#34;color: #000000;&#34;&gt;template&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;typename&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;CEGUIEXPORT&amp;nbsp;Singleton
-&lt;br /&gt;
-{
-&lt;br /&gt;
-&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;protected&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
-&lt;br /&gt;
-#ifdef&amp;nbsp;__MINGW32__
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;CEGUIEXPORT
-&lt;br /&gt;
-&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;#endif&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;ms_Singleton;
-&lt;br /&gt;
-&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ms_Singleton&amp;nbsp;);
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ms_Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;static_cast&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Singleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;ms_Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #800080;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;&amp;nbsp;&amp;nbsp;}
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;getSingleton(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;assert(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;}
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;T&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;getSingletonPtr(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;)
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(&amp;nbsp;ms_Singleton&amp;nbsp;);&amp;nbsp;&amp;nbsp;}
-&lt;br /&gt;
-&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;private&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;:
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;const&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;)&amp;nbsp;{&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;&amp;nbsp;}
-&lt;br /&gt;
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Singleton(&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;const&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;)&amp;nbsp;{}
-&lt;br /&gt;
-};&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;如上面的Logger类，要使用Singleton，则这样定义：&lt;/p&gt;
-
-&lt;div class=&#34;cnblogs_code&#34;&gt;
-&lt;div&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;CEGUIEXPORT&amp;nbsp;Logger&amp;nbsp;:&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000FF;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Singleton&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Logger&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
-&lt;br /&gt;
-{
-&lt;br /&gt;
-}&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这样做最大的一个好处是统一，不会在代码中出现各种稀奇古怪不同的Singleton实现。同时哪个class是Singleton也一目了然。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;总结 &amp;nbsp;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;本文仅仅讨论CEGUI中的代码规范，而且也只是其中很小的一部分，如有疏漏欢迎一起讨论。之后我会更加关注CEGUI现细节，如有收获将与大家分享。
-最后，我还是那句话：&lt;span style=&#34;color: red; &#34;&gt;不要完全排斥任何一种规范，将每种规范了解和使用过后，再来思考自己应该怎样做。&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: red; &#34;&gt;
-&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;CEGUI主页：&lt;a href=&#34;http://www.cegui.org.uk/wiki/index.php/Downloads&#34;&gt;http://www.cegui.org.uk&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;源码下载 ：&lt;a href=&#34;http://www.cegui.org.uk/wiki/index.php/Downloads&#34;&gt;http://www.cegui.org.uk/wiki/index.php/Downloads&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2011/05/08/CEGUI_Coding_Style.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2011/05/08/CEGUI_Coding_Style.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         

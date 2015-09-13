@@ -6,7 +6,152 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 05 Sep 2015 23:44:48 CST</updated>
+        <updated>Sun, 13 Sep 2015 08:48:52 CST</updated>
+        
+        <item>
+            <title>通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</title>
+            <link>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo</link>
+            <pubDate>Sun, 13 Sep 2015 08:48:52 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo</guid>
+            <description>
+
+&lt;p&gt;本文的主要内容如标题所示，通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages。如果你正好有这个需求，看这篇文章正好，可以节省你不少时间。如果不是，了解一下也无妨。&lt;/p&gt;
+
+&lt;p&gt;首先，必须解释一下，为什么需要自动部署，以及为什么需要需要同时部署到GitHub Pages和GitCafe Pages。&lt;/p&gt;
+
+&lt;h3 id=&#34;为什么要自动部署:f7c51a9b685c2720baf98649c3938c48&#34;&gt;为什么要自动部署&lt;/h3&gt;
+
+&lt;p&gt;使用Hugo生成的静态页面是在public文件夹里，部署的时候需要把public文件夹里的内容push到GitHub的gh-pages分支里。每次写完文章，除了push markdown格式的文章，还需要单独push生成的public文件夹里的东西，步骤稍显麻烦。&lt;/p&gt;
+
+&lt;p&gt;之前参照了官方的做法，使用subtree来push public，步骤简化不少。然而，这还是不够简单。因为每次修改文章之后，必须依赖一个脚本才能正确提交和部署。假如你在手机里浏览时，发现一个错别字，顺手就在GitHub的Web界面就把错别字改了，然而这样并不会重新生成静态页面和部署。有些不方便。&lt;/p&gt;
+
+&lt;p&gt;Hugo生成静态页面和部署的过程应该让机器自动来完成。&lt;strong&gt;写作应该是一个相对单纯的事情，使用Hugo的人应该更专注于写作。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;为什么需要同时部署到github-pages和gitcafe-pages:f7c51a9b685c2720baf98649c3938c48&#34;&gt;为什么需要同时部署到GitHub Pages和GitCafe Pages&lt;/h3&gt;
+
+&lt;p&gt;大公司很喜欢的一个词：容灾。GitHub出现不可访问的事情在国内也是常有的，而GitCafe作为国内的代码托管厂商，是否是一个稳定的存在也不好说。所以，将网站同时部署到这两个上面。通过DnsPod里CNAME设置线路“国内”和“国外”，不仅起到了任何一个挂掉，另一个可以继续工作的目的，还起到了CDN就近访问的作用。&lt;/p&gt;
+
+&lt;p&gt;使用GitCafe还有另外一个原因。GitHub Pages拒绝了一切百度的爬虫，所以，百度无法索引到GitHub Pages的网页。对于国内的搜索市场来说，百度的份额还是比较大的，虽然我认为看我的博客的人都不应该使用百度，但现实总是残酷的。如果希望网站被百度收录，就必须放到GitHub以外的地方。GitCafe就是一种比较好的选择。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gitcafe.com&#34;&gt;http://gitcafe.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;如果，你只是希望使用官方的Hugo自动化部署到GitHub Pages，下面的内容你可以不用看了。你可以直接使用Wercker的服务来自动部署。&lt;/p&gt;
+
+&lt;p&gt;文档见：&lt;a href=&#34;http://gohugo.io/tutorials/automated-deployments/&#34;&gt;
+http://gohugo.io/tutorials/automated-deployments/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;由于Wercker还不支持GitCafe的部署，以及我需要使用特定的修改版本的Hugo来生成静态网页，并且希望这些步骤比较可控，所以，还是自己来折腾整个过程吧。&lt;/p&gt;
+
+&lt;h3 id=&#34;webhook:f7c51a9b685c2720baf98649c3938c48&#34;&gt;webhook&lt;/h3&gt;
+
+&lt;p&gt;webhook是GitHub上提供的Git的一种Hook机制，当代码发生变化时，比如代码被Push到GitHub的Repo时，GitHub会自动请求一个你指定的网页，并且把变更相关的参数都传递过来。入口在Repo的Settings - webhooks &amp;amp; services&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK4zVTH7bX6F0yvbp22ZqJplVmCbq2pZAiaZZTSlr43VUXlgV9r2ZpfrWzRXRKmIySxMTMib5Vd4ickw/0?wx_fmt=png&#34; alt=&#34;webhook&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;说明文档：&lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;https://developer.github.com/webhooks/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;借助webhook的机制，我们就可实现当有新的文章Push之后，自动通知远程的一台机器执行一个脚本，脚本的内容就是生成静态页面和Push部署到最终的服务器。&lt;/p&gt;
+
+&lt;p&gt;webhook的Server接收webhook通知，然后执行一个脚本。这样的需求太普遍了，以至于完全不需要自己来实现。在GitHub里搜webhook可以搜出来很多。我主要挑选了Go语言的版本。主要有两个：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/qiniu/webhook&#34;&gt;https://github.com/qiniu/webhook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/adnanh/webhook&#34;&gt;https://github.com/adnanh/webhook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;第一个是七牛写的，代码很简单，用法也很简单。开始打算用七牛的版本。最后调试的时候发现json解析失败，完全不可用啊！有点坑爹。于是换成了第二个，这个Repo有200多个Star。还是靠谱很多，最后部署，调试，非常顺利。&lt;/p&gt;
+
+&lt;p&gt;用法也很简单，首先安装webhook：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ go get github.com/adnanh/webhook
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;写一个配置文件hooks.json，里面指定需要执行的脚本：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[
+  {
+    &amp;quot;id&amp;quot;: &amp;quot;redeploy-webhook&amp;quot;,
+    &amp;quot;execute-command&amp;quot;: &amp;quot;/var/scripts/redeploy.sh&amp;quot;,
+    &amp;quot;command-working-directory&amp;quot;: &amp;quot;/var/webhook&amp;quot;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;指定端口启动：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ /path/to/webhook -hooks hooks.json -port=9876 -verbose
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后它将接受webhook地址：（把它填到GitHub里的webhook里）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://yourserver:9876/hooks/redeploy-webhook
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;自动部署:f7c51a9b685c2720baf98649c3938c48&#34;&gt;自动部署&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK4zVTH7bX6F0yvbp22ZqJpoWvxWia7iaRg6bXTvcZlsLWXdmKb6NMhOnlIaVxnP51QG0Tx7MmLZsJg/0?wx_fmt=png&#34; alt=&#34;AutoDeploy&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;大致的流程如上图。上图的DigitalOcean是一台VPS服务器，我用了很长时间了，速度和稳定性都不错。需要的同学使用这个链接购买，可以获得10美元的优惠：&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;https://www.digitalocean.com/?refcode=e131e2bba197&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;整个流程中，复杂度主要是在DigitalOcean的VPS上部署服务和脚本。&lt;/p&gt;
+
+&lt;p&gt;部署的脚本可以在我的GitHub上看到：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;需要的同学可以参考下，代码见：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;deploy.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;deploy.py放到你的主工程，也就是你写markdown的Repo下。比如：/var/coderzh-hugo-blog/下&lt;/p&gt;
+
+&lt;p&gt;adnanh-webhook的配置文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[
+  {
+    &amp;quot;id&amp;quot;: &amp;quot;hugo-deploy&amp;quot;,
+    &amp;quot;execute-command&amp;quot;: &amp;quot;/var/webhook/hugo-deploy.sh&amp;quot;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;hugo-deploy.sh里执行deploy.py：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+ 
+python /var/coderzh-hugo-blog/deploy.py --auto
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;剩下的是怎么在DigitalOcean的VPS上把这套东西部署起来。我使用nginx + supervisor搭建webhook的Server。&lt;/p&gt;
+
+&lt;p&gt;关于nginx和supervisor可以参考之前的一篇文章：&lt;a href=&#34;http://blog.coderzh.com/2014/05/19/digitalocean/&#34;&gt;http://blog.coderzh.com/2014/05/19/digitalocean/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;supervisor的配置如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[program:webhook]
+command=/root/gocode/bin/webhook -hooks /var/webhook/hooks.json -verbose -port=9876
+user=root
+directory=/var/webhook
+autorestart=true
+redirect_stderr=true
+environment=HOME=&amp;quot;/root&amp;quot;,USER=&amp;quot;root&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;关于VPS上SSH Key的设置，见：&lt;a href=&#34;https://help.github.com/articles/generating-ssh-keys/&#34;&gt;https://help.github.com/articles/generating-ssh-keys/&lt;/a&gt;  为了自动部署方便，可以不设置密码。&lt;/p&gt;
+
+&lt;p&gt;当然，还有个大前提，在VPS上安装最新版本的golang。推荐使用gvm来安装。（记得安装1.5之前必须先把1.4先装上）&lt;/p&gt;
+
+&lt;p&gt;golang 安装：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bash &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+source ~/.bashrc
+gvm version
+gvm install go1.4
+gvm install go1.5.1
+gvm use go1.5.1 --default
+go version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后，Good Luck！&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>周末折腾的各种东西</title>
@@ -1234,54 +1379,6 @@ def find_matches(lines, regex, exclude_list):
 &lt;p&gt;分类太细导致新增时到底分到哪个类别要纠结很久，而且放入某个分类后，就相当于被折叠了，打开它至少需要两步操作，以后关注的也会比较少。试想把微信放到一个文件夹里，每次打开微信都要先进入一个文件夹是多么繁杂的事情。&lt;/p&gt;
 
 &lt;p&gt;如果有个东西你不想再看到它，就把它丢到一个分类吧。当然，最好的方法是直接删掉。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>读《从0到1》</title>
-            <link>http://blog.coderzh.com/2015/04/20/ZeroToOne</link>
-            <pubDate>Mon, 20 Apr 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/04/20/ZeroToOne</guid>
-            <description>
-
-&lt;p&gt;自从入手了Kindle Paper White，现在已经习惯了在Kindle上购买图书了，已经买了好几本了。在Kindle上读书体验就是好啊，自己也变得越来越爱读书了。呵呵。&lt;/p&gt;
-
-&lt;p&gt;利用周末和平时闲暇时间，把《从0到1:开启商业与未来的秘密》读了一遍，书中很多观点不错，耐人深思，记录一下。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJ5oYLG0iaoNxdK2PicJibOmbEvIdIwkiaMdVw6kIWfFws0G5D3RQaHNue9GmkgzroiaMBUzHrlHvO5bow/0?wxfmt=jpeg&#34; alt=&#34;ZeroToOne&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;简介:9a56c900e23924928a82a1d8d7925594&#34;&gt;简介&lt;/h3&gt;
-
-&lt;p&gt;硅谷创投教父、PayPal创始人作品，斯坦福大学改变未来的一堂课，为世界创造价值的商业哲学。&lt;/p&gt;
-
-&lt;p&gt;在科技剧烈改变世界的今天，想要成功，你必须在一切发生之前研究结局。&lt;/p&gt;
-
-&lt;p&gt;你必须找到创新的独特方式，让未来不仅仅与众不同，而且更加美好。&lt;/p&gt;
-
-&lt;p&gt;从0到1，为自己创造无限的机会与价值！&lt;/p&gt;
-
-&lt;h3 id=&#34;笔记摘要:9a56c900e23924928a82a1d8d7925594&#34;&gt;笔记摘要&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;成功人士总能在意想不到的地方发现价值，他们遵循的是基本原则，而非秘籍。&lt;/li&gt;
-&lt;li&gt;每个垄断企业都有自己的特色，但它们通常会综合以下几个特点：专利技术、网络效应、规模经济以及品牌优势。&lt;/li&gt;
-&lt;li&gt;创造全新的事物，做出10倍改进，你就可以避开竞争。&lt;/li&gt;
-&lt;li&gt;世界不是静态的沙盒，获得的资源并非必须从别人那里掠夺，而应该从0到1，通过创新可以创造更多的价值。&lt;/li&gt;
-&lt;li&gt;我们所在的世界不是正常的世界，而是处在幂次法则之下：一小部分公司完胜其他所有公司。&lt;/li&gt;
-&lt;li&gt;质疑现有观念，从零开始重新审视自己所从事的业务。&lt;/li&gt;
-&lt;li&gt;最反主流的行动不是抵制潮流，而是在潮流中不丢弃自己的独立思考。&lt;/li&gt;
-&lt;li&gt;如果你想创造并获得持久的价值，不要只是跟风建立一个没有特色的企业。&lt;/li&gt;
-&lt;li&gt;企业成功的原因各有不同：每个垄断企业都是靠解决一个独一无二的问题获得垄断地位；而企业失败的原因却相同：它们都无法逃脱竞争。&lt;/li&gt;
-&lt;li&gt;开始创业时，首先最至关重要的的决定是和谁一起做。选合伙人就像结婚，创始人之间闹矛盾就像离婚一样令人不快。&lt;/li&gt;
-&lt;li&gt;公司做的越好，首席执行官的薪酬就越少：任何情况下，有风险资本注入的初创企业的首席执行官，年薪都不应超过15万美元。&lt;/li&gt;
-&lt;li&gt;公司里绝大多数矛盾都是由同事竞争同一岗位引起的。消除竞争更易于建立长久的纯粹的工作关系以外的交情。&lt;/li&gt;
-&lt;li&gt;一个初创企业完美的目标市场是特定的一小群人，而且几乎没有其他竞争者与你竞争。&lt;/li&gt;
-&lt;li&gt;创始人最大的危险是对自己的神话过于肯定，因而迷失了方向。对于公司，最大的危险是不再相信创始人的神话，错把不信神话当做一种智慧。&lt;/li&gt;
-&lt;li&gt;奇点已经临近，我们唯有做好准备，从0到1。最重要的第一步是独立思考，只有重新认识世界，如同古人第一眼看见这个世界一样新奇，我们才能重构世界，守护未来。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;以上观点值得思考，可以结合BAT以及其他互联网公司的发展和现状自行脑补。&lt;/p&gt;
 </description>
         </item>
         
