@@ -10,10 +10,10 @@
         
         <item>
             <title>通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</title>
-            <link>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo</link>
+            <link>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/</link>
             <pubDate>Sun, 13 Sep 2015 08:48:52 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo</guid>
+            <guid>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/</guid>
             <description>
 
 &lt;p&gt;本文的主要内容如标题所示，通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages。如果你正好有这个需求，看这篇文章正好，可以节省你不少时间。如果不是，了解一下也无妨。&lt;/p&gt;
@@ -155,10 +155,10 @@ go version
         
         <item>
             <title>周末折腾的各种东西</title>
-            <link>http://blog.coderzh.com/2015/09/05/busy-weekend</link>
+            <link>http://blog.coderzh.com/2015/09/05/busy-weekend/</link>
             <pubDate>Sat, 05 Sep 2015 23:44:48 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/09/05/busy-weekend</guid>
+            <guid>http://blog.coderzh.com/2015/09/05/busy-weekend/</guid>
             <description>
 
 &lt;p&gt;这个周末放了3天假，第一天当然是要看盛大的阅兵仪式了，剩下的时间一半多是在折腾博客系统Hugo，剩下的时间在折腾各种工具、IDE，还有学习了一下Unity。&lt;/p&gt;
@@ -244,10 +244,10 @@ go version
         
         <item>
             <title>给Hugo提交了一个PR</title>
-            <link>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request</link>
+            <link>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request/</link>
             <pubDate>Thu, 03 Sep 2015 08:55:31 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request</guid>
+            <guid>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request/</guid>
             <description>&lt;p&gt;给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。&lt;/p&gt;
 
 &lt;p&gt;在上一篇博客&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;使用hugo搭建个人博客站点&lt;/a&gt;  里提到，Hugo强制将所有路径都变成了小写。小写路径虽好，但是如果之前你的网站路径不是全小写的，迁移过来路径发生变化，将会导致路径失效，是不可接受的。&lt;/p&gt;
@@ -312,10 +312,10 @@ disablePathToLower: true
         
         <item>
             <title>使用hugo搭建个人博客站点</title>
-            <link>http://blog.coderzh.com/2015/08/29/hugo</link>
+            <link>http://blog.coderzh.com/2015/08/29/hugo/</link>
             <pubDate>Sat, 29 Aug 2015 16:52:15 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/08/29/hugo</guid>
+            <guid>http://blog.coderzh.com/2015/08/29/hugo/</guid>
             <description>
 
 &lt;p&gt;Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。&lt;/p&gt;
@@ -516,10 +516,10 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
         
         <item>
             <title>最近读的几本书</title>
-            <link>http://blog.coderzh.com/2015/08/16/Books</link>
+            <link>http://blog.coderzh.com/2015/08/16/Books/</link>
             <pubDate>Sun, 16 Aug 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/08/16/Books</guid>
+            <guid>http://blog.coderzh.com/2015/08/16/Books/</guid>
             <description>
 
 &lt;p&gt;由于我住的比较远，每天上下班单程需要1个半小时左右。因此，车上和地铁的时间成了我每天阅读的时间。&lt;/p&gt;
@@ -577,10 +577,10 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
         
         <item>
             <title>使用Jekyll官方的ReadMore摘要功能</title>
-            <link>http://blog.coderzh.com/2015/08/15/JekyllReadMore</link>
+            <link>http://blog.coderzh.com/2015/08/15/JekyllReadMore/</link>
             <pubDate>Sat, 15 Aug 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/08/15/JekyllReadMore</guid>
+            <guid>http://blog.coderzh.com/2015/08/15/JekyllReadMore/</guid>
             <description>
 
 &lt;p&gt;今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。&lt;/p&gt;
@@ -620,10 +620,10 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
         
         <item>
             <title>使用ThreadSanitizer线程检查工具</title>
-            <link>http://blog.coderzh.com/2015/08/15/ThreadSanitizer</link>
+            <link>http://blog.coderzh.com/2015/08/15/ThreadSanitizer/</link>
             <pubDate>Sat, 15 Aug 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/08/15/ThreadSanitizer</guid>
+            <guid>http://blog.coderzh.com/2015/08/15/ThreadSanitizer/</guid>
             <description>
 
 &lt;p&gt;ThreadSanitizer又叫TSan，是一个检查线程Data Race的C/C++工具。它集成在新版的gcc和clang中，通过编译时加-fsanitize=thread，可以在运行时检测出Data Race的问题。&lt;/p&gt;
@@ -714,10 +714,10 @@ ThreadSanitizer: reported 1 warnings
         
         <item>
             <title>你说我是错的，那你最好证明你是对的</title>
-            <link>http://blog.coderzh.com/2015/08/08/IDonnotCare</link>
+            <link>http://blog.coderzh.com/2015/08/08/IDonnotCare/</link>
             <pubDate>Sat, 08 Aug 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/08/08/IDonnotCare</guid>
+            <guid>http://blog.coderzh.com/2015/08/08/IDonnotCare/</guid>
             <description>&lt;p&gt;&amp;ldquo;你说我是错的，那你最好证明你是对的&amp;rdquo; &amp;ndash; Michael Jackson&lt;/p&gt;
 
 &lt;p&gt;这句话曾经出现在微信的启动封面上，后来被换下了。但在QQ邮箱的登录界面，还一直使用了这句MJ的名言：&lt;/p&gt;
@@ -816,10 +816,10 @@ L：呵呵
         
         <item>
             <title>小记：网易游戏学院第二届公开日</title>
-            <link>http://blog.coderzh.com/2015/06/28/163GameOpenDay</link>
+            <link>http://blog.coderzh.com/2015/06/28/163GameOpenDay/</link>
             <pubDate>Sun, 28 Jun 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/28/163GameOpenDay</guid>
+            <guid>http://blog.coderzh.com/2015/06/28/163GameOpenDay/</guid>
             <description>
 
 &lt;p&gt;昨天参加了网易游戏学院的公开日《技术进步引发的灵感革命》，干货十足，期间做了一些笔记，分享一下。&lt;/p&gt;
@@ -912,10 +912,10 @@ L：呵呵
         
         <item>
             <title>强制链接静态库所有符号(包括未被使用的)</title>
-            <link>http://blog.coderzh.com/2015/06/14/LinkAllSymbols</link>
+            <link>http://blog.coderzh.com/2015/06/14/LinkAllSymbols/</link>
             <pubDate>Sun, 14 Jun 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/14/LinkAllSymbols</guid>
+            <guid>http://blog.coderzh.com/2015/06/14/LinkAllSymbols/</guid>
             <description>
 
 &lt;p&gt;C++程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。&lt;/p&gt;
@@ -1077,10 +1077,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>开启Github之旅</title>
-            <link>http://blog.coderzh.com/2015/06/13/StartGithub</link>
+            <link>http://blog.coderzh.com/2015/06/13/StartGithub/</link>
             <pubDate>Sat, 13 Jun 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/13/StartGithub</guid>
+            <guid>http://blog.coderzh.com/2015/06/13/StartGithub/</guid>
             <description>
 
 &lt;p&gt;在那个远古时代，我以为可以用GoogleCode干点事，结果啥也没干好。如今，Github已经成为了业界标杆，就连Google、微软、Facebook的开源项目都往Github搬。Github作为全球最大的同性交友网站，假如你在上面有几个加星数不错的Project，一定会为你的简历增色不少。&lt;/p&gt;
@@ -1134,10 +1134,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>Cocos2d-x3.6 Android编译问题</title>
-            <link>http://blog.coderzh.com/2015/06/06/Cocos2dx36</link>
+            <link>http://blog.coderzh.com/2015/06/06/Cocos2dx36/</link>
             <pubDate>Sat, 06 Jun 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/06/Cocos2dx36</guid>
+            <guid>http://blog.coderzh.com/2015/06/06/Cocos2dx36/</guid>
             <description>&lt;p&gt;在Cocod2d-x论坛上看到越来越多人吐槽新版本更新太快，改动太大，而且经常有BUG导致升级要折腾很久很久。。但我就是喜欢折腾，喜欢升级到最新版本，看看有了哪些新功能，哪些改进。为此也折腾了不少，遇到一点就记录一点吧。&lt;/p&gt;
 
 &lt;ol&gt;
@@ -1160,10 +1160,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>读《程序员的思维训练》</title>
-            <link>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning</link>
+            <link>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning/</link>
             <pubDate>Sat, 16 May 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning</guid>
+            <guid>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning/</guid>
             <description>&lt;p&gt;《程序员的思维修炼:开发认知潜能的九堂课》 从程序员的角度去认清自己，思考问题，了解我们的大脑，进而发掘潜能。&lt;/p&gt;
 
 &lt;p&gt;作者是亨特(Andy Hunt)，他曾经写过《程序员修炼之道——从小工到专家》，《高效程序员的45个习惯:敏捷开发修炼之道》，《Programming Ruby》，《单元测试之道C#版——使用NUnit 》、《单元测试之道Java版——使用JUnit》、《版本控制之道——使用CVS 》等等。&lt;/p&gt;
@@ -1315,10 +1315,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>最近的一些变化</title>
-            <link>http://blog.coderzh.com/2015/05/11/NewChange</link>
+            <link>http://blog.coderzh.com/2015/05/11/NewChange/</link>
             <pubDate>Mon, 11 May 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/05/11/NewChange</guid>
+            <guid>http://blog.coderzh.com/2015/05/11/NewChange/</guid>
             <description>&lt;p&gt;有关注我博客的朋友也许会发现，从3月份开始，我的博客又活跃了起来，平均每周会有一篇，而且，我也开通了微信公众号：一个程序员的思考。为什么会有这个变化呢？因为，我换工作了。工作内容有了很大的变化，平时的生活娱乐方式也有了一定的变化。&lt;/p&gt;
 
 &lt;p&gt;首先，工作方面，我离开了创业4年的游戏公司。有很多人都不理解，作为手游服务端主程，为什么选择在几个月后游戏即将上线前离开。在面试腾讯的过程中，几乎每个面试官都问了同样的问题。在我内心中，也在不断的问自己。最后总结为一个词，就是累觉不爱了。&lt;/p&gt;
@@ -1354,10 +1354,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>成大事者不纠结</title>
-            <link>http://blog.coderzh.com/2015/04/26/Category</link>
+            <link>http://blog.coderzh.com/2015/04/26/Category/</link>
             <pubDate>Sun, 26 Apr 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/04/26/Category</guid>
+            <guid>http://blog.coderzh.com/2015/04/26/Category/</guid>
             <description>&lt;p&gt;最近在看罗振宇的《成大事者不纠结》，想想自己平时有什么纠结的事情，当我打开为知笔记看着长长的文件夹分类时，我明白了，其实我一直纠结着“分类”。我有一定的分类整理的习惯，当然也不是特别强迫的那种。比如，记录技术文章时，我会分出：C++，Python，Cocos2d-x，GameServer，Linux，……等等，甚至还会分出若干的二级分类。&lt;/p&gt;
 
 &lt;p&gt;这样分类的结果，就是自从被分入某个子类之后，我再也没有打开过它。甚至平时连看都不曾看见过它，好像它从未存在过。&lt;/p&gt;

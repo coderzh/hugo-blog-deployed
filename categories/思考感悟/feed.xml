@@ -10,10 +10,10 @@
         
         <item>
             <title>周末折腾的各种东西</title>
-            <link>http://blog.coderzh.com/2015/09/05/busy-weekend</link>
+            <link>http://blog.coderzh.com/2015/09/05/busy-weekend/</link>
             <pubDate>Sat, 05 Sep 2015 23:44:48 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/09/05/busy-weekend</guid>
+            <guid>http://blog.coderzh.com/2015/09/05/busy-weekend/</guid>
             <description>
 
 &lt;p&gt;这个周末放了3天假，第一天当然是要看盛大的阅兵仪式了，剩下的时间一半多是在折腾博客系统Hugo，剩下的时间在折腾各种工具、IDE，还有学习了一下Unity。&lt;/p&gt;
@@ -99,10 +99,10 @@
         
         <item>
             <title>你说我是错的，那你最好证明你是对的</title>
-            <link>http://blog.coderzh.com/2015/08/08/IDonnotCare</link>
+            <link>http://blog.coderzh.com/2015/08/08/IDonnotCare/</link>
             <pubDate>Sat, 08 Aug 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/08/08/IDonnotCare</guid>
+            <guid>http://blog.coderzh.com/2015/08/08/IDonnotCare/</guid>
             <description>&lt;p&gt;&amp;ldquo;你说我是错的，那你最好证明你是对的&amp;rdquo; &amp;ndash; Michael Jackson&lt;/p&gt;
 
 &lt;p&gt;这句话曾经出现在微信的启动封面上，后来被换下了。但在QQ邮箱的登录界面，还一直使用了这句MJ的名言：&lt;/p&gt;
@@ -201,10 +201,10 @@ L：呵呵
         
         <item>
             <title>小记：网易游戏学院第二届公开日</title>
-            <link>http://blog.coderzh.com/2015/06/28/163GameOpenDay</link>
+            <link>http://blog.coderzh.com/2015/06/28/163GameOpenDay/</link>
             <pubDate>Sun, 28 Jun 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/28/163GameOpenDay</guid>
+            <guid>http://blog.coderzh.com/2015/06/28/163GameOpenDay/</guid>
             <description>
 
 &lt;p&gt;昨天参加了网易游戏学院的公开日《技术进步引发的灵感革命》，干货十足，期间做了一些笔记，分享一下。&lt;/p&gt;
@@ -297,10 +297,10 @@ L：呵呵
         
         <item>
             <title>强制链接静态库所有符号(包括未被使用的)</title>
-            <link>http://blog.coderzh.com/2015/06/14/LinkAllSymbols</link>
+            <link>http://blog.coderzh.com/2015/06/14/LinkAllSymbols/</link>
             <pubDate>Sun, 14 Jun 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/14/LinkAllSymbols</guid>
+            <guid>http://blog.coderzh.com/2015/06/14/LinkAllSymbols/</guid>
             <description>
 
 &lt;p&gt;C++程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。&lt;/p&gt;
@@ -462,10 +462,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>开启Github之旅</title>
-            <link>http://blog.coderzh.com/2015/06/13/StartGithub</link>
+            <link>http://blog.coderzh.com/2015/06/13/StartGithub/</link>
             <pubDate>Sat, 13 Jun 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/13/StartGithub</guid>
+            <guid>http://blog.coderzh.com/2015/06/13/StartGithub/</guid>
             <description>
 
 &lt;p&gt;在那个远古时代，我以为可以用GoogleCode干点事，结果啥也没干好。如今，Github已经成为了业界标杆，就连Google、微软、Facebook的开源项目都往Github搬。Github作为全球最大的同性交友网站，假如你在上面有几个加星数不错的Project，一定会为你的简历增色不少。&lt;/p&gt;
@@ -519,10 +519,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>最近的一些变化</title>
-            <link>http://blog.coderzh.com/2015/05/11/NewChange</link>
+            <link>http://blog.coderzh.com/2015/05/11/NewChange/</link>
             <pubDate>Mon, 11 May 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/05/11/NewChange</guid>
+            <guid>http://blog.coderzh.com/2015/05/11/NewChange/</guid>
             <description>&lt;p&gt;有关注我博客的朋友也许会发现，从3月份开始，我的博客又活跃了起来，平均每周会有一篇，而且，我也开通了微信公众号：一个程序员的思考。为什么会有这个变化呢？因为，我换工作了。工作内容有了很大的变化，平时的生活娱乐方式也有了一定的变化。&lt;/p&gt;
 
 &lt;p&gt;首先，工作方面，我离开了创业4年的游戏公司。有很多人都不理解，作为手游服务端主程，为什么选择在几个月后游戏即将上线前离开。在面试腾讯的过程中，几乎每个面试官都问了同样的问题。在我内心中，也在不断的问自己。最后总结为一个词，就是累觉不爱了。&lt;/p&gt;
@@ -558,10 +558,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>新的开始，新的挑战</title>
-            <link>http://blog.coderzh.com/2015/03/15/NewStart</link>
+            <link>http://blog.coderzh.com/2015/03/15/NewStart/</link>
             <pubDate>Sun, 15 Mar 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/03/15/NewStart</guid>
+            <guid>http://blog.coderzh.com/2015/03/15/NewStart/</guid>
             <description>&lt;p&gt;人的选择，有时候看上去是有规律或刻意的，有时候又像是自然而然的。既然选择了远方，就要鼓足勇气去面对挑战。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKERtH8iafPictOuic7yibcdNLHvwU0rZEW7EFgdGpBYhiamrGCCz9Nnq8UhKyAX2KBIJyc0cRFNWy6oqw/0&#34; alt=&#34;NewStart&#34; width=&#34;800&#34; height=&#34;360&#34; /&gt;&lt;/p&gt;
@@ -590,10 +590,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>关于创业</title>
-            <link>http://blog.coderzh.com/2015/02/18/Starup</link>
+            <link>http://blog.coderzh.com/2015/02/18/Starup/</link>
             <pubDate>Wed, 18 Feb 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/02/18/Starup</guid>
+            <guid>http://blog.coderzh.com/2015/02/18/Starup/</guid>
             <description>
 
 &lt;p&gt;有人说，现在是创业的黄金时代。有个不错的idea，有差不多靠谱的团队，一个简单的demo甚至只有想法，就可以拉来一笔投资开始干了。其实并非如此容易，至少我现在还没这勇气魄力和这分自信。不过也的确没有那么难，不然哪来这么多雨后春笋般的创业公司。&lt;/p&gt;
@@ -620,10 +620,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>你好2015</title>
-            <link>http://blog.coderzh.com/2015/01/10/2015Jekyll</link>
+            <link>http://blog.coderzh.com/2015/01/10/2015Jekyll/</link>
             <pubDate>Sat, 10 Jan 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/01/10/2015Jekyll</guid>
+            <guid>http://blog.coderzh.com/2015/01/10/2015Jekyll/</guid>
             <description>
 
 &lt;p&gt;2015已经到来，转眼间已步入而立之年。不畏将来，不念过去。2015年是一个新的开始，正如我又将这博客从WordPress转移到了Jekyll，而且很顺利的将之前博客园的博文导入到了这个博客中。2015，对于我的独立博客来说，是个全新的开始。&lt;/p&gt;
@@ -696,10 +696,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>如何看待：微软将以25亿美元收购Minecraft开发商Mojang</title>
-            <link>http://blog.coderzh.com/2014/09/10/mincraft</link>
+            <link>http://blog.coderzh.com/2014/09/10/mincraft/</link>
             <pubDate>Wed, 10 Sep 2014 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2014/09/10/mincraft</guid>
+            <guid>http://blog.coderzh.com/2014/09/10/mincraft/</guid>
             <description>
 
 &lt;h3 id=&#34;背景:a2656c086b4e7cfeefd12aa41391c90d&#34;&gt;背景&lt;/h3&gt;
@@ -738,10 +738,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>创业感悟</title>
-            <link>http://blog.coderzh.com/2014/09/07/startup</link>
+            <link>http://blog.coderzh.com/2014/09/07/startup/</link>
             <pubDate>Sun, 07 Sep 2014 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2014/09/07/startup</guid>
+            <guid>http://blog.coderzh.com/2014/09/07/startup/</guid>
             <description>
 
 &lt;p&gt;时光飞逝，转眼间距离上一篇博客已经快三年时间。这三年里，人们逐渐从博客转移到了微博，看的人少了，写的人也少了。以前，写博客是一种潮流，现在，写博客已经是一种坚持了。连Google都放弃了RSS，我不知道那些曾经订阅过我博客的朋友，你们还在坚持用RSS看文章吗？我写的这篇文章，你们在用Google Reader的替代品看到我的文章吗？如果有看到，并且我的文章对你有帮助，请留言告诉我。这会是我更新博客很好的动力。&lt;/p&gt;
@@ -790,10 +790,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>启程2011</title>
-            <link>http://blog.coderzh.com/2011/01/06/start2011</link>
+            <link>http://blog.coderzh.com/2011/01/06/start2011/</link>
             <pubDate>Thu, 06 Jan 2011 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2011/01/06/start2011</guid>
+            <guid>http://blog.coderzh.com/2011/01/06/start2011/</guid>
             <description>&lt;p&gt;2011年已经来临，我甚至还来不及对2010年做个总结，过去的2010年是折腾的一年。回顾了09年的总结，2010年我主要完成做了：&lt;/p&gt;
 
 &lt;p&gt;　1. 博客61篇，相对去年49篇，一定的进步。完成了平均每周一篇的目标。&lt;/p&gt;
@@ -836,10 +836,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>多彩的程序人生</title>
-            <link>http://blog.coderzh.com/2010/07/12/programming-life</link>
+            <link>http://blog.coderzh.com/2010/07/12/programming-life/</link>
             <pubDate>Mon, 12 Jul 2010 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2010/07/12/programming-life</guid>
+            <guid>http://blog.coderzh.com/2010/07/12/programming-life/</guid>
             <description>
 
 &lt;p&gt;常常想程序人生的问题，也常常在网上看程序人生相关的话题，但听大师讲程序人生，还是第一次。这位大师，就是侯捷。&lt;/p&gt;
@@ -921,10 +921,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>人人都是全面手还是专业分工</title>
-            <link>http://blog.coderzh.com/2010/06/15/1758489</link>
+            <link>http://blog.coderzh.com/2010/06/15/1758489/</link>
             <pubDate>Tue, 15 Jun 2010 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2010/06/15/1758489</guid>
+            <guid>http://blog.coderzh.com/2010/06/15/1758489/</guid>
             <description>&lt;p&gt;美国当年打越南，武力装备都在越南之上，最终还是失败告终。有人总结了这样一个说法：美国军队虽然总人数占优，但由于其专业的分工，一个战士还配个医疗兵，最终实际参与战斗的人其实不多。而越南兵根本没什么专业分工，前线的战士受伤了自己包扎一下就继续上，只要为了胜利，管它专业不专业，每个人都是全能手，倾尽所能全力战斗。美国需要反省，反省什么？&lt;/p&gt;
 
 &lt;p&gt;初创的软件公司，三五个人十条枪，没有产品，没有运营，没有自动化测试，管它专业不专业，用户爽就是好。成熟的大公司，职能分工很明确，专业技能造诣也深。最终小公司却给大公司沉痛一击，大公司也需要反省，反省什么？&lt;/p&gt;
@@ -946,10 +946,10 @@ def find_matches(lines, regex, exclude_list):
         
         <item>
             <title>三年之痒</title>
-            <link>http://blog.coderzh.com/2010/03/27/three-years-work-thinking</link>
+            <link>http://blog.coderzh.com/2010/03/27/three-years-work-thinking/</link>
             <pubDate>Sat, 27 Mar 2010 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2010/03/27/three-years-work-thinking</guid>
+            <guid>http://blog.coderzh.com/2010/03/27/three-years-work-thinking/</guid>
             <description>&lt;p&gt;眼看就要工作满三年了，对于大多数人来说是一个特殊的时期，对于我来说，也不例外。我也常常在想，我自己的定位是什么，我以后想要做什么，我该怎么选择，才能实现自己的价值和梦想。&lt;/p&gt;
 
 &lt;p&gt;　　思绪回到三年前&amp;#8230;&amp;#8230;&lt;/p&gt;
