@@ -6,7 +6,35 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Fri, 18 Sep 2015 19:38:18 CST</updated>
+        <updated>Sat, 19 Sep 2015 00:35:48 CST</updated>
+        
+        <item>
+            <title>微信公众号开通了原创保护功能</title>
+            <link>http://blog.coderzh.com/2015/09/19/mp-new-start/</link>
+            <pubDate>Sat, 19 Sep 2015 00:35:48 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/19/mp-new-start/</guid>
+            <description>&lt;p&gt;周三非常意外的收到了微信的原创保护功能邀请，之所以说意外，是因为我没想到这么快就给我发了邀请，毕竟我的公众号关注的数量还不多。但我保证了每篇文章都是原汁原味的原创内容，而且目前保持了一周一更的速度。&lt;/p&gt;
+
+&lt;p&gt;这个公众号是从今年2月底开始运营的，非常感谢所有关注了这个公众号的读者！每次我准备写公众号文章时，我都会提醒自己，我的消息会被强制推送出去到你们的手机里，我必须认真写一些有用的内容，不要浪费大家的时间。虽然这么说，文章的实际打开率还是很低的，这也是可以理解的。我也关注了很多订阅号，很多内容也是被我忽略过去，或者根本来不及看就被堆叠了。&lt;/p&gt;
+
+&lt;p&gt;所以，再次感谢经常或者偶尔打开我文章看的同学！这个公众号运营6个多月了，目前有223个关注，其中大部分是看了我的博客关注的，因为那里放了关注的二维码。关注的数量不多，至少保持了稳定的增长。《从0到1》里有说到，初始用户不需要太多，有数百人就可以，如果他们都觉得非常好用就行了。所以，我只需要认真的写，用心的分享，服务好现有的关注者，让你们感觉到我的文章对你有用就行。至于哪天会不会有个爆发式的增长，我希望能有，但也不去奢求，也许现在这样稳定缓慢的增长也挺好。&lt;/p&gt;
+
+&lt;p&gt;开了原创保护功能的同时，也开了评论功能，这是我一直都想要的功能啊。因为我要服务好你们，所以需要和你们更多的沟通和互动啊。&lt;/p&gt;
+
+&lt;p&gt;看到这篇文章后，希望你们能给我一些反馈，说一说当初为什么关注hacker-thinking：一个程序员的思考，或者你更希望从这个公众号了解哪些方面内容的文章，或者，是其他任何的东西。：）&lt;/p&gt;
+
+&lt;p&gt;还没有关注的同学，也关注一下吧：）微信公众号：hacker-thinking&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.coderzh.com/public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;谢谢支持！&lt;/p&gt;
+
+&lt;p&gt;最后上个图，上周刚收到的HHKB :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKIperrgdZnvO8jlsy3BIktYbicbnnB6T5EcnO3NW5QSrHrC71ZeygYxddVUZhc4WKgvwWE6NtyeJg/0?wx_fmt=jpeg&#34; alt=&#34;HHKB&#34; /&gt;&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>坑爹的多说评论</title>
@@ -946,31 +974,6 @@ def find_matches(lines, regex, exclude_list):
 &lt;p&gt;我在睡前花了半个小时整理了这篇博文，也许多年以后，我也不会记得侯老师的这次讲座的内容，但是这篇文章会帮我记住。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/07/12/programming-life.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/07/12/programming-life.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>人人都是全面手还是专业分工</title>
-            <link>http://blog.coderzh.com/2010/06/15/1758489/</link>
-            <pubDate>Tue, 15 Jun 2010 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2010/06/15/1758489/</guid>
-            <description>&lt;p&gt;美国当年打越南，武力装备都在越南之上，最终还是失败告终。有人总结了这样一个说法：美国军队虽然总人数占优，但由于其专业的分工，一个战士还配个医疗兵，最终实际参与战斗的人其实不多。而越南兵根本没什么专业分工，前线的战士受伤了自己包扎一下就继续上，只要为了胜利，管它专业不专业，每个人都是全能手，倾尽所能全力战斗。美国需要反省，反省什么？&lt;/p&gt;
-
-&lt;p&gt;初创的软件公司，三五个人十条枪，没有产品，没有运营，没有自动化测试，管它专业不专业，用户爽就是好。成熟的大公司，职能分工很明确，专业技能造诣也深。最终小公司却给大公司沉痛一击，大公司也需要反省，反省什么？&lt;/p&gt;
-
-&lt;p&gt;世界杯正在进行，举个足球的例子：
-假设球队A，队员都经过专业训练，专业的动作，专业的体能教练，专业的战术指挥，专业的球场统计，专业的队医&amp;#8230;&amp;#8230;
-假设球队B，队员各种训练条件很差，未经过严格的专业训练，动作也不规范，也没有什么专业的战术指挥，但是个个冲劲十足，没有自己的固定位置，哪里空了补哪里。
-比赛的结果却是球队B获胜，球队A也要反省，反省什么？&lt;/p&gt;
-
-&lt;p&gt;反省什么？是专业分工的错吗？因此就要向对手学习这种不规范的管理吗？要让一个后卫队员随时冲到前面射门吗？&lt;/p&gt;
-
-&lt;p&gt;战争失败的原因其实有很多，球队输球的原因也有很多。有可能球队B买通了裁判，或是好的一面，比如他们有更强的冲劲，对进球的欲望，他们可以拼了老命，不顾一切，而专业队伍的球员甚至需要给自己的脚买保险。&lt;/p&gt;
-
-&lt;p&gt;所以问题根本就不在专业分工，人人都是产品经理的想法虽好，但是什么事情都去做，未必能达到最好的效果，还丢了自己最擅长的东西。真正需要反省的是如何加强各个团队的产品意识，和加强团队之间的高效配合。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/06/15/1758489.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/06/15/1758489.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         
