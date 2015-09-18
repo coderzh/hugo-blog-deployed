@@ -6,7 +6,37 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 13 Sep 2015 08:48:52 CST</updated>
+        <updated>Fri, 18 Sep 2015 19:38:18 CST</updated>
+        
+        <item>
+            <title>坑爹的多说评论</title>
+            <link>http://blog.coderzh.com/2015/09/18/holy-shit-duoshuo/</link>
+            <pubDate>Fri, 18 Sep 2015 19:38:18 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/18/holy-shit-duoshuo/</guid>
+            <description>&lt;p&gt;运用了各种奇技淫巧的黑科技手段，终于把之前旧页面的多说评论全部转过来了。如果再来选择一次的话，我绝不选多说。之后有时间，全部转移到disqus吧。&lt;/p&gt;
+
+&lt;p&gt;多说简直就没人维护啊有木有，居然还那么多人用着。罗列一下多说评论的各种不人性。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;残废的评论通知功能&lt;/p&gt;
+
+&lt;p&gt;简直就收不到任何通知啊，有木有，别人回复了根本没有邮件通知，页面右上角的弹框通知也木有啊。直到上周实在不能忍了，在我的VPS上跑了一个多说实时邮件提醒脚本：&lt;a href=&#34;https://gist.github.com/coderzh/bec0eb7e8f0cddba657b&#34;&gt;https://gist.github.com/coderzh/bec0eb7e8f0cddba657b&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;后台管理文章不能翻页&lt;/p&gt;
+
+&lt;p&gt;文章列表只显示第一页，不能翻页，还怎么管理！逼到我使出了绝招，让它能翻页。。。本着大家以后都别用多说的心态，我就不透露具体方法了。如果你真想知道就留个言。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;评论迁移不人性&lt;/p&gt;
+
+&lt;p&gt;网址变了，或者说data-thread-key变了之后，想把评论也迁移到新的地址。只能去后台编辑旧的data-thread-key，改成新的地址的data-thread-key。假如新的data-thread-key文章项已经存在，是修改不了的，这说的过去。假如新的data-thread-key的文章被删除后，旧的文章怎么也改不了data-thread-key成新的。最后只能曲线救国了，想知道的留言。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;垃圾的垃圾评论过滤&lt;/p&gt;
+
+&lt;p&gt;评论后台里，偶然发现“垃圾评论”一项，而且发现里面有东西，明明不像是垃圾评论却被归到那里，而且没有任何通知。更坑爹的是：“(系统将自动清理发表于 30 天前的垃圾评论)”holy shit!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
         
         <item>
             <title>通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</title>
@@ -1349,36 +1379,6 @@ def find_matches(lines, regex, exclude_list):
 &lt;p&gt;另外，希望我能把跑步坚持下来，加油吧。&lt;/p&gt;
 
 &lt;p&gt;就是这么多了，未来是什么我不知道，我知道的是做好当前。引用曾国藩的话，就是：未来不迎，当时不杂，过往不恋。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>成大事者不纠结</title>
-            <link>http://blog.coderzh.com/2015/04/26/Category/</link>
-            <pubDate>Sun, 26 Apr 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/04/26/Category/</guid>
-            <description>&lt;p&gt;最近在看罗振宇的《成大事者不纠结》，想想自己平时有什么纠结的事情，当我打开为知笔记看着长长的文件夹分类时，我明白了，其实我一直纠结着“分类”。我有一定的分类整理的习惯，当然也不是特别强迫的那种。比如，记录技术文章时，我会分出：C++，Python，Cocos2d-x，GameServer，Linux，……等等，甚至还会分出若干的二级分类。&lt;/p&gt;
-
-&lt;p&gt;这样分类的结果，就是自从被分入某个子类之后，我再也没有打开过它。甚至平时连看都不曾看见过它，好像它从未存在过。&lt;/p&gt;
-
-&lt;p&gt;同样的例子，之前我喜欢在手机里给APP分类：游戏，阅读，新闻，视频，社交，工具，系统，……等等。游戏类别还不够分，再分出：休闲游戏，动作游戏，卡牌游戏，……等等。休闲游戏太多放在一起太乱又分成：休闲游戏1，休闲游戏2，……。最后的结果是，自从一个游戏被纳入了分类文件夹，我就很少再打开过它。&lt;/p&gt;
-
-&lt;p&gt;再举个栗子，之前喜欢在多看里看书（现在转到Kindle了），我也喜欢把下载的书籍分门别类。甚至感觉下载和分类的兴趣大过了阅读的兴趣，找到一本有趣的书，下载并纳入某个分类，像达成了某个成就，而之后根本没有打开阅读过。就像某些人热衷于收集某岛国的片子并分门别类，甚至大过了观赏的兴趣。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;所以，我决定从今天起不再纠结分类。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;原则上，尽可能不要分类。当不分类造成混乱时，只允许进行一级的分类。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;记录笔记时，我只分最大的一级分类，而且保持在5个以内。比如：技术类笔记统一到Programming，工作类笔记统一到Working，灵感记录，收藏备忘等等。&lt;/li&gt;
-&lt;li&gt;Kindle里，我采取不分类的方式。因为同一时刻，我关注的永远是最近的1,2本书。其他的书完全可以通过搜索来找到。&lt;/li&gt;
-&lt;li&gt;手机里，把常用的APP放到桌面上，不常用的就直接删了吧。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;分类太细导致新增时到底分到哪个类别要纠结很久，而且放入某个分类后，就相当于被折叠了，打开它至少需要两步操作，以后关注的也会比较少。试想把微信放到一个文件夹里，每次打开微信都要先进入一个文件夹是多么繁杂的事情。&lt;/p&gt;
-
-&lt;p&gt;如果有个东西你不想再看到它，就把它丢到一个分类吧。当然，最好的方法是直接删掉。&lt;/p&gt;
 </description>
         </item>
         
