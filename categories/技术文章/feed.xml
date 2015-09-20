@@ -6,7 +6,36 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 13 Sep 2015 08:48:52 CST</updated>
+        <updated>Sun, 20 Sep 2015 20:37:42 CST</updated>
+        
+        <item>
+            <title>博客图片切换到七牛</title>
+            <link>http://blog.coderzh.com/2015/09/20/qiuniu/</link>
+            <pubDate>Sun, 20 Sep 2015 20:37:42 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/20/qiuniu/</guid>
+            <description>&lt;p&gt;&lt;a href=&#34;https://portal.qiniu.com/signup?code=3llo7yfu1ib7y&#34;&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/qiniu.jpg&#34; alt=&#34;qiniu&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;做一个独立博客，稳定、速度快是非常重要的指标。在博客的运营过程中，经常会不可避免的需要做迁移。比如，从WordPress到Jekyll，从Jekyll到Hugo。迁移之后，文章里的链接还能不能用，图片还能不能访问，是一个比较重要的问题。文章链接地址可以使用域名或者相对地址的方式方便迁移，而图片则稍微复杂一点点。&lt;/p&gt;
+
+&lt;p&gt;假如图片和网页文件都是在服务器上自己管理，迁移时只需要把图片拷贝过去，然后保持访问的路径不变就可以了。自己管理图片有些不好的地方，首先图片可能占用你大量的服务器存储空间，其次访问时也将消耗服务器大量的流量。另外一种方式，是把图片放在一个第三方的地方，然后通过链接直接使用。而“第三方”就显得尤为重要的，假如这个“第三方”哪天突然倒了或者策略变化，导致之前的所有图片都失效了，将是不可接受的。&lt;/p&gt;
+
+&lt;p&gt;正因为存在这样的需求，所以出现一些专业的提供图片托管的服务，俗称图床服务。这些图床服务通常提供这样一些服务：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;图床服务是稳定的，不会轻易中断。你就放心吧。&lt;/li&gt;
+&lt;li&gt;通过CDN加速，让你的图片访问速度杠杠的。&lt;/li&gt;
+&lt;li&gt;支持自定义域名，迁移过来或者迁移走都可以非常方便。&lt;/li&gt;
+&lt;li&gt;提供水印等图片处理服务。（算是一个附加功能）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;使用图床服务还有一个好处，就是一旦当前使用的图床没法用了，只需要把图片都迁到另外一个图床继续使用，代价非常小。就算没有绑定自定义域名，迁移的时候做个简单的地址替换就可以了。&lt;/p&gt;
+
+&lt;p&gt;在对比了国内的图床服务之后，我还是决定选择老东家金山出来的许式伟做的七牛云存储。七牛在上面四点都做的非常好，而且还提供10G免费空间。目前对我来说已经足够了。&lt;/p&gt;
+
+&lt;p&gt;七牛云存储：&lt;a href=&#34;https://portal.qiniu.com/signup?code=3llo7yfu1ib7y&#34;&gt;www.qiniu.com&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</title>
@@ -1212,166 +1241,6 @@ HKCU\Software\Whole Tomato\Visual Assist X\VANet12 的TrackCaretVisibility 改�
 &lt;p&gt;&lt;a href=&#34;http://files.cnblogs.com/coderzh/Viemu3.2.1-%E7%A0%B4%E8%A7%A3%E5%AE%89%E8%A3%85%E5%8C%85.7z&#34;&gt;Viemu3.2.1-破解安装包.7z&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2014/04/02/3640179.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2014/04/02/3640179.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>tornado</title>
-            <link>http://blog.coderzh.com/2013/03/13/2958224/</link>
-            <pubDate>Wed, 13 Mar 2013 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2013/03/13/2958224/</guid>
-            <description>
-
-&lt;p&gt;wget &lt;a href=&#34;https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea&#34;&gt;https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea&lt;/a&gt;
-sh setuptools_xxx.egg&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;MongoDB官网：&lt;a href=&#34;http://www.linuxidc.com/Linux/2012-08/linux.asp?url=http://www.mongodb.org/&#34;&gt;http://www.mongodb.org/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;如何在&amp;nbsp;&lt;a href=&#34;http://www.linuxidc.com/topicnews.aspx?tid=2&#34; title=&#34;Ubuntu&#34;&gt;Ubuntu&lt;/a&gt;&amp;nbsp;12.04 (Precise) Server 上安装 MongoDB&lt;/p&gt;
-
-&lt;p&gt;sudo apt-key adv &amp;ndash;keyserver keyserver.ubuntu.com &amp;ndash;recv 7F0CEB10
-echo &amp;ldquo;deb &lt;a href=&#34;http://downloads-distro.mongodb.org/repo/ubuntu-upstart&#34;&gt;http://downloads-distro.mongodb.org/repo/ubuntu-upstart&lt;/a&gt; dist 10gen&amp;rdquo; | tee -a /etc/apt/sources.list.d/10gen.list
-sudo apt-get -y update&lt;/p&gt;
-
-&lt;p&gt;sudo apt-get -y install mongodb-10gen&lt;/p&gt;
-
-&lt;p&gt;配置文件：/etc/mongodb.conf&lt;/p&gt;
-
-&lt;p&gt;对于基于Upstart的系统，控制脚本在/etc/init/mongodb.conf。&lt;/p&gt;
-
-&lt;p&gt;默认数据文件目录：/var/lib/mongodb&lt;/p&gt;
-
-&lt;p&gt;默认日志文件目录： /var/log/mongodb&lt;/p&gt;
-
-&lt;p&gt;启动MongoDB:&amp;nbsp;&amp;nbsp; sudo service mongodb start&lt;/p&gt;
-
-&lt;p&gt;sudo service mongodb stop&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 停止&lt;/p&gt;
-
-&lt;p&gt;sudo service mongodb restart 重启&lt;/p&gt;
-
-&lt;p&gt;测试：在终端上运行mongo打开mongo shell&lt;/p&gt;
-
-&lt;h1 id=&#34;mongo:478d349564ff1867135392f8c92ebb58&#34;&gt;mongo&lt;/h1&gt;
-
-&lt;p&gt;MongoDB shell version: 2.0.7
-connecting to: test&lt;/p&gt;
-
-&lt;p&gt;&amp;gt; db.test.save({a:1})
-&amp;gt; db.test.find()
-{ &amp;ldquo;_id&amp;rdquo; : ObjectId(&amp;ldquo;502b284cd9de55a0e9ca86d9&amp;Prime;), &amp;ldquo;a&amp;rdquo; : 1 }&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-
-&lt;h2 id=&#34;span-安装nginx-span:478d349564ff1867135392f8c92ebb58&#34;&gt;&lt;span&gt;安装nginx&lt;/span&gt;&lt;/h2&gt;
-
-&lt;pre&gt;sudo apt-get install nginx&lt;/pre&gt;
-
-&lt;p&gt;Ubuntu安装之后的文件结构大致为：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;所有的配置文件都在/etc/nginx下，并且每个虚拟主机已经安排在了/etc/nginx/sites-available下&lt;/li&gt;
-&lt;li&gt;程序文件在/usr/sbin/nginx&lt;/li&gt;
-&lt;li&gt;日志放在了/var/log/nginx中&lt;/li&gt;
-&lt;li&gt;并已经在/etc/init.d/下创建了启动脚本nginx&lt;/li&gt;
-&lt;li&gt;默认的虚拟主机的目录设置在了/var/www/nginx-default (有的版本 默认的虚拟主机的目录设置在了/var/www, 请参考/etc/nginx/sites-available里的配置)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a name=&#34;.E5.90.AF.E5.8A.A8nginx&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;nbsp:478d349564ff1867135392f8c92ebb58&#34;&gt;&amp;nbsp;&lt;/h2&gt;
-
-&lt;h2 id=&#34;span-启动nginx-span:478d349564ff1867135392f8c92ebb58&#34;&gt;&lt;span&gt;启动nginx&lt;/span&gt;&lt;/h2&gt;
-
-&lt;pre&gt;sudo /etc/init.d/nginx start&lt;/pre&gt;
-
-&lt;p&gt;然后就可以访问了，&lt;a href=&#34;http://localhost/&#34; title=&#34;http://localhost/&#34;&gt;http://localhost/&lt;/a&gt;&amp;nbsp;， 一切正常！如果不能访问，先不要继续，看看是什么原因，解决之后再继续。 （安装完后如出现403错误，那可能是nginx配置文件里的网站路径不正确）&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;mongodb new 安装最新的版本&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;sudo apt-key adv &amp;ndash;keyserver keyserver.ubuntu.com &amp;ndash;recv 7F0CEB10&lt;/p&gt;
-
-&lt;p&gt;添加下面的到 /etc/apt/sources.list&lt;/p&gt;
-
-&lt;p&gt;deb &lt;a href=&#34;http://downloads-distro.mongodb.org/repo/ubuntu-upstart&#34;&gt;http://downloads-distro.mongodb.org/repo/ubuntu-upstart&lt;/a&gt; dist 10gen&lt;/p&gt;
-
-&lt;p&gt;sudo apt-get update&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;sudo apt-get install mongodb-10gen&lt;/p&gt;
-
-&lt;p&gt;改完配置文件后，对应的路径要设置权限&lt;/p&gt;
-
-&lt;p&gt;chmod -R 777 /path&lt;/p&gt;
-
-&lt;h1 id=&#34;mongod-dbpath-path-logpath-path-dblog-txt-logappend-directoryperdb-bind-ip-127-0-0-1-auth-master:478d349564ff1867135392f8c92ebb58&#34;&gt;mongod &amp;ndash;dbpath=/path &amp;ndash;logpath=/path/dblog.txt &amp;ndash;logappend &amp;ndash;directoryperdb &amp;ndash;bind_ip=127.0.0.1 &amp;ndash;auth &amp;ndash;master&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;启动 MongoDB&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;sudo /etc/init.d/mongodb start&lt;/p&gt;
-
-&lt;p&gt;easy_install pymongo&lt;/p&gt;
-
-&lt;div&gt;**&amp;nbsp;**&lt;/div&gt;
-&lt;div&gt;**添加安全认证：**&lt;/div&gt;
-
-&lt;p&gt;在admin数据库中使用&lt;strong&gt;db.addUser()&lt;/strong&gt;命令添加了管理员帐号，且使用&lt;strong&gt;&amp;ndash;auth&lt;/strong&gt;参数启动mongod
-mongo.exe
-use admin
-db.addUser(&amp;lsquo;user1name&amp;rsquo;,&amp;lsquo;user1password&amp;rsquo;) #完全权限
-db.addUser(&amp;lsquo;user2name&amp;rsquo;,&amp;lsquo;user2password&amp;rsquo;,True) #只读权限&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;在Windows下安装为服务：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;mongod.exe &amp;ndash;dbpath=c:\MongoDB.Data &amp;ndash;logpath=c:\MongoDB.Data\log.txt &amp;ndash;logappend &amp;ndash;directoryperdb &amp;ndash;auth &amp;ndash;install&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;禁用HTTP的端口&amp;nbsp;(localhost:28017) 使用参数&amp;nbsp;&amp;ndash;nohttpinterface
-全部参数请参照这里&amp;nbsp;&lt;a href=&#34;http://www.mongodb.org/display/DOCS/Command+Line+Parameters&#34;&gt;http://www.mongodb.org/display/DOCS/Command+Line+Parameters&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;启动服务：
-net start &amp;ldquo;MongoDB&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;停止服务：
-net stop &amp;ldquo;MongoDB&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;安装tornado&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;easy_install tornado&lt;/p&gt;
-
-&lt;p&gt;#tornado&lt;/p&gt;
-
-&lt;p&gt;wget &lt;a href=&#34;http://github.com/downloads/facebook/tornado/tornado-2.1.1.tar.gz&#34;&gt;http://github.com/downloads/facebook/tornado/tornado-2.1.1.tar.gz&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;tar xvzf tornado-2.1.1.tar.gz&lt;/p&gt;
-
-&lt;p&gt;cd tornado-2.1.1&lt;/p&gt;
-
-&lt;p&gt;python setup.py build&lt;/p&gt;
-
-&lt;p&gt;sudo python setup.py install&lt;/p&gt;
-
-&lt;p&gt;修改最大文件上传限制 tornado/iostream.py&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;原来&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&amp;nbsp;def &lt;strong&gt;init&lt;/strong&gt;(self, socket, io_loop=None, max_buffer_size=104857600,read_chunk_size=4096):&lt;/p&gt;
-
-&lt;p&gt;改成&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&amp;nbsp;def &lt;strong&gt;init&lt;/strong&gt;(self, socket, io_loop=None, max_buffer_size=1024*1024*1024 , read_chunk_size=8192):&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2013/03/13/2958224.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2013/03/13/2958224.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         
