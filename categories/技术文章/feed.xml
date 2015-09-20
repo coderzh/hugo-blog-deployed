@@ -47,7 +47,7 @@ http://gohugo.io/tutorials/automated-deployments/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;webhook是GitHub上提供的Git的一种Hook机制，当代码发生变化时，比如代码被Push到GitHub的Repo时，GitHub会自动请求一个你指定的网页，并且把变更相关的参数都传递过来。入口在Repo的Settings - webhooks &amp;amp; services&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK4zVTH7bX6F0yvbp22ZqJplVmCbq2pZAiaZZTSlr43VUXlgV9r2ZpfrWzRXRKmIySxMTMib5Vd4ickw/0?wx_fmt=png&#34; alt=&#34;webhook&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/WebHook.png-w&#34; alt=&#34;webhook&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;说明文档：&lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;https://developer.github.com/webhooks/&lt;/a&gt;&lt;/p&gt;
 
@@ -90,7 +90,7 @@ http://gohugo.io/tutorials/automated-deployments/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;自动部署:f7c51a9b685c2720baf98649c3938c48&#34;&gt;自动部署&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK4zVTH7bX6F0yvbp22ZqJpoWvxWia7iaRg6bXTvcZlsLWXdmKb6NMhOnlIaVxnP51QG0Tx7MmLZsJg/0?wx_fmt=png&#34; alt=&#34;AutoDeploy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/AutoDeploy.png-w&#34; alt=&#34;AutoDeploy&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;大致的流程如上图。上图的DigitalOcean是一台VPS服务器，我用了很长时间了，速度和稳定性都不错。需要的同学使用这个链接购买，可以获得10美元的优惠：&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;https://www.digitalocean.com/?refcode=e131e2bba197&lt;/a&gt;&lt;/p&gt;
 
@@ -213,7 +213,7 @@ disablePathToLower: true
 
 &lt;p&gt;不久后，Hugo的主要维护者之一通过了我的PR，很友善的将我蹩脚的中国式英语的commit message调整了一下合并到了Hugo的master：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK2oIvPRfSyclntiaZrnUIENfFbCaQ5maGFjF42Qdia2ic2YcicBzH3JZEZjL11sVV9owD9CXbM2bw9ag/0?wx_fmt=png&#34; alt=&#34;HugoPR&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoPR.png-w&#34; alt=&#34;HugoPR&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;commit: &lt;a href=&#34;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&#34;&gt;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&lt;/a&gt;&lt;/p&gt;
 
@@ -256,11 +256,11 @@ disablePathToLower: true
 
 &lt;p&gt;随着Go1.5版本的发布，让我意识到是时候好好玩一玩Go语言了。使用Go语言实现的静态网站生成器Hugo（雨果）立即吸引了我，它解决了我最大的痛点：生成的效率。文档、社区各方面的支持都不错，使用起来非常简单，各种皮肤直接套用，于是我又开始了Jekyll迁移到Hugo的漫漫长路。（一个周末的时间）&lt;/p&gt;
 
-&lt;p&gt;即使迁移到了Hugo，我还保留着原来的Jekyll博客，只是不会再更新了，用来怀念？还是哪天突然又跳回来也不一定。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;即使迁移到了Hugo，我还保留着原来的Jekyll博客，只是不会再更新了，用来怀念？还是哪天突然又跳回来也不一定。&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;我的Jeklly博客：&lt;a href=&#34;http://jekyll.coderzh.com&#34;&gt;http://jekyll.coderzh.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;我的Jeklly博客：&lt;a href=&#34;http://jekyll.coderzh.com&#34;&gt;http://jekyll.coderzh.com&lt;/a&gt;&lt;/del&gt; Update(2015-09-20 ): 觉得没啥用了，还是干掉了&lt;/p&gt;
 
-&lt;p&gt;我的Hugo博客：&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;http://blog.coderzh.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的Hugo博客：&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;github-pages:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;GitHub Pages&lt;/h3&gt;
 
@@ -361,7 +361,7 @@ $ git clone https://github.com/spf13/hyde.git
 
 &lt;p&gt;浏览器里打开：&lt;a href=&#34;http://127.0.0.1:1313&#34;&gt;http://127.0.0.1:1313&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKAMQ4BG3zdDBPKa2vBBR205C0HSCzibticmp8eOVXyQY3vhYgG8qMiaZZiaSYFyYe2Hr3TvAFN1VeRmg/0?wx_fmt=png&#34; alt=&#34;HugoFirstPost&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoFirstPost.png-w&#34; alt=&#34;HugoFirstPost&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&amp;ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动去刷新浏览器，不需要自己手工去刷新浏览器，非常方便。&lt;/p&gt;
 
@@ -417,7 +417,7 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 
 &lt;p&gt;反正，我是完全使用CovertToHugo.py将我原来的Jekyll博客全部转过来了。而且，我找到了一个非常炫酷的主题，并且在此基础稍微修改下。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKAMQ4BG3zdDBPKa2vBBR20hnPXA1PdrfOB2cIveaTh58IMIRkFYzFrCDD70YIhJSnPjfloueBziaA/0?wx_fmt=jpeg&#34; alt=&#34;HugoBlog&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoBlog.jpg&#34; alt=&#34;HugoBlog&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Blog地址：&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;http://blog.coderzh.com&lt;/a&gt;&lt;/p&gt;
 
@@ -482,7 +482,7 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 
 &lt;h3 id=&#34;data-race:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;Data Race&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOd04btFpRmIibfk0kMfT29nrzBmcvchJdib8I3BNqK0NaCNMu3HmM24Kg/0?wx_fmt=jpeg&#34; alt=&#34;DataRace&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/Data-race.jpg&#34; alt=&#34;DataRace&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Data Race是指多个线程在没有正确加锁的情况下，同时访问同一块数据，并且至少有一个线程是写操作，对数据的读取和修改产生了竞争，从而导致各种不可预计的问题。&lt;/p&gt;
 
@@ -604,7 +604,7 @@ ThreadSanitizer: reported 1 warnings
 
 &lt;p&gt;OpenWrt是适合于嵌入式设备的一个Linux发行版。它减小轻便，我安装完整个系统，初始大小只有10M，但是看上去五脏俱全。是现在主流路由器固件之一（OpenWrt，dd-wrt，tomato）&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIpq06x4lPDkpkcEFIgaWy8XJqN6ibXptBsZBtzOGyWvePlOMtqic53ovicb9VMHuZoiaxrkuiajxvGvcA/0?wxfmt=png&#34; alt=&#34;opnwrt&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/openwrt.png&#34; alt=&#34;opnwrt&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;下面是折腾过程中看的一些参考文章，记录一下：&lt;/p&gt;
 
@@ -659,11 +659,11 @@ ThreadSanitizer: reported 1 warnings
 
 &lt;p&gt;&lt;strong&gt;覆盖率详细结果&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeLysCAtuhz1cP8vL08tZxInJEGnXg0kvcMWWgIgZGdnFwwx9UBmGyF1NOB89JqUA8B2p2iaRut4z6Q/0&#34; alt=&#34;OpenCppCoverage&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/codecoverage.png&#34; alt=&#34;codecoverage&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Jenkins集成&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeLysCAtuhz1cP8vL08tZxInSibobsDET0XDbeIE8rloZFIiboibwgCPeaqicbbM6zR7eVy4JsgJAKmk7w/0&#34; alt=&#34;JenkinsOpenCppCoverage&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/JenkinsModuleCoverage_thumb.jpg&#34; alt=&#34;JenkinsOpenCppCoverage&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         
@@ -675,13 +675,13 @@ ThreadSanitizer: reported 1 warnings
             <guid>http://blog.coderzh.com/2015/03/29/AugmentedTrafficControl/</guid>
             <description>&lt;p&gt;就在上周，Facebook在其工程博客（&lt;a href=&#34;https://code.facebook.com/posts/1561127100804165/augmented-traffic-control-a-tool-to-simulate-network-conditions/&#34;&gt;原文&lt;/a&gt;）上宣布开源移动网络测试工具Augmented Traffic Control（&lt;a href=&#34;https://github.com/facebook/augmented-traffic-control&#34;&gt;ATC&lt;/a&gt;），我迅速试用了一番，非常不错，对手游或者其他APP的调试和测试都非常有帮助，介绍给大家。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqy0kFRDzrtvVCw81xFH0wrZgH0ibYljADibliaWsKib6lHaba2Jials5poc2Q/0&#34; alt=&#34;ATC&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/ATC.jpg-w&#34; alt=&#34;ATC&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;现在已经是APP时代了，由于手机网络的特殊性，移动APP需要面临更加复杂的网络环境。在设计之初就要考虑如何应对各种网络环境，比如很高的延迟，经常丢包，频繁的断线。特别是手游，断线重连机制设计的好坏直接影响到游戏的体验。&lt;/p&gt;
 
 &lt;p&gt;所以，在开发过程中模拟各种网络环境进行测试变得越来越重要。在ATC出来之前，微软曾经有一个网络模拟工具NEWT（Network Emulator for Windows Toolkit），使用起来也是方便。（NEWT的诞生也蛮有意思，见：&lt;a href=&#34;http://blog.sina.com.cn/s/blog_4caedc7a0100g9y6.html&#34;&gt;NEWT的前世今生&lt;/a&gt;）&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqyfvibaiciciaXjY6BBa4fqtMJwGibwKzQjELwJ9vQk6PhicIoweFP5pS7NDjw/0&#34; alt=&#34;NEWT&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NEWT.jpg-w&#34; alt=&#34;NEWT&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;那么，对比NEWT，ATC有些什么特点呢？&lt;/p&gt;
 
@@ -780,7 +780,7 @@ urlpatterns = patterns(&#39;&#39;,
 
 &lt;p&gt;用手机连接上去试试吧。看看虚拟机的IP，比如我设置的是192.168.6.1，手机浏览器里访问：&lt;a href=&#34;http://192.168.6.1:8000&#34;&gt;http://192.168.6.1:8000&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqycIPjpq7icu4ic5n5RlBZ4RXx6TsWKGYvpIp2Cxz4oiaN0yjlic5j298EYQ/0&#34; alt=&#34;NewStart&#34; width=&#34;450&#34; height=&#34;800&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/ATCWeb.jpg-w&#34; alt=&#34;ATCWeb&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;在手机的界面里，你可以分别对网络上行下行进行设置，主要设置的参数有：&lt;/p&gt;
 
@@ -865,9 +865,9 @@ urlpatterns = patterns(&#39;&#39;,
             <guid>http://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/</guid>
             <description>
 
-&lt;p&gt;几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/Heartbeats.jpg-w&#34; alt=&#34;HeartBeat&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKA0dQuDEwUD4DN5ZmOXczgsYdoyVBtvHkXtd9wVDpv3KP9D6aSa3Uia7FacGib9HADALJgLribKge5Q/0&#34; alt=&#34;HeartBeat&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？&lt;/p&gt;
 
 &lt;p&gt;由于连接丢失时，TCP不会立即通知应用程序。比如说，客户端程序断线了，服务端的TCP连接不会检测到断线，而是一直处于连接状态。这就带来了很大的麻烦，明明客户端已经断了，服务端还维护着客户端的连接，照常执行着该玩家的游戏逻辑……&lt;/p&gt;
 

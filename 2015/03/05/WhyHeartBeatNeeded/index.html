@@ -7,14 +7,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="HeartBeat,KeepAlive,Ping,">
-<meta name="description" content="几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
+<meta name="description" content="
+
+几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="为什么心跳包(HeartBeat)是必须的？ - CoderZh Blog">
-<meta itemprop="description" content="几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
+<meta itemprop="description" content="
+
+几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -22,13 +26,17 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
+<meta property="og:description" content="
+
+几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
 " />
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="为什么心跳包(HeartBeat)是必须的？ - CoderZh Blog">
-<meta name="twitter:description" content="几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
+<meta name="twitter:description" content="
+
+几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
@@ -70,6 +78,9 @@
         <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
       </a>
       <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
           <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
@@ -183,9 +194,9 @@
                       
                       
 
-<p>几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？</p>
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/Heartbeats.jpg-w" alt="HeartBeat" /></p>
 
-<p><img src="https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKA0dQuDEwUD4DN5ZmOXczgsYdoyVBtvHkXtd9wVDpv3KP9D6aSa3Uia7FacGib9HADALJgLribKge5Q/0" alt="HeartBeat" /></p>
+<p>几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？</p>
 
 <p>由于连接丢失时，TCP不会立即通知应用程序。比如说，客户端程序断线了，服务端的TCP连接不会检测到断线，而是一直处于连接状态。这就带来了很大的麻烦，明明客户端已经断了，服务端还维护着客户端的连接，照常执行着该玩家的游戏逻辑……</p>
 
@@ -396,6 +407,9 @@ var duoshuoQuery = {short_name:"coderzh"};
     <div class="nav-text"></div>
     <div class="nav-wrap">
       <ul id="menu-default-menu-1" class="nav container group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
           <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>

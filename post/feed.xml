@@ -32,7 +32,7 @@
 
 &lt;p&gt;最后上个图，上周刚收到的HHKB :)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKIperrgdZnvO8jlsy3BIktYbicbnnB6T5EcnO3NW5QSrHrC71ZeygYxddVUZhc4WKgvwWE6NtyeJg/0?wx_fmt=jpeg&#34; alt=&#34;HHKB&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HHKB.jpg-w&#34; alt=&#34;HHKB&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         
@@ -105,7 +105,7 @@ http://gohugo.io/tutorials/automated-deployments/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;webhook是GitHub上提供的Git的一种Hook机制，当代码发生变化时，比如代码被Push到GitHub的Repo时，GitHub会自动请求一个你指定的网页，并且把变更相关的参数都传递过来。入口在Repo的Settings - webhooks &amp;amp; services&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK4zVTH7bX6F0yvbp22ZqJplVmCbq2pZAiaZZTSlr43VUXlgV9r2ZpfrWzRXRKmIySxMTMib5Vd4ickw/0?wx_fmt=png&#34; alt=&#34;webhook&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/WebHook.png-w&#34; alt=&#34;webhook&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;说明文档：&lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;https://developer.github.com/webhooks/&lt;/a&gt;&lt;/p&gt;
 
@@ -148,7 +148,7 @@ http://gohugo.io/tutorials/automated-deployments/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;自动部署:f7c51a9b685c2720baf98649c3938c48&#34;&gt;自动部署&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK4zVTH7bX6F0yvbp22ZqJpoWvxWia7iaRg6bXTvcZlsLWXdmKb6NMhOnlIaVxnP51QG0Tx7MmLZsJg/0?wx_fmt=png&#34; alt=&#34;AutoDeploy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/AutoDeploy.png-w&#34; alt=&#34;AutoDeploy&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;大致的流程如上图。上图的DigitalOcean是一台VPS服务器，我用了很长时间了，速度和稳定性都不错。需要的同学使用这个链接购买，可以获得10美元的优惠：&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;https://www.digitalocean.com/?refcode=e131e2bba197&lt;/a&gt;&lt;/p&gt;
 
@@ -360,7 +360,7 @@ disablePathToLower: true
 
 &lt;p&gt;不久后，Hugo的主要维护者之一通过了我的PR，很友善的将我蹩脚的中国式英语的commit message调整了一下合并到了Hugo的master：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeK2oIvPRfSyclntiaZrnUIENfFbCaQ5maGFjF42Qdia2ic2YcicBzH3JZEZjL11sVV9owD9CXbM2bw9ag/0?wx_fmt=png&#34; alt=&#34;HugoPR&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoPR.png-w&#34; alt=&#34;HugoPR&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;commit: &lt;a href=&#34;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&#34;&gt;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&lt;/a&gt;&lt;/p&gt;
 
@@ -403,11 +403,11 @@ disablePathToLower: true
 
 &lt;p&gt;随着Go1.5版本的发布，让我意识到是时候好好玩一玩Go语言了。使用Go语言实现的静态网站生成器Hugo（雨果）立即吸引了我，它解决了我最大的痛点：生成的效率。文档、社区各方面的支持都不错，使用起来非常简单，各种皮肤直接套用，于是我又开始了Jekyll迁移到Hugo的漫漫长路。（一个周末的时间）&lt;/p&gt;
 
-&lt;p&gt;即使迁移到了Hugo，我还保留着原来的Jekyll博客，只是不会再更新了，用来怀念？还是哪天突然又跳回来也不一定。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;即使迁移到了Hugo，我还保留着原来的Jekyll博客，只是不会再更新了，用来怀念？还是哪天突然又跳回来也不一定。&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;我的Jeklly博客：&lt;a href=&#34;http://jekyll.coderzh.com&#34;&gt;http://jekyll.coderzh.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;我的Jeklly博客：&lt;a href=&#34;http://jekyll.coderzh.com&#34;&gt;http://jekyll.coderzh.com&lt;/a&gt;&lt;/del&gt; Update(2015-09-20 ): 觉得没啥用了，还是干掉了&lt;/p&gt;
 
-&lt;p&gt;我的Hugo博客：&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;http://blog.coderzh.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的Hugo博客：&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;github-pages:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;GitHub Pages&lt;/h3&gt;
 
@@ -508,7 +508,7 @@ $ git clone https://github.com/spf13/hyde.git
 
 &lt;p&gt;浏览器里打开：&lt;a href=&#34;http://127.0.0.1:1313&#34;&gt;http://127.0.0.1:1313&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKAMQ4BG3zdDBPKa2vBBR205C0HSCzibticmp8eOVXyQY3vhYgG8qMiaZZiaSYFyYe2Hr3TvAFN1VeRmg/0?wx_fmt=png&#34; alt=&#34;HugoFirstPost&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoFirstPost.png-w&#34; alt=&#34;HugoFirstPost&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&amp;ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动去刷新浏览器，不需要自己手工去刷新浏览器，非常方便。&lt;/p&gt;
 
@@ -564,7 +564,7 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 
 &lt;p&gt;反正，我是完全使用CovertToHugo.py将我原来的Jekyll博客全部转过来了。而且，我找到了一个非常炫酷的主题，并且在此基础稍微修改下。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKAMQ4BG3zdDBPKa2vBBR20hnPXA1PdrfOB2cIveaTh58IMIRkFYzFrCDD70YIhJSnPjfloueBziaA/0?wx_fmt=jpeg&#34; alt=&#34;HugoBlog&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoBlog.jpg&#34; alt=&#34;HugoBlog&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Blog地址：&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;http://blog.coderzh.com&lt;/a&gt;&lt;/p&gt;
 
@@ -586,25 +586,25 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 
 &lt;h3 id=&#34;1-创业维艰-hard-thing-about-hard-thing:7e00911045293764b501e3f40792557f&#34;&gt;1. 《创业维艰》 - Hard Thing About Hard Thing&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOFSeOx7N8UoyFIw8LOmlEKiagUvVZP0QAurUniasT1DAmV20oE7AzNibcw/0?wx_fmt=jpeg&#34; alt=&#34;HardThingAboutHardThing&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HardThingAboutHardThing.jpg&#34; alt=&#34;HardThingAboutHardThing&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;我觉得每个创业者都必须看的好书。和其他大谈道理方法论的书不同，作者都是从自身的经历说起，通过一个又一个活生生的例子，通过切身体会得出的人生感悟和管理哲学。而且，作者很有名气，最后也非常成功。书前半部分的故事非常精彩，看的非常有感觉。后半部分的管理哲学也是受益匪浅。保证看过的都说好。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-rework重来:7e00911045293764b501e3f40792557f&#34;&gt;2. 《Rework重来》&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOsBJNuS9qI6Qh1wBYjxpgr799STrg2Ct0OLkSnOJpMezlkMzrh1Zxvw/0?wx_fmt=jpeg&#34; alt=&#34;Rework&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/Rework.jpg&#34; alt=&#34;Rework&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这本书道理讲的有点多，而且，大多数道理都有点奇葩，反常理。比如，保持小公司，不要想着公司变大。不要想着以后会想到办法赚钱。不要怀着被收购的想法去创业等等。仔细一想，挺有道理的。喜欢的人会很喜欢。&lt;/p&gt;
 
 &lt;h3 id=&#34;3-乌合之众:7e00911045293764b501e3f40792557f&#34;&gt;3. 《乌合之众》&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yO80ib8cPNjvA02rJsObpzm0yd2PeZwhoFEkh5KoxTfSdvrsV5DHfLrLQ/0?wx_fmt=jpeg&#34; alt=&#34;TheCrowd&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/TheCrowd.jpg&#34; alt=&#34;TheCrowd&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;研究群体心理的著作。群体是感性的、本能的情绪特别容易受传染，而理智的、冷静的情绪不起丝毫作用。群体的人会感受到一种强烈的“正义”力量，抱着“法不责众”的想法，会理直气壮的做出平时不可能做出的举动。群体敬畏权威和强权，容易受暗示影响，而且情绪多变。（张小龙对这本书非常推崇，对群体心理这么了解，才做出微信这样的产品吧。）&lt;/p&gt;
 
 &lt;h3 id=&#34;4-改变未来的九大算法:7e00911045293764b501e3f40792557f&#34;&gt;4. 《改变未来的九大算法》&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOVm4byM2RhVayQJyPYWm4q7Hcn9icibhWEZQpiabwTUOqtWQhQ0jibJicwWA/0?wx_fmt=jpeg&#34; alt=&#34;NineAlgo&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NineAlgo.jpg&#34; alt=&#34;NineAlgo&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这本书属于科普吧，并不是给程序员看的那类算法书。最大的特点是把复杂的算法简化，形象成一个又一个简单可理解的小例子。让复杂的算法走下神坛，让我们明白，再复杂的算法也是由一个又一个简单大家都懂的道理衍生而来的。九大算法主要是：
  1. 搜索引擎索引
@@ -619,17 +619,17 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 
 &lt;h3 id=&#34;5-mactalk人生元编程:7e00911045293764b501e3f40792557f&#34;&gt;5. 《MacTalk人生元编程》&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOncAdXTicFFAQvjQbsbpNG39Gk5y4P2GBdHb6Q4eJRsgVpAsrniapGsww/0?wx_fmt=jpeg&#34; alt=&#34;MacTalk&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/MacTalk.jpg&#34; alt=&#34;MacTalk&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;作者迟建强前段时间刚加入了锤子科技，看迟建强的文章和头像，每次都容易让我联想到以前一个朋友，形象和气质都和他很像。这本书主要介绍一些Mac的历史、故事、技巧，当然，还有更精彩的作者的编程经历和人生感悟。&lt;/p&gt;
 
 &lt;h3 id=&#34;6-程序员跳槽全攻略:7e00911045293764b501e3f40792557f&#34;&gt;6. 《程序员跳槽全攻略》&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOuHUzgtqiaKpIibC0CQEOIA4G63KqWogkWAw0STzUzAfSAWvsFUalLzSA/0?wx_fmt=jpeg&#34; alt=&#34;JobDeer&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/JobDeer.jpg&#34; alt=&#34;JobDeer&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这本书有点小坑了，只要1块钱就买来看了，1个小时不到就可以读完，然后感慨一下，这样也可以出一本书？ 虽然如此，假如你看一本书，哪怕只有一点点收货，也算是很值了。我觉得书里的这幅图还是挺有意思的，程序员职业发展四大象限：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOgFThicsZc6f5CNNxvXa4p2Ck83o3iclzia48SS4iafrcwo7ibb8oyqGyrFA/0?wx_fmt=jpeg&#34; alt=&#34;JobDeerEBSI&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/JobDeerEBSI.jpg&#34; alt=&#34;JobDeerEBSI&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         
@@ -690,7 +690,7 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 
 &lt;h3 id=&#34;data-race:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;Data Race&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJB2WVs1vlmIw10Knlmn8yOd04btFpRmIibfk0kMfT29nrzBmcvchJdib8I3BNqK0NaCNMu3HmM24Kg/0?wx_fmt=jpeg&#34; alt=&#34;DataRace&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/Data-race.jpg&#34; alt=&#34;DataRace&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Data Race是指多个线程在没有正确加锁的情况下，同时访问同一块数据，并且至少有一个线程是写操作，对数据的读取和修改产生了竞争，从而导致各种不可预计的问题。&lt;/p&gt;
 
@@ -780,7 +780,7 @@ ThreadSanitizer: reported 1 warnings
 
 &lt;p&gt;这句话曾经出现在微信的启动封面上，后来被换下了。但在QQ邮箱的登录界面，还一直使用了这句MJ的名言：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeLQ3MhKKGn1ERadHibEwA2Y2TWxUC5IQCCZVEsMm0YRPp4mn1jOiapIJllPFfvauxCMqsaytYibgehcA/0?wx_fmt=png&#34; alt=&#34;mj&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mj.png&#34; alt=&#34;mj&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这句话的逻辑成立吗？“你说我是错的，那你最好证明你是对的”，显然不成立！&lt;/p&gt;
 
@@ -884,11 +884,11 @@ L：呵呵
 
 &lt;p&gt;在广州好几年了，也是第一次到科韵路信息港，下午去的早了些就在周围逛了逛，熟悉了一下地形和周边的小吃（主要是没吃午饭，到处找吃，只找到一家全家）。太热了又逛的差不多了，就来到了网易大厦。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVfTsg3H6yzZyHTicJIoc3iccRLLcn7RDsn9QQvU4RIhElW7vU4ZEkKZ8Q/0?wx_fmt=jpeg&#34; alt=&#34;163game&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163company.jpg-w&#34; alt=&#34;163company&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;我去的太早，还担心里面没人。进去之后，发现好多漂亮的礼仪小姐早已经在迎接嘉宾了（可惜没拍照）。进入会场，大屏幕，电影院的感觉，找了个好位置开始看网易的宣传片。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVHfyibWuPH8hNXia2MiaMIFSiaHO9Q3UBq62H49c8UQ9UBZup5IjcJdPOfw/0?wx_fmt=jpeg&#34; alt=&#34;163game2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163show.jpg-w&#34; alt=&#34;163show&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;演讲开始~&lt;/p&gt;
 
@@ -956,7 +956,7 @@ L：呵呵
 
 &lt;p&gt;梦幻手游服务端架构来自端游的服务器架构，支持单服2.2W人，最高在线达到200W人。服务端架构如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVgX73V5MdqZ9HqNkJIbP5UfaBz2vVeC32lGh3COwGn00pVkiaXjL6zsw/0?wx_fmt=jpeg&#34; alt=&#34;MengHuangServer&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163server.jpg-w&#34; alt=&#34;163server&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;由于是沿用端游的架构吧，这是一种早期比较常见的服务端架构。Server采用单进程多线程的方式，同时保证写逻辑代码时只在单一线程，不需要考虑多线程问题。AOI（Area Of Interest）的实现主要有两种：格子和十字链表。梦幻手游采用的是九宫格的格子算法。（AOI算法主要解决NPC和玩家位置同步，AI事件触发的算法问题，可以这样理解，最简单直接的算法，是遍历整个场景的NPC或玩家，将位置信息同步给玩家。显然这样的效率是很低的，因为离你很远的玩家的位置其实是不需要的。） 数据存储使用udb，nosql，binlog。AI使用行为树，将AI的设定全部交给了策划同学。&lt;/p&gt;
 
@@ -1121,11 +1121,11 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;正常情况下，不强制在linker时include静态库所有符号时，代码覆盖率结果为：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIROs6sgW5VjmNkRl4yeDiccDhmfsroV7ebToMjAzYnUU5icLMbKZdRXqNXbcD14EJP0GRhE06b8rsg/0?wx_fmt=png&#34; alt=&#34;noinclude&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/noinclude.png-w&#34; alt=&#34;noinclude&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;通过上面的方法，自动生成LinkAllSymbols.h并#include &amp;ldquo;LinkAllSymbols.h&amp;rdquo;，覆盖率结果为：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIROs6sgW5VjmNkRl4yeDiccRxCnjVCCsUa3awNpf6AjtYiasS1OMsGD3IBD5JftyLmLAI2Pla46eqw/0?wx_fmt=png&#34; alt=&#34;included&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/included.png-w&#34; alt=&#34;included&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;github:179e17d63a7cb0a81de7975037280b66&#34;&gt;github&lt;/h3&gt;
 
@@ -1147,15 +1147,15 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;在那个远古时代，我还用着Google Code尝试着做一些开源代码。比如这个：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkoHQlGAjahxkoarOsAibfbib4YFdQIL4CVocDPq0Ntru9nYUY2YcsXWhw/0?wx_fmt=png&#34; alt=&#34;NancyWikiLogo&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NancyWikiLogo.png&#34; alt=&#34;NancyWikiLogo&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这是一个用Python实现的基于GAE写的一个Wiki系统，现在看看界面截图，简洁美观大方，还是很不错的。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQklgp8Dw481fPUuVnicAvIyJfPDeDSKiccK1tYHIGdoReAXGO6sMSgZHwg/0?wx_fmt=jpeg&#34; alt=&#34;NancyWiki&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/nancywiki.jpg&#34; alt=&#34;NancyWiki&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;然而新鲜一阵之后我再也没有使用过这个系统，而且再也没有维护过。甚至有个用户给我提了个Issue也被我忽略掉了。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkEnguazW4ibqtiaSnbwJaP8yWftpsLXhuPzKpgXDk3AuRd8wv3g9cdH7g/0?wx_fmt=png&#34; alt=&#34;NancyWikiIssue&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NancyWikiIssues.png&#34; alt=&#34;NancyWikiIssue&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;时隔几年了，我自己的NancyWiki的网站已经各种链接失效无法使用了。让我吃惊的是，给我提Issue的同学用NancyWiki建的Wiki网站还能正常访问 &lt;a href=&#34;http://mayxwiki.appspot.com/&#34;&gt;http://mayxwiki.appspot.com/&lt;/a&gt;， 不过看他也早已经没有再更新过内容了。&lt;/p&gt;
 
@@ -1170,7 +1170,7 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;目前为止各项目下载情况（有的只提供了SVN代码所以没统计到）：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkdpIKzkztmfrktGFMLPw0Xa84NqsT7uJoriayfKTGRtPf4dcVbwkUrBg/0?wx_fmt=png&#34; alt=&#34;GoogleCodeDownload&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/GoogleCodeDownload.png&#34; alt=&#34;GoogleCodeDownload&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;2010年后，我就再也没有更新和维护过它们，甚至忘记了它们的存在！我不是一个合格的代码开源作者，我只是把东西做出来，往上一丢，然后就忘记了这件事。。。（囧）下载过我的代码或者使用过我的项目的人估计会失望吧。。。我这作者也太不靠谱了吧。。。&lt;/p&gt;
 
@@ -1178,7 +1178,7 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;h3 id=&#34;开启github:f7ad1288d288dad02bdbde7763a601e9&#34;&gt;开启Github&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkic1MPQibIicyZfjSWZcaiatrZvxeKcXDLMPibL1sztNm1pTOXdzJoUIkyBw/0?wx_fmt=png&#34; alt=&#34;github&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/octocat_collabocats.png&#34; alt=&#34;github&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;我的主页：&lt;a href=&#34;https://github.com/coderzh&#34;&gt;https://github.com/coderzh&lt;/a&gt;    (我才发现我2010年就注册了这个全球最大的同性交友网站)&lt;/p&gt;
 
@@ -1230,8 +1230,7 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;以下是读书过程中摘录的部分笔记，以及一点点自己的思考。（以下只是书中部分观点，详情请阅读原版书籍）&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-&lt;img src=&#34;http://img4.douban.com/lpic/s4548399.jpg&#34; alt=&#34;ThinkingAndLearning&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/PragmaticThinking.jpg&#34; alt=&#34;ThinkingAndLearning&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
 &amp;gt; 1.一个开发人员声称拥有十年的经验，但实际上只是一年的经验重复了九次，那么这就不算是经验。&lt;/p&gt;
@@ -1367,7 +1366,7 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;欢迎关注我的微信公众号：hacker-thinking，谢谢支持！
 &lt;br /&gt;
-&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeJwWnviatnbaAbfz9osz31UPK1wX9TWsF9sNW34SKk1gb6jA7RXXibUZEDJERhdiblJ1dXvqD0K0nptQ/0?wx_fmt=jpeg&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/qrcode.jpg&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         

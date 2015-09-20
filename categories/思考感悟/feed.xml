@@ -32,7 +32,7 @@
 
 &lt;p&gt;最后上个图，上周刚收到的HHKB :)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKIperrgdZnvO8jlsy3BIktYbicbnnB6T5EcnO3NW5QSrHrC71ZeygYxddVUZhc4WKgvwWE6NtyeJg/0?wx_fmt=jpeg&#34; alt=&#34;HHKB&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HHKB.jpg-w&#34; alt=&#34;HHKB&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         
@@ -165,7 +165,7 @@
 
 &lt;p&gt;这句话曾经出现在微信的启动封面上，后来被换下了。但在QQ邮箱的登录界面，还一直使用了这句MJ的名言：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeLQ3MhKKGn1ERadHibEwA2Y2TWxUC5IQCCZVEsMm0YRPp4mn1jOiapIJllPFfvauxCMqsaytYibgehcA/0?wx_fmt=png&#34; alt=&#34;mj&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mj.png&#34; alt=&#34;mj&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这句话的逻辑成立吗？“你说我是错的，那你最好证明你是对的”，显然不成立！&lt;/p&gt;
 
@@ -269,11 +269,11 @@ L：呵呵
 
 &lt;p&gt;在广州好几年了，也是第一次到科韵路信息港，下午去的早了些就在周围逛了逛，熟悉了一下地形和周边的小吃（主要是没吃午饭，到处找吃，只找到一家全家）。太热了又逛的差不多了，就来到了网易大厦。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVfTsg3H6yzZyHTicJIoc3iccRLLcn7RDsn9QQvU4RIhElW7vU4ZEkKZ8Q/0?wx_fmt=jpeg&#34; alt=&#34;163game&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163company.jpg-w&#34; alt=&#34;163company&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;我去的太早，还担心里面没人。进去之后，发现好多漂亮的礼仪小姐早已经在迎接嘉宾了（可惜没拍照）。进入会场，大屏幕，电影院的感觉，找了个好位置开始看网易的宣传片。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVHfyibWuPH8hNXia2MiaMIFSiaHO9Q3UBq62H49c8UQ9UBZup5IjcJdPOfw/0?wx_fmt=jpeg&#34; alt=&#34;163game2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163show.jpg-w&#34; alt=&#34;163show&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;演讲开始~&lt;/p&gt;
 
@@ -341,7 +341,7 @@ L：呵呵
 
 &lt;p&gt;梦幻手游服务端架构来自端游的服务器架构，支持单服2.2W人，最高在线达到200W人。服务端架构如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIkpx2dkjcVNwAQ6v0STIJVgX73V5MdqZ9HqNkJIbP5UfaBz2vVeC32lGh3COwGn00pVkiaXjL6zsw/0?wx_fmt=jpeg&#34; alt=&#34;MengHuangServer&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163server.jpg-w&#34; alt=&#34;163server&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;由于是沿用端游的架构吧，这是一种早期比较常见的服务端架构。Server采用单进程多线程的方式，同时保证写逻辑代码时只在单一线程，不需要考虑多线程问题。AOI（Area Of Interest）的实现主要有两种：格子和十字链表。梦幻手游采用的是九宫格的格子算法。（AOI算法主要解决NPC和玩家位置同步，AI事件触发的算法问题，可以这样理解，最简单直接的算法，是遍历整个场景的NPC或玩家，将位置信息同步给玩家。显然这样的效率是很低的，因为离你很远的玩家的位置其实是不需要的。） 数据存储使用udb，nosql，binlog。AI使用行为树，将AI的设定全部交给了策划同学。&lt;/p&gt;
 
@@ -506,11 +506,11 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;正常情况下，不强制在linker时include静态库所有符号时，代码覆盖率结果为：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIROs6sgW5VjmNkRl4yeDiccDhmfsroV7ebToMjAzYnUU5icLMbKZdRXqNXbcD14EJP0GRhE06b8rsg/0?wx_fmt=png&#34; alt=&#34;noinclude&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/noinclude.png-w&#34; alt=&#34;noinclude&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;通过上面的方法，自动生成LinkAllSymbols.h并#include &amp;ldquo;LinkAllSymbols.h&amp;rdquo;，覆盖率结果为：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIROs6sgW5VjmNkRl4yeDiccRxCnjVCCsUa3awNpf6AjtYiasS1OMsGD3IBD5JftyLmLAI2Pla46eqw/0?wx_fmt=png&#34; alt=&#34;included&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/included.png-w&#34; alt=&#34;included&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;github:179e17d63a7cb0a81de7975037280b66&#34;&gt;github&lt;/h3&gt;
 
@@ -532,15 +532,15 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;在那个远古时代，我还用着Google Code尝试着做一些开源代码。比如这个：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkoHQlGAjahxkoarOsAibfbib4YFdQIL4CVocDPq0Ntru9nYUY2YcsXWhw/0?wx_fmt=png&#34; alt=&#34;NancyWikiLogo&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NancyWikiLogo.png&#34; alt=&#34;NancyWikiLogo&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这是一个用Python实现的基于GAE写的一个Wiki系统，现在看看界面截图，简洁美观大方，还是很不错的。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQklgp8Dw481fPUuVnicAvIyJfPDeDSKiccK1tYHIGdoReAXGO6sMSgZHwg/0?wx_fmt=jpeg&#34; alt=&#34;NancyWiki&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/nancywiki.jpg&#34; alt=&#34;NancyWiki&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;然而新鲜一阵之后我再也没有使用过这个系统，而且再也没有维护过。甚至有个用户给我提了个Issue也被我忽略掉了。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkEnguazW4ibqtiaSnbwJaP8yWftpsLXhuPzKpgXDk3AuRd8wv3g9cdH7g/0?wx_fmt=png&#34; alt=&#34;NancyWikiIssue&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NancyWikiIssues.png&#34; alt=&#34;NancyWikiIssue&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;时隔几年了，我自己的NancyWiki的网站已经各种链接失效无法使用了。让我吃惊的是，给我提Issue的同学用NancyWiki建的Wiki网站还能正常访问 &lt;a href=&#34;http://mayxwiki.appspot.com/&#34;&gt;http://mayxwiki.appspot.com/&lt;/a&gt;， 不过看他也早已经没有再更新过内容了。&lt;/p&gt;
 
@@ -555,7 +555,7 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;目前为止各项目下载情况（有的只提供了SVN代码所以没统计到）：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkdpIKzkztmfrktGFMLPw0Xa84NqsT7uJoriayfKTGRtPf4dcVbwkUrBg/0?wx_fmt=png&#34; alt=&#34;GoogleCodeDownload&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/GoogleCodeDownload.png&#34; alt=&#34;GoogleCodeDownload&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;2010年后，我就再也没有更新和维护过它们，甚至忘记了它们的存在！我不是一个合格的代码开源作者，我只是把东西做出来，往上一丢，然后就忘记了这件事。。。（囧）下载过我的代码或者使用过我的项目的人估计会失望吧。。。我这作者也太不靠谱了吧。。。&lt;/p&gt;
 
@@ -563,7 +563,7 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;h3 id=&#34;开启github:f7ad1288d288dad02bdbde7763a601e9&#34;&gt;开启Github&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeIJLiaBDrUlGtkQ3qgwBJDQkic1MPQibIicyZfjSWZcaiatrZvxeKcXDLMPibL1sztNm1pTOXdzJoUIkyBw/0?wx_fmt=png&#34; alt=&#34;github&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/octocat_collabocats.png&#34; alt=&#34;github&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;我的主页：&lt;a href=&#34;https://github.com/coderzh&#34;&gt;https://github.com/coderzh&lt;/a&gt;    (我才发现我2010年就注册了这个全球最大的同性交友网站)&lt;/p&gt;
 
@@ -606,7 +606,7 @@ def find_matches(lines, regex, exclude_list):
 
 &lt;p&gt;除了阅读，就是写作，把看书的笔记、平时工作学习的总结、生活的感悟通过文字重新组织表达出来，在我的博客和微信公众号里同时发布。我的微信公众号也才开通不久，希望大家多多支持。扫描下面的二维码或者直接关注：hacker-thinking （一个程序员的思考）&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeItlTepjqhK1AVR73sOJicqyq5xAdRWJT3IQnSpVagmm0VvwRsatnGJibrgp35lnLnnufxic0d1XZ9Fg/0&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/qrcode.jpg&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;另外，希望我能把跑步坚持下来，加油吧。&lt;/p&gt;
 
@@ -620,9 +620,9 @@ def find_matches(lines, regex, exclude_list):
             <pubDate>Sun, 15 Mar 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/03/15/NewStart/</guid>
-            <description>&lt;p&gt;人的选择，有时候看上去是有规律或刻意的，有时候又像是自然而然的。既然选择了远方，就要鼓足勇气去面对挑战。&lt;/p&gt;
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NewStart.jpg-w&#34; alt=&#34;NewStart&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKERtH8iafPictOuic7yibcdNLHvwU0rZEW7EFgdGpBYhiamrGCCz9Nnq8UhKyAX2KBIJyc0cRFNWy6oqw/0&#34; alt=&#34;NewStart&#34; width=&#34;800&#34; height=&#34;360&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;人的选择，有时候看上去是有规律或刻意的，有时候又像是自然而然的。既然选择了远方，就要鼓足勇气去面对挑战。&lt;/p&gt;
 
 &lt;p&gt;2007年，我学习了四年的土木工程之后，加入了金山软件做了一名程序员。&lt;/p&gt;
 
@@ -654,9 +654,9 @@ def find_matches(lines, regex, exclude_list):
             <guid>http://blog.coderzh.com/2015/02/18/Starup/</guid>
             <description>
 
-&lt;p&gt;有人说，现在是创业的黄金时代。有个不错的idea，有差不多靠谱的团队，一个简单的demo甚至只有想法，就可以拉来一笔投资开始干了。其实并非如此容易，至少我现在还没这勇气魄力和这分自信。不过也的确没有那么难，不然哪来这么多雨后春笋般的创业公司。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/StartUP-header.jpg-w&#34; alt=&#34;StartUp&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://mmbiz.qlogo.cn/mmbiz/otHvoL6neeKUkJZFHHIHgsGuOzSibFPld1Cv5FElsPFXe5yKZYICq3kCPTaTEjYRticdhA9ke7aiajem0lHyiatWhQ/0&#34; alt=&#34;StartUp&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;有人说，现在是创业的黄金时代。有个不错的idea，有差不多靠谱的团队，一个简单的demo甚至只有想法，就可以拉来一笔投资开始干了。其实并非如此容易，至少我现在还没这勇气魄力和这分自信。不过也的确没有那么难，不然哪来这么多雨后春笋般的创业公司。&lt;/p&gt;
 
 &lt;h3 id=&#34;选择:6c248a2a6ac8ed9d6cc1ddb97d67950d&#34;&gt;选择&lt;/h3&gt;
 
