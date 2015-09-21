@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="Python天天美味(2) - 字符遍历的艺术">
+<meta name="description" content="&nbsp;&nbsp;&nbsp; 通常我们要遍历一个字符串中的每个字符，都要先获取字符串的长度，然后用一个For循环把每个字符取出，进行处理。但是，又是我们的Python，为我们提供了很多便捷的方式去遍历一个字符串中的字符。比如，将一个字符串转换为一个字符数组： &nbsp;&nbsp;&nbsp; theList&nbsp;=&nbsp;list(theString) &nbsp;&nbsp;&nbsp; 同时，我们可以方便的通过for语句进行遍历： for c in theString: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_something_with(c) &nbsp;&nbsp;&nbsp;&nbsp; 甚者，使用这样的语句： result = [do_something_with(c) for c in theString if c == &#39;x&#39;] &nbsp;&nbsp;&nbsp; 同时，还可以使用map语句，下面，我们开始上菜吧！传说中有一个神奇的字符串，被病毒感染了，被病毒附上了许多x字符，你将设计一个引擎，把病毒x出去，把我们神奇的字符串输出来。程序如下： theString&nbsp;=&nbsp;&#39;Ix&nbsp;lixkxex&nbsp;xpxytxhxonx&nbsp;!&#39; def&nbsp;PrintEngine(c): &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;c&nbsp;!=&nbsp;&#39;x&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;c, map(PrintEngine,&nbsp;theString) &nbsp;&nbsp;&nbsp;&nbsp; 输出结果： &nbsp; &nbsp;&nbsp; I like python ! Python 天天美味系列（总） Python 天天美味(1) - 交换变量 Python 天天美味(2) - 字符遍历的艺术 &nbsp; Python 天天美味(3) - 字符转换 &nbsp; Python 天天美味(4) - isinstance判断对象类型&nbsp; Python 天天美味(5) - ljust rjust center [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh/archive/2008/04/30/1177677.html">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(2) - 字符遍历的艺术 - CoderZh Blog">
-<meta itemprop="description" content="Python天天美味(2) - 字符遍历的艺术">
+<meta itemprop="description" content="&nbsp;&nbsp;&nbsp; 通常我们要遍历一个字符串中的每个字符，都要先获取字符串的长度，然后用一个For循环把每个字符取出，进行处理。但是，又是我们的Python，为我们提供了很多便捷的方式去遍历一个字符串中的字符。比如，将一个字符串转换为一个字符数组： &nbsp;&nbsp;&nbsp; theList&nbsp;=&nbsp;list(theString) &nbsp;&nbsp;&nbsp; 同时，我们可以方便的通过for语句进行遍历： for c in theString: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_something_with(c) &nbsp;&nbsp;&nbsp;&nbsp; 甚者，使用这样的语句： result = [do_something_with(c) for c in theString if c == &#39;x&#39;] &nbsp;&nbsp;&nbsp; 同时，还可以使用map语句，下面，我们开始上菜吧！传说中有一个神奇的字符串，被病毒感染了，被病毒附上了许多x字符，你将设计一个引擎，把病毒x出去，把我们神奇的字符串输出来。程序如下： theString&nbsp;=&nbsp;&#39;Ix&nbsp;lixkxex&nbsp;xpxytxhxonx&nbsp;!&#39; def&nbsp;PrintEngine(c): &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;c&nbsp;!=&nbsp;&#39;x&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;c, map(PrintEngine,&nbsp;theString) &nbsp;&nbsp;&nbsp;&nbsp; 输出结果： &nbsp; &nbsp;&nbsp; I like python ! Python 天天美味系列（总） Python 天天美味(1) - 交换变量 Python 天天美味(2) - 字符遍历的艺术 &nbsp; Python 天天美味(3) - 字符转换 &nbsp; Python 天天美味(4) - isinstance判断对象类型&nbsp; Python 天天美味(5) - ljust rjust center [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh/archive/2008/04/30/1177677.html">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(2) - 字符遍历的艺术 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2008/04/30/1177677/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="Python天天美味(2) - 字符遍历的艺术" />
+<meta property="og:description" content="&nbsp;&nbsp;&nbsp; 通常我们要遍历一个字符串中的每个字符，都要先获取字符串的长度，然后用一个For循环把每个字符取出，进行处理。但是，又是我们的Python，为我们提供了很多便捷的方式去遍历一个字符串中的字符。比如，将一个字符串转换为一个字符数组： &nbsp;&nbsp;&nbsp; theList&nbsp;=&nbsp;list(theString) &nbsp;&nbsp;&nbsp; 同时，我们可以方便的通过for语句进行遍历： for c in theString: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_something_with(c) &nbsp;&nbsp;&nbsp;&nbsp; 甚者，使用这样的语句： result = [do_something_with(c) for c in theString if c == &#39;x&#39;] &nbsp;&nbsp;&nbsp; 同时，还可以使用map语句，下面，我们开始上菜吧！传说中有一个神奇的字符串，被病毒感染了，被病毒附上了许多x字符，你将设计一个引擎，把病毒x出去，把我们神奇的字符串输出来。程序如下： theString&nbsp;=&nbsp;&#39;Ix&nbsp;lixkxex&nbsp;xpxytxhxonx&nbsp;!&#39; def&nbsp;PrintEngine(c): &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;c&nbsp;!=&nbsp;&#39;x&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;c, map(PrintEngine,&nbsp;theString) &nbsp;&nbsp;&nbsp;&nbsp; 输出结果： &nbsp; &nbsp;&nbsp; I like python ! Python 天天美味系列（总） Python 天天美味(1) - 交换变量 Python 天天美味(2) - 字符遍历的艺术 &nbsp; Python 天天美味(3) - 字符转换 &nbsp; Python 天天美味(4) - isinstance判断对象类型&nbsp; Python 天天美味(5) - ljust rjust center [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh/archive/2008/04/30/1177677.html">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(2) - 字符遍历的艺术 - CoderZh Blog">
-<meta name="twitter:description" content="Python天天美味(2) - 字符遍历的艺术">
+<meta name="twitter:description" content="&nbsp;&nbsp;&nbsp; 通常我们要遍历一个字符串中的每个字符，都要先获取字符串的长度，然后用一个For循环把每个字符取出，进行处理。但是，又是我们的Python，为我们提供了很多便捷的方式去遍历一个字符串中的字符。比如，将一个字符串转换为一个字符数组： &nbsp;&nbsp;&nbsp; theList&nbsp;=&nbsp;list(theString) &nbsp;&nbsp;&nbsp; 同时，我们可以方便的通过for语句进行遍历： for c in theString: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_something_with(c) &nbsp;&nbsp;&nbsp;&nbsp; 甚者，使用这样的语句： result = [do_something_with(c) for c in theString if c == &#39;x&#39;] &nbsp;&nbsp;&nbsp; 同时，还可以使用map语句，下面，我们开始上菜吧！传说中有一个神奇的字符串，被病毒感染了，被病毒附上了许多x字符，你将设计一个引擎，把病毒x出去，把我们神奇的字符串输出来。程序如下： theString&nbsp;=&nbsp;&#39;Ix&nbsp;lixkxex&nbsp;xpxytxhxonx&nbsp;!&#39; def&nbsp;PrintEngine(c): &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;c&nbsp;!=&nbsp;&#39;x&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;c, map(PrintEngine,&nbsp;theString) &nbsp;&nbsp;&nbsp;&nbsp; 输出结果： &nbsp; &nbsp;&nbsp; I like python ! Python 天天美味系列（总） Python 天天美味(1) - 交换变量 Python 天天美味(2) - 字符遍历的艺术 &nbsp; Python 天天美味(3) - 字符转换 &nbsp; Python 天天美味(4) - isinstance判断对象类型&nbsp; Python 天天美味(5) - ljust rjust center [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh/archive/2008/04/30/1177677.html">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 

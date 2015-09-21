@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）">
+<meta name="description" content="Python中的对象之间赋值时是按引用传递的，如果需要拷贝对象，需要使用标准库中的copy模块。 copy.copy 浅拷贝 只拷贝父对象，不会拷贝对象的内部的子对象。 copy.deepcopy 深拷贝 拷贝对象及其子对象 一个很好的例子： import&nbsp;copy a&nbsp;=&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;]]&nbsp;&nbsp;#原始对象 b&nbsp;=&nbsp;a&nbsp;&nbsp;#赋值，传对象的引用 c&nbsp;=&nbsp;copy.copy(a)&nbsp;&nbsp;#对象拷贝，浅拷贝 d&nbsp;=&nbsp;copy.deepcopy(a)&nbsp;&nbsp;#对象拷贝，深拷贝 a.append(5)&nbsp;&nbsp;#修改对象a a[4].append(&#39;c&#39;)&nbsp;&nbsp;#修改对象a中的[&#39;a&#39;,&nbsp;&#39;b&#39;]数组对象 print&nbsp;&#39;a&nbsp;=&nbsp;&#39;,&nbsp;a print&nbsp;&#39;b&nbsp;=&nbsp;&#39;,&nbsp;b print&nbsp;&#39;c&nbsp;=&nbsp;&#39;,&nbsp;c print&nbsp;&#39;d&nbsp;=&nbsp;&#39;,&nbsp;d 输出结果： a =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], 5] b =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], 5] c =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;]] d =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;]] Python 天天美味系列（总） Python 天天美味(20) - 命令行参数sys.argv&nbsp; &nbsp; Python 天天美味(21) - httplib，smtplib &nbsp; Python">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy） - CoderZh Blog">
-<meta itemprop="description" content="Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）">
+<meta itemprop="description" content="Python中的对象之间赋值时是按引用传递的，如果需要拷贝对象，需要使用标准库中的copy模块。 copy.copy 浅拷贝 只拷贝父对象，不会拷贝对象的内部的子对象。 copy.deepcopy 深拷贝 拷贝对象及其子对象 一个很好的例子： import&nbsp;copy a&nbsp;=&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;]]&nbsp;&nbsp;#原始对象 b&nbsp;=&nbsp;a&nbsp;&nbsp;#赋值，传对象的引用 c&nbsp;=&nbsp;copy.copy(a)&nbsp;&nbsp;#对象拷贝，浅拷贝 d&nbsp;=&nbsp;copy.deepcopy(a)&nbsp;&nbsp;#对象拷贝，深拷贝 a.append(5)&nbsp;&nbsp;#修改对象a a[4].append(&#39;c&#39;)&nbsp;&nbsp;#修改对象a中的[&#39;a&#39;,&nbsp;&#39;b&#39;]数组对象 print&nbsp;&#39;a&nbsp;=&nbsp;&#39;,&nbsp;a print&nbsp;&#39;b&nbsp;=&nbsp;&#39;,&nbsp;b print&nbsp;&#39;c&nbsp;=&nbsp;&#39;,&nbsp;c print&nbsp;&#39;d&nbsp;=&nbsp;&#39;,&nbsp;d 输出结果： a =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], 5] b =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], 5] c =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;]] d =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;]] Python 天天美味系列（总） Python 天天美味(20) - 命令行参数sys.argv&nbsp; &nbsp; Python 天天美味(21) - httplib，smtplib &nbsp; Python">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy） - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2008/05/17/1201506/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）" />
+<meta property="og:description" content="Python中的对象之间赋值时是按引用传递的，如果需要拷贝对象，需要使用标准库中的copy模块。 copy.copy 浅拷贝 只拷贝父对象，不会拷贝对象的内部的子对象。 copy.deepcopy 深拷贝 拷贝对象及其子对象 一个很好的例子： import&nbsp;copy a&nbsp;=&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;]]&nbsp;&nbsp;#原始对象 b&nbsp;=&nbsp;a&nbsp;&nbsp;#赋值，传对象的引用 c&nbsp;=&nbsp;copy.copy(a)&nbsp;&nbsp;#对象拷贝，浅拷贝 d&nbsp;=&nbsp;copy.deepcopy(a)&nbsp;&nbsp;#对象拷贝，深拷贝 a.append(5)&nbsp;&nbsp;#修改对象a a[4].append(&#39;c&#39;)&nbsp;&nbsp;#修改对象a中的[&#39;a&#39;,&nbsp;&#39;b&#39;]数组对象 print&nbsp;&#39;a&nbsp;=&nbsp;&#39;,&nbsp;a print&nbsp;&#39;b&nbsp;=&nbsp;&#39;,&nbsp;b print&nbsp;&#39;c&nbsp;=&nbsp;&#39;,&nbsp;c print&nbsp;&#39;d&nbsp;=&nbsp;&#39;,&nbsp;d 输出结果： a =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], 5] b =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], 5] c =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;]] d =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;]] Python 天天美味系列（总） Python 天天美味(20) - 命令行参数sys.argv&nbsp; &nbsp; Python 天天美味(21) - httplib，smtplib &nbsp; Python">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy） - CoderZh Blog">
-<meta name="twitter:description" content="Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）">
+<meta name="twitter:description" content="Python中的对象之间赋值时是按引用传递的，如果需要拷贝对象，需要使用标准库中的copy模块。 copy.copy 浅拷贝 只拷贝父对象，不会拷贝对象的内部的子对象。 copy.deepcopy 深拷贝 拷贝对象及其子对象 一个很好的例子： import&nbsp;copy a&nbsp;=&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;]]&nbsp;&nbsp;#原始对象 b&nbsp;=&nbsp;a&nbsp;&nbsp;#赋值，传对象的引用 c&nbsp;=&nbsp;copy.copy(a)&nbsp;&nbsp;#对象拷贝，浅拷贝 d&nbsp;=&nbsp;copy.deepcopy(a)&nbsp;&nbsp;#对象拷贝，深拷贝 a.append(5)&nbsp;&nbsp;#修改对象a a[4].append(&#39;c&#39;)&nbsp;&nbsp;#修改对象a中的[&#39;a&#39;,&nbsp;&#39;b&#39;]数组对象 print&nbsp;&#39;a&nbsp;=&nbsp;&#39;,&nbsp;a print&nbsp;&#39;b&nbsp;=&nbsp;&#39;,&nbsp;b print&nbsp;&#39;c&nbsp;=&nbsp;&#39;,&nbsp;c print&nbsp;&#39;d&nbsp;=&nbsp;&#39;,&nbsp;d 输出结果： a =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], 5] b =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], 5] c =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;]] d =&nbsp; [1, 2, 3, 4, [&lsquo;a&rsquo;, &lsquo;b&rsquo;]] Python 天天美味系列（总） Python 天天美味(20) - 命令行参数sys.argv&nbsp; &nbsp; Python 天天美味(21) - httplib，smtplib &nbsp; Python">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 

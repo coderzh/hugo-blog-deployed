@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="JSF简介">
+<meta name="description" content="由于接触Java不多，经常会出现一些陌生的东西，当然对于属性Java的人来说是很简单的东西了。今天了解了一下什么是JSF，大致了解到JSF其实就是提供了一个用于编写WEB界面的功能强大的框架。但我没有实际演练一把，操作起来实在是比ASP.NET复杂N倍，以后再研究吧。 先转一篇介绍JSF的文章： Javaserver Faces 简介 — 什么是 JSF？ 作者：Chris Schalk，Oracle Corporation 2005 年 4 月 什么是 JSF？ JavaServer Faces (JSF) 是一种用于构建 Web 应用程序的新标准 Java 框架。它提供了一种以组件为中心来开发 Java Web 用户界面的方法，从而简化了开发。JavaServer Faces 还引起了广大 Java/Web 开发人员的兴趣。&#8220;企业开发人员&#8221;和 Web 设计人员将发现 JSF 开发可以简单到只需将用户界面 (UI) 组件拖放到页面上，而&#8220;系统开发人员&#8221;将发现丰富而强健的 JSF API 为他们提供了无与伦比的功能和编程灵活性。JSF 还通过将良好构建的模型-视图-控制器 (MVC) 设计模式集成到它的体系结构中，确保了应用程序具有更高的可维护性。最后，由于 JSF 是通过 Java Community Process (JCP) 开发的一种 Java 标准，因此开发工具供应商完全能够为 JavaServer Faces 提供易于使用的、高效的可视化开发环境。 JSF 体系结构 JavaServer Faces 的 MVC 实现 JSF 的主要优势之一就是它既是 Java Web 用户界面标准又是严格遵循模型-视图－控制器 (MVC) 设计模式的框架。用户界面代码（视图）与应用程序数据和逻辑（模型）的清晰分离使">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="JSF简介 - CoderZh Blog">
-<meta itemprop="description" content="JSF简介">
+<meta itemprop="description" content="由于接触Java不多，经常会出现一些陌生的东西，当然对于属性Java的人来说是很简单的东西了。今天了解了一下什么是JSF，大致了解到JSF其实就是提供了一个用于编写WEB界面的功能强大的框架。但我没有实际演练一把，操作起来实在是比ASP.NET复杂N倍，以后再研究吧。 先转一篇介绍JSF的文章： Javaserver Faces 简介 — 什么是 JSF？ 作者：Chris Schalk，Oracle Corporation 2005 年 4 月 什么是 JSF？ JavaServer Faces (JSF) 是一种用于构建 Web 应用程序的新标准 Java 框架。它提供了一种以组件为中心来开发 Java Web 用户界面的方法，从而简化了开发。JavaServer Faces 还引起了广大 Java/Web 开发人员的兴趣。&#8220;企业开发人员&#8221;和 Web 设计人员将发现 JSF 开发可以简单到只需将用户界面 (UI) 组件拖放到页面上，而&#8220;系统开发人员&#8221;将发现丰富而强健的 JSF API 为他们提供了无与伦比的功能和编程灵活性。JSF 还通过将良好构建的模型-视图-控制器 (MVC) 设计模式集成到它的体系结构中，确保了应用程序具有更高的可维护性。最后，由于 JSF 是通过 Java Community Process (JCP) 开发的一种 Java 标准，因此开发工具供应商完全能够为 JavaServer Faces 提供易于使用的、高效的可视化开发环境。 JSF 体系结构 JavaServer Faces 的 MVC 实现 JSF 的主要优势之一就是它既是 Java Web 用户界面标准又是严格遵循模型-视图－控制器 (MVC) 设计模式的框架。用户界面代码（视图）与应用程序数据和逻辑（模型）的清晰分离使">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="JSF简介 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2009/01/16/1377152/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="JSF简介" />
+<meta property="og:description" content="由于接触Java不多，经常会出现一些陌生的东西，当然对于属性Java的人来说是很简单的东西了。今天了解了一下什么是JSF，大致了解到JSF其实就是提供了一个用于编写WEB界面的功能强大的框架。但我没有实际演练一把，操作起来实在是比ASP.NET复杂N倍，以后再研究吧。 先转一篇介绍JSF的文章： Javaserver Faces 简介 — 什么是 JSF？ 作者：Chris Schalk，Oracle Corporation 2005 年 4 月 什么是 JSF？ JavaServer Faces (JSF) 是一种用于构建 Web 应用程序的新标准 Java 框架。它提供了一种以组件为中心来开发 Java Web 用户界面的方法，从而简化了开发。JavaServer Faces 还引起了广大 Java/Web 开发人员的兴趣。&#8220;企业开发人员&#8221;和 Web 设计人员将发现 JSF 开发可以简单到只需将用户界面 (UI) 组件拖放到页面上，而&#8220;系统开发人员&#8221;将发现丰富而强健的 JSF API 为他们提供了无与伦比的功能和编程灵活性。JSF 还通过将良好构建的模型-视图-控制器 (MVC) 设计模式集成到它的体系结构中，确保了应用程序具有更高的可维护性。最后，由于 JSF 是通过 Java Community Process (JCP) 开发的一种 Java 标准，因此开发工具供应商完全能够为 JavaServer Faces 提供易于使用的、高效的可视化开发环境。 JSF 体系结构 JavaServer Faces 的 MVC 实现 JSF 的主要优势之一就是它既是 Java Web 用户界面标准又是严格遵循模型-视图－控制器 (MVC) 设计模式的框架。用户界面代码（视图）与应用程序数据和逻辑（模型）的清晰分离使">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="JSF简介 - CoderZh Blog">
-<meta name="twitter:description" content="JSF简介">
+<meta name="twitter:description" content="由于接触Java不多，经常会出现一些陌生的东西，当然对于属性Java的人来说是很简单的东西了。今天了解了一下什么是JSF，大致了解到JSF其实就是提供了一个用于编写WEB界面的功能强大的框架。但我没有实际演练一把，操作起来实在是比ASP.NET复杂N倍，以后再研究吧。 先转一篇介绍JSF的文章： Javaserver Faces 简介 — 什么是 JSF？ 作者：Chris Schalk，Oracle Corporation 2005 年 4 月 什么是 JSF？ JavaServer Faces (JSF) 是一种用于构建 Web 应用程序的新标准 Java 框架。它提供了一种以组件为中心来开发 Java Web 用户界面的方法，从而简化了开发。JavaServer Faces 还引起了广大 Java/Web 开发人员的兴趣。&#8220;企业开发人员&#8221;和 Web 设计人员将发现 JSF 开发可以简单到只需将用户界面 (UI) 组件拖放到页面上，而&#8220;系统开发人员&#8221;将发现丰富而强健的 JSF API 为他们提供了无与伦比的功能和编程灵活性。JSF 还通过将良好构建的模型-视图-控制器 (MVC) 设计模式集成到它的体系结构中，确保了应用程序具有更高的可维护性。最后，由于 JSF 是通过 Java Community Process (JCP) 开发的一种 Java 标准，因此开发工具供应商完全能够为 JavaServer Faces 提供易于使用的、高效的可视化开发环境。 JSF 体系结构 JavaServer Faces 的 MVC 实现 JSF 的主要优势之一就是它既是 Java Web 用户界面标准又是严格遵循模型-视图－控制器 (MVC) 设计模式的框架。用户界面代码（视图）与应用程序数据和逻辑（模型）的清晰分离使">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 

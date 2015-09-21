@@ -7,37 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="HeartBeat,KeepAlive,Ping,">
-<meta name="description" content="
-
-几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
-">
+<meta name="description" content="需要及时检测TCP连接状态，心跳包(HeartBeat)还是必须的">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="为什么心跳包(HeartBeat)是必须的？ - CoderZh Blog">
-<meta itemprop="description" content="
-
-几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
-">
+<meta itemprop="description" content="需要及时检测TCP连接状态，心跳包(HeartBeat)还是必须的">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="为什么心跳包(HeartBeat)是必须的？ - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="
-
-几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
-" />
+<meta property="og:description" content="需要及时检测TCP连接状态，心跳包(HeartBeat)还是必须的">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="为什么心跳包(HeartBeat)是必须的？ - CoderZh Blog">
-<meta name="twitter:description" content="
-
-几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？
-">
+<meta name="twitter:description" content="需要及时检测TCP连接状态，心跳包(HeartBeat)还是必须的">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 

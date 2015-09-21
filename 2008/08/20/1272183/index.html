@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="经典转载 - 缓冲区溢出的原理和实践(Phrack)">
+<meta name="description" content="简&nbsp; &nbsp;介 &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 在过去的几个月中,被发现和利用的缓冲区溢出漏洞呈现上升趋势.例如syslog, splitvt, sendmail 8.7.5, Linux/FreeBSD mount, Xt library, at等等.本文试图 解释什么是缓冲区溢出, 以及如何利用. &nbsp; &nbsp; 汇编的基础知识是必需的. 对虚拟内存的概念, 以及使用gdb的经验是十分有益 的, 但不是必需的. 我们还假定使用Intel x86 CPU, 操作系统是Linux. &nbsp; &nbsp; 在开始之前我们给出几个基本的定义: 缓冲区,简单说来是一块连续的计算机内 存区域, 可以保存相同数据类型的多个实例. C程序员通常和字缓冲区数组打交道. 最常见的是字符数组. 数组, 与C语言中所有的变量一样, 可以被声明为静态或动态 的. 静态变量在程序加载时定位于数据段. 动态变量在程序运行时定位于堆栈之中. 溢出, 说白了就是灌满, 使内容物超过顶端, 边缘, 或边界. 我们这里只关心动态 缓冲区的溢出问题, 即基于堆栈的缓冲区溢出. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;进程的内存组织形式 &nbsp; &nbsp; 为了理解什么是堆栈缓冲区, 我们必须首先理解一个进程是以什么组织形式在 内存中存在的.">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="经典转载 - 缓冲区溢出的原理和实践(Phrack) - CoderZh Blog">
-<meta itemprop="description" content="经典转载 - 缓冲区溢出的原理和实践(Phrack)">
+<meta itemprop="description" content="简&nbsp; &nbsp;介 &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 在过去的几个月中,被发现和利用的缓冲区溢出漏洞呈现上升趋势.例如syslog, splitvt, sendmail 8.7.5, Linux/FreeBSD mount, Xt library, at等等.本文试图 解释什么是缓冲区溢出, 以及如何利用. &nbsp; &nbsp; 汇编的基础知识是必需的. 对虚拟内存的概念, 以及使用gdb的经验是十分有益 的, 但不是必需的. 我们还假定使用Intel x86 CPU, 操作系统是Linux. &nbsp; &nbsp; 在开始之前我们给出几个基本的定义: 缓冲区,简单说来是一块连续的计算机内 存区域, 可以保存相同数据类型的多个实例. C程序员通常和字缓冲区数组打交道. 最常见的是字符数组. 数组, 与C语言中所有的变量一样, 可以被声明为静态或动态 的. 静态变量在程序加载时定位于数据段. 动态变量在程序运行时定位于堆栈之中. 溢出, 说白了就是灌满, 使内容物超过顶端, 边缘, 或边界. 我们这里只关心动态 缓冲区的溢出问题, 即基于堆栈的缓冲区溢出. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;进程的内存组织形式 &nbsp; &nbsp; 为了理解什么是堆栈缓冲区, 我们必须首先理解一个进程是以什么组织形式在 内存中存在的.">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="经典转载 - 缓冲区溢出的原理和实践(Phrack) - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2008/08/20/1272183/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="经典转载 - 缓冲区溢出的原理和实践(Phrack)" />
+<meta property="og:description" content="简&nbsp; &nbsp;介 &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 在过去的几个月中,被发现和利用的缓冲区溢出漏洞呈现上升趋势.例如syslog, splitvt, sendmail 8.7.5, Linux/FreeBSD mount, Xt library, at等等.本文试图 解释什么是缓冲区溢出, 以及如何利用. &nbsp; &nbsp; 汇编的基础知识是必需的. 对虚拟内存的概念, 以及使用gdb的经验是十分有益 的, 但不是必需的. 我们还假定使用Intel x86 CPU, 操作系统是Linux. &nbsp; &nbsp; 在开始之前我们给出几个基本的定义: 缓冲区,简单说来是一块连续的计算机内 存区域, 可以保存相同数据类型的多个实例. C程序员通常和字缓冲区数组打交道. 最常见的是字符数组. 数组, 与C语言中所有的变量一样, 可以被声明为静态或动态 的. 静态变量在程序加载时定位于数据段. 动态变量在程序运行时定位于堆栈之中. 溢出, 说白了就是灌满, 使内容物超过顶端, 边缘, 或边界. 我们这里只关心动态 缓冲区的溢出问题, 即基于堆栈的缓冲区溢出. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;进程的内存组织形式 &nbsp; &nbsp; 为了理解什么是堆栈缓冲区, 我们必须首先理解一个进程是以什么组织形式在 内存中存在的.">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="经典转载 - 缓冲区溢出的原理和实践(Phrack) - CoderZh Blog">
-<meta name="twitter:description" content="经典转载 - 缓冲区溢出的原理和实践(Phrack)">
+<meta name="twitter:description" content="简&nbsp; &nbsp;介 &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 在过去的几个月中,被发现和利用的缓冲区溢出漏洞呈现上升趋势.例如syslog, splitvt, sendmail 8.7.5, Linux/FreeBSD mount, Xt library, at等等.本文试图 解释什么是缓冲区溢出, 以及如何利用. &nbsp; &nbsp; 汇编的基础知识是必需的. 对虚拟内存的概念, 以及使用gdb的经验是十分有益 的, 但不是必需的. 我们还假定使用Intel x86 CPU, 操作系统是Linux. &nbsp; &nbsp; 在开始之前我们给出几个基本的定义: 缓冲区,简单说来是一块连续的计算机内 存区域, 可以保存相同数据类型的多个实例. C程序员通常和字缓冲区数组打交道. 最常见的是字符数组. 数组, 与C语言中所有的变量一样, 可以被声明为静态或动态 的. 静态变量在程序加载时定位于数据段. 动态变量在程序运行时定位于堆栈之中. 溢出, 说白了就是灌满, 使内容物超过顶端, 边缘, 或边界. 我们这里只关心动态 缓冲区的溢出问题, 即基于堆栈的缓冲区溢出. &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;进程的内存组织形式 &nbsp; &nbsp; 为了理解什么是堆栈缓冲区, 我们必须首先理解一个进程是以什么组织形式在 内存中存在的.">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 

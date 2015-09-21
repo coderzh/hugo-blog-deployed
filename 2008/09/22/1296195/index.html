@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="Python天天美味(32) - python数据结构与算法之堆排序">
+<meta name="description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230; def selection_sort(data): &nbsp;&nbsp;&nbsp; for i in range(len(data) - 1): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = data[i] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for j in range(i, len(data)): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if data[j] &lt; min: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = data[j] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if i &lt;&gt; k: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data[i], data[k] = data[k], data[i] 堆排序 堆排序的原理将数组调整成堆，然后将堆顶元素与最后一个元素交换，然后将最后一个节点剔除出堆，再将剩下的数组调整成堆，然后再交换堆顶元素与最后一个元素&#8230;&#8230; def heap_adjust(data, s, m): &nbsp;&nbsp;&nbsp; if 2 * s &gt; m: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return &nbsp;&nbsp;&nbsp; temp = s -">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(32) - python数据结构与算法之堆排序 - CoderZh Blog">
-<meta itemprop="description" content="Python天天美味(32) - python数据结构与算法之堆排序">
+<meta itemprop="description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230; def selection_sort(data): &nbsp;&nbsp;&nbsp; for i in range(len(data) - 1): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = data[i] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for j in range(i, len(data)): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if data[j] &lt; min: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = data[j] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if i &lt;&gt; k: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data[i], data[k] = data[k], data[i] 堆排序 堆排序的原理将数组调整成堆，然后将堆顶元素与最后一个元素交换，然后将最后一个节点剔除出堆，再将剩下的数组调整成堆，然后再交换堆顶元素与最后一个元素&#8230;&#8230; def heap_adjust(data, s, m): &nbsp;&nbsp;&nbsp; if 2 * s &gt; m: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return &nbsp;&nbsp;&nbsp; temp = s -">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(32) - python数据结构与算法之堆排序 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2008/09/22/1296195/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="Python天天美味(32) - python数据结构与算法之堆排序" />
+<meta property="og:description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230; def selection_sort(data): &nbsp;&nbsp;&nbsp; for i in range(len(data) - 1): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = data[i] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for j in range(i, len(data)): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if data[j] &lt; min: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = data[j] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if i &lt;&gt; k: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data[i], data[k] = data[k], data[i] 堆排序 堆排序的原理将数组调整成堆，然后将堆顶元素与最后一个元素交换，然后将最后一个节点剔除出堆，再将剩下的数组调整成堆，然后再交换堆顶元素与最后一个元素&#8230;&#8230; def heap_adjust(data, s, m): &nbsp;&nbsp;&nbsp; if 2 * s &gt; m: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return &nbsp;&nbsp;&nbsp; temp = s -">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(32) - python数据结构与算法之堆排序 - CoderZh Blog">
-<meta name="twitter:description" content="Python天天美味(32) - python数据结构与算法之堆排序">
+<meta name="twitter:description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230; def selection_sort(data): &nbsp;&nbsp;&nbsp; for i in range(len(data) - 1): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = data[i] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for j in range(i, len(data)): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if data[j] &lt; min: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = data[j] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = j &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if i &lt;&gt; k: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data[i], data[k] = data[k], data[i] 堆排序 堆排序的原理将数组调整成堆，然后将堆顶元素与最后一个元素交换，然后将最后一个节点剔除出堆，再将剩下的数组调整成堆，然后再交换堆顶元素与最后一个元素&#8230;&#8230; def heap_adjust(data, s, m): &nbsp;&nbsp;&nbsp; if 2 * s &gt; m: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return &nbsp;&nbsp;&nbsp; temp = s -">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 

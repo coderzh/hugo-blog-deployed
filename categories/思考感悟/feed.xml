@@ -6,7 +6,65 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 19 Sep 2015 00:35:48 CST</updated>
+        <updated>Mon, 21 Sep 2015 00:56:13 CST</updated>
+        
+        <item>
+            <title>关于最近的XcodeGhost事件，我也来说两句</title>
+            <link>http://blog.coderzh.com/2015/09/21/xcode-ghost/</link>
+            <pubDate>Mon, 21 Sep 2015 00:56:13 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/21/xcode-ghost/</guid>
+            <description>
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/xcodeghost.jpg-w&#34; alt=&#34;xcodeghost&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最近几天讨论的最多的就是XcodeGhost事件了，首先来简要的回顾一下：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;某个后来自称XcodeGhost作者的程序员，自称本着玩一玩的心态，在苹果的APP开发工具Xcode里嵌入了一段恶意代码。&lt;/li&gt;
+&lt;li&gt;该段代码会自动收集用户的信息，发送到一个地址近似苹果的服务器。也有专家分析存在更多的隐患和危害。&lt;/li&gt;
+&lt;li&gt;一群苦逼的码农以开发iOS应用为生，发现苹果官方的APP开发工具Xcode下载龟速，于是在网上一顿乱搜，下载到了嵌入恶意代码的Xcode。&lt;/li&gt;
+&lt;li&gt;大量这样的APP发布到了AppStore，包括一些大厂的。&lt;/li&gt;
+&lt;li&gt;收集信息的恶意代码被发现，然后进一步扩散，称为了社会热点。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这个事件有几个值得讨论的点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;恶意代码到底危害有多大？&lt;/p&gt;
+
+&lt;p&gt;腾讯的安全团队称，XcodeGhost除了收集APP版本、APP名称、本地语言、iOS版本、设备类型、国家码等设备信息，还可以通过openURL下发伪协议命令，让你的iPhone打开网页，发送短信，打电话，甚至操作具备伪协议能力的第三方APP。XcodeGhost可以让你的iPhone自动弹框，弹框的内容可以在服务端进行控制，而XcodeGhost恶意代码本身又存在安全漏洞，可以被中间人攻击，从而使得你的iPhone可能被更多人控制，成为一个肉鸡。&lt;/p&gt;
+
+&lt;p&gt;看上去挺可怕的。不过也有另外一种观点：基于苹果系统级别的安全限制，恶意代码最多也只能收集一些基本的信息，像iCloud、AppStore的密码是不可能拿到的。而且恶意代码还未造成实质危害就被发现并关闭了，被植入恶意代码的APP也很快被苹果下架，大量APP已经更新了新版并修复了此问题，所以不用太担心。&lt;/p&gt;
+
+&lt;p&gt;上面的说法都是有道理的，如果你还是觉得没有安全感，也可以把常用的密码修改一遍。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为什么一些大厂也中招？&lt;/p&gt;
+
+&lt;p&gt;在人们的理解中，大厂应该流程比较规范，至少公司内部使用的软件应该都是正版的，为什么这次还是会中招？这里有一个误区，因为Xcode软件本身是免费的，所以根本不存在盗版一说。程序员下载Xcode时，发现苹果官方的下载太慢，于是在其他地方下载到了植入恶意代码的Xcode。&lt;/p&gt;
+
+&lt;p&gt;然而，大厂可以因此推脱责任吗？我觉得不能。稍微懂点iOS开发的同学都知道，一个iOS应用开发完成后，需要编译打包，数字签名等操作，因为权限相关的原因，通常这些操作都会集中到指定的机器上来做，而这样的机器的软件安全性会更加重要的多。即使不是Xcode被植入了恶意代码，就算是系统上有其他恶意程序，也有可能在打包APP时被嵌入一段恶意代码。所以，在这样的机器上，安全性应该提高到另外一个更高的等级。对下载的官方软件，也要再做一次hash比较，检查是否下载到被篡改的软件。&lt;/p&gt;
+
+&lt;p&gt;很多时候，用户是基于信任才使用你的APP，所以，不要因为你的安全意识上的疏忽，失去用户对你的信任。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;苹果为什么也不安全？&lt;/p&gt;
+
+&lt;p&gt;如果你说安卓机不安全，我大概不会反驳。而一直被大家加以信任的苹果，为什么也会有安全隐患，为什么审核的时候没有发现，让这么多有问题的APP顺利的上架？为什么像openURL这样的超级API不能做到更安全？ 这些问题我回答不了，我没有开发过iOS的应用，对iOS的安全性研究不深，但我希望这次事件能更加引起苹果对安全的重视。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;这件事件后，我能做什么？&lt;/p&gt;
+
+&lt;p&gt;这件事情被爆出来后，特别是一个大厂的应用也曝光后，我也是第一时间先卸载了手机上的相关的应用。当有人爆出微信也中招时，肯定有很多人和我一样开始非常诧异，难以接受，删了微信我的手机还能干什么？呵呵。然后，你仔细一看，或者别人告诉你，微信6.2.5才有这个问题，最新版已经没有问题了。细心的人马上会发现，微信早在XcodeGhost被爆出来之前就早已发现了这个问题（最早被腾讯安全的团队发现的），然后第一时间加班加点发布了微信6.2.6版本修复了这个问题。&lt;/p&gt;
+
+&lt;p&gt;现在有问题的APP基本已下架，上架的新版本也都修复了这个问题。如果你不放心可以修改一些密码。然而，这次事件之后，我能做什么？或者，给我的启示是什么？这次事件和程序员有关，从写恶意代码的程序员，到下载到含恶意代码的Xcode的程序员，而我刚好也是一名程序员。我能做什么？&lt;/p&gt;
+
+&lt;p&gt;首先，我肯定不会去写恶意代码做坏事，顶多写个脚本抢个票刷个号，也是自己用。然后，在下载软件时，尽量到官方网站下载，对于比较重要的软件，最好下载后校验一下官方的hash。如果是商业付费软件，假如在你的承受范围之内，尽量还是购买正版。在你不断寻找破解补丁的过程中，有无数个包含恶意代码的软件正在向你招手。对于个人开发者，有很多软件都有了Community版本，像Visual Studio，Unity，JetBrains PyCharm等等开发工具，社区版本已经完全够用了。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;最后:3500cef42208a15fa70ada140640cf08&#34;&gt;最后&lt;/h3&gt;
+
+&lt;p&gt;希望这次事件正如自称XcodeGhost作者声称的那样不会有什么实际危害，同时，我更希望通过这次事件，能引起更多的人或公司关注我们的APP安全。用户信任你的APP，请做好你的APP的安全保护，不要辜负了用户对你的信任。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>微信公众号开通了原创保护功能</title>
@@ -889,91 +947,6 @@ def find_matches(lines, regex, exclude_list):
 &lt;p&gt;2011年，我的目标简单一点：争取能看懂大部分《&lt;a href=&#34;http://book.douban.com/subject_search?search_text=%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E7%B2%BE%E7%B2%B9&amp;amp;amp;cat=1001&#34;&gt;游戏编程精粹&lt;/a&gt;》里的文章。同时希望在下次年终总结时，会有一款出色的游戏出来！&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2011/01/06/start2011.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2011/01/06/start2011.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>多彩的程序人生</title>
-            <link>http://blog.coderzh.com/2010/07/12/programming-life/</link>
-            <pubDate>Mon, 12 Jul 2010 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2010/07/12/programming-life/</guid>
-            <description>
-
-&lt;p&gt;常常想程序人生的问题，也常常在网上看程序人生相关的话题，但听大师讲程序人生，还是第一次。这位大师，就是侯捷。&lt;/p&gt;
-
-&lt;p&gt;侯捷，两岸著名技术教育者，计算机图书作者、译者、书评人，著有《深入浅出MFC》、《多型与虚拟》、《STL源码剖析》、《无责任书评》三卷，译有众多脍炙人口的高阶技术书籍，包括Meyers所著的&amp;#8220;Effective C++&amp;#8221;系列&amp;#8230;&amp;#8230;&lt;/p&gt;
-
-&lt;p&gt;侯老师的人生经历非常丰富，从土木工程师，机械研究员，到程序员，再到自由写译，高校兼职讲师。从他的经历中，我们可以体会到一个非常鲜活、丰富而多彩的程序人生。同时，他对生活的态度，也另我们受益颇多。&lt;/p&gt;
-
-&lt;p&gt;和侯老师一样，我也是土木工程毕业的，不过我从毕业开始就告别了学习了四年的土木工程。侯老师说，一定要追随自己的兴趣，最自己喜欢的事情。我放弃土木工程，走上程序员这条路，对我来说也是非常激动和兴奋的，因为我找到了自己喜欢的事情。
-侯老师讲的过程，我做了一些笔记，记录一下：&lt;/p&gt;
-
-&lt;h4 id=&#34;1-文档和总结:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;1. 文档和总结&lt;/h4&gt;
-
-&lt;p&gt;印象很深的一点是，即使学习很累，每天晚上睡前再多坚持半小时，把所学的东西总结一下记下来，将来会非常有用。所以，以后也不要找借口没时间总结了，因此只是差再坚持半小时而已。&lt;/p&gt;
-
-&lt;h4 id=&#34;2-和人交谈:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;2. 和人交谈&lt;/h4&gt;
-
-&lt;p&gt;程序员比较喜欢做自己的事情，不太关注别人，是不对的。和别人交谈过程中，能获得很多有效的信息。&lt;/p&gt;
-
-&lt;h4 id=&#34;3-兴趣为根本:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;3. 兴趣为根本&lt;/h4&gt;
-
-&lt;p&gt;侯老师曾经在非常令人羡慕的公司工作，但最后都选择了追随自己的兴趣，做自己感兴趣的事情，非常重要。&lt;/p&gt;
-
-&lt;h4 id=&#34;4-忠于自己内心的声音:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;4. 忠于自己内心的声音&lt;/h4&gt;
-
-&lt;h4 id=&#34;5-兴趣-热情:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;5. 兴趣/热情&lt;/h4&gt;
-
-&lt;p&gt;年轻的时候，肯定会有令自己疯狂的时期，也是人生的一段宝贵的经历。&lt;/p&gt;
-
-&lt;h4 id=&#34;6-执着:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;6. 执着&lt;/h4&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;不信青春唤不回，不容青史尽成灰&lt;/span&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;7-毅力:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;7. 毅力&lt;/h4&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;人生是一场马拉松，不是百米匆匆&lt;/span&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;8-专业:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;8. 专业&lt;/h4&gt;
-
-&lt;p&gt;想要做到&amp;#8220;&lt;span style=&#34;color: red;&#34;&gt;为学当如金字塔，要能深来要能广。&lt;/span&gt;&amp;#8221;其实是很难的。即使我们非常用功，天赋也不错，也可能成不了爱因斯坦，牛顿。所以，何不防释然一些，&amp;#8220;&lt;span style=&#34;color: red;&#34;&gt;弱水三千，取一瓢饮&lt;/span&gt;&amp;#8221;。在自己的专业领域，有所研究，略有收获，亦悠哉悠哉。最切忌的是浮躁，&amp;#8220;&lt;span style=&#34;color: red;&#34;&gt;勿在浮砂筑高台&lt;/span&gt;&amp;#8221;。有了这种心态，我想渐渐的也会在专业领域越走越远，越研究越深。&lt;/p&gt;
-
-&lt;h4 id=&#34;9-用功:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;9. 用功&lt;/h4&gt;
-
-&lt;h4 id=&#34;10-态度:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;10. 态度&lt;/h4&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;宁拙勿巧，宁下勿高，宁远勿近，宁繁勿略&lt;/span&gt; - 朱熹
-&lt;span style=&#34;color: red;&#34;&gt;永远正面思考&lt;/span&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;11-问道:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;11. 问道&lt;/h4&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;山不走来，我向山走去&lt;/span&gt;
-&lt;span style=&#34;color: red;&#34;&gt;大扣大鸣，小扣小鸣，不扣不鸣&lt;/span&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;12-勤勉:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;12. 勤勉&lt;/h4&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;读过千赋亦能赋，观过千剑亦能剑&lt;/span&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;13-不怕与人异:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;13. 不怕与人异&lt;/h4&gt;
-
-&lt;p&gt;侯老师非常喜欢的一首诗歌：&lt;a href=&#34;http://e.iciba.com/space-4258059-do-thread-id-76301.html&#34;&gt;The road not taken&lt;/a&gt;。这里节选最后一段：&lt;/p&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;#8221;&lt;/span&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;也许多少年后在某个地方，  &lt;/span&gt;
-&lt;div&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;nbsp;我将轻声叹息将往事回顾： &lt;/span&gt;&lt;/div&gt; &lt;div&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;nbsp;一片树林里分出两条路 &lt;/span&gt;&lt;/div&gt; &lt;div&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;nbsp;而我选择了人迹更少的一条， &lt;/span&gt;&lt;/div&gt; &lt;div&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt;&amp;nbsp;从此决定了我一生的道路。&lt;/span&gt;&lt;span style=&#34;color: #3366ff;&#34;&gt; &amp;#8220;&lt;/span&gt;
-&lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;侯老师感叹，中国的传统教育，使得我们非常害怕与人不同，比如你独特的装扮，不同的兴趣等等。而国外的教育，是鼓励你与别人有所不同的。你独特的经历，独特的兴趣爱好，会给你加分不少。所以，我们也应该打破传统，不要害怕与人不同，做自己喜欢的事情，不要太多顾忌。&lt;/p&gt;
-
-&lt;h4 id=&#34;14-品格:c42eb0964f1db916a1c4e6ecbac2b5ff&#34;&gt;14. 品格&lt;/h4&gt;
-
-&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;期许自己是&amp;#8220;贵族&amp;#8221;&lt;/span&gt;。&amp;#8220;贵族&amp;#8221;这里是指正直，道德高尚的人。&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-
-&lt;p&gt;我在睡前花了半个小时整理了这篇博文，也许多年以后，我也不会记得侯老师的这次讲座的内容，但是这篇文章会帮我记住。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/07/12/programming-life.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/07/12/programming-life.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         
