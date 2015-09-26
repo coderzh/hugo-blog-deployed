@@ -6,7 +6,109 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Mon, 21 Sep 2015 00:56:13 CST</updated>
+        <updated>Sat, 26 Sep 2015 13:54:33 CST</updated>
+        
+        <item>
+            <title>说说刚入手的程序员键盘神器：HHKB Pro2</title>
+            <link>http://blog.coderzh.com/2015/09/26/my-hhkb-pro2/</link>
+            <pubDate>Sat, 26 Sep 2015 13:54:33 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/26/my-hhkb-pro2/</guid>
+            <description>
+
+&lt;p&gt;几周前，托朋友从日本带购了一块静电容键盘HHKB（Happy Hacking Keyboard） Pro2，大约RMB1200。整个键盘只有60个键，没有数字小键盘，甚至没有方向键和最上排的F1~F12功能键。大小写切换键替换成了Control键。整个键盘非常小巧紧凑，敲起来非常舒服。&lt;/p&gt;
+
+&lt;p&gt;然而，这个键盘并不适合非程序员使用，因为少了很多按键。即使是程序员，也并不一定适合。因为HHKB主要是为Linux用户设计的，特别是Vim和Emacs党。用这块键盘，可以很方便的敲出常用的快捷键而不用手离键盘。（现在才发现原来学Emacs时为什么感觉小指要按到抽筋了，原来是键盘不对。。）&lt;/p&gt;
+
+&lt;p&gt;我日常使用的是Windows，但我特别喜欢Vim，即使是在IDE里，我也要切换到Vim模式，不然我感觉敲不出代码。在我体验了几周HHKB之后，感觉即使是在Windows环境里，HHKB也是可以很好的使用的。HHKB有一组DIP开关，可以在几种模式下切换。比如HHKB模式和Mac模式，在Mac下使用这块键盘也是不错的选择。&lt;/p&gt;
+
+&lt;p&gt;这块键盘非常的漂亮，由于是静电容键盘，利用电容容量的变化来判断按键的开关，由于无物理接触点就可以实现敲击，因而磨损更小，非常的耐用，据说可以用到传给你孙子，告诉他你爷爷当年就是用这块键盘敲的代码。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hhkb-types.jpg&#34; alt=&#34;hhkb-types&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一块明星级键盘，备受黑客级程序员追捧，比如：GNU之父Richard StallMan&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/StallmanHHKB.jpg&#34; alt=&#34;StallmanHHK&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;再比如，C++ 之父 Bjarne Stroustrup&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/bjarne_hhkb.jpg&#34; alt=&#34;bjarne_hhkb&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;HHKB比想象中还小一些，比如和我的Cherry G80-3800放在一起：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/MyHHKB2.JPG-w&#34; alt=&#34;MyHHKB&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我的电脑桌面：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/MyDesktop2.JPG-w&#34; alt=&#34;MyDesktop&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OK，图晒完了，记录一点实用的。前面讲了HHKB有一组DIP开关，用来切换不同的输入模式。在键盘的背面，有6个DIP开关的说明：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;SW1&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;SW2&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;MODE&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OFF&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;OFF&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;HHK&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;ON&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;OFF&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Lite Ext.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OFF&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ON&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Macintosh&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;ON&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ON&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&amp;ndash;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;HHK模式和Lite Ext.模式的区别是，Lite模式可以用Fn+Tab切换大小写（相当于Caps键），以及右边的◇键可以当Windows键或Mac的Command键。所以，一般情况下，Lite模式是更适合的。如果你是Mac，选Macintosh模式是更适合的，因为这种模式下，你可以使用Fn-A,Fn-S,Fn-D,Fn-F等多媒体组合键。&lt;/p&gt;
+
+&lt;p&gt;我目前使用的是SW1 OFF，SW2 OFF，即HHK模式，因为我在想按Alt+Tab切换窗口时，经常误按到左◇+Tab，在Lite模式下直接切换了大小写。。之后适应了不会按错之后再改回来。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;&lt;td rowspan=&#34;2&#34;&gt;SW3&lt;/td&gt;&lt;td&gt;OFF&lt;/td&gt;&lt;td&gt;Delete=&#39;DEL&#39;&lt;/td&gt;&lt;td rowspan=&#34;2&#34;&gt;ON：Delete键改为退格键&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;ON&lt;/td&gt;&lt;td&gt;Delete=&#39;BS&#39;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan=&#34;2&#34;&gt;SW4&lt;/td&gt;&lt;td&gt;OFF&lt;/td&gt;&lt;td&gt;Left ◇=&#39;Left◇&#39; &lt;/td&gt;&lt;td rowspan=&#34;2&#34;&gt;ON：左边的◇键改为Fn键&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;ON&lt;/td&gt;&lt;td&gt;Left ◇=&#39;Fn&#39;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan=&#34;2&#34;&gt;SW5&lt;/td&gt;&lt;td&gt;OFF&lt;/td&gt;&lt;td&gt;◇=&#39;◇&#39;, Alt=&#39;Alt&#39;&lt;/td&gt;&lt;td rowspan=&#34;2&#34;&gt;ON：◇键和Alt键交换&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;ON&lt;/td&gt;&lt;td&gt;◇=&#39;Alt&#39;, Alt=&#39;◇&#39;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan=&#34;2&#34;&gt;SW6&lt;/td&gt;&lt;td&gt;OFF&lt;/td&gt;&lt;td&gt;Wake Up Disable&lt;/td&gt;&lt;td rowspan=&#34;2&#34;&gt;ON：Fn+Esc睡眠唤醒功能&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;ON&lt;/td&gt;&lt;td&gt;Wake Up Enable&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;在尝试了不同组合之后，目前我打开的是：SW3，SW4。我觉得这两个对于大多数人来说都是必须的吧，没有退格键是多么不方便。当然，Delete键改成了退格键之后，要删除文件时，就得按Fn+` 键来Delete了。由于F1~F12键我还是需要使用的，所以，Fn键的使用频率会远远大约Alt键，所以，SW5设成OFF，不要交换◇键和Alt键。如果你是Emacs用户，经常需要使用Alt键，可以把SW5设成ON。&lt;/p&gt;
+
+&lt;h4 id=&#34;一些心得:15e5c3c642bde6d107bfd34058e7c128&#34;&gt;一些心得&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;最下排最左右的Alt键正常是不容易按到的。技巧是用直接用小指下面一点的手掌压，突然变得很容易按了：）&lt;/li&gt;
+&lt;li&gt;开始会觉得通过Fn移动方向键会非常痛苦，当然现在也是。毕竟小指并没有那么灵活。目前左右移动还稍微习惯一些了。&lt;/li&gt;
+&lt;li&gt;Control调到CapsLock键位置之后，Control+s键按的有些别扭，其他的还好。&lt;/li&gt;
+&lt;li&gt;感觉最右边的Fn键太远了，按到的频率略少，感觉设计有点不合理。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;最后，再说一点，键盘是每天上班或者娱乐时间里对着电脑时用的最多的东西之一了，花点代价买一块称心如意的键盘是非常值得的。再加上静电容键盘或者机械键盘是超长时间耐用的，花些投入绝对是值得的。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>关于最近的XcodeGhost事件，我也来说两句</title>
@@ -901,52 +1003,6 @@ def find_matches(lines, regex, exclude_list):
 &lt;p&gt;写这篇文章，并不是从程序角度对写过的代码和模块进行总结。而是通过回忆一路走过的创业历程，让自己重新去思考，公司和人员是如何变化的，游戏产品是如何演变的，当然最重要的，是自己的心态和思维方式是如何改变的。&lt;/p&gt;
 
 &lt;p&gt;（未完待续……）&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>启程2011</title>
-            <link>http://blog.coderzh.com/2011/01/06/start2011/</link>
-            <pubDate>Thu, 06 Jan 2011 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2011/01/06/start2011/</guid>
-            <description>&lt;p&gt;2011年已经来临，我甚至还来不及对2010年做个总结，过去的2010年是折腾的一年。回顾了09年的总结，2010年我主要完成做了：&lt;/p&gt;
-
-&lt;p&gt;　1. 博客61篇，相对去年49篇，一定的进步。完成了平均每周一篇的目标。&lt;/p&gt;
-
-&lt;p&gt;　2. 博客园排名从220名前进到128名，离目标100名还有点差距。2011年争取有更好的成绩吧。&lt;/p&gt;
-
-&lt;p&gt;　3. Google Reader中统计的博客订阅数达到544。感谢订阅的朋友，我会更加努力，完成更多更有价值的文章。&lt;/p&gt;
-
-&lt;p&gt;　4. 开源项目：&lt;a href=&#34;http://code.google.com/p/nancywiki/&#34;&gt;NancyWiki&lt;/a&gt;，基于Google App Engine的个人Wiki系统。最新版本已经有近200个下载。&lt;/p&gt;
-
-&lt;p&gt;　5. 对Android开发有个粗浅的认识，写了一个简单的小游戏&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/03/23/android-nancyglines-design.html&#34;&gt;NancyGLines&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;　6. 学习了两门新的编程语言：Ruby和Lua。都还不是很熟，今年要重点攻Lua了。&lt;/p&gt;
-
-&lt;p&gt;2010年，我的工作有些起伏：&lt;/p&gt;
-
-&lt;p&gt;　1. 金山毒霸（1~6月份）&lt;/p&gt;
-
-&lt;p&gt;　2. 金山快快的秘密项目研究（7、8月，一段神奇的经历）&lt;/p&gt;
-
-&lt;p&gt;　3. 金山软件管家开发（8月，十分短暂的时间，这个项目后来被无情的拿掉了）&lt;/p&gt;
-
-&lt;p&gt;　4. 西山居月影传说Online（9~12月，转身进入网游界）&lt;/p&gt;
-
-&lt;p&gt;　5. 。。。&lt;/p&gt;
-
-&lt;p&gt;2010年的一篇《&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/03/27/three-years-work-thinking.html&#34;&gt;三年之痒&lt;/a&gt;》，加上公司上上下下的变化，我换了好几个岗位。期间，考虑过去令人向往的ThoughtWorks，面试之后，感觉自己英语水平和表达能力有待提高，同时也希望自己在行业再多一些积累经验，最后，我主动放弃了。再次感谢&lt;a href=&#34;http://www.google.com/profiles/mechiland#buzz&#34;&gt;Michael Chen&lt;/a&gt;的推荐。期间，我还考虑过去金山快盘做服务端开发，本身自己也不太乐意去做Java开发，面试时被一句&amp;#8220;只要Java熟手，不给学习时间&amp;#8221;回绝，于是回去狠心把快盘卸载，从此不再使用。只注重当前的业务能力，而不注重之后的潜力，也许这是快盘的损失。期间，还考虑过加入赖勇浩的创业团队，最后，我还是选择了去西山居。&lt;/p&gt;
-
-&lt;p&gt;2010年9月，我加入了西山居。曾经的我，也是一个在网游的世界里迷途的孩子，让我迷途的游戏，正是金山西山居的网游。时光轮回，我自己加入了西山居。有同事开玩笑说，我们曾经都被游戏毒害过，所以我们是来报复社会的。在西山居，如果你真正接触那些满怀梦想，而富有激情的同事，你就会明白，他们为之付出青春的原因。与西山居CTO&lt;a href=&#34;http://t.qq.com/freewaychen&#34;&gt;陈飞舟&lt;/a&gt;的接触和了解，让我顿时对他产生了巨大的崇敬和敬仰之情。他技术超群，充满梦想，剑网三良好的技术架构和代码规范由他把控的如此完美。身兼CTO及副总裁的他，仍然坚持在一线写代码，就这一点，也让很多CTO感到羞愧。&lt;/p&gt;
-
-&lt;p&gt;然而，这是一个残酷的时代。理想主义者把游戏当做艺术品来做，在商业上就不会太成功。剑网三的高调亮相和后来的表现平平已经很好的说明了这一点。反而是那些想方设法坑钱的IB游戏大行其道，获取了商业上巨大的成功。于是越来越多的人涌入网游这个市场，使得整个行业变得非常的浮躁。游戏的寿命越来越短，坑钱的手段越来越多，甚至还些还使用心理营销，让用户心里知道被骗，嘴里骂着游戏厂商，但手上还是不断的给游戏厂商送钱。&lt;/p&gt;
-
-&lt;p&gt;从《&lt;a href=&#34;http://book.douban.com/subject/1152971/&#34;&gt;DOOM启世录&lt;/a&gt;》里，我看到了天才、激情与梦想，在&lt;a href=&#34;http://www.popcap.com/&#34;&gt;Popcap&lt;/a&gt;身上，我看到了创意、执着与成功。浮躁的是这个行业，静下心来研究游戏开发技术才是我的乐趣源泉。我要感谢将我带入这一行业的同事，感谢你们对我的支持和认可。还有一直在默默支持我的老婆，我爱你！&lt;/p&gt;
-
-&lt;p&gt;2011年，我的目标简单一点：争取能看懂大部分《&lt;a href=&#34;http://book.douban.com/subject_search?search_text=%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E7%B2%BE%E7%B2%B9&amp;amp;amp;cat=1001&#34;&gt;游戏编程精粹&lt;/a&gt;》里的文章。同时希望在下次年终总结时，会有一款出色的游戏出来！&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2011/01/06/start2011.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2011/01/06/start2011.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         

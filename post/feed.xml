@@ -6,7 +6,109 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Mon, 21 Sep 2015 00:56:13 CST</updated>
+        <updated>Sat, 26 Sep 2015 13:54:33 CST</updated>
+        
+        <item>
+            <title>说说刚入手的程序员键盘神器：HHKB Pro2</title>
+            <link>http://blog.coderzh.com/2015/09/26/my-hhkb-pro2/</link>
+            <pubDate>Sat, 26 Sep 2015 13:54:33 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/26/my-hhkb-pro2/</guid>
+            <description>
+
+&lt;p&gt;几周前，托朋友从日本带购了一块静电容键盘HHKB（Happy Hacking Keyboard） Pro2，大约RMB1200。整个键盘只有60个键，没有数字小键盘，甚至没有方向键和最上排的F1~F12功能键。大小写切换键替换成了Control键。整个键盘非常小巧紧凑，敲起来非常舒服。&lt;/p&gt;
+
+&lt;p&gt;然而，这个键盘并不适合非程序员使用，因为少了很多按键。即使是程序员，也并不一定适合。因为HHKB主要是为Linux用户设计的，特别是Vim和Emacs党。用这块键盘，可以很方便的敲出常用的快捷键而不用手离键盘。（现在才发现原来学Emacs时为什么感觉小指要按到抽筋了，原来是键盘不对。。）&lt;/p&gt;
+
+&lt;p&gt;我日常使用的是Windows，但我特别喜欢Vim，即使是在IDE里，我也要切换到Vim模式，不然我感觉敲不出代码。在我体验了几周HHKB之后，感觉即使是在Windows环境里，HHKB也是可以很好的使用的。HHKB有一组DIP开关，可以在几种模式下切换。比如HHKB模式和Mac模式，在Mac下使用这块键盘也是不错的选择。&lt;/p&gt;
+
+&lt;p&gt;这块键盘非常的漂亮，由于是静电容键盘，利用电容容量的变化来判断按键的开关，由于无物理接触点就可以实现敲击，因而磨损更小，非常的耐用，据说可以用到传给你孙子，告诉他你爷爷当年就是用这块键盘敲的代码。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hhkb-types.jpg&#34; alt=&#34;hhkb-types&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一块明星级键盘，备受黑客级程序员追捧，比如：GNU之父Richard StallMan&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/StallmanHHKB.jpg&#34; alt=&#34;StallmanHHK&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;再比如，C++ 之父 Bjarne Stroustrup&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/bjarne_hhkb.jpg&#34; alt=&#34;bjarne_hhkb&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;HHKB比想象中还小一些，比如和我的Cherry G80-3800放在一起：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/MyHHKB2.JPG-w&#34; alt=&#34;MyHHKB&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我的电脑桌面：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/MyDesktop2.JPG-w&#34; alt=&#34;MyDesktop&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OK，图晒完了，记录一点实用的。前面讲了HHKB有一组DIP开关，用来切换不同的输入模式。在键盘的背面，有6个DIP开关的说明：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;SW1&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;SW2&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;MODE&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OFF&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;OFF&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;HHK&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;ON&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;OFF&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Lite Ext.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OFF&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ON&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Macintosh&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;ON&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ON&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&amp;ndash;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;HHK模式和Lite Ext.模式的区别是，Lite模式可以用Fn+Tab切换大小写（相当于Caps键），以及右边的◇键可以当Windows键或Mac的Command键。所以，一般情况下，Lite模式是更适合的。如果你是Mac，选Macintosh模式是更适合的，因为这种模式下，你可以使用Fn-A,Fn-S,Fn-D,Fn-F等多媒体组合键。&lt;/p&gt;
+
+&lt;p&gt;我目前使用的是SW1 OFF，SW2 OFF，即HHK模式，因为我在想按Alt+Tab切换窗口时，经常误按到左◇+Tab，在Lite模式下直接切换了大小写。。之后适应了不会按错之后再改回来。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;&lt;td rowspan=&#34;2&#34;&gt;SW3&lt;/td&gt;&lt;td&gt;OFF&lt;/td&gt;&lt;td&gt;Delete=&#39;DEL&#39;&lt;/td&gt;&lt;td rowspan=&#34;2&#34;&gt;ON：Delete键改为退格键&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;ON&lt;/td&gt;&lt;td&gt;Delete=&#39;BS&#39;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan=&#34;2&#34;&gt;SW4&lt;/td&gt;&lt;td&gt;OFF&lt;/td&gt;&lt;td&gt;Left ◇=&#39;Left◇&#39; &lt;/td&gt;&lt;td rowspan=&#34;2&#34;&gt;ON：左边的◇键改为Fn键&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;ON&lt;/td&gt;&lt;td&gt;Left ◇=&#39;Fn&#39;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan=&#34;2&#34;&gt;SW5&lt;/td&gt;&lt;td&gt;OFF&lt;/td&gt;&lt;td&gt;◇=&#39;◇&#39;, Alt=&#39;Alt&#39;&lt;/td&gt;&lt;td rowspan=&#34;2&#34;&gt;ON：◇键和Alt键交换&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;ON&lt;/td&gt;&lt;td&gt;◇=&#39;Alt&#39;, Alt=&#39;◇&#39;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan=&#34;2&#34;&gt;SW6&lt;/td&gt;&lt;td&gt;OFF&lt;/td&gt;&lt;td&gt;Wake Up Disable&lt;/td&gt;&lt;td rowspan=&#34;2&#34;&gt;ON：Fn+Esc睡眠唤醒功能&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;ON&lt;/td&gt;&lt;td&gt;Wake Up Enable&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;在尝试了不同组合之后，目前我打开的是：SW3，SW4。我觉得这两个对于大多数人来说都是必须的吧，没有退格键是多么不方便。当然，Delete键改成了退格键之后，要删除文件时，就得按Fn+` 键来Delete了。由于F1~F12键我还是需要使用的，所以，Fn键的使用频率会远远大约Alt键，所以，SW5设成OFF，不要交换◇键和Alt键。如果你是Emacs用户，经常需要使用Alt键，可以把SW5设成ON。&lt;/p&gt;
+
+&lt;h4 id=&#34;一些心得:15e5c3c642bde6d107bfd34058e7c128&#34;&gt;一些心得&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;最下排最左右的Alt键正常是不容易按到的。技巧是用直接用小指下面一点的手掌压，突然变得很容易按了：）&lt;/li&gt;
+&lt;li&gt;开始会觉得通过Fn移动方向键会非常痛苦，当然现在也是。毕竟小指并没有那么灵活。目前左右移动还稍微习惯一些了。&lt;/li&gt;
+&lt;li&gt;Control调到CapsLock键位置之后，Control+s键按的有些别扭，其他的还好。&lt;/li&gt;
+&lt;li&gt;感觉最右边的Fn键太远了，按到的频率略少，感觉设计有点不合理。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;最后，再说一点，键盘是每天上班或者娱乐时间里对着电脑时用的最多的东西之一了，花点代价买一块称心如意的键盘是非常值得的。再加上静电容键盘或者机械键盘是超长时间耐用的，花些投入绝对是值得的。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>关于最近的XcodeGhost事件，我也来说两句</title>
@@ -1217,63 +1319,6 @@ def find_matches(lines, regex, exclude_list):
 &lt;h3 id=&#34;github:179e17d63a7cb0a81de7975037280b66&#34;&gt;github&lt;/h3&gt;
 
 &lt;p&gt;所有代码见：&lt;a href=&#34;https://github.com/coderzh/LinkAllSymbols&#34;&gt;https://github.com/coderzh/LinkAllSymbols&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>开启Github之旅</title>
-            <link>http://blog.coderzh.com/2015/06/13/StartGithub/</link>
-            <pubDate>Sat, 13 Jun 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/13/StartGithub/</guid>
-            <description>
-
-&lt;p&gt;在那个远古时代，我以为可以用GoogleCode干点事，结果啥也没干好。如今，Github已经成为了业界标杆，就连Google、微软、Facebook的开源项目都往Github搬。Github作为全球最大的同性交友网站，假如你在上面有几个加星数不错的Project，一定会为你的简历增色不少。&lt;/p&gt;
-
-&lt;h3 id=&#34;远古时期的我:f7ad1288d288dad02bdbde7763a601e9&#34;&gt;远古时期的我&lt;/h3&gt;
-
-&lt;p&gt;在那个远古时代，我还用着Google Code尝试着做一些开源代码。比如这个：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NancyWikiLogo.png&#34; alt=&#34;NancyWikiLogo&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这是一个用Python实现的基于GAE写的一个Wiki系统，现在看看界面截图，简洁美观大方，还是很不错的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/nancywiki.jpg&#34; alt=&#34;NancyWiki&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;然而新鲜一阵之后我再也没有使用过这个系统，而且再也没有维护过。甚至有个用户给我提了个Issue也被我忽略掉了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NancyWikiIssues.png&#34; alt=&#34;NancyWikiIssue&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;时隔几年了，我自己的NancyWiki的网站已经各种链接失效无法使用了。让我吃惊的是，给我提Issue的同学用NancyWiki建的Wiki网站还能正常访问 &lt;a href=&#34;http://mayxwiki.appspot.com/&#34;&gt;http://mayxwiki.appspot.com/&lt;/a&gt;， 不过看他也早已经没有再更新过内容了。&lt;/p&gt;
-
-&lt;p&gt;同样的待遇的，还有以下几个项目：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;NancyBlog：Python实现的基于Google App Engine的开源博客系统 &lt;a href=&#34;https://code.google.com/p/nancyblog/&#34;&gt;https://code.google.com/p/nancyblog/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;NancyGLines：Python实现的基于PyGame开发的GLines游戏。类似Ubuntu里的GLines游戏。&lt;a href=&#34;https://code.google.com/p/nancyglines/&#34;&gt;https://code.google.com/p/nancyglines/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;PyGrid：PyQT实现的一个财务表格统计小软件。&lt;a href=&#34;https://code.google.com/p/pygrid/&#34;&gt;https://code.google.com/p/pygrid/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;PySpy++：Python实现的Spy++工具。&lt;a href=&#34;https://code.google.com/p/pyspyplusplus/&#34;&gt;https://code.google.com/p/pyspyplusplus/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;目前为止各项目下载情况（有的只提供了SVN代码所以没统计到）：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/GoogleCodeDownload.png&#34; alt=&#34;GoogleCodeDownload&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2010年后，我就再也没有更新和维护过它们，甚至忘记了它们的存在！我不是一个合格的代码开源作者，我只是把东西做出来，往上一丢，然后就忘记了这件事。。。（囧）下载过我的代码或者使用过我的项目的人估计会失望吧。。。我这作者也太不靠谱了吧。。。&lt;/p&gt;
-
-&lt;p&gt;好了，自我反省结束了。经过这几年的厮杀，这个不存在的网站也宣告向Github投降了，GoogleCode马上就要关闭了，并提供一键迁移到GitHub的功能。Google App Engine也一直没有起来，甚至已经没落了。所以之前的GAE项目理论上也没人用了，我也不再打算维护了（说的好像维护过一样）。不过为了做个纪念，我都已经迁移到了我的GitHub中。&lt;/p&gt;
-
-&lt;h3 id=&#34;开启github:f7ad1288d288dad02bdbde7763a601e9&#34;&gt;开启Github&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/octocat_collabocats.png&#34; alt=&#34;github&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;我的主页：&lt;a href=&#34;https://github.com/coderzh&#34;&gt;https://github.com/coderzh&lt;/a&gt;    (我才发现我2010年就注册了这个全球最大的同性交友网站)&lt;/p&gt;
-
-&lt;p&gt;现在的我，打算认认真真的开始做个真正的开源项目。想做好一个开源项目实属不易，一方面需要自己大量的技术积累（能让自己保持持续学习），另一方面很多东西都需要给自己提出更高的要求。比如，代码结构需要尽可能清晰简洁，每一行代码都暴露给别人，排版，命名都要尽量做到最好，项目文档需要清晰完整并保持更新。需要保持活跃，积极的处理用户提的Issue，最好能吸引到更多小伙伴Fork你的代码，不断的给你提Pull Request。&lt;/p&gt;
-
-&lt;p&gt;所以，我打算从一个简单的开源项目做起，由于够简单，所以我可以尽量去做到尽善尽美。以一个简单项目为开端，为以后做一些更大的更好玩的项目做些准备。&lt;/p&gt;
-
-&lt;p&gt;项目虽简单，但很实用，具体介绍敬请阅读下一篇博文。&lt;/p&gt;
 </description>
         </item>
         
