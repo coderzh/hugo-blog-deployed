@@ -6,7 +6,479 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 20 Sep 2015 20:37:42 CST</updated>
+        <updated>Mon, 28 Sep 2015 22:43:26 CST</updated>
+        
+        <item>
+            <title>Go语言极速入门手册.go</title>
+            <link>http://blog.coderzh.com/2015/09/28/go-tips/</link>
+            <pubDate>Mon, 28 Sep 2015 22:43:26 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/09/28/go-tips/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/golang.jpg&#34; alt=&#34;golang&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Github: &lt;a href=&#34;https://github.com/coderzh/CodeTips/blob/master/GoTips.go&#34;&gt;https://github.com/coderzh/CodeTips/blob/master/GoTips.go&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
+GoTips.go:
+  Golang速学速查速用代码手册
+
+Source: github.com/coderzh/CodeTips/blob/master/GoTips.go
+
+Author: coderzh(github.com/coderzh)
+Blog: http://blog.coderzh.com
+参考：《Go语言编程》
+*/
+
+package main
+
+import (
+    &amp;quot;fmt&amp;quot;
+    &amp;quot;log&amp;quot;
+    &amp;quot;os&amp;quot;
+    &amp;quot;sync&amp;quot;
+    // &amp;quot;errors&amp;quot;
+    &amp;quot;math&amp;quot;
+    &amp;quot;testing&amp;quot;
+)
+
+// 0. 注释
+/*
+规范：
+ 1. 命名：骆驼命名法（不要用下划线）
+
+命令:
+ go get github.com/coderzh/xxx
+ go build calc
+ go run xxx.go
+ go install calc
+*/
+
+// 1. Hello World
+func helloWorld() {
+    fmt.Println(&amp;quot;Hello, 世界&amp;quot;)
+}
+
+// 2.变量类型
+func typeDemo() {
+    // 变量申明
+    var v1 int
+    var (
+        v2 int
+        v3 string
+    )
+    //var p *int // 指针类型
+
+    // 变量初始化
+    var v4 int = 10
+    // 等价于:
+    var v5 = 10
+    // 一般这样就好
+    v6 := 10
+
+    // 赋值，多重赋值
+    v1 = 10
+    v2, v3 = 20, &amp;quot;test&amp;quot;
+    // 匿名变量 _
+    _, v4 = v5, v6
+
+    fmt.Println(v1, v2, v3, v4)
+
+    // 常量
+    const Pi float64 = 3.1415926
+    const MaxPlayer = 10
+
+    // 枚举
+    const (
+        Sunday = iota // iota从0递增
+        Mondy
+        Tuesday
+        // ...
+    )
+
+    // 类型
+    // 1. 布尔
+    var b1 bool
+    b1 = true
+    b1 = (1 == 2)
+
+    fmt.Println(b1)
+
+    // 2. 整形
+    // int8 uint8 int16 uint16 int32 uint32 int64 uint64 int uint uintptr
+    var i32 int32
+    // 强制转换
+    i32 = int32(64)
+    // 运算：+, -, *, /, %（求余）
+    // 比较：&amp;gt;, &amp;lt;, ==, &amp;gt;=, &amp;lt;=, !=
+    // 位运算：x &amp;lt;&amp;lt; y, x &amp;gt;&amp;gt; y, x ^ y, x &amp;amp; y, x | y, ^x （取反）
+
+    fmt.Println(i32)
+
+    // 3. 浮点
+    // float32, float64
+    var f1 float64 = 1.0001
+    var f2 float64 = 1.0002
+    // 浮点比较
+    isEqual := math.Dim(f1, f2) &amp;lt; 0.0001
+
+    fmt.Println(isEqual)
+
+    // 4. 字符串
+    var s1 string
+    s1 = &amp;quot;abc&amp;quot;
+    // 字符串连接
+    s1 = s1 + &amp;quot;ddd&amp;quot;
+    // 取长度
+    n := len(s1)
+    // 取字符
+    c1 := s1[0]
+
+    fmt.Println(c1)
+
+    // 字节遍历
+    for i := 0; i &amp;lt; n; i++ {
+        ch := s1[i]
+        fmt.Println(ch)
+    }
+    // Unicode字符遍历
+    for i, ch := range s1 {
+        fmt.Println(i, ch)
+    }
+
+    // 5. 数组
+    var arr1 [32]int
+    //var arr2 [3][8]int // 二维数组
+    // 初始化
+    arr1 = [32]int{0}
+    array := [5]int{1, 2, 3, 4, 5}
+    // 数组遍历
+    for i := 0; i &amp;lt; len(array); i++ {
+        fmt.Println(array[i])
+    }
+    for i, v := range arr1 {
+        fmt.Println(i, v)
+    }
+    // 数组是值类型，每次参数传递都是一份拷贝
+
+    // 数组切片Slice
+    var mySlice []int = array[:2]
+    mySlice1 := make([]int, 5)
+    mySlice2 := make([]int, 5, 10)
+
+    fmt.Println(&amp;quot;len(mySlice2:&amp;quot;, len(mySlice2)) // 5
+    fmt.Println(&amp;quot;cap(mySlice2:&amp;quot;, cap(mySlice2)) // 10
+
+    mySlice3 := append(mySlice, 2, 3, 4)
+    mySlice4 := append(mySlice, mySlice1...)
+
+    copy(mySlice3, mySlice4)
+
+    // 6. Map
+    var m map[int]string
+    m[1] = &amp;quot;ddd&amp;quot;
+    m1 := make(map[int]string)
+    m2 := map[int]string{
+        1: &amp;quot;a&amp;quot;,
+        2: &amp;quot;b&amp;quot;,
+    }
+
+    delete(m2, 1)
+
+    value, ok := m1[1]
+    if ok {
+        fmt.Println(value)
+    }
+
+    for k, v := range m2 {
+        fmt.Println(k, v)
+    }
+
+}
+
+// 3. 流程控制
+func flowDemo() {
+    // if else
+    a := 10
+    if a &amp;lt; 10 {
+        // ..
+    } else {
+        // ..
+    }
+
+    // switch
+    switch a {
+    case 0:
+        fmt.Println(&amp;quot;0&amp;quot;)
+    case 10:
+        fmt.Println(&amp;quot;10&amp;quot;)
+    default:
+        fmt.Println(&amp;quot;default&amp;quot;)
+    }
+
+    switch {
+    case a &amp;lt; 10:
+        fmt.Println(&amp;quot;&amp;lt;10&amp;quot;)
+    case a &amp;lt; 20:
+        fmt.Println(&amp;quot;&amp;lt;20&amp;quot;)
+    }
+
+    // 循环
+    for i := 0; i &amp;lt; 10; i++ {
+    }
+    // 无限循环
+    sum := 0
+    for {
+        sum++
+        if sum &amp;gt; 10 {
+            break
+            // 指定break
+            // break JLoop
+        }
+    }
+
+    goto JLoop
+
+JLoop:
+    // break to here
+
+}
+
+// 4. 函数
+// func 函数名(参数列表)(返回值列表) {
+// }
+func sum1(value1 int, value2 int) (result int, err error) {
+    // err = errors.New(&amp;quot;xxxx&amp;quot;)
+    return value1 + value2, nil
+}
+
+func sum2(value1, value2 int) int {
+    return value1 + value2
+}
+
+// 不定参数
+// myFunc(1, 2, 3, 4, 5)
+func myFunc(args ...int) {
+    for _, arg := range args {
+        fmt.Println(arg)
+    }
+    // 传递
+    // myFunc2(args...)
+    // myFunc2(args[1:]...)
+}
+
+// 任意类型的不定参数
+func myPrintf(args ...interface{}) {
+    for _, arg := range args {
+        switch arg.(type) {
+        case int:
+            fmt.Println(arg, &amp;quot; is int&amp;quot;)
+        case string:
+            fmt.Println(arg, &amp;quot; is string&amp;quot;)
+        default:
+            fmt.Println(arg, &amp;quot; is unknown&amp;quot;)
+        }
+    }
+}
+
+// 匿名函数
+func anonymousFunc() {
+    f := func(a, b int) int {
+        return a + b
+    }
+
+    f(1, 2)
+}
+
+// defer
+func copyFile(path string) {
+    f, err := os.Open(path)
+    if err != nil {
+        return
+    }
+
+    defer f.Close()
+    // or
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Println(&amp;quot;Runtime error caught: %v&amp;quot;, r)
+        }
+    }()
+}
+
+// 5. 结构体
+type Rect struct {
+    // 小写为private
+    x, y float64
+    // 大写为public
+    Width, Height float64
+}
+
+// 大写方法为public，小写为private
+func (r *Rect) Area() float64 {
+    return r.Width * r.Height
+}
+
+func netRect(x, y, width, height float64) *Rect {
+    // 实例化结构体
+    // rect1 := new(Rect)
+    // rect2 := &amp;amp;Rect{}
+    // rect3 := &amp;amp;Rect{Width:100, Height:200}
+    return &amp;amp;Rect{x, y, width, height}
+}
+
+// 匿名组合
+type Base struct {
+    Name string
+}
+
+func (base *Base) Foo() {}
+func (base *Base) Bar() {}
+
+type Foo struct {
+    Base
+    *log.Logger
+}
+
+func (foo *Foo) Bar() {
+    foo.Base.Bar()
+    // ...
+}
+
+// 非侵入式接口
+type IFile interface {
+    Read(buf []byte) (n int, err error)
+    Write(buf []byte) (n int, err error)
+}
+
+type File struct {
+}
+
+func (file *File) Read(buf []byte) (n int, err error) {
+    return 0, nil
+}
+
+func (file *File) Write(buf []byte) (n int, err error) {
+    return 0, nil
+}
+
+func interfaceDemo() {
+    // 只要实现了Read, Write方法即可
+    var file IFile = new(File)
+
+    // 接口查询
+    // 是否实现了IFile接口
+    if file2, ok := file.(IFile); ok {
+        file2.Read([]byte{})
+    }
+    // 实例类型是否是File
+    if file3, ok := file.(*File); ok {
+        file3.Read([]byte{})
+    }
+
+    // 类型查询
+    switch v := file.(type) {
+    }
+}
+
+// 6. 并发编程
+func counting(ch chan int) {
+    ch &amp;lt;- 1
+    fmt.Println(&amp;quot;counting&amp;quot;)
+}
+
+func channelDemo() {
+    chs := make([]chan int, 10)
+    for i := 0; i &amp;lt; len(chs); i++ {
+        chs[i] = make(chan int)
+        // 带缓冲区大小
+        // c: = make(chan int, 1024)
+        // for i:= range c {
+        // }
+        go counting(chs[i])
+    }
+
+    for _, ch := range chs {
+        &amp;lt;-ch
+        // channel select
+        /*
+            select {
+            case &amp;lt;-ch:
+                // ...
+            case ch &amp;lt;- 1:
+            }
+        */
+    }
+
+    // 单向Channel
+    var ch1 chan&amp;lt;- int // 只能写入int
+    var ch2 &amp;lt;-chan int // 只能读出int
+
+    // 关闭Channel
+    close(ch1)
+    _, ok := &amp;lt;-ch2
+    if !ok {
+        // already closed
+    }
+}
+
+// 锁
+var m sync.Mutex
+
+func lockDemo() {
+    m.Lock()
+    // do something
+    defer m.Unlock()
+}
+
+// 全局唯一操作
+var once sync.Once
+
+// once.Do(someFunction)
+
+// 7. 网络编程
+// import &amp;quot;net&amp;quot;
+// net.Dial(&amp;quot;tcp&amp;quot;, &amp;quot;127.0.0.1:8080&amp;quot;)
+
+// 8. json处理
+// import &amp;quot;encoding/json&amp;quot;
+// json.Marshal(obj) 序列化
+// json.Unmarshal() 反序列化
+
+// 9. Web开发
+// import &amp;quot;net/http&amp;quot;
+// 模板
+// import &amp;quot;html/template&amp;quot;
+
+// 10. 常用库
+// import &amp;quot;os&amp;quot;
+// import &amp;quot;io&amp;quot;
+// import &amp;quot;flag&amp;quot;
+// import &amp;quot;strconv&amp;quot;
+// import &amp;quot;crypto/sha1&amp;quot;
+// import &amp;quot;crypto/md5&amp;quot;
+
+// 11. 单元测试
+// _test结尾的go文件： xxx_test.go
+func testDemo(t *testing.T) {
+    r := sum2(2, 3)
+    if r != 5 {
+        t.Errorf(&amp;quot;sum2(2, 3) failed. Got %d, expect 5.&amp;quot;, r)
+    }
+}
+
+// 12. 性能测试
+func benchmarkAdd(b *testing.B) {
+    b.StopTimer()
+    // dosometing
+    b.StartTimer()
+}
+
+func main() {
+    helloWorld()
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
         
         <item>
             <title>博客图片切换到七牛</title>
@@ -1212,35 +1684,6 @@ server {
 &lt;h3 id=&#34;部署完成:51858cffc176cb478720d9c052e82245&#34;&gt;部署完成&lt;/h3&gt;
 
 &lt;p&gt;执行导入工具，将博客园的博客导入进来。访问：&lt;a href=&#34;http://www.coderzh.com&#34;&gt;http://www.coderzh.com&lt;/a&gt;。HOHO，大功告成。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>ViEmuVS2013-3.2.1 破解</title>
-            <link>http://blog.coderzh.com/2014/04/02/3640179/</link>
-            <pubDate>Wed, 02 Apr 2014 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2014/04/02/3640179/</guid>
-            <description>&lt;p&gt;&lt;img src=&#34;http://images.cnitblog.com/blog/16913/201404/020953210788248.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;VS升级到2013后，作为一个Vimer，自然需要更新最新的ViEmu插件，因为现在离了Vim，写代码已经寸步难行了。&lt;/p&gt;
-
-&lt;p&gt;ViEmu 3.2.1的破解其实和Viemu 3.0.13的破解方法一样。安装前关闭VS，步骤：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;双击安装 ViEmuVS2013-3.2.1.vsix.&lt;/li&gt;
-&lt;li&gt;在 C:\Users\Administrator\AppData\Local\Microsoft\VisualStudio\12.0.xtensions\ 文件夹下，找到 Viemu 的插件目录（目录下的文件名可以看出来）， 将 NGBridge.dll 覆盖。&lt;/li&gt;
-&lt;li&gt;双击导入 viemuvs13.reg.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;另外，新版的ViEmu和VA(Visual Assist X)有冲突，弹不出代码提示。解决方法：&lt;/p&gt;
-
-&lt;p&gt;将修改注册表中：
-HKCU\Software\Whole Tomato\Visual Assist X\VANet12 的TrackCaretVisibility 改为 00 即可（改之前先关闭VS）&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://files.cnblogs.com/coderzh/Viemu3.2.1-%E7%A0%B4%E8%A7%A3%E5%AE%89%E8%A3%85%E5%8C%85.7z&#34;&gt;Viemu3.2.1-破解安装包.7z&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2014/04/02/3640179.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2014/04/02/3640179.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         
