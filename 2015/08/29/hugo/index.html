@@ -173,8 +173,8 @@
                   <h1 class="post-title">使用hugo搭建个人博客站点</h1>
 
                   <p class="post-byline">
-                    by  · 2015年08月29日 · 5340 Words ·
-                    ~10min reading time |
+                    by  · 2015年08月29日 · 5753 Words ·
+                    ~11min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-08-29-Hugo.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -215,7 +215,7 @@
 
 <p><del>即使迁移到了Hugo，我还保留着原来的Jekyll博客，只是不会再更新了，用来怀念？还是哪天突然又跳回来也不一定。</del></p>
 
-<p><del>我的Jeklly博客：<a href="http://jekyll.coderzh.com">http://jekyll.coderzh.com</a></del> Update(2015-09-20 ): 觉得没啥用了，还是干掉了</p>
+<p><del>我的Jeklly博客：<a href="http://jekyll.coderzh.com">http://jekyll.coderzh.com</a></del> Update(2015-09-20): 觉得没啥用了，还是干掉了</p>
 
 <p>我的Hugo博客：<a href="http://blog.coderzh.com/">http://blog.coderzh.com/</a></p>
 
@@ -245,7 +245,7 @@
 
 <p>下载下来后，只有一个叫hugo或者hugo.exe的程序，接下来开始生成自己的站点：</p>
 
-<pre><code class="language-bash">$ hugo new site /path/to/site
+<pre><code class="language-bash">$ hugo new site mysite
 </code></pre>
 
 <p>然后hugo会自动生成这样一个目录结构：</p>
@@ -260,6 +260,11 @@
 <p>简要介绍一下，config.toml是网站的配置文件，这是一个TOML文件，全称是Tom&rsquo;s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。如果你不喜欢这种格式，你可以将config.toml替换为YAML格式的config.yaml，或者json格式的config.json。hugo都支持。</p>
 
 <p>content目录里放的是你写的markdown文章，layouts目录里放的是网站的模板文件，static目录里放的是一些图片、css、js等资源。</p>
+
+<p>进入生成的site目录：</p>
+
+<pre><code class="language-bash">$cd mysite
+</code></pre>
 
 <p>创建一个页面：</p>
 
@@ -379,6 +384,21 @@ Update(2015-09-03): 已经提交<a href="https://github.com/spf13/hugo/pull/1392
 <p>Blog地址：<a href="http://blog.coderzh.com">http://blog.coderzh.com</a></p>
 
 <p>Github: <a href="https://github.com/coderzh/coderzh-hugo-blog">https://github.com/coderzh/coderzh-hugo-blog</a></p>
+
+<h3 id="关于部署-update-2015-10-08:826b8fbf4b1c9d49ecec9c1552f05b58">关于部署(Update 2015-10-08)</h3>
+
+<p>Hugo部署到GitHub，首先在config.yml(.toml)里设置好baseurl，然后用Hugo生成静态页面（生成的文件全在public文件夹里）</p>
+
+<pre><code class="language-bash">hugo -v  --cacheDir=&quot;./cache&quot;
+</code></pre>
+
+<p>然后将public文件夹里的全部内容都push到你的GitHub的Repo的gh-pages分支即可。</p>
+
+<p>官方关于在GitHub部署的文档：<a href="https://gohugo.io/tutorials/github-pages-blog/">https://gohugo.io/tutorials/github-pages-blog/</a></p>
+
+<p>自动部署的脚本可以参考我的Repo里的<code>deploy.py</code>脚本：<a href="https://github.com/coderzh/coderzh-hugo-blog">https://github.com/coderzh/coderzh-hugo-blog</a></p>
+
+<p>全自动化部署到GitHub和GitCafe，见我的另一篇博客：<a href="http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/">通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</a></p>
 
                       
                     </div>
