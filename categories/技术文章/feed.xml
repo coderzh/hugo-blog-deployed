@@ -977,7 +977,7 @@ disablePathToLower: true
 
 &lt;p&gt;进入生成的site目录：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$cd mysite
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd mysite
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;创建一个页面：&lt;/p&gt;
@@ -1099,11 +1099,20 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 
 &lt;p&gt;Github: &lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;关于部署-update-2015-10-08:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;关于部署(Update 2015-10-08)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Update(2015-10-08) 国庆在家给Hugo提了个PR，已经将Jekyll迁移功能集成到了Hugo里，pull最新的Hugo代码，编译Hugo，然后可以执行：&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Hugo部署到GitHub，首先在config.yml(.toml)里设置好baseurl，然后用Hugo生成静态页面（生成的文件全在public文件夹里）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo import jekyll YourJekyllDir TargetDir
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hugo -v  --cacheDir=&amp;quot;./cache&amp;quot;
+&lt;p&gt;将自动把你的Jekyll站点转换成Hugo的站点。欢迎试用并反馈。&lt;/p&gt;
+
+&lt;h3 id=&#34;关于部署:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;关于部署&lt;/h3&gt;
+
+&lt;p&gt;Update(2015-10-08)&lt;/p&gt;
+
+&lt;p&gt;Hugo部署到GitHub，首先在config.yaml(.toml)里设置好baseurl，然后用Hugo生成静态页面（生成的文件全在public文件夹里）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo -v  --cacheDir=&amp;quot;./cache&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;然后将public文件夹里的全部内容都push到你的GitHub的Repo的gh-pages分支即可。&lt;/p&gt;
