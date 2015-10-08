@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble func 3. 去除GCC的Buffer Overflow Protect gcc -g -fno-stack-protector test.c -o test 4. 查看内存中的值 &nbsp; 用gdb查看内存 格式: x /nfu &lt;addr&gt; 说明 x 是 examine 的缩写 n表示要显示的内存单元的个数 f表示显示方式, 可取如下值 x 按十六进制格式显示变量。 d 按十进制格式显示变量。 u 按十进制格式显示无符号整型。 o 按八进制格式显示变量。 t 按二进制格式显示变量。 a 按十六进制格式显示变量。 i 指令地址格式 c 按字符格式显示变量。 f 按浮点数格式显示变量。 u表示一个地址单元的长度 b表示单字节， h表示双字节， w表示四字节， g表示八字节 5. gdb执行一般流程 $gcc -g test.c">
+<meta name="description" content="1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="gdb调试程序 - CoderZh Blog">
-<meta itemprop="description" content="1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble func 3. 去除GCC的Buffer Overflow Protect gcc -g -fno-stack-protector test.c -o test 4. 查看内存中的值 &nbsp; 用gdb查看内存 格式: x /nfu &lt;addr&gt; 说明 x 是 examine 的缩写 n表示要显示的内存单元的个数 f表示显示方式, 可取如下值 x 按十六进制格式显示变量。 d 按十进制格式显示变量。 u 按十进制格式显示无符号整型。 o 按八进制格式显示变量。 t 按二进制格式显示变量。 a 按十六进制格式显示变量。 i 指令地址格式 c 按字符格式显示变量。 f 按浮点数格式显示变量。 u表示一个地址单元的长度 b表示单字节， h表示双字节， w表示四字节， g表示八字节 5. gdb执行一般流程 $gcc -g test.c">
+<meta itemprop="description" content="1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="gdb调试程序 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2008/08/19/1271347/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble func 3. 去除GCC的Buffer Overflow Protect gcc -g -fno-stack-protector test.c -o test 4. 查看内存中的值 &nbsp; 用gdb查看内存 格式: x /nfu &lt;addr&gt; 说明 x 是 examine 的缩写 n表示要显示的内存单元的个数 f表示显示方式, 可取如下值 x 按十六进制格式显示变量。 d 按十进制格式显示变量。 u 按十进制格式显示无符号整型。 o 按八进制格式显示变量。 t 按二进制格式显示变量。 a 按十六进制格式显示变量。 i 指令地址格式 c 按字符格式显示变量。 f 按浮点数格式显示变量。 u表示一个地址单元的长度 b表示单字节， h表示双字节， w表示四字节， g表示八字节 5. gdb执行一般流程 $gcc -g test.c">
+<meta property="og:description" content="1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="gdb调试程序 - CoderZh Blog">
-<meta name="twitter:description" content="1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble func 3. 去除GCC的Buffer Overflow Protect gcc -g -fno-stack-protector test.c -o test 4. 查看内存中的值 &nbsp; 用gdb查看内存 格式: x /nfu &lt;addr&gt; 说明 x 是 examine 的缩写 n表示要显示的内存单元的个数 f表示显示方式, 可取如下值 x 按十六进制格式显示变量。 d 按十进制格式显示变量。 u 按十进制格式显示无符号整型。 o 按八进制格式显示变量。 t 按二进制格式显示变量。 a 按十六进制格式显示变量。 i 指令地址格式 c 按字符格式显示变量。 f 按浮点数格式显示变量。 u表示一个地址单元的长度 b表示单字节， h表示双字节， w表示四字节， g表示八字节 5. gdb执行一般流程 $gcc -g test.c">
+<meta name="twitter:description" content="1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -169,8 +169,8 @@
                   <h1 class="post-title">gdb调试程序</h1>
 
                   <p class="post-byline">
-                    by  · 2008年08月19日 · 134 Words ·
-                    ~1min reading time |
+                    by  · 2008年08月19日 · 517 Words ·
+                    ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-08-19-1271347.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>

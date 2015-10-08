@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和第一部分还是基本一致的。因此，我主要的精力都花在了第一部分，对于后面的第二部分和第三部分，我是跳着看完的。后面的内容当作字典来查询会比较好，因为写的比较详细。 其中有一个观点我觉得是比较新颖的，如果你分不清现在做的测试是不是属于单元测试，就请参照一下下面的吧： A test is not a unit test if: It talks to the database. It communicates across the network. It touches the ﬁle system. It can&#8217;t run correctly at the same time as any of your other unit tests. You have to do special things to your environment (such as editing conﬁg ﬁles) to run it. 在讲到代码的可测性设计时，作者提出主要从以下几个方面来提高可测性： Dependency Injection 依赖注入，代码设计中并不依赖于具体的实现，并且运行将特定的实现注入到系统中。注入主要有三种方式： Parameter Injection Constructor Injection Setter Injection Dependency">
+<meta name="description" content="总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="《xUnit Test Patterns》学习笔记7(完) - 总结 - CoderZh Blog">
-<meta itemprop="description" content="总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和第一部分还是基本一致的。因此，我主要的精力都花在了第一部分，对于后面的第二部分和第三部分，我是跳着看完的。后面的内容当作字典来查询会比较好，因为写的比较详细。 其中有一个观点我觉得是比较新颖的，如果你分不清现在做的测试是不是属于单元测试，就请参照一下下面的吧： A test is not a unit test if: It talks to the database. It communicates across the network. It touches the ﬁle system. It can&#8217;t run correctly at the same time as any of your other unit tests. You have to do special things to your environment (such as editing conﬁg ﬁles) to run it. 在讲到代码的可测性设计时，作者提出主要从以下几个方面来提高可测性： Dependency Injection 依赖注入，代码设计中并不依赖于具体的实现，并且运行将特定的实现注入到系统中。注入主要有三种方式： Parameter Injection Constructor Injection Setter Injection Dependency">
+<meta itemprop="description" content="总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="《xUnit Test Patterns》学习笔记7(完) - 总结 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2010/02/07/xUnit-Test-Patterns7-End/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和第一部分还是基本一致的。因此，我主要的精力都花在了第一部分，对于后面的第二部分和第三部分，我是跳着看完的。后面的内容当作字典来查询会比较好，因为写的比较详细。 其中有一个观点我觉得是比较新颖的，如果你分不清现在做的测试是不是属于单元测试，就请参照一下下面的吧： A test is not a unit test if: It talks to the database. It communicates across the network. It touches the ﬁle system. It can&#8217;t run correctly at the same time as any of your other unit tests. You have to do special things to your environment (such as editing conﬁg ﬁles) to run it. 在讲到代码的可测性设计时，作者提出主要从以下几个方面来提高可测性： Dependency Injection 依赖注入，代码设计中并不依赖于具体的实现，并且运行将特定的实现注入到系统中。注入主要有三种方式： Parameter Injection Constructor Injection Setter Injection Dependency">
+<meta property="og:description" content="总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="《xUnit Test Patterns》学习笔记7(完) - 总结 - CoderZh Blog">
-<meta name="twitter:description" content="总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和第一部分还是基本一致的。因此，我主要的精力都花在了第一部分，对于后面的第二部分和第三部分，我是跳着看完的。后面的内容当作字典来查询会比较好，因为写的比较详细。 其中有一个观点我觉得是比较新颖的，如果你分不清现在做的测试是不是属于单元测试，就请参照一下下面的吧： A test is not a unit test if: It talks to the database. It communicates across the network. It touches the ﬁle system. It can&#8217;t run correctly at the same time as any of your other unit tests. You have to do special things to your environment (such as editing conﬁg ﬁles) to run it. 在讲到代码的可测性设计时，作者提出主要从以下几个方面来提高可测性： Dependency Injection 依赖注入，代码设计中并不依赖于具体的实现，并且运行将特定的实现注入到系统中。注入主要有三种方式： Parameter Injection Constructor Injection Setter Injection Dependency">
+<meta name="twitter:description" content="总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -169,8 +169,8 @@
                   <h1 class="post-title">《xUnit Test Patterns》学习笔记7(完) - 总结</h1>
 
                   <p class="post-byline">
-                    by  · 2010年02月07日 · 84 Words ·
-                    ~1min reading time |
+                    by  · 2010年02月07日 · 598 Words ·
+                    ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-02-07-xUnit-Test-Patterns7-End.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>

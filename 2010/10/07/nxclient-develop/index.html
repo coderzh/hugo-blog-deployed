@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参照这些工程的实现。 Svn co http://svn.berlios.de/svnroot/repos/freenx/trunk freenx Connect to the server using nxssh nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; If you are using encrypted session: nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; -B for Windows client, you have to include the -v switch for encrypted sessions to work. nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; -v -B You will get the following response: NX&gt; 203 NXSSH running with pid &lt;some pid&gt; NX&gt; 285 Enabling check on switch command NX&gt; 200 Connected to address: &lt;address&gt; on port: &lt;port&gt; NX&gt; 202 Authenticating user: nx NX&gt; 208 Using auth method: publickey HELLO NXSERVER - Version 1.4.0-02 OS_(GPL) NX&gt; 105 NX&gt; 105 is kind of like a shell prompt.">
+<meta name="description" content="在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="NX Client开发步骤 - CoderZh Blog">
-<meta itemprop="description" content="在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参照这些工程的实现。 Svn co http://svn.berlios.de/svnroot/repos/freenx/trunk freenx Connect to the server using nxssh nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; If you are using encrypted session: nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; -B for Windows client, you have to include the -v switch for encrypted sessions to work. nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; -v -B You will get the following response: NX&gt; 203 NXSSH running with pid &lt;some pid&gt; NX&gt; 285 Enabling check on switch command NX&gt; 200 Connected to address: &lt;address&gt; on port: &lt;port&gt; NX&gt; 202 Authenticating user: nx NX&gt; 208 Using auth method: publickey HELLO NXSERVER - Version 1.4.0-02 OS_(GPL) NX&gt; 105 NX&gt; 105 is kind of like a shell prompt.">
+<meta itemprop="description" content="在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="NX Client开发步骤 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2010/10/07/nxclient-develop/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参照这些工程的实现。 Svn co http://svn.berlios.de/svnroot/repos/freenx/trunk freenx Connect to the server using nxssh nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; If you are using encrypted session: nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; -B for Windows client, you have to include the -v switch for encrypted sessions to work. nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; -v -B You will get the following response: NX&gt; 203 NXSSH running with pid &lt;some pid&gt; NX&gt; 285 Enabling check on switch command NX&gt; 200 Connected to address: &lt;address&gt; on port: &lt;port&gt; NX&gt; 202 Authenticating user: nx NX&gt; 208 Using auth method: publickey HELLO NXSERVER - Version 1.4.0-02 OS_(GPL) NX&gt; 105 NX&gt; 105 is kind of like a shell prompt.">
+<meta property="og:description" content="在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="NX Client开发步骤 - CoderZh Blog">
-<meta name="twitter:description" content="在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参照这些工程的实现。 Svn co http://svn.berlios.de/svnroot/repos/freenx/trunk freenx Connect to the server using nxssh nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; If you are using encrypted session: nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; -B for Windows client, you have to include the -v switch for encrypted sessions to work. nxssh -nx -i /usr/NX/share/client.id_dsa.key nx@&lt;host address&gt; -v -B You will get the following response: NX&gt; 203 NXSSH running with pid &lt;some pid&gt; NX&gt; 285 Enabling check on switch command NX&gt; 200 Connected to address: &lt;address&gt; on port: &lt;port&gt; NX&gt; 202 Authenticating user: nx NX&gt; 208 Using auth method: publickey HELLO NXSERVER - Version 1.4.0-02 OS_(GPL) NX&gt; 105 NX&gt; 105 is kind of like a shell prompt.">
+<meta name="twitter:description" content="在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -169,8 +169,8 @@
                   <h1 class="post-title">NX Client开发步骤</h1>
 
                   <p class="post-byline">
-                    by  · 2010年10月07日 · 615 Words ·
-                    ~3min reading time |
+                    by  · 2010年10月07日 · 785 Words ·
+                    ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-10-07-nxclient-develop.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>

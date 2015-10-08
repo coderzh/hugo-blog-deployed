@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实讲的很全面，并且给很多测试中的东西给出了专业的术语，相信当我读完并吸收完这本书后，会有更多的体会和收获。 第一章是全书概述，直接跳到第二章开始我的笔记。Test Smell，测试的坏味道。和我们通常讲的Code Smell是一样的，不同的是Test Smell是从测试的角度来分析测试过程中的坏味道。测试的坏味道主要分为三类： code smells behavior smells project smells 这三种坏味道通常不是独立存在的，project smells的根源可能来自code smells和behavior smells。 Project Smells 出现下面的情况，可以认为出现了Project Smells： Production Bugs 产品的Bug数量高居不下 Daily Integration Build 持续构建总是失败，或者需要花费大量时间去解决一个编译不过的问题 Buggy Tests 太多有问题的测试案例，相反会影响到项目的效率 Devolopers Not Writing Tests 开发人员不编写测试案例，导致Production Bugs增多 Lost Tests 测试案例不足 Behaivor Smells 比较容易发现，不需要刻意去监控，因为测试案例编译不通过，或者是测试案例失败时，通常就是Behavior Smell出现的时候： Fragile Tests 容易失败的测试案例，稍微一点变化就有可能造成案例失败。通常出现在&#8220;录制回放&#8221;的测试案例中，这样的案例不仅执行不稳定，维护起来也很麻烦。因为自动生成的代码通常难以理解和维护。 造成Fragile Tests原因主要有： Interface Sensitivity 这是最常见的，比如，开发修改了函数接口，界面上某个按钮进行了调整，都可能导致案例执行失败。 Behaivor Sensitivity 被测代码的行为发生了变化，测试案例当然要失败了。（如果不失败的话，都说明测试案例有问题） Data Sensitivity 使用数据库的程序，如果数据库中的数据发生变化，可能导致案例失败 Context Sensitivity 环境的变化，导致案例失败。比如：时间变化，硬件设备，系统环境等等3. Erratic Tests 不稳定的测试案例，有时成功，有时失败： Interacting Tests 俗称，前面的案例影响了后面的案例。比如，使用Shared Fixture时，前一个案例将Shared Fixture的状态修改，导致后面的案例都失败。 Test Run Wars 多个Test Runners使用同一个Shared Fixture，在同一时间执行时。也是指在非常特殊的情况下，才会出现失败的情况。这种BUG，通常也是到最后才会去修复。 Unrepeatable Tests 不能保证每次执行都是同样的结果，有时候还需要人工干预一下。4.">
+<meta name="description" content="这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="《xUnit Test Patterns》学习笔记1 - Test Smell - CoderZh Blog">
-<meta itemprop="description" content="这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实讲的很全面，并且给很多测试中的东西给出了专业的术语，相信当我读完并吸收完这本书后，会有更多的体会和收获。 第一章是全书概述，直接跳到第二章开始我的笔记。Test Smell，测试的坏味道。和我们通常讲的Code Smell是一样的，不同的是Test Smell是从测试的角度来分析测试过程中的坏味道。测试的坏味道主要分为三类： code smells behavior smells project smells 这三种坏味道通常不是独立存在的，project smells的根源可能来自code smells和behavior smells。 Project Smells 出现下面的情况，可以认为出现了Project Smells： Production Bugs 产品的Bug数量高居不下 Daily Integration Build 持续构建总是失败，或者需要花费大量时间去解决一个编译不过的问题 Buggy Tests 太多有问题的测试案例，相反会影响到项目的效率 Devolopers Not Writing Tests 开发人员不编写测试案例，导致Production Bugs增多 Lost Tests 测试案例不足 Behaivor Smells 比较容易发现，不需要刻意去监控，因为测试案例编译不通过，或者是测试案例失败时，通常就是Behavior Smell出现的时候： Fragile Tests 容易失败的测试案例，稍微一点变化就有可能造成案例失败。通常出现在&#8220;录制回放&#8221;的测试案例中，这样的案例不仅执行不稳定，维护起来也很麻烦。因为自动生成的代码通常难以理解和维护。 造成Fragile Tests原因主要有： Interface Sensitivity 这是最常见的，比如，开发修改了函数接口，界面上某个按钮进行了调整，都可能导致案例执行失败。 Behaivor Sensitivity 被测代码的行为发生了变化，测试案例当然要失败了。（如果不失败的话，都说明测试案例有问题） Data Sensitivity 使用数据库的程序，如果数据库中的数据发生变化，可能导致案例失败 Context Sensitivity 环境的变化，导致案例失败。比如：时间变化，硬件设备，系统环境等等3. Erratic Tests 不稳定的测试案例，有时成功，有时失败： Interacting Tests 俗称，前面的案例影响了后面的案例。比如，使用Shared Fixture时，前一个案例将Shared Fixture的状态修改，导致后面的案例都失败。 Test Run Wars 多个Test Runners使用同一个Shared Fixture，在同一时间执行时。也是指在非常特殊的情况下，才会出现失败的情况。这种BUG，通常也是到最后才会去修复。 Unrepeatable Tests 不能保证每次执行都是同样的结果，有时候还需要人工干预一下。4.">
+<meta itemprop="description" content="这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="《xUnit Test Patterns》学习笔记1 - Test Smell - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2010/01/17/xUnit-Test-Patterns-1/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实讲的很全面，并且给很多测试中的东西给出了专业的术语，相信当我读完并吸收完这本书后，会有更多的体会和收获。 第一章是全书概述，直接跳到第二章开始我的笔记。Test Smell，测试的坏味道。和我们通常讲的Code Smell是一样的，不同的是Test Smell是从测试的角度来分析测试过程中的坏味道。测试的坏味道主要分为三类： code smells behavior smells project smells 这三种坏味道通常不是独立存在的，project smells的根源可能来自code smells和behavior smells。 Project Smells 出现下面的情况，可以认为出现了Project Smells： Production Bugs 产品的Bug数量高居不下 Daily Integration Build 持续构建总是失败，或者需要花费大量时间去解决一个编译不过的问题 Buggy Tests 太多有问题的测试案例，相反会影响到项目的效率 Devolopers Not Writing Tests 开发人员不编写测试案例，导致Production Bugs增多 Lost Tests 测试案例不足 Behaivor Smells 比较容易发现，不需要刻意去监控，因为测试案例编译不通过，或者是测试案例失败时，通常就是Behavior Smell出现的时候： Fragile Tests 容易失败的测试案例，稍微一点变化就有可能造成案例失败。通常出现在&#8220;录制回放&#8221;的测试案例中，这样的案例不仅执行不稳定，维护起来也很麻烦。因为自动生成的代码通常难以理解和维护。 造成Fragile Tests原因主要有： Interface Sensitivity 这是最常见的，比如，开发修改了函数接口，界面上某个按钮进行了调整，都可能导致案例执行失败。 Behaivor Sensitivity 被测代码的行为发生了变化，测试案例当然要失败了。（如果不失败的话，都说明测试案例有问题） Data Sensitivity 使用数据库的程序，如果数据库中的数据发生变化，可能导致案例失败 Context Sensitivity 环境的变化，导致案例失败。比如：时间变化，硬件设备，系统环境等等3. Erratic Tests 不稳定的测试案例，有时成功，有时失败： Interacting Tests 俗称，前面的案例影响了后面的案例。比如，使用Shared Fixture时，前一个案例将Shared Fixture的状态修改，导致后面的案例都失败。 Test Run Wars 多个Test Runners使用同一个Shared Fixture，在同一时间执行时。也是指在非常特殊的情况下，才会出现失败的情况。这种BUG，通常也是到最后才会去修复。 Unrepeatable Tests 不能保证每次执行都是同样的结果，有时候还需要人工干预一下。4.">
+<meta property="og:description" content="这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="《xUnit Test Patterns》学习笔记1 - Test Smell - CoderZh Blog">
-<meta name="twitter:description" content="这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实讲的很全面，并且给很多测试中的东西给出了专业的术语，相信当我读完并吸收完这本书后，会有更多的体会和收获。 第一章是全书概述，直接跳到第二章开始我的笔记。Test Smell，测试的坏味道。和我们通常讲的Code Smell是一样的，不同的是Test Smell是从测试的角度来分析测试过程中的坏味道。测试的坏味道主要分为三类： code smells behavior smells project smells 这三种坏味道通常不是独立存在的，project smells的根源可能来自code smells和behavior smells。 Project Smells 出现下面的情况，可以认为出现了Project Smells： Production Bugs 产品的Bug数量高居不下 Daily Integration Build 持续构建总是失败，或者需要花费大量时间去解决一个编译不过的问题 Buggy Tests 太多有问题的测试案例，相反会影响到项目的效率 Devolopers Not Writing Tests 开发人员不编写测试案例，导致Production Bugs增多 Lost Tests 测试案例不足 Behaivor Smells 比较容易发现，不需要刻意去监控，因为测试案例编译不通过，或者是测试案例失败时，通常就是Behavior Smell出现的时候： Fragile Tests 容易失败的测试案例，稍微一点变化就有可能造成案例失败。通常出现在&#8220;录制回放&#8221;的测试案例中，这样的案例不仅执行不稳定，维护起来也很麻烦。因为自动生成的代码通常难以理解和维护。 造成Fragile Tests原因主要有： Interface Sensitivity 这是最常见的，比如，开发修改了函数接口，界面上某个按钮进行了调整，都可能导致案例执行失败。 Behaivor Sensitivity 被测代码的行为发生了变化，测试案例当然要失败了。（如果不失败的话，都说明测试案例有问题） Data Sensitivity 使用数据库的程序，如果数据库中的数据发生变化，可能导致案例失败 Context Sensitivity 环境的变化，导致案例失败。比如：时间变化，硬件设备，系统环境等等3. Erratic Tests 不稳定的测试案例，有时成功，有时失败： Interacting Tests 俗称，前面的案例影响了后面的案例。比如，使用Shared Fixture时，前一个案例将Shared Fixture的状态修改，导致后面的案例都失败。 Test Run Wars 多个Test Runners使用同一个Shared Fixture，在同一时间执行时。也是指在非常特殊的情况下，才会出现失败的情况。这种BUG，通常也是到最后才会去修复。 Unrepeatable Tests 不能保证每次执行都是同样的结果，有时候还需要人工干预一下。4.">
+<meta name="twitter:description" content="这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -169,8 +169,8 @@
                   <h1 class="post-title">《xUnit Test Patterns》学习笔记1 - Test Smell</h1>
 
                   <p class="post-byline">
-                    by  · 2010年01月17日 · 119 Words ·
-                    ~1min reading time |
+                    by  · 2010年01月17日 · 1655 Words ·
+                    ~4min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-01-17-xUnit-Test-Patterns-1.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>

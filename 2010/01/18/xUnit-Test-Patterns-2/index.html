@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收获到更多回报。它让我们减少了Bug的数量，减少了调试代码寻找Bug的时间。看下图，有效的自动化测试投资下，测试和开发付出的努力的时间图： 初期，随着测试的介入，开发付出的投入逐渐减少。后期，随着测试案例的完善和自动化，测试和开发所需要付出的投入都减少到一个很低的水平。阴影部分是节省的开发投入。 同时，如果自动化测试做的不好，在后期，将可能加大测试和开发的负担： &nbsp; 自动化测试的目标 Tests should help us improve quality. Tests should help us understand the SUT. Tests should reduce (and not introduce) risk. Tests should be easy to run. Tests should be easy to write and maintain. Tests should require minimal maintenance as the system evolves around them. Tests should help us improve quality Tests as Specification 测试案例可以验证产品的行为，验证是否&#8220;building the right software&#8221; Bug Repellent 自动化测试的主要目的不是发现Bug，而是预防或防止Bug的出现。 Defect Localization 顶层的customer tests只会告诉你案例失败了，unit">
+<meta name="description" content="或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation - CoderZh Blog">
-<meta itemprop="description" content="或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收获到更多回报。它让我们减少了Bug的数量，减少了调试代码寻找Bug的时间。看下图，有效的自动化测试投资下，测试和开发付出的努力的时间图： 初期，随着测试的介入，开发付出的投入逐渐减少。后期，随着测试案例的完善和自动化，测试和开发所需要付出的投入都减少到一个很低的水平。阴影部分是节省的开发投入。 同时，如果自动化测试做的不好，在后期，将可能加大测试和开发的负担： &nbsp; 自动化测试的目标 Tests should help us improve quality. Tests should help us understand the SUT. Tests should reduce (and not introduce) risk. Tests should be easy to run. Tests should be easy to write and maintain. Tests should require minimal maintenance as the system evolves around them. Tests should help us improve quality Tests as Specification 测试案例可以验证产品的行为，验证是否&#8220;building the right software&#8221; Bug Repellent 自动化测试的主要目的不是发现Bug，而是预防或防止Bug的出现。 Defect Localization 顶层的customer tests只会告诉你案例失败了，unit">
+<meta itemprop="description" content="或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2010/01/18/xUnit-Test-Patterns-2/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收获到更多回报。它让我们减少了Bug的数量，减少了调试代码寻找Bug的时间。看下图，有效的自动化测试投资下，测试和开发付出的努力的时间图： 初期，随着测试的介入，开发付出的投入逐渐减少。后期，随着测试案例的完善和自动化，测试和开发所需要付出的投入都减少到一个很低的水平。阴影部分是节省的开发投入。 同时，如果自动化测试做的不好，在后期，将可能加大测试和开发的负担： &nbsp; 自动化测试的目标 Tests should help us improve quality. Tests should help us understand the SUT. Tests should reduce (and not introduce) risk. Tests should be easy to run. Tests should be easy to write and maintain. Tests should require minimal maintenance as the system evolves around them. Tests should help us improve quality Tests as Specification 测试案例可以验证产品的行为，验证是否&#8220;building the right software&#8221; Bug Repellent 自动化测试的主要目的不是发现Bug，而是预防或防止Bug的出现。 Defect Localization 顶层的customer tests只会告诉你案例失败了，unit">
+<meta property="og:description" content="或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation - CoderZh Blog">
-<meta name="twitter:description" content="或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收获到更多回报。它让我们减少了Bug的数量，减少了调试代码寻找Bug的时间。看下图，有效的自动化测试投资下，测试和开发付出的努力的时间图： 初期，随着测试的介入，开发付出的投入逐渐减少。后期，随着测试案例的完善和自动化，测试和开发所需要付出的投入都减少到一个很低的水平。阴影部分是节省的开发投入。 同时，如果自动化测试做的不好，在后期，将可能加大测试和开发的负担： &nbsp; 自动化测试的目标 Tests should help us improve quality. Tests should help us understand the SUT. Tests should reduce (and not introduce) risk. Tests should be easy to run. Tests should be easy to write and maintain. Tests should require minimal maintenance as the system evolves around them. Tests should help us improve quality Tests as Specification 测试案例可以验证产品的行为，验证是否&#8220;building the right software&#8221; Bug Repellent 自动化测试的主要目的不是发现Bug，而是预防或防止Bug的出现。 Defect Localization 顶层的customer tests只会告诉你案例失败了，unit">
+<meta name="twitter:description" content="或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -169,8 +169,8 @@
                   <h1 class="post-title">《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation</h1>
 
                   <p class="post-byline">
-                    by  · 2010年01月18日 · 158 Words ·
-                    ~1min reading time |
+                    by  · 2010年01月18日 · 1220 Words ·
+                    ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-01-18-xUnit-Test-Patterns-2.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>

@@ -7,25 +7,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这对于资源也是一样的，比如一个文件。当保护类型的实例安全时，使用一个简单的排它锁即解决问题，但是当有很多的读操作 而偶然的更新操作这就很不合理的限制了并发。一个例子就是这在一个业务程序服务器中，为了快速查找把数据缓存到静态字段中。 在这个方案中，ReaderWriterLock类被设计成提供最大容量的锁定。 ReaderWriterLock为读和写的锁提供了不同的方法&#8212;&#8212;AcquireReaderLock和AcquireWriterLock。两个方法都需要一个超时参数，并且在超时发生后抛出ApplicationException异常（不同于大多数线程类的返回false等效的方法）。超时发生相当容易在资源争用严重的时候。 调用 ReleaseReaderLock或ReleaseWriterLock释放锁。 这些方法支持嵌套锁，ReleaseLock方法也支持一次清除所有嵌套级别的锁。（你可以随后调用RestoreLock类重新锁定相同的级别，它在ReleaseLock之前执行&#8212;&#8212;如此来模仿Monitor.Wait的锁定切换行为）。 你可以调用AcquireReaderLock开始一个read-lock ，然后通过UpgradeToWriterLock把它升级为write-lock。这个方法返回一个可能被用于调用DowngradeFromWriterLock的信息。这个方式允许读程序临时地请求写访问同时不必必须在降级之后重新排队列。 在接下来的这个例子中，4个线程被启动：一个不停地往列表中增加项目；另一个不停地从列表中移除项目；其它两个不停地报告列表中项目的个数。前两者获得写的锁，后两者获得读的锁。每个锁的超时参数为10秒。（异常处理一般要使用来捕捉ApplicationException，这个例子中出于方便而省略了） class Program {&nbsp; static ReaderWriterLock rw = new ReaderWriterLock ();&nbsp; static List &lt;int&gt; items = new List &lt;int&gt; ();&nbsp; static Random rand = new Random ();&nbsp;&nbsp; static void Main (string[] args) {&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) AppendItem(); } ).Start();&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) RemoveItem(); } ).Start();&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) WriteTotal(); }">
+<meta name="description" content="ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="ReaderWriterLock（转） - CoderZh Blog">
-<meta itemprop="description" content="ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这对于资源也是一样的，比如一个文件。当保护类型的实例安全时，使用一个简单的排它锁即解决问题，但是当有很多的读操作 而偶然的更新操作这就很不合理的限制了并发。一个例子就是这在一个业务程序服务器中，为了快速查找把数据缓存到静态字段中。 在这个方案中，ReaderWriterLock类被设计成提供最大容量的锁定。 ReaderWriterLock为读和写的锁提供了不同的方法&#8212;&#8212;AcquireReaderLock和AcquireWriterLock。两个方法都需要一个超时参数，并且在超时发生后抛出ApplicationException异常（不同于大多数线程类的返回false等效的方法）。超时发生相当容易在资源争用严重的时候。 调用 ReleaseReaderLock或ReleaseWriterLock释放锁。 这些方法支持嵌套锁，ReleaseLock方法也支持一次清除所有嵌套级别的锁。（你可以随后调用RestoreLock类重新锁定相同的级别，它在ReleaseLock之前执行&#8212;&#8212;如此来模仿Monitor.Wait的锁定切换行为）。 你可以调用AcquireReaderLock开始一个read-lock ，然后通过UpgradeToWriterLock把它升级为write-lock。这个方法返回一个可能被用于调用DowngradeFromWriterLock的信息。这个方式允许读程序临时地请求写访问同时不必必须在降级之后重新排队列。 在接下来的这个例子中，4个线程被启动：一个不停地往列表中增加项目；另一个不停地从列表中移除项目；其它两个不停地报告列表中项目的个数。前两者获得写的锁，后两者获得读的锁。每个锁的超时参数为10秒。（异常处理一般要使用来捕捉ApplicationException，这个例子中出于方便而省略了） class Program {&nbsp; static ReaderWriterLock rw = new ReaderWriterLock ();&nbsp; static List &lt;int&gt; items = new List &lt;int&gt; ();&nbsp; static Random rand = new Random ();&nbsp;&nbsp; static void Main (string[] args) {&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) AppendItem(); } ).Start();&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) RemoveItem(); } ).Start();&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) WriteTotal(); }">
+<meta itemprop="description" content="ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="ReaderWriterLock（转） - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2009/10/20/1586268/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这对于资源也是一样的，比如一个文件。当保护类型的实例安全时，使用一个简单的排它锁即解决问题，但是当有很多的读操作 而偶然的更新操作这就很不合理的限制了并发。一个例子就是这在一个业务程序服务器中，为了快速查找把数据缓存到静态字段中。 在这个方案中，ReaderWriterLock类被设计成提供最大容量的锁定。 ReaderWriterLock为读和写的锁提供了不同的方法&#8212;&#8212;AcquireReaderLock和AcquireWriterLock。两个方法都需要一个超时参数，并且在超时发生后抛出ApplicationException异常（不同于大多数线程类的返回false等效的方法）。超时发生相当容易在资源争用严重的时候。 调用 ReleaseReaderLock或ReleaseWriterLock释放锁。 这些方法支持嵌套锁，ReleaseLock方法也支持一次清除所有嵌套级别的锁。（你可以随后调用RestoreLock类重新锁定相同的级别，它在ReleaseLock之前执行&#8212;&#8212;如此来模仿Monitor.Wait的锁定切换行为）。 你可以调用AcquireReaderLock开始一个read-lock ，然后通过UpgradeToWriterLock把它升级为write-lock。这个方法返回一个可能被用于调用DowngradeFromWriterLock的信息。这个方式允许读程序临时地请求写访问同时不必必须在降级之后重新排队列。 在接下来的这个例子中，4个线程被启动：一个不停地往列表中增加项目；另一个不停地从列表中移除项目；其它两个不停地报告列表中项目的个数。前两者获得写的锁，后两者获得读的锁。每个锁的超时参数为10秒。（异常处理一般要使用来捕捉ApplicationException，这个例子中出于方便而省略了） class Program {&nbsp; static ReaderWriterLock rw = new ReaderWriterLock ();&nbsp; static List &lt;int&gt; items = new List &lt;int&gt; ();&nbsp; static Random rand = new Random ();&nbsp;&nbsp; static void Main (string[] args) {&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) AppendItem(); } ).Start();&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) RemoveItem(); } ).Start();&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) WriteTotal(); }">
+<meta property="og:description" content="ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="ReaderWriterLock（转） - CoderZh Blog">
-<meta name="twitter:description" content="ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这对于资源也是一样的，比如一个文件。当保护类型的实例安全时，使用一个简单的排它锁即解决问题，但是当有很多的读操作 而偶然的更新操作这就很不合理的限制了并发。一个例子就是这在一个业务程序服务器中，为了快速查找把数据缓存到静态字段中。 在这个方案中，ReaderWriterLock类被设计成提供最大容量的锁定。 ReaderWriterLock为读和写的锁提供了不同的方法&#8212;&#8212;AcquireReaderLock和AcquireWriterLock。两个方法都需要一个超时参数，并且在超时发生后抛出ApplicationException异常（不同于大多数线程类的返回false等效的方法）。超时发生相当容易在资源争用严重的时候。 调用 ReleaseReaderLock或ReleaseWriterLock释放锁。 这些方法支持嵌套锁，ReleaseLock方法也支持一次清除所有嵌套级别的锁。（你可以随后调用RestoreLock类重新锁定相同的级别，它在ReleaseLock之前执行&#8212;&#8212;如此来模仿Monitor.Wait的锁定切换行为）。 你可以调用AcquireReaderLock开始一个read-lock ，然后通过UpgradeToWriterLock把它升级为write-lock。这个方法返回一个可能被用于调用DowngradeFromWriterLock的信息。这个方式允许读程序临时地请求写访问同时不必必须在降级之后重新排队列。 在接下来的这个例子中，4个线程被启动：一个不停地往列表中增加项目；另一个不停地从列表中移除项目；其它两个不停地报告列表中项目的个数。前两者获得写的锁，后两者获得读的锁。每个锁的超时参数为10秒。（异常处理一般要使用来捕捉ApplicationException，这个例子中出于方便而省略了） class Program {&nbsp; static ReaderWriterLock rw = new ReaderWriterLock ();&nbsp; static List &lt;int&gt; items = new List &lt;int&gt; ();&nbsp; static Random rand = new Random ();&nbsp;&nbsp; static void Main (string[] args) {&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) AppendItem(); } ).Start();&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) RemoveItem(); } ).Start();&nbsp;&nbsp;&nbsp; new Thread (delegate() { while (true) WriteTotal(); }">
+<meta name="twitter:description" content="ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -169,8 +169,8 @@
                   <h1 class="post-title">ReaderWriterLock（转）</h1>
 
                   <p class="post-byline">
-                    by  · 2009年10月20日 · 155 Words ·
-                    ~1min reading time |
+                    by  · 2009年10月20日 · 1345 Words ·
+                    ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-10-20-1586268.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
