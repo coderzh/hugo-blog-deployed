@@ -20,7 +20,7 @@
 
 &lt;p&gt;国庆长假期间，给Hugo提了几个PR，其中最主要的一个是给Hugo增加了内置的Jekyll迁移工具。这样之前的Jekyll用户可以通过一个简单的命令就可以将网站转化成Hugo站点：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ hugo import jekyll your-jekyll-dir target-dir
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo import jekyll your-jekyll-dir target-dir
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;得益于Hugo代码可读性非常好，原来计划需要几天来完成的功能1天左右的时间就完成了。完整的PR过程请见：&lt;a href=&#34;https://github.com/spf13/hugo/pull/1469&#34;&gt;https://github.com/spf13/hugo/pull/1469&lt;/a&gt;&lt;/p&gt;
@@ -65,9 +65,13 @@
 
 &lt;h3 id=&#34;代码:9d9792e5f5806aca19497d8888e47a21&#34;&gt;代码&lt;/h3&gt;
 
-&lt;p&gt;import.go: &lt;a href=&#34;https://github.com/spf13/hugo/blob/master/commands/import.go&#34;&gt;github.com/spf13/hugo/blob/master/commands/import.go&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;import.go:&lt;/p&gt;
 
-&lt;p&gt;import_test.go: &lt;a href=&#34;https://github.com/spf13/hugo/blob/master/commands/import_test.go&#34;&gt;github.com/spf13/hugo/blob/master/commands/import_test.go&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/blob/master/commands/import.go&#34;&gt;https://github.com/spf13/hugo/blob/master/commands/import.go&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;import_test.go:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/blob/master/commands/import_test.go&#34;&gt;https://github.com/spf13/hugo/blob/master/commands/import_test.go&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;我fork的Hugo Repo（我的最新改动都在这里）：&lt;/p&gt;
 
