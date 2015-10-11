@@ -2,40 +2,38 @@
 <html class="no-js">
 <head>
   <base href="http://blog.coderzh.com/">
-  <title>CoderZh Blog</title>
+  <title>使用Hugo Import一键迁移Jekyll - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="独立博客,程序员的思考">
-<meta name="description" content="CoderZh Blog">
+<meta name="keywords" content="hugo,import,migrate,jekyll,导入,迁移,">
+<meta name="description" content="Jekyll一键导入到Hugo的方法">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="CoderZh Blog">
-<meta itemprop="description" content="CoderZh Blog">
+<meta itemprop="name" content="使用Hugo Import一键迁移Jekyll - CoderZh Blog">
+<meta itemprop="description" content="Jekyll一键导入到Hugo的方法">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="CoderZh Blog" />
+<meta property="og:title" content="使用Hugo Import一键迁移Jekyll - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.coderzh.com/" />
+<meta property="og:url" content="http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="CoderZh Blog">
+<meta property="og:description" content="Jekyll一键导入到Hugo的方法">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="CoderZh Blog">
-<meta name="twitter:description" content="CoderZh Blog">
+<meta name="twitter:title" content="使用Hugo Import一键迁移Jekyll - CoderZh Blog">
+<meta name="twitter:description" content="Jekyll一键导入到Hugo的方法">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://blog.coderzh.com/">
-  <link rel='shortlink' href="http://blog.coderzh.com/"/>
+  <link rel="canonical" href="http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/"/>
   <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
   
- <link href="http://blog.coderzh.com/feed.xml" rel="alternate" type="application/rss+xml" title="CoderZh Blog" />
-
 <link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
@@ -56,8 +54,7 @@
 
 </head>
 
-<body class="archive category col-3cm full-width topbar-enabled chrome">
-
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
   <header id="header">
 
@@ -153,264 +150,172 @@
       <div class="main">
         <div class="main-inner group">
           <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
             <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">使用Hugo Import一键迁移Jekyll</h1>
+
+                  <p class="post-byline">
+                    by  · 2015年10月11日 · 827 Words ·
+                    ~2min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-10-11-hugo-import-from-jekyll.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/HugoImportJekyll.png-w" alt="HugoImportJekyll" /></p>
+
+<p>国庆长假期间，给Hugo提了几个PR，其中最主要的一个是给Hugo增加了内置的Jekyll迁移工具。这样之前的Jekyll用户可以通过一个简单的命令就可以将网站转化成Hugo站点：</p>
+
+<pre><code>$ hugo import jekyll your-jekyll-dir target-dir
+</code></pre>
+
+<p>得益于Hugo代码可读性非常好，原来计划需要几天来完成的功能1天左右的时间就完成了。完整的PR过程请见：<a href="https://github.com/spf13/hugo/pull/1469">https://github.com/spf13/hugo/pull/1469</a></p>
+
+<h3 id="hugo-import:9d9792e5f5806aca19497d8888e47a21">Hugo Import</h3>
+
+<p>主要实现了将原来的Jeklly网站一键转换为Hugo网站，具体实现了如下功能：</p>
+
+<ol>
+<li>生成新的Hugo站点结构。(hugo new site)</li>
+<li>读取Jeklly的_config.yml，相应内容转化到Hugo的config.yaml。</li>
+<li>转换所有MarkDown的文章。（具体转换规则见下文）</li>
+<li>拷贝Jekyll其他目录及文件到Hugo的static目录。</li>
+</ol>
+
+<p>@bep在他的OS X上做了一些测试：</p>
+
+<pre><code class="language-bash">$ hugo import jekyll qrush.github.com qr2
+  Importing...
+  Congratulations! 72 posts imported!
+  Now, start Hugo by yourself:
+  $ git clone https://github.com/spf13/herring-cove.git qr2/themes/herring-cove
+  $ cd qr2
+  $ hugo server -w --theme=herring-cove
+</code></pre>
+
+<h3 id="markdown文章转换规则:9d9792e5f5806aca19497d8888e47a21">MarkDown文章转换规则</h3>
+
+<p>Hugo和Jekyll都是使用MarkDown来写文章的，文章内容基本上是兼容的，除了一些FrontMatter的细节和局部细节。Hugo Import Jekyll主要的转换规则如下：</p>
+
+<ol>
+<li>保持原Jekyll文章目录结构及文件名不变，将文章拷贝到了content/post目录下。</li>
+<li>尽量保持原Jekyll文章链接地址不变，在文章的FrontMatter自动填入url字段。</li>
+<li>date字段转换成Hugo要求的time.RFC3339格式。</li>
+<li>draft字段自动生成。</li>
+<li>删除layout字段。</li>
+<li>category字段转换成categories字段。</li>
+<li>excerpt_separator智能替换。(比如： &lt;!--more--&gt;)</li>
+<li>删除<code>{% raw %}{% endraw %}</code>标签。</li>
+<li>替换<code>{% highlight %}{% endhighlight %}</code>标签为 {{&lt; highlight &gt;}}{{&lt; / highlight &gt;}}</li>
+</ol>
+
+<h3 id="代码:9d9792e5f5806aca19497d8888e47a21">代码</h3>
+
+<p>import.go: <a href="https://github.com/spf13/hugo/blob/master/commands/import.go">github.com/spf13/hugo/blob/master/commands/import.go</a></p>
+
+<p>import_test.go: <a href="https://github.com/spf13/hugo/blob/master/commands/import_test.go">github.com/spf13/hugo/blob/master/commands/import_test.go</a></p>
+
+<p>我fork的Hugo Repo（我的最新改动都在这里）：</p>
+
+<p><a href="https://github.com/coderzh/hugo">https://github.com/coderzh/hugo</a></p>
+
+<h3 id="最后:9d9792e5f5806aca19497d8888e47a21">最后</h3>
+
+<p>这个功能将会在下个正式版推出，现在需要使用的同学自行pull最新的Hugo代码编译吧：</p>
+
+<pre><code class="language-bash">$ go get -u -v github.com/spf13/hugo
+</code></pre>
+
+<p>欢迎试用，并且提出意见或建议！谢谢！</p>
+
+                      
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
               
-              <div class="featured">
-  <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
-    <div class="post-inner post-hover">
-      <div class="post-meta group">
-  <p class="post-category">
-    
-    <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" title="All posts in 技术文章" rel="category tag">技术文章</a>
-    
-  </p>
 
-  <p class="post-date">2015年10月11日</p>
-</div>
+              <div class="clear"></div>
 
-<h2 class="post-title">
-  <a href="http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/" rel="bookmark" title="使用Hugo Import一键迁移Jekyll">使用Hugo Import一键迁移Jekyll</a>
-</h2>
-
-<div class="entry excerpt">
-    <p><p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/HugoImportJekyll.png-w" alt="HugoImportJekyll" /></p>
-</p>
-</div>
-
-
-    </div>
-    
-  </article>
-  
-</div>
-
-              
-              <div class="post-list group">
+              <p class="post-tags">
+                <span>Tags:</span>
                 
-                  
-                
-                  
-                    
-                      <div class="post-row">
-                    
-                      <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-category">
+              </p>
+
+              <h4 class="heading">
+  <i class="fa fa-hand-o-right"></i>Related posts</h4>
+
+    <ul class="related-posts group">
     
-    <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" title="All posts in 技术文章" rel="category tag">技术文章</a>
     
-  </p>
-
-  <p class="post-date">2015年09月28日</p>
-</div>
-
-<h2 class="post-title">
-  <a href="http://blog.coderzh.com/2015/09/28/go-tips/" rel="bookmark" title="Go语言极速入门手册.go">Go语言极速入门手册.go</a>
-</h2>
-
-<div class="entry excerpt">
-    <p><p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/golang.jpg" alt="golang" /></p>
-
-<p>Github: <a href="https://github.com/coderzh/CodeTips">https://github.com/coderzh/CodeTips</a></p>
-</p>
-</div>
-
-
-  </div>
-  
-</article>
-
-
-                    
-                  
-                
-                  
-                    
-                      <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-category">
     
-    <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" title="All posts in 思考感悟" rel="category tag">思考感悟</a>
+        
+        
+        
     
-  </p>
-
-  <p class="post-date">2015年09月26日</p>
-</div>
-
-<h2 class="post-title">
-  <a href="http://blog.coderzh.com/2015/09/26/my-hhkb-pro2/" rel="bookmark" title="说说刚入手的程序员键盘神器：HHKB Pro2">说说刚入手的程序员键盘神器：HHKB Pro2</a>
-</h2>
-
-<div class="entry excerpt">
-    <p><p>几周前，托朋友从日本捎带了一块静电容键盘HHKB（Happy Hacking Keyboard） Pro2，大约RMB1200。整个键盘只有60个键，没有数字小键盘，甚至没有方向键和最上排的F1~F12功能键。大小写切换键替换成了Control键。整个键盘非常小巧紧凑，敲起来非常舒服。</p>
-
-<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/hhkb-types.jpg" alt="hhkb-types" /></p>
-</p>
-</div>
-
-
-  </div>
-  
-</article>
-
-
-                    
-                      </div>
-                    
-                  
-                
-                  
-                    
-                      <div class="post-row">
-                    
-                      <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-category">
+        
+        
+        
     
-    <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" title="All posts in 思考感悟" rel="category tag">思考感悟</a>
+        
+        
+        
     
-  </p>
-
-  <p class="post-date">2015年09月21日</p>
-</div>
-
-<h2 class="post-title">
-  <a href="http://blog.coderzh.com/2015/09/21/xcode-ghost/" rel="bookmark" title="关于最近的XcodeGhost事件，我也来说两句">关于最近的XcodeGhost事件，我也来说两句</a>
-</h2>
-
-<div class="entry excerpt">
-    <p><p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/xcodeghost.jpg-w" alt="xcodeghost" /></p>
-</p>
-</div>
-
-
-  </div>
-  
-</article>
-
-
-                    
-                  
-                
-                  
-                    
-                      <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-category">
+        
+        
+        
     
-    <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" title="All posts in 技术文章" rel="category tag">技术文章</a>
+        
+        
+        
     
-  </p>
-
-  <p class="post-date">2015年09月20日</p>
-</div>
-
-<h2 class="post-title">
-  <a href="http://blog.coderzh.com/2015/09/20/qiuniu/" rel="bookmark" title="博客图片切换到七牛">博客图片切换到七牛</a>
-</h2>
-
-<div class="entry excerpt">
-    <p><p><a href="https://portal.qiniu.com/signup?code=3llo7yfu1ib7y"><img src="http://7xlx3k.com1.z0.glb.clouddn.com/qiniu.jpg" alt="qiniu" /></a></p>
-
-<p>做为一个独立博客，稳定、速度快是非常重要的指标。在博客的运营过程中，经常会不可避免的需要做迁移。比如，从WordPress到Jekyll，从Jekyll到Hugo。迁移之后，文章里的链接还能不能用，图片还能不能访问，是一个比较重要的问题。文章链接地址可以使用域名或者相对地址的方式方便迁移，而图片则稍微复杂一点点。</p>
-</p>
-</div>
+    </ul>
 
 
-  </div>
-  
-</article>
 
+              <section id="comments" class="themeform">
+<div class="ds-thread" data-thread-key="/2015/10/11/hugo-import-from-jekyll/" data-title="使用Hugo Import一键迁移Jekyll" data-url="http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"coderzh"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+</section>
 
-                    
-                      </div>
-                    
-                  
-                
-                  
-                    
-                      <div class="post-row">
-                    
-                      <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-category">
-    
-    <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" title="All posts in 思考感悟" rel="category tag">思考感悟</a>
-    
-  </p>
-
-  <p class="post-date">2015年09月19日</p>
-</div>
-
-<h2 class="post-title">
-  <a href="http://blog.coderzh.com/2015/09/19/mp-new-start/" rel="bookmark" title="微信公众号开通了原创保护功能">微信公众号开通了原创保护功能</a>
-</h2>
-
-<div class="entry excerpt">
-    <p><p>周三非常意外的收到了微信的原创保护功能邀请，之所以说意外，是因为我没想到这么快就给我发了邀请，毕竟我的公众号关注的数量还不多。但我保证了每篇文章都是原汁原味的原创内容，而且目前保持了一周一更的速度。</p>
-</p>
-</div>
-
-
-  </div>
-  
-</article>
-
-
-                    
-                  
-                
-                  
-                    
-                      <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-category">
-    
-    <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" title="All posts in 思考感悟" rel="category tag">思考感悟</a>
-    
-  </p>
-
-  <p class="post-date">2015年09月18日</p>
-</div>
-
-<h2 class="post-title">
-  <a href="http://blog.coderzh.com/2015/09/18/holy-shit-duoshuo/" rel="bookmark" title="坑爹的多说评论">坑爹的多说评论</a>
-</h2>
-
-<div class="entry excerpt">
-    <p><p>运用了各种奇技淫巧的黑科技手段，终于把之前旧页面的多说评论全部转过来了。如果再来选择一次的话，我绝不选多说。之后有时间，全部转移到disqus吧。</p>
-
-<p>多说简直就没人维护啊有木有，居然还那么多人用着。罗列一下多说评论的各种不人性。</p>
-</p>
-</div>
-
-
-  </div>
-  
-</article>
-
-
-                    
-                      </div>
-                    
-                  
-                
-              </div>
-              
-              <nav class="pagination group">
-    <div class="wp-pagenavi">
-        <a class="page" href="http://blog.coderzh.com/post/">More...</a>
-    </div>
-</nav>
 
               
             </div>
+
 
           </section>
           <div class="sidebar s1">
@@ -445,6 +350,20 @@
     <p>微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking</p>
 </div>
 
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2015/09/28/go-tips/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>Go语言极速入门手册.go</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+      </li>
+    </ul>
     <div id="search-2" class="widget widget_search"><h3>Search</h3>
       <form method="get" class="searchform themeform" action="https://www.google.com/search">
         <div>
@@ -453,6 +372,7 @@
       </form>
     </div>
   </div>
+  
 </div>
 
           <div class="sidebar s2">

@@ -6,7 +6,83 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Mon, 28 Sep 2015 22:43:26 CST</updated>
+        <updated>Sun, 11 Oct 2015 10:06:11 CST</updated>
+        
+        <item>
+            <title>使用Hugo Import一键迁移Jekyll</title>
+            <link>http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</link>
+            <pubDate>Sun, 11 Oct 2015 10:06:11 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</guid>
+            <description>
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoImportJekyll.png-w&#34; alt=&#34;HugoImportJekyll&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;国庆长假期间，给Hugo提了几个PR，其中最主要的一个是给Hugo增加了内置的Jekyll迁移工具。这样之前的Jekyll用户可以通过一个简单的命令就可以将网站转化成Hugo站点：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo import jekyll your-jekyll-dir target-dir
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;得益于Hugo代码可读性非常好，原来计划需要几天来完成的功能1天左右的时间就完成了。完整的PR过程请见：&lt;a href=&#34;https://github.com/spf13/hugo/pull/1469&#34;&gt;https://github.com/spf13/hugo/pull/1469&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo-import:9d9792e5f5806aca19497d8888e47a21&#34;&gt;Hugo Import&lt;/h3&gt;
+
+&lt;p&gt;主要实现了将原来的Jeklly网站一键转换为Hugo网站，具体实现了如下功能：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;生成新的Hugo站点结构。(hugo new site)&lt;/li&gt;
+&lt;li&gt;读取Jeklly的_config.yml，相应内容转化到Hugo的config.yaml。&lt;/li&gt;
+&lt;li&gt;转换所有MarkDown的文章。（具体转换规则见下文）&lt;/li&gt;
+&lt;li&gt;拷贝Jekyll其他目录及文件到Hugo的static目录。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;@bep在他的OS X上做了一些测试：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo import jekyll qrush.github.com qr2
+  Importing...
+  Congratulations! 72 posts imported!
+  Now, start Hugo by yourself:
+  $ git clone https://github.com/spf13/herring-cove.git qr2/themes/herring-cove
+  $ cd qr2
+  $ hugo server -w --theme=herring-cove
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;markdown文章转换规则:9d9792e5f5806aca19497d8888e47a21&#34;&gt;MarkDown文章转换规则&lt;/h3&gt;
+
+&lt;p&gt;Hugo和Jekyll都是使用MarkDown来写文章的，文章内容基本上是兼容的，除了一些FrontMatter的细节和局部细节。Hugo Import Jekyll主要的转换规则如下：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;保持原Jekyll文章目录结构及文件名不变，将文章拷贝到了content/post目录下。&lt;/li&gt;
+&lt;li&gt;尽量保持原Jekyll文章链接地址不变，在文章的FrontMatter自动填入url字段。&lt;/li&gt;
+&lt;li&gt;date字段转换成Hugo要求的time.RFC3339格式。&lt;/li&gt;
+&lt;li&gt;draft字段自动生成。&lt;/li&gt;
+&lt;li&gt;删除layout字段。&lt;/li&gt;
+&lt;li&gt;category字段转换成categories字段。&lt;/li&gt;
+&lt;li&gt;excerpt_separator智能替换。(比如： &amp;lt;!--more--&amp;gt;)&lt;/li&gt;
+&lt;li&gt;删除&lt;code&gt;{% raw %}{% endraw %}&lt;/code&gt;标签。&lt;/li&gt;
+&lt;li&gt;替换&lt;code&gt;{% highlight %}{% endhighlight %}&lt;/code&gt;标签为 {{&amp;lt; highlight &amp;gt;}}{{&amp;lt; / highlight &amp;gt;}}&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;代码:9d9792e5f5806aca19497d8888e47a21&#34;&gt;代码&lt;/h3&gt;
+
+&lt;p&gt;import.go: &lt;a href=&#34;https://github.com/spf13/hugo/blob/master/commands/import.go&#34;&gt;github.com/spf13/hugo/blob/master/commands/import.go&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;import_test.go: &lt;a href=&#34;https://github.com/spf13/hugo/blob/master/commands/import_test.go&#34;&gt;github.com/spf13/hugo/blob/master/commands/import_test.go&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我fork的Hugo Repo（我的最新改动都在这里）：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/hugo&#34;&gt;https://github.com/coderzh/hugo&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;最后:9d9792e5f5806aca19497d8888e47a21&#34;&gt;最后&lt;/h3&gt;
+
+&lt;p&gt;这个功能将会在下个正式版推出，现在需要使用的同学自行pull最新的Hugo代码编译吧：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ go get -u -v github.com/spf13/hugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;欢迎试用，并且提出意见或建议！谢谢！&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>Go语言极速入门手册.go</title>
@@ -1704,185 +1780,6 @@ $sudo /media/cdrom/VBoxLinuxAdditions.run
 &lt;p&gt;开始我是打算把博客园里的博客导入过来的，毕竟我在博客园写博客已经有7年的时间了，积累了不少的文章。网上搜寻了导入的方法，找到一篇文章：将博客园(cnblogs.com)数据导入到wordpress(&lt;a href=&#34;http://levi.cg.am/archives/163)。我安装插件后导入毫无反应，应该是这个插件太久没有更新了，已经不能解析最新的博客园备份文章了。无奈只好先放一放，之后有时间自己实现个导入功能。当然，新的博客，一切从头开始，也未必不是一件好事。&#34;&gt;http://levi.cg.am/archives/163)。我安装插件后导入毫无反应，应该是这个插件太久没有更新了，已经不能解析最新的博客园备份文章了。无奈只好先放一放，之后有时间自己实现个导入功能。当然，新的博客，一切从头开始，也未必不是一件好事。&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;创业艰难，坚持不易，思考和总结不能停，博文还是得继续。给自己加油吧！&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>DigitalOcean上使用Tornado&#43;MongoDB&#43;Nginx&#43;Supervisor&#43;DnsPod快速搭建个人博客</title>
-            <link>http://blog.coderzh.com/2014/05/19/digitalocean/</link>
-            <pubDate>Mon, 19 May 2014 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2014/05/19/digitalocean/</guid>
-            <description>
-
-&lt;h3 id=&#34;digitalocean:51858cffc176cb478720d9c052e82245&#34;&gt;DigitalOcean&lt;/h3&gt;
-
-&lt;p&gt;之前买了个便宜的VPS并且在上面搭建了我自己写的博客程序，后来VPS里运行MongoDB经常自己挂掉就索性没理了。直到现在VPS已经过期，服务器被强制关掉了。周末在家索性想着把这个博客程序重新搭建起来。&lt;/p&gt;
-
-&lt;p&gt;选择Linode还是云主机（阿里云等等）？阿里云貌似有些贵，而且还有一堆备案的流程。Linode最近推出SSD服务，20刀/月的价格，加量不加价，很是吸引人。但无奈还是花的有些心疼。忽然另外一个VPS服务&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;DigitalOcean&lt;/a&gt;(链接含refcode喔)被我无意发现。DigitalOcean是一家IaaS服务提供商，其特色就是提供快速的固态硬盘服务器，该公司宣称可在55秒之内搭建好一台云服务器，所有的服务器均拥有1G的网络接口，每月基础套餐为1TB，最低套餐费用仅为5美元/月。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://images.cnitblog.com/blog/16913/201405/190032003752557.jpg&#34; alt=&#34;DigitalOcean&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;每个月20刀的配置和Linode的20刀的配置几乎一样。但是DigitalOcean提供了最低5美元/月的配置，而且如果使用优惠码注册，还能免费送10美元。相当于免费使用2个月。于是我选择了5美元的配置，Google了一把优惠码，并且非常顺利的找到了能用的。Google搜索：digitalocean coupon。我是在这里找到： &lt;a href=&#34;http://www.retailmenot.com/view/digitalocean.com&#34;&gt;http://www.retailmenot.com/view/digitalocean.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;注册，填入优惠码，选择5$的主机类型，主机位置我选了旧金山（美国西部，据说比其他的稳定），操作系统选择了Ubuntu 14.04 x64。一切都非常顺利，正如他们的广告所说的，55秒内，一台热乎乎的VPS送到了我的手上。&lt;/p&gt;
-
-&lt;p&gt;有兴趣的同学可以用我的推荐链接注册哦，我也能得到一些好处。注册链接：&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;DigitalOcean&lt;/a&gt;
-用到哪天不想用了，DigitalOcean还提供了生成一个镜像(Image)的功能，然后你取消掉VPS服务器(Droplets)，之后将不收取费用。哪天忽然又想用了再开通它，用之前的镜像一还原，马上就恢复了之前的环境，很是方便。&lt;/p&gt;
-
-&lt;h3 id=&#34;vps安装必要的软件:51858cffc176cb478720d9c052e82245&#34;&gt;VPS安装必要的软件&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install git
-sudo apt-get install python-pip
-sudo apt-get install nginx
-sudo apt-get install supervisor
-sudo pip install tornado
-sudo pip install pymongo
-sudo pip install beautifulsoup4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;（我安装了beautifulsoup是因为我做了个工具把博客园的博客导入过来。）
-mongodb 安装：&lt;a href=&#34;http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/&#34;&gt;http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;博客程序:51858cffc176cb478720d9c052e82245&#34;&gt;博客程序&lt;/h3&gt;
-
-&lt;p&gt;之前我用python+tornado+pymongo写了一套博客程序，只是给我自己使用，所以我放在了私有仓库&lt;a href=&#34;http://bitbucket.org&#34;&gt;bitbucket&lt;/a&gt;上。
-网站程序一般放在/var/www目录里。所以我用git clone把我的代码放到了/var/www/coderzh&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo mkdir /var/www
-cd /var/www
-git clone https://xxxxx.xxxx.xxx
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;mongodb:51858cffc176cb478720d9c052e82245&#34;&gt;MongoDB&lt;/h3&gt;
-
-&lt;p&gt;由于我的程序没有使用MongoDB默认的端口27017，所以我需要修改端口的设置。找到MongoDB的配置文件，修改port字段：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vim /etc/mongodb.conf
-#修改port=27017部分 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;停止和重启mongodb：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo service mongodb stop
-sudo service mongodb start
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;运行博客程序:51858cffc176cb478720d9c052e82245&#34;&gt;运行博客程序&lt;/h3&gt;
-
-&lt;p&gt;博客程序运行需要的环境已经基本配置好，这时运行博客程序看是否能正常起来：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo python /var/www/coderzh/main.py --port 8001
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;打开浏览器试试能不能访问: &lt;code&gt;http://服务器IP:8001&lt;/code&gt;   OK，太棒了，一起正常。&lt;/p&gt;
-
-&lt;h3 id=&#34;supervisor:51858cffc176cb478720d9c052e82245&#34;&gt;Supervisor&lt;/h3&gt;
-
-&lt;p&gt;停掉刚才的main.py，这时候要上一个好东西。它就是Supervisor，它是一个进程监控守护程序。它负责开机时自动启动你配置好的程序，并且在你的程序莫名其妙挂掉时，Supervisor会自动去重启他们。可以说，它是网站稳定运行的后勤保障啊。&lt;/p&gt;
-
-&lt;p&gt;新建一个Supervisor配置文件，放到/ect/supervisor/conf.d目录下，因为/etc/supervisor/supervisord.conf里配置了自动读取conf.d目录下的文件：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vim /ect/supervisor/conf.d/coderzh.conf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;编辑coderzh.conf&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[program:coderzh]
-command=python /var/www/coderzh/main.py --port=8001
-directory=/var/www/coderzh
-autorestart=true
-redirect_stderr=true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;重载配置，重启Supervisior：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;supervisorctl reload 
-supervisorctl start all
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;再次访问: &lt;code&gt;http://服务器IP:8001&lt;/code&gt;   试试，嗯，一起正常。Supervisor工作了。&lt;/p&gt;
-
-&lt;h3 id=&#34;nginx:51858cffc176cb478720d9c052e82245&#34;&gt;Nginx&lt;/h3&gt;
-
-&lt;p&gt;接下来上Nginx，它是一个HTTP和反向代理服务器。最终网站的访问经过域名解析到服务器后，都要通过Nginx将访问请求转到main.py中处理。理解Nginx的配置文件很重要，好吧，说实话，我当初摸Nginx，Apache之类的东西时都是一头雾水的。Nginx的主要配置文件路径在：/etc/nginx/nginx.conf&lt;/p&gt;
-
-&lt;p&gt;为了让Nginx支持多域名，多Web服务。我修改/etc/nginx/nginx.conf 内容如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;user www-data;
-worker_processes 4;
-pid /run/nginx.pid;
-
-events {
-    worker_connections 1024;
-    use epoll;
-}
-
-http {
-    types_hash_max_size 2048;
-    server_names_hash_bucket_size 64;
-
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
- 
-    access_log /var/log/nginx/access.log;
- 
-    keepalive_timeout 65;
-    proxy_read_timeout 200;
-    sendfile on;
-    tcp_nopush on;
-    tcp_nodelay on;
-    gzip on;
-    gzip_min_length 1000;
-    gzip_proxied any;
-    gzip_types text/plain application/x-javascript text/css application/xml; 
-
-    include /etc/nginx/conf.d/*;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注意最后一行：include /etc/nginx/conf.d/*，所以在conf.d目录里，可以为每个网站都配置一个.conf文件。我为博客程序生产的配置：vim /etc/nginx/conf.d/coderzh.conf&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;upstream coderzh {
-    server 127.0.0.1:8001;
-}
-
-server {
-    listen 80;
-    server_name coderzh.com www.coderzh.com;
-
-    location = /favicon.ico {
-        rewrite (.*) /static/favicon.ico;
-    }
-    location = /robots.txt {
-        rewrite (.*) /static/robots.txt;
-    }
-
-    location / {
-        proxy_pass_header Server;
-        proxy_set_header Host $http_host;
-        proxy_redirect off;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Scheme $scheme;
-        proxy_pass http://coderzh;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;重新启动nginx&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;service nginx restart
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这时已经可以用80端口访问了。&lt;/p&gt;
-
-&lt;h3 id=&#34;dnspod:51858cffc176cb478720d9c052e82245&#34;&gt;DnsPod&lt;/h3&gt;
-
-&lt;p&gt;接下来就是通过DnsPod将域名解析到这台VPS服务器。应该不是什么问题，有问题可以查看DnsPod帮助。&lt;/p&gt;
-
-&lt;h3 id=&#34;部署完成:51858cffc176cb478720d9c052e82245&#34;&gt;部署完成&lt;/h3&gt;
-
-&lt;p&gt;执行导入工具，将博客园的博客导入进来。访问：&lt;a href=&#34;http://www.coderzh.com&#34;&gt;http://www.coderzh.com&lt;/a&gt;。HOHO，大功告成。&lt;/p&gt;
 </description>
         </item>
         
