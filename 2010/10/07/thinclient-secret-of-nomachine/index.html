@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <title>瘦客户端那些事 - NoMachine的秘密 - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta name="description" content="上篇中我们介绍了各种远程传输协议用于实现瘦客户端，在各种协议当中，NX要我要重点推荐和介绍的。理由很简单，性能！大家都知道，网络带宽、网络传">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="瘦客户端那些事 - NoMachine的秘密 - CoderZh Blog">
+<meta itemprop="description" content="上篇中我们介绍了各种远程传输协议用于实现瘦客户端，在各种协议当中，NX要我要重点推荐和介绍的。理由很简单，性能！大家都知道，网络带宽、网络传">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="瘦客户端那些事 - NoMachine的秘密 - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/2010/10/07/thinclient-secret-of-nomachine/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="上篇中我们介绍了各种远程传输协议用于实现瘦客户端，在各种协议当中，NX要我要重点推荐和介绍的。理由很简单，性能！大家都知道，网络带宽、网络传">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="瘦客户端那些事 - NoMachine的秘密 - CoderZh Blog">
+<meta name="twitter:description" content="上篇中我们介绍了各种远程传输协议用于实现瘦客户端，在各种协议当中，NX要我要重点推荐和介绍的。理由很简单，性能！大家都知道，网络带宽、网络传">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/2010/10/07/thinclient-secret-of-nomachine/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2010/10/07/thinclient-secret-of-nomachine/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="http://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">瘦客户端那些事 - NoMachine的秘密</h1>
+
+                  <p class="post-byline">
+                    by  · 2010年10月07日 · 3163 Words ·
+                    ~7min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-10-07-thinclient-secret-of-nomachine.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
+
+<p><a href="http://www.cnblogs.com/coderzh/archive/2010/09/24/thinclient-protocol.html">上篇</a>中我们介绍了各种远程传输协议用于实现瘦客户端，在各种协议当中，NX要我要重点推荐和介绍的。理由很简单，性能！大家都知道，网络带宽、网络传输是瘦客户端的重大瓶颈，谁能够在低带宽、慢速率的网络环境下工作良好，谁就是王者。本文将讲述NoMachine是如何做到这些的。</p>
+
+<p>199x年，满怀梦想的<a href="http://en.wikipedia.org/wiki/Keith_Packard">Keith Packard</a>，当时工作于<a href="http://en.wikipedia.org/wiki/SuSE">SuSE</a>，是<a href="http://en.wikipedia.org/wiki/Xfree86">XFree86</a>的核心开发成员，一心想要开发一个在低带宽下依然性能完好的传输协议（<a href="http://en.wikipedia.org/wiki/LBX">LBX</a> - Low Bandwidth X）。他为了LBX倾注心血，将LBX视为自己的孩子，然而最后他还是失败了，LBX最终并没有得到广泛应用。原因是LBX的性能还不够好。于是，他在2001年写一篇LBX的验尸报告 - <a href="http://keithp.com/%7Ekeithp/talks/lbxpost/paper.html">An LBX Postmortem</a>，以告慰后人，想要实现这样一个高性能的协议是多么的不可能。</p>
+
+<p>2001年3月，XFree86的邮件组里横空出现了一篇题为<a href="http://www.xfree86.org/pipermail/forum/2003-March/002325.html">About our effort at NoMachine</a>的文章，作者是Gian Filippo Pinzari。文章隆重的介绍了经过作者三年研究，在低带宽下依然工作良好的，兼容RDP，VNC等协议的<a href="http://en.wikipedia.org/wiki/NX_technology">NX</a>协议。Gian将NX的核心组件基于GPL<a href="http://www.nomachine.com/sources.php">开源</a>出来，他说，&#8220;它就在这，大家都来用吧！&#8221;。</p>
+
+<p>Gian的公司<a href="http://www.nomachine.com/">NoMachine</a>开发的NX Client、Server等都是收费的产品。但是NX核心组件是开源的，于是出现了大量的开源的NX Client和NX Server。比如，NX Client就有<a href="http://www.opennx.net/">OpenNX</a>，<a href="http://blog.gwright.org.uk/articles/2006/08/23/qtnx-ready-for-public-consumption">QtNX</a>，NX Server又有<a href="http://www.google.com/url?sa=t&amp;amp;source=web&amp;amp;cd=1&amp;amp;sqi=2&amp;amp;ved=0CBMQFjAA&amp;amp;url=http%3A%2F%2Ffreenx.berlios.de%2F&amp;amp;rct=j&amp;amp;q=freenx&amp;amp;ei=RTytTMaINZKssAPz1oHcDA&amp;amp;usg=AFQjCNHrVhiiKIAf_8gjKnwOiZqnzgiXZQ&amp;amp;cad=rja">FreeNX</a>，<a href="http://www.google.com/url?sa=t&amp;amp;source=web&amp;amp;cd=1&amp;amp;ved=0CBMQFjAA&amp;amp;url=http%3A%2F%2Fcode.google.com%2Fp%2Fneatx%2F&amp;amp;rct=j&amp;amp;q=neatx&amp;amp;ei=XjytTIGbIIr2swP04Mn_Cw&amp;amp;usg=AFQjCNE7E3WuLZl-C-WJKJpWaKbGsldMVA&amp;amp;cad=rja">NeatX</a>等等。</p>
+
+<p>NoMachine的NX是如何做到的呢？NoMachine的秘密，主要有三个：<br />
+1. 在X协议的基础上，使用优化的压缩算法，进行压缩传输。压缩比达到10:1，甚至100：1。<br />
+2. 在客户端和服务端使用了缓存机制(Cache)，避免同样的数据进行不必要的重复传输。<br />
+3. 减少客户端与服务端请求、回应的时间。</p>
+
+<h4 id="nx使用:7ee71ad4208d41e4612ab213da0baaf7">NX使用</h4>
+
+<p>NoMachien的NX主要分为两部分：NX Client和NX Server。NX Server的部署见<a href="http://www.nomachine.com/documents/server/install.php">文档</a>，还不算复杂。部署完成后，就可以使用NX Client进行连接了。NX Client有Windows版本，Linux版本，Mac版本和Solaris版本。</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/NxNoMachine_thumb.png" alt="NxNoMachine" title="NxNoMachine" /></p>
+
+<p>点击&#8220;Configure&#8221;进行设置，可以看到，NX支持多种桌面协议。</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-protocol_thumb.png" alt="nomachine-protocol" title="nomachine-protocol" /></p>
+
+<p>如果要单独运行某个远程的应用程序，点击&#8220;Settings..&#8221;进行设置，比如，运行Linux中的星际译王（stardict）</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-run-app_thumb.png" alt="nomachine-run-app" title="nomachine-run-app" /></p>
+
+<p>以下是我在Win7下运行远程服务器中的文本编辑器(gedit)和星际译王(stardict)的效果：</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-demo_thumb_1.png" alt="nomachine-demo" title="nomachine-demo" /></p>
+
+<p>NX可以设置共享本地磁盘，默认情况下，远程应用访问的远程设备。比如，在gedit中点击打开，可以看到</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-filesys_thumb.png" alt="nomachine-filesys" title="nomachine-filesys" /></p>
+
+<h4 id="nx组件:7ee71ad4208d41e4612ab213da0baaf7">NX组件</h4>
+
+<p>我们知道，NX是在X11的基础上优化而来的。我们先来回忆以下X11的工作过程。</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/x11_thumb.jpg" alt="x11" title="x11" /></p>
+
+<p>&nbsp;</p>
+
+<p>X Server和X Client是通过X11协议直接通讯的，我们之前讲到过，NX基于X11做了如下的优化：</p>
+
+<ol>
+<li><p>使用压缩传输。</p></li>
+
+<li><p>使用缓存机制。</p></li>
+</ol>
+
+<p>下面就来看看NX是如何工作的：</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx_thumb.jpg" alt="nx" title="nx" /></p>
+
+<p>&nbsp;</p>
+
+<p>可以看到，X Server和X Client不直接通讯了，而是通过NxProxy进行通讯。用户端的X Server误以为NxProxy就是X Client，使用原生的X11于其通讯，而用户端的NxProxy接收到X11协议数据后，经过压缩，再通过NX协议与服务端的NxProxy通讯。在服务端，NxProxy内嵌于NxAgent中，NxAgent再将NX协议与X11进行转化，并且冒充X Server与X Client进行通讯，从而达到优化的目的。NxAgent是从XNest演变过来的，既充当X Server又冒充X Client。</p>
+
+<p>上图还可以看到，用户端和服务端的NxProxy都对数据进行了缓存。这样，他们之前传输数据时，可以将不变的数据缓存起来，传输的只是差异数据。</p>
+
+<p>接下来我们来看看完整的交互过程：</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nxserver_thumb.jpg" alt="nxserver" title="nxserver" /></p>
+
+<p>当用户端的NxClient，比如OpenNX启动连接后，会通过客户端的一个NxSsh组件与服务端的NxServer建立连接(Connect)，确认连通之后，NxSsh会向NxServer发出Start Session命令，命令包含需要启动桌面还是哪个应用程序，分辨率是多少等等。服务端收到命令后，准备好Session所需环境，然后启动NxAgent，内置的NxProxy也同时启动起来，同时，需要服务端执行的应用程序也被NxServer执行起来。随后，NxServer生成一个Xauth Cookie（相当于访问令牌）并返回给NxSsh，NxSsh收到Xauth Cookie后，再启动NxProxy，并且通过Xauth Cookie与服务端的NxProxy取得了联系。</p>
+
+<p><table border="1" cellpadding="5" cellspacing="0" width="473"><tbody>     <tr>       <td valign="top" width="118"></p>
+
+<p>Nxservice
+       </td>        <td valign="top" width="353"></p>
+
+<p>用来把其他组件以服务方式启动的东西
+       </td>     </tr>      <tr>       <td valign="top" width="124"></p>
+
+<p>NXWin
+       </td>        <td valign="top" width="348"></p>
+
+<p>NX的X Server，从cygwin/X演变过来的
+       </td>     </tr>      <tr>       <td valign="top" width="129"></p>
+
+<p>Nxagent
+       </td>        <td valign="top" width="345"></p>
+
+<p>从XNest演变而来。在服务端，作为一个假装的X Server，与服务端程序进行交互，接收绘图命令（X协议），但并不绘制任何窗口，而是将X协议转换为NX协议（压缩，减少传输次数），然后传递给服务端的nxproxy
+       </td>     </tr>      <tr>       <td valign="top" width="132"></p>
+
+<p>Nxproxy
+       </td>        <td valign="top" width="343"></p>
+
+<p>客户端和服务端都执行，保存缓存，并且互相传输NX数据。服务端中，nxproxy集成到了nxagent中
+       </td>     </tr>      <tr>       <td valign="top" width="134"></p>
+
+<p>Nxssh
+       </td>        <td valign="top" width="341"></p>
+
+<p>负责与服务端建立连接，并启动nxproxy
+       </td>     </tr>      <tr>       <td valign="top" width="136"></p>
+
+<p>Xauth
+       </td>        <td valign="top" width="340"></p>
+
+<p>用于用户验证，相关信息保存在.XAUTHORITY文件中
+       </td>     </tr>   </tbody></table></p>
+
+<h4 id="nx与vnc-rdp:7ee71ad4208d41e4612ab213da0baaf7">NX与VNC，RDP</h4>
+
+<p>前面我们讲过，NX基于X11，同时还能兼容VNC和RDP协议，那么它是如何兼容的呢？首先，我们再回头看看NX于X11是如何结合的。</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-x_thumb_1.jpg" alt="nx-x" title="nx-x" /></p>
+
+<p>这个图和我上面的&#8220;NX基本组件流程图&#8221;是一样的。可以看到，关键部分是nxagent，负责将X11与NX进行了转换。接下来，我们继续看通过NX连接VNC服务端的过程：</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-vnc_5.jpg" alt="nx-vnc" title="nx-vnc" /></p>
+
+<p>原来还是通过agent，将NX协议与RFB协议进行了转换。这样，用户通过NX连接VNC Server，其实是通过NX Server访问VNC Server，然后再将信息通过NX协议传输回来，最终还是通过X Display Server在用户本地显示。RDP也是同样的原理：</p>
+
+<p>&nbsp;<img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-rdp_6.jpg" alt="nx-rdp" title="nx-rdp" /></p>
+
+<p>下面是一个完整的图：</p>
+
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-full_5.jpg" alt="nx-full" title="nx-full" /></p>
+
+<h4 id="nx-library编译:7ee71ad4208d41e4612ab213da0baaf7">NX Library编译</h4>
+
+<p>NX的Library使用GPL开源协议，意味着我们也可以使用NX Library开发我们自己的NX Server或Client。首先，我们必须解决编译的问题。NX Library的编译过程并不复杂。</p>
+
+<p>在Linux环境下，参考<a href="http://www.nomachine.com/documents/technology/building-components-3.x.php">官方文档</a>：编译步骤如下：</p>
+
+<p><div class="cnblogs_code"><img src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />    <div id="cnblogs_code_open_ba78c766-e056-4d6d-aa76-9cdbf8199e47">     <div><span style="color: #000000;">需要先安装：&nbsp;
+yum install libjpeg&nbsp;
+openssl</span><span style="color: #000000;">-</span><span style="color: #000000;">devel&nbsp;
+netcat&nbsp;
+expect&nbsp;
+<br />
+源码安装libpng&nbsp;
+wget http:</span><span style="color: #000000;">//</span><span style="color: #000000;">download.sourceforge.net</span><span style="color: #000000;">/</span><span style="color: #000000;">libpng</span><span style="color: #000000;">/</span><span style="color: #000000;">libpng</span><span style="color: #000000;">-</span><span style="color: #000000;">1.4</span><span style="color: #000000;">.</span><span style="color: #000000;">3</span><span style="color: #000000;">.tar.gz<br />
+<br />
+下载以下包，比如，下载到：~</span><span style="color: #000000;">/</span><span style="color: #000000;">NX&nbsp;
+nxcomp</span><span style="color: #000000;">-</span><span style="color: #000000;">3.3</span><span style="color: #000000;">.</span><span style="color: #000000;">0</span><span style="color: #000000;">-</span><span style="color: #000000;">4</span><span style="color: #000000;">.tar.gz&nbsp;
+nxproxy</span><span style="color: #000000;">-</span><span style="color: #000000;">3.3</span><span style="color: #000000;">.</span><span style="color: #000000;">0</span><span style="color: #000000;">-</span><span style="color: #000000;">2</span><span style="color: #000000;">.tar.gz&nbsp;
+nxagent</span><span style="color: #000000;">-</span><span style="color: #000000;">3.3</span><span style="color: #000000;">.</span><span style="color: #000000;">0</span><span style="color: #000000;">-</span><span style="color: #000000;">13</span><span style="color: #000000;">.tar.gz&nbsp;
+nxcompext</span><span style="color: #000000;">-</span><span style="color: #000000;">3.3</span><span style="color: #000000;">.</span><span style="color: #000000;">0</span><span style="color: #000000;">-</span><span style="color: #000000;">4</span><span style="color: #000000;">.tar.gz&nbsp;
+nxauth</span><span style="color: #000000;">-</span><span style="color: #000000;">3.3</span><span style="color: #000000;">.</span><span style="color: #000000;">0</span><span style="color: #000000;">-</span><span style="color: #000000;">1</span><span style="color: #000000;">.tar.gz&nbsp;
+nxcompshad</span><span style="color: #000000;">-</span><span style="color: #000000;">3.3</span><span style="color: #000000;">.</span><span style="color: #000000;">0</span><span style="color: #000000;">-</span><span style="color: #000000;">3</span><span style="color: #000000;">.tar.gz&nbsp;
+nx</span><span style="color: #000000;">-</span><span style="color: #000000;">X11</span><span style="color: #000000;">-</span><span style="color: #000000;">3.3</span><span style="color: #000000;">.</span><span style="color: #000000;">0</span><span style="color: #000000;">-</span><span style="color: #000000;">6</span><span style="color: #000000;">.tar.gz&nbsp;
+<br />
+解压所有：&nbsp;
+find . </span><span style="color: #000000;">-</span><span style="color: #000000;">name </span><span style="color: #800000;">&ldquo;</span><span style="color: #800000;"><em>tar.gz</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">-</span><span style="color: #000000;">exec tar </span><span style="color: #000000;">-</span><span style="color: #000000;">zxf {} \;&nbsp;
+<br />
+编译：&nbsp;
+cd nx</span><span style="color: #000000;">-</span><span style="color: #000000;">X11&nbsp;
+</span><span style="color: #000000;">/</span><span style="color: #000000;">make World&nbsp;
+cd ..&nbsp;
+cd nxproxy&nbsp;
+.</span><span style="color: #000000;">/</span><span style="color: #000000;">configure </span><span style="color: #000000;">&amp;&amp;</span><span style="color: #000000;"> make&nbsp;
+<br />
+cp </span><span style="color: #000000;">-</span><span style="color: #000000;">a nx</span><span style="color: #000000;">-</span><span style="color: #000000;">X11</span><span style="color: #000000;">/</span><span style="color: #000000;">lib</span><span style="color: #000000;">/</span><span style="color: #000000;">X11</span><span style="color: #000000;">/</span><span style="color: #000000;">libX11.so</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">/</span><span style="color: #000000;">usr</span><span style="color: #000000;">/</span><span style="color: #000000;">NX</span><span style="color: #000000;">/</span><span style="color: #000000;">lib&nbsp;
+cp </span><span style="color: #000000;">-</span><span style="color: #000000;">a nx</span><span style="color: #000000;">-</span><span style="color: #000000;">X11</span><span style="color: #000000;">/</span><span style="color: #000000;">lib</span><span style="color: #000000;">/</span><span style="color: #000000;">Xext</span><span style="color: #000000;">/</span><span style="color: #000000;">libXext.so</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">/</span><span style="color: #000000;">usr</span><span style="color: #000000;">/</span><span style="color: #000000;">NX</span><span style="color: #000000;">/</span><span style="color: #000000;">lib&nbsp;
+cp </span><span style="color: #000000;">-</span><span style="color: #000000;">a nx</span><span style="color: #000000;">-</span><span style="color: #000000;">X11</span><span style="color: #000000;">/</span><span style="color: #000000;">lib</span><span style="color: #000000;">/</span><span style="color: #000000;">Xrender</span><span style="color: #000000;">/</span><span style="color: #000000;">libXrender.so</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">/</span><span style="color: #000000;">usr</span><span style="color: #000000;">/</span><span style="color: #000000;">NX</span><span style="color: #000000;">/</span><span style="color: #000000;">lib&nbsp;
+cp </span><span style="color: #000000;">-</span><span style="color: #000000;">a nxcomp</span><span style="color: #000000;">/</span><span style="color: #000000;">libXcomp.so</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">/</span><span style="color: #000000;">usr</span><span style="color: #000000;">/</span><span style="color: #000000;">NX</span><span style="color: #000000;">/</span><span style="color: #000000;">lib&nbsp;
+cp </span><span style="color: #000000;">-</span><span style="color: #000000;">a nxcompext</span><span style="color: #000000;">/</span><span style="color: #000000;">libXcompext.so</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">/</span><span style="color: #000000;">usr</span><span style="color: #000000;">/</span><span style="color: #000000;">NX</span><span style="color: #000000;">/</span><span style="color: #000000;">lib&nbsp;
+cp </span><span style="color: #000000;">-</span><span style="color: #000000;">a nxcompshad</span><span style="color: #000000;">/</span><span style="color: #000000;">libXcompshad.so</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">/</span><span style="color: #000000;">usr</span><span style="color: #000000;">/</span><span style="color: #000000;">NX</span><span style="color: #000000;">/</span><span style="color: #000000;">lib&nbsp;
+cp </span><span style="color: #000000;">-</span><span style="color: #000000;">a nx</span><span style="color: #000000;">-</span><span style="color: #000000;">X11</span><span style="color: #000000;">/</span><span style="color: #000000;">programs</span><span style="color: #000000;">/</span><span style="color: #000000;">Xserver</span><span style="color: #000000;">/</span><span style="color: #000000;">nxagent </span><span style="color: #000000;">/</span><span style="color: #000000;">usr</span><span style="color: #000000;">/</span><span style="color: #000000;">NX</span><span style="color: #000000;">/</span><span style="color: #000000;">bin&nbsp;
+cp </span><span style="color: #000000;">-</span><span style="color: #000000;">a nxproxy</span><span style="color: #000000;">/</span><span style="color: #000000;">nxproxy </span><span style="color: #000000;">/</span><span style="color: #000000;">usr</span><span style="color: #000000;">/</span><span style="color: #000000;">NX</span><span style="color: #000000;">/</span><span style="color: #000000;">bin&nbsp;
+<br />
+设置LD_LIBRARY_PATH&nbsp;
+export LD_LIBRARY_PATH</span><span style="color: #000000;">=/</span><span style="color: #000000;">usr</span><span>/</span><span>NX</span><span>/</span><span>lib:</span><span>$LD_LIBRARY_PATH</span><span style="color: #000000;">&nbsp;
+<br />
+</span><span>这时，</span><span>/</span><span>usr</span><span>/</span><span>NX</span><span>/</span><span>bin</span><span>/</span><span>nxproxy 和 </span><span>/</span><span>usr</span><span>/</span><span>NX</span><span>/</span><span>bin</span><span>/</span><span>nxagent 应该可以用了<br />
+</span></div>   </div> </div></p>
+
+<p>&nbsp;</p>
+
+<p><span>Window平台下，NXWin的编译过程，参考</span><a href="http://www.nomachine.com/ar/view.php?ar_id=AR01F00503"><span>这里</span></a><span>：</span>
+  <div class="cnblogs_code"><img src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" />    <div id="cnblogs_code_open_9e16b9ac-c139-4202-92d0-1754cb15c7eb">     <div><span>下载：<br />
+</span><span>nx</span><span>-</span><span>X11</span><span>-</span><span>compat</span><span>-</span><span>X.Y.Z</span><span>-</span><span>N.tar.gz&nbsp;
+</span><span>nxwin</span><span>-</span><span>X.Y.Z</span><span>-</span><span>N.tar.gz&nbsp;
+</span><span>nxauth</span><span>-</span><span>X.Y.Z</span><span>-</span><span>N.tar.gz&nbsp;
+</span><span>nxcomp</span><span>-</span><span>X.Y.Z</span><span>-</span><span>N.tar.gz&nbsp;
+<br />
+</span><span>在cygwin中，执行：<br />
+</span><span>#</span><span> tar zxvf nx-X11-compat-X.Y.Z-N.tar.gz </span><span style="color: #008000;"><br />
+</span><span>#</span><span> tar zxvf nxwin-X.Y.Z-N.tar.gz </span><span style="color: #008000;"><br />
+</span><span>#</span><span> tar zxvf nxauth-X.Y.Z-N.tar.gz </span><span style="color: #008000;"><br />
+</span><span>#</span><span> tar zxvf nxcomp-X.Y.Z-N.tar.gz </span><span style="color: #008000;"><br />
+</span><span>#</span><span> cd nxcomp </span><span style="color: #008000;"><br />
+</span><span>#</span><span> ./configure </span><span style="color: #008000;"><br />
+</span><span>#</span><span> make </span><span style="color: #008000;"><br />
+</span><span>#</span><span> cd .. </span><span style="color: #008000;"><br />
+</span><span>#</span><span> cd nx-X11 </span><span style="color: #008000;"><br />
+</span><span>#</span><span> make World </span><span style="color: #008000;"><br />
+</span><span style="color: #000000;"><br />
+</span></div>   </div> </div></p>
+
+<h4 id="span:7ee71ad4208d41e4612ab213da0baaf7"><span></h4>
+
+<p>NX Cilent开发步骤</span></p>
+
+<p><span>基于NX Library开发一个NX Client并不是什么难事，在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参照这些工程的实现。 </span></p>
+
+<p><span>svn co </span><a href="http://svn.berlios.de/svnroot/repos/freenx/trunk"><span>http://svn.berlios.de/svnroot/repos/freenx/trunk</span></a><span> freenx</span></p>
+
+<p><span>NX Client与NX Server的交互过程见：</span><a href="http://www.cnblogs.com/coderzh/archive/2010/10/07/nxclient-develop.html"><span>NX Client开发步骤</span></a></p>
+
+<p>&nbsp;</p>
+
+<p><span>瘦客户端那些事 系列：</span></p>
+
+<p><a href="http://www.cnblogs.com/coderzh/archive/2010/09/11/thincilent.html"><span>瘦客户端那些事 - 开篇</span></a></p>
+
+<p><a href="http://www.cnblogs.com/coderzh/archive/2010/09/24/thinclient-protocol.html"><span>瘦客户端那些事 - 远程传输协议</span></a></p>
+
+<p><a href="http://www.cnblogs.com/coderzh/archive/2010/10/07/thinclient-secret-of-nomachine.html"><span>瘦客户端那些事 - NoMachine的秘密</span></a>
+ <span>&hellip;&hellip;</span></p>
+
+<p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2010/10/07/thinclient-secret-of-nomachine.html">http://www.cnblogs.com/coderzh/archive/2010/10/07/thinclient-secret-of-nomachine.html</a></strong></p>
+
+                      
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+
+              <div class="clear"></div>
+
+              <p class="post-tags">
+                <span>Tags:</span>
+                
+              </p>
+
+              <h4 class="heading">
+  <i class="fa fa-hand-o-right"></i>Related posts</h4>
+
+    <ul class="related-posts group">
+    
+    
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+    </ul>
+
+
+
+              <section id="comments" class="themeform">
+<div class="ds-thread" data-thread-key="/2010/10/07/thinclient-secret-of-nomachine/" data-title="瘦客户端那些事 - NoMachine的秘密" data-url="http://blog.coderzh.com/2010/10/07/thinclient-secret-of-nomachine/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"coderzh"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+</section>
+
+
+              
+            </div>
+
+
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p>微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking</p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2010/09/29/version-control/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>关于版本控制软件</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+        <a href="http://blog.coderzh.com/2010/10/07/nxclient-develop/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>NX Client开发步骤</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+    <div id="tag_cloud-2" class="widget widget_tag_cloud"><h3>Tags</h3>
+      <div class="tagcloud">
+        <p class="post-tags">
+          
+              
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+
+  <nav class="nav-container group" id="nav-footer">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap">
+      <ul id="menu-default-menu-1" class="nav container group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2015. All Rights Reserved. <br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+
+</footer>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10147768-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
