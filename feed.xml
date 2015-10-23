@@ -6,7 +6,73 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 17 Oct 2015 10:16:41 CST</updated>
+        <updated>Fri, 23 Oct 2015 07:08:11 CST</updated>
+        
+        <item>
+            <title>程序员直播写代码网站livecoding.tv即将登陆中国，你有兴趣吗？</title>
+            <link>http://blog.coderzh.com/2015/10/23/livecoding</link>
+            <pubDate>Fri, 23 Oct 2015 07:08:11 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/10/23/livecoding</guid>
+            <description>
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/livecoding.jpg-wt&#34; alt=&#34;livecoding&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;lol直播:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;LOL直播&lt;/h3&gt;
+
+&lt;p&gt;之前玩LOL那段时间，在不玩游戏的时候最爱的就是看别人直播打游戏。最早的时候，是在own3d.tv上看，后来twitch.tv异军突起，直接统领了国外竞技游戏直播平台。比如那时候看HotshotGG玩豹女，Dyrus玩奥拉夫，甚至看他在Ban/Pick阶段切出去玩俄罗斯方块，也极为有趣。后来twitch.tv越来越卡了，随之YY直播主播兴起，以及现在的斗鱼直播，我也十分爱看。有的主播不但技术强，也十分风趣幽默，看他们和高手对决，或者代练虐菜，也十分享受。比如我比较喜欢的主播有阿倪蛋糕店、董小飒，还有玩德莱文玩到逆天的文森特。这些人都不是职业选手，但是他们的操作意识都十分让人惊叹。（也许之前关于LOL的那些好玩事可以单独开一篇来讲。）&lt;/p&gt;
+
+&lt;p&gt;没玩LOL已经一年多了，不知道现在的情况如何了。有一点可以确定，LOL还是那么的火，直播LOL让主播赚的盆满钵满。观众也十分爱看。就像我们小时候总喜欢站在高手后边看他们怎么玩游戏，怎么一币通关是一个道理。&lt;/p&gt;
+
+&lt;h3 id=&#34;直播写代码:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;直播写代码&lt;/h3&gt;
+
+&lt;p&gt;直播越来越火，有人直播唱歌，有人直播玩游戏，甚至有人直播睡觉打呼。&lt;/p&gt;
+
+&lt;p&gt;然而，程序员直播写代码，你会喜欢看吗？&lt;/p&gt;
+
+&lt;p&gt;第一次听说直播写代码，是在《内核恐慌》的第5期关于编程字体的，里面提到美国有个经验丰富的游戏引擎开发者在网上直播写游戏。&lt;/p&gt;
+
+&lt;p&gt;后来查了下资料，具体是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HandmadeHero.jpg-w&#34; alt=&#34;HandmadeHero&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://mollyrocket.com/casey/about.html&#34;&gt;Casey Muratori&lt;/a&gt;是西雅图的一名经验丰富的游戏引擎开发者，据他的介绍，他已经拥有30年的游戏开发经验，参与开发的游戏引擎被数以千计的游戏采用。但是他经常抱怨现在的开发者有那么好的硬件条件，却做不出高效率的游戏出来。&lt;/p&gt;
+
+&lt;p&gt;于是他决定在网上直播写一个游戏：&lt;a href=&#34;http://handmadehero.org/&#34;&gt;Handmade Hero&lt;/a&gt;，这个游戏不会使用任何游戏引擎，而是一行一行代码直播码出来。在直播的过程中，他除了敲代码，还会有大量的讲解，让观看直播的人获得更多系统的知识。你还可以给他支持15美元，这样你就可以随时获取到他的最新源代码，当游戏最终发布的时候，你还可以直接获得最终的发行版本。&lt;/p&gt;
+
+&lt;p&gt;他是在twitch.tv上直播的，地址是：&lt;a href=&#34;http://www.twitch.tv/handmade_hero&#34;&gt;http://www.twitch.tv/handmade_hero&lt;/a&gt;，在&lt;a href=&#34;https://www.youtube.com/user/handmadeheroarchive&#34;&gt;You Tube&lt;/a&gt;（当然，这个网站并不存在）上可以观看之前的直播内容。&lt;/p&gt;
+
+&lt;p&gt;优酷里有关于这个项目的宣传视频，非常炫酷：&lt;a href=&#34;http://v.youku.com/v_show/id_XODU2NDQxODky.html&#34;&gt;http://v.youku.com/v_show/id_XODU2NDQxODky.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这样牛逼的程序员在网上直播写代码，你有兴趣看吗？&lt;/p&gt;
+
+&lt;p&gt;我觉得我会喜欢看。&lt;/p&gt;
+
+&lt;h3 id=&#34;livecoding-tv:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;Livecoding.tv&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/livecoding-example.jpg-w&#34; alt=&#34;livecoding-example&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;后来甚至出来一个专门的直播写代码网站：&lt;a href=&#34;http://www.livecoding.tv&#34;&gt;Livecoding&lt;/a&gt;，是Y-Combinator孵化器下的项目，确实是正儿八经的要进军这个看起来非常小众的市场。&lt;/p&gt;
+
+&lt;p&gt;于是我上Livecoding，注册账号，观看直播。在上面你可以针对自己的喜好选择不同的编程语言，可以看当天直播也可以看过往录像，看的时候还可以聊天互动，功能基本和twitch.tv差不多。然而，在国内访问，体验只能用一个字来形容：卡。卡到根本看不了，在我做了各种尝试之后，最后还是放弃了。&lt;/p&gt;
+
+&lt;p&gt;今早收到一封邮件，是Livecoding发来的，标题和正文都是中文。内容是：Livecoding即将全面登录中国。 Livecoding正在国内组建团队，在国内架设服务器，预计2016年能登录中国。有任何意见、想法或者经验的同学，可以联系他们michael@livecoding.tv。&lt;/p&gt;
+
+&lt;h3 id=&#34;小众市场才会比较有趣:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;小众市场才会比较有趣&lt;/h3&gt;
+
+&lt;p&gt;这无疑是个好消息，到时候除了可以顺畅的观看各路大神写代码，甚至自己也可以尝试一下当一回主播，比如直播帮学美术的堂弟写个毕业设计要求的小游戏之类的。&lt;/p&gt;
+
+&lt;p&gt;不过，已经有人尝试过了在虎牙和斗鱼上直播写代码，但观看的人数非常少。相对于美女直播和大神游戏玩家，直播撸代码对大众没有多少吸引力，这确实是一个小众市场。&lt;/p&gt;
+
+&lt;p&gt;然而，小众市场才会更加有趣。大众的东西虽然能吸引到更多的人，但往往趋于平庸，能被小众市场吸引的人，往往本身就对这个东西非常感兴趣，如果在小众市场上挖掘的很深，能更加深入小众用户的心，获得更高的忠诚度。&lt;/p&gt;
+
+&lt;p&gt;假如在程序圈内兴起了一股直播撸代码的热潮，你会想从观看直播过程中获得一些什么呢？比如，我就非常好奇，各路BAT或者业界专家大牛，你们写代码时是怎样一种状态，你们使用什么样的编辑器或IDE，选用什么样的字体，使用哪些快捷键，实现功能的思路是怎样的，怎样查文档，怎么Google，用哪些新奇好玩的工具软件，有哪些实用有趣的编程技巧……&lt;/p&gt;
+
+&lt;p&gt;我可以想象到这是一种什么样的场景，就如同我在大学时看一位牛X同学现场教学如何从零开始做一个网站一样，包括写代码、美工P图切图、排版，噼里啪啦一顿快捷键一气呵成，让你看的眼花缭乱，顿时感觉不明觉厉。可惜这位牛X的同学最后还是选择了留校继续研读土木工程。&lt;/p&gt;
+
+&lt;p&gt;对于Livcoding登录中国，我还是有些小期待的。你有兴趣吗？&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>一篇文章了解什么是增长黑客</title>
@@ -16,7 +82,7 @@
             <guid>http://blog.coderzh.com/2015/10/17/read-growth-hacker/</guid>
             <description>
 
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/GrowthHacker.jpg-w&#34; alt=&#34;GrowthHacker&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/GrowthHacker.jpg-wt&#34; alt=&#34;GrowthHacker&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;最近在Kindle上读了范冰的《增长黑客》，对增长黑客有了更系统的了解。联想到我自己的微信公众号hacker-thinking和独立博客&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;blog.coderzh.com&lt;/a&gt;，我也在苦苦寻找用户增长的终极奥义。我也尝试过各种SEO（搜索引擎优化），比如规范链接地址、nofollow防止权重降低、提供sitemap、增加关键词、规范robots.txt、加快访问速度、增加反向链接等等。肯定有人会说，这些东西然并卵，高质量的内容才是最重要的。这点我同意。&lt;/p&gt;
 
@@ -324,7 +390,7 @@
             <guid>http://blog.coderzh.com/2015/10/11/open-source-thinking/</guid>
             <description>
 
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/OpenSource.png-w&#34; alt=&#34;OpenSource&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/OpenSource.png-wt&#34; alt=&#34;OpenSource&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;程序员是一个热衷于开放、分享、协作的群体。他们将有创造力的代码公开分享，供大家审阅、评判、学习和使用，他们接受用户的意见，欢迎一切用户提交的PR改进。&lt;/p&gt;
 
@@ -384,7 +450,7 @@
             <guid>http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</guid>
             <description>
 
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoImportJekyll.png-w&#34; alt=&#34;HugoImportJekyll&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoImportJekyll.png-wt&#34; alt=&#34;HugoImportJekyll&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;国庆长假期间，给Hugo提了几个PR，其中最主要的一个是给Hugo增加了内置的Jekyll迁移工具。这样之前的Jekyll用户可以通过一个简单的命令就可以将网站转化成Hugo站点：&lt;/p&gt;
 
@@ -1895,49 +1961,6 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 &lt;p&gt;这本书有点小坑了，只要1块钱就买来看了，1个小时不到就可以读完，然后感慨一下，这样也可以出一本书？ 虽然如此，假如你看一本书，哪怕只有一点点收货，也算是很值了。我觉得书里的这幅图还是挺有意思的，程序员职业发展四大象限：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/JobDeerEBSI.jpg&#34; alt=&#34;JobDeerEBSI&#34; /&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>使用Jekyll官方的ReadMore摘要功能</title>
-            <link>http://blog.coderzh.com/2015/08/15/JekyllReadMore/</link>
-            <pubDate>Sat, 15 Aug 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/08/15/JekyllReadMore/</guid>
-            <description>
-
-&lt;p&gt;今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。&lt;/p&gt;
-
-&lt;p&gt;我之前的方法，在index.html中&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; {{ post.content ||split:&#39;&#39; | first }} 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后在Post里，需要分隔的摘要后面加&lt;code&gt;。&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;摘要内容...
-
-正文内容...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;官方做法-excerpt:b34704c1c1176e970544bf334bae729d&#34;&gt;官方做法: excerpt&lt;/h3&gt;
-
-&lt;p&gt;官方的方法是，在_config.yml里，指定摘要的分隔符：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;excerpt_separator:  &#39;&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后，在index.html中：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; {{ post.excerpt }} 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一般情况下，摘要需要去掉html标签，所以一般这样用：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;  {{ post.excerpt | strip_html }} 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后，和前一种方法一样，在摘要后面加``  即可。&lt;/p&gt;
 </description>
         </item>
         
