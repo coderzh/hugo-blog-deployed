@@ -6,7 +6,57 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 11 Oct 2015 10:06:11 CST</updated>
+        <updated>Sun, 25 Oct 2015 23:37:16 CST</updated>
+        
+        <item>
+            <title>Hugo中文网站gohugo.org上线</title>
+            <link>http://blog.coderzh.com/2015/10/25/gohugo-org/</link>
+            <pubDate>Sun, 25 Oct 2015 23:37:16 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/10/25/gohugo-org/</guid>
+            <description>
+
+&lt;p&gt;之前我在博客里写了一篇文章：&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;使用hugo搭建个人博客站点&lt;/a&gt;，之后有很多人给我留言或者邮件，列举了在搭建Hugo时遇到的各种问题，并且提出希望能有一个中文的Hugo网站。&lt;/p&gt;
+
+&lt;p&gt;于是，我利用周末的时间，注册域名（居然注册到了 &lt;code&gt;gohugo.org&lt;/code&gt; 这个域名），用&lt;code&gt;Hugo&lt;/code&gt;本身搭建了这个网站，运行在 &lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;DigitalOcean&lt;/a&gt; 的 &lt;code&gt;VPS&lt;/code&gt; 上。这就是 &lt;a href=&#34;http://www.gohugo.org&#34;&gt;http://www.gohugo.org&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;gohugo-org:39bef422aa544bc9d53b933146f67273&#34;&gt;gohugo.org&lt;/h3&gt;
+
+&lt;p&gt;网站的地址是：&lt;a href=&#34;http://www.gohugo.org&#34;&gt;http://www.gohugo.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;网站所有内容都在 &lt;code&gt;GitHub&lt;/code&gt; 开源，地址：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;https://github.com/coderzh/gohugo.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;该Repository已经设置了WebHook，只要有push就会自动触发 &lt;code&gt;VPS&lt;/code&gt; 更新部署。如果你感兴趣，可以加入进来，你提的PR一旦被Merged将立即在网站更新出来。&lt;/p&gt;
+
+&lt;h3 id=&#34;截图:39bef422aa544bc9d53b933146f67273&#34;&gt;截图&lt;/h3&gt;
+
+&lt;h4 id=&#34;首页:39bef422aa544bc9d53b933146f67273&#34;&gt;首页&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-index.jpg-w&#34; alt=&#34;gohugo-index&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;文章列表:39bef422aa544bc9d53b933146f67273&#34;&gt;文章列表&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-post.jpg-w&#34; alt=&#34;gohugo-post&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;皮肤列表:39bef422aa544bc9d53b933146f67273&#34;&gt;皮肤列表&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-theme.jpg-w&#34; alt=&#34;gohugo-theme&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;示例网站:39bef422aa544bc9d53b933146f67273&#34;&gt;示例网站&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-showcase.jpg-w&#34; alt=&#34;gohugo-showcase&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;关于hugo:39bef422aa544bc9d53b933146f67273&#34;&gt;关于Hugo&lt;/h3&gt;
+
+&lt;p&gt;使用Hugo可以快速的制作一个静态站点，同时Hugo还在不断更新和发展中，相信未来会更加易用、功能越来越好。我给Hugo提过几次PR，看过Hugo的代码，从代码的角度来看，Hugo的代码写非常简洁清晰，模块分类非常的清楚，并且配备完善的单元测试。&lt;/p&gt;
+
+&lt;p&gt;对于如此优秀的东西，希望能与更多人分享，通过分享和交流，希望能促进Hugo变得越来越好，让它更加广为人知。&lt;/p&gt;
+
+&lt;p&gt;因此，所有对Hugo感兴趣的朋友欢迎加入贡献内容，同时也欢迎有任何疑问、建议或交流的朋友加入Hugo交流QQ群：512499080。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>使用Hugo Import一键迁移Jekyll</title>
@@ -1762,28 +1812,6 @@ $sudo /media/cdrom/VBoxLinuxAdditions.run
 &lt;h3 id=&#34;其他问题:d257e2f4020594dc6ae603b9b5c8c284&#34;&gt;其他问题&lt;/h3&gt;
 
 &lt;p&gt;在mount目录里，sudo执行脚本，总是Read-only file system。google了一会，发现原来是在mount的盘里去写系统路径下的文件就会出这个错。所以，不要执行mount目录的脚本就行了。（拷出来外面执行）&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>自豪的使用上了WordPress</title>
-            <link>http://blog.coderzh.com/2014/09/09/wordpress/</link>
-            <pubDate>Tue, 09 Sep 2014 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2014/09/09/wordpress/</guid>
-            <description>&lt;p&gt;自从购买了DigitalOcean的VPS，就一直在上面折腾着。首当其冲的，是把我的博客转移到VPS中来，实现自己的独立博客。开始打算的是一切自己DIY，并且我之前也写过一套博客程序，用Python+Tornado+mongodb实现的。虽然很久没有维护，但还是可用的状态。&lt;/p&gt;
-
-&lt;p&gt;最终，我还是放弃了自己写的NancyBlog(&lt;a href=&#34;http://code.google.com/p/nancyblog/)，而是选择了大名鼎鼎的WordPress，原因如下：&#34;&gt;http://code.google.com/p/nancyblog/)，而是选择了大名鼎鼎的WordPress，原因如下：&lt;/a&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;我只是博客的使用者，应该把博客程序的开发交给更加有经验和经历的人。&lt;/li&gt;
-&lt;li&gt;我自己的博客，要换个皮肤比较自己DIY很久。而WordPress有大量的皮肤，随意你切换。&lt;/li&gt;
-&lt;li&gt;WordPress有大量的插件支持，比如使用MarkDown编写博文。能完全满足我写博客的需求。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;开始我是打算把博客园里的博客导入过来的，毕竟我在博客园写博客已经有7年的时间了，积累了不少的文章。网上搜寻了导入的方法，找到一篇文章：将博客园(cnblogs.com)数据导入到wordpress(&lt;a href=&#34;http://levi.cg.am/archives/163)。我安装插件后导入毫无反应，应该是这个插件太久没有更新了，已经不能解析最新的博客园备份文章了。无奈只好先放一放，之后有时间自己实现个导入功能。当然，新的博客，一切从头开始，也未必不是一件好事。&#34;&gt;http://levi.cg.am/archives/163)。我安装插件后导入毫无反应，应该是这个插件太久没有更新了，已经不能解析最新的博客园备份文章了。无奈只好先放一放，之后有时间自己实现个导入功能。当然，新的博客，一切从头开始，也未必不是一件好事。&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;创业艰难，坚持不易，思考和总结不能停，博文还是得继续。给自己加油吧！&lt;/p&gt;
 </description>
         </item>
         
