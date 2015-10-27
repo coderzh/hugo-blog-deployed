@@ -173,7 +173,7 @@
                   <h1 class="post-title">使用hugo搭建个人博客站点</h1>
 
                   <p class="post-byline">
-                    by  · 2015年08月29日 · 5127 Words ·
+                    by  · 2015年08月29日 · 5150 Words ·
                     ~11min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-08-29-Hugo.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -394,16 +394,24 @@ Update(2015-09-03): 已经提交<a href="https://github.com/spf13/hugo/pull/1392
 
 <h3 id="关于部署:826b8fbf4b1c9d49ecec9c1552f05b58">关于部署</h3>
 
-<p>Update(2015-10-08)</p>
+<p>假设你需要部署在 <code>GitHub Pages</code> 上，首先在GitHub上创建一个Repository，命名为：<code>coderzh.github.io</code> （coderzh替换为你的github用户名）。</p>
 
-<p>Hugo部署到GitHub，首先在config.yaml(.toml)里设置好baseurl，然后用Hugo生成静态页面（生成的文件全在public文件夹里）</p>
+<p>在站点根目录执行 <code>Hugo</code> 命令生成最终页面：</p>
 
-<pre><code class="language-bash">$ hugo -v  --cacheDir=&quot;./cache&quot;
+<pre><code class="language-bash">$ hugo --theme=hyde --baseUrl=&quot;http://coderzh.github.io/&quot;
 </code></pre>
 
-<p>然后将public文件夹里的全部内容都push到你的GitHub的Repo的gh-pages分支即可。</p>
+<p>如果一切顺利，所有静态页面都会生成到 <code>public</code> 目录，将pubilc目录里所有文件 <code>push</code> 到刚创建的Repository的 <code>master</code> 分支。</p>
 
-<p>官方关于在GitHub部署的文档：<a href="https://gohugo.io/tutorials/github-pages-blog/">https://gohugo.io/tutorials/github-pages-blog/</a></p>
+<pre><code class="language-bash">$ cd public
+$ git init
+$ git remote add origin https://github.com/coderzh/coderzh.github.io.git
+$ git add -A
+$ git commit -m &quot;first commit&quot;
+$ git push -u origin master
+</code></pre>
+
+<p>浏览器里访问：<code>http://coderzh.github.io/</code></p>
 
 <p>自动部署的脚本可以参考我的Repo里的<code>deploy.py</code>脚本：<a href="https://github.com/coderzh/coderzh-hugo-blog">https://github.com/coderzh/coderzh-hugo-blog</a></p>
 

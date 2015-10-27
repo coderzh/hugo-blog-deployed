@@ -1940,16 +1940,24 @@ Update(2015-09-03): 已经提交&lt;a href=&#34;https://github.com/spf13/hugo/pu
 
 &lt;h3 id=&#34;关于部署:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;关于部署&lt;/h3&gt;
 
-&lt;p&gt;Update(2015-10-08)&lt;/p&gt;
+&lt;p&gt;假设你需要部署在 &lt;code&gt;GitHub Pages&lt;/code&gt; 上，首先在GitHub上创建一个Repository，命名为：&lt;code&gt;coderzh.github.io&lt;/code&gt; （coderzh替换为你的github用户名）。&lt;/p&gt;
 
-&lt;p&gt;Hugo部署到GitHub，首先在config.yaml(.toml)里设置好baseurl，然后用Hugo生成静态页面（生成的文件全在public文件夹里）&lt;/p&gt;
+&lt;p&gt;在站点根目录执行 &lt;code&gt;Hugo&lt;/code&gt; 命令生成最终页面：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo -v  --cacheDir=&amp;quot;./cache&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo --theme=hyde --baseUrl=&amp;quot;http://coderzh.github.io/&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;然后将public文件夹里的全部内容都push到你的GitHub的Repo的gh-pages分支即可。&lt;/p&gt;
+&lt;p&gt;如果一切顺利，所有静态页面都会生成到 &lt;code&gt;public&lt;/code&gt; 目录，将pubilc目录里所有文件 &lt;code&gt;push&lt;/code&gt; 到刚创建的Repository的 &lt;code&gt;master&lt;/code&gt; 分支。&lt;/p&gt;
 
-&lt;p&gt;官方关于在GitHub部署的文档：&lt;a href=&#34;https://gohugo.io/tutorials/github-pages-blog/&#34;&gt;https://gohugo.io/tutorials/github-pages-blog/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd public
+$ git init
+$ git remote add origin https://github.com/coderzh/coderzh.github.io.git
+$ git add -A
+$ git commit -m &amp;quot;first commit&amp;quot;
+$ git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;浏览器里访问：&lt;code&gt;http://coderzh.github.io/&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;自动部署的脚本可以参考我的Repo里的&lt;code&gt;deploy.py&lt;/code&gt;脚本：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog&lt;/a&gt;&lt;/p&gt;
 
