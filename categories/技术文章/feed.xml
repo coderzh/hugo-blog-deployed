@@ -1264,6 +1264,16 @@ $ git push -u origin master
 &lt;p&gt;自动部署的脚本可以参考我的Repo里的&lt;code&gt;deploy.py&lt;/code&gt;脚本：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;全自动化部署到GitHub和GitCafe，见我的另一篇博客：&lt;a href=&#34;http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/&#34;&gt;通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo中文文档:826b8fbf4b1c9d49ecec9c1552f05b58&#34;&gt;Hugo中文文档&lt;/h3&gt;
+
+&lt;p&gt;我用Hugo本身做了一个Hugo中文文档网站：&lt;a href=&#34;http://www.gohugo.org/&#34;&gt;http://www.gohugo.org/&lt;/a&gt;， 并且在不断完善中，欢迎访问。&lt;/p&gt;
+
+&lt;p&gt;同时，欢迎加入Hugo交流QQ群：512499080&lt;/p&gt;
+
+&lt;p&gt;以及关注微信公众号：hacker-thinking&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.coderzh.com/public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         
