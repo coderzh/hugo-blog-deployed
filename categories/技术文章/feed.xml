@@ -6,7 +6,60 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 01 Nov 2015 07:37:56 CST</updated>
+        <updated>Sun, 01 Nov 2015 23:52:31 CST</updated>
+        
+        <item>
+            <title>Hugo中文文档翻译计划</title>
+            <link>http://blog.coderzh.com/2015/11/01/hugo-translate/</link>
+            <pubDate>Sun, 01 Nov 2015 23:52:31 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/11/01/hugo-translate/</guid>
+            <description>
+
+&lt;p&gt;中文文档：&lt;a href=&#34;http://www.gohugo.org/doc/&#34;&gt;http://www.gohugo.org/doc/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;GitHub：&lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;https://github.com/coderzh/gohugo.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;hugo-介绍:f3862f833759cf589a5fc35c5cf4902d&#34;&gt;Hugo 介绍&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://spf13.com&#34;&gt;spf13&lt;/a&gt; 对于 Hugo 的英文原版介绍地址在这，就不另行翻译了：&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;https://gohugo.io/overview/introduction/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;原文大致意思是当前的静态网站生成工具对环境依赖过多，性能较差，于是使用 Go 语言写了一个静态网站生成器 Hugo 。不仅解决了环境依赖、性能较差的问题，还有使用简单、部署方便等诸多优点，通过 Liveload 实时刷新，极大的优化文章的写作体验。&lt;/p&gt;
+
+&lt;h4 id=&#34;hugo-能做什么:f3862f833759cf589a5fc35c5cf4902d&#34;&gt;Hugo 能做什么&lt;/h4&gt;
+
+&lt;p&gt;通过 Hugo 你可以快速搭建你的静态网站，比如博客系统、文档介绍、公司主页、产品介绍等等。相对于其他静态网站生成器来说，Hugo 具备如下特点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;极快的页面编译生成速度。（ ~1&amp;nbsp;ms 每页面）&lt;/li&gt;
+&lt;li&gt;完全跨平台支持，可以运行在 &lt;i class=&#34;fa fa-apple&#34;&gt;&lt;/i&gt;&amp;nbsp;Mac OS&amp;nbsp;X, &lt;i class=&#34;fa fa-linux&#34;&gt;&lt;/i&gt;&amp;nbsp;Linux, &lt;i class=&#34;fa fa-windows&#34;&gt;&lt;/i&gt;&amp;nbsp;Windows, 以及更多!&lt;/li&gt;
+&lt;li&gt;安装方便 &lt;a href=&#34;http://www.gohugo.org/doc/overview/installing/&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;本地调试 &lt;a href=&#34;http://www.gohugo.org/doc/overview/usage/&#34;&gt;Usage&lt;/a&gt; 时通过 &lt;a href=&#34;http://www.gohugo.org/doc/extras/livereload/&#34;&gt;LiveReload&lt;/a&gt; 自动即时刷新页面。&lt;/li&gt;
+&lt;li&gt;完全的皮肤支持。&lt;/li&gt;
+&lt;li&gt;可以部署在任何的支持 HTTP 的服务器上。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;关于翻译文档:f3862f833759cf589a5fc35c5cf4902d&#34;&gt;关于翻译文档&lt;/h3&gt;
+
+&lt;p&gt;中文翻译文档目的是让 Hugo 在中国能得到更好的推广，让有需要和对 Hugo 感兴趣的人能从此文档中获得微薄帮助。&lt;/p&gt;
+
+&lt;p&gt;此中文文档的英文原版皆从 Hugo 官方 GitHub 上来：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/tree/v0.14.docs&#34;&gt;https://github.com/spf13/hugo/tree/v0.14.docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;取自 v0.14.0 版本，基于 revision: &lt;a href=&#34;https://github.com/spf13/hugo/tree/acd6ad92c181cd7cdb485467cef0e8986911fb02&#34;&gt;acd6ad9&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;翻译文档最麻烦的是能否跟上官方文档的更新， Hugo 官方文档目前虽在 v0.14.0 版本，但也经常有些更新，待本文档翻译完成之后，每隔一定的周期，根据本文所记录的 revision 对原文档进行 diff，然后补上更新内容。&lt;/p&gt;
+
+&lt;p&gt;此次翻译我也希望借助社区之力，如果你对此有兴趣，请前往本站的 GitHub &lt;strong&gt;提交一个 Issue，标题注明希望翻译的文档名称&lt;/strong&gt; 即可。&lt;/p&gt;
+
+&lt;p&gt;Issue 提交地址： &lt;a href=&#34;https://github.com/coderzh/gohugo.org/issues&#34;&gt;https://github.com/coderzh/gohugo.org/issues&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;待翻译文档路径： &lt;a href=&#34;https://github.com/coderzh/gohugo.org/tree/master/content/doc&#34;&gt;https://github.com/coderzh/gohugo.org/tree/master/content/doc&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;然后 Fork 该 &lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;Repo&lt;/a&gt; ，通过 Pull Request 的方式提交过来便是，不胜感激。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>走进前端开发之：Bootstrap</title>
@@ -1865,50 +1918,6 @@ urlpatterns = patterns(&#39;&#39;,
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>为什么心跳包(HeartBeat)是必须的？</title>
-            <link>http://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/</link>
-            <pubDate>Thu, 05 Mar 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/Heartbeats.jpg-w&#34; alt=&#34;HeartBeat&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？&lt;/p&gt;
-
-&lt;p&gt;由于连接丢失时，TCP不会立即通知应用程序。比如说，客户端程序断线了，服务端的TCP连接不会检测到断线，而是一直处于连接状态。这就带来了很大的麻烦，明明客户端已经断了，服务端还维护着客户端的连接，照常执行着该玩家的游戏逻辑……&lt;/p&gt;
-
-&lt;p&gt;心跳包就是用来及时检测是否断线的一种机制，通过每间隔一定时间发送心跳数据，来检测对方是否连接。是属于应用程序协议的一部分。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;问题1： TCP为什么不自己提供断线检测？&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;首先，断线检测需要轮询发送检测报文，会消耗一定的网络带宽和暂用一定的网络资源。如果把它做成TCP的底层默认功能，那些不需要断线检测的应用程序将会浪费不必要的带宽资源。&lt;/p&gt;
-
-&lt;p&gt;另外，TCP不提供连接丢失及时通知的最重要原因与其主要设计目的目标之一有关：出现网络故障时维护通信的能力。TCP是美国国防部赞助研究的，一种即使发生战争或自然灾害这种严重网络损坏情况下，也能维护可靠网络通信的网络协议。通常，网络故障只是暂时的，有时路由器会在TCP临时连接丢失后默默的重新连上。所以，TCP本身并不提供那么及时的断线检测。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;问题2： TCP的KeepAlive机制可以用来及时检测连接状态吗？&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;TCP有个KeepAlive开关，打开后可以用来检测死连接。通常默认是2小时，可以自己设置。但是注意，这是TCP的全局设置。假如为了能更及时的检测出断开的连接，把&lt;code&gt;tcp_keepalive_time&lt;/code&gt;和&lt;code&gt;tcp_keepalive_intvl&lt;/code&gt;的时间改小（参考：&lt;a href=&#34;http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/usingkeepalive.html&#34;&gt;Link&lt;/a&gt;），该机器上所有应用程序的KeepAlive检测间隔都会变小，显然是不能接受的。因为不同应用程序的需求是不一样的。&lt;/p&gt;
-
-&lt;p&gt;(在某些平台的Socket实现已经支持为每条连接单独设置KeepAlive参数)&lt;/p&gt;
-
-&lt;p&gt;KeepAlive本质上来说，是用来检测长时间不活跃的连接的。所以，不适合用来及时检测连接的状态。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;问题3：心跳包（HeartBeat）为什么是好的方式及时检测连接状态？&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;具有更大的灵活性，可以自己控制检测的间隔，检测的方式等等。&lt;/li&gt;
-&lt;li&gt;心跳包同时适用于TCP和UDP，在切换TCP和UDP时，上层的心跳包功能都适用。（其实这种情况很少遇到）&lt;/li&gt;
-&lt;li&gt;有些情况下，心跳包可以附带一些其他信息，定时在服务端和客户端之间同步。（比如帧数同步）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;结论:f76865b2306592b0f5c605a6c67f5afe&#34;&gt;结论&lt;/h3&gt;
-
-&lt;p&gt;需要及时检测TCP连接状态，心跳包(HeartBeat)还是必须的。&lt;/p&gt;
 </description>
         </item>
         
