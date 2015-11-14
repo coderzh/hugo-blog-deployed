@@ -6,7 +6,134 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 07 Nov 2015 08:44:26 CST</updated>
+        <updated>Sat, 14 Nov 2015 19:36:38 CST</updated>
+        
+        <item>
+            <title>网站被随机挂广告，疑似被 HTTP 劫持</title>
+            <link>http://blog.coderzh.com/2015/11/14/http-dns-hijack/</link>
+            <pubDate>Sat, 14 Nov 2015 19:36:38 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/11/14/http-dns-hijack/</guid>
+            <description>
+
+&lt;p&gt;最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。&lt;/p&gt;
+
+&lt;h2 id=&#34;现象:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;现象&lt;/h2&gt;
+
+&lt;p&gt;首先，广告长这样：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/blogads.jpg&#34; alt=&#34;blogads&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;太可恨了！检查了网站的源文件，没有被修改的痕迹，也根本不会有什么广告代码。所以怀疑是被运营商劫持了！&lt;/p&gt;
+
+&lt;p&gt;我使用的是广州电信100M光纤，被挂广告只有在家里上电信光纤时会出现，连手机里访问也会有广告：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/phoneads.jpg&#34; alt=&#34;phoneads&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;但是如果手机连的是联通4G，就没有一点问题！&lt;/p&gt;
+
+&lt;p&gt;后来在追查过程中，发现遇到这个问题的不止我一个人，比如，云风在他的新浪微博里说到：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://weibo.com/2388714105/D2013qUSo?type=comment#_rnd1447506909896&#34;&gt;http://weibo.com/2388714105/D2013qUSo?type=comment#_rnd1447506909896&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/yunfengads.jpg-ws&#34; alt=&#34;yunfengads&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;另一个博主也遇到这个问题：&lt;a href=&#34;http://www.lovefcwr.com/20151110-google-ca-pub-8129816473729933&#34;&gt;网站被黑了随机挂ca-pub-8129816473729933的google广告，怎么办？&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;还有一个用户在 Google Adsens 也举报了这个广告主：&lt;a href=&#34;https://productforums.google.com/forum/#!topic/adsense/qeeYrD7kvUA;context-place=forum/adsense&#34;&gt;Please help us to stop this Google Adsense user &lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;初步分析:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;初步分析&lt;/h2&gt;
+
+&lt;p&gt;这个问题出现在最近1，2个月，被插入广告的都属于同一个广告主：ca-pub-8129816473729933 。&lt;/p&gt;
+
+&lt;p&gt;很多网站广告插入的方式和表现是完全一致的。广告隔断时间会出现一次，刷新网页后就消失了。&lt;/p&gt;
+
+&lt;p&gt;我和云风使用的宽带都是广州电信！（我手机换成联通移动 4G 就没问题。）&lt;/p&gt;
+
+&lt;p&gt;所以，不得不怀疑是电信做了手脚，对访问的网站进行了劫持！电信也不是第一次做 &lt;strong&gt;HTTP 劫持&lt;/strong&gt; 这种事。&lt;/p&gt;
+
+&lt;p&gt;于是，我捕捉了一些现场证据，分析了劫持的脚本和基本原理，然后拨通了中国电信 10000 号。&lt;/p&gt;
+
+&lt;h2 id=&#34;10000-号:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;10000 号&lt;/h2&gt;
+
+&lt;p&gt;电信工作人员矢口否认进行了 HTTP 劫持，把原因归咎到电脑是否中毒了，WIFI 路由器被做了手脚等等。我说我的电脑杀过毒并没有问题，不仅电脑，iPhone 手机访问网页也会被嵌入广告，你是说我的 iPhone 也中毒了吗？而且切换成联通 4G 就没有问题，你说和你们没关系？ WIFI 路由器我也试了把 DNS 设置成各种不同的，包括默认的，甚至把路由器恢复出厂设置，通通没用！&lt;/p&gt;
+
+&lt;p&gt;最后他说可能和我拨号分配到的 IP 是内网 IP有关，帮我恢复到公网 IP 试试。 What ! 难道我的网络之前一直属于你们的局域网？？不应该默认就是公网 IP 吗？？&lt;/p&gt;
+
+&lt;p&gt;然而，切换公网 IP 后也并没有什么用！（中间还出现切换出错，导致我几个小时拨号不成功上不了网，哭了~~）&lt;/p&gt;
+
+&lt;p&gt;打 10000 号目前还未解决问题，解决不了去工信部投诉去。&lt;/p&gt;
+
+&lt;h2 id=&#34;深入分析:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;深入分析&lt;/h2&gt;
+
+&lt;p&gt;访问一个网站，网站的内容都是被恶意篡改过的，这多么可怕。&lt;/p&gt;
+
+&lt;p&gt;于是在 Chrome 里 “审查元素”里跟踪了一下，看看到底是如何篡改的。通过查看 Elements ，发现 html 里被嵌入了以下代码：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/adsjs2.jpg-w&#34; alt=&#34;adjs2&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;picturefill.min.js 是我网站使用的一个正常的 js 文件，查看网页源码发现，出现了两条关于 picturefill.min.js 的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;assets/picturefill/picturefill.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&amp;quot;http://blog.coderzh.com/assets/picturefill/picturefill.min.js?_Ax144746802655173=xxA.baidu.com&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后再查看请求 picturefill.min.js 时返回了什么：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/fakejs.jpg-w&#34; alt=&#34;fakejs&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/rightjs.jpg-w&#34; alt=&#34;rightjs&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上面显示，请求 picturefill.min.js 时，返回的竟然是被篡改的内容，被篡改的内容里，先是再次请求了一次原版的 picturefill.min.js ，然后就是插入 google 的广告代码。&lt;/p&gt;
+
+&lt;p&gt;从 google 的广告代码看出，广告主的 ID 是：ca-pub-8129816473729933 ， 正是和云风及之前一位博主说到的广告主是同一个！ Google 你还不赶紧查查他！&lt;/p&gt;
+
+&lt;p&gt;最后这段恶意篡改的 js 代码生成出来的嵌入广告是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/adsjs.jpg-w&#34; alt=&#34;adjs&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;之后又试验了多次，总结了进行 HTTP 劫持的基本套路：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;劫持任一 js 的请求，返回包含原 js 及恶意代码的假的 js 内容。&lt;/li&gt;
+&lt;li&gt;假的 js 通过 DOM 操作，强行在原来的网页内植入广告。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这种恶意修改 DOM 的方式，和之前常见的把原网站套入一个 iframe 的方式有所不同。基本很难防范。&lt;/p&gt;
+
+&lt;h2 id=&#34;解决方法:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;解决方法&lt;/h2&gt;
+
+&lt;p&gt;打 10000 号，投诉，投诉，再投诉。&lt;/p&gt;
+
+&lt;p&gt;工信部投诉地址：&lt;a href=&#34;http://www.chinatcc.gov.cn:8080/cms/shensus/&#34;&gt;http://www.chinatcc.gov.cn:8080/cms/shensus/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;为了找出哪一层路由做了手脚，大家通过 traceroute ( Windows 里是 tracert ) 看看访问被植入广告的网站到底经过哪些路由。下面是我的 tracert 结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;D:\Code\Go\coderzh-hugo-blog&amp;gt;tracert blog.coderzh.com
+
+通过最多 30 个跃点跟踪
+到 github.map.fastly.net [103.245.222.133] 的路由:
+
+  1    &amp;lt;1 毫秒   &amp;lt;1 毫秒   &amp;lt;1 毫秒 192.168.0.1
+  2    12 ms     2 ms     1 ms  113.109.112.1
+  3     3 ms     3 ms     3 ms  183.56.38.209
+  4     5 ms     3 ms     3 ms  183.56.30.21
+  5     9 ms     8 ms     8 ms  202.97.34.114
+  6     9 ms     8 ms     7 ms  202.97.34.74
+  7   156 ms   158 ms   156 ms  202.97.60.214
+  8   158 ms   168 ms   166 ms  ae-1.r30.tokyjp05.jp.bb.gin.ntt.net [129.250.2.157]
+  9   164 ms   176 ms   175 ms  ae-17.r01.tokyjp03.jp.bb.gin.ntt.net [129.250.6.117]
+ 10     *        *        *     请求超时。
+ 11   164 ms   164 ms   163 ms  103.245.222.133
+
+跟踪完成。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;假如你不是对一个网站很熟悉，你压根发现不了这广告根本不是网站主投放的。&lt;/p&gt;
+
+&lt;p&gt;这种强行修改你访问网页的内容来植入广告的方式，非常可怕。让我们在上网的时候没有一点安全感。如果你访问一个网站，都不能保证获取到的内容是该网站原版的内容，而是被肆意的插入广告，修改原网站内容，骗取你的账号密码，偷走你的隐私，拿走你的存款，这是多么可怕和不可接受的事。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>走进前端开发之：框架的演变</title>
@@ -1833,151 +1960,6 @@ func main() {
 
 &lt;p&gt;评论后台里，偶然发现“垃圾评论”一项，而且发现里面有东西，明明不像是垃圾评论却被归到那里，而且没有任何通知。更坑爹的是：“(系统将自动清理发表于 30 天前的垃圾评论)”holy shit!&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</title>
-            <link>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/</link>
-            <pubDate>Sun, 13 Sep 2015 08:48:52 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/</guid>
-            <description>
-
-&lt;p&gt;本文的主要内容如标题所示，通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages。如果你正好有这个需求，看这篇文章正好，可以节省你不少时间。如果不是，了解一下也无妨。&lt;/p&gt;
-
-&lt;p&gt;首先，必须解释一下，为什么需要自动部署，以及为什么需要需要同时部署到GitHub Pages和GitCafe Pages。&lt;/p&gt;
-
-&lt;h3 id=&#34;为什么要自动部署:f7c51a9b685c2720baf98649c3938c48&#34;&gt;为什么要自动部署&lt;/h3&gt;
-
-&lt;p&gt;使用Hugo生成的静态页面是在public文件夹里，部署的时候需要把public文件夹里的内容push到GitHub的gh-pages分支里。每次写完文章，除了push markdown格式的文章，还需要单独push生成的public文件夹里的东西，步骤稍显麻烦。&lt;/p&gt;
-
-&lt;p&gt;之前参照了官方的做法，使用subtree来push public，步骤简化不少。然而，这还是不够简单。因为每次修改文章之后，必须依赖一个脚本才能正确提交和部署。假如你在手机里浏览时，发现一个错别字，顺手就在GitHub的Web界面就把错别字改了，然而这样并不会重新生成静态页面和部署。有些不方便。&lt;/p&gt;
-
-&lt;p&gt;Hugo生成静态页面和部署的过程应该让机器自动来完成。&lt;strong&gt;写作应该是一个相对单纯的事情，使用Hugo的人应该更专注于写作。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;为什么需要同时部署到github-pages和gitcafe-pages:f7c51a9b685c2720baf98649c3938c48&#34;&gt;为什么需要同时部署到GitHub Pages和GitCafe Pages&lt;/h3&gt;
-
-&lt;p&gt;大公司很喜欢的一个词：容灾。GitHub出现不可访问的事情在国内也是常有的，而GitCafe作为国内的代码托管厂商，是否是一个稳定的存在也不好说。所以，将网站同时部署到这两个上面。通过DnsPod里CNAME设置线路“国内”和“国外”，不仅起到了任何一个挂掉，另一个可以继续工作的目的，还起到了CDN就近访问的作用。&lt;/p&gt;
-
-&lt;p&gt;使用GitCafe还有另外一个原因。GitHub Pages拒绝了一切百度的爬虫，所以，百度无法索引到GitHub Pages的网页。对于国内的搜索市场来说，百度的份额还是比较大的，虽然我认为看我的博客的人都不应该使用百度，但现实总是残酷的。如果希望网站被百度收录，就必须放到GitHub以外的地方。GitCafe就是一种比较好的选择。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://gitcafe.com&#34;&gt;http://gitcafe.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;如果，你只是希望使用官方的Hugo自动化部署到GitHub Pages，下面的内容你可以不用看了。你可以直接使用Wercker的服务来自动部署。&lt;/p&gt;
-
-&lt;p&gt;文档见：&lt;a href=&#34;http://gohugo.io/tutorials/automated-deployments/&#34;&gt;
-http://gohugo.io/tutorials/automated-deployments/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;由于Wercker还不支持GitCafe的部署，以及我需要使用特定的修改版本的Hugo来生成静态网页，并且希望这些步骤比较可控，所以，还是自己来折腾整个过程吧。&lt;/p&gt;
-
-&lt;h3 id=&#34;webhook:f7c51a9b685c2720baf98649c3938c48&#34;&gt;webhook&lt;/h3&gt;
-
-&lt;p&gt;webhook是GitHub上提供的Git的一种Hook机制，当代码发生变化时，比如代码被Push到GitHub的Repo时，GitHub会自动请求一个你指定的网页，并且把变更相关的参数都传递过来。入口在Repo的Settings - webhooks &amp;amp; services&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/WebHook.png-w&#34; alt=&#34;webhook&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;说明文档：&lt;a href=&#34;https://developer.github.com/webhooks/&#34;&gt;https://developer.github.com/webhooks/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;借助webhook的机制，我们就可实现当有新的文章Push之后，自动通知远程的一台机器执行一个脚本，脚本的内容就是生成静态页面和Push部署到最终的服务器。&lt;/p&gt;
-
-&lt;p&gt;webhook的Server接收webhook通知，然后执行一个脚本。这样的需求太普遍了，以至于完全不需要自己来实现。在GitHub里搜webhook可以搜出来很多。我主要挑选了Go语言的版本。主要有两个：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/qiniu/webhook&#34;&gt;https://github.com/qiniu/webhook&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/adnanh/webhook&#34;&gt;https://github.com/adnanh/webhook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;第一个是七牛写的，代码很简单，用法也很简单。开始打算用七牛的版本。最后调试的时候发现json解析失败，完全不可用啊！有点坑爹。于是换成了第二个，这个Repo有200多个Star。还是靠谱很多，最后部署，调试，非常顺利。&lt;/p&gt;
-
-&lt;p&gt;用法也很简单，首先安装webhook：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ go get github.com/adnanh/webhook
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;写一个配置文件hooks.json，里面指定需要执行的脚本：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[
-  {
-    &amp;quot;id&amp;quot;: &amp;quot;redeploy-webhook&amp;quot;,
-    &amp;quot;execute-command&amp;quot;: &amp;quot;/var/scripts/redeploy.sh&amp;quot;,
-    &amp;quot;command-working-directory&amp;quot;: &amp;quot;/var/webhook&amp;quot;
-  }
-]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;指定端口启动：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ /path/to/webhook -hooks hooks.json -port=9876 -verbose
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后它将接受webhook地址：（把它填到GitHub里的webhook里）&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;http://yourserver:9876/hooks/redeploy-webhook
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;自动部署:f7c51a9b685c2720baf98649c3938c48&#34;&gt;自动部署&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/AutoDeploy.png-w&#34; alt=&#34;AutoDeploy&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;大致的流程如上图。上图的DigitalOcean是一台VPS服务器，我用了很长时间了，速度和稳定性都不错。需要的同学使用这个链接购买，可以获得10美元的优惠：&lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;https://www.digitalocean.com/?refcode=e131e2bba197&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;整个流程中，复杂度主要是在DigitalOcean的VPS上部署服务和脚本。&lt;/p&gt;
-
-&lt;p&gt;部署的脚本可以在我的GitHub上看到：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;需要的同学可以参考下，代码见：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;deploy.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;deploy.py放到你的主工程，也就是你写markdown的Repo下。比如：/var/coderzh-hugo-blog/下&lt;/p&gt;
-
-&lt;p&gt;adnanh-webhook的配置文件：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[
-  {
-    &amp;quot;id&amp;quot;: &amp;quot;hugo-deploy&amp;quot;,
-    &amp;quot;execute-command&amp;quot;: &amp;quot;/var/webhook/hugo-deploy.sh&amp;quot;
-  }
-]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;hugo-deploy.sh里执行deploy.py：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
- 
-python /var/coderzh-hugo-blog/deploy.py --auto
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;剩下的是怎么在DigitalOcean的VPS上把这套东西部署起来。我使用nginx + supervisor搭建webhook的Server。&lt;/p&gt;
-
-&lt;p&gt;关于nginx和supervisor可以参考之前的一篇文章：&lt;a href=&#34;http://blog.coderzh.com/2014/05/19/digitalocean/&#34;&gt;http://blog.coderzh.com/2014/05/19/digitalocean/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;supervisor的配置如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[program:webhook]
-command=/root/gocode/bin/webhook -hooks /var/webhook/hooks.json -verbose -port=9876
-user=root
-directory=/var/webhook
-autorestart=true
-redirect_stderr=true
-environment=HOME=&amp;quot;/root&amp;quot;,USER=&amp;quot;root&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;关于VPS上SSH Key的设置，见：&lt;a href=&#34;https://help.github.com/articles/generating-ssh-keys/&#34;&gt;https://help.github.com/articles/generating-ssh-keys/&lt;/a&gt;  为了自动部署方便，可以不设置密码。&lt;/p&gt;
-
-&lt;p&gt;当然，还有个大前提，在VPS上安装最新版本的golang。推荐使用gvm来安装。（记得安装1.5之前必须先把1.4先装上）&lt;/p&gt;
-
-&lt;p&gt;golang 安装：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;bash &amp;lt; &amp;lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-source ~/.bashrc
-gvm version
-gvm install go1.4
-gvm install go1.5.1
-gvm use go1.5.1 --default
-go version
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;最后，Good Luck！&lt;/p&gt;
 </description>
         </item>
         
