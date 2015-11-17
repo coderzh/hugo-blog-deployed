@@ -36,7 +36,7 @@
 })
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;上面例子的效果是在 input 里输入任何内容，会自动出现在 &amp;lt;p&amp;gt; 里。非常简单直观的进行了数据绑定，只要数据发生变化， View 会自动发生变化。这就是数据驱动的。&lt;/p&gt;
+&lt;p&gt;上面例子的效果是在 input 里输入任何内容，会自动出现在 &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 里。非常简单直观的进行了数据绑定，只要数据发生变化， View 会自动发生变化。这就是数据驱动的。&lt;/p&gt;
 
 &lt;p&gt;并不是每个人都需要或者有机会去开发一个大型的 Web 应用，那些流行的框架又需要一定的学习曲线，而且很多功能并不需要使用到。或者说，你只想干一件简单的事情，但是由于引入了那些框架，使得自己不得不按照框架的规定定义一个又一个东西，最后仅仅是为了实现一个简单的功能。&lt;/p&gt;
 
@@ -75,9 +75,8 @@
 &lt;p&gt;走进前端开发系列：&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/07/front-end-dev/&#34;&gt;走进前端开发之：框架的演变&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/&#34;&gt;走进前端开发之：Bootstrap&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/&#34;&gt;走进前端开发之：Bootstrap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/07/front-end-dev/&#34;&gt;走进前端开发之：框架的演变&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         </item>
