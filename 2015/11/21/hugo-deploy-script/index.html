@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>走进前端开发之：Vue.js - CoderZh Blog</title>
+  <title>Hugo 自动化部署脚本 - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="vue.js,">
-<meta name="description" content="介绍一个小而美的前端框架：Vue.js">
+<meta name="keywords" content="Hugo,自动化,部署,">
+<meta name="description" content="hugo 自动化部署脚本 deploy.py">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="走进前端开发之：Vue.js - CoderZh Blog">
-<meta itemprop="description" content="介绍一个小而美的前端框架：Vue.js">
+<meta itemprop="name" content="Hugo 自动化部署脚本 - CoderZh Blog">
+<meta itemprop="description" content="hugo 自动化部署脚本 deploy.py">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="走进前端开发之：Vue.js - CoderZh Blog" />
+<meta property="og:title" content="Hugo 自动化部署脚本 - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/" />
+<meta property="og:url" content="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="介绍一个小而美的前端框架：Vue.js">
+<meta property="og:description" content="hugo 自动化部署脚本 deploy.py">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="走进前端开发之：Vue.js - CoderZh Blog">
-<meta name="twitter:description" content="介绍一个小而美的前端框架：Vue.js">
+<meta name="twitter:title" content="Hugo 自动化部署脚本 - CoderZh Blog">
+<meta name="twitter:description" content="hugo 自动化部署脚本 deploy.py">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/">
-  <link rel='shortlink' href="http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/"/>
+  <link rel="canonical" href="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/"/>
   <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -175,12 +175,12 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">走进前端开发之：Vue.js</h1>
+                  <h1 class="post-title">Hugo 自动化部署脚本</h1>
 
                   <p class="post-byline">
-                    by  · 2015年11月15日 · 1449 Words ·
-                    ~3min reading time |
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-11-15-front-end-dev-vuejs.md"
+                    by  · 2015年11月21日 · 608 Words ·
+                    ~2min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-11-21-hugo-deploy-script.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -189,70 +189,63 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p>上一篇中，探讨了前端框架的前世今生，最后还列举了当前比较火的几个前端框架，比如：Google 的 Angular，老牌的 Backbone , Facebook 的 React 等等。今天，我只想介绍一个小而美的前端框架：<a href="http://cn.vuejs.org/">Vue.js</a> 。</p>
+                      
 
-<p>为什么说 <a href="http://cn.vuejs.org/">Vue.js</a> 是一个小而美的前端框架呢？因为它小， min 版本大小是 72K （ gzip 压缩后是23 K），而 min 版本的 Angular 144K，React 132K。说它小而美并不单单指它的体积，因为还有很多体积比它小的框架，小而美主要是它使用起来太 TM 的简单直观了！</p>
+<p>之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。</p>
 
-<p>Vue.js 的中文主页：<a href="http://cn.vuejs.org/">http://cn.vuejs.org/</a></p>
+<p>脚本路径：<a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py">https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py</a></p>
 
-<p>在主页中，号称“10 秒钟看懂 Vue.js”，的确是这么回事：</p>
+<h3 id="原理:5dd178ee6323378b401661424ca0e072">原理</h3>
 
-<pre><code>&lt;div id=&quot;demo&quot;&gt;
-  &lt;p&gt;{{message}}&lt;/p&gt;
-  &lt;input v-model=&quot;message&quot;&gt;
-&lt;/div&gt;
-</code></pre>
+<p><code>deploy.py</code> 会自动执行 hugo 命令生成静态站点，然后将生成的文件拷贝到上层的一个目录里，然后，在那个目录里将文件 push 到你指定的 Git Repository 里。</p>
 
-<pre><code class="language-javascript">var demo = new Vue({
-  el: '#demo',
-  data: {
-    message: 'Hello Vue.js!'
-  }
-})
-</code></pre>
-
-<p>上面例子的效果是在 input 里输入任何内容，会自动出现在 <code>&lt;p&gt;</code> 里。非常简单直观的进行了数据绑定，只要数据发生变化， View 会自动发生变化。这就是数据驱动的。</p>
-
-<p>并不是每个人都需要或者有机会去开发一个大型的 Web 应用，那些流行的框架又需要一定的学习曲线，而且很多功能并不需要使用到。或者说，你只想干一件简单的事情，但是由于引入了那些框架，使得自己不得不按照框架的规定定义一个又一个东西，最后仅仅是为了实现一个简单的功能。</p>
-
-<p>所以，<a href="http://cn.vuejs.org/">Vue.js</a> 非常适合用于一些小型项目（当然，大型项目也适合。），因为可以快速上手，简单的看下它的文档就可以开始动手了。而且， Vue.js 的执行速度也非常的快。</p>
-
-<p>在 <a href="https://github.com/lhorie/todomvc-perf-comparison">TodoMVC Benchmark</a> 的评测中，得出的综合评价：Mercury, <strong>Vue</strong> and Mithril are king.</p>
-
-<p>在 Safari 6.1, OS X 的评测里，Vue.js 的性能直接排到了第一的位置：</p>
-
-<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/todomvc-pef-Safari.png" alt="todomvc-perf-Safari" /></p>
-
-<p>所以，我现在就有冲动拿 <a href="http://cn.vuejs.org/">Vue.js</a> 来做点东西了，刚好目前要做的一个项目可以用上，这样可以少写很多烦人的 JavaScript 代码了，简直完美。</p>
-
-<p><a href="http://cn.vuejs.org/">Vue.js</a>（读音 /vjuː/, 类似于 view），是一个构建数据驱动的 web 界面的库。它的作者是个中国人：尤小右，真名尤雨溪，之前在 Google Creative Lab 工作过。正是目睹了 Angular 、 Ember 框架的笨重不够灵活，Backbone 不支持数据绑定 ， Knockout 和 Ractive 在组件的嵌套和组合上不够理想，于是他决定自己重新设计一个简洁的 MVVM 数据绑定的前端框架。</p>
-
-<p>在 GitHub 上， <a href="http://cn.vuejs.org/">Vue.js</a> 已经收集了 9500 多个 Star，为了让更多人参与进来贡献代码，作者坚持保持代码测试的覆盖率为 100% 。</p>
-
-<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/vue-cov.jpg" alt="vue-cov" /></p>
-
-<p><a href="http://cn.vuejs.org/">Vue.js</a> 的目标是通过尽可能简单的 API 实现<strong>响应的数据绑定</strong>和<strong>组合的视图组件</strong>。</p>
-
-<p><strong>响应的数据绑定</strong> 就是数据驱动视图的概念。它让你在写 Web 应用界面时，只需要关注两件事：数据如何展示和数据如何变化。一旦数据发生变化时，比如用户输入，或者 ajax 请求返回后数据发现修改，对应的视图界面会自动的进行更新。（之前的做法是使用 jQuery 手动操作 DOM 更新界面元素。）</p>
-
-<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/mvvm.jpg" alt="mvvm" /></p>
-
-<p>定义好数据如何展示，绑定数据后，就只需要关心数据如何变化的事情了，是不是感觉 So Easy ！</p>
-
-<p><strong>组合的视图组件</strong> 是 <a href="http://cn.vuejs.org/">Vue.js</a> 的一个重要概念，有了组件系统，可以很好的复用组件，提高效率，从而也为开发一个大型应用提供了很好的技术保证。</p>
-
-<p>本文并不是要详细介绍 <a href="http://cn.vuejs.org/">Vue.js</a> 的特点及使用方法，因为要学习 Vue.js ，看官方的文档是最好的学习方式。作者是中国人，自带中文文档已经足够方便让你学习起步。本文的目的只是想介绍 Vue.js ，因为我认为它很了不起。</p>
-
-<p>在如此激烈的前端框架竞争环境下， 凭借作者一己之力，用小而美，精简易用，性能还那么好的 <a href="http://cn.vuejs.org/">Vue.js</a> 直接挑战了像 Google 、 Facebook 这样公司开发的前端框架。作者在设计框架时，时时刻刻遵循简单、精巧、易用的设计哲学让人钦佩。为保证代码的质量，获得更多的开发者的信赖，作者的每一行代码都经过单元测试，体现了作者的严谨性。这就是我从他身上学到的东西。</p>
-
-<p>最后，再次给出 Vue.js 的链接：<a href="http://cn.vuejs.org/">http://cn.vuejs.org/</a></p>
-
-<p>走进前端开发系列：</p>
+<h3 id="使用方法:5dd178ee6323378b401661424ca0e072">使用方法</h3>
 
 <ol>
-<li><a href="http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/">走进前端开发之：Bootstrap</a></li>
-<li><a href="http://blog.coderzh.com/2015/11/07/front-end-dev/">走进前端开发之：框架的演变</a></li>
+<li>将 <code>deploy.py</code> 放到你的 Hugo 站点目录。（和 config.yaml 等文件放一起）</li>
+
+<li><p>编辑 <code>deploy.py</code> 文件，修改你要部署到的 Git Repository：</p>
+
+<pre><code class="language-python">GIT_REPO = [
+    # [别名,   分支名,     Git Repo 路径]
+    ['origin',  'gh-pages', 'git@github.com:coderzh/hugo-blog-deployed.git'],
+    ['gitcafe', 'gh-pages', 'git@gitcafe.com:coderzh/coderzh-hugo-blog.git'],
+]
+# 部署到哪里，相对上一级目录。比如下面的配置，会部署到 ../gh-pages 目录里
+DEPLOY_DIR = 'gh-pages'
+</code></pre></li>
+
+<li><p>如果你的网站需要指定皮肤，需要在 config 文件中指定 <code>theme</code> 。因为我的脚本在生成静态文件时并不会指定皮肤。</p>
+
+<pre><code class="language-yaml">theme: &quot;rapid&quot;
+</code></pre></li>
+
+<li><p>第一次执行，使用 <code>first</code> 参数，它会做一些初始化的操作。并使用 <code>-t</code> 表示只是测试一下，并不会真的 push 。</p>
+
+<pre><code>python deploy.py first -t
+</code></pre></li>
+
+<li><p>中间可能需要输入密码，如果是自动化部署，可在 Git Repo 里添加一个没有密码的 SSH Key 。</p></li>
+
+<li><p>如果一切正常，切换到 <code>DEPLOY_DIR</code> 目录，<code>git log</code> 看看 commit 记录是否正常。如果一切也如你所愿。则可以把 <code>-t</code> 参数去掉重新执行一遍，执行真的 push 操作：</p>
+
+<pre><code>python deploy.py first
+</code></pre></li>
+
+<li><p>执行完成后，应该已经将生成的静态页面自动 push 到了你指定的 <code>GIT_REPO</code> 里。</p></li>
+
+<li><p>之后如需再次手工部署，只需要使用 <code>manual</code> 参数，速度会快很多：</p>
+
+<pre><code>python deploy.py manual
+</code></pre></li>
+
+<li><p>如果你想通过 <code>webhook</code> 来自动部署，使用 <code>auto</code> 参数，这样在执行 deploy.py 时，会使用 Git 自动更新你当前的 Hugo 站点目录 ，然后部署：</p>
+
+<pre><code>python deploy.py auto
+</code></pre></li>
 </ol>
+
+<p>That&rsquo;s all, 祝你好运！</p>
 
                       
                     </div>
@@ -264,7 +257,7 @@
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
                             <br />微信关注：hacker-thinking （一个程序员的思考）
-                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/">http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</a>
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/">http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -317,7 +310,7 @@
 
 
               <section id="comments" class="themeform">
-<div class="ds-thread" data-thread-key="/2015/11/15/front-end-dev-vuejs/" data-title="走进前端开发之：Vue.js" data-url="http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/"></div>
+<div class="ds-thread" data-thread-key="/2015/11/21/hugo-deploy-script/" data-title="Hugo 自动化部署脚本" data-url="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"coderzh"};
 	(function() {
@@ -372,20 +365,14 @@ var duoshuoQuery = {short_name:"coderzh"};
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://blog.coderzh.com/2015/11/14/http-dns-hijack/" rel="next">
+        <a href="http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>网站被随机挂广告，疑似被 HTTP 劫持</span>
+          <span>走进前端开发之：Vue.js</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>Hugo 自动化部署脚本</span>
-        </a>
         
       </li>
     </ul>

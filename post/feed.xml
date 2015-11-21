@@ -6,7 +6,73 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 15 Nov 2015 21:53:51 CST</updated>
+        <updated>Sat, 21 Nov 2015 17:48:04 CST</updated>
+        
+        <item>
+            <title>Hugo 自动化部署脚本</title>
+            <link>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</link>
+            <pubDate>Sat, 21 Nov 2015 17:48:04 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</guid>
+            <description>
+
+&lt;p&gt;之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。&lt;/p&gt;
+
+&lt;p&gt;脚本路径：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;原理:5dd178ee6323378b401661424ca0e072&#34;&gt;原理&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;deploy.py&lt;/code&gt; 会自动执行 hugo 命令生成静态站点，然后将生成的文件拷贝到上层的一个目录里，然后，在那个目录里将文件 push 到你指定的 Git Repository 里。&lt;/p&gt;
+
+&lt;h3 id=&#34;使用方法:5dd178ee6323378b401661424ca0e072&#34;&gt;使用方法&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将 &lt;code&gt;deploy.py&lt;/code&gt; 放到你的 Hugo 站点目录。（和 config.yaml 等文件放一起）&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;编辑 &lt;code&gt;deploy.py&lt;/code&gt; 文件，修改你要部署到的 Git Repository：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;GIT_REPO = [
+    # [别名,   分支名,     Git Repo 路径]
+    [&#39;origin&#39;,  &#39;gh-pages&#39;, &#39;git@github.com:coderzh/hugo-blog-deployed.git&#39;],
+    [&#39;gitcafe&#39;, &#39;gh-pages&#39;, &#39;git@gitcafe.com:coderzh/coderzh-hugo-blog.git&#39;],
+]
+# 部署到哪里，相对上一级目录。比如下面的配置，会部署到 ../gh-pages 目录里
+DEPLOY_DIR = &#39;gh-pages&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果你的网站需要指定皮肤，需要在 config 文件中指定 &lt;code&gt;theme&lt;/code&gt; 。因为我的脚本在生成静态文件时并不会指定皮肤。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;theme: &amp;quot;rapid&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第一次执行，使用 &lt;code&gt;first&lt;/code&gt; 参数，它会做一些初始化的操作。并使用 &lt;code&gt;-t&lt;/code&gt; 表示只是测试一下，并不会真的 push 。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python deploy.py first -t
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;中间可能需要输入密码，如果是自动化部署，可在 Git Repo 里添加一个没有密码的 SSH Key 。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果一切正常，切换到 &lt;code&gt;DEPLOY_DIR&lt;/code&gt; 目录，&lt;code&gt;git log&lt;/code&gt; 看看 commit 记录是否正常。如果一切也如你所愿。则可以把 &lt;code&gt;-t&lt;/code&gt; 参数去掉重新执行一遍，执行真的 push 操作：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python deploy.py first
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;执行完成后，应该已经将生成的静态页面自动 push 到了你指定的 &lt;code&gt;GIT_REPO&lt;/code&gt; 里。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;之后如需再次手工部署，只需要使用 &lt;code&gt;manual&lt;/code&gt; 参数，速度会快很多：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python deploy.py manual
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果你想通过 &lt;code&gt;webhook&lt;/code&gt; 来自动部署，使用 &lt;code&gt;auto&lt;/code&gt; 参数，这样在执行 deploy.py 时，会使用 Git 自动更新你当前的 Hugo 站点目录 ，然后部署：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python deploy.py auto
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That&amp;rsquo;s all, 祝你好运！&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>走进前端开发之：Vue.js</title>
@@ -1975,34 +2041,6 @@ func main() {
 &lt;p&gt;在对比了国内的图床服务之后，我还是决定选择老东家金山出来的许式伟做的七牛云存储。七牛在上面四点都做的非常好，而且还提供10G免费空间。目前对我来说已经足够了。&lt;/p&gt;
 
 &lt;p&gt;七牛云存储：&lt;a href=&#34;https://portal.qiniu.com/signup?code=3llo7yfu1ib7y&#34;&gt;www.qiniu.com&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>微信公众号开通了原创保护功能</title>
-            <link>http://blog.coderzh.com/2015/09/19/mp-new-start/</link>
-            <pubDate>Sat, 19 Sep 2015 00:35:48 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/09/19/mp-new-start/</guid>
-            <description>&lt;p&gt;周三非常意外的收到了微信的原创保护功能邀请，之所以说意外，是因为我没想到这么快就给我发了邀请，毕竟我的公众号关注的数量还不多。但我保证了每篇文章都是原汁原味的原创内容，而且目前保持了一周一更的速度。&lt;/p&gt;
-
-&lt;p&gt;这个公众号是从今年2月底开始运营的，非常感谢所有关注了这个公众号的读者！每次我准备写公众号文章时，我都会提醒自己，我的消息会被强制推送出去到你们的手机里，我必须认真写一些有用的内容，不要浪费大家的时间。虽然这么说，文章的实际打开率还是很低的，这也是可以理解的。我也关注了很多订阅号，很多内容也是被我忽略过去，或者根本来不及看就被堆叠了。&lt;/p&gt;
-
-&lt;p&gt;所以，再次感谢经常或者偶尔打开我文章看的同学！这个公众号运营6个多月了，目前有223个关注，其中大部分是看了我的博客关注的，因为那里放了关注的二维码。关注的数量不多，至少保持了稳定的增长。《从0到1》里有说到，初始用户不需要太多，有数百人就可以，如果他们都觉得非常好用就行了。所以，我只需要认真的写，用心的分享，服务好现有的关注者，让你们感觉到我的文章对你有用就行。至于哪天会不会有个爆发式的增长，我希望能有，但也不去奢求，也许现在这样稳定缓慢的增长也挺好。&lt;/p&gt;
-
-&lt;p&gt;开了原创保护功能的同时，也开了评论功能，这是我一直都想要的功能啊。因为我要服务好你们，所以需要和你们更多的沟通和互动啊。&lt;/p&gt;
-
-&lt;p&gt;看到这篇文章后，希望你们能给我一些反馈，说一说当初为什么关注hacker-thinking：一个程序员的思考，或者你更希望从这个公众号了解哪些方面内容的文章，或者，是其他任何的东西。：）&lt;/p&gt;
-
-&lt;p&gt;还没有关注的同学，也关注一下吧：）微信公众号：hacker-thinking&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.coderzh.com/public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;谢谢支持！&lt;/p&gt;
-
-&lt;p&gt;最后上个图，上周刚收到的HHKB :)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HHKB.jpg-w&#34; alt=&#34;HHKB&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         

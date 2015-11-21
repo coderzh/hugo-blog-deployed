@@ -6,7 +6,73 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 15 Nov 2015 21:53:51 CST</updated>
+        <updated>Sat, 21 Nov 2015 17:48:04 CST</updated>
+        
+        <item>
+            <title>Hugo 自动化部署脚本</title>
+            <link>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</link>
+            <pubDate>Sat, 21 Nov 2015 17:48:04 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</guid>
+            <description>
+
+&lt;p&gt;之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。&lt;/p&gt;
+
+&lt;p&gt;脚本路径：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;原理:5dd178ee6323378b401661424ca0e072&#34;&gt;原理&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;deploy.py&lt;/code&gt; 会自动执行 hugo 命令生成静态站点，然后将生成的文件拷贝到上层的一个目录里，然后，在那个目录里将文件 push 到你指定的 Git Repository 里。&lt;/p&gt;
+
+&lt;h3 id=&#34;使用方法:5dd178ee6323378b401661424ca0e072&#34;&gt;使用方法&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将 &lt;code&gt;deploy.py&lt;/code&gt; 放到你的 Hugo 站点目录。（和 config.yaml 等文件放一起）&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;编辑 &lt;code&gt;deploy.py&lt;/code&gt; 文件，修改你要部署到的 Git Repository：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;GIT_REPO = [
+    # [别名,   分支名,     Git Repo 路径]
+    [&#39;origin&#39;,  &#39;gh-pages&#39;, &#39;git@github.com:coderzh/hugo-blog-deployed.git&#39;],
+    [&#39;gitcafe&#39;, &#39;gh-pages&#39;, &#39;git@gitcafe.com:coderzh/coderzh-hugo-blog.git&#39;],
+]
+# 部署到哪里，相对上一级目录。比如下面的配置，会部署到 ../gh-pages 目录里
+DEPLOY_DIR = &#39;gh-pages&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果你的网站需要指定皮肤，需要在 config 文件中指定 &lt;code&gt;theme&lt;/code&gt; 。因为我的脚本在生成静态文件时并不会指定皮肤。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;theme: &amp;quot;rapid&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第一次执行，使用 &lt;code&gt;first&lt;/code&gt; 参数，它会做一些初始化的操作。并使用 &lt;code&gt;-t&lt;/code&gt; 表示只是测试一下，并不会真的 push 。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python deploy.py first -t
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;中间可能需要输入密码，如果是自动化部署，可在 Git Repo 里添加一个没有密码的 SSH Key 。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果一切正常，切换到 &lt;code&gt;DEPLOY_DIR&lt;/code&gt; 目录，&lt;code&gt;git log&lt;/code&gt; 看看 commit 记录是否正常。如果一切也如你所愿。则可以把 &lt;code&gt;-t&lt;/code&gt; 参数去掉重新执行一遍，执行真的 push 操作：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python deploy.py first
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;执行完成后，应该已经将生成的静态页面自动 push 到了你指定的 &lt;code&gt;GIT_REPO&lt;/code&gt; 里。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;之后如需再次手工部署，只需要使用 &lt;code&gt;manual&lt;/code&gt; 参数，速度会快很多：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python deploy.py manual
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果你想通过 &lt;code&gt;webhook&lt;/code&gt; 来自动部署，使用 &lt;code&gt;auto&lt;/code&gt; 参数，这样在执行 deploy.py 时，会使用 Git 自动更新你当前的 Hugo 站点目录 ，然后部署：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python deploy.py auto
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That&amp;rsquo;s all, 祝你好运！&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>走进前端开发之：Vue.js</title>
@@ -2024,32 +2090,6 @@ ThreadSanitizer: reported 1 warnings
 &lt;li&gt;如果分生成obj(-c)和link两个步骤，每一步都加：thread -fPIE -pie -g，并且在link的时候加-ltsan&lt;/li&gt;
 &lt;li&gt;只支持64位，最好指定编译64位(-m64)&lt;/li&gt;
 &lt;li&gt;如果依赖其他静态库，其他静态库编译时必须指定-fPIC（如果不是请重编）&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>Cocos2d-x3.6 Android编译问题</title>
-            <link>http://blog.coderzh.com/2015/06/06/Cocos2dx36/</link>
-            <pubDate>Sat, 06 Jun 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/06/Cocos2dx36/</guid>
-            <description>&lt;p&gt;在Cocod2d-x论坛上看到越来越多人吐槽新版本更新太快，改动太大，而且经常有BUG导致升级要折腾很久很久。。但我就是喜欢折腾，喜欢升级到最新版本，看看有了哪些新功能，哪些改进。为此也折腾了不少，遇到一点就记录一点吧。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;3.5版本之后，Android编译的build_native.py改成了直接调用cocos compile，我把所有都升级到了最新版本还是编译不成功，只好放弃，也许是我打开方式不对，还是先使用旧的build_native.py编译吧。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;出现提示找不到“org.cocos2dx.lib.Cocos2dxActivity“， Cocos2dxAcitivy明明在link的libcocos2d里啊，怎么还说找不到。
-解决方法：干脆把libcocos2d删了，重新自己手工添加一个，右键BuildPath-&amp;gt;Link Source&amp;hellip; 添加一次即可。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;CCImage.cpp突然编译不过了，提示找不到uint32，JSAMPROW。
-解决办法：uint32依赖tiff，JSAMPROW依赖jpeg，而之前我为了省一点点包大小，通过-DCC_USE_TIFF=0 -DCC_USE_JPEG=0把这两个东东禁掉了。所以把tiff和jpeg打开就好了。别省了。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;打开eclipse工程后，出现&amp;rdquo;serializing cdt project settings&amp;rdquo;
-解决方法：见 &lt;a href=&#34;http://blog.csdn.net/djvc/article/details/41117677&#34;&gt;http://blog.csdn.net/djvc/article/details/41117677&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;打开eclipse工程后，出现“Lint Error Checking&amp;rdquo;
-解决方法：Windows -&amp;gt; perferences -&amp;gt; Android -&amp;gt; Lint Error Checking，把左边的When saving files,check for errors复选框去掉&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         </item>
