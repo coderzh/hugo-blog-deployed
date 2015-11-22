@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>Hugo 自动化部署脚本 - CoderZh Blog</title>
+  <title>程序员的思考：分享即学习 - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="Hugo,自动化,部署,">
-<meta name="description" content="hugo 自动化部署脚本 deploy.py">
+<meta name="keywords" content="程序员的思考,分享,学习,总结,提高,">
+<meta name="description" content="程序员的思考：分享即学习">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="Hugo 自动化部署脚本 - CoderZh Blog">
-<meta itemprop="description" content="hugo 自动化部署脚本 deploy.py">
+<meta itemprop="name" content="程序员的思考：分享即学习 - CoderZh Blog">
+<meta itemprop="description" content="程序员的思考：分享即学习">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="Hugo 自动化部署脚本 - CoderZh Blog" />
+<meta property="og:title" content="程序员的思考：分享即学习 - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/" />
+<meta property="og:url" content="http://blog.coderzh.com/2015/11/22/hacker-thinking-study/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="hugo 自动化部署脚本 deploy.py">
+<meta property="og:description" content="程序员的思考：分享即学习">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="Hugo 自动化部署脚本 - CoderZh Blog">
-<meta name="twitter:description" content="hugo 自动化部署脚本 deploy.py">
+<meta name="twitter:title" content="程序员的思考：分享即学习 - CoderZh Blog">
+<meta name="twitter:description" content="程序员的思考：分享即学习">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/">
-  <link rel='shortlink' href="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/"/>
+  <link rel="canonical" href="http://blog.coderzh.com/2015/11/22/hacker-thinking-study/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2015/11/22/hacker-thinking-study/"/>
   <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -163,7 +163,7 @@
               <ul class="meta-single group">
                 
                 <li class="category">
-                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                  <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" rel="category tag">思考感悟</a>
                 </li>
                 
               </ul>
@@ -175,12 +175,12 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">Hugo 自动化部署脚本</h1>
+                  <h1 class="post-title">程序员的思考：分享即学习</h1>
 
                   <p class="post-byline">
-                    by  · 2015年11月21日 · 608 Words ·
-                    ~2min reading time |
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-11-21-hugo-deploy-script.md"
+                    by  · 2015年11月22日 · 3806 Words ·
+                    ~8min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-11-22-hacker-thinking-study.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -189,63 +189,74 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/learning.jpg-wt" alt="learning" /></p>
 
-<p>之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。</p>
+<p>从今年2月底开通微信公众账号以来，到现在差不多9个月的时间，订阅的用户差不多有 500 人了。这个数字当然不能和那些大 V 的订阅数相比，甚至那些大 V 在文章结尾处给别人的账号做个推荐，一天的订阅数也许都会超过我的。但是，我对 500 个订阅数的结果是很满意的。</p>
 
-<p>脚本路径：<a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py">https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py</a></p>
+<p>记得最早开通公众号那会，我还在上家游戏公司。我离开公司前给程序组的同学做了一次关于游戏服务端开发的讲座。在演讲稿的最后一页，我贴出了我的公众号二维码。我说，我马上就要离开公司了，这是最后一次做分享了。不过，可以关注我的这个公众号，之后我的学习心得和最新动态都会在这个公众号里发出来。大家都在广州，也有的是交流的机会。</p>
 
-<h3 id="原理:5dd178ee6323378b401661424ca0e072">原理</h3>
+<p>所以，前公司的同事成了我的公众号最早的订阅者。<strong>即使订阅数很少，我也写的很认真，因为我明白，写公众号收获最大的不是读者，而是自己。</strong>它锻炼了我写作的能力，让我静下心来思考，通过不断的学习、思考、总结、汇集成文字，最后常常有种豁然开朗的感觉，感觉对一个东西的理解又深入了一个层次。</p>
 
-<p><code>deploy.py</code> 会自动执行 hugo 命令生成静态站点，然后将生成的文件拷贝到上层的一个目录里，然后，在那个目录里将文件 push 到你指定的 Git Repository 里。</p>
+<p>在我刚工作第一年的时候，我就养成了写博客的习惯。仔细想了想，也许是在更早的时候就开始写博客的。我记得大四（2006年左右）那会，<a href="http://www.cnblogs.com">博客园</a> 可谓是如日中天，百花齐放。在博客园里我如饥似渴的学习着微软的技术，那时候园子里大神辈出，每每让我仰视。那时候加的 QQ 群：湖南微软开发者俱乐部，直到现在还在里面，虽然不发言，也没有被管理员踢掉，可见这是一份大家共同的记忆，谁都不想去破坏它。</p>
 
-<h3 id="使用方法:5dd178ee6323378b401661424ca0e072">使用方法</h3>
+<p>于是我学习大神在博客园里的开通了博客。在博客园开通博客是需要一番自我介绍的，当时还有些担心像我这种学生菜鸟，会不会不让我开通。于是在自我介绍里使劲把自己胡吹了一通，最后申请成功了总算松了一口气。<strong>不知道现在博客园的注册流程是否还是一样，我觉得那样挺好的，看似提高了注册门槛，最后能让用户有种注册不易，且行且珍惜的感觉。</strong></p>
 
-<ol>
-<li>将 <code>deploy.py</code> 放到你的 Hugo 站点目录。（和 config.yaml 等文件放一起）</li>
+<p>工作之后，有一天看到一个同事把自己的 QQ 名改成了 <code>coder</code> 。这位同事姓刘，和我同一批校招进来，一起参加了金山的首批训练营。那时的他已经在训练营里声名显赫，在课堂上经常有惊人之举，常常有人议论。号称在学校的时候已经写了 10 W 行代码，样子看上去是一个典型的程序员。认识的同学大概已经知道是谁了。<code>coder</code> <strong>是一个极其普通的词，但在当时的我看来，<code>coder</code> 代表了专注，专心研究代码，写代码，不浮夸，不浮躁，不因外界的纷杂变化干扰心境。</strong>于是我把博客园里的 ID 修改成了 <code>CoderZh</code> ，我姓张，Zh 表示 Zhang 。</p>
 
-<li><p>编辑 <code>deploy.py</code> 文件，修改你要部署到的 Git Repository：</p>
+<p>印象中我删除了学校期间稍显稚嫩的文章，也算有个新的开始。从 2007 开始到现在，我在博客园里写了大约 200 多篇文章，收到的评论 2000 多。阅读数最高的文章《<a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1426755.html">玩转Google开源C++单元测试框架Google Test系列(gtest)</a>》，总阅读数到现在约有 58 W。</p>
 
-<pre><code class="language-python">GIT_REPO = [
-    # [别名,   分支名,     Git Repo 路径]
-    ['origin',  'gh-pages', 'git@github.com:coderzh/hugo-blog-deployed.git'],
-    ['gitcafe', 'gh-pages', 'git@gitcafe.com:coderzh/coderzh-hugo-blog.git'],
-]
-# 部署到哪里，相对上一级目录。比如下面的配置，会部署到 ../gh-pages 目录里
-DEPLOY_DIR = 'gh-pages'
-</code></pre></li>
+<p>后来博客园逐渐没落了，即使发到首页阅读数也少的可怜，而博客流量的首要来源依然是搜索引擎。于是今年我完全放弃了博客园，搭建了自己的独立博客：<a href="http://blog.coderzh.com/">http://blog.coderzh.com/</a> ，把之前的文章也导入了过来，同时也开通了微信公众号。</p>
 
-<li><p>如果你的网站需要指定皮肤，需要在 config 文件中指定 <code>theme</code> 。因为我的脚本在生成静态文件时并不会指定皮肤。</p>
+<p>说回微信公众号。我也希望能有更多人订阅，也算是对我的付出的一种肯定吧。于是，我在我的各个社交账号上贴了微信公众号的二维码，在之前博客园的博客签名里进行导流，给开发者头条投稿等等。订阅数有了一些起色，下面是从开通以来累积用户数的变化曲线：</p>
 
-<pre><code class="language-yaml">theme: &quot;rapid&quot;
-</code></pre></li>
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/wp-tend.jpg-ws" alt="wp-tend" /></p>
 
-<li><p>第一次执行，使用 <code>first</code> 参数，它会做一些初始化的操作。并使用 <code>-t</code> 表示只是测试一下，并不会真的 push 。</p>
+<p>从 9 月份开始，曲线开始变抖了一些，开始越来越多人关注我的公众号了，我也在不断的思考我的公众号的定位到底是什么。看过我的独立博客的同学应该会发现，我的独立博客的文章分类只有三个：读书笔记、技术文章、思考感悟。技术类的文章不管前端后端，Python 还是 Go，通通归到了技术文章分类。而之前的我喜欢细分每个技术类别，到后来我发现人的精力是有限的，研究的技术方向也会很有限，通归到技术文章分类可以少一些分类的纠结，也能跳出技术的思维去看待世界。</p>
 
-<pre><code>python deploy.py first -t
-</code></pre></li>
+<p><strong>所以，我的公众号的内容主要也会围绕这三个主题：读书笔记、技术文章、思考感悟。我更希望偏重于思考感悟方面，这也是这个公众号名称的由来：一个程序员的思考。</strong>我的公众号介绍是这么写的：</p>
 
-<li><p>中间可能需要输入密码，如果是自动化部署，可在 Git Repo 里添加一个没有密码的 SSH Key 。</p></li>
+<pre><code>作为一个程序员，
 
-<li><p>如果一切正常，切换到 <code>DEPLOY_DIR</code> 目录，<code>git log</code> 看看 commit 记录是否正常。如果一切也如你所愿。则可以把 <code>-t</code> 参数去掉重新执行一遍，执行真的 push 操作：</p>
+思考程序的每一行代码，
 
-<pre><code>python deploy.py first
-</code></pre></li>
+思考生活的每一个细节，
 
-<li><p>执行完成后，应该已经将生成的静态页面自动 push 到了你指定的 <code>GIT_REPO</code> 里。</p></li>
+思考人生的每一种可能。
+</code></pre>
 
-<li><p>之后如需再次手工部署，只需要使用 <code>manual</code> 参数，速度会快很多：</p>
+<p>在订阅数突破 500 之际，我想可以正式的来聊一聊作为一个程序员对一些东西的思考。首先申明，我并没有什么惊世骇俗的想法，也没有想要一语道破天机的妄想，我不会使用诸如“粗大事了！xxx”、“有人@你 xxx”之类的诱导标题，因为那样吸引而来的订阅者并不是我的目标读者。<strong>我想写的，只是一些朴实无华的想法，和一些自己的切身经历。</strong></p>
 
-<pre><code>python deploy.py manual
-</code></pre></li>
+<p>回到本文的正题：分享即学习。你有没有注意到，<strong>程序员是一个最乐于分享的群体</strong>    。很多程序员都喜欢写技术博客，学习了一些什么新技术，发现一个什么新技巧，都毫无保留的在博客里进行分享。</p>
 
-<li><p>如果你想通过 <code>webhook</code> 来自动部署，使用 <code>auto</code> 参数，这样在执行 deploy.py 时，会使用 Git 自动更新你当前的 Hugo 站点目录 ，然后部署：</p>
+<p>比方说，你花了 1 个周的时间研究了 Facebook 最新的框架 React ，明白了里面大致是怎么回事，学习到了这个框架的用法，甚至领悟到了 React 设计的精髓，然后你又花了半天的时间把这些东西总结出来，发布到了你的博客里。</p>
 
-<pre><code>python deploy.py auto
-</code></pre></li>
-</ol>
+<p>这时另外一个人小 A 在网上浏览到了你的文章，他没有看过 React 的文档，也不太明白 React 到底为何物，但是隐约听过一些。而你的文章写的十分生动，把 React 总结的非常清晰易懂，又有条理，甚至看完后就可以开始和别人高谈阔论。</p>
 
-<p>That&rsquo;s all, 祝你好运！</p>
+<p>然而，小 A 认真看完了你的文章就真正掌握了 React 吗？你把对 React 的所以理解都写出来了，小 A 即使全部记住了，他对 React 的理解会和你一样吗？答案是肯定的，不一样。<strong>没有经历苦难，怎知幸福的可贵。没有经过漫长的学习，怎能体会最后豁然开朗的瞬间。</strong></p>
+
+<p>而有的人会有这样的想法，我那么辛苦学习得来的东西，怎能给你分享，让你这么容易就学了去。他们抱着“好东西不会给别人分享”的想法，因为他们要靠那些所谓的别人不知道的秘密来获取更多的资源（比如：赚钱、一份工作、或者赚取声望）。这样的做法无可厚非，事实上很多人都是这么做的，也许这源于人的本性：自私。</p>
+
+<p>而为什么那么多成功的企业家乐于去分享呢？通过演讲、出书，把自己管理公司的理念、遇到困难时处理问题的想法和思路，公司的战略，毫无保留的分享给别人。（当然，有些企业家只是为了作秀和市场营销的目的，就另当别论了。）他们不怕竞争对手学了去吗？他们真的不怕。他们经常说的“小步快跑，快速试错”的互联网开发模式，你都要听烂了，但你真正理解了吗？知道具体该如何实施吗？遇到问题知道该如何处理吗？</p>
+
+<p>我相信有些企业家到最后成功的时候，也没有真正理解自己到底是如何成功的。通过总结，才让他们意识到原来成功是这么来的，通过分享，才让他们对成功的理解更加透彻，他们明白他们的成功是不可复制的，而这过程中他们的一些难能可贵的精神或坚持，才是其中最重要的因素。</p>
+
+<p>你在写 React 的文章时，每遇到一个含糊不清的问题时，你都必须把它彻底搞懂。为了让别人更容易理解，你还要假装自己对 React 一无所知，从一个更高的角度就看待 React ，理解别人的疑惑，调整自己的文字，让文章更加循序渐进，接近你当初学 React 时过程变化。这无疑是对自己学习内容的再一次洗礼，你说，写这篇文章，收获最大的不是你自己吗？</p>
+
+<p><strong>学习从来没有什么捷径。古人云：学海无涯苦作舟。是很有道理的。</strong>若不是你平时就花了很多时间学习了很多关于 React 的资料，当你看到别人写的关于 React 的学习总结的文章时并不会有多少感觉。前段时间公司有同事很深入的了研究了 TLS 协议（安全传输层协议），看了大量文献 Paper，深入理解了里面的大量技术细节，然后他在公司内部的平台上分享了一篇自己总结的 TLS 的文章。当我打开一看时，堪称史诗巨作，不仅仅在于篇幅的长度，更在于研究的深度。据了解，这位同事利用业余的时间，源于兴趣爱好，花了大量的时间去专研 TLS ，非常令人敬佩。</p>
+
+<p>然而，即使我认认真真的花了 1 个小时的时间把这位同事的文章看完，我就能达到他花了几个月研究的水准吗？答案肯定是不能的。我没有经历学习 TLS 的苦，所以无法领悟 TLS 的甘。即使最后这位同事被邀请做了一次现场的分享，把他的文章再次提炼总结，我去听了也只能留下他很牛逼的印象。而最后收获最大的肯定是他自己，通过写作和分享，不仅加深了自己对 TLS 的理解，还顺带赚取了声望。</p>
+
+<p>所以，沉下心，多花一些时间去看书，学习。<strong>学习一手的知识，看专业经典的名著，而不是看经过别人总结汇总的二手知识。</strong>这点很重要，学习没有捷径，不要想着一步登天。当你学习领悟之后，分享出来，会有更深的理解。那些和你一样花了时间专研的人看了你的文章，会和你产生共鸣，或者有所启发。那些没有花时间学习的人看了你的文章，也许会是他的一个入门指引，为他打开了一扇窗。</p>
+
+<p><strong>分享即学习，通过分享，收获最大的是你自己。</strong>很庆幸，在我刚工作的时候，就有人告诉了我这一点。他就是我的良师益友：TinyFish（外号鱼头，中文名就不写啦），出来创业做游戏也是和他一起的。在他身上，我学习了很多。他常常和我说，有时候自己问题想不明白时，拉上别人，在和别人叙述分享问题的过程中，突然就能发现问题所在，找到解决的方法，别人甚至没有说一个字。因为你在叙述的过程，你的大脑在经历不断的思考、总结、梳理的过程。<strong>一个你想不明白的问题，通过和别人分享，你能自己找到答案。一个你以为想明白了的问题，通过和别人分享，你会突然发现，之前所说的，都是错的。</strong></p>
+
+<p>以上就是我这篇文章想要分享的内容，通过写这篇文章，我又对分享本身理解更深了。你呢？</p>
+
+<p>如果你喜欢我的文章，就订阅我的微信公众号：hacker-thinking 吧。</p>
+
+<p>微信扫一扫：</p>
+
+<p><img src="public/qrcode.jpg" alt="qrcode" /></p>
 
                       
                     </div>
@@ -257,7 +268,7 @@ DEPLOY_DIR = 'gh-pages'
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
                             <br />微信关注：hacker-thinking （一个程序员的思考）
-                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/">http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</a>
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2015/11/22/hacker-thinking-study/">http://blog.coderzh.com/2015/11/22/hacker-thinking-study/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -310,7 +321,7 @@ DEPLOY_DIR = 'gh-pages'
 
 
               <section id="comments" class="themeform">
-<div class="ds-thread" data-thread-key="/2015/11/21/hugo-deploy-script/" data-title="Hugo 自动化部署脚本" data-url="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/"></div>
+<div class="ds-thread" data-thread-key="/2015/11/22/hacker-thinking-study/" data-title="程序员的思考：分享即学习" data-url="http://blog.coderzh.com/2015/11/22/hacker-thinking-study/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"coderzh"};
 	(function() {
@@ -365,20 +376,14 @@ var duoshuoQuery = {short_name:"coderzh"};
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/" rel="next">
+        <a href="http://blog.coderzh.com/2015/11/21/hugo-deploy-script/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>走进前端开发之：Vue.js</span>
+          <span>Hugo 自动化部署脚本</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://blog.coderzh.com/2015/11/22/hacker-thinking-study/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>程序员的思考：分享即学习</span>
-        </a>
         
       </li>
     </ul>
