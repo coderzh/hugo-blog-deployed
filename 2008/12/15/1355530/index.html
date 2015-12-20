@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf("http://blog.coderzh.com") > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>代码安全系列(1) - Log的注入 - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta name="description" content="简介 我们编写了大量的程序，但程序总是出现莫名其妙的异常，因此我们使用日志模块，详细记录程序执行的步骤，以求追踪和定位问题。也许这是大多数程序">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="代码安全系列(1) - Log的注入 - CoderZh Blog">
+<meta itemprop="description" content="简介 我们编写了大量的程序，但程序总是出现莫名其妙的异常，因此我们使用日志模块，详细记录程序执行的步骤，以求追踪和定位问题。也许这是大多数程序">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="代码安全系列(1) - Log的注入 - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/2008/12/15/1355530/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="简介 我们编写了大量的程序，但程序总是出现莫名其妙的异常，因此我们使用日志模块，详细记录程序执行的步骤，以求追踪和定位问题。也许这是大多数程序">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="代码安全系列(1) - Log的注入 - CoderZh Blog">
+<meta name="twitter:description" content="简介 我们编写了大量的程序，但程序总是出现莫名其妙的异常，因此我们使用日志模块，详细记录程序执行的步骤，以求追踪和定位问题。也许这是大多数程序">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/2008/12/15/1355530/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2008/12/15/1355530/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="http://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">代码安全系列(1) - Log的注入</h1>
+
+                  <p class="post-byline">
+                    by  · 2008年12月15日 · 2525 Words ·
+                    ~6min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-12-15-1355530.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
+
+<h2 id="简介:9d6e3d00e9306b7877eabb0f75260489">简介</h2>
+
+<p>我们编写了大量的程序，但程序总是出现莫名其妙的异常，因此我们使用日志模块，详细记录程序执行的步骤，以求追踪和定位问题。也许这是大多数程序员对日志的理解，跟踪和调试程序成了日志的主要职责。其实，日志的作用远非如此，当某天突然发现我们的系统被人非法入侵，删除了大量用户资料时，我们记录的日志成了最好的追踪骇客的工具。假如，我们的日志被骇客无情的篡改，后果将不堪设想。因此，日志模块虽小，安全性却尤为重要。</p>
+
+<p>有人说，我们使用了Nlog，Log4net，就不会有安全问题了，真的是这样吗？那是不是我们使用了NHibernate就不会有SQL注入的问题呢。其实不是的，关键是看你是否正确的使用了这些第三方库。</p>
+
+<p>下面我们就来学习一些Log注入的常用伎俩以及支招技巧吧。</p>
+
+<h3 id="1-new-line-injection:9d6e3d00e9306b7877eabb0f75260489">1.New Line Injection</h3>
+
+<p>顾名思义：插入新行的注入方式。这种方法是最普遍的Log注入方法。我们先来看看如下一段C#日志记录的代码：</p>
+
+<div dir="ltr">
+<div class="cnblogs_code"><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;log_failed_login(</span><span style="color: #0000ff;">string</span><span style="color: #000000;">&nbsp;userName)
+<br />
+{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;(var&nbsp;sw&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">new</span><span style="color: #000000;">&nbsp;StreamWriter(</span><span style="color: #800000;">"</span><span style="color: #800000;">test.log</span><span style="color: #800000;">"</span><span style="color: #000000;">,&nbsp;</span><span style="color: #0000ff;">true</span><span style="color: #000000;">,&nbsp;Encoding.Unicode))
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sw.WriteLine(</span><span style="color: #800000;">"</span><span style="color: #800000;">Failed&nbsp;logon&nbsp;for&nbsp;user&nbsp;</span><span style="color: #800000;">"</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;userName);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
+<br />
+}
+<br />
+</span></div>
+</div>
+
+<p>上面的代码似乎没有什么问题，正常情况下，当用户张三登陆系统失败时，将记录日志如下：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">Failed logon for user 张三</div>
+
+<p>假如张三不怀好意，在用户名一栏里输入了如下的字符：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">张三\nFailed to delete all files for 李四\nFailed to remove user 李四 for 李四</div>
+
+<p>日志将会这样记录：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">Failed logon for user <span style="color: red;">张三
+
+Failed to delete all files for 李四
+
+Failed to remove user 李四 for 李四</span></div>
+
+<p>当管理员看到上面的日志时肯定会想：李四这家伙，想删掉所有文件，然后再销毁证据。</p>
+
+<p>防御办法：删除换行符。</p>
+
+<div class="cnblogs_code"><span style="color: #000000;">userName&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;userName.Replace(</span><span style="color: #800000;">"\</span><span style="color: #000000;">n</span><span style="color: #800000;">"</span><span style="color: #800000;">,&nbsp;</span><span style="color: #800000;">""</span><span style="color: #800000;">).Replace(</span><span style="color: #800000;">"\</span><span style="color: #800000;">r</span><span style="color: #800000;">"</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">""</span><span style="color: #000000;">)</span></div>
+<br />
+这样，日志内容就成了： 
+<br />
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">Failed logon for user 张三Failed to delete all files for 李四Failed to remove user 李四 for 李四</div>
+
+<h3 id="2-sparator-injection:9d6e3d00e9306b7877eabb0f75260489">2.Sparator Injection</h3>
+
+<p>有些人写日志喜欢用一些分隔符来分隔不同的字段，比如用分隔符：|，或者是使用Tab作为分隔符。比如下面的日志：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">| Customer&nbsp;&nbsp; &nbsp; | Number&nbsp; &nbsp;&nbsp; | Operation &nbsp; &nbsp; |
+
+| 张三&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 取钱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+
+| 李四&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 存钱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</div>
+
+<p>当张三输入的内容为：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">10000&nbsp;&nbsp;&nbsp; | 存钱&nbsp;&nbsp;&nbsp; |</div>
+
+<p>则日志的结果为：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">| Customer&nbsp;&nbsp; &nbsp; | Number&nbsp;&nbsp;&nbsp;&nbsp; | Operation&nbsp; &nbsp;&nbsp; |
+
+| 张三&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <span style="color: red;">1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 存钱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</span> 取钱&nbsp;&nbsp;&nbsp; |
+
+| 李四&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 存钱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</div>
+
+<p>我们注意到上面张三的记录中多出来了一列，很容易被管理员发现。但是假如我们的日志系统是由程序自动来读取的话，张三很有可能被认为存入了1000大钞。</p>
+
+<p>防御方法：建议尽量不要使用分隔符，或者替换分隔符。</p>
+
+<h3 id="3-timestamp-injection:9d6e3d00e9306b7877eabb0f75260489">3.Timestamp Injection</h3>
+
+<p>通常我们记录日志时，都会详细的记录每个步骤执行的时间，比如：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">2008-12-15 14:42:30.5781|Error|Failed logon for user 张三
+
+2008-12-15 14:42:48.3125|Error|Failed logon for user 李四</div>
+<pre></pre>
+
+ 这样的格式虽然比前面的复杂了很多，但是，对于精细的骇客来说，一样可以使用前面的New Line Injection方式进行注入。那么，如何更加有效的防止骇客模拟新的日志项呢。比如：我们在每一个日志项中加入一个有序的数字，比如： 
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">2008-12-15 16:22:50.4218|Error|<span style="color: red;">1</span>|Failed logon for user 张三
+
+2008-12-15 16:22:50.4218|Error|<span style="color: red;">2</span>|Failed logon for user 李四
+
+2008-12-15 16:22:50.4218|Error|<span style="color: red;">3</span>|Failed logon for user 王五</div>
+
+<p>其实这样还不安全，因为张三很容易知道后面的数字是2，为了让张三猜不出后面的数字，我们使用伪随机数来做一个有序的序列，比如，使用同一个随机种子产生一系列的随机数。</p>
+
+<div class="cnblogs_code"><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;Random&nbsp;r&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">new</span><span style="color: #000000;">&nbsp;Random(</span><span style="color: #800080;">2008</span><span style="color: #000000;">);
+<br />
+</span><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;Nlog_Sequence_failed_login(</span><span style="color: #0000ff;">string</span><span style="color: #000000;">&nbsp;userName)
+<br />
+{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;logger&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;NLog.LogManager.GetCurrentClassLogger();
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;logger.Error(String.Format(</span><span style="color: #800000;">"</span><span style="color: #800000;">{0}|Failed&nbsp;logon&nbsp;for&nbsp;user&nbsp;{1}</span><span style="color: #800000;">"</span><span style="color: #000000;">&nbsp;,&nbsp;r.Next(</span><span style="color: #800080;">1024</span><span style="color: #000000;">),&nbsp;userName));
+<br />
+}
+<br />
+</span></div>
+
+<p>这样的话，产生出来的序列的数字在外面看来非常随机，但其实内部是有序的，可以非常方便的通过工具对整个日志进行扫描，发现伪造的日志项。当然了，还有很多 其他办法可以应付此类的注入，比如，使用两个日志文件，第一个日志文件记录日志内容，第二个日志文件记录日志中每一项的字符长度。</p>
+
+<h3 id="4-abusing-word-wrap:9d6e3d00e9306b7877eabb0f75260489">4.Abusing Word Wrap</h3>
+
+<p>当换行注入被拒绝的时候，还有一种投机的办法，就是不主动换行，使用一些空格或其他符号，导致文字自动换行。这很容易理解，当然，要真正实施起来并且完美无缺确实是很困难的。比如下面被注入的日志：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">Failed logon for user <span style="color: red;">张三 __________________（自动换行）
+
+Failed to delete all files for 李四_____________（自动换行）
+
+Failed to remove user 李四 for 李四</span></div>
+
+<p>这样的做法可能会觉得很可笑，但确实会很容易迷惑管理员的眼睛。那，有什么办法呢？</p>
+
+<ol>
+<li>假如是在Windows平台下，使用编辑器打开的话，记得关闭自动换行功能。2.  假如在Linux下面呢，在终端显示内容的话，对日志内容进行处理，加上一些自动换行的分隔符号，比如：[CR]。（这样做的话其实也不好，假如用户输入的数据原本就包含了[CR]字符，将很难区分用户输入的数据和分隔符号。对于这个问题，大家支点招吧！）</li>
+</ol>
+
+<h3 id="5-html-injection:9d6e3d00e9306b7877eabb0f75260489">5.HTML Injection</h3>
+
+<p>很多情况下，日志内容被读取后，会在一个网页中进行显示。这样，就给骇客很大的空间，可以非常容易的对HTML进行篡改，这看上去非常类似XSS（跨站式脚本攻击，可参考之前的<br />
+[](<a href="http://www.cnblogs.com/coderzh/archive/2008/09/06/1285500.html">http://www.cnblogs.com/coderzh/archive/2008/09/06/1285500.html</a>)
+），比如下面被注入的日志：</p>
+
+<div class="cnblogs_code"><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">table</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+<br />
+</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">tr</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">td</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">Failed&nbsp;logon&nbsp;for&nbsp;user</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">td</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">tr</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+<br />
+</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">tr</span><span style="color: #0000ff;">&gt;&lt;</span><span style="color: #800000;">td</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">Failed&nbsp;to&nbsp;delete&nbsp;all&nbsp;files&nbsp;for&nbsp;</span><span style="color: red;">李四&lt;/td&gt;&lt;/tr&gt;&lt; /table&gt;&lt;script&gt;<span style="background-color: #f5f5f5;">alert(</span><span style="background-color: #f5f5f5;">'</span><span style="background-color: #f5f5f5;">hacked!</span><span style="background-color: #f5f5f5;">'</span><span style="background-color: #f5f5f5;">);</span>&lt;/script&gt;&lt;!--</span><span style="color: #008000;">&lt;/td&gt;&lt;/tr&gt;
+<br />
+&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+<br />
+&lt;/table&gt;</span></div>
+
+<p>解决的办法类似XSS的解决方法，替换危险字符，如：引号(&lsquo;,&ldquo;)，角括号(&lt;&gt;)等等。</p>
+
+<p>&nbsp;欢迎大家交流，以上不对的地方也请指正！同时，转载请注明出处，谢谢！ &ndash; <a href="http://coderzh.cnblogs.com">http://coderzh.cnblogs.com</a></p>
+
+<p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/12/15/1355530.html">http://www.cnblogs.com/coderzh/archive/2008/12/15/1355530.html</a></strong></p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="http://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2008/12/15/1355530/">http://blog.coderzh.com/2008/12/15/1355530/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+
+              <div class="clear"></div>
+
+              <p class="post-tags">
+                <span>Tags:</span>
+                
+              </p>
+
+              <h4 class="heading">
+  <i class="fa fa-hand-o-right"></i>Related posts</h4>
+
+    <ul class="related-posts group">
+    
+    
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+    </ul>
+
+
+
+              <section id="comments" class="themeform">
+<div class="ds-thread" data-thread-key="/2008/12/15/1355530/" data-title="代码安全系列(1) - Log的注入" data-url="http://blog.coderzh.com/2008/12/15/1355530/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"coderzh"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+</section>
+
+
+              
+            </div>
+
+
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p>微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking</p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2008/12/13/1354381/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>Google App Engine 中通过自定义Django的filter解决时区问题</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+        <a href="http://blog.coderzh.com/2008/12/17/1357039/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>读《Automated Code Review Tools for Security》</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+
+  <nav class="nav-container group" id="nav-footer">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap">
+      <ul id="menu-default-menu-1" class="nav container group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2015. All Rights Reserved. <br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+
+</footer>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10147768-2', 'auto');
+  ga('send', 'pageview');
+
+  $('#messagesbsb').remove();
+
+</script>
+</body>
+</html>
+

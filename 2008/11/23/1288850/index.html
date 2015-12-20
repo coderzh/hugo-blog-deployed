@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf("http://blog.coderzh.com") > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>Oracle Notes - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta name="description" content="最近工作中用到了Oracle，笔记记录一下： 游标cursor create or replace procedure sp_test(seq_id number) as &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cursor curData is select t.propertyname, t.propertyvalue from kinfoc3.new_prop_39460 t where t.id = prop_id; begin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for rowData in curData loop &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; do something with rowData &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end loop; end; 使用">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="Oracle Notes - CoderZh Blog">
+<meta itemprop="description" content="最近工作中用到了Oracle，笔记记录一下： 游标cursor create or replace procedure sp_test(seq_id number) as &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cursor curData is select t.propertyname, t.propertyvalue from kinfoc3.new_prop_39460 t where t.id = prop_id; begin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for rowData in curData loop &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; do something with rowData &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end loop; end; 使用">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="Oracle Notes - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/2008/11/23/1288850/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="最近工作中用到了Oracle，笔记记录一下： 游标cursor create or replace procedure sp_test(seq_id number) as &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cursor curData is select t.propertyname, t.propertyvalue from kinfoc3.new_prop_39460 t where t.id = prop_id; begin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for rowData in curData loop &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; do something with rowData &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end loop; end; 使用">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="Oracle Notes - CoderZh Blog">
+<meta name="twitter:description" content="最近工作中用到了Oracle，笔记记录一下： 游标cursor create or replace procedure sp_test(seq_id number) as &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cursor curData is select t.propertyname, t.propertyvalue from kinfoc3.new_prop_39460 t where t.id = prop_id; begin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for rowData in curData loop &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; do something with rowData &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end loop; end; 使用">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/2008/11/23/1288850/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2008/11/23/1288850/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="http://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">Oracle Notes</h1>
+
+                  <p class="post-byline">
+                    by  · 2008年11月23日 · 3515 Words ·
+                    ~8min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-11-23-1288850.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      <p>最近工作中用到了Oracle，笔记记录一下：</p>
+
+<ol>
+<li><p>游标cursor</p>
+
+<p>create or replace procedure sp_test(seq_id number) as</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cursor curData is select t.propertyname, t.propertyvalue from kinfoc3.new_prop_39460 t where t.id = prop_id;</p>
+
+<p>begin</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for rowData in curData loop</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; do something with rowData</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end loop;</p>
+
+<p>end;</p>
+
+<p>使用游标查询到数据库集后再遍历里面的子集，感觉速度非常快。</p>
+
+<p>还有一种游标是SYS_REFCURSOR型游标，经过测试，发现SYS_REFCURSOR型游标在效率上比前面的那种游标差了好多！好处是可以作出参数进行传递。</p>
+
+<p>create or replace procedure test(rsCursor out SYS_REFCURSOR) is</p>
+
+<p>cursor SYS_REFCURSOR; name varhcar(20);</p>
+
+<p>begin</p>
+
+<p>OPEN cursor FOR select name from student where &hellip; &ndash;SYS_REFCURSOR只能通过OPEN方法来打开和赋值</p>
+
+<p>LOOP</p>
+
+<p>fetch cursor into name&nbsp;&nbsp; &ndash;SYS_REFCURSOR只能通过fetch into来打开和遍历 exit when cursor%NOTFOUND;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash;SYS_REFCURSOR中可使用三个状态属性：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;%NOTFOUND(未找到记录信息) %FOUND(找到记录信息)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;%ROWCOUNT(然后当前游标所指向的行位置)</p>
+
+<p>dbms_output.putline(name);</p>
+
+<p>end LOOP;</p>
+
+<p>rsCursor := cursor;</p>
+
+<p>end test;</p></li>
+
+<li><p>建索引加快查询速度。</p>
+
+<p>假如某个表经常根据列ID和列Name来查询，则可以建立ID+Name的所以加快查询速度。3.  synonyms同义词</p>
+
+<p>从字面上理解就是别名的意思，和试图的功能类似。就是一种映射关系。</p>
+
+<p>同义词拥有如下好处：节省大量的数据库空间，对不同用户的操作同一张表没有多少差别;扩展的数据库的使用范围，能够在不同的数据库用户之间实现无缝交互;同义词可以创建在不同一个数据库服务器上，通过网络实现连接。4.  SQL*Loader</p>
+
+<p>SQL*Loader，是Oracle数据库系统提供的一个数据移植工具，它提供了一个命令行的方式，可以让用户成批的向Oracle数据库中装入大量数据。虽然Oracle数据库与SQL Server数据库都提供了图形界面的导入工具，但是，图形界面有一个很大的不足，就是不能够直接给前台程序引用。而命令行的导入模块，则可以直接被前台的应用程序所调用，这也是SQL*Loader之所以成为Oracle数据库系统最通用的工具之一的原因。</p>
+
+<p>SQL*Loader其具有如下的优势：</p>
+
+<pre><code>1. 接被前台应用程序调用。
+
+
+2. 可以从既定文件中大量导入数据。
+
+
+3. 可以实现把多个数据文件合并成一个文件。
+
+
+4. 修复、分离坏的记录。
+</code></pre>
+
+<p>一般SQL*Loader模块至少需要两个文件，才可以使用。</p>
+
+<p>一是数据文件。</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据文件，顾名思义，就是我们需要导入的数据集合。对于Oracle系统来说，其可以支持多个格式的数据文件，如逗号分隔符或者 TAB键分隔符或者分号分隔符等文本文件，也支持固定宽度的文本文件等等。不过在实际应用中，用的最多的还是逗号分隔的文本文件。</p>
+
+<p>二是控制文件。</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 控制文件其起的作用就是建立数据文件与Oracle数据表字段之间的一一对应关系。简单的说，把数据文件中的某个内容放在Oracle数据表中的那个字段上，这就是控制文件所起的主要作用。5.  TRUNC()函数</p>
+
+<p>截断函数语法：</p>
+
+<p>TRUNC（date[,fmt]）</p>
+
+<p>TRUNC（number[,decimals]）</p>
+
+<p>举例：假如现在是2008-9-11 9:30(sysdate)，则：</p>
+
+<p>trunc(sysdate, &lsquo;yy&rsquo;) = 2008-1-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; 意思是将该日期截断到&#8220;年(yy)&#8221;</p>
+
+<p>trunc(sysdate, &lsquo;mm&rsquo;) = 2008-9-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; 将日期截断到&#8220;月(mm)&#8221;</p>
+
+<p>不传第二个参数时，默认截断到&#8220;天(dd)&#8221;，</p>
+
+<p>trunc(sysdate, &lsquo;dd&rsquo;) = 2008-9-11</p>
+
+<p>当参数是数字时，如：</p>
+
+<p>trunc(1234.5678, 1) = 1234.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; 小数点后一位开始截断</p>
+
+<p>trunc(1234.5678, -1) = 1230&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ndash; 小数点前一位开始截断6.  索引</p>
+
+<p>Cost　该操作的成本</p>
+
+<p>Card　该操作访问的行</p>
+
+<p>Bytes 该操作访问的byte 数</p>
+
+<p>1.用IN来替换OR</p>
+
+<p>&nbsp;&nbsp;&nbsp; 这是一条简单易记的规则，但是实际的执行效果还须检验，在ORACLE8i下，两者的执行路径似乎是相同的．</p>
+
+<p>&nbsp;&nbsp;&nbsp; 低效: 　　SELECT&#8230;. FROM LOCATION WHERE LOC_ID = 10 OR LOC_ID = 20 OR LOC_ID = 30 　　</p>
+
+<p>&nbsp;&nbsp;&nbsp; 高效 　　SELECT&#8230; FROM LOCATION WHERE LOC_IN IN (10,20,30);</p>
+
+<p>2.对索引列使用OR将造成全表扫描，用UNION替换OR (适用于索引列，where 子句为等号的情况)</p>
+
+<p>&nbsp;&nbsp;&nbsp; 高效: 　　SELECT LOC_ID , LOC_DESC , REGION 　　FROM LOCATION 　　WHERE LOC_ID = 10 　　UNION 　　SELECT LOC_ID , LOC_DESC , REGION 　　FROM LOCATION 　　WHERE REGION = &#8220;MELBOURNE&#8221; 　　</p>
+
+<p>&nbsp;&nbsp;&nbsp; 低效: 　　SELECT LOC_ID , LOC_DESC , REGION 　　FROM LOCATION 　　WHERE LOC_ID = 10 OR REGION = &#8220;MELBOURNE&#8221;</p></li>
+
+<li><p>OVER (PARTITION BY ..)</p>
+
+<p>可以将结果分区并获取多列的值，具体用法：<a href="http://blog.chinaunix.net/u1/38180/showart.php?id=370545" title="http://blog.chinaunix.net/u1/38180/showart.php?id=370545">http://blog.chinaunix.net/u1/38180/showart.php?id=370545</a></p>
+
+<p>测试了下面两种写法的效率，发现效率几乎没有什么差别：</p>
+
+<p>写法一：</p>
+
+<p>select t.id id, max(t.time) time</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from table t</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where t.id is not null</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and trunc(t.time) &lt; trunc(sysdate)</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; group by t.id</p>
+
+<p>写法二：</p>
+
+<p>select b.id id, b.time time from (select t.id id, t.time time,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; row_number() over(partition by t.id order by t.time desc) rn</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from table t</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where t.id is not null</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and trunc(t.time) &lt; trunc(sysdate))b where b.rn = 1</p></li>
+
+<li><p>触发器</p></li>
+</ol>
+
+<p>是特定事件出现的时候，自动执行的代码块。类似于存储过程，但是用户不能直接调用他们。</p>
+
+<p>　　功能：</p>
+
+<p>　　1、 允许/限制对表的修改</p>
+
+<p>　　2、 自动生成派生列，比如自增字段</p>
+
+<p>　　3、 强制数据一致性</p>
+
+<p>　　4、 提供审计和日志记录</p>
+
+<p>　　5、 防止无效的事务处理</p>
+
+<p>　　6、 启用复杂的业务逻辑
+    例子：</p>
+
+<p>create trigger biufer_employees_department_id</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; before insert or update</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; of department_id</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on employees</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; referencing old as old_value</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new as new_value</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for each row</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; when (new_value.department_id&lt;&gt;80 )</p>
+
+<p>　　begin</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :new_value.commission_pct :=0;</p>
+
+<p>　　end;9.  instr函数</p>
+
+<p>INSTR方法的格式为</p>
+
+<pre><code>INSTR(源字符串, 目标字符串, 起始位置, 匹配序号)
+
+例如：INSTR('CORPORATE FLOOR','OR', 3, 2)中，源字符串为'CORPORATE FLOOR', 目标字符串为'OR'，起始位置为3，取第2个匹配项的位置。
+
+默认查找顺序为从左到右。当起始位置为负数的时候，从右边开始查找。
+
+所以SELECT INSTR('CORPORATE FLOOR', 'OR', -1, 1) &quot;Instring&quot; FROM DUAL的显示结果是
+
+Instring
+
+——————
+
+1410.  Oracle左连接,右连接
+</code></pre>
+
+<p>数据表的连接有:
+    1、内连接(自然连接): 只有两个表相匹配的行才能在结果集中出现
+    2、外连接: 包括
+    （1）左外连接(左边的表不加限制)
+    （2）右外连接(右边的表不加限制)
+    （3）全外连接(左右两表都不加限制)
+    3、自连接(连接发生在一张基表内)</p>
+
+<p>select a.studentno, a.studentname, b.classname</p>
+
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; from students a, classes b
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; where a.classid(+) = b.classid;
+</code></pre>
+
+<p>STUDENTNO STUDENTNAM CLASSNAME</p>
+
+<pre><code>---------- ---------- ------------------------------
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1 周虎&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 一年级一班
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2 周林&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 一年级二班
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 一年级三班
+
+以上语句是右连接：
+
+即&quot;(+)&quot;所在位置的另一侧为连接的方向，右连接说明等号右侧的所有
+
+记录均会被显示，无论其在左侧是否得到匹配。也就是说上例中，无
+
+论会不会出现某个班级没有一个学生的情况，这个班级的名字都会在
+
+查询结构中出现。
+</code></pre>
+
+<p>反之：
+    select a.studentno, a.studentname, b.classname</p>
+
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; from students a, classes b
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; where a.classid = b.classid(+);
+</code></pre>
+
+<p>STUDENTNO STUDENTNAM CLASSNAME</p>
+
+<pre><code>---------- ---------- ------------------------------
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 1 周虎&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 一年级一班
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2 周林&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 一年级二班
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3 钟林达
+</code></pre>
+
+<p>则是左连接，无论这个学生有没有一个能在一个班级中得到匹配的部门号，</p>
+
+<pre><code>这个学生的记录都会被显示。
+</code></pre>
+
+<p>select a.studentno, a.studentname, b.classname</p>
+
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; from students a, classes b
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; where a.classid = b.classid;
+</code></pre>
+
+<p>这个则是通常用到的内连接,显示两表都符合条件的记录</p>
+
+<p>总之,</p>
+
+<p>左连接显示左边全部的和右边与左边相同的
+    右连接显示右边全部的和左边与右边相同的
+    内连接是只显示满足条件的!11.  （待补充&#8230;&#8230;）</p>
+
+<p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/11/23/1288850.html">http://www.cnblogs.com/coderzh/archive/2008/11/23/1288850.html</a></strong></p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="http://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2008/11/23/1288850/">http://blog.coderzh.com/2008/11/23/1288850/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+
+              <div class="clear"></div>
+
+              <p class="post-tags">
+                <span>Tags:</span>
+                
+              </p>
+
+              <h4 class="heading">
+  <i class="fa fa-hand-o-right"></i>Related posts</h4>
+
+    <ul class="related-posts group">
+    
+    
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+    </ul>
+
+
+
+              <section id="comments" class="themeform">
+<div class="ds-thread" data-thread-key="/2008/11/23/1288850/" data-title="Oracle Notes" data-url="http://blog.coderzh.com/2008/11/23/1288850/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"coderzh"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+</section>
+
+
+              
+            </div>
+
+
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p>微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking</p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2008/11/23/1339310/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>wxpython学习笔记</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+        <a href="http://blog.coderzh.com/2008/11/23/1335754/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>IE弹出&#34;是否停止运行此脚本&#34;脚本超时时间设置</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+
+  <nav class="nav-container group" id="nav-footer">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap">
+      <ul id="menu-default-menu-1" class="nav container group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2015. All Rights Reserved. <br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+
+</footer>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10147768-2', 'auto');
+  ga('send', 'pageview');
+
+  $('#messagesbsb').remove();
+
+</script>
+</body>
+</html>
+

