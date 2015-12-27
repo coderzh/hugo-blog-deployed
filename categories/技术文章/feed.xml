@@ -6,7 +6,61 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 21 Nov 2015 17:48:04 CST</updated>
+        <updated>Sun, 27 Dec 2015 18:49:15 CST</updated>
+        
+        <item>
+            <title>大家都应该做的 Code Review</title>
+            <link>http://blog.coderzh.com/2015/12/27/code-review/</link>
+            <pubDate>Sun, 27 Dec 2015 18:49:15 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/12/27/code-review/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/cr.jpg-wt&#34; alt=&#34;cr&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;代码审查（Code Review）是个老生常谈的话题了，我以前呆过的大公司也好，创业公司也好，都知道 Code Review 的好处，但真正去有效执行的却很少。有人认为“存在即合理”，大家都不愿意做 Code Review ，可能 Code Review 真的不好，影响开发效率。有的人想做，但是执行起来太困难。&lt;/p&gt;
+
+&lt;p&gt;造成大家放弃 Code Review 的原因有哪些呢？我仔细想了想，大概有这几种：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;时间紧&lt;/strong&gt;：项目赶着上线，一个人干两人的活，天天加班累成狗，哪有时间 Review ，怕影响项目进度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;等不了&lt;/strong&gt;：工作被阻塞，发起评审后，啥也干不了了，我是该催一催那家伙评审一下呢，还是催一催那家伙评审一下呢，什么？他休假了！WTF！&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;效果差&lt;/strong&gt;：我写的那么有气质的代码你看出来了吗？看出来了吗？！什么？！单词拼写错误？代码逻辑为什么是这样？来来来，搬个小板凳过来，我给你解释一下午。（评审者不了解被评审人工作）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;嫌麻烦&lt;/strong&gt;：代码不能直接 commit 或 push ，必须先走评审流程，还能不能愉快的提交代码了？&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;再加上，创业团队成功率本来就低，一种普遍的想法是：最重要是项目能活下去，代码写的挫一点没关系，可以以后再搞。代码写的再好，项目死了也是白搭。&lt;/p&gt;
+
+&lt;p&gt;貌似好有道理啊，要不 Code Review 就不做了吧。不！&lt;strong&gt;我认为，不论大小什么团队，都应该做 Code Review 。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我的核心观点是，产品开发周期内，代码编写所占的时间比例其实是很小的，之后有大量的时间是花在代码调试，修复 Bug 和填之前的坑上。&lt;strong&gt;做 Code Review ，其实可以减少代码调试的时间，更快的定位和修复 Bug 和少挖一些坑。&lt;/strong&gt;在代码编写的阶段通过 Code Review 把控质量，从总的项目周期来看是划算的，甚至是事半功倍的。&lt;/p&gt;
+
+&lt;p&gt;当然，上面提到的“时间紧、等不了、效果差、嫌麻烦”也是真实存在的。要做好 Code Review ，就必须去解决这些问题。核心是提高 Code Review 效率，我的建议也很简单，&lt;strong&gt;用好的工具，做充分的沟通。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;首先要避免 Code Review 工具提交过程过于复杂冗长，相关的工具有很多，不管是开源的还是商业的（比如：&lt;a href=&#34;http://phabricator.org/&#34;&gt;Phabricator&lt;/a&gt;、&lt;a href=&#34;https://www.gerritcodereview.com/&#34;&gt;Gerrit&lt;/a&gt;）。GitHub 的 Pull Request 其实是很好的 Code Review 工具。在 GitHub 上，你发现一个好项目想改进它，你只要点击 Fork ，增加你要的功能，然后通过 Pull Request 贡献你的代码。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/pr.jpg&#34; alt=&#34;pr&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;“废话少说，Send me a pull request!” 是不是感觉这句话叼叼的。&lt;/p&gt;
+
+&lt;p&gt;GitHub 的 Pull Request Merge 相当于 Code Review 的过程，代码原作者 Review 代码，提出意见，最终合并只需要在 GitHub 点几个按钮就可以完成。据了解，已经有不少创业公司的代码直接托管在 GitHub，并采用 PR 的开发模式。&lt;/p&gt;
+
+&lt;p&gt;其次是要做好充分的沟通。实现某个功能时，可以指派给两人，一人负责写代码，一人负责跟踪和讨论，然后交叉进行，有点类似结对编程。如果做到这个比较难，那就需要在代码编写过程中尽可能多的和别人讨论沟通，让评审者充分了解你的工作。可行的方法是老员工带新员工，老员工对新员工的工作比较了解，可以很好的给出评审意见。另一种是老员工之间互相评审，互相交流容易擦出火花。&lt;/p&gt;
+
+&lt;p&gt;而且，做好 Code Review ，除了提高代码质量之外，还可以：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;把控代码的风格和规范，提高代码的可维护性。&lt;/li&gt;
+&lt;li&gt;展示自己的工作内容，让同事对你的工作成果更加了解。&lt;/li&gt;
+&lt;li&gt;从别人的代码里学习到很多编程技巧，解决问题的思路。&lt;/li&gt;
+&lt;li&gt;通过别人的评审意见发现自己的不足，优化自己的代码，扩宽自己的思路。&lt;/li&gt;
+&lt;li&gt;很好的给予新人指导，给出有建设性的意见，帮助新人成长，做好知识的传承。&lt;/li&gt;
+&lt;li&gt;通过评审摩擦火花，互相欣赏，找到心灵相惜的好基友或终身伴侣。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/code-review.jpg&#34; alt=&#34;code-review&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Code Review ，你做了就知道！&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>Hugo 自动化部署脚本</title>
@@ -1997,100 +2051,6 @@ $ git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;然后，和前一种方法一样，在摘要后面加``  即可。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>使用ThreadSanitizer线程检查工具</title>
-            <link>http://blog.coderzh.com/2015/08/15/ThreadSanitizer/</link>
-            <pubDate>Sat, 15 Aug 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/08/15/ThreadSanitizer/</guid>
-            <description>
-
-&lt;p&gt;ThreadSanitizer又叫TSan，是一个检查线程Data Race的C/C++工具。它集成在新版的gcc和clang中，通过编译时加-fsanitize=thread，可以在运行时检测出Data Race的问题。&lt;/p&gt;
-
-&lt;p&gt;ThreadSanitizer官网：&lt;a href=&#34;https://code.google.com/p/thread-sanitizer&#34;&gt;https://code.google.com/p/thread-sanitizer&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;data-race:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;Data Race&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/Data-race.jpg&#34; alt=&#34;DataRace&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Data Race是指多个线程在没有正确加锁的情况下，同时访问同一块数据，并且至少有一个线程是写操作，对数据的读取和修改产生了竞争，从而导致各种不可预计的问题。&lt;/p&gt;
-
-&lt;p&gt;Data Race的问题非常难查，Data Race一旦发生，结果是不可预期的，也许直接就Crash了，也许导致执行流程错乱了，也许把内存破坏导致之后某个时刻突然Crash了。&lt;/p&gt;
-
-&lt;h3 id=&#34;环境要求:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;环境要求&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Linux x86_64，内核版本不要太旧。（经测试，公司旧的开发机Linux内核是2.6.16是跑不了的，新的tlinux内核3.10.0可以）&lt;/li&gt;
-&lt;li&gt;gcc 4.8版本以上（clang也集成了，3.2版本以上）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;官方示例:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;官方示例&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;$ cat simple_race.cc
-#include &amp;lt;pthread.h&amp;gt;
-#include &amp;lt;stdio.h&amp;gt;
- 
-int Global;
- 
-void *Thread1(void *x) {
-  Global++;
-  return NULL;
-}
- 
-void *Thread2(void *x) {
-  Global--;
-  return NULL;
-}
- 
-int main() {
-  pthread_t t[2];
-  pthread_create(&amp;amp;t[0], NULL, Thread1, NULL);
-  pthread_create(&amp;amp;t[1], NULL, Thread2, NULL);
-  pthread_join(t[0], NULL);
-  pthread_join(t[1], NULL);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上面的代码在不加锁的情况下，两个线程同时去修改Global变量，从而导致Data Race。使用gcc的-fsanitize=thread 编译，执行&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;$ g++ simple_race.cc -fsanitize=thread -fPIE -pie -g
-$ ./a.out
-==================
-WARNING: ThreadSanitizer: data race (pid=26327)
-  Write of size 4 at 0x7f89554701d0 by thread T1:
-    #0 Thread1(void*) simple_race.cc:8 (exe+0x000000006e66)
- 
-  Previous write of size 4 at 0x7f89554701d0 by thread T2:
-    #0 Thread2(void*) simple_race.cc:13 (exe+0x000000006ed6)
- 
-  Thread T1 (tid=26328, running) created at:
-    #0 pthread_create tsan_interceptors.cc:683 (exe+0x00000001108b)
-    #1 main simple_race.cc:19 (exe+0x000000006f39)
- 
-  Thread T2 (tid=26329, running) created at:
-    #0 pthread_create tsan_interceptors.cc:683 (exe+0x00000001108b)
-    #1 main simple_race.cc:20 (exe+0x000000006f63)
-==================
-ThreadSanitizer: reported 1 warnings
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;执行程序，如果发生Data Race，错误信息会直接输出出来。如果错误信息比较多，重定向输出流到文件里，慢慢分析：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ./a.out &amp;gt;result.txt 2&amp;gt;&amp;amp;1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;关键要点:ee3062e1786be8171e5aa95e9b33a1dc&#34;&gt;关键要点&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;除了加-fsanitize=thread外，一定要加-fPIE -pie。&lt;/li&gt;
-&lt;li&gt;-g 是为了能显示文件名和行号。&lt;/li&gt;
-&lt;li&gt;如果分生成obj(-c)和link两个步骤，每一步都加：thread -fPIE -pie -g，并且在link的时候加-ltsan&lt;/li&gt;
-&lt;li&gt;只支持64位，最好指定编译64位(-m64)&lt;/li&gt;
-&lt;li&gt;如果依赖其他静态库，其他静态库编译时必须指定-fPIC（如果不是请重编）&lt;/li&gt;
-&lt;/ol&gt;
 </description>
         </item>
         

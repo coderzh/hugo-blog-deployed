@@ -12,40 +12,36 @@
         }
     }
   </script>
-  <title>程序员的思考：我的 K12（我也曾是小学生） - CoderZh Blog</title>
+  <title>大家都应该做的 Code Review - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="K12,">
-<meta name="description" content="
-">
+<meta name="keywords" content="codereview,">
+<meta name="description" content="大家都应该做的 Code Review，好处">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="程序员的思考：我的 K12（我也曾是小学生） - CoderZh Blog">
-<meta itemprop="description" content="
-">
+<meta itemprop="name" content="大家都应该做的 Code Review - CoderZh Blog">
+<meta itemprop="description" content="大家都应该做的 Code Review，好处">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="程序员的思考：我的 K12（我也曾是小学生） - CoderZh Blog" />
+<meta property="og:title" content="大家都应该做的 Code Review - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.coderzh.com/2015/12/21/my-k12-pupil/" />
+<meta property="og:url" content="http://blog.coderzh.com/2015/12/27/code-review/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="
-">
+<meta property="og:description" content="大家都应该做的 Code Review，好处">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="程序员的思考：我的 K12（我也曾是小学生） - CoderZh Blog">
-<meta name="twitter:description" content="
-">
+<meta name="twitter:title" content="大家都应该做的 Code Review - CoderZh Blog">
+<meta name="twitter:description" content="大家都应该做的 Code Review，好处">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://blog.coderzh.com/2015/12/21/my-k12-pupil/">
-  <link rel='shortlink' href="http://blog.coderzh.com/2015/12/21/my-k12-pupil/"/>
+  <link rel="canonical" href="http://blog.coderzh.com/2015/12/27/code-review/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2015/12/27/code-review/"/>
   <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -167,6 +163,10 @@
               <ul class="meta-single group">
                 
                 <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+                <li class="category">
                   <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" rel="category tag">思考感悟</a>
                 </li>
                 
@@ -179,12 +179,12 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">程序员的思考：我的 K12（我也曾是小学生）</h1>
+                  <h1 class="post-title">大家都应该做的 Code Review</h1>
 
                   <p class="post-byline">
-                    by  · 2015年12月21日 · 1564 Words ·
-                    ~4min reading time |
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-12-21-my-k12-pupil.md"
+                    by  · 2015年12月27日 · 1334 Words ·
+                    ~3min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-12-27-code-review.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -193,31 +193,51 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/math.jpeg-wt" alt="math" /></p>
+                      <p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/cr.jpg-wt" alt="cr" /></p>
 
-<p>我还记得小学一年级刚开学，老师教我们背字母表，然后对我们进行了测验。背的好的几个小朋友被老师留了下来，我也是其中一个。老师说要选我们当班干部。我当时傻了，从没听说过什么是“班干部”，于是回家后问家长。家长听了后很高兴，而我还是没明白到底啥是“班干部”。</p>
+<p>代码审查（Code Review）是个老生常谈的话题了，我以前呆过的大公司也好，创业公司也好，都知道 Code Review 的好处，但真正去有效执行的却很少。有人认为“存在即合理”，大家都不愿意做 Code Review ，可能 Code Review 真的不好，影响开发效率。有的人想做，但是执行起来太困难。</p>
 
-<p>直到后来我才发现，上课时喊一声“起立”的班干部是班长，收作业本的是学习委员，课间餐给小朋友发吃的的是生活委员。我当时就是个生活委员。从那时起，我开始了我的 K12 从政之路（说的好像有点夸张的样子）。三年级时升为了班长，一直延续到高三，一直是班长。</p>
+<p>造成大家放弃 Code Review 的原因有哪些呢？我仔细想了想，大概有这几种：</p>
 
-<p>班干部的人选通常是按学习成绩来挑选的。小学时认为学习最好的人才会当班长，到初中时才发现默认学习最好的人其实是学习委员。有段时间还特别自卑，因为当时的老师上课时遇到稍难的题时都喜欢点名让几个学习好的同学来回答，而我却很少被点到。出于攀比的心理，我开始怀疑老师理解的班长就是平时只管一管纪律，成绩中上的同学，或者是因为我长的不好从来不点我名。</p>
+<ol>
+<li><strong>时间紧</strong>：项目赶着上线，一个人干两人的活，天天加班累成狗，哪有时间 Review ，怕影响项目进度。</li>
+<li><strong>等不了</strong>：工作被阻塞，发起评审后，啥也干不了了，我是该催一催那家伙评审一下呢，还是催一催那家伙评审一下呢，什么？他休假了！WTF！</li>
+<li><strong>效果差</strong>：我写的那么有气质的代码你看出来了吗？看出来了吗？！什么？！单词拼写错误？代码逻辑为什么是这样？来来来，搬个小板凳过来，我给你解释一下午。（评审者不了解被评审人工作）</li>
+<li><strong>嫌麻烦</strong>：代码不能直接 commit 或 push ，必须先走评审流程，还能不能愉快的提交代码了？</li>
+</ol>
 
-<p>从小学到高中，有一条永恒不变的中心线，就是学习成绩。它让我们获得成就感，也让我们灰心。学校和家长不断引导我们和别人攀比，当落后时，我们开始否定自己，变得自卑。让我印象深刻的一件事情是，小学选拔学生参加奥数比赛，经过层层考试筛选最后剩下10个人左右时。每经过一次内部测验，老师都让我们站在台上，按名次排成一排，以警示自己的成绩所在的位置。这10个同学已经是全年级数学最优秀的同学了，但每次排名我都站在靠后接近最后的位置，每次都让我自卑懊恼不已。我怀疑我是不是真的太笨了。</p>
+<p>再加上，创业团队成功率本来就低，一种普遍的想法是：最重要是项目能活下去，代码写的挫一点没关系，可以以后再搞。代码写的再好，项目死了也是白搭。</p>
 
-<p>有一届奥数比赛，已经确定我可以代表学校参加比赛了。就在考试快要开始前，我被告知参加比赛的名额满了，让我在教室等，心里想着平时那么努力了好不容易进入最后关头，到考试上阵前却要被老师换下，心里很不是滋味。</p>
+<p>貌似好有道理啊，要不 Code Review 就不做了吧。不！<strong>我认为，不论大小什么团队，都应该做 Code Review 。</strong></p>
 
-<p>小学时我疯狂的迷上了乒乓球，常常幻想哪天国家队主教练将我收入麾下，带领中国队冲击世界冠军。</p>
+<p>我的核心观点是，产品开发周期内，代码编写所占的时间比例其实是很小的，之后有大量的时间是花在代码调试，修复 Bug 和填之前的坑上。<strong>做 Code Review ，其实可以减少代码调试的时间，更快的定位和修复 Bug 和少挖一些坑。</strong>在代码编写的阶段通过 Code Review 把控质量，从总的项目周期来看是划算的，甚至是事半功倍的。</p>
 
-<p>记得95年那届世乒赛，那时还是邓亚萍、孔令辉和刘国梁。为了在家看决赛，我直接翘课没去参加五年级的奥数选拔考试。之后我的数学老师找到我谈话，她并没有责备我，而是鼓励和肯定了我。不记得有没有单独让我重考了，最后还是让我进入了下一轮的选拔。这是我遇到的第一个很好的老师，她给了我自信，经常鼓励我，甚至感觉经常特殊照顾我。她是数学老师，也是班主任，在考试结束批改完成后，她会满怀欣喜的第一时间告诉我我的成绩。（当然，往往都是成绩不错的情况）有次语文考试成绩不好，她还单独叫我出去给我讲解出错的题。她长的胖胖的，可是我早已经不记得她的名字了。我在五年级最后的一次奥数竞赛时，终于成功逆袭考了个第一名，拿了全市一等奖。</p>
+<p>当然，上面提到的“时间紧、等不了、效果差、嫌麻烦”也是真实存在的。要做好 Code Review ，就必须去解决这些问题。核心是提高 Code Review 效率，我的建议也很简单，<strong>用好的工具，做充分的沟通。</strong></p>
 
-<p>和我玩的最好的同学，都是学习相对差的同学，也就是别人眼中的差生。因为和他们玩，没有攀比和炫耀，从来不谈论学习成绩，有的是纯粹的乐趣。我还加入了学校的田径队，在和田径队员一起训练的那段时光，是单纯的、充实的、快乐的，虽然训练很辛苦。我的一个要好的同学练习跳高，还有一对传奇的姐弟组合。姐姐和我同级，弟弟小我一岁。据说弟弟从小就绑着沙袋每天跟着家人的自行车跑去买菜。我大他一岁，短跑完全不是他的对手，跑中长跑，也跑不过他的姐姐。我们每天天没亮就开始训练，饶着城区跑，到人民纪念碑跳石阶，拖着轮胎在操场上跑，热身、压腿、准备活动小步跑高抬腿、专项训练，日复一日。按理这比学习累多了，但是我没有放弃。因为在跑不过队里的小伙伴时，没有人会取笑你，你想的只是怎样让自己变得更强。最后，在全市小学生运动会中，我成功的拿下了200米第一和400米第二的成绩。</p>
+<p>首先要避免 Code Review 工具提交过程过于复杂冗长，相关的工具有很多，不管是开源的还是商业的（比如：<a href="http://phabricator.org/">Phabricator</a>、<a href="https://www.gerritcodereview.com/">Gerrit</a>）。GitHub 的 Pull Request 其实是很好的 Code Review 工具。在 GitHub 上，你发现一个好项目想改进它，你只要点击 Fork ，增加你要的功能，然后通过 Pull Request 贡献你的代码。</p>
 
-<p>数学竞赛本是用来锻炼思维，学习知识的，却成了摧残自信的工具。</p>
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/pr.jpg" alt="pr" /></p>
 
-<p>田径训练本是辛苦、单调又重复的，却能获得一些纯粹的快乐。</p>
+<p>“废话少说，Send me a pull request!” 是不是感觉这句话叼叼的。</p>
 
-<p>因为学习是被动的，田径训练是主动的。如果中间能有好的引导，结果又会不同。</p>
+<p>GitHub 的 Pull Request Merge 相当于 Code Review 的过程，代码原作者 Review 代码，提出意见，最终合并只需要在 GitHub 点几个按钮就可以完成。据了解，已经有不少创业公司的代码直接托管在 GitHub，并采用 PR 的开发模式。</p>
 
-<p>……</p>
+<p>其次是要做好充分的沟通。实现某个功能时，可以指派给两人，一人负责写代码，一人负责跟踪和讨论，然后交叉进行，有点类似结对编程。如果做到这个比较难，那就需要在代码编写过程中尽可能多的和别人讨论沟通，让评审者充分了解你的工作。可行的方法是老员工带新员工，老员工对新员工的工作比较了解，可以很好的给出评审意见。另一种是老员工之间互相评审，互相交流容易擦出火花。</p>
+
+<p>而且，做好 Code Review ，除了提高代码质量之外，还可以：</p>
+
+<ol>
+<li>把控代码的风格和规范，提高代码的可维护性。</li>
+<li>展示自己的工作内容，让同事对你的工作成果更加了解。</li>
+<li>从别人的代码里学习到很多编程技巧，解决问题的思路。</li>
+<li>通过别人的评审意见发现自己的不足，优化自己的代码，扩宽自己的思路。</li>
+<li>很好的给予新人指导，给出有建设性的意见，帮助新人成长，做好知识的传承。</li>
+<li>通过评审摩擦火花，互相欣赏，找到心灵相惜的好基友或终身伴侣。</li>
+</ol>
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/code-review.jpg" alt="code-review" /></p>
+
+<p>Code Review ，你做了就知道！</p>
 
                       
                     </div>
@@ -229,7 +249,7 @@
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
                             <br />微信关注：hacker-thinking （一个程序员的思考）
-                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2015/12/21/my-k12-pupil/">http://blog.coderzh.com/2015/12/21/my-k12-pupil/</a>
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2015/12/27/code-review/">http://blog.coderzh.com/2015/12/27/code-review/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -282,7 +302,7 @@
 
 
               <section id="comments" class="themeform">
-<div class="ds-thread" data-thread-key="/2015/12/21/my-k12-pupil/" data-title="程序员的思考：我的 K12（我也曾是小学生）" data-url="http://blog.coderzh.com/2015/12/21/my-k12-pupil/"></div>
+<div class="ds-thread" data-thread-key="/2015/12/27/code-review/" data-title="大家都应该做的 Code Review" data-url="http://blog.coderzh.com/2015/12/27/code-review/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"coderzh"};
 	(function() {
@@ -337,20 +357,14 @@ var duoshuoQuery = {short_name:"coderzh"};
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://blog.coderzh.com/2015/12/20/my-k12-escape-school/" rel="next">
+        <a href="http://blog.coderzh.com/2015/12/21/my-k12-pupil/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>程序员的思考：我的 K12（逃学威龙）</span>
+          <span>程序员的思考：我的 K12（我也曾是小学生）</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://blog.coderzh.com/2015/12/27/code-review/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>大家都应该做的 Code Review</span>
-        </a>
         
       </li>
     </ul>

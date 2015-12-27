@@ -6,7 +6,61 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Mon, 21 Dec 2015 22:38:15 CST</updated>
+        <updated>Sun, 27 Dec 2015 18:49:15 CST</updated>
+        
+        <item>
+            <title>大家都应该做的 Code Review</title>
+            <link>http://blog.coderzh.com/2015/12/27/code-review/</link>
+            <pubDate>Sun, 27 Dec 2015 18:49:15 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/12/27/code-review/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/cr.jpg-wt&#34; alt=&#34;cr&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;代码审查（Code Review）是个老生常谈的话题了，我以前呆过的大公司也好，创业公司也好，都知道 Code Review 的好处，但真正去有效执行的却很少。有人认为“存在即合理”，大家都不愿意做 Code Review ，可能 Code Review 真的不好，影响开发效率。有的人想做，但是执行起来太困难。&lt;/p&gt;
+
+&lt;p&gt;造成大家放弃 Code Review 的原因有哪些呢？我仔细想了想，大概有这几种：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;时间紧&lt;/strong&gt;：项目赶着上线，一个人干两人的活，天天加班累成狗，哪有时间 Review ，怕影响项目进度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;等不了&lt;/strong&gt;：工作被阻塞，发起评审后，啥也干不了了，我是该催一催那家伙评审一下呢，还是催一催那家伙评审一下呢，什么？他休假了！WTF！&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;效果差&lt;/strong&gt;：我写的那么有气质的代码你看出来了吗？看出来了吗？！什么？！单词拼写错误？代码逻辑为什么是这样？来来来，搬个小板凳过来，我给你解释一下午。（评审者不了解被评审人工作）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;嫌麻烦&lt;/strong&gt;：代码不能直接 commit 或 push ，必须先走评审流程，还能不能愉快的提交代码了？&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;再加上，创业团队成功率本来就低，一种普遍的想法是：最重要是项目能活下去，代码写的挫一点没关系，可以以后再搞。代码写的再好，项目死了也是白搭。&lt;/p&gt;
+
+&lt;p&gt;貌似好有道理啊，要不 Code Review 就不做了吧。不！&lt;strong&gt;我认为，不论大小什么团队，都应该做 Code Review 。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我的核心观点是，产品开发周期内，代码编写所占的时间比例其实是很小的，之后有大量的时间是花在代码调试，修复 Bug 和填之前的坑上。&lt;strong&gt;做 Code Review ，其实可以减少代码调试的时间，更快的定位和修复 Bug 和少挖一些坑。&lt;/strong&gt;在代码编写的阶段通过 Code Review 把控质量，从总的项目周期来看是划算的，甚至是事半功倍的。&lt;/p&gt;
+
+&lt;p&gt;当然，上面提到的“时间紧、等不了、效果差、嫌麻烦”也是真实存在的。要做好 Code Review ，就必须去解决这些问题。核心是提高 Code Review 效率，我的建议也很简单，&lt;strong&gt;用好的工具，做充分的沟通。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;首先要避免 Code Review 工具提交过程过于复杂冗长，相关的工具有很多，不管是开源的还是商业的（比如：&lt;a href=&#34;http://phabricator.org/&#34;&gt;Phabricator&lt;/a&gt;、&lt;a href=&#34;https://www.gerritcodereview.com/&#34;&gt;Gerrit&lt;/a&gt;）。GitHub 的 Pull Request 其实是很好的 Code Review 工具。在 GitHub 上，你发现一个好项目想改进它，你只要点击 Fork ，增加你要的功能，然后通过 Pull Request 贡献你的代码。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/pr.jpg&#34; alt=&#34;pr&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;“废话少说，Send me a pull request!” 是不是感觉这句话叼叼的。&lt;/p&gt;
+
+&lt;p&gt;GitHub 的 Pull Request Merge 相当于 Code Review 的过程，代码原作者 Review 代码，提出意见，最终合并只需要在 GitHub 点几个按钮就可以完成。据了解，已经有不少创业公司的代码直接托管在 GitHub，并采用 PR 的开发模式。&lt;/p&gt;
+
+&lt;p&gt;其次是要做好充分的沟通。实现某个功能时，可以指派给两人，一人负责写代码，一人负责跟踪和讨论，然后交叉进行，有点类似结对编程。如果做到这个比较难，那就需要在代码编写过程中尽可能多的和别人讨论沟通，让评审者充分了解你的工作。可行的方法是老员工带新员工，老员工对新员工的工作比较了解，可以很好的给出评审意见。另一种是老员工之间互相评审，互相交流容易擦出火花。&lt;/p&gt;
+
+&lt;p&gt;而且，做好 Code Review ，除了提高代码质量之外，还可以：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;把控代码的风格和规范，提高代码的可维护性。&lt;/li&gt;
+&lt;li&gt;展示自己的工作内容，让同事对你的工作成果更加了解。&lt;/li&gt;
+&lt;li&gt;从别人的代码里学习到很多编程技巧，解决问题的思路。&lt;/li&gt;
+&lt;li&gt;通过别人的评审意见发现自己的不足，优化自己的代码，扩宽自己的思路。&lt;/li&gt;
+&lt;li&gt;很好的给予新人指导，给出有建设性的意见，帮助新人成长，做好知识的传承。&lt;/li&gt;
+&lt;li&gt;通过评审摩擦火花，互相欣赏，找到心灵相惜的好基友或终身伴侣。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/code-review.jpg&#34; alt=&#34;code-review&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Code Review ，你做了就知道！&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>程序员的思考：我的 K12（我也曾是小学生）</title>
@@ -1374,86 +1428,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;p&gt;GitHub：&lt;a href=&#34;https://github.com/coderzh&#34;&gt;https://github.com/coderzh&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;博客：&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>使用Hugo Import一键迁移Jekyll</title>
-            <link>http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</link>
-            <pubDate>Sun, 11 Oct 2015 10:06:11 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoImportJekyll.png-wt&#34; alt=&#34;HugoImportJekyll&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;国庆长假期间，给Hugo提了几个PR，其中最主要的一个是给Hugo增加了内置的Jekyll迁移工具。这样之前的Jekyll用户可以通过一个简单的命令就可以将网站转化成Hugo站点：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo import jekyll your-jekyll-dir target-dir
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;得益于Hugo代码可读性非常好，原来计划需要几天来完成的功能1天左右的时间就完成了。完整的PR过程请见：&lt;a href=&#34;https://github.com/spf13/hugo/pull/1469&#34;&gt;https://github.com/spf13/hugo/pull/1469&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;hugo-import:9d9792e5f5806aca19497d8888e47a21&#34;&gt;Hugo Import&lt;/h3&gt;
-
-&lt;p&gt;主要实现了将原来的Jeklly网站一键转换为Hugo网站，具体实现了如下功能：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;生成新的Hugo站点结构。(hugo new site)&lt;/li&gt;
-&lt;li&gt;读取Jeklly的_config.yml，相应内容转化到Hugo的config.yaml。&lt;/li&gt;
-&lt;li&gt;转换所有MarkDown的文章。（具体转换规则见下文）&lt;/li&gt;
-&lt;li&gt;拷贝Jekyll其他目录及文件到Hugo的static目录。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;@bep在他的OS X上做了一些测试：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ hugo import jekyll qrush.github.com qr2
-  Importing...
-  Congratulations! 72 posts imported!
-  Now, start Hugo by yourself:
-  $ git clone https://github.com/spf13/herring-cove.git qr2/themes/herring-cove
-  $ cd qr2
-  $ hugo server -w --theme=herring-cove
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;markdown文章转换规则:9d9792e5f5806aca19497d8888e47a21&#34;&gt;MarkDown文章转换规则&lt;/h3&gt;
-
-&lt;p&gt;Hugo和Jekyll都是使用MarkDown来写文章的，文章内容基本上是兼容的，除了一些FrontMatter的细节和局部细节。Hugo Import Jekyll主要的转换规则如下：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;保持原Jekyll文章目录结构及文件名不变，将文章拷贝到了content/post目录下。&lt;/li&gt;
-&lt;li&gt;尽量保持原Jekyll文章链接地址不变，在文章的FrontMatter自动填入url字段。&lt;/li&gt;
-&lt;li&gt;date字段转换成Hugo要求的time.RFC3339格式。&lt;/li&gt;
-&lt;li&gt;draft字段自动生成。&lt;/li&gt;
-&lt;li&gt;删除layout字段。&lt;/li&gt;
-&lt;li&gt;category字段转换成categories字段。&lt;/li&gt;
-&lt;li&gt;excerpt_separator智能替换。(比如： &amp;lt;!--more--&amp;gt;)&lt;/li&gt;
-&lt;li&gt;删除&lt;code&gt;{% raw %}{% endraw %}&lt;/code&gt;标签。&lt;/li&gt;
-&lt;li&gt;替换&lt;code&gt;{% highlight %}{% endhighlight %}&lt;/code&gt;标签为 {{&amp;lt; highlight &amp;gt;}}{{&amp;lt; / highlight &amp;gt;}}&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;代码:9d9792e5f5806aca19497d8888e47a21&#34;&gt;代码&lt;/h3&gt;
-
-&lt;p&gt;import.go:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/blob/master/commands/import.go&#34;&gt;https://github.com/spf13/hugo/blob/master/commands/import.go&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;import_test.go:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/blob/master/commands/import_test.go&#34;&gt;https://github.com/spf13/hugo/blob/master/commands/import_test.go&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;我fork的Hugo Repo（我的最新改动都在这里）：&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/hugo&#34;&gt;https://github.com/coderzh/hugo&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;最后:9d9792e5f5806aca19497d8888e47a21&#34;&gt;最后&lt;/h3&gt;
-
-&lt;p&gt;这个功能将会在下个正式版推出，现在需要使用的同学自行pull最新的Hugo代码编译吧：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ go get -u -v github.com/spf13/hugo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;欢迎试用，并且提出意见或建议！谢谢！&lt;/p&gt;
 </description>
         </item>
         
