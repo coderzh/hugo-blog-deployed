@@ -6,7 +6,47 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 27 Dec 2015 18:49:15 CST</updated>
+        <updated>Fri, 01 Jan 2016 00:34:08 CST</updated>
+        
+        <item>
+            <title>我的2015</title>
+            <link>http://blog.coderzh.com/2016/01/01/my-2015/</link>
+            <pubDate>Fri, 01 Jan 2016 00:34:08 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/01/my-2015/</guid>
+            <description>&lt;p&gt;2015年对我来说是意义非凡的一年，这一年里，我主要干了以下几件事：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;离开游戏创业公司加入了微信。&lt;/li&gt;
+&lt;li&gt;重新开始写博客，开始写公众号：一个程序员的思考。&lt;/li&gt;
+&lt;li&gt;我可爱的儿子出生了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可以说，2015年我收获颇多，最大的收获是我的小宝宝的到来，欣喜和激动之情难以言表。对于这个新加入的小成员，我们会好好的爱他，呵护他，陪伴他成长，宝宝加油，我们也一起加油哦。&lt;/p&gt;
+
+&lt;p&gt;事业方面，我离开了工作4年的游戏创业公司，这里有太多千丝万缕的故事。2011年，我们从西山居出来时，也是满怀梦想，也曾激情奋斗，一起吃大叔做的菜，一起打闹玩笑，认真工作时为一个问题可以争的面红耳赤，一起玩游戏时可以在 LOL 里 High 到不能自已。&lt;/p&gt;
+
+&lt;p&gt;我努力过，也可以说还不够努力，也许当时我可以做的更好，或许当时我可以更主动去承担起一些责任，或许，我什么也改变不了。创业维艰，只有经历过的人才能体会。当时看着一个又一个最早一起的小伙伴离开，难免伤感，不过他们离开后都有了不错的去处，也是很欣慰的。&lt;/p&gt;
+
+&lt;p&gt;我坚持了4年，领略了游戏行业无情的市场竞争，经历了创业公司面临的种种问题和挑战。当然，我主要工作也只是写程序，很多事情是你无法左右的。所以在我30岁的时候，&lt;strong&gt;我想应该做些改变了&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;于是我加入了微信。做为在职员工，不应该在外面过多评论自己的公司。在这里我就简单说一下自己的感受。腾讯是一家值得尊敬的公司，公司文化氛围很好，活跃而且开放，同事都很优秀，我学习到很多，并且非常庆幸能加入腾讯。&lt;/p&gt;
+
+&lt;p&gt;换工作后，我也逐渐不怎么玩游戏了，把一直想戒也戒不掉的 LOL 给彻底戒掉了。我玩起游戏来很疯，很执着，喜欢专研，熬夜玩，睡觉也想。我大概经历过3次这样的过程。第一次是在大学时玩剑侠情缘一，没日没夜通宵达旦的玩，玩到早上通宵回来又饿又困，倒头睡到中午或下午，起来接着玩。第二次是工作后玩剑三，也沉迷过一段时间，第三次是创业时玩 LOL ，天天沉迷排位赛，看直播比赛，对英雄技能技巧、比赛选手如数家珍。&lt;/p&gt;
+
+&lt;p&gt;从游戏里跳出来后，&lt;strong&gt;我发现其实我也没有那么喜欢游戏&lt;/strong&gt;。一旦我不玩游戏后，那些游戏我碰都不碰了，APP Store 里排名靠前的我也玩不到几天。之前创业时，经常需要加班，总觉得玩游戏的时间都不够，所以业余时间也被占的满满的。现在不玩游戏后，发现其实时间是可以有很多方式来利用的，可以做很多有意义的事情，当你做的越多时，越会觉得时间其实是那么的不够用，为什么还要浪费在一局又一局重复的游戏上面呢？&lt;/p&gt;
+
+&lt;p&gt;所以，我在我的博客上写了这么一句话激励自己：&lt;strong&gt;如果你没有感觉到时间不够用时，你多半正在虚度光阴。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;于是我重新捡起了荒废了3~4年的博客。这几年博客没有更新和创业公司加班及玩游戏有关，也和大环境有关。这几年微博兴起，Google Reader 关闭，博客没落，很多知名的博客都停更了。当然，这都是借口。如今，人们重新意识到了有价值的原创长文的价值，自媒体开始兴起，博客的形式也重新燃起了火花。国外的 &lt;a href=&#34;https://medium.com/&#34;&gt;Medium&lt;/a&gt; ，国内的 &lt;a href=&#34;http://www.jianshu.com/&#34;&gt;简书&lt;/a&gt; ，知乎专栏，新浪微博长文，微信公众号文章等等风生水起。&lt;/p&gt;
+
+&lt;p&gt;虽然我之前在博客园的写的 Google Test 相关的文章已经有几十万的阅读量，但我还是决定从博客园搬家出来，目前使用的是 &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt; 搭建的静态博客网站 &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt; ，同时大部分文章都会在我的微信公众号（一个程序员的思考）里发布。博客起到一个备份和被搜索引擎索引的作用。&lt;/p&gt;
+
+&lt;p&gt;如果算上这篇文章，今年我一共写了48篇文章了，平均一周一篇的节奏。公众号的订阅数也在持续上涨，在这里我要感谢所有订阅了我公众号和一直关注我博客的朋友，祝大家2016年新年快乐！新年新气象，无论学业、事业还是家庭都能顺顺利利。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2016年，我们一起努力！&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>大家都应该做的 Code Review</title>
@@ -846,171 +886,6 @@ L：呵呵
 &lt;h3 id=&#34;小结:3588ff76d10bf10d678f4491e7de2978&#34;&gt;小结&lt;/h3&gt;
 
 &lt;p&gt;公开日组织的不错，演讲嘉宾的内容也干货十足。中间和最后有抽奖环节，可惜没中。。在游戏自研领域，网易体现了其强大的研发实力。总的来说，受益匪浅，不虚此行。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>强制链接静态库所有符号(包括未被使用的)</title>
-            <link>http://blog.coderzh.com/2015/06/14/LinkAllSymbols/</link>
-            <pubDate>Sun, 14 Jun 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/14/LinkAllSymbols/</guid>
-            <description>
-
-&lt;p&gt;C++程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。&lt;/p&gt;
-
-&lt;p&gt;为什么会有这样的需求？的确，存在这种需求的是少数情况，但是一旦你遇到下面的需求，就变得必须了。比如：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;动态插件机制。代码中没有直接调用某方法，但是希望能在运行时动态加载执行某方法。&lt;/li&gt;
-&lt;li&gt;执行代码覆盖率统计。需要统计静态库所有代码的覆盖情况，而不只是被使用到的代码覆盖情况。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;如果是gcc编译，比较好办，只需要加上&lt;strong&gt;&amp;ndash;whole-archive&lt;/strong&gt;链接选项。但是在Windows平台，微软的编译器没有这样的选项，一个最接近的选项是&lt;strong&gt;/OPT:NOREF&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;文档见：&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/bxwfs976.aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/bxwfs976.aspx&lt;/a&gt;
-说明：/OPT:REF eliminates functions and data that are never referenced; /OPT:NOREF keeps functions and data that are never referenced.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;/OPT:NOREF在Debug下是默认打开的，而且只能强制保留本工程未被使用到的函数和变量。对于引用的静态库的未被使用的函数和变量是不生效的。甚至有人认为这是微软的BUG在这个帖子里热烈讨论过：&lt;a href=&#34;https://social.msdn.microsoft.com/Forums/vstudio/en-US/2aa2e1b7-6677-4986-99cc-62f463c94ef3/linkexe-bug-optnoref-option-doesnt-work?forum=vclanguage&#34;&gt;LINK.EXE BUG: /OPT:NOREF option doesn&amp;rsquo;t work!&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;遇到同样问题的可不止我一个人，比如StackOverFlow里就有人问：&lt;a href=&#34;http://stackoverflow.com/questions/3867254/what-is-the-visual-studio-equivalent-to-gnu-ld-option-whole-archive&#34;&gt;What is the Visual studio equivalent to GNU ld option &amp;ndash;whole-archive&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;有人建议他用/INCLUDE 选项强制链接未使用的符号，也有人说使用/OPT:NOREF（显然不行）。&lt;/p&gt;
-
-&lt;p&gt;使用/INCLUDE 指定某个符号强制链接是可以的。但是，假如静态库中有成百上千个符号需要强制/INCLUDE，怎么办？&lt;/p&gt;
-
-&lt;p&gt;所以，最好的方法，也是上面讨论/OPT:NOREF BUG的帖子里有人提到的方法，就是在代码中使用：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#pragma comment(linker, &amp;quot;/include:?emptyreference@Noisy@@QAEXXZ&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;通过上面的方法，可以让链接器强制include一个符号，include:后面的是符号名称。如果要强制include静态库中所有符号，需要把静态库中的所有符号找出来，然后通过上面的方法强制include。&lt;/p&gt;
-
-&lt;p&gt;人手工找出所有Symbols，然后添加上面的代码是不太靠谱的。一方面Symbols的格式可读性太差不好维护，另一方面假如静态库符号信息修改了，这个维护代价就更大了。所以，必须让这个过程自动完成。&lt;/p&gt;
-
-&lt;p&gt;查看静态库所有符号列表，Linux里可以使用&lt;a href=&#34;https://sourceware.org/binutils/docs/binutils/nm.html&#34;&gt;nm&lt;/a&gt; ，Windows平台可以使用&lt;a href=&#34;https://support.microsoft.com/en-us/kb/177429&#34;&gt;dumpbin&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;执行dumbin.exe需要注意，必须在Visual Studio的开发命令行环境才能执行。不过有个小技巧可以让你不必在Developer Command Prompt执行，就是假如是VS2013环境，建一个批处理，在开头加上：
-&lt;code&gt;
-@echo off
-if defined VS120COMNTOOLS (
-    call &amp;quot;%VS120COMNTOOLS%\vsvars32.bat&amp;quot;)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;我们使用dumpbin /LINKERMEMBER xxx.lib，可以列出所有的符号名字，比如查看静态库MyLib.lib所有符号：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;d:\Code\Cpp\LinkAllSymbols\Debug&amp;gt;dumpbin.exe /linkermember:1 MyLib.lib
-Microsoft (R) COFF/PE Dumper Version 12.00.30501.0
-Copyright (C) Microsoft Corporation.  All rights reserved.
- 
- 
-Dump of file MyLib.lib
- 
-File Type: LIBRARY
- 
-Archive member name at 8: /
-557D4C17 time/date Sun Jun 14 17:40:39 2015
-         uid
-         gid
-       0 mode
-      ED size
-correct header end
- 
-    9 public symbols
- 
-      328 ??4Turtle@@QAEAAV0@ABV0@@Z
-      328 ??_C@_0M@KEAKLOKJ@Turtle?5run?4?$AA@
-      328 ?Download@@YAHXZ
-      328 ?Run@Turtle@@QAEXXZ
-     19CE ?FishRun@@YAXXZ
-     19CE ?Run@Fish@@QAEXXZ
-     2D16 ??_C@_08EMEDHABH@Dog?5run?4?$AA@
-     2D16 ?Foo@@YAHXZ
-     2D16 ?Run@Dog@@QAEXXZ
- 
-  Summary
- 
-        28B4 .debug$S
-          F0 .debug$T
-         102 .drectve
-          15 .rdata
-           C .rtc$IMZ
-           C .rtc$TMZ
-         15A .text$mn
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;因此，只需要执行dumpbin，并且在输出结果中抽取出所有的符号名称，然后自动生成#pragma comment(linker, &amp;ldquo;/include:xxx&amp;rdquo;)代码即可。&lt;/p&gt;
-
-&lt;p&gt;于是，我写了一个Python脚本，执行dumpbin，然后通过正则表达式拿到所有符号名称，自动生成强制include了所有符号的头文件。关键代码如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import re
- 
-regex = re.compile(r&amp;quot;\s+.*\s([\?_]+.*)&amp;quot;)
- 
-exclude = []
- 
-def gen_header_file_for_lib(lib_path, header_path):
-    cmd = [&#39;dumpbin.exe&#39;,&#39;/linkermember:1&#39;, lib_path]
-    lines = execute_command(cmd)
-    symbols = find_matches(lines, regex, exclude)
- 
-    with open(header_path, &#39;w&#39;) as f:
-        header_guard = &amp;quot;LINK_ALL_SYMBOLS_H_&amp;quot;
-        f.write(&amp;quot;#ifndef &amp;quot; + header_guard + &#39;\n&#39;)
-        f.write(&amp;quot;#define &amp;quot; + header_guard + &#39;\n&#39;)
-        f.write(&amp;quot;// Generated by GenLinkerSymbols.py. Do not modify! \n\n&amp;quot;)
- 
-        for symbol in symbols:
-            pragma_line = &#39;#pragma comment(linker, &amp;quot;/include:&#39; + symbol + &#39;&amp;quot;)&#39;
-            f.write(pragma_line + &#39;\n&#39;)
-        f.write(&amp;quot;\n#endif // &amp;quot; + header_guard + &#39;\n&#39;)
- 
-    print(&amp;quot;Link symbols count: %s&amp;quot; % len(symbols))
- 
-def find_matches(lines, regex, exclude_list):
-    def match(line):
-        m = regex.match(line)
-        if m:
-            return m.group(1).split()[0]
-        return None
- 
-    def exclude_filter(line):
-        if not line:
-            return False
- 
-        for exclude in exclude_list:
-            if line.find(exclude) &amp;gt;= 0:
-                return False
-        return True
- 
-    matches = filter(exclude_filter, map(match, lines))
-    return list(set(matches))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;结合Visual Studio工程配置里的Post-Build Event，就可以在编译静态库之后自动更新头文件了。比如：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;python ..\GenSymbolsHeader.py $(OutDir)$(TargetName)$(TargetExt) ..\Include\LinkAllSymbols.h
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在使用该静态库的工程代码中，只需要#include &amp;ldquo;LinkAllSymbols.h&amp;rdquo; 就可以了。&lt;/p&gt;
-
-&lt;h3 id=&#34;对比:179e17d63a7cb0a81de7975037280b66&#34;&gt;对比&lt;/h3&gt;
-
-&lt;p&gt;使用OpenCppCoverage进行代码覆盖率测试，对比如下：&lt;/p&gt;
-
-&lt;p&gt;正常情况下，不强制在linker时include静态库所有符号时，代码覆盖率结果为：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/noinclude.png-w&#34; alt=&#34;noinclude&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;通过上面的方法，自动生成LinkAllSymbols.h并#include &amp;ldquo;LinkAllSymbols.h&amp;rdquo;，覆盖率结果为：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/included.png-w&#34; alt=&#34;included&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;github:179e17d63a7cb0a81de7975037280b66&#34;&gt;github&lt;/h3&gt;
-
-&lt;p&gt;所有代码见：&lt;a href=&#34;https://github.com/coderzh/LinkAllSymbols&#34;&gt;https://github.com/coderzh/LinkAllSymbols&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         

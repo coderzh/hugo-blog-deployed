@@ -6,7 +6,47 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 27 Dec 2015 18:49:15 CST</updated>
+        <updated>Fri, 01 Jan 2016 00:34:08 CST</updated>
+        
+        <item>
+            <title>我的2015</title>
+            <link>http://blog.coderzh.com/2016/01/01/my-2015/</link>
+            <pubDate>Fri, 01 Jan 2016 00:34:08 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/01/my-2015/</guid>
+            <description>&lt;p&gt;2015年对我来说是意义非凡的一年，这一年里，我主要干了以下几件事：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;离开游戏创业公司加入了微信。&lt;/li&gt;
+&lt;li&gt;重新开始写博客，开始写公众号：一个程序员的思考。&lt;/li&gt;
+&lt;li&gt;我可爱的儿子出生了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可以说，2015年我收获颇多，最大的收获是我的小宝宝的到来，欣喜和激动之情难以言表。对于这个新加入的小成员，我们会好好的爱他，呵护他，陪伴他成长，宝宝加油，我们也一起加油哦。&lt;/p&gt;
+
+&lt;p&gt;事业方面，我离开了工作4年的游戏创业公司，这里有太多千丝万缕的故事。2011年，我们从西山居出来时，也是满怀梦想，也曾激情奋斗，一起吃大叔做的菜，一起打闹玩笑，认真工作时为一个问题可以争的面红耳赤，一起玩游戏时可以在 LOL 里 High 到不能自已。&lt;/p&gt;
+
+&lt;p&gt;我努力过，也可以说还不够努力，也许当时我可以做的更好，或许当时我可以更主动去承担起一些责任，或许，我什么也改变不了。创业维艰，只有经历过的人才能体会。当时看着一个又一个最早一起的小伙伴离开，难免伤感，不过他们离开后都有了不错的去处，也是很欣慰的。&lt;/p&gt;
+
+&lt;p&gt;我坚持了4年，领略了游戏行业无情的市场竞争，经历了创业公司面临的种种问题和挑战。当然，我主要工作也只是写程序，很多事情是你无法左右的。所以在我30岁的时候，&lt;strong&gt;我想应该做些改变了&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;于是我加入了微信。做为在职员工，不应该在外面过多评论自己的公司。在这里我就简单说一下自己的感受。腾讯是一家值得尊敬的公司，公司文化氛围很好，活跃而且开放，同事都很优秀，我学习到很多，并且非常庆幸能加入腾讯。&lt;/p&gt;
+
+&lt;p&gt;换工作后，我也逐渐不怎么玩游戏了，把一直想戒也戒不掉的 LOL 给彻底戒掉了。我玩起游戏来很疯，很执着，喜欢专研，熬夜玩，睡觉也想。我大概经历过3次这样的过程。第一次是在大学时玩剑侠情缘一，没日没夜通宵达旦的玩，玩到早上通宵回来又饿又困，倒头睡到中午或下午，起来接着玩。第二次是工作后玩剑三，也沉迷过一段时间，第三次是创业时玩 LOL ，天天沉迷排位赛，看直播比赛，对英雄技能技巧、比赛选手如数家珍。&lt;/p&gt;
+
+&lt;p&gt;从游戏里跳出来后，&lt;strong&gt;我发现其实我也没有那么喜欢游戏&lt;/strong&gt;。一旦我不玩游戏后，那些游戏我碰都不碰了，APP Store 里排名靠前的我也玩不到几天。之前创业时，经常需要加班，总觉得玩游戏的时间都不够，所以业余时间也被占的满满的。现在不玩游戏后，发现其实时间是可以有很多方式来利用的，可以做很多有意义的事情，当你做的越多时，越会觉得时间其实是那么的不够用，为什么还要浪费在一局又一局重复的游戏上面呢？&lt;/p&gt;
+
+&lt;p&gt;所以，我在我的博客上写了这么一句话激励自己：&lt;strong&gt;如果你没有感觉到时间不够用时，你多半正在虚度光阴。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;于是我重新捡起了荒废了3~4年的博客。这几年博客没有更新和创业公司加班及玩游戏有关，也和大环境有关。这几年微博兴起，Google Reader 关闭，博客没落，很多知名的博客都停更了。当然，这都是借口。如今，人们重新意识到了有价值的原创长文的价值，自媒体开始兴起，博客的形式也重新燃起了火花。国外的 &lt;a href=&#34;https://medium.com/&#34;&gt;Medium&lt;/a&gt; ，国内的 &lt;a href=&#34;http://www.jianshu.com/&#34;&gt;简书&lt;/a&gt; ，知乎专栏，新浪微博长文，微信公众号文章等等风生水起。&lt;/p&gt;
+
+&lt;p&gt;虽然我之前在博客园的写的 Google Test 相关的文章已经有几十万的阅读量，但我还是决定从博客园搬家出来，目前使用的是 &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt; 搭建的静态博客网站 &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt; ，同时大部分文章都会在我的微信公众号（一个程序员的思考）里发布。博客起到一个备份和被搜索引擎索引的作用。&lt;/p&gt;
+
+&lt;p&gt;如果算上这篇文章，今年我一共写了48篇文章了，平均一周一篇的节奏。公众号的订阅数也在持续上涨，在这里我要感谢所有订阅了我公众号和一直关注我博客的朋友，祝大家2016年新年快乐！新年新气象，无论学业、事业还是家庭都能顺顺利利。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2016年，我们一起努力！&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>大家都应该做的 Code Review</title>
@@ -1366,66 +1406,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;/ol&gt;
 
 &lt;p&gt;（Tinder、Github、美丽说、外卖库的例子见原书）&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>关于开源的思考</title>
-            <link>http://blog.coderzh.com/2015/10/11/open-source-thinking/</link>
-            <pubDate>Sun, 11 Oct 2015 17:17:19 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/10/11/open-source-thinking/</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/OpenSource.png-wt&#34; alt=&#34;OpenSource&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;程序员是一个热衷于开放、分享、协作的群体。他们将有创造力的代码公开分享，供大家审阅、评判、学习和使用，他们接受用户的意见，欢迎一切用户提交的PR改进。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源是需要勇气的。&lt;/strong&gt;用户会用脚投票，依赖混乱、晦涩难懂、风格糟糕的代码会被用户所遗弃。代码也是要看脸的，选择开源意味着需要把自己最美的部分展示。如果一个项目一开始就是开源的，在代码编写过程中肯定会格外注意。根据以往的经验，那些表面光鲜的商业软件，内部的代码往往都是混乱不堪，难以示众的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源不仅仅是把代码公开。&lt;/strong&gt;如果仅仅将代码公开就算开源的话，那和真正的开源离的十万八千里呢。开放源代码只是第一步，后续的社区建设，吸引开发者或用户一起来共同参与，形成社区化的协作模式，将开源社区这个轮子滚动起来才是关键。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源的协作模式是高效的。&lt;/strong&gt;一个出色的开源项目，可以吸引到全世界出色的程序员，他们大都基于爱好或使用需要，无偿贡献自己的代码。当然，最宝贵的是他们付出的时间。他们往往是在业余时间参与开源项目。在GitHub上，不同时区的人们通过Pull Request的方式跟进和推动项目前进。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源需要对代码质量提出更高的要求。&lt;/strong&gt;通过Pull Rquest机制提交的代码，天然需要经过项目维护者的CodeReview才能合入的。在提PR时，需要让代码尽量的整洁，注释规范，有的项目还要求你通过squash合并成1次commit再提交。最后，最重要的环节是给修改的代码补充单元测试案例，保证测试案例是通过的。GitHub提供了这一整套流程的跟踪协作方式，所以程序员们对GitHub如此的爱不释手。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;参与开源是一种极好的学习方式。&lt;/strong&gt;如果还没机会自己创建和维护一个好的开源项目，参与到别人的开源项目中会是一个很好的学习提高的方式。你可以看到牛人的代码是怎么写的，然后偷偷记下来。最好的方式是参与其中，不一定需要你贡献多少有价值的代码，也许一个简单的文档内容修改，也能拉近你和牛人之间的距离。当你对代码有一定的熟悉，你就可以打开Issue列表，看看有哪些问题你可以大展拳脚了。一旦你这么做了，相信对你的帮助是巨大的。这也是我近期的深刻体会。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;代码不需要藏着掖着，用户资源和核心数据才是。&lt;/strong&gt;Facebook大多代码都是直接开源的，给社区贡献了大量高质量的开源代码。对他们来说，选择完全开放，吸引更多的开发者参与其中，只要将用户核心数据和平台资源掌握在手里，这个雪球是可以越滚越大的。这就如同RSA算法，加解密的算法是完全公开的，只要你保证了私钥不被泄露，其他的东西全部公开都是安全的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源并不意味着免费，也许还能赚到钱。&lt;/strong&gt;很多程序员参与开源并不是为了赚钱，有的纯粹是爱好，有的是自我价值的实现。随着开源项目越来越大，越来越多人参与，需要参与维护和打理的时间就会变多，甚至有的人会全职来做这个。他们可以通过商业授权、培训咨询、捐赠等方式获得收入。只要认真经营，机会就会自己找上门来。&lt;/p&gt;
-
-&lt;h3 id=&#34;我的切身体会:3583956c9bd42a05e9ead1f80dfc8eab&#34;&gt;我的切身体会&lt;/h3&gt;
-
-&lt;p&gt;很早前我也经常丢一些代码到google code，正如前面所说的，这离真正的开源差的很远。因为我只是把代码一丢，然后就不管不顾了，渐渐下来，代码愈加的鲜人问津。对于别人的开源代码，我也基本是拿来主义。&lt;/p&gt;
-
-&lt;p&gt;今年开始真正的参与到GitHub中去，其中之一就是Hugo静态网站生成器项目。由于对Go语言感兴趣，本着边学边用的态度，尝试给Hugo提了第一个PR，Hugo的维护者@bep和@anthonyfok都非常Nice，整个过程非常舒服和顺畅，随之我又陆续提了几个PR。&lt;/p&gt;
-
-&lt;p&gt;下面是我给Hugo贡献的几个功能：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Add config option &amp;ldquo;disablePathToLower&amp;rdquo; &lt;a href=&#34;https://github.com/spf13/hugo/pull/1392&#34;&gt;#1392&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;WordCount and Summary support CJK Language &lt;a href=&#34;https://github.com/spf13/hugo/pull/1399&#34;&gt;#1399&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Hugo import from Jekyll &lt;a href=&#34;https://github.com/spf13/hugo/pull/1469&#34;&gt;#1469&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;上面的链接可以追溯每次代码提交的详细过程。有的经过了反复讨论和反复修改，大家身处世界各地，时差不同。每天一早起来就可以看到他们给出的反馈。在讨论的过程中，可以看到别人对同一个问题的思考，互相交流，也学习到很多东西。&lt;/p&gt;
-
-&lt;p&gt;Hugo的作者spf13(Steve Francia)可是一个牛人。spf13是大名鼎鼎的开源项目Docker和MongoDB的Chief Operator，另外他还是spf13-vim, Hugo, Cobra &amp;amp; Viper等开源项目的作者。能和这样的牛人交流学习，是一种不错的体验。他的博客地址：&lt;a href=&#34;http://spf13.com&#34;&gt;http://spf13.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;国庆在家给Hugo提了一个不大也不小的功能。就是上面的第三点：Hugo import from Jekyll。给Hugo提供了内置的import命令，将原来的Jekyll博客一键导入到Hugo来。这次提交的代码加上测试案例，有近600行，也算一个不小而且非常有用的改动了。详细介绍见上一篇博客：&lt;a href=&#34;http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/&#34;&gt;使用Hugo Import一键迁移Jekyll&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;通过hugo import功能刷了近600行代码之后，我在Hugo的贡献者列表里可以看到，已经一共刷了近千行代码了，算上删除的话。：）&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hugo-coderzh.png-ws&#34; alt=&#34;hugo-coderzh&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;由于时区和远程协作的关系，GitHub上协作时有时候需要等待，但我依然认为这是一种非常高效的协作方式。因为社区的力量是强大的，在大量社区用户的推动之下，项目每天都在改进，每天都在向更好的方向推动和前进，这才是项目保持长久活力的重要根本。&lt;/p&gt;
-
-&lt;p&gt;关于开源，我还会继续下去，参与和发掘更多更好玩的东西。也欢迎访问我的GitHub和博客，和我交流，谢谢！&lt;/p&gt;
-
-&lt;p&gt;GitHub：&lt;a href=&#34;https://github.com/coderzh&#34;&gt;https://github.com/coderzh&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;博客：&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         
