@@ -5,7 +5,7 @@
   <script>
     document._writeOriginal = document.write;
     document.write = function(str) {
-        if (str.indexOf("http://blog.coderzh.com") > -1) {
+        if (str.indexOf('livereload.js') > -1) {
             document._writeOriginal(str);
         } else {
             document._writeOriginal('<!-- Be Hijack!! -->');
@@ -172,6 +172,21 @@
                 
               
               <div class="post-list group">
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年01月03日</p>
+  <p class="post-title-small"><a href="http://blog.coderzh.com/2016/01/03/security/" rel="bookmark" title="如何设计一个安全的账户系统">如何设计一个安全的账户系统</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
   
   <div class="post-row">
     <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">

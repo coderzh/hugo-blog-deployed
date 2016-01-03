@@ -6,7 +6,314 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Fri, 01 Jan 2016 00:34:08 CST</updated>
+        <updated>Sun, 03 Jan 2016 18:23:28 CST</updated>
+        
+        <item>
+            <title>如何设计一个安全的账户系统</title>
+            <link>http://blog.coderzh.com/2016/01/03/security/</link>
+            <pubDate>Sun, 03 Jan 2016 18:23:28 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/03/security/</guid>
+            <description>
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/security.jpg-wt&#34; alt=&#34;security&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;引子:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;引子&lt;/h3&gt;
+
+&lt;p&gt;最近有个虚拟练习项目，涉及到系统安全保障的设计，于是对安全保障这块做了一些更深入的了解。发现了很多有趣的东西，开阔了眼界。中间查了一些资料，于是我打算重新整理，用更加循序渐进，大家都能懂的方式，说一说如何设计一个安全的系统。&lt;/p&gt;
+
+&lt;h3 id=&#34;著名的安全事件:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;著名的安全事件&lt;/h3&gt;
+
+&lt;p&gt;首先来看看最近几年比较著名的拖库撞库后密码泄露的事件：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;2011年12月，国内最大的程序员社区 CSDN 遭拖库，600万个账户信息泄露。&lt;/li&gt;
+&lt;li&gt;2014年3月，携程旅行网的系统存技术漏洞，漏洞可能导致用户的姓名、身份证号码、银行卡类别、银行卡卡号、银行卡CVV码以及银行卡6位Bin泄露。&lt;/li&gt;
+&lt;li&gt;2014年5月，小米论坛涉及800万用户信息遭泄露，信息包括用户名、密码、注册IP、邮箱等。&lt;/li&gt;
+&lt;li&gt;2014年12月，12306遭撞库攻击，13万用户信息泄露，包括用户账号、明文密码、身份证、邮箱等敏感信息。&lt;/li&gt;
+&lt;li&gt;2015年10月，网易邮箱遭攻击，近5亿条用户信息被泄露，包括用户名、密码、密码保护信息、登陆IP以及用户生日等多个原始信息。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;除了密码泄露事件，数据被物理删除的事件也是发生：&lt;/p&gt;
+
+&lt;p&gt;2015年5月，携程网及APP陷入瘫痪，数据库遭物理删除疑似离职员工报复。&lt;/p&gt;
+
+&lt;p&gt;这么多大公司大网站的系统都遭到攻击，泄露用户信息，更别说其他小网站了。这些攻击都可以从技术上来进行防范的，但是我们看到即使是大公司，安全方面也是那么的薄弱。&lt;/p&gt;
+
+&lt;h3 id=&#34;防范方法:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;防范方法&lt;/h3&gt;
+
+&lt;p&gt;防范的方法简单来说数据从用户键盘敲出的那一刻，到服务器后台存储都要保持正确的姿势。比如：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;用正确的姿势保存密码。&lt;/li&gt;
+&lt;li&gt;用正确的姿势传输数据。&lt;/li&gt;
+&lt;li&gt;用正确的姿势加密敏感信息。&lt;/li&gt;
+&lt;li&gt;用正确的姿势对数据进行备份和监控。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;用正确的姿势保存密码:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;用正确的姿势保存密码&lt;/h3&gt;
+
+&lt;p&gt;这一步非常重要，也比较复杂。用户在浏览器里输入密码，传输到服务器端进行验证，服务端将之前保存的密码信息和用户的输入进行比对。&lt;/p&gt;
+
+&lt;h4 id=&#34;1-低级错误-明文保存密码:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;1. 低级错误：明文保存密码&lt;/h4&gt;
+
+&lt;p&gt;安全性最低的是在服务端明文保存用户的密码，一旦服务器被入侵，数据被拖走（拖库），所有用户的密码都直接的暴露在外面。这是最初级的做法，毫无安全性可言。假如你在一个网站或论坛注册了一个账号，该网站自动发了一封邮件告诉你注册成功，里面明文写了你的密码，赶紧把密码改了然后再也不要访问这个网站。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-低级错误-可逆加密密码:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;2. 低级错误：可逆加密密码&lt;/h4&gt;
+
+&lt;p&gt;既然不能明文保存密码，那当然是加密保存了。耍个小聪明，比如把密码的字母倒着存，或者每个字母存后一个字母，或者进行异或混淆处理，表面上密码看上去已经看不出来原始的密码是什么了，但实际上这个和明文保存密码并没有本质区别，因为黑客既然可以入侵你的服务器，自然可以拿到你的加密代码，只要按你的算法进行简单的解密就可以得到原始密码。&lt;/p&gt;
+
+&lt;h4 id=&#34;3-错误方法-md5-加密密码:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;3. 错误方法：md5 加密密码&lt;/h4&gt;
+
+&lt;p&gt;在我还是一个初学者的时候，我已被告知不能用前两种方式保存密码，当时的主流方法是使用 md5 加密密码。（年代久远，现在已绝非主流了。） md5 是一种不可逆的加密方法，即密码被 md5 加密后是无法解密出原始密码的，验证密码是否正确的方法是将用户输入的密码 md5 加密后于数据库里保存的 md5 机密后的结果进行比对。这样，服务器端在不知道真实用户密码的情况下也能对用户密码进行验证了。&lt;/p&gt;
+
+&lt;p&gt;这是早期比较主流的做法，然而，这依然是非常不安全的。因为只要枚举所有短密码进行 md5 加密，做成一个索引表，就能轻易的逆推出原始密码。这种预先计算好的用于逆推加密散列函数的表就是“彩虹表”。随着“彩虹表”不断变大，md5 的加密已经变得非常的不安全。2015年10月网易邮箱的用户密码泄露也被怀疑只对密码进行了 md5 加密。&lt;/p&gt;
+
+&lt;h4 id=&#34;4-正确方法-加盐-hash-保存密码:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;4. 正确方法：加盐 hash 保存密码&lt;/h4&gt;
+
+&lt;p&gt;加盐 hash 是指在加密密码时，不只是对密码进行 hash ，而是对密码进行调油加醋，放点盐（salt）再加密，一方面，由于你放的这点盐，让密码本身更长强度更高，彩虹表逆推的难度更大，也因你放的这点盐，让黑客进行撞库时运算量更大，破解的难度更高。&lt;/p&gt;
+
+&lt;p&gt;如何进行加盐就是一门很重要的学问了。md5 是一种 hash 算法，以下就拿 md5 来举例。假如密码是 123456 ，md5 的结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/md5.png&#34; alt=&#34;md5&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;像 123456 这样的简单密码，是很容易被逆推出来的。但是假如我们往简单密码里加点盐试试：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/md5-salt.png&#34; alt=&#34;md5-salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上面例子里的 &lt;code&gt;#g5Fv;0Dvk&lt;/code&gt; 就是我们加的盐。加完之后，密码的强度更高了，彩虹表破解的难度加大了。或者进行加盐两次 md5 ：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/double-md5-salt.png&#34; alt=&#34;double-md5-salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;到这里，你一定会有疑问，是不是把 md5 多做几次，或者自定义一些组合的方式就更安全了。其实不是的，黑客既然能拿到数据库里的数据，也很有可能拿到你的代码。&lt;/p&gt;
+
+&lt;p&gt;一个健壮的、牢不可破的系统应该是：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;即使被拿走了数据和所有的代码，也没办法破解里面的数据。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这也是为什么大家不必实现自己的加密算法，而是使用公开的加密算法的原因，比如：RSA、AES、DES 等等。既然无法保证加密代码不被泄露，那就使用公开的加密算法，只要保护好私钥信息，就算你知道我的加密方式也没有任何帮助。&lt;/p&gt;
+
+&lt;p&gt;大部分情况下，使用 md5(md5(password) + salt) 方式加密基本上已经可以了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/salt.png&#34; alt=&#34;salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其中，最关键的是 salt 从哪里来？ salt 该怎么设置才能安全。有几个重要的点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;不要使用固定不变的 salt。&lt;/li&gt;
+&lt;li&gt;每个用户的 salt 都需要不同。&lt;/li&gt;
+&lt;li&gt;salt 必须由服务端使用安全的随机函数生成。&lt;/li&gt;
+&lt;li&gt;客户端运算需要的 salt 需要从服务端动态获取。&lt;/li&gt;
+&lt;li&gt;客户端加盐 hash 的结果并不是最终服务端存盘的结果。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;由于客户端也需要执行加盐 hash ，所以，salt 不能直接写在客户端，而是应该动态从服务端获得。服务端生成随机的 salt 时，必须使用安全的随机函数，防止随机数被预测。&lt;/p&gt;
+
+&lt;p&gt;各语言安全的随机函数：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Platform&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;CSPRNG&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;PHP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;mcrypt_create_iv, openssl_random_pseudo_bytes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Java&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;java.security.SecureRandom&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Dot NET (C#, VB)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;System.Security.Cryptography.RNGCryptoServiceProvider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Ruby&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;SecureRandom&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Python&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;os.urandom&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Perl&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Math::Random::Secure&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;C/C++&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;(Windows API)   CryptGenRandom&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Any language on GNU/Linux or Unix&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Read from /dev/random or /dev/urandom&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;就算 salt 值动态从服务端获取，也有可能被中间人拦截获取。同时，客户端的加盐 hash 的过程相当于是完全暴露的。一种更安全的做法是，客户端使用 javascript 进行加盐 hash，把结果传到服务器后，服务器对结果再进行一次 &lt;code&gt;加盐 hash&lt;/code&gt; 或者 &lt;code&gt;加密 hash&lt;/code&gt;（比如：&lt;a href=&#34;https://tools.ietf.org/html/rfc2104&#34;&gt;HMAC&lt;/a&gt;） ，然后再和数据库的结果进行比对。&lt;/p&gt;
+
+&lt;p&gt;如果需要达到更高的安全等级，可以考虑：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 使用更安全的 hash 函数用来抵抗碰撞攻击，比如：SHA256, SHA512, RipeMD, WHIRLPOOL。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;两个不同的内容 hash 的结果可能相同，攻击者在不知道真实密码的情况下，使用其他密码进行碰撞攻击从而登录系统。使用更安全的 hash 函数可以减少这种情况的发生。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 可以使用一种大量消耗 cpu 的 hash 算法对抗暴力破解，比如PBKDF2 或者 bcrypt。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;暴力破解就是枚举所有可能的密码进行尝试验证，使用大量消耗 cpu 的 hash 算法可以极大增加暴力破解的时间。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. 比较加盐 md5 结果时，使用时间恒定的比较函数。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在比较两个字符串时，通常都一个字符一个字符进行比较，如果某个字符不匹配就会立即返回。攻击者可以根据验证的时间长短来判断前几位字符是否正确，然后逐步修正最终得到正确的结果。&lt;/p&gt;
+
+&lt;p&gt;因此，在比较 hash 时，使用时间恒定的比较函数，可以让攻击者摸不着头脑。比如下面这段代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static boolean slowEquals(byte[] a, byte[] b)
+{
+    int diff = a.length ^ b.length;
+    for(int i = 0; i &amp;lt; a.length &amp;amp;&amp;amp; i &amp;lt; b.length; i++)
+        diff |= a[i] ^ b[i];
+    return diff == 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;异或（^）操作可以用来判断两个字符是否相等，比如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;0 XOR 0 = 0    1 XOR 1 = 0
+0 XOR 1 = 1    1 XOR 0 = 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的函数枚举每个字符进行异或判断，然后将所有的结果取或运算，得到最终的结果，比较的时间是恒定的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. salt 的值不要和最终 hash 的结果存在同一个数据库。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;SQL 注入是常见的攻击手段，被注入后数据库里的数据被暴露无遗。所以，应该将 salt 分开存储，存到别的机器的数据库里，让攻击者拿不到 salt ，从而无法轻易破解信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5. 最终存储的结果使用基于 key 的 hash 函数，比如 &lt;a href=&#34;https://tools.ietf.org/html/rfc2104&#34;&gt;HMAC&lt;/a&gt;。 key 从外部安全性极高的专属服务中获得。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;有了这层加固，即使数据被拖库，攻击者也无法从 hash 的结果逆推回原始密码。因为使用了加密的 hash 函数。基于 key 的 hash 函数只是进行哈希运算时，除了传入原始内容外，还需要传入一个密钥（key）。攻击者没有 key 几乎不可能对数据进行解密。&lt;/p&gt;
+
+&lt;p&gt;key 可以保存在极高安全性的通用的 key 管理系统，使用加密协议传输，对访问者进行验证，只允许特定的机器有权限访问。&lt;/p&gt;
+
+&lt;h3 id=&#34;用正确的姿势传输数据:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;用正确的姿势传输数据&lt;/h3&gt;
+
+&lt;p&gt;使用 HTTP 协议传输数据时，数据都是明文传输的，数据从发出到服务器接收，中间可能被劫持，篡改。比如常见的 DNS 劫持，HTTP 劫持，中间人攻击。&lt;/p&gt;
+
+&lt;p&gt;用正确的姿势传输数据，目的就是为了保证传输的数据安全，简单归纳为两点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;需要确保进行通讯的服务端是官方的、正确的服务端，而不是跟一个假的服务端在通信。&lt;/li&gt;
+&lt;li&gt;确保信息在网络上传输时是加密的，只有客户端和服务端有能力对数据进行解密。&lt;/li&gt;
+&lt;li&gt;确保信息在传输时不被篡改，或者数据被篡改时能立即发现。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;1-验证服务端的合法性:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;1. 验证服务端的合法性&lt;/h4&gt;
+
+&lt;p&gt;《改变未来的九大算法》一书中提到了公钥加密和数字签名技术，这是进行安全通信的基础技术保障。这里涉及到了加密技术，先了解两个最基础的概念：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;对称加密：加密和解密时使用的是同一个密钥。&lt;/li&gt;
+&lt;li&gt;非对称加密：需要两个密钥来进行加密和解密：公开密钥（public key，简称公钥）和私有密钥（private key，简称私钥） ，公钥加密的信息只有私钥才能解开，私钥加密的信息只有公钥才能解开。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;非对称加密是实现验证服务端合法性的基础，常见的加密算法有 &lt;a href=&#34;http://baike.baidu.com/view/10613.htm&#34;&gt;RSA&lt;/a&gt; 、 &lt;a href=&#34;http://baike.baidu.com/view/584834.htm&#34;&gt;ECC&lt;/a&gt; 等 。服务端生成一对公钥和私钥，公钥是公开的所有人都知道，客户端需要和服务端通信时，使用该公钥进行数据加密，由于只有真实合法的服务端才拥有对应的私钥，所有只有真实的服务端才能解密该信息，然后返回数据给客户端时，使用客户端自己生成的公钥进行加密，这样数据只有对应的客户端才能理解。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/rsa.gif&#34; alt=&#34;rsa&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;使用 HTTPS 时，数字证书里包含了名称和公钥信息，只要认证该证书是合法的，并且对方能理解用该公钥加密的信息，就能确定是合法的服务端。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-确保通信的安全:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;2. 确保通信的安全&lt;/h4&gt;
+
+&lt;p&gt;既然使用非对称加密的方式，可以保证双方安全的通信，那是不是就一直使用非对称加密传输数据就行了？理论上是可以的，但是非对称加密的效率要比对称加密的效率低很多。通常的做法是，通过非对称加密的方法，协商出一个只有双方知道的对称加密密钥。&lt;/p&gt;
+
+&lt;p&gt;即使在不安全的通信环境下，也可以协商出一个只有双方才知道的对称加密密钥。在《改变未来的九大算法》一书里，有一个经典的描述如何交互密钥的例子（在所有沟通都是透明的情况下，如何协商出一个只有你和阿诺德才知道的颜料颜色。）：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/sharedkey.jpg&#34; alt=&#34;sharedkey&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt; 就是基于上面原理设计的密钥交换算法：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/ecdh.png&#34; alt=&#34;ecdh&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;密钥协商好后，双方就可以使用该密钥进行加密传输了，比如使用 AES 、 DES。&lt;/p&gt;
+
+&lt;p&gt;由于 ECDH 密钥交换协议不验证公钥发送者的身份，因此无法阻止中间人攻击。如果监听者 Mallory 截获了 Alice 的公钥，就可以替换为他自己的公钥，并将其发送给 Bob。Mallory 还可以截获 Bob 的公钥，替换为他自己的公钥，并将其发送给 Alice。这样，Mallory 就可以轻松地对 Alice 与 Bob 之间发送的任何消息进行解密。他可以更改消息，用他自己的密钥对消息重新加密，然后将消息发送给接收者。&lt;/p&gt;
+
+&lt;p&gt;解决方法是，Alice 和 Bob 可以在交换公钥之前使用数字签名对公钥进行签名。&lt;/p&gt;
+
+&lt;p&gt;即使攻击者不能解密传输的内容，但仍可以使用重放攻击尝试身份验证或用于欺骗系统。重放攻击是指攻击者将数据包截取后，向目标主机重新发送一遍数据包。&lt;/p&gt;
+
+&lt;p&gt;防御重放攻击的方法主要有：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用时间戳。数据包在一定时间范围内才是有效的。&lt;/li&gt;
+&lt;li&gt;使用递增的序号。收到重复的数据包时可以轻易的发现。&lt;/li&gt;
+&lt;li&gt;使用提问应答方式。收到数据包时可以判断出来是否应答过。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;HTTPS 正是使用了上述的原理，保证了通信的安全。所以，任何对安全有需求的系统都应该使用 HTTPS。如果是使用自有协议开发，比如 APP 或游戏，应该使用上述的方法保障通信的安全。&lt;/p&gt;
+
+&lt;h3 id=&#34;用正确的姿势加密敏感信息:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;用正确的姿势加密敏感信息&lt;/h3&gt;
+
+&lt;p&gt;我们都知道，用户的密码不能明文保存，而且要使用不可逆的加密算法，只保存最终的 hash 结果用来验证是否正确。那用户其他的敏感信息呢？比如身份证、银行卡、信用卡等信息，该如何加密保存而不被泄露呢？&lt;/p&gt;
+
+&lt;p&gt;对于身份证信息，可以像密码一样只保存 hash 的结果，可以用于用户输入身份证号后进行验证。假如需要给用户显示身份证信息，只需要保存抹掉了几位数字的身份证号。&lt;/p&gt;
+
+&lt;p&gt;假如你的系统涉及到支付，需要用户的银行卡，信用卡（卡号，CVV码）等信息时，必须遵循 &lt;a href=&#34;http://baike.baidu.com/view/8417913.htm&#34;&gt;PCI DSS&lt;/a&gt; （第三方支付行业数据安全标准）标准。PCI DSS 是由 PCI 安全标准委员会的创始成员(visa、mastercard、American Express、Discover Financial Services、JCB等)制定，力在使国际上采用一致的数据安全措施，包括安全管理、策略、过程、网络体系结构、软件设计的要求的列表等，全面保障交易安全。&lt;/p&gt;
+
+&lt;p&gt;如果只是银行卡，还需要遵循 &lt;a href=&#34;http://baike.baidu.com/subview/1812080/12861982.htm&#34;&gt;ADSS&lt;/a&gt; （银联卡收单机构账户信息安全管理标准） 标准。&lt;/p&gt;
+
+&lt;p&gt;2014年3月携程泄露用户银行卡信息就是因为没有遵循 &lt;a href=&#34;http://baike.baidu.com/view/8417913.htm&#34;&gt;PCI DSS&lt;/a&gt; 标准。&lt;/p&gt;
+
+&lt;h3 id=&#34;用正确的姿势对数据进行备份和监控:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;用正确的姿势对数据进行备份和监控&lt;/h3&gt;
+
+&lt;p&gt;2015年5月的携程数据被删事件，就是数据备份没有做好的例子。数据备份是为了防止由于硬盘损坏或人为破坏导致的数据丢失。主要措施有：磁盘 raid，物理备份（磁带库），异地的逻辑备份。同时做好权限控制，并对访问记录做好监控，及时发现问题，保留现场证据。&lt;/p&gt;
+
+&lt;h2 id=&#34;总结:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;本文总结了设计一个安全系统的基本原理和方法，并没有举出一个特定具体的方案，因为不同的系统对安全性的要求各有不同，设计者应该根据自身系统的特点进行具体设计。比如加盐 hash 的具体实施方法，salt 值如何构成等等。&lt;/p&gt;
+
+&lt;p&gt;本文所述内容如有不实之处或者有争议的部分，欢迎交流指出。&lt;/p&gt;
+
+&lt;h4 id=&#34;附录:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;附录&lt;/h4&gt;
+
+&lt;p&gt;常用的加密算法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;对称加密：&lt;a href=&#34;http://baike.baidu.com/view/7510.htm&#34;&gt;DES&lt;/a&gt;、&lt;a href=&#34;http://baike.baidu.com/view/350958.htm&#34;&gt;3DES&lt;/a&gt;、TDEA、&lt;a href=&#34;http://baike.baidu.com/view/2208941.htm&#34;&gt;Blowfish&lt;/a&gt;、RC2、RC4、&lt;a href=&#34;http://baike.baidu.com/view/734720.htm&#34;&gt;RC5&lt;/a&gt;、&lt;a href=&#34;http://baike.baidu.com/view/92629.htm&#34;&gt;IDEA&lt;/a&gt;、SKIPJACK、&lt;a href=&#34;http://baike.baidu.com/subview/133041/5358738.htm&#34;&gt;AES&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;非对称加密：&lt;a href=&#34;http://baike.baidu.com/view/7520.htm&#34;&gt;RSA&lt;/a&gt;、&lt;a href=&#34;http://baike.baidu.com/view/46554.htm&#34;&gt;ECC&lt;/a&gt;（椭圆曲线加密算法）、&lt;a href=&#34;http://baike.baidu.com/view/551692.htm&#34;&gt;Diffie-Hellman&lt;/a&gt;、&lt;a href=&#34;http://baike.baidu.com/view/2154827.htm&#34;&gt;El Gamal&lt;/a&gt;、DSA（数字签名用）&lt;/li&gt;
+&lt;li&gt;Hash 算法：MD2、MD4、MD5、HAVAL、SHA-1、SHA256、SHA512、RipeMD、WHIRLPOOL、SHA3、&lt;a href=&#34;https://tools.ietf.org/html/rfc2104&#34;&gt;HMAC&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;DES、3DES、AES 区别：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;DES：1976年由美国联邦政府的国家标准局颁布，密钥为 56 位。&lt;/li&gt;
+&lt;li&gt;3DES：DES加密算法的一种模式，它使用3条56位的密钥对数据进行三次加密。&lt;/li&gt;
+&lt;li&gt;AES：高级加密标准，是下一代的加密算法标准，速度快，安全级别高，用来替代原先的DES。密钥长度可以是128，192或256比特。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;参考文章:1db3ef44ffdb18426098c53c10a6ad6d&#34;&gt;参考文章&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://crackstation.net/hashing-security.htm&#34;&gt;Salted Password Hashing - Doing it Right&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH 算法概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Rainbow_table&#34;&gt;Rainbow table&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;《改变未来的九大算法》第四章：公钥加密&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
         
         <item>
             <title>我的 2015</title>
@@ -1100,314 +1407,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;p&gt;我可以想象到这是一种什么样的场景，就如同我在大学时看一位牛X同学现场教学如何从零开始做一个网站一样，包括写代码、美工P图切图、排版，噼里啪啦一顿快捷键一气呵成，让你看的眼花缭乱，顿时感觉不明觉厉。可惜这位牛X的同学最后还是选择了留校继续研读土木工程。&lt;/p&gt;
 
 &lt;p&gt;对于Livcoding登录中国，我还是有些小期待的。你有兴趣吗？&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>一篇文章了解什么是增长黑客</title>
-            <link>http://blog.coderzh.com/2015/10/17/read-growth-hacker/</link>
-            <pubDate>Sat, 17 Oct 2015 10:16:41 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/10/17/read-growth-hacker/</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/GrowthHacker.jpg-wt&#34; alt=&#34;GrowthHacker&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;最近在Kindle上读了范冰的《增长黑客》，对增长黑客有了更系统的了解。联想到我自己的微信公众号hacker-thinking和独立博客&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;blog.coderzh.com&lt;/a&gt;，我也在苦苦寻找用户增长的终极奥义。我也尝试过各种SEO（搜索引擎优化），比如规范链接地址、nofollow防止权重降低、提供sitemap、增加关键词、规范robots.txt、加快访问速度、增加反向链接等等。肯定有人会说，这些东西然并卵，高质量的内容才是最重要的。这点我同意。&lt;/p&gt;
-
-&lt;p&gt;通过看《增长黑客》，我了解到了作为一个增长黑客必须具备的素质，了解到了大量的国内外活生生的增长黑客的案例。即使书中提到的很多方法，在今天看来已经是司空见惯的做法，但是在当时，想到和高效执行那些想法，是非常了不起的举措。&lt;/p&gt;
-
-&lt;p&gt;想实现产品或用户增长，需要的是开放的想象力、敏锐的思维和大胆高效的执行，绝不是看了《增长黑客》照搬几个例子就可以实现的。但我还是觉得书中例子很多很丰富，极大的拓宽了我的思维，因此决定写这篇主要内容是书摘的文章，一方面看第二遍可以让我加深印象，另一方面是之后回顾该书内容时，可以快速的找到核心重点。&lt;/p&gt;
-
-&lt;p&gt;本文适合的读者：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;读过《增长黑客》的朋友。可以当做重新温习一遍。&lt;/li&gt;
-&lt;li&gt;还未有时间读《增长黑客》的朋友，可看此文快速了解该书的主要内容。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;最后，再次声明，以下内容主要是根据我的个人喜好，从《增长黑客》一书中摘录，经过我的归纳总结提炼出来的内容，只有少部分是个人的观点和想法。如果你看了有感觉，请支持原著《增长黑客》。&lt;/p&gt;
-
-&lt;p&gt;以下主要是书摘：&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;什么是“增长黑客”？&lt;/p&gt;
-
-&lt;p&gt;增长黑客说法源于硅谷，最早在2010年由Qualaroo的创始人兼CEO肖恩·埃利斯（Sean Ellis）提出，真正引起广泛关注是因为安德鲁·陈（Anrew Chen）在2014年发表的《&lt;a href=&#34;http://andrewchen.co/2012/04/27/how-to-be-a-growth-hacker-an-airbnbcraigslist-case-study/&#34;&gt;Growth Hacker is the new VP Marketing&lt;/a&gt;》。&lt;/p&gt;
-
-&lt;p&gt;这是一群以数据驱动营销、以市场指导产品，通过技术化手段贯彻增长目标的人。他们通常既了解技术，又深谙用户心理，擅长发挥创意、绕过限制，通过低成本的手段解决初创公司产品早期的增长问题。&lt;strong&gt;在外行人眼里，他们就像是极客、发明家和广告狂人的混合体。&lt;/strong&gt;再通俗一点形容，他们的职责接近于专门为初创公司设立的市场推广部门，因为很少有用于营销的大笔经费， 所以更多的是将注意力聚焦在产品策略本身带来的自发增长上。&lt;/p&gt;
-
-&lt;h2 id=&#34;growth-hacker:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;Growth Hacker&lt;/h2&gt;
-
-&lt;h3 id=&#34;timothy-c-draper:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;Timothy C. Draper&lt;/h3&gt;
-
-&lt;p&gt;Hotmail上线时，Timothy C. Draper给Hotmail两位创始人Sabeer Bhatia和Jack Smith建议在&lt;strong&gt;邮件底部打广告：“附言：我爱你，你可以到Hotmail获得免费电子邮箱”&lt;/strong&gt;。最后广告内容简化成“你可以到Hotmail注册免费电子邮件”。随后促成了产品的几何级数传播。&lt;/p&gt;
-
-&lt;p&gt;这一改动几小时后，新注册用户以每天3000个增长，六个月内斩获100万用户，仅五周后，又获得100万用户，一年半后出售给微软时已经达到了1200万。&lt;/p&gt;
-
-&lt;h3 id=&#34;安迪-琼斯:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;安迪·琼斯&lt;/h3&gt;
-
-&lt;p&gt;安迪·琼斯（Andy Johns）是硅谷富有经验的增长黑客，曾效力于Facebook、Twitter、Quora等公司的增长部门。&lt;/p&gt;
-
-&lt;p&gt;2008年，Facebook，接到任务，12个月获得2亿新用户。主要方法：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;提供Facebook博客小挂件，用户可以把小挂件放在自己的公共主页或博客上，对外展示炫耀。带来了十亿次展示量，千万次点击量和百万级的注册量。&lt;/li&gt;
-&lt;li&gt;收购一批第三世界的国家的通讯录服务提供商。以此获得潜在用户的Email地址，对其精准广告推送。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;2008年5月，Facebook全球独立访问用户首次超过MySpace。&lt;/p&gt;
-
-&lt;p&gt;安迪总结的方法论：数据分析、用户获取（SEO、PPC、电子邮件广告）、产品研发、文化建设、人才招聘。&lt;/p&gt;
-
-&lt;p&gt;2010年加入Twitter，组建25人的用户增长团队。主要方法：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;改造首页，突出登录注册区域。砍掉热门微博和搜索框，减少用户头像显示面积，简化文案，登录注册区域占据整个页面的三分之一。24小时内用户注册率提升了约250%。&lt;/li&gt;
-&lt;li&gt;每当新用户注册，立即推荐关注至少10个用户。让用户有东西可看，活跃和留存得到提高。&lt;/li&gt;
-&lt;li&gt;开发和优化邮件自动发送功能。提高了单位时间发送的数量，每当用户获得粉丝、被转发收藏能第一时间收到邮件提醒。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;在所有措施的运转下，两年间，Twitter的活跃用户数量由1亿增长到5亿。&lt;/p&gt;
-
-&lt;p&gt;2011年末，加入问答社区Quora。主要琢磨用户的行为模式，并将之归纳为一套“标准动作”，然后引导其他用户去执行这套标准动作。如完善个人信息，关注感兴趣的行业领袖。&lt;/p&gt;
-
-&lt;p&gt;从安迪身上看出的增长黑客的特质：数据为王、专注目标、关注细节、富于创意、信息通透。&lt;/p&gt;
-
-&lt;h2 id=&#34;数据为王:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;数据为王&lt;/h2&gt;
-
-&lt;p&gt;不同产品的核心数据指标是不一样的。比如：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;eBay的核心指标是商品价值量和eBay网站上的活跃卖家在全球电商平台的占比。&lt;/li&gt;
-&lt;li&gt;Facebook的核心指标是月活跃用户数。&lt;/li&gt;
-&lt;li&gt;MySpace、Compact更关注注册用户数。&lt;/li&gt;
-&lt;li&gt;WhatsApp创始人简（Jan）从来只对外公布发送消息的数量。&lt;/li&gt;
-&lt;li&gt;陌陌对活跃用户的定义是“登录成功并提交地理位置一次”。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;数据分析，保证数据来源正确的前提下，做定性和定量分析。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;了解微信公众号订阅者画像，推送适合的内容。&lt;/li&gt;
-&lt;li&gt;根据统计分析“免费注册”比“立即注册”点击率高30%。&lt;/li&gt;
-&lt;li&gt;某日在线订餐网站数据量猛升，猜测是否与天气阴雨，用户不愿出门有关。&lt;/li&gt;
-&lt;li&gt;电商网站婴儿车销量增加，奶粉销量也会相应同步增加。（经典的啤酒和尿布的销售案例）&lt;/li&gt;
-&lt;li&gt;某天LinkedIn发现来自雷曼公司的访问量骤升，结果第二天雷曼公司就宣布破产倒闭。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;增长黑客工具箱:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;增长黑客工具箱&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.google.com/analytics/&#34;&gt;Google Analytics&lt;/a&gt;（百度统计、CNZZ统计）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://mixpanel.com/&#34;&gt;Mixpanel&lt;/a&gt; 用户行为分析&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.kissmetrics.com/&#34;&gt;KissMetrics&lt;/a&gt; 用户行为分析&lt;/li&gt;
-&lt;li&gt;UserCycle 用户分组实验&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://customer.io/&#34;&gt;Customer.io&lt;/a&gt; 基于用户不同行为发送不同的邮件&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.optimizely.com/&#34;&gt;Optimize.ly&lt;/a&gt;（Unbouce）A/B测试利器&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://basecamp.com/&#34;&gt;Basecamp&lt;/a&gt; 37signals旗下的项目管理软件&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.umeng.com/&#34;&gt;友盟&lt;/a&gt; 国内最大的移动应用统计分析平台之一&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;创造正确的产品:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;创造正确的产品&lt;/h2&gt;
-
-&lt;p&gt;凯文·斯特罗姆（Kevin Systrom）开发的基于地理位置服务的签到抢地盘应用Burbn未见起色，发现用户只喜欢使用Burbn的照片分享功能，于是调转方向，孤注一掷只做照片分享，一个月后吸引了100万用户，仅创立551天后，于2012年4月以10亿美元天价被Facebook收购。这就是照片分享社区Instagram。&lt;/p&gt;
-
-&lt;p&gt;美国市场研究公司CB Insights通过分析101家科技创业公司的失败案例，总结出了创业失败的20大主要原因，其中“没有市场需求”以42％的绝对占比成为首要因素。&lt;/p&gt;
-
-&lt;p&gt;足迹仅靠“大片”效果滤镜，让它火爆了一把。美国版大众点评Yelp在2004年创立之初旨在提供基于电子邮件的交友服务，结果发现用户乐于给商家写点评，于是转型成“商户黄页”。YouTube在2005年创立时只是聚焦在视频约会这一小众市场，当发现流量增长难以继后，改旗易帜成在线视频分享。Flickr曾是一款失败的在线角色扮演游戏的衍生产品。Flickr创始人在之后另一款游戏创业失败后，鬼使神差的在该项目上孵化出了在线协作工具Slack。&lt;/p&gt;
-
-&lt;p&gt;QQ在创业早期从事网络寻呼机业务，在寻呼机市场江河日下时，马化腾一度想以60万的价格出售。百度在成为中国最大的独立搜索引擎之前，曾甘居幕后为其他门户网站提供搜索技术。盛大网络在依靠网络游戏发家致富前，做的是网络虚拟社区“史丹莫”。从百团大战到化妆品限时特卖的聚美优品。从独立论坛系统转型为页游公司的动网。从视频网站转型为在线直播平台的六间房。网络聊天室转型为棋牌游戏的博雅互动。坐拥1亿用户的VeryCD转型“心动游戏”。&lt;/p&gt;
-
-&lt;p&gt;Gmail团队曾经进行过一次名为“你不是用户”的内部演示，援引大量用户数据阐释产品团队 做出每一项决策的具体援引：之所以去除某些功能，是因为大多数Gmail用户没有相关需求，从来都不使用它们。&lt;/p&gt;
-
-&lt;p&gt;QQ邮箱的产品人员曾做了一个特性：将用户收到的所有邮件的附件单列出来，显示在一处。结果发现用户根本没有这样的需求。&lt;/p&gt;
-
-&lt;p&gt;雷军称创业“就是要做最肥的市场”。他投资的YY最早是游戏门户，但雷军觉得最多只值1亿美金，劝李学凌改做直播平台，结果一炮打响。&lt;/p&gt;
-
-&lt;h3 id=&#34;mvp:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;MVP&lt;/h3&gt;
-
-&lt;p&gt;精益创业是指开发团队通过提供最小化可行产品（MVP）获取用户反馈，在此基础上持续快速 迭代（或谋求转型），直至产品达到PMF阶段。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Dropbox：在Digg.com上发布虚构的Dropbox产品功能，引发大量用户兴趣，最终诞生Dropbox。&lt;/li&gt;
-&lt;li&gt;Groupon：最早使用WordPress搭建，手工制作商品礼券。&lt;/li&gt;
-&lt;li&gt;Zappos：鞋类电商平台，最早并没有自己的仓库和物流基地，只是跑到隔壁鞋店拍摄一批照片，有人下单再去买回来。&lt;/li&gt;
-&lt;li&gt;大众点评：初期手工添加1000家饭店，验证用户是否愿意点评。&lt;/li&gt;
-&lt;li&gt;Hyperlapse：延时摄影应用，功能极简，三步完成。&lt;/li&gt;
-&lt;li&gt;微信游戏：为快速验证游戏策划是否可行，制作人和策划用“暴力拼图法”感受最终效果，一旦方案不可行便“尽快放弃，不再纠结”。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;基于微信公众平台的MVP策略，开发周期短、成本低、无需适配、分发方便、便于收集反馈、数据得以沉淀。（示例：女神进化史、悠泊）&lt;/p&gt;
-
-&lt;h2 id=&#34;获取用户:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;获取用户&lt;/h2&gt;
-
-&lt;p&gt;微信的张小龙曾经说过：如果你不了解女性，你将失去一半以上的用户（在他的推荐书单中包含《女性的起源》这样专门从进化学角度探讨女性的著作）。&lt;/p&gt;
-
-&lt;h3 id=&#34;筛选种子用户:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;筛选种子用户&lt;/h3&gt;
-
-&lt;p&gt;Facebook这家起源于哈佛大学校园的全球最大社交网站，在上线之初仅对常青藤大学的学生开放，随后逐渐向附近学校乃至全美、全世界拓展。这一聪明的策略帮助其在初期积累了大量的高质量种子用户，也勾起了外部世界融入这个精英社交圈的兴趣，为日后向普罗大众扩张奠定了牢靠的基础。&lt;/p&gt;
-
-&lt;p&gt;知乎早期走的是精英路线。它采用了严格的邀请和审核机制，李开复、徐小平、雷军等互联网 大佬和一批投资圈、媒体圈的从业者成为了它的种子用户。这从根源上奠定了知乎的调性，也它 在圈内迅速成为话题产品，一码难求。有幸受邀加入知乎的用户们谨言慎行，创造了一批高质量 的内容。&lt;/p&gt;
-
-&lt;p&gt;动漫爱好者的聚集地——哔哩哔哩弹幕视频网为了过滤出高质量的早期内容贡献者，维持社区 的健康生态，采用了一套答题机制来拦截不够“ 资深”的动漫爱好者。&lt;/p&gt;
-
-&lt;p&gt;小米从竞品的网站精心筛选并主动邀请一批人成为MIUI的第一批种子用户。&lt;/p&gt;
-
-&lt;p&gt;要警惕“产品蝗虫”。产品早期的用户不都是“种子用户”。&lt;/p&gt;
-
-&lt;p&gt;案例：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;聚美优品创始人在办公室搭起“摄影棚”，给化妆品拍照，然后精心修图以吸引女性的注意。&lt;/li&gt;
-&lt;li&gt;Strikingly创始人David Chen在Facebook上添加了2000名好友，邀请用户出来喝茶，成为生活中的挚友，甚至在外出演讲时住在了用户家里。&lt;/li&gt;
-&lt;li&gt;网易云笔记首先拉来公司内部50个员工高强度使用，不断提需求和反馈问题。然后通过邀请审核逐渐扩大种子用户。&lt;/li&gt;
-&lt;li&gt;Airbnb在2009年时每周营收仅200美元，创始人一一查阅网站上的配图，发现那些随便用手机拍出来的照片毫无吸引力，于是租了一个昂贵的相机，挨家挨户上门帮房东拍照。一周后效果立竿见影。&lt;/li&gt;
-&lt;li&gt;利用社交网络获取海量用户（开心农场、Zynga、啪啪、唱吧、抬杠、美拍）。啪啪从一开始就未提供独立账号注册登录功能，必须使用新浪微博和QQ登录，使得更容易分享到社交平台。&lt;/li&gt;
-&lt;li&gt;在合法的前提下，通过数据抓取“借鸡生蛋”。比如Windows Live Space准备关闭时，网易博客通过RSS抓取，提供了“一键搬家”功能。（作者自己的“追TA”的例子，即在网络上抓取用户头像来模仿真实用户，感觉有侵权嫌疑啊。）&lt;/li&gt;
-&lt;li&gt;通过内容营销：吸引流量、培养潜在用户、劝诱转化。撰写耸动的标题，Upworthy总结出的标题技巧包括：不要在标题里透露全部内容、抛出疑问而不是总结陈词、 反复修改直到满意等。&lt;/li&gt;
-&lt;li&gt;KISSmetrics的联合创始人尼尔· 帕特尔（Neil Patel）发布的一项针对Google搜索排名与被 收录文章长度关系的调查数据显示，一般排在前十名的文章需要包括至少2000个单词。病毒内容提供商Buzzsumo的调查结果与KISSmetrics近似，他们认为文章篇幅在3000字至10000字的范围内 最容易获得人们的主动分享。&lt;/li&gt;
-&lt;li&gt;搜索引擎优化（SEO）和应用商店优化（ASO）。SEO主要有提供sitemap、标注关键词、增加反向链接（通过维基百科）等手段。ASO主要有通过副标题堆关键词（如：大姨吗），引导高满意度用户为应用评分，在用户需求得到满足、感受到成功喜悦时提醒用户去评分。&lt;/li&gt;
-&lt;li&gt;捆绑下载，比如豌豆荚、百度应用市场，搜索应用时，先下载的是一个市场APK，然后再下到搜索的软件。（有点流氓手段）&lt;/li&gt;
-&lt;li&gt;Mailbox利用排队玩“饥饿营销”，Robinhood甚至提供了“插队”功能，用户只需要发布邀请链接到社交网络就能插队。Track.io甚至更加极端，在技术上无法解决性能问题的情况下，提供付费免除排队功能，找到“有迫切需要的用户”，从而使得项目起死回生。&lt;/li&gt;
-&lt;li&gt;利用嵌入式代码和小挂件让你的品牌无处不在。比如：YouTube和Gleam。&lt;/li&gt;
-&lt;li&gt;从线上到线下。打车软件Uber最早在旧金山低调推出，因为当地糟糕的出租车打车体验和经常下雨的环境使其迅速得到青睐。手机约会应用Tinder渗透到洛杉矶派对圈，拉拢大批年轻貌美的长期在线用户。&lt;/li&gt;
-&lt;li&gt;走向海外。（Facebook、触宝、猎豹）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;激发活跃:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;激发活跃&lt;/h2&gt;
-
-&lt;p&gt;A/B测试：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;LinkedIn通过A/B测试，确定了新注册用户愿意邀请的用户数量定在了“4”个魔法数字。&lt;/li&gt;
-&lt;li&gt;Airbnb曾测试过把“保存到心愿单”的收藏图标由星形改为爱心，结果仅凭这一改动就让心愿列表的使用率提升了30％。&lt;/li&gt;
-&lt;li&gt;移动端通过下发HTML5执行A/B测试（百姓网）&lt;/li&gt;
-&lt;li&gt;A/B测试的结果也要理性对待。百姓网通过A/B测试发现将“拨打电话”改成“投递简历”后，点击率并没有下降。后来却收到很多用户反馈“为什么不能直接拨打电话”，因为用户需要打电话，在不得已情况下才点了投递简历。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;诱饵效应，影响用户决策：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Tinder交友应用的产品团队发现，当配对异性照片界面上面只有一个“喜欢”按钮时，平均每天点击数为7000次。而在旁边增加一个“不喜欢”按钮后，“喜欢”的点击数达到12000次左右。&lt;/li&gt;
-&lt;li&gt;迅雷在引导用户升级“VIP尊享版”时，仅有一个“华丽地变身”比旁边加一个“残忍地拒绝”点击率低了20%。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;游戏改变世界：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;星巴克的会员成长体系（星成就、徽章、亲友券、邀请券）。比如要获得名为“晨型人”的徽章，必须完成五次9: 00之前的门店签到。&lt;/li&gt;
-&lt;li&gt;Foursquare的游戏化策略：积分排名、徽章挑战、抢夺地主。&lt;/li&gt;
-&lt;li&gt;滴滴打车的“滴米”激励系统，根据这一单的难易程度增减滴米。&lt;/li&gt;
-&lt;li&gt;百度贴吧的签到、QQ会员的钻石点亮和VIP成长体系。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;机器人模拟用户&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Quora早期面临内容少质量差的问题时，采取了员工自问自答的方法，通过机器人来模拟用户问答。&lt;/li&gt;
-&lt;li&gt;很有网络游戏里看到在线玩家，实际上执行AI的机器人。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;提高留存:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;提高留存&lt;/h2&gt;
-
-&lt;p&gt;根据美国贝恩公司的调查，在商业社会中5％的客户留存率增长意味着公司利润30％的增长，而 把产品卖给老客户的概率是卖给新客户的3倍。所以在“增长黑客”圈内有一句名言：留住已有的 用户胜过拓展新的客户。&lt;/p&gt;
-
-&lt;h3 id=&#34;留存率:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;留存率&lt;/h3&gt;
-
-&lt;p&gt;衡量产品留存率的常用指标包括次日留存率、7日留存（周留存）率、30日留存（月留存）率，其计算公式为：第1天的新增用户中，在往后的第N天依然在使用的用户数/第1天的新增用户数。其中的N对应的就是留存指标中代表天数的2、7或30。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;次日留存率：可于第一时间发现产品新版本的品质变动和渠道优劣。&lt;/li&gt;
-&lt;li&gt;7日留存率：可反映出用户完成一个完整体验周期后的去留状况。&lt;/li&gt;
-&lt;li&gt;30日留存率：更能反映出一次版本迭代后的稳定性，辅助判断产品的演进方向是否合理。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;渠道留存也是一项值得钻研玩味的指标。由于渠道来源不一，用户质量也千差万别，所以有必要针对渠道用户单独剥离进行留存率分析，选择留存率较高的优质渠道进行重点投放。&lt;/p&gt;
-
-&lt;p&gt;提高留存率的方式：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;优化产品性能。（加快打开速度、减少电池消耗、提升弱网络下的体验）&lt;/li&gt;
-&lt;li&gt;有损服务，放下不必要的坚持。微信逢年过节时服务器压力巨大，因此放弃了微信群里的群聊信息先后一致性的严格要求。小米抢购排队时，放弃了精确的排队数量，而是模糊的“仅剩5万部”。手游《刀塔传奇》每逢大版本更新时，尽量先使用“低清版”资源，虽然视觉效果不够细腻，但能让玩家尽快先玩起来。&lt;/li&gt;
-&lt;li&gt;引导新用户快速上手。如Twitter在新注册后会自动推荐关注5到10人，让用户的时间线有内容可读。&lt;/li&gt;
-&lt;li&gt;社交维系和社交解绑。微信游戏“全民飞机大战”提供“合体”功能，选择一名微信或QQ好友帮助自己。玩家因“求合体”被召回，发现“躺着赚钱”坐收了合体奖励，可能重新被激活。Facebook在用户有冲动注销账号时，确认环节最后一步，页面会显示几名和用户关系最亲密的好友的照片，并可怜巴巴的说“他们会想念你的”。这一设计，使得Facebook的非活跃账户数降低了7%，相当于100万用户量。社交解绑的例子：Same。&lt;/li&gt;
-&lt;li&gt;设计唤醒机制：电子邮件唤醒、消息推送、网页内唤醒移动应用。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;增加收入:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;增加收入&lt;/h2&gt;
-
-&lt;p&gt;免费模式大行其道的原因：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;互联网极大地降低了信息的传播成本，这是免费模式的基石所在。&lt;/li&gt;
-&lt;li&gt;产品通过互联网面向全球的海量用户，这进一步摊薄了边际成本。&lt;/li&gt;
-&lt;li&gt;“ 免费”天然地对人们有着难以抗拒的魅力。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;免费模式如何赚钱：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;基本功能免费，高级功能收费的Freemium策略。&lt;/li&gt;
-&lt;li&gt;交叉补贴。如：吉列剃须刀的刀身免费刀头收费。&lt;/li&gt;
-&lt;li&gt;三方市场流量变现。如：陌陌导流到自家（陌陌争霸）或合作伙伴的游戏成为一大盈利来源。&lt;/li&gt;
-&lt;li&gt;开源接受捐赠，或者提供定制开发及文档收费。如：RootTools。&lt;/li&gt;
-&lt;li&gt;公司上市或被收购。如：优酷上市。最新新闻又被阿里收购。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;天下没有免费的午餐。通过取消免费账户，收入获得大幅提升。如：设计师网页服务Bidesketch、网站分析服务CrazyEgg、财务软件LessAccounting。&lt;/p&gt;
-
-&lt;p&gt;重定向广告，追踪消费者曾经搜过或打开的网页。比如在淘宝或京东搜过某个商品，在访问别的网站时，依然显示刚刚搜过的商品广告，让犹豫不决的用户点击过去直接下单。&lt;/p&gt;
-
-&lt;p&gt;变惩为奖，堵不如疏。2011年，有网友发现了腾讯QQ会员的技术漏洞，公然在淘宝上以1元钱的价格挂出了“QQ会员点灯”业务。腾讯在修复漏洞后，并未对用户进行惩罚，反而给这部分用户提供八折的优惠折扣，将他们转化为真正的QQ会员。（同理，作者使用的CleanMyMac由破解转正版的优惠）&lt;/p&gt;
-
-&lt;p&gt;建立商业智能系统，精细化管理业绩指标。（百姓网）&lt;/p&gt;
-
-&lt;h2 id=&#34;病毒传播:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;病毒传播&lt;/h2&gt;
-
-&lt;p&gt;凯文·凯利在1998年出版《新经济，新规则》一书中提出了大名鼎鼎的“传真机效应”：单独一台传真机是没有什么价值的，只有它处于一个网络中时才能被赋予价值。对于拥有一台传真机的人而言，网络中中的传真机越多，你的传真机价值也就越大。&lt;/p&gt;
-
-&lt;p&gt;去中心化：人人都是节点，传播的效果能够以几何级数倍增。&lt;/p&gt;
-
-&lt;p&gt;衡量病毒传播的两大核心指标是K因子（K Factor）和病毒循环周期（Virial Cycle Time）。K因子＝感染率 X 转化率。病毒循环周期，是指从用户发出病毒邀请，到新用户完成转化（如点击阅读、注册、消费的行为）所花费的时间。&lt;/p&gt;
-
-&lt;p&gt;坏事传千里，Bug营销：百度云网盘支付BUG（只需要1/1000价格）、迅雷支付Bug（1分钱买180元白金年卡）。&lt;/p&gt;
-
-&lt;p&gt;借势营销，如12306抢票插件、SegmentFault举行的“光棍节程序员闯关秀”。&lt;/p&gt;
-
-&lt;p&gt;产品体外的病毒循环：朋友圈小游戏。如“围住神经猫”、“整蛊”、“财务包子铺”及各种小测试。&lt;/p&gt;
-
-&lt;p&gt;产品体内的病毒循环：通过推荐好友解锁功能（AirDroid）、美图秀秀各种“趣味活动”（如“测试与明星的撞脸程度”）分享、百度魔图的“PK大咖”（上传照片，自动告诉你和哪位明星最像）。&lt;/p&gt;
-
-&lt;p&gt;病毒传播中的用户心理把控：喜爱、逐利、互惠、求助、炫耀、稀缺、害怕失去或错过、懒惰。&lt;/p&gt;
-
-&lt;p&gt;作者的实践：云诺网盘通过用户点击获得无限容量的活动营销。&lt;/p&gt;
-
-&lt;h2 id=&#34;实例:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;实例&lt;/h2&gt;
-
-&lt;h3 id=&#34;airbnb:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;Airbnb&lt;/h3&gt;
-
-&lt;p&gt;2007年，住在美国旧金山的两位设计师——布莱恩·彻斯基（Brian Chesky）与乔伊·杰比亚（Joe Gebbia）正在为他们付不起房租而困扰。为了赚点外快，他们计划将阁楼出租出去。传统 的做法是在Craigslist网站发帖子。“但我们不想这么干，因为在Craigslist发千篇一律的帖子会显得冷冰冰的，于是我们打算自己动手建一个网站Airbed&amp;amp;Breakfast。”&lt;/p&gt;
-
-&lt;p&gt;如今，Airbed&amp;amp;Breakfast已经摇身一变成为享誉全球的“共享经济”代表性服务：Airbnb。&lt;/p&gt;
-
-&lt;p&gt;早期两位创始人曾在美国大选时卖麦片来筹集资金，因此受到与硅谷创业教父保罗·格雷厄姆（Paul Graham）青睐。&lt;/p&gt;
-
-&lt;p&gt;格雷厄姆事后承认，“这群甚至可以靠卖麦片来挣取收入的人，他们的项目死不了”。&lt;/p&gt;
-
-&lt;p&gt;Airbnb实现用户增长的秘诀：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;挖竞争对手的用户。租房信息提供同步发送到竞争对手Craigslist网站、在Craigslist上模拟客户给屋主留言推荐Airbnb。&lt;/li&gt;
-&lt;li&gt;5000美金租借高档相机挨家挨户给招租者的房屋拍照。后签约专业摄影师成立项目组，专门给房东提供拍摄服务。&lt;/li&gt;
-&lt;li&gt;打通社交关系链。让屋主和租客信息更透明，解决基本的人与人的信任问题。&lt;/li&gt;
-&lt;li&gt;“心愿列表”将星形改成心形，用户使用率提升了30%。&lt;/li&gt;
-&lt;li&gt;拥抱移动设备。&lt;/li&gt;
-&lt;li&gt;推广时，通过A/B测试发现，“邀请好友可以获得25美元”的效果就不如“向你的好友赠送25美元旅行经费”更打动人。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;（Tinder、Github、美丽说、外卖库的例子见原书）&lt;/p&gt;
 </description>
         </item>
         
