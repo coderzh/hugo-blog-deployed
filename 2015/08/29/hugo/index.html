@@ -364,11 +364,11 @@ Update(2015-09-03): 已经提交<a href="https://github.com/spf13/hugo/pull/1392
 <li>文章的内容里不能像Jekyll一样可以内嵌代码模板了。最终会生成哪些页面，有一套相对固定而复杂的规则，你会发现想创建一个自定义界面会非常的困难。<br />
 解决方法：无，看文档，了解它的规则。博客程序一般也不需要特别的自定义界面。Hugo本身已经支持了类似posts, tags, categories等内容聚合的页面，同时支持rss.xml，404.html等。如果你的博客程序复杂到需要其他的页面，好好想想是否必须吧。</li>
 <li>如何将rss.xml替换为feed.xml？<br />
-解决方法：在config.yaml里加入：</li>
+解决方法：在config.yaml里加入：
+<code>
+rssuri: &quot;feed.xml&quot;
+</code></li>
 </ol>
-
-<pre><code> rssuri: &quot;feed.xml&quot;
-</code></pre>
 
 <h3 id="jekyll迁移到hugo:826b8fbf4b1c9d49ecec9c1552f05b58">Jekyll迁移到Hugo</h3>
 

@@ -178,7 +178,7 @@
                   <h1 class="post-title">悟透LoadRunner - 调用外部DLL的点点滴滴</h1>
 
                   <p class="post-byline">
-                    by  · 2008年04月02日 · 1554 Words ·
+                    by  · 2008年04月02日 · 1555 Words ·
                     ~4min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-04-02-1135118.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -289,8 +289,8 @@
 
 <ol>
 <li>将LRDllTest.dll拷贝到LoadRunner安装路径的Bin目录下。</li>
-<li>修改mdrv.dat文件（安装路径的dat目录下），因为选择的是默认的Web协议，所以找到[lrun<em>api]节点，在后面加上一句:
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; _WINNT_DLLS=LRDllTest.dll</em></li>
+<li>修改mdrv.dat文件（安装路径的dat目录下），因为选择的是默认的Web协议，所以找到[lrun_api]节点，在后面加上一句:
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; _WINNT<em>DLLS=LRDllTest.dll</em></li>
 </ol>
 
 <p>&nbsp;&nbsp;&nbsp; OK，再试试不使用lr_load_dll函数，直接调用LRDllTest.dll中的Sum函数吧！</p>

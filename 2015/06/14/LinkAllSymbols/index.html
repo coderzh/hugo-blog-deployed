@@ -230,12 +230,12 @@
 
 <p>查看静态库所有符号列表，Linux里可以使用<a href="https://sourceware.org/binutils/docs/binutils/nm.html">nm</a> ，Windows平台可以使用<a href="https://support.microsoft.com/en-us/kb/177429">dumpbin</a>。</p>
 
-<p>执行dumbin.exe需要注意，必须在Visual Studio的开发命令行环境才能执行。不过有个小技巧可以让你不必在Developer Command Prompt执行，就是假如是VS2013环境，建一个批处理，在开头加上：
-<code>
-@echo off
+<p>执行dumbin.exe需要注意，必须在Visual Studio的开发命令行环境才能执行。不过有个小技巧可以让你不必在Developer Command Prompt执行，就是假如是VS2013环境，建一个批处理，在开头加上：</p>
+
+<pre><code>@echo off
 if defined VS120COMNTOOLS (
     call &quot;%VS120COMNTOOLS%\vsvars32.bat&quot;)
-</code></p>
+</code></pre>
 
 <p>我们使用dumpbin /LINKERMEMBER xxx.lib，可以列出所有的符号名字，比如查看静态库MyLib.lib所有符号：</p>
 

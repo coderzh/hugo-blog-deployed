@@ -6,10 +6,139 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 03 Jan 2016 18:23:28 CST</updated>
+        <updated>Sun, 10 Jan 2016 23:06:42 CST</updated>
         
         <item>
-            <title>如何设计一个安全的账户系统</title>
+            <title>即使被拖库，也可以保证密码不泄露</title>
+            <link>http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</link>
+            <pubDate>Sun, 10 Jan 2016 23:06:42 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</guid>
+            <description>
+
+&lt;p&gt;在前一篇文章中《&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt;》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。&lt;/p&gt;
+
+&lt;p&gt;首先，我们明确一下安全加密方案的终极目标：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;即使在数据被拖库，代码被泄露，请求被劫持的情况下，也能保障用户的密码不被泄露。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;说具体一些，我们理想中的绝对安全的系统大概是这样的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;首先保障数据很难被拖库。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者也无法从中破解出用户的密码。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者也无法伪造登录请求通过验证。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者劫持了用户的请求数据，也无法破解出用户的密码。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如何保障数据不被拖库，这里就不展开讲了。首先我们来说说密码加密。现在应该很少系统会直接保存用户的密码了吧，至少也是会计算密码的 md5 后保存。md5 这种不可逆的加密方法理论上已经很安全了，但是随着彩虹表的出现，使得大量长度不够的密码可以直接从彩虹表里反推出来。&lt;/p&gt;
+
+&lt;p&gt;所以，只对密码进行 md5 加密是肯定不够的。聪明的程序员想出了个办法，即使用户的密码很短，只要我在他的短密码后面加上一段很长的字符，再计算 md5 ，那反推出原始密码就变得非常困难了。加上的这段长字符，我们成为盐（Salt），通过这种方式加密的结果，我们称为 &lt;code&gt;加盐 Hash&lt;/code&gt; 。比如：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/salt.png&#34; alt=&#34;salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上一篇我们讲过，常用的哈希函数中，SHA-256、SHA-512 会比 md5 更安全，更难破解，出于更高安全性的考虑，我的这个方案中，会使用 SHA-512 代替 md5 。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/sha-512.png&#34; alt=&#34;salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过上面的加盐哈希运算，即使攻击者拿到了最终结果，也很难反推出原始的密码。不能反推，但可以正着推，假设攻击者将 salt 值也拿到了，那么他可以枚举遍历所有 6 位数的简单密码，加盐哈希，计算出一个结果对照表，从而破解出简单的密码。这就是通常所说的暴力破解。&lt;/p&gt;
+
+&lt;p&gt;为了应对暴力破解，我使用了加盐的&lt;strong&gt;慢哈希&lt;/strong&gt;。慢哈希是指执行这个哈希函数非常慢，这样暴力破解需要枚举遍历所有可能结果时，就需要花上非常非常长的多的时间。比如：bcrypt 就是这样一个慢哈希函数：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/bcrypt.png&#34; alt=&#34;bcrypt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过调整 &lt;code&gt;cost&lt;/code&gt; 参数，可以调整该函数慢到什么程度。假设让 bcrypt 计算一次需要 0.5 秒，遍历 6 位的简单密码，需要的时间为：((26 * 2 + 10)^6) / 2 秒，约 900 年。&lt;/p&gt;
+
+&lt;p&gt;好了，有了上面的基础，来看看我的最终解决方案：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/password_security.jpg&#34; alt=&#34;password_secutity&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图里有很多细节，我分阶段来讲：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 协商密钥&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;基于非对称加密的密钥协商算法，可以在通信内容完全被公开的情况下，双方协商出一个只有双方才知道的密钥，然后使用该密钥进行对称加密传输数据。比如图中所用的 ECDH 密钥协商。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 请求 Salt&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;双方协商出一个密钥 SharedKey 之后，就可以使用 SharedKey 作为 AES 对称加密的密钥进行通信，客户端传给服务端自己的公钥 A ，以及加密了的用户ID（uid）。服务端从数据库中查找到该 uid 对于的 Salt1 和 Salt2 ，然后再加密返回给客户端。&lt;/p&gt;
+
+&lt;p&gt;注意，服务端保存的 Salt1 和 Salt2 最好和用户数据分开存储，存到其他服务器的数据库里，这样即使被 SQL 注入，想要获得 Salt1 和 Salt2 也会非常困难。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. 验证密码&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这是最重要的一步了。客户端拿到 Salt1 和 Salt2 之后，可以计算出两个加盐哈希：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SaltHash1 = bcrypt(SHA512(password), uid + salt1, 10)
+SaltHash2 = SHA512(SaltHash1 + uid + salt2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Ticket = AES(SaltHash2, uid + time + SaltHash1 + RandKey)
+AES(SharedKey, Ticket)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。&lt;/p&gt;
+
+&lt;p&gt;校验两个哈希值是否相等时，使用时间恒定的比较函数，防止试探性攻击。&lt;/p&gt;
+
+&lt;p&gt;time 用于记录数据包发送的时间，用来防止录制回放攻击。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. 加密传输&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;密码验证通过后，服务端生成一个随机的临时密钥 TempKey（使用安全的随机函数），并使用 RandKey 做为密钥，传输给客户端。之后双方的数据交互都通过 TempKey 作为 AES 密钥进行加密。&lt;/p&gt;
+
+&lt;h4 id=&#34;假设被拖库了:348d28cc795f0a1857c92b26f086746c&#34;&gt;假设被拖库了&lt;/h4&gt;
+
+&lt;p&gt;以上就是整个加密传输、存储的全过程。我们来假设几种攻击场景：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;假设数据被拖库了，密码会泄露吗？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;数据库中的 Salt1 ，Salt2 ， SaltHash2 暴露了，想从 SaltHash2 直接反解出原始密码几乎是不可能的事情。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;假设数据被拖库了，攻击者能不能伪造登录请求通过验证？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;攻击者在生成 Ticket 时，需要 SaltHash1 ，但由于并不知道密码，所以无法计算出 SaltHash1 ，又无法从 SaltHash2 反推 SaltHash1 ，所以无法伪造登录请求通过验证。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;假设数据被拖库了，攻击者使用中间人攻击，劫持了用户的请求，密码会被泄露吗？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;中间人拥有真实服务器所有的数据，仿冒了真实的 Server ，因此，他可以解密出 Ticket 中的 SaltHash1 ，&lt;strong&gt;但是 SaltHash1 是无法解密出原始密码的。所以，密码也不会被泄露。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;但是，中间人攻击可以获取到最后的 TempKey ，从而能监听后续的所有通信过程。这是很难解决的问题，因为在服务端所有东西都暴露的情况下，中间人假设可以劫持用户数据，仿冒真实 Server , 是很难和真实的 Server 区分开的。解决的方法也许只有防止被中间人攻击，保证 Server 的公钥在客户端不被篡改。&lt;/p&gt;
+
+&lt;p&gt;假设攻击已经进展到了这样的程度，还有办法补救吗？有。由于攻击者只能监听用户的登录过程，并不知道真实的密码。所以，只需要在服务端对 Salt2 进行升级，即可生成新的 SaltHash2 ，从而让攻击者所有攻击失效。&lt;/p&gt;
+
+&lt;p&gt;具体是这样的：用户正常的登录，服务端验证通过后，生成新的 Salt2 ，然后根据传过来的 SaltHash1 重新计算了 SaltHash2 存入数据库。下次用户再次登录时，获取到的是新的 Salt2 ，密码没有变，同样能登录，攻击者之前拖库的那份数据也失效了。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;q-a:348d28cc795f0a1857c92b26f086746c&#34;&gt;Q &amp;amp; A&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;使用 bcrypt 慢哈希函数，服务端应对大量的用户登录请求，性能承受的了吗？&lt;/p&gt;
+
+&lt;p&gt;该方案中，细心一点会注意到， bcrypt 只是在客户端进行运算的，服务端是直接拿到客户端运算好的结果（ SaltHash1 ）后 SHA-512 计算结果进行验证的。所以，把性能压力分摊到了各个客户端。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为什么要使用两个 Salt 值？&lt;/p&gt;
+
+&lt;p&gt;使用两个 Salt 值，是为了防止拖库后，劫持了用户请求后将密码破解出来。只有拥有密码的用户，才能用第一个 Salt 值计算出 SaltHash1 ，并且不能反推回原始密码。第二个 Salt 值可以加大被拖库后直接解密出 SaltHash1 的难度。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为什么要动态请求 Salt1 和 Salt2 ？&lt;/p&gt;
+
+&lt;p&gt;Salt 值直接写在客户端肯定不好，而且写死了要修改还得升级客户端。动态请求 Salt 值，还可以实现不升级客户端的情况下，对密码进行动态升级：服务端可定期更换 Salt2 ，重新计算 SaltHash2 ，让攻击者即使拖了一次数据也很快处于失效状态。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;数据库都已经全被拖走了，密码不泄露还有什么意义呢？&lt;/p&gt;
+
+&lt;p&gt;其实是有意义的，正如刚刚提到的升级 Salt2 的补救方案，用户可以在完全不知情的情况下，不需要修改密码就升级了账号体系。同时，保护好用户的密码，不被攻击者拿去撞别家网站的库，也是一份责任。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;欢迎大家针对本文的方案进行讨论，如有不实或者考虑不周的地方，请尽情指出。或者有更好的建议或意见，欢迎交流！&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>设计安全的账号系统的正确姿势</title>
             <link>http://blog.coderzh.com/2016/01/03/security-design/</link>
             <pubDate>Sun, 03 Jan 2016 18:23:28 CST</pubDate>
             <author>CoderZh</author>
@@ -1341,72 +1470,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;p&gt;或者微信扫一扫关注我的微信公众号：hacker-thinking&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://blog.coderzh.com/public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>程序员直播写代码网站livecoding.tv即将登陆中国，你有兴趣吗？</title>
-            <link>http://blog.coderzh.com/2015/10/23/livecoding</link>
-            <pubDate>Fri, 23 Oct 2015 07:08:11 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/10/23/livecoding</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/livecoding.jpg-wt&#34; alt=&#34;livecoding&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;lol直播:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;LOL直播&lt;/h3&gt;
-
-&lt;p&gt;之前玩LOL那段时间，在不玩游戏的时候最爱的就是看别人直播打游戏。最早的时候，是在own3d.tv上看，后来twitch.tv异军突起，直接统领了国外竞技游戏直播平台。比如那时候看HotshotGG玩豹女，Dyrus玩奥拉夫，甚至看他在Ban/Pick阶段切出去玩俄罗斯方块，也极为有趣。后来twitch.tv越来越卡了，随之YY直播主播兴起，以及现在的斗鱼直播，我也十分爱看。有的主播不但技术强，也十分风趣幽默，看他们和高手对决，或者代练虐菜，也十分享受。比如我比较喜欢的主播有阿倪蛋糕店、董小飒，还有玩德莱文玩到逆天的文森特。这些人都不是职业选手，但是他们的操作意识都十分让人惊叹。（也许之前关于LOL的那些好玩事可以单独开一篇来讲。）&lt;/p&gt;
-
-&lt;p&gt;没玩LOL已经一年多了，不知道现在的情况如何了。有一点可以确定，LOL还是那么的火，直播LOL让主播赚的盆满钵满。观众也十分爱看。就像我们小时候总喜欢站在高手后边看他们怎么玩游戏，怎么一币通关是一个道理。&lt;/p&gt;
-
-&lt;h3 id=&#34;直播写代码:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;直播写代码&lt;/h3&gt;
-
-&lt;p&gt;直播越来越火，有人直播唱歌，有人直播玩游戏，甚至有人直播睡觉打呼。&lt;/p&gt;
-
-&lt;p&gt;然而，程序员直播写代码，你会喜欢看吗？&lt;/p&gt;
-
-&lt;p&gt;第一次听说直播写代码，是在《内核恐慌》的第5期关于编程字体的，里面提到美国有个经验丰富的游戏引擎开发者在网上直播写游戏。&lt;/p&gt;
-
-&lt;p&gt;后来查了下资料，具体是这样的：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HandmadeHero.jpg-w&#34; alt=&#34;HandmadeHero&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://mollyrocket.com/casey/about.html&#34;&gt;Casey Muratori&lt;/a&gt;是西雅图的一名经验丰富的游戏引擎开发者，据他的介绍，他已经拥有30年的游戏开发经验，参与开发的游戏引擎被数以千计的游戏采用。但是他经常抱怨现在的开发者有那么好的硬件条件，却做不出高效率的游戏出来。&lt;/p&gt;
-
-&lt;p&gt;于是他决定在网上直播写一个游戏：&lt;a href=&#34;http://handmadehero.org/&#34;&gt;Handmade Hero&lt;/a&gt;，这个游戏不会使用任何游戏引擎，而是一行一行代码直播码出来。在直播的过程中，他除了敲代码，还会有大量的讲解，让观看直播的人获得更多系统的知识。你还可以给他支持15美元，这样你就可以随时获取到他的最新源代码，当游戏最终发布的时候，你还可以直接获得最终的发行版本。&lt;/p&gt;
-
-&lt;p&gt;他是在twitch.tv上直播的，地址是：&lt;a href=&#34;http://www.twitch.tv/handmade_hero&#34;&gt;http://www.twitch.tv/handmade_hero&lt;/a&gt;，在&lt;a href=&#34;https://www.youtube.com/user/handmadeheroarchive&#34;&gt;You Tube&lt;/a&gt;（当然，这个网站并不存在）上可以观看之前的直播内容。&lt;/p&gt;
-
-&lt;p&gt;优酷里有关于这个项目的宣传视频，非常炫酷：&lt;a href=&#34;http://v.youku.com/v_show/id_XODU2NDQxODky.html&#34;&gt;http://v.youku.com/v_show/id_XODU2NDQxODky.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;这样牛逼的程序员在网上直播写代码，你有兴趣看吗？&lt;/p&gt;
-
-&lt;p&gt;我觉得我会喜欢看。&lt;/p&gt;
-
-&lt;h3 id=&#34;livecoding-tv:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;Livecoding.tv&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/livecoding-example.jpg-w&#34; alt=&#34;livecoding-example&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;后来甚至出来一个专门的直播写代码网站：&lt;a href=&#34;http://www.livecoding.tv&#34;&gt;Livecoding&lt;/a&gt;，是Y-Combinator孵化器下的项目，确实是正儿八经的要进军这个看起来非常小众的市场。&lt;/p&gt;
-
-&lt;p&gt;于是我上Livecoding，注册账号，观看直播。在上面你可以针对自己的喜好选择不同的编程语言，可以看当天直播也可以看过往录像，看的时候还可以聊天互动，功能基本和twitch.tv差不多。然而，在国内访问，体验只能用一个字来形容：卡。卡到根本看不了，在我做了各种尝试之后，最后还是放弃了。&lt;/p&gt;
-
-&lt;p&gt;今早收到一封邮件，是Livecoding发来的，标题和正文都是中文。内容是：Livecoding即将全面登录中国。 Livecoding正在国内组建团队，在国内架设服务器，预计2016年能登录中国。有任何意见、想法或者经验的同学，可以联系他们michael@livecoding.tv。&lt;/p&gt;
-
-&lt;h3 id=&#34;小众市场才会比较有趣:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;小众市场才会比较有趣&lt;/h3&gt;
-
-&lt;p&gt;这无疑是个好消息，到时候除了可以顺畅的观看各路大神写代码，甚至自己也可以尝试一下当一回主播，比如直播帮学美术的堂弟写个毕业设计要求的小游戏之类的。&lt;/p&gt;
-
-&lt;p&gt;不过，已经有人尝试过了在虎牙和斗鱼上直播写代码，但观看的人数非常少。相对于美女直播和大神游戏玩家，直播撸代码对大众没有多少吸引力，这确实是一个小众市场。&lt;/p&gt;
-
-&lt;p&gt;然而，小众市场才会更加有趣。大众的东西虽然能吸引到更多的人，但往往趋于平庸，能被小众市场吸引的人，往往本身就对这个东西非常感兴趣，如果在小众市场上挖掘的很深，能更加深入小众用户的心，获得更高的忠诚度。&lt;/p&gt;
-
-&lt;p&gt;假如在程序圈内兴起了一股直播撸代码的热潮，你会想从观看直播过程中获得一些什么呢？比如，我就非常好奇，各路BAT或者业界专家大牛，你们写代码时是怎样一种状态，你们使用什么样的编辑器或IDE，选用什么样的字体，使用哪些快捷键，实现功能的思路是怎样的，怎样查文档，怎么Google，用哪些新奇好玩的工具软件，有哪些实用有趣的编程技巧……&lt;/p&gt;
-
-&lt;p&gt;我可以想象到这是一种什么样的场景，就如同我在大学时看一位牛X同学现场教学如何从零开始做一个网站一样，包括写代码、美工P图切图、排版，噼里啪啦一顿快捷键一气呵成，让你看的眼花缭乱，顿时感觉不明觉厉。可惜这位牛X的同学最后还是选择了留校继续研读土木工程。&lt;/p&gt;
-
-&lt;p&gt;对于Livcoding登录中国，我还是有些小期待的。你有兴趣吗？&lt;/p&gt;
 </description>
         </item>
         

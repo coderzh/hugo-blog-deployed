@@ -178,7 +178,7 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之八 - 打造自己的单元测试框架</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月12日 · 2501 Words ·
+                    by  · 2009年04月12日 · 2503 Words ·
                     ~5min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-12-1434155.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -235,7 +235,7 @@
 
 <li><p>通过RegisterTestCase()将测试案例添加到测试案例集合<span style="color: #000000;">testcases_</span>中。</p></li>
 
-<li><p>执行测试案例时，调用UnitTest::Run()，遍历测试案例集合<span style="color: #000000;">testcases<em></span>，调用案例的Run()方法
+<li><p>执行测试案例时，调用UnitTest::Run()，遍历测试案例集合<span style="color: #000000;">testcases_</span>，调用案例的Run()方法
 <div class="cnblogs_code"><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;UnitTest
 {
 </span><span style="color: #0000ff;">public</span><span style="color: #000000;">:
@@ -253,7 +253,7 @@
 </span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">int</span><span style="color: #000000;">&nbsp;nPassed;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;通过案例数</span><span style="color: #008000;">
 </span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">int</span><span style="color: #000000;">&nbsp;nFailed;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;失败案例数</span><span style="color: #008000;">
 </span><span style="color: #0000ff;">protected</span><span style="color: #000000;">:
-&nbsp;&nbsp;&nbsp;&nbsp;std::vector</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TestCase</span><span style="color: #000000;">*&gt;</span><span style="color: #000000;">&nbsp;testcases</em>;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;案例集合</span><span style="color: #008000;">
+&nbsp;&nbsp;&nbsp;&nbsp;std::vector</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TestCase</span><span style="color: #000000;">*&gt;</span><span style="color: #000000;">&nbsp;testcases_;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;案例集合</span><span style="color: #008000;">
 </span><span style="color: #000000;">};</span></div></p></li>
 </ol>
 

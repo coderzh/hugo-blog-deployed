@@ -178,7 +178,7 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之七 - 深入解析gtest</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月11日 · 5602 Words ·
+                    by  · 2009年04月11日 · 5604 Words ·
                     ~12min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-11-1433744.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -430,16 +430,16 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 </span><span style="color: #008000;">//</span><span style="color: #008000;">
 </span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;参数:
 </span><span style="color: #008000;">//</span><span style="color: #008000;">
-</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;&nbsp;&nbsp;set<em>up_tc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #008000;">事件函数SetUpTestCases的函数地址</span>
+</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;&nbsp;&nbsp;set_up_tc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #008000;">事件函数SetUpTestCases的函数地址</span>
 <span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;&nbsp;&nbsp;tear_down_tc: </span><span style="color: #008000;">事件函数TearDownTestCases的函数地址</span>
 <span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;&nbsp;&nbsp;test_info:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TestInfo对象</span><span style="color: #008000;">
 </span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;AddTestInfo(Test::SetUpTestCaseFunc&nbsp;set_up_tc,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test::TearDownTestCaseFunc&nbsp;tear_down_tc,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestInfo&nbsp;</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;test_info)&nbsp;{
 </span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;处理死亡测试的代码，先不关注它</span><span style="color: #008000;">
-</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;(original_working_dir</em>.IsEmpty())&nbsp;{
-&nbsp; &nbsp; original<em>working_dir</em>.Set(FilePath::GetCurrentDir());
-&nbsp;&nbsp;&nbsp; </span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;(original<em>working_dir</em>.IsEmpty())&nbsp;{
+</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;(original_working<em>dir</em>.IsEmpty())&nbsp;{
+&nbsp; &nbsp; original_working<em>dir</em>.Set(FilePath::GetCurrentDir());
+&nbsp;&nbsp;&nbsp; </span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;(original_working<em>dir</em>.IsEmpty())&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(</span><span style="color: #800000;">&ldquo;</span><span style="color: #800000;">%s\n</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">&ldquo;</span><span style="color: #800000;">Failed&nbsp;to&nbsp;get&nbsp;the&nbsp;current&nbsp;working&nbsp;directory.</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">);
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; abort();
 &nbsp;&nbsp;&nbsp; }
@@ -512,37 +512,37 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 
 <p>&nbsp;</p>
 
-<p>同时也看看TEST<em>F宏
+<p>同时也看看TEST_F宏
 <div class="cnblogs_code"><span style="color: #0000ff;">#define</span><span style="color: #000000;">&nbsp;TEST_F(test_fixture,&nbsp;test_name)&lt;/span&gt;<span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST</em>(test_fixture,&nbsp;test_name,&nbsp;test_fixture,&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;GTEST<em>TEST</em>(test_fixture,&nbsp;test_name,&nbsp;test_fixture,&nbsp;\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::testing::</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::GetTypeId</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">test_fixture</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">())</span></div></p>
 
-<p>都是使用了GTEST<em>TEST_宏，在看看这个宏如何定义的：
-<div class="cnblogs_code"><span style="color: #0000ff;">#define</span><span style="color: #000000;">&nbsp;GTEST_TEST</em>(test<em>case_name,&nbsp;test_name,&nbsp;parent_class,&nbsp;parent_id)&lt;/span&gt;<span style="color: #000000;">
-</span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS_NAME</em>(test<em>case_name,&nbsp;test_name)&nbsp;:&nbsp;</span><span style="color: #0000ff;">public</span><span style="color: #000000;">&nbsp;parent_class&nbsp;{\
+<p>都是使用了GTEST_TEST_宏，在看看这个宏如何定义的：
+<div class="cnblogs_code"><span style="color: #0000ff;">#define</span><span style="color: #000000;">&nbsp;GTEST<em>TEST</em>(test_case_name,&nbsp;test_name,&nbsp;parent_class,&nbsp;parent_id)&lt;/span&gt;<span style="color: #000000;">
+</span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)&nbsp;:&nbsp;</span><span style="color: #0000ff;">public</span><span style="color: #000000;">&nbsp;parent_class&nbsp;{\
 </span><span style="color: #0000ff;">public</span><span style="color: #000000;">:\
-&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS_NAME</em>(test<em>case_name,&nbsp;test_name)()&nbsp;{}\
+&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)()&nbsp;{}\
 </span><span style="color: #0000ff;">private</span><span style="color: #000000;">:\
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">virtual</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;TestBody();\
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;::testing::TestInfo</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;test_info</em>;\
-&nbsp;&nbsp;&nbsp;&nbsp;GTEST<em>DISALLOW_COPY_AND_ASSIGN</em>(\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTEST<em>TEST_CLASS_NAME</em>(test<em>case_name,&nbsp;test_name));\
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;::testing::TestInfo</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;test<em>info</em>;\
+&nbsp;&nbsp;&nbsp;&nbsp;GTEST_DISALLOW_COPY_AND<em>ASSIGN</em>(\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name));\
 };\
 \
-::testing::TestInfo</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS_NAME</em>(test<em>case_name,&nbsp;test_name)\
-&nbsp;&nbsp;&nbsp;&nbsp;::test_info</em>&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">\
+::testing::TestInfo</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)\
+&nbsp;&nbsp;&nbsp;&nbsp;::test<em>info</em>&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::testing::</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::MakeAndRegisterTestInfo(\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#test<em>case_name,&nbsp;#test_name,&nbsp;</span><span style="color: #800000;">&rdquo;&rdquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">&rdquo;&rdquo;</span><span style="color: #000000;">,&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#test_case_name,&nbsp;#test_name,&nbsp;</span><span style="color: #800000;">&rdquo;&rdquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">&rdquo;&rdquo;</span><span style="color: #000000;">,&nbsp;\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(parent_id),&nbsp;\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent_class::SetUpTestCase,&nbsp;\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent_class::TearDownTestCase,&nbsp;\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">new</span><span style="color: #000000;">&nbsp;::testing::</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TestFactoryImpl</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS_NAME</em>(test<em>case_name,&nbsp;test_name)</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">);\
-</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS_NAME</em>(test_case_name,&nbsp;test_name)::TestBody()</span></div></p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">);\
+</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)::TestBody()</span></div></p>
 
 <p>&nbsp;</p>
 
-<p>不需要多解释了，和我们上面展开看到的差不多，不过这里比较明确的看到了，我们在TEST宏里写的就是TestBody里的东西。这里再补充说明一下里面的<span style="color: #000000;">GTEST<em>DISALLOW_COPY_AND_ASSIGN</em></span>宏，我们上面的例子看出，这个宏展开后：
+<p>不需要多解释了，和我们上面展开看到的差不多，不过这里比较明确的看到了，我们在TEST宏里写的就是TestBody里的东西。这里再补充说明一下里面的<span style="color: #000000;">GTEST_DISALLOW_COPY_AND<em>ASSIGN</em></span>宏，我们上面的例子看出，这个宏展开后：
 <div class="cnblogs_code"><span style="color: #000000;">FooTest_Demo_Test(</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;FooTest_Demo_Test&nbsp;</span><span style="color: #000000;">&amp;</span><span style="color: #000000;">);
 </span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">operator</span><span style="color: #000000;">=</span><span style="color: #000000;">(</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;FooTest_Demo_Test&nbsp;</span><span style="color: #000000;">&amp;</span><span style="color: #000000;">);</span></div></p>
 
@@ -597,11 +597,11 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 &nbsp;&nbsp;&nbsp;&nbsp;}
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;执行全局的TearDown事件</span><span style="color: #008000;">
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;printer</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">OnGlobalTearDownStart(parent<em>);
-&nbsp;&nbsp;&nbsp;&nbsp;environments_in_reverse_order</em>.ForEach(TearDownEnvironment);
-&nbsp;&nbsp;&nbsp;&nbsp;printer</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">OnGlobalTearDownEnd(parent<em>);
+</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;printer</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">OnGlobalTearDownStart(parent_);
+&nbsp;&nbsp;&nbsp;&nbsp;environments_in_reverse<em>order</em>.ForEach(TearDownEnvironment);
+&nbsp;&nbsp;&nbsp;&nbsp;printer</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">OnGlobalTearDownEnd(parent_);
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;elapsed_time</em>&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;GetTimeInMillis()&nbsp;</span><span style="color: #000000;">-</span><span style="color: #000000;">&nbsp;start;
+&nbsp;&nbsp;&nbsp;&nbsp;elapsed<em>time</em>&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;GetTimeInMillis()&nbsp;</span><span style="color: #000000;">-</span><span style="color: #000000;">&nbsp;start;
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;执行完成</span><span style="color: #008000;">
 </span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;printer</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">OnUnitTestEnd(parent_);
@@ -635,46 +635,46 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 
 <p>&nbsp;</p>
 
-<p>因此，我们关注一下：<span style="color: #000000;">environments<em>.ForEach(SetUpEnvironment)，其实是迭代调用了</span><span style="color: #000000;">SetUpEnvironment</span>函数：
-<div class="cnblogs_code"><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;SetUpEnvironment(Environment</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;env)&nbsp;{&nbsp;env</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">SetUp();&nbsp;}</span></div>
+<p>因此，我们关注一下：<span style="color: #000000;">environments_.ForEach(SetUpEnvironment)，其实是迭代调用了</span><span style="color: #000000;">SetUpEnvironment</span>函数：
+<div class="cnblogs_code"><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;SetUpEnvironment(Environment</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;env)&nbsp;{&nbsp;env</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">SetUp();&nbsp;}</span></div>
 <br />
 &nbsp;
 <br />
 最终调用了我们定义的SetUp()函数。
 <br />
-再看看<span style="color: #000000;">test_cases</em>.ForEach(TestCase::RunTestCase)的</span><span style="color: #000000;">TestCase::RunTestCase</span>实现：
-<div class="cnblogs_code"><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;RunTestCase(TestCase&nbsp;</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;test<em>case)&nbsp;{&nbsp;test_case</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">Run();&nbsp;}</span></div>
+再看看<span style="color: #000000;">test<em>cases</em>.ForEach(TestCase::RunTestCase)的</span><span style="color: #000000;">TestCase::RunTestCase</span>实现：
+<div class="cnblogs_code"><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;RunTestCase(TestCase&nbsp;</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;test_case)&nbsp;{&nbsp;test_case</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">Run();&nbsp;}</span></div>
 <br />
 &nbsp;
 <br />
 再看TestCase的Run实现：
 <div class="cnblogs_code"><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;TestCase::Run()&nbsp;{
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;(</span><span style="color: #000000;">!</span><span style="color: #000000;">should_run</em>)&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">;
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;(</span><span style="color: #000000;">!</span><span style="color: #000000;">should<em>run</em>)&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">;
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::UnitTestImpl</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;impl&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::GetUnitTestImpl();
-&nbsp;&nbsp;&nbsp;&nbsp;impl</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">set<em>current_test_case(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">);
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::UnitTestImpl</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;impl&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::GetUnitTestImpl();
+&nbsp;&nbsp;&nbsp;&nbsp;impl</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">set_current_test_case(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">);
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;UnitTestEventListenerInterface&nbsp;</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;result_printer&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">
+&nbsp;&nbsp;&nbsp;&nbsp;UnitTestEventListenerInterface&nbsp;</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;result_printer&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">
 &nbsp;&nbsp;&nbsp;&nbsp;impl</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">result_printer();
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;result_printer</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">OnTestCaseStart(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">);
 &nbsp;&nbsp;&nbsp;&nbsp;impl</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">os_stack_trace_getter()</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">UponLeavingGTest();
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;哈！SetUpTestCases事件在这里调用</span><span style="color: #008000;">
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;set_up_tc</em>();
+</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;set_up<em>tc</em>();
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TimeInMillis&nbsp;start&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::GetTimeInMillis();
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;嗯，前面分析的一个TestCase对应多个TestInfo，因此，在这里迭代对TestInfo调用RunTest方法</span><span style="color: #008000;">
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;test<em>info_list</em></span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">ForEach(</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TestInfoImpl::RunTest);
+</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;test_info<em>list</em></span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">ForEach(</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TestInfoImpl::RunTest);
 &nbsp;&nbsp;&nbsp;&nbsp;elapsed<em>time</em>&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::GetTimeInMillis()&nbsp;</span><span style="color: #000000;">-</span><span style="color: #000000;">&nbsp;start;
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;impl</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">os<em>stack_trace_getter()</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">UponLeavingGTest();
+&nbsp;&nbsp;&nbsp;&nbsp;impl</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">os_stack_trace_getter()</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">UponLeavingGTest();
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TearDownTestCases事件在这里调用</span><span style="color: #008000;">
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;tear_down_tc</em>();
+</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;tear_down<em>tc</em>();
 &nbsp;&nbsp;&nbsp;&nbsp;result_printer</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">OnTestCaseEnd(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">);
 &nbsp;&nbsp;&nbsp;&nbsp;impl</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">set_current_test_case(NULL);
 }</span></div></p>
 
-<p>第二种事件机制又浮出我们眼前，非常兴奋。可以看出，SetUpTestCases和TearDownTestCaess是在一个TestCase之前和之后调用的。接着看test<em>info_list</em>-&gt;ForEach(internal::TestInfoImpl::RunTest)：
+<p>第二种事件机制又浮出我们眼前，非常兴奋。可以看出，SetUpTestCases和TearDownTestCaess是在一个TestCase之前和之后调用的。接着看test_info<em>list</em>-&gt;ForEach(internal::TestInfoImpl::RunTest)：
 <div class="cnblogs_code"><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;RunTest(TestInfo&nbsp;</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;test_info)&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;test_info</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">impl()</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">Run();
 }</span></div></p>
@@ -684,7 +684,7 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">char</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;name,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">char</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;test_case_comment,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">char</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;comment,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TypeId&nbsp;fixture<em>class_id,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TypeId&nbsp;fixture_class<em>id,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TestFactoryBase</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;factory)&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;impl</em>&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">new</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TestInfoImpl(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">,&nbsp;test_case_name,&nbsp;name,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test_case_comment,&nbsp;comment,

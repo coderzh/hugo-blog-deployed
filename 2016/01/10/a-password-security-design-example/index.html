@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>通过NBehave了解BDD(Behavior Driven Development) - CoderZh Blog</title>
+  <title>即使被拖库，也可以保证密码不泄露 - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<meta name="description" content="之前写过一篇介绍BDD的文章(优美的测试代码 - 行为驱动开发(BDD))，很多同学都表示很感兴趣，但感觉过于抽象。因此，本文通过使用NBeha">
+<meta name="keywords" content="加盐,hash,拖库,攻击,方案,">
+<meta name="description" content="即使被拖库，也可以保证密码不泄露">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="通过NBehave了解BDD(Behavior Driven Development) - CoderZh Blog">
-<meta itemprop="description" content="之前写过一篇介绍BDD的文章(优美的测试代码 - 行为驱动开发(BDD))，很多同学都表示很感兴趣，但感觉过于抽象。因此，本文通过使用NBeha">
+<meta itemprop="name" content="即使被拖库，也可以保证密码不泄露 - CoderZh Blog">
+<meta itemprop="description" content="即使被拖库，也可以保证密码不泄露">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="通过NBehave了解BDD(Behavior Driven Development) - CoderZh Blog" />
+<meta property="og:title" content="即使被拖库，也可以保证密码不泄露 - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.coderzh.com/2010/02/28/BDD-By-NBehave/" />
+<meta property="og:url" content="http://blog.coderzh.com/2016/01/10/a-password-security-design-example/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="之前写过一篇介绍BDD的文章(优美的测试代码 - 行为驱动开发(BDD))，很多同学都表示很感兴趣，但感觉过于抽象。因此，本文通过使用NBeha">
+<meta property="og:description" content="即使被拖库，也可以保证密码不泄露">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="通过NBehave了解BDD(Behavior Driven Development) - CoderZh Blog">
-<meta name="twitter:description" content="之前写过一篇介绍BDD的文章(优美的测试代码 - 行为驱动开发(BDD))，很多同学都表示很感兴趣，但感觉过于抽象。因此，本文通过使用NBeha">
+<meta name="twitter:title" content="即使被拖库，也可以保证密码不泄露 - CoderZh Blog">
+<meta name="twitter:description" content="即使被拖库，也可以保证密码不泄露">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://blog.coderzh.com/2010/02/28/BDD-By-NBehave/">
-  <link rel='shortlink' href="http://blog.coderzh.com/2010/02/28/BDD-By-NBehave/"/>
+  <link rel="canonical" href="http://blog.coderzh.com/2016/01/10/a-password-security-design-example/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2016/01/10/a-password-security-design-example/"/>
   <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -175,12 +175,12 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">通过NBehave了解BDD(Behavior Driven Development)</h1>
+                  <h1 class="post-title">即使被拖库，也可以保证密码不泄露</h1>
 
                   <p class="post-byline">
-                    by  · 2010年02月28日 · 1482 Words ·
-                    ~3min reading time |
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-02-28-BDD-By-NBehave.md"
+                    by  · 2016年01月10日 · 2626 Words ·
+                    ~6min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-01-10-a-password-security-design-example.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -191,135 +191,124 @@
                       
                       
 
-<p>之前写过一篇介绍BDD的文章(<a href="http://www.cnblogs.com/coderzh/archive/2009/07/26/1531633.html">优美的测试代码 - 行为驱动开发(BDD)</a>)，很多同学都表示很感兴趣，但感觉过于抽象。因此，本文通过使用NBehave框架，通过非常简单而又具体的例子，加深对BDD的认识。</p>
+<p>在前一篇文章中《<a href="http://blog.coderzh.com/2016/01/03/security-design/">设计安全的账号系统的正确姿势</a>》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。</p>
 
-<h4 id="bdd简介:fb63b09f1cdf24a17bd84f4e6bb1516a">BDD简介</h4>
+<p>首先，我们明确一下安全加密方案的终极目标：</p>
 
-<p>WikiPedia中的说明：</p>
+<p><strong>即使在数据被拖库，代码被泄露，请求被劫持的情况下，也能保障用户的密码不被泄露。</strong></p>
 
-<p><em><span style="color: #000000;">Behavior&nbsp;Driven&nbsp;Development&nbsp;(or&nbsp;BDD)&nbsp;is&nbsp;an&nbsp;Agile&nbsp;software&nbsp;development&nbsp;technique  </span><span style="color: #000000;">that&nbsp;encourages&nbsp;collaboration&nbsp;between&nbsp;developers</span><span style="color: #000000;">,  QA&nbsp;and&nbsp;non-technical&nbsp;or&nbsp;business&nbsp;participants&nbsp;in&nbsp;a&nbsp;software&nbsp;project.</span></em>
-**</p>
-
-<p><span class="Apple-style-span" style="font-weight: normal;">BDD通过故事模板和场景，描述产品在用户操作时的具体功能表现，有点类似传统的Use Case。<span style="color: red;">BDD的故事模板和场景，更加贴近用户的行为，BDD的测试案例，更加注重从用户的角度进行测试。</span></span></p>
-
-<p>**</p>
-
-<p>通常，故事模板类似：</p>
-
-<p>**
-**</p>
-
-<p>**
-<div class="cnblogs_code">
-<div><span style="color: #0000ff;">As</span><span style="color: #000000;">&nbsp;a&nbsp;[X]&nbsp;
-<br />
-</span><span style="color: #0000ff;">I</span><span style="color: #000000;">&nbsp;want&nbsp;[Y]&nbsp;
-<br />
-</span><span style="color: #0000ff;">so</span><span style="color: #000000;">&nbsp;that&nbsp;[Z]</span></div>
-</div></p>
-
-<p><span class="Apple-style-span" style="font-weight: normal;">场景模板类似：</span></p>
-
-<p>**</p>
-
-<p>**
-**</p>
-
-<p>**
-<div class="cnblogs_code">
-<div><span style="color: #0000ff;">Given</span><span style="color: #000000;">&nbsp;some&nbsp;initial&nbsp;context&nbsp;(the&nbsp;givens),&nbsp;
-<br />
-</span><span style="color: #0000ff;">When</span><span style="color: #000000;">&nbsp;an&nbsp;</span>event<span style="color: #000000;">&nbsp;occurs,&nbsp;
-<br />
-</span><span style="color: #0000ff;">then</span><span style="color: #000000;">&nbsp;ensure&nbsp;some&nbsp;outcomes.</span></div>
-</div>
-**</p>
-
-<h4 id="nbehave简介:fb63b09f1cdf24a17bd84f4e6bb1516a">NBehave简介</h4>
-
-<p>NBehave是.NET版本的BDD框架，通过NBehave，能够方便的进行行为驱动开发。NBehave负责将场景模板映射到案例代码，内置NUnit，XUnit，MbTest，或者MSTest等单元测试框架，同时负责执行并生成测试报告。因此，通过NBehave，我们只需要：</p>
+<p>说具体一些，我们理想中的绝对安全的系统大概是这样的：</p>
 
 <ol>
-<li>编写场景模板2.  编写对应的场景类，映射模板中的具体行为和表现。3.  通过NBehave-Console.exe执行案例。或者集成到（MSBuild，NAnt中）</li>
+<li>首先保障数据很难被拖库。</li>
+<li>即使数据被拖库，攻击者也无法从中破解出用户的密码。</li>
+<li>即使数据被拖库，攻击者也无法伪造登录请求通过验证。</li>
+<li>即使数据被拖库，攻击者劫持了用户的请求数据，也无法破解出用户的密码。</li>
 </ol>
 
-<p>简单实例</p>
+<p>如何保障数据不被拖库，这里就不展开讲了。首先我们来说说密码加密。现在应该很少系统会直接保存用户的密码了吧，至少也是会计算密码的 md5 后保存。md5 这种不可逆的加密方法理论上已经很安全了，但是随着彩虹表的出现，使得大量长度不够的密码可以直接从彩虹表里反推出来。</p>
 
-<p>比如，我们编写如下场景：</p>
+<p>所以，只对密码进行 md5 加密是肯定不够的。聪明的程序员想出了个办法，即使用户的密码很短，只要我在他的短密码后面加上一段很长的字符，再计算 md5 ，那反推出原始密码就变得非常困难了。加上的这段长字符，我们成为盐（Salt），通过这种方式加密的结果，我们称为 <code>加盐 Hash</code> 。比如：</p>
 
-<div class="cnblogs_code">
-<div><span style="color: #0000ff;">Given</span><span style="color: #000000;">&nbsp;I&nbsp;am&nbsp;not&nbsp;logged&nbsp;in
-<br />
-</span><span style="color: #0000ff;">When</span><span style="color: #000000;">&nbsp;I&nbsp;log&nbsp;in&nbsp;as&nbsp;Morgan&nbsp;with&nbsp;a&nbsp;password&nbsp;SecretPassw0rd
-<br />
-</span><span style="color: #0000ff;">Then</span><span style="color: #000000;">&nbsp;I&nbsp;should&nbsp;see&nbsp;a&nbsp;message</span><span style="color: #000000;">,</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">"</span><span style="color: #000000;">Welcome,&nbsp;Morgan!</span><span style="color: #000000;">"</span></div>
-</div>
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/salt.png" alt="salt" /></p>
 
-<p>我们把上面的内容保存到一个文件中，命名为：_<strong>user_logs_in_successfully.feature</strong>_</p>
+<p>上一篇我们讲过，常用的哈希函数中，SHA-256、SHA-512 会比 md5 更安全，更难破解，出于更高安全性的考虑，我的这个方案中，会使用 SHA-512 代替 md5 。</p>
 
-<p>接下来，编写对应的场景类：</p>
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/sha-512.png" alt="salt" /></p>
 
-<pre><div class="cnblogs_code"><div><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;NBehave.Narrator.Framework;
-</span><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;NBehave.Spec.NUnit;
-</span><span style="color: #000000;">  
-[ActionSteps]
-</span><span style="color: #0000ff;">public</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;UserLogsInSuccessfully
-</span><span style="color: #000000;">{
- &nbsp;&nbsp; </span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;some&nbsp;code&nbsp;to&nbsp;setup&nbsp;_currentPage
-&nbsp;&nbsp;&nbsp; </span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;...</span><span style="color: #008000;">
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp; [Given(</span><span style="color: #800000;">"</span><span style="color: #800000;">I&nbsp;am&nbsp;not&nbsp;logged&nbsp;in</span><span style="color: #800000;">"</span><span style="color: #000000;">)]
-&nbsp;&nbsp;&nbsp; </span><span style="color: #0000ff;">public</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;LogOut()
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp; {
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _currentPage.click(</span><span style="color: #800000;">"</span><span style="color: #800000;">logout</span><span style="color: #800000;">"</span><span style="color: #000000;">);
-</span><span style="color: #000000;"></span><span style="color: #000000;"></span></div>
+<p>通过上面的加盐哈希运算，即使攻击者拿到了最终结果，也很难反推出原始的密码。不能反推，但可以正着推，假设攻击者将 salt 值也拿到了，那么他可以枚举遍历所有 6 位数的简单密码，加盐哈希，计算出一个结果对照表，从而破解出简单的密码。这就是通常所说的暴力破解。</p>
 
-<span style="color: #000000;">&nbsp;&nbsp;&nbsp; }
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp; [When(</span><span style="color: #800000;">"</span><span style="color: #800000;">I&nbsp;log&nbsp;in&nbsp;as&nbsp;$username&nbsp;with&nbsp;a&nbsp;password&nbsp;$password</span><span style="color: #800000;">"</span><span style="color: #000000;">)]
-&nbsp;&nbsp;&nbsp; </span><span style="color: #0000ff;">public</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;LogIn(</span><span style="color: #0000ff;">string</span><span style="color: #000000;">&nbsp;username,&nbsp;</span><span style="color: #0000ff;">string</span><span style="color: #000000;">&nbsp;password)
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp; {
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _currentPage.click(</span><span style="color: #800000;">"</span><span style="color: #800000;">login</span><span style="color: #800000;">"</span><span style="color: #000000;">);
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp; }
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp; [Then(</span><span style="color: #800000;">"</span><span style="color: #800000;">I&nbsp;should&nbsp;see&nbsp;a&nbsp;message,&nbsp;\</span><span style="color: #800000;">"</span><span style="color: #000000;">$message\</span><span style="color: #800000;">""</span><span style="color: #000000;">)]
-&nbsp;&nbsp;&nbsp; </span><span style="color: #0000ff;">public</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;CheckMessage(</span><span style="color: #0000ff;">string</span><span style="color: #000000;">&nbsp;message)
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp; {
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _currentPage.ToString().ShouldContain(message);
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp; }
-</span><span style="color: #000000;">}</span>
-</div>
+<p>为了应对暴力破解，我使用了加盐的<strong>慢哈希</strong>。慢哈希是指执行这个哈希函数非常慢，这样暴力破解需要枚举遍历所有可能结果时，就需要花上非常非常长的多的时间。比如：bcrypt 就是这样一个慢哈希函数：</p>
 
-<span class="Apple-style-span" style="font-family: verdana,'courier new'; white-space: normal;">上面的代码简单明了，通过Given, When, Then等.NET Attribute，建立了场景类中的方法与场景模板之间的联系。我们还看到，这几个Attribute还支持参数匹配，比如，通过$username匹配到Login函数的username参数，非常的方便使用。实际上参数还支持正则表达式以及数组参数，详细参考文本最后的链接：[Steps](http://nbehave.codeplex.com/wikipage?title=ActionSteps&amp;referringTitle=latest%20release "ActionSteps&amp;referringTitle=latest%20release")</span>
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/bcrypt.png" alt="bcrypt" /></p>
 
-</pre>
+<p>通过调整 <code>cost</code> 参数，可以调整该函数慢到什么程度。假设让 bcrypt 计算一次需要 0.5 秒，遍历 6 位的简单密码，需要的时间为：((26 * 2 + 10)^6) / 2 秒，约 900 年。</p>
 
-<p>接下来，就是执行了，通过：</p>
+<p>好了，有了上面的基础，来看看我的最终解决方案：</p>
 
-<pre><div class="cnblogs_code"><span style="color: #000000;">&gt;NBehave-Console.exe&nbsp;NameOfDll.dll&nbsp;/sf</span><span style="color: #000000;">=</span><span style="color: #000000;">user_logs_in_successfully.feature</span>
-</div>
-</pre>
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/password_security.jpg" alt="password_secutity" /></p>
 
-<p>执行后如果全部通过，会有通过的通过的信息输出，如果案例失败了，会有详细的错误输出。</p>
+<p>上图里有很多细节，我分阶段来讲：</p>
 
-<p>NBehave文档</p>
+<p><strong>1. 协商密钥</strong></p>
 
-<p>通过上面简单的示例，是不是对BDD有了更加直观的了解了呢。如果想了解更多关于NBehave框架的内容，请参考NBehave主页：<a href="http://nbehave.codeplex.com/">http://nbehave.codeplex.com/</a></p>
+<p>基于非对称加密的密钥协商算法，可以在通信内容完全被公开的情况下，双方协商出一个只有双方才知道的密钥，然后使用该密钥进行对称加密传输数据。比如图中所用的 ECDH 密钥协商。</p>
 
-<p>其中，本文的例子也是NBehave主页中的Documents中来的。</p>
+<p><strong>2. 请求 Salt</strong></p>
 
-<p>参考链接：</p>
+<p>双方协商出一个密钥 SharedKey 之后，就可以使用 SharedKey 作为 AES 对称加密的密钥进行通信，客户端传给服务端自己的公钥 A ，以及加密了的用户ID（uid）。服务端从数据库中查找到该 uid 对于的 Salt1 和 Salt2 ，然后再加密返回给客户端。</p>
 
-<ul>
-<li><a href="http://nbehave.codeplex.com/wikipage?title=Getting%20started&amp;amp;referringTitle=latest%20release" title="Getting%20started&amp;amp;referringTitle=latest%20release">Getting started</a> （简单入门，本文的例子也是从这里来的）*   <a href="http://nbehave.codeplex.com/wikipage?title=ActionSteps&amp;amp;referringTitle=latest%20release" title="ActionSteps&amp;amp;referringTitle=latest%20release">Steps</a> （场景类中，Given, When, Then等Attribute使用的详细规则）*   <a href="http://nbehave.codeplex.com/wikipage?title=IntegrateBuild&amp;amp;referringTitle=latest%20release" title="IntegrateBuild&amp;amp;referringTitle=latest%20release">Integrate into build process</a> （介绍如何集成Nbehave到持续构建中，比如，MSBuild，NAnt）*   <a href="http://nbehave.codeplex.com/wikipage?title=scenario%20files&amp;amp;referringTitle=Getting%20started" title="scenario%20files&amp;amp;referringTitle=Getting%20started">scenario files</a> （场景文件(本文中的user_logs_in_successfully.feature)的一些编写规则）</li>
-</ul>
+<p>注意，服务端保存的 Salt1 和 Salt2 最好和用户数据分开存储，存到其他服务器的数据库里，这样即使被 SQL 注入，想要获得 Salt1 和 Salt2 也会非常困难。</p>
 
-<p>BDD与TDD</p>
+<p><strong>3. 验证密码</strong></p>
 
-<p>我认为，BDD和TDD是相辅相成的。我可以想象这样一个开发过程：</p>
+<p>这是最重要的一步了。客户端拿到 Salt1 和 Salt2 之后，可以计算出两个加盐哈希：</p>
 
-<p><span style="color: red;">产品人员或QA人员根据产品需求设计好各种场景文件（Scenario files） -&gt; 开发人员编写对应的场景类（Scenario class）-&gt; 执行场景 &#8211;&gt; 执行结果失败 &#8211;&gt; 编写相应的产品代码（Product code） &#8211;&gt; 再次执行场景 &#8211;&gt; 重复执行这个过程，直到所有场景通过</span></p>
+<pre><code>SaltHash1 = bcrypt(SHA512(password), uid + salt1, 10)
+SaltHash2 = SHA512(SaltHash1 + uid + salt2)
+</code></pre>
 
-<p>这就是我所理解的行为<span style="color: red;">驱动</span>开发，我就不画图了，大家有什么看法呢？</p>
+<p>使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：</p>
 
-<p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2010/02/28/BDD-By-NBehave.html">http://www.cnblogs.com/coderzh/archive/2010/02/28/BDD-By-NBehave.html</a></strong></p>
+<pre><code>Ticket = AES(SaltHash2, uid + time + SaltHash1 + RandKey)
+AES(SharedKey, Ticket)
+</code></pre>
+
+<p>服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。</p>
+
+<p>校验两个哈希值是否相等时，使用时间恒定的比较函数，防止试探性攻击。</p>
+
+<p>time 用于记录数据包发送的时间，用来防止录制回放攻击。</p>
+
+<p><strong>4. 加密传输</strong></p>
+
+<p>密码验证通过后，服务端生成一个随机的临时密钥 TempKey（使用安全的随机函数），并使用 RandKey 做为密钥，传输给客户端。之后双方的数据交互都通过 TempKey 作为 AES 密钥进行加密。</p>
+
+<h4 id="假设被拖库了:348d28cc795f0a1857c92b26f086746c">假设被拖库了</h4>
+
+<p>以上就是整个加密传输、存储的全过程。我们来假设几种攻击场景：</p>
+
+<ol>
+<li><p><strong>假设数据被拖库了，密码会泄露吗？</strong></p>
+
+<p>数据库中的 Salt1 ，Salt2 ， SaltHash2 暴露了，想从 SaltHash2 直接反解出原始密码几乎是不可能的事情。</p></li>
+
+<li><p><strong>假设数据被拖库了，攻击者能不能伪造登录请求通过验证？</strong></p>
+
+<p>攻击者在生成 Ticket 时，需要 SaltHash1 ，但由于并不知道密码，所以无法计算出 SaltHash1 ，又无法从 SaltHash2 反推 SaltHash1 ，所以无法伪造登录请求通过验证。</p></li>
+
+<li><p><strong>假设数据被拖库了，攻击者使用中间人攻击，劫持了用户的请求，密码会被泄露吗？</strong></p>
+
+<p>中间人拥有真实服务器所有的数据，仿冒了真实的 Server ，因此，他可以解密出 Ticket 中的 SaltHash1 ，<strong>但是 SaltHash1 是无法解密出原始密码的。所以，密码也不会被泄露。</strong></p>
+
+<p>但是，中间人攻击可以获取到最后的 TempKey ，从而能监听后续的所有通信过程。这是很难解决的问题，因为在服务端所有东西都暴露的情况下，中间人假设可以劫持用户数据，仿冒真实 Server , 是很难和真实的 Server 区分开的。解决的方法也许只有防止被中间人攻击，保证 Server 的公钥在客户端不被篡改。</p>
+
+<p>假设攻击已经进展到了这样的程度，还有办法补救吗？有。由于攻击者只能监听用户的登录过程，并不知道真实的密码。所以，只需要在服务端对 Salt2 进行升级，即可生成新的 SaltHash2 ，从而让攻击者所有攻击失效。</p>
+
+<p>具体是这样的：用户正常的登录，服务端验证通过后，生成新的 Salt2 ，然后根据传过来的 SaltHash1 重新计算了 SaltHash2 存入数据库。下次用户再次登录时，获取到的是新的 Salt2 ，密码没有变，同样能登录，攻击者之前拖库的那份数据也失效了。</p></li>
+</ol>
+
+<h4 id="q-a:348d28cc795f0a1857c92b26f086746c">Q &amp; A</h4>
+
+<ol>
+<li><p>使用 bcrypt 慢哈希函数，服务端应对大量的用户登录请求，性能承受的了吗？</p>
+
+<p>该方案中，细心一点会注意到， bcrypt 只是在客户端进行运算的，服务端是直接拿到客户端运算好的结果（ SaltHash1 ）后 SHA-512 计算结果进行验证的。所以，把性能压力分摊到了各个客户端。</p></li>
+
+<li><p>为什么要使用两个 Salt 值？</p>
+
+<p>使用两个 Salt 值，是为了防止拖库后，劫持了用户请求后将密码破解出来。只有拥有密码的用户，才能用第一个 Salt 值计算出 SaltHash1 ，并且不能反推回原始密码。第二个 Salt 值可以加大被拖库后直接解密出 SaltHash1 的难度。</p></li>
+
+<li><p>为什么要动态请求 Salt1 和 Salt2 ？</p>
+
+<p>Salt 值直接写在客户端肯定不好，而且写死了要修改还得升级客户端。动态请求 Salt 值，还可以实现不升级客户端的情况下，对密码进行动态升级：服务端可定期更换 Salt2 ，重新计算 SaltHash2 ，让攻击者即使拖了一次数据也很快处于失效状态。</p></li>
+
+<li><p>数据库都已经全被拖走了，密码不泄露还有什么意义呢？</p>
+
+<p>其实是有意义的，正如刚刚提到的升级 Salt2 的补救方案，用户可以在完全不知情的情况下，不需要修改密码就升级了账号体系。同时，保护好用户的密码，不被攻击者拿去撞别家网站的库，也是一份责任。</p></li>
+</ol>
+
+<p>欢迎大家针对本文的方案进行讨论，如有不实或者考虑不周的地方，请尽情指出。或者有更好的建议或意见，欢迎交流！</p>
 
                       
                     </div>
@@ -331,7 +320,7 @@
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
                             <br />微信关注：hacker-thinking （一个程序员的思考）
-                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2010/02/28/BDD-By-NBehave/">http://blog.coderzh.com/2010/02/28/BDD-By-NBehave/</a>
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2016/01/10/a-password-security-design-example/">http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -384,7 +373,7 @@
 
 
               <section id="comments" class="themeform">
-<div class="ds-thread" data-thread-key="/2010/02/28/BDD-By-NBehave/" data-title="通过NBehave了解BDD(Behavior Driven Development)" data-url="http://blog.coderzh.com/2010/02/28/BDD-By-NBehave/"></div>
+<div class="ds-thread" data-thread-key="/2016/01/10/a-password-security-design-example/" data-title="即使被拖库，也可以保证密码不泄露" data-url="http://blog.coderzh.com/2016/01/10/a-password-security-design-example/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"coderzh"};
 	(function() {
@@ -439,20 +428,14 @@ var duoshuoQuery = {short_name:"coderzh"};
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://blog.coderzh.com/2010/02/22/thinking2010/" rel="next">
+        <a href="http://blog.coderzh.com/2016/01/03/security-design/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>春节随想</span>
+          <span>设计安全的账号系统的正确姿势</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://blog.coderzh.com/2010/03/13/talk-cloudcomputing/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>白话云计算</span>
-        </a>
         
       </li>
     </ul>

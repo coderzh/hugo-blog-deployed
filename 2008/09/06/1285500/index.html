@@ -412,33 +412,23 @@ eval(a+b+c+d);</div>
 
 <pre><code>1.  &lt;tt&gt;python&lt;/tt&gt;的cgi.escape函数：
 
-
 &lt;div style=&quot;border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;&quot;&gt;&lt;span style=&quot;color: #fb660a; font-weight: bold;&quot;&gt;def&lt;/span&gt; &lt;span style=&quot;color: #ff0086; font-weight: bold;&quot;&gt;escape&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;,&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;quote&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;None&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;):&lt;/span&gt;
-
 
 &lt;span style=&quot;color: #ffffff;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #0086d2;&quot;&gt;'''Replace special characters &quot;&amp;amp;&quot;, &quot;&amp;lt;&quot; and &quot;&amp;gt;&quot; to HTML-safe sequences.&lt;/span&gt;
 
-
 &lt;span style=&quot;color: #0086d2;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; If the optional flag quote is true, the quotation mark character (&quot;)&lt;/span&gt;
-
 
 &lt;span style=&quot;color: #0086d2;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; is also translated.'''&lt;/span&gt;
 
-
 &lt;span style=&quot;color: #ffffff;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;replace&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0086d2;&quot;&gt;&quot;&amp;amp;&quot;&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;,&lt;/span&gt; &lt;span style=&quot;color: #0086d2;&quot;&gt;&quot;&amp;amp;amp;&quot;&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;)&lt;/span&gt; &lt;span style=&quot;color: #008800; font-style: italic; background-color: #0f140f;&quot;&gt;# Must be done first!&lt;/span&gt;
-
 
 &lt;span style=&quot;color: #ffffff;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;replace&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0086d2;&quot;&gt;&quot;&amp;lt;&quot;&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;,&lt;/span&gt; &lt;span style=&quot;color: #0086d2;&quot;&gt;&quot;&amp;amp;lt;&quot;&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;)&lt;/span&gt;
 
-
 &lt;span style=&quot;color: #ffffff;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;replace&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0086d2;&quot;&gt;&quot;&amp;gt;&quot;&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;,&lt;/span&gt; &lt;span style=&quot;color: #0086d2;&quot;&gt;&quot;&amp;amp;gt;&quot;&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;)&lt;/span&gt;
-
 
 &lt;span style=&quot;color: #ffffff;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #fb660a; font-weight: bold;&quot;&gt;if&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;quote&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;:&lt;/span&gt;
 
-
 &lt;span style=&quot;color: #ffffff;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;replace&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #0086d2;&quot;&gt;'&quot;'&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;,&lt;/span&gt; &lt;span style=&quot;color: #0086d2;&quot;&gt;&quot;&amp;amp;quot;&quot;&lt;/span&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;)&lt;/span&gt;
-
 
 &lt;span style=&quot;color: #fb660a; font-weight: bold;&quot;&gt;return&lt;/span&gt; &lt;span style=&quot;color: #ffffff;&quot;&gt;s&lt;/span&gt;&lt;/div&gt;
 </code></pre>
@@ -460,12 +450,9 @@ eval(a+b+c+d);</div>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ff0007; font-weight: bold; font-style: italic; background-color: #0f140f;">&lt;?php</span>
 
-
 &nbsp;<span style="color: #fb660a;">$new</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">htmlspecialchars</span><span style="color: #ffffff;">(</span><span style="color: #0086d2;">"&lt;a href='test'&gt;Test&lt;/a&gt;"</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">ENT_QUOTES</span><span style="color: #ffffff;">);</span>
 
-
 &nbsp;<span style="color: #fb660a; font-weight: bold;">echo</span> <span style="color: #fb660a;">$new</span><span style="color: #ffffff;">;</span> <span style="color: #008800; font-style: italic; background-color: #0f140f;">// &amp;lt;a href='test'&amp;gt;Test&amp;lt;/a&amp;gt;</span>
-
 
 <span style="color: #ff0007; font-weight: bold; font-style: italic; background-color: #0f140f;">?&gt;</span></div></li>
 

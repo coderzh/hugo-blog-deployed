@@ -390,12 +390,9 @@
 <div dir="ltr">
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">sqlText</span> <span style="color: #ffffff;">=</span> <span style="color: #0086d2;">"select * from [Users] where UserName = @Name"</span><span style="color: #ffffff;">;</span>
 
-
 <span style="color: #ffffff;">SqlParameter</span> <span style="color: #ffffff;">nameParm</span> <span style="color: #ffffff;">=</span> <span style="color: #fb660a; font-weight: bold;">new</span> <span style="color: #ffffff;">SqlParameter</span><span style="color: #ffffff;">(</span><span style="color: #0086d2;">"Name"</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">uname</span><span style="color: #ffffff;">);</span>
 
-
 <span style="color: #ffffff;">sqlCmd</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">CommandText</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">sqlText</span><span style="color: #ffffff;">;</span>
-
 
 <span style="color: #ffffff;">sqlCmd</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Parameters</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Add</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">nameParm</span><span style="color: #ffffff;">);</span></div>
 </div></li>
@@ -410,15 +407,11 @@
 <li><div dir="ltr">
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">name</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">...;</span> <span style="color: #008800; font-style: italic; background-color: #0f140f;">//name from user</span>
 
-
 <span style="color: #ffffff;">SqlConnection</span> <span style="color: #ffffff;">conn</span> <span style="color: #ffffff;">=</span> <span style="color: #fb660a; font-weight: bold;">new</span> <span style="color: #ffffff;">SqlConnection</span><span style="color: #ffffff;">(...);</span>
-
 
 <span style="color: #ffffff;">conn</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">Open</span><span style="color: #ffffff;">();</span>
 
-
 <span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">sqlString</span> <span style="color: #ffffff;">=</span> <span style="color: #0086d2;">@"exec sp_GetName '"</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">name</span> <span style="color: #ffffff;">+</span> <span style="color: #0086d2;">"'"</span><span style="color: #ffffff;">;</span>
-
 
 <span style="color: #ffffff;">SqlCommand</span> <span style="color: #ffffff;">cmd</span> <span style="color: #ffffff;">=</span> <span style="color: #fb660a; font-weight: bold;">new</span> <span style="color: #ffffff;">SqlCommand</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">sqlString</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">conn</span><span style="color: #ffffff;">);</span></div>
 </div>

@@ -258,9 +258,7 @@
 
 <pre><code>    *   Local
 
-
             *   某变量范围设置为Local后，虚拟用户只能在自己当前运行的脚本内使用该变量，而无法使用其他用户或其他脚本内的该变量。可能刚开始不好理解，让我们用下面的图来表示虚拟用户(Virtual User)、脚本(Script)、变量访问范围(Scope)的关系：
-
 
 ![](http://images.cnblogs.com/cnblogs_com/coderzh/os-mode4.png)
 </code></pre>
@@ -278,7 +276,6 @@
 <pre><code>        *   OpenSTA 中，每个虚拟用户是一个单独的线程，单变量范围设置为Thread后，则表示该变量在单个虚拟用户的线程内共享，很奇妙的是它定义在Script中却能够 跨越Script共享同一变量。因此，如果要设置Thread范围多个Script共享同一变量，必须在每个Script中定义它。通常我们会把这样的变 量定义在Global_Variables.INC文件中。这是一个全局变量文件，我们的每个脚本都会在中引用它，如：
  &lt;div dir=&quot;ltr&quot;&gt;
  &lt;div style=&quot;border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;&quot;&gt;&lt;span style=&quot;color: #ffffff;&quot;&gt;Include&lt;/span&gt; &lt;span style=&quot;color: #0086d2;&quot;&gt;&quot;GLOBAL_VARIABLES.INC&quot;&lt;/span&gt;&lt;/div&gt;
-
 
  &lt;/div&gt;
  Thread范围的变量范围使用如下图：
@@ -310,12 +307,9 @@
 <li><div dir="ltr">
  <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">CHARACTER</span><span style="color: #ffffff;">*</span><span style="color: #0086f7; font-weight: bold;">512</span> <span style="color: #ffffff;">USERNAME</span> <span style="color: #ffffff;">(</span> <span style="color: #0086d2;">"phillip"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"allan"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"david"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"robert"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"donna"</span> <span style="color: #ffffff;">),</span> <span style="color: #ffffff;">SCRIPT</span>
 
-
  <span style="color: #ffffff;">CHARACTER</span><span style="color: #ffffff;">*</span><span style="color: #0086f7; font-weight: bold;">512</span> <span style="color: #ffffff;">PASSWORD</span> <span style="color: #ffffff;">(</span> <span style="color: #0086d2;">"pillihp"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"nalla"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"divad"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"trebor"</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">"annod"</span> <span style="color: #ffffff;">),</span> <span style="color: #ffffff;">SCRIPT</span>
 
-
  <span style="color: #ffffff;">CHARACTER</span><span style="color: #ffffff;">*</span><span style="color: #0086f7; font-weight: bold;">512</span> <span style="color: #ffffff;">MY_USERNAME</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">LOCAL</span>
-
 
  <span style="color: #ffffff;">CHARACTER</span><span style="color: #ffffff;">*</span><span style="color: #0086f7; font-weight: bold;">512</span> <span style="color: #ffffff;">MY_PASSWORD</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">LOCAL</span></div>
  </div></li>
@@ -327,18 +321,13 @@
 <li><div dir="ltr">
  <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">ACQUIRE</span> <span style="color: #ffffff;">MUTEX</span> <span style="color: #0086d2;">"LOGIN"</span>
 
-
  <span style="color: #ffffff;">NEXT</span> <span style="color: #ffffff;">USERNAME</span>
-
 
  <span style="color: #ffffff;">NEXT</span> <span style="color: #ffffff;">PASSWORD</span>
 
-
  <span style="color: #ffffff;">SET</span> <span style="color: #ffffff;">MY_USERNAME</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">USERNAME</span>
 
-
  <span style="color: #ffffff;">SET</span> <span style="color: #ffffff;">MY_PASSWORD</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">PASSWORD</span>
-
 
  <span style="color: #ffffff;">RELEASE</span> <span style="color: #ffffff;">MUTEX</span> <span style="color: #0086d2;">"LOGIN"</span></div>
  </div></li>
@@ -368,9 +357,7 @@
 <li><div dir="ltr">
  <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">LOAD</span> <span style="color: #ffffff;">RESPONSE_INFO</span> <span style="color: #ffffff;">BODY</span> <span style="color: #ffffff;">ON</span> <span style="color: #0086f7; font-weight: bold;">1</span> <span style="color: #ffffff;">&amp;</span>
 
-
  <span style="color: #ffffff;">INTO</span> <span style="color: #ffffff;">ReturnText</span> <span style="color: #ffffff;">&amp;</span>
-
 
  <span style="color: #ffffff;">WITH</span> <span style="color: #0086d2;">"HTML(0)/BODY(0)/FONT(0):TEXT:(0)"</span></div>
  </div></li>
@@ -418,7 +405,6 @@
 <li><p>Total number of virtual users for this task group &ndash; 指定task group的总虚拟用户数*   Number of virtual users for Timer results &ndash; 指定需要进行Timer计时统计的虚拟用户数，因为执行过程中，统计事务执行时间等操作也会造成一定的消耗，因此，可以指定只有部分的虚拟用户收集进行自 己的时间统计数据，这个和&#8221;抽样统计&#8220;的思路差不多。*   Number of virtual users for HTTP results &ndash; 指定需要统计HTTP results的虚拟用户数，和上面意思差不多，抽样统计。*   Generate timers for each page &ndash; 为脚本中每个页面进行时间统计，这个我没有理解，试了各种情况似乎都没什么作用。如果你知道的话告诉我吧~、*   Introduce virtual users in batches &ndash; 设置是否将虚拟用户分成几批来执行，选中的话会在右边出现一个Batch Start Options*   Interval between batches &ndash; 设置每批用户执行的间隔时间*   Number of virtual users per batch &ndash; 设置每批用户的数量*   Batch ramp up time (seconds) &ndash; 设置每批执行的时间*   关于按批执行，执行的规律是比较奇怪的，比如<strong>虚拟用户总数设置为20，每批间隔时间设置为2秒，每批用户数为5，每批运行时间为10秒</strong>，则相对于每批Batch来看，运行情况如下：</p>
 
 <pre><code>    *   ![](http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_Batch.JPG)&amp;nbsp;
-
 
  然而，在同一批内的五个虚拟用户是如何执行的呢？ 是在10秒内同时并发执行一次？多次？还是10秒内按顺序执行？经过试验，发现同一批内的五个虚拟用户是按顺序来执行的，因为每批用户数是5，每批运行时 间是10秒，因此，按顺序执行平均分下来每个用户需要执行10/5=2秒，在2秒内，虚拟用户只执行一次，然后2秒后，下一个用户开始执行。同一批内用户 执行情况如下图：&amp;nbsp;
 </code></pre>

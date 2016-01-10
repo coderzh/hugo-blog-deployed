@@ -230,13 +230,13 @@
 
 <p>TEST_PORT&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">8989</span><span style="color: #000000;"></p>
 
-<p></span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;encode<em>multipart_formdata(fields,&nbsp;files):
+<p></span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;encode_multipart_formdata(fields,&nbsp;files):
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #800000;">&rdquo;&ldquo;&rdquo;</span><span style="color: #800000;">
 &nbsp;&nbsp;&nbsp;&nbsp;fields&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;(name,&nbsp;value)&nbsp;elements&nbsp;for&nbsp;regular&nbsp;form&nbsp;fields.
 &nbsp;&nbsp;&nbsp;&nbsp;files&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;(name,&nbsp;filename,&nbsp;value)&nbsp;elements&nbsp;for&nbsp;data&nbsp;to&nbsp;be&nbsp;uploaded&nbsp;as&nbsp;files
 &nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;(content_type,&nbsp;body)&nbsp;ready&nbsp;for&nbsp;httplib.HTTP&nbsp;instance
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #800000;">&rdquo;&ldquo;&rdquo;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;BOUNDARY&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">&mdash;&mdash;&mdash;-ThIs_Is_tHe_bouNdaRY</em>$</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">
+&nbsp;&nbsp;&nbsp;&nbsp;BOUNDARY&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">&mdash;&mdash;&mdash;-ThIs_Is_tHe<em>bouNdaRY</em>$</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">
 &nbsp;&nbsp;&nbsp;&nbsp;CRLF&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">\r\n</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">
 &nbsp;&nbsp;&nbsp;&nbsp;L&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;[]
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">for</span><span style="color: #000000;">&nbsp;(key,&nbsp;value)&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;fields:

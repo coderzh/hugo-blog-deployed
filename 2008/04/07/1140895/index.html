@@ -198,63 +198,43 @@
 
 <li><div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">Function</span><span style="color: #000000;">&nbsp;Test(a)
 
-
 &nbsp;&nbsp;&nbsp;a&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;a </span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;</span><span style="color: #800080;">1</span><span style="color: #000000;">
-
 
 </span><span style="color: #0000ff;">End&nbsp;Function</span><span style="color: #000000;">
 
-
 c&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800080;">1</span><span style="color: #000000;">
-
 
 </span><span style="color: #008000;">'</span><span style="color: #008000;">------------------------------------</span><span style="color: #008000;">
 
-
 '</span><span style="color: #008000;">问题：</span><span style="color: #008000;">
-
 
 '</span><span style="color: #008000;">&nbsp;&nbsp;&nbsp;&nbsp;请说出分别调用下面四种方法的结果?</span><span style="color: #008000;">
 
-
 '</span><span style="color: #008000;">------------------------------------</span><span style="color: #008000;">
-
 
 '</span><span style="color: #008000;">方法一</span><span style="color: #008000;">
 
-
 </span><span style="color: #000000;">Test&nbsp;c
-
 
 </span><span style="color: #008000;">'</span><span style="color: #008000;">方法二</span><span style="color: #008000;">
 
-
 '</span><span style="color: #008000;">Test&nbsp;(c)</span><span style="color: #008000;">
 
-
 </span><span style="color: #000000;">
-
 
 </span><span style="color: #008000;">'</span><span style="color: #008000;">方法三</span><span style="color: #008000;">
 
-
 '</span><span style="color: #008000;">Test&nbsp;(c+1)</span><span style="color: #008000;">
 
-
 </span><span style="color: #000000;">
-
 
 </span><span style="color: #008000;">'</span><span style="color: #008000;">方法四</span><span style="color: #008000;">
 
-
 '</span><span style="color: #008000;">Call&nbsp;Test(c)</span><span style="color: #008000;">
-
 
 </span><span style="color: #000000;">
 
-
 </span><span style="color: #0000ff;">msgbox</span><span style="color: #000000;">&nbsp;c
-
 
 </span></div>
 
@@ -285,24 +265,17 @@ c&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #008000;">'</span><span style="color: #008000;">传值方式，c值不变</span><span style="color: #008000;">
 
-
 </span><span style="color: #0000ff;">Function</span><span style="color: #000000;">&nbsp;Test(ByRef a)
-
 
 &nbsp;&nbsp;&nbsp;a&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;a&nbsp;</span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;</span><span style="color: #800080;">1</span><span style="color: #000000;">
 
-
 </span><span style="color: #0000ff;">End&nbsp;Function</span><span style="color: #000000;">
-
 
 c&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800080;">1</span><span style="color: #000000;">
 
-
 Test&nbsp;c
 
-
 </span><span style="color: #008000;">'</span><span style="color: #008000;">c&nbsp;= 2
-
 
 </span></div></li>
 </ul>
@@ -313,7 +286,6 @@ Test&nbsp;c
 <li><p>通常，VB6的Function函数调用方法有两种：</p>
 
 <pre><code>1.  **Func Params**
-
 
 如方法一：Test c
 </code></pre>
@@ -329,7 +301,6 @@ Test&nbsp;c
 <p>然而，江湖中似乎还流传着这样一种调用方法：</p>
 
 <pre><code>*   **Func(Expression)**
-
 
 如方法二：Test(c) 和 方法三：Test(c+1)
 </code></pre>
