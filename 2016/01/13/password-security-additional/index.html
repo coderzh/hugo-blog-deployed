@@ -12,7 +12,7 @@
         }
     }
   </script>
-  <title>被脱裤也不怕，密码安全可以这样保障（反馈总结） - CoderZh Blog</title>
+  <title>被脱裤也不怕 - 反馈总结 - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,11 +22,11 @@
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="被脱裤也不怕，密码安全可以这样保障（反馈总结） - CoderZh Blog">
+<meta itemprop="name" content="被脱裤也不怕 - 反馈总结 - CoderZh Blog">
 <meta itemprop="description" content="被脱裤也不怕，密码安全可以这样保障的反馈">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="被脱裤也不怕，密码安全可以这样保障（反馈总结） - CoderZh Blog" />
+<meta property="og:title" content="被脱裤也不怕 - 反馈总结 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2016/01/13/password-security-additional/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
@@ -34,7 +34,7 @@
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="被脱裤也不怕，密码安全可以这样保障（反馈总结） - CoderZh Blog">
+<meta name="twitter:title" content="被脱裤也不怕 - 反馈总结 - CoderZh Blog">
 <meta name="twitter:description" content="被脱裤也不怕，密码安全可以这样保障的反馈">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
@@ -175,7 +175,7 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">被脱裤也不怕，密码安全可以这样保障（反馈总结）</h1>
+                  <h1 class="post-title">被脱裤也不怕 - 反馈总结</h1>
 
                   <p class="post-byline">
                     by  · 2016年01月13日 · 1179 Words ·
@@ -197,7 +197,7 @@
 
 <p>所以，我更希望大家从辩证的角度去看待前两篇文章，然后结合自身项目的情况去做相应的设计。同时，我收到不少有价值的反馈，我觉得有必要将这些反馈整理一下，给大家一些参考，也算是对前面文章的补充。</p>
 
-<p>上篇文章没有提到 HTTPS（SSL/TLS），是我疏漏了。作为一个安全的系统，在保证传输安全时强烈建议直接上 HTTPS（SSL/TLS）。文章中使用 ECDH 交换密钥传输的过程其实和 HTTPS（SSL/TLS）是类似的，只不过 HTTPS（SSL/TLS）实现的要完善一些。</p>
+<p>上篇文章没有提到 <a href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE">HTTPS</a>（SSL/TLS），是我疏漏了。作为一个安全的系统，在保证传输安全时强烈建议直接上 HTTPS（SSL/TLS）。文章中使用 <a href="https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx">ECDH</a> 交换密钥传输的过程其实和 HTTPS（SSL/TLS）是类似的，只不过 HTTPS（SSL/TLS）实现的要完善一些。</p>
 
 <p>正如一位朋友反馈所说：“14年的时候 openssl 爆出过一个名为 heartbleed 的漏洞，可见良好的算法不一定被良好的实现，所以从开发者的角度还是不要觉得存在绝对安全的算法比较好。” 所以可以认为我的方案是在 HTTPS（SSL/TLS）基础上再一层加固，当然，如果你认为这一层加固没必要也可以去掉。</p>
 
@@ -228,7 +228,7 @@
 
 <li><p><strong>“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”</strong></p>
 
-<p>回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 ECDH，并没有重新发明什么。文章<strong>重点是对密码的两次加盐哈希以及密码的验证方式</strong>。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。</p></li>
+<p>回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 <a href="https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx">ECDH</a>，并没有重新发明什么。文章<strong>重点是对密码的两次加盐哈希以及密码的验证方式</strong>。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。</p></li>
 </ol>
 
 <p>有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。<strong>应该去推动一下密码安全的业界标准，避免企业犯错用户买单</strong>。同时，<strong>互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！</strong></p>
@@ -298,7 +298,7 @@
 
 
               <section id="comments" class="themeform">
-<div class="ds-thread" data-thread-key="/2016/01/13/password-security-additional/" data-title="被脱裤也不怕，密码安全可以这样保障（反馈总结）" data-url="http://blog.coderzh.com/2016/01/13/password-security-additional/"></div>
+<div class="ds-thread" data-thread-key="/2016/01/13/password-security-additional/" data-title="被脱裤也不怕 - 反馈总结" data-url="http://blog.coderzh.com/2016/01/13/password-security-additional/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"coderzh"};
 	(function() {
