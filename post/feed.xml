@@ -31,17 +31,17 @@
 &lt;h3 id=&#34;反馈汇总:1114219843eb3806f45029c8d223a620&#34;&gt;反馈汇总&lt;/h3&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;&lt;/li&gt;
-
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;回复：非常同意！&lt;/p&gt;&lt;/li&gt;
 
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;回复：理论上是足够了。看你的项目安全级别，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;回复：理论上是足够了，而且推荐使用。 如果你的项目安全级别非常高，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”&lt;/strong&gt;&lt;/p&gt;
 
