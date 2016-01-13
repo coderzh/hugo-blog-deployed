@@ -6,7 +6,61 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 10 Jan 2016 23:06:42 CST</updated>
+        <updated>Wed, 13 Jan 2016 19:06:42 CST</updated>
+        
+        <item>
+            <title>被脱裤也不怕，密码安全可以这样保障（反馈总结）</title>
+            <link>http://blog.coderzh.com/2016/01/13/password-security-additional/</link>
+            <pubDate>Wed, 13 Jan 2016 19:06:42 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/13/password-security-additional/</guid>
+            <description>
+
+&lt;p&gt;在发出前两篇安全相关的文章（&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt; ，&lt;a href=&#34;http://blog.coderzh.com/2016/01/10/a-password-security-design-example/&#34;&gt;即使被拖库，也可以保证密码不泄露&lt;/a&gt;）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。&lt;/p&gt;
+
+&lt;p&gt;正如张小龙说的，“我所说的一切都是错的”。&lt;/p&gt;
+
+&lt;p&gt;所以，我更希望大家从辩证的角度去看待前两篇文章，然后结合自身项目的情况去做相应的设计。同时，我收到不少有价值的反馈，我觉得有必要将这些反馈整理一下，给大家一些参考，也算是对前面文章的补充。&lt;/p&gt;
+
+&lt;p&gt;上篇文章没有提到 HTTPS（SSL/TLS），是我疏漏了。作为一个安全的系统，在保证传输安全时强烈建议直接上 HTTPS（SSL/TLS）。文章中使用 ECDH 交换密钥传输的过程其实和 HTTPS（SSL/TLS）是类似的，只不过 HTTPS（SSL/TLS）实现的要完善一些。&lt;/p&gt;
+
+&lt;p&gt;正如一位朋友反馈所说：“14年的时候 openssl 爆出过一个名为 heartbleed 的漏洞，可见良好的算法不一定被良好的实现，所以从开发者的角度还是不要觉得存在绝对安全的算法比较好。” 所以可以认为我的方案是在 HTTPS（SSL/TLS）基础上再一层加固，当然，如果你认为这一层加固没必要也可以去掉。&lt;/p&gt;
+
+&lt;p&gt;另一方面，目前大量网站还在使用 HTTP ，很多游戏设计时也并未使用 TLS ，所以，我上篇文章使用的方法还是有一定的意义的。&lt;/p&gt;
+
+&lt;h3 id=&#34;反馈汇总:1114219843eb3806f45029c8d223a620&#34;&gt;反馈汇总&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：非常同意！&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：理论上是足够了。看你的项目安全级别，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：同意，确实不是很必要。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 ECDH，并没有重新发明什么。文章&lt;strong&gt;重点是对密码的两次加盐哈希以及密码的验证方式&lt;/strong&gt;。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;好了，我所说的也都是错的。欢迎继续交流。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>即使被拖库，也可以保证密码不泄露</title>
@@ -1416,60 +1470,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;p&gt;Bootstrap 官方网站：&lt;a href=&#34;http://getbootstrap.com/&#34;&gt;http://getbootstrap.com/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;对于前端开发的 Bootstrap 这把利器多少有了一些了解，接下来可以去了解了解那些号称1，2周就有大更新，1，2个月就有新冒出来的，3，4个月不学就要落伍的前端框架了。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>Hugo中文网站gohugo.org上线</title>
-            <link>http://blog.coderzh.com/2015/10/25/gohugo-org/</link>
-            <pubDate>Sun, 25 Oct 2015 23:37:16 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/10/25/gohugo-org/</guid>
-            <description>
-
-&lt;p&gt;之前我在博客里写了一篇文章：&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;使用hugo搭建个人博客站点&lt;/a&gt;，之后有很多人给我留言或者邮件，列举了在搭建Hugo时遇到的各种问题，并且提出希望能有一个中文的Hugo网站。&lt;/p&gt;
-
-&lt;p&gt;于是，我利用周末的时间，注册域名（居然注册到了 &lt;code&gt;gohugo.org&lt;/code&gt; 这个域名），用&lt;code&gt;Hugo&lt;/code&gt;本身搭建了这个网站，运行在 &lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;DigitalOcean&lt;/a&gt; 的 &lt;code&gt;VPS&lt;/code&gt; 上。这就是 &lt;a href=&#34;http://www.gohugo.org&#34;&gt;http://www.gohugo.org&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;gohugo-org:39bef422aa544bc9d53b933146f67273&#34;&gt;gohugo.org&lt;/h3&gt;
-
-&lt;p&gt;网站的地址是：&lt;a href=&#34;http://www.gohugo.org&#34;&gt;http://www.gohugo.org&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;网站所有内容都在 &lt;code&gt;GitHub&lt;/code&gt; 开源，地址：&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;https://github.com/coderzh/gohugo.org&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;该Repository已经设置了WebHook，只要有push就会自动触发 &lt;code&gt;VPS&lt;/code&gt; 更新部署。如果你感兴趣，可以加入进来，你提的PR一旦被Merged将立即在网站更新出来。&lt;/p&gt;
-
-&lt;h3 id=&#34;截图:39bef422aa544bc9d53b933146f67273&#34;&gt;截图&lt;/h3&gt;
-
-&lt;h4 id=&#34;首页:39bef422aa544bc9d53b933146f67273&#34;&gt;首页&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-index.jpg-w&#34; alt=&#34;gohugo-index&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;文章列表:39bef422aa544bc9d53b933146f67273&#34;&gt;文章列表&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-post.jpg-w&#34; alt=&#34;gohugo-post&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;皮肤列表:39bef422aa544bc9d53b933146f67273&#34;&gt;皮肤列表&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-theme.jpg-w&#34; alt=&#34;gohugo-theme&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;示例网站:39bef422aa544bc9d53b933146f67273&#34;&gt;示例网站&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-showcase.jpg-w&#34; alt=&#34;gohugo-showcase&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;关于hugo:39bef422aa544bc9d53b933146f67273&#34;&gt;关于Hugo&lt;/h3&gt;
-
-&lt;p&gt;使用Hugo可以快速的制作一个静态站点，同时Hugo还在不断更新和发展中，相信未来会更加易用、功能越来越好。我给Hugo提过几次PR，看过Hugo的代码，从代码的角度来看，Hugo的代码写非常简洁清晰，模块分类非常的清楚，并且配备完善的单元测试。&lt;/p&gt;
-
-&lt;p&gt;对于如此优秀的东西，希望能与更多人分享，通过分享和交流，希望能促进Hugo变得越来越好，让它更加广为人知。&lt;/p&gt;
-
-&lt;p&gt;因此，所有对Hugo感兴趣的朋友欢迎加入贡献内容，同时也欢迎有任何疑问、建议或交流的朋友加入Hugo交流QQ群：512499080。&lt;/p&gt;
-
-&lt;p&gt;或者微信扫一扫关注我的微信公众号：hacker-thinking&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.coderzh.com/public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         

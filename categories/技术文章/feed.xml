@@ -6,7 +6,61 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 10 Jan 2016 23:06:42 CST</updated>
+        <updated>Wed, 13 Jan 2016 19:06:42 CST</updated>
+        
+        <item>
+            <title>被脱裤也不怕，密码安全可以这样保障（反馈总结）</title>
+            <link>http://blog.coderzh.com/2016/01/13/password-security-additional/</link>
+            <pubDate>Wed, 13 Jan 2016 19:06:42 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/13/password-security-additional/</guid>
+            <description>
+
+&lt;p&gt;在发出前两篇安全相关的文章（&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt; ，&lt;a href=&#34;http://blog.coderzh.com/2016/01/10/a-password-security-design-example/&#34;&gt;即使被拖库，也可以保证密码不泄露&lt;/a&gt;）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。&lt;/p&gt;
+
+&lt;p&gt;正如张小龙说的，“我所说的一切都是错的”。&lt;/p&gt;
+
+&lt;p&gt;所以，我更希望大家从辩证的角度去看待前两篇文章，然后结合自身项目的情况去做相应的设计。同时，我收到不少有价值的反馈，我觉得有必要将这些反馈整理一下，给大家一些参考，也算是对前面文章的补充。&lt;/p&gt;
+
+&lt;p&gt;上篇文章没有提到 HTTPS（SSL/TLS），是我疏漏了。作为一个安全的系统，在保证传输安全时强烈建议直接上 HTTPS（SSL/TLS）。文章中使用 ECDH 交换密钥传输的过程其实和 HTTPS（SSL/TLS）是类似的，只不过 HTTPS（SSL/TLS）实现的要完善一些。&lt;/p&gt;
+
+&lt;p&gt;正如一位朋友反馈所说：“14年的时候 openssl 爆出过一个名为 heartbleed 的漏洞，可见良好的算法不一定被良好的实现，所以从开发者的角度还是不要觉得存在绝对安全的算法比较好。” 所以可以认为我的方案是在 HTTPS（SSL/TLS）基础上再一层加固，当然，如果你认为这一层加固没必要也可以去掉。&lt;/p&gt;
+
+&lt;p&gt;另一方面，目前大量网站还在使用 HTTP ，很多游戏设计时也并未使用 TLS ，所以，我上篇文章使用的方法还是有一定的意义的。&lt;/p&gt;
+
+&lt;h3 id=&#34;反馈汇总:1114219843eb3806f45029c8d223a620&#34;&gt;反馈汇总&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：非常同意！&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：理论上是足够了。看你的项目安全级别，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：同意，确实不是很必要。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 ECDH，并没有重新发明什么。文章&lt;strong&gt;重点是对密码的两次加盐哈希以及密码的验证方式&lt;/strong&gt;。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;好了，我所说的也都是错的。欢迎继续交流。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>即使被拖库，也可以保证密码不泄露</title>
@@ -2123,74 +2177,6 @@ go version
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;最后，Good Luck！&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>给Hugo提交了一个PR</title>
-            <link>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request/</link>
-            <pubDate>Thu, 03 Sep 2015 08:55:31 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/09/03/a-hugo-pull-request/</guid>
-            <description>&lt;p&gt;给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。&lt;/p&gt;
-
-&lt;p&gt;在上一篇博客&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;使用hugo搭建个人博客站点&lt;/a&gt;  里提到，Hugo强制将所有路径都变成了小写。小写路径虽好，但是如果之前你的网站路径不是全小写的，迁移过来路径发生变化，将会导致路径失效，是不可接受的。&lt;/p&gt;
-
-&lt;p&gt;上文提到，我硬改了Hugo代码，让它不要强制转换小写路径。这样的做法不够优雅，假如别人也和我有一样的需求怎么办？我们还是希望Hugo本身就能够提供这样的功能。于是，我决定把代码改的优雅一些，给Hugo作者提交一个Pull Request，将这个功能合并到Hugo代码里。&lt;/p&gt;
-
-&lt;p&gt;于是，我在config文件里增加了一个选项：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Do not make the url/path to lowercase
-disablePathToLower: true 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;增加一个开关其实很简单，只需要在command/hugo.go里的LoadDefaultSettings函数里增加一行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;viper.SetDefault(&amp;quot;DisablePathToLower&amp;quot;, false)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;开关生效的实现也很简单，找到最终转换为小写的函数，加入disablePathToLower开关的判断：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func MakePathSanitized(s string) string {
-    if viper.GetBool(&amp;quot;DisablePathToLower&amp;quot;) {
-        return MakePath(s)
-    } else {
-        return strings.ToLower(MakePath(s))
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;之前的函数名叫MakePathToLower，由于我在内部加了个开关，于是名字不适用了，于是修改为了：MakePathSanitized。&lt;/p&gt;
-
-&lt;p&gt;修改完成之后，需要把测试案例跑一遍，保证你的修改不会破坏原来的逻辑。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;go test ./...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;当然，也要保证编译是成功的：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;go build
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在我修改的第一个版本时，我犯了一个错误，导致测试案例没有通过。原因是第一个版本我增加的配置选项是PathToLower，默认值是true。而有些测试案例是没有去设置PathToLower的，默认读到的会是false，从而导致执行失败的执行结果。所以，config里增加的选项，默认值尽量是false吧，也会好理解一些。于是就有了：disablePathToLower&lt;/p&gt;
-
-&lt;p&gt;提交Pull Request时，有几点需要注意的：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将自己的修改合并成一个commit再提交Pull Request。（这样在主Resp里更加规范和整洁）&lt;/li&gt;
-&lt;li&gt;commit message里的描述尽量简洁清晰，如果有对应的issue ID，最好加上：See #1234 or Fixes #1234 之类的。这样可以自动关联起来。&lt;/li&gt;
-&lt;li&gt;不要在自己的master分支上修改提交PR，而是应该自己开一个单独分支，由该分支提交Pull Request到原Repo的master。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;最后，我提交了这么一个Pull Request：&lt;a href=&#34;https://github.com/spf13/hugo/pull/1392&#34;&gt;add configuration variable: &amp;ldquo;disablePathToLower&amp;rdquo; See #557&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;不久后，Hugo的主要维护者之一通过了我的PR，很友善的将我蹩脚的中国式英语的commit message调整了一下合并到了Hugo的master：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HugoPR.png-w&#34; alt=&#34;HugoPR&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;commit: &lt;a href=&#34;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&#34;&gt;https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;这就是开源项目的好处，开源社区的魅力所在：&lt;strong&gt;你可以使用它，修改它，贡献自己的代码，参与其中，让它变好，让所有人受益&lt;/strong&gt;。&lt;/p&gt;
 </description>
         </item>
         
