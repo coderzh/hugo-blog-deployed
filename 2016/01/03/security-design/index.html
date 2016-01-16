@@ -178,7 +178,7 @@
                   <h1 class="post-title">设计安全的账号系统的正确姿势</h1>
 
                   <p class="post-byline">
-                    by  · 2016年01月03日 · 5565 Words ·
+                    by  · 2016年01月03日 · 5575 Words ·
                     ~12min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-01-03-security-design.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -277,6 +277,7 @@
 <ol>
 <li>不要使用固定不变的 salt。</li>
 <li>每个用户的 salt 都需要不同。</li>
+<li>salt 要保持一定的长度。</li>
 <li>salt 必须由服务端使用安全的随机函数生成。</li>
 <li>客户端运算需要的 salt 需要从服务端动态获取。</li>
 <li>客户端加盐 hash 的结果并不是最终服务端存盘的结果。</li>
