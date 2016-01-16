@@ -6,7 +6,53 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Wed, 13 Jan 2016 19:06:42 CST</updated>
+        <updated>Sat, 16 Jan 2016 17:19:20 CST</updated>
+        
+        <item>
+            <title>谁也挡不住程序员在微信群里玩起了直播分享</title>
+            <link>http://blog.coderzh.com/2016/01/16/coding-style-share/</link>
+            <pubDate>Sat, 16 Jan 2016 17:19:20 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/16/coding-style-share/</guid>
+            <description>&lt;p&gt;上次写了一篇《&lt;a href=&#34;http://blog.coderzh.com/2015/12/27/code-review/&#34;&gt;大家都应该做的 Code Review&lt;/a&gt;》，在公众号里有位朋友留言：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/comments.jpg&#34; alt=&#34;comment&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;开始的感觉是，哦，又一个在留言里推广自己网站的家伙。在好奇心驱使下，我打开了这个 &lt;a href=&#34;http://codingstyle.cn&#34;&gt;Codingstyle.cn&lt;/a&gt; 的网站。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/coding-style.jpg&#34; alt=&#34;coding-style&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;界面挺简洁大方的，但好像在哪里见过，哦，原来是 Fork 的 &lt;a href=&#34;https://ruby-china.org/&#34;&gt;Ruby China&lt;/a&gt;。浏览了一些帖子，发现这是一个刚做不久的程序员社区，讨论的主要是敏捷、重构、编程实践、程序人生之类的话题，这位朋友还算比较用心，运营一个程序员社区实属不易，于是我就找了之前的两篇文章贴了过去。&lt;/p&gt;
+
+&lt;p&gt;很快，Seaborn Lee 加了我的微信，并且把我拉到了一个只有 10 几人的“匠艺社区种子用户”的微信群里。然后我发现，群里的其他人都是一些高产博主，Seaborn Lee 正在通过微信群的方式培养自己的种子用户。&lt;/p&gt;
+
+&lt;p&gt;匠艺社区小组每周都组织一次微信分享， Seaborn Lee 问我是否愿意分享一些东西。我婉言拒绝了，对于在微信群里进行语音分享这种事情，我还没经历过，也没有经验，&lt;strong&gt;我更多的是好奇，他们是怎样进行微信群语音分享的？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;经历了两次匠艺社区分享，着实让我吃了一惊。首先，分享并不是在“匠艺社区种子用户”微信群进行的，而是在另一个单独的叫“软件匠艺小组分享”的微信群，到目前为止，这个群已经有 459 个用户，而且全部都是程序员！&lt;/p&gt;
+
+&lt;p&gt;他们一共分享过三期：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/56&#34;&gt;微信群分享第一期 微服务 by 许晓斌&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/77&#34;&gt;微信群分享第二期 正交设计 by 刘光聪&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/81&#34;&gt;微信群分享第三期 TDD 的本质不是 TDD by 丁辉&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;我是从第二期开始参加的，一开始我非常好奇，他们是怎样在那么多人的微信群里进行直播分享的。最后发现其实方法非常简单直接，就是：&lt;strong&gt;发语音，截图，打字&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/coding-style-share.jpg&#34; alt=&#34;coding-style-share&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;分享定在每周三晚上 8:30 到 9:30 ，首先会自愿报名选出一个主持人，负责整场分享的进度把控。分享者的内容是一篇文章，会先在群里发出来，然后分享者开始发语音分享，过程中会穿插打字和截图。分享完后，进行话题讨论，最后贴出分享者的二维码，大家自愿打赏。&lt;/p&gt;
+
+&lt;p&gt;分享群的人数增加很快，程序员们闻风而来，很快就逼近了 500 人上限。可以确定的是，群里都是一些爱学习的程序员，不然谁晚上吃饱了不回去抱老婆还在微信群里听你的语言分享。我还发现一个有趣的现象，群里每个人进群时都加了 Seaborn Lee 好友。这就是 Growth Hack 啊！&lt;/p&gt;
+
+&lt;p&gt;前不久我参加了一个培训，老师让我们所有人把微信打开，查看一下自己有多少个好友。我打开一看，发现有 100 多个，其他同事多的有3，4百个。老师说，她的微信里有 1000 多个好友，并不是随便摇一摇加的好友，都是有一定相关性的好友。她给每个好友都加了标签，遇到问题时在朋友圈一发，立马就有相关的人跳出来帮忙。这就是人脉的力量。&lt;/p&gt;
+
+&lt;p&gt;同样，我也很感叹 Seaborn Lee 的做法，在微信群里组织分享，吸引大量爱学习的程序员过来并加为好友，简直就是程序员社区的精准目标用户啊！于是我对 Seaborn Lee 本人的经历产生了兴趣，原来他之前就职于 &lt;a href=&#34;https://www.thoughtworks.com/&#34;&gt;ThoughtWorks&lt;/a&gt; ，目前于创业公司「深圳湾」任 CTO 。在他的博客里的 &lt;a href=&#34;http://seabornlee.cn/isaid.md&#34;&gt;时间线&lt;/a&gt; 一栏更是了解到他从出生、上学到工作一路走来的坎坷经历。了解了这些后， Seaborn Lee 的形象更加鲜活起来了：好学、上进、有活力、爱分享、组织各种社区活动。&lt;/p&gt;
+
+&lt;p&gt;虽然微信里不能很好的支持视频直播，但谁也挡不住爱分享的程序员在微信群里玩起了语音直播。如果你也有兴趣，加我的微信公众号：hacker-thinking ，并发送“爱学习，爱分享”，我将加你为好友并把你加到刚才提到的“软件匠艺小组分享”群，一起学习进步。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>被脱裤也不怕 - 反馈总结</title>
@@ -1342,165 +1388,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;p&gt;待翻译文档路径： &lt;a href=&#34;https://github.com/coderzh/gohugo.org/tree/master/content/doc&#34;&gt;https://github.com/coderzh/gohugo.org/tree/master/content/doc&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;然后 Fork 该 &lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;Repo&lt;/a&gt; ，通过 Pull Request 的方式提交过来便是。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>走进前端开发之：Bootstrap</title>
-            <link>http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/</link>
-            <pubDate>Sun, 01 Nov 2015 07:37:56 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/bootstrap.jpg-wt&#34; alt=&#34;bootstrap&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如今互联网创业热潮此起彼伏，特别是移动互联网，使得前端开发这一职位变得愈加炙手可热。大量公司欲求高端前端开发而不得，进入前端开发浩瀚大军的同学也是日益增多，大家相互厮杀，占领 &lt;code&gt;GitHub&lt;/code&gt; ，只为获得前端开发的一席之地。新技术新框架如雨后春笋，层出不穷，未跟上步伐者也以迅雷不及掩耳之势被取代淘汰。这是一个前端开发百花齐放的时代。&lt;/p&gt;
-
-&lt;p&gt;这段文绉绉的开场白，只为说明一个道理：再不了解学习前端，你就老了。在我们那个年代（好吧，其实也不久），还未有前端开发这样的职位。那时的网站开发同学哪个不是一把辛酸一把泪的不断挑弄着 &lt;code&gt;CSS&lt;/code&gt; 和 &lt;code&gt;JavaScript&lt;/code&gt; ，纵然有一万个草泥马崩腾而过，也只能默默忍受这混乱不堪的一切，在浏览器兼容这一世纪难题面前，心中只能默念：能用就行，习惯就好。除了搬弄前端的 CSS 和 Javascript ，那时的网站开发同学还要兼顾后端。那时的MVC更像是一个整体的概念，而如今随着前端表现日益丰富，重心不断往前端移，后端只需提供类似 &lt;code&gt;Restful&lt;/code&gt; 接口、处理逻辑、存储数据。单单一个前端，已经衍生出各种MVC框架：Embejs、Angular.js、Backbone.js、Knockout.js、React.js……&lt;/p&gt;
-
-&lt;p&gt;然而，这些前端框架我一个也没有用过。我也不是一个前端程序员，所以在写这篇文章时，我也是诚惶诚恐的。毕竟我一个外行，要是让专做前端开发的读者看了，难免班门弄斧贻笑大方，也许还少不了几句点评指责。当然，我也是虚心接受的。“走进前端开发”我打算写成一个系列文章，目的并不是多深入的介绍和学习前端开发，而是“走进”，或者说“走近”、“了解”，站在一个旁观者的角度去观察了解，前端开发到底是怎样一个群体。&lt;/p&gt;
-
-&lt;p&gt;这是第一篇，主角是： &lt;code&gt;Bootstrap&lt;/code&gt; 。我在做 &lt;a href=&#34;http://www.gohugo.org/&#34;&gt;http://www.gohugo.org/&lt;/a&gt; 时就使用到了 Bootstrap 。或多或少你也许听过 Bootstrap 的大名，或者“响应式布局”是否在哪里听过？何为“响应式布局”？响应式布局是指，一个网站只需要做一个版本，就能自动适应和兼容各个终端平台，比如：PC、手机、平板，呈现出最好的表现效果。&lt;/p&gt;
-
-&lt;h3 id=&#34;多终端适配:0b0432fd07b093099631d3dfda0706d0&#34;&gt;多终端适配&lt;/h3&gt;
-
-&lt;p&gt;这样又要说到“多终端适配”的问题了。在响应式布局出现之前，人们是怎么处理多终端适配的呢？主要有两种方式：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;跳转适配&lt;/p&gt;
-
-&lt;p&gt;跳转适配会根据你使用的设备类型跳转到对应的单独地址。比如：你在手机浏览器里输入 163.com ，会自动跳转到 3g.163.com 。实现的方法是在通过 Meta 信息申明，或是 Server 根据 User-Agent 进行跳转。跳转适配需要针对不同设备类型，使用不同的url，做多套界面。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;代码适配&lt;/p&gt;
-
-&lt;p&gt;代码适配在不同设备中使用同一个 URL ， Server 会根据 User-Agent 的不同生成不同的 HTML 页面。比如在手机里输入： weixin.qq.com ，虽然地址一样，但看到的内容和PC端是完全不一样的。（你会发现找不到“公众平台”的入口）&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;显然，这两种适配方式的维护成本都比较大。因为要针对不同平台维护不同版本，常常会出现移动版和 PC 版不同步的问题。&lt;/p&gt;
-
-&lt;p&gt;接着，就要提到第三种适配方式：&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;自适应：同一 URL ，同一套 HTML 界面，根据使用设备（PC、移动设备、平板电脑）的不同，根据屏幕尺寸呈现出不同的结果。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;“响应式布局”就是自适应适配的一种布局方式。为了让自适应适配更加方便易用，Bootstrap框架应运而生。&lt;/p&gt;
-
-&lt;h3 id=&#34;bootstrap:0b0432fd07b093099631d3dfda0706d0&#34;&gt;Bootstrap&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://getbootstrap.com/&#34;&gt;Bootstrap&lt;/a&gt; 是 Twitter 推出的一个用于前端开发的开源工具包。它由 Twitter 的设计师 Mark Otto 和 Jacob Thornton 合作开发，是一个 CSS/HTML 框架。通过 Bootstrap ，你可以非常轻松的设计出移动端友好，又能在不同设备适配良好的网站。&lt;/p&gt;
-
-&lt;p&gt;Bootstrap 天生为移动设备而设计，框架由内到外默认都是移动设备优先的。使用 Bootstrap 非常简单，首先将页面设置成 HTML5 文档类型：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;zh-CN&amp;quot;&amp;gt;
-  ...
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在 &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 之间添加 viewport 元数据标签：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;你还可以设置禁用缩放功能，让你的网站在浏览器里看上去更像一个原生应用：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&amp;quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用 Bootstrap 最简单快速的方式是直接使用 Bootstrap 中文网提供的 CDN 加速服务。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- 新 Bootstrap 核心 CSS 文件 --&amp;gt;
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css&amp;quot;&amp;gt;
-
-&amp;lt;!-- 可选的Bootstrap主题文件（一般不用引入） --&amp;gt;
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css&amp;quot;&amp;gt;
-
-&amp;lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&amp;gt;
-&amp;lt;script src=&amp;quot;//cdn.bootcss.com/jquery/1.11.3/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-
-&amp;lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&amp;gt;
-&amp;lt;script src=&amp;quot;//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;你还可以使用 &lt;code&gt;Bower&lt;/code&gt; 、 &lt;code&gt;npm&lt;/code&gt; 、 &lt;code&gt;Composer&lt;/code&gt; 等工具进行安装。为了更强的定制性，你还可以使用 &lt;code&gt;Less/Sass&lt;/code&gt; 源码进行编译。&lt;/p&gt;
-
-&lt;p&gt;编译？其实就是CSS文件的生成过程。我们知道，CSS 在处理样式时异常灵活，以至于不同人写出来的样式代码五花八门，各种元素之间相互影响相互制约，某处稍一改动就有牵一发而动全身的效果。再加上不同浏览器支持的特性千差万别，使得CSS代码变得非常难以组织和维护。&lt;/p&gt;
-
-&lt;p&gt;由此，CSS 预处理应运而生。通过定义一种新的语言，自动实现浏览器兼容、变量、结构体等功能，还支持逻辑判断和循环，最后通过编译生成最终的 CSS 目标文件。使得代码更加简洁，容易维护。而 Less/Sass 就是目前最流行的CSS预处理器。&lt;/p&gt;
-
-&lt;p&gt;除了上面的方式，你还可以像我这种懒人一样直接下载现成的示例模板，然后再做一些细微的调整。&lt;/p&gt;
-
-&lt;h3 id=&#34;bootstrap-布局:0b0432fd07b093099631d3dfda0706d0&#34;&gt;Bootstrap 布局&lt;/h3&gt;
-
-&lt;p&gt;Bootstrap 提供了一套完整的基础 CSS 模块，预定义了一套简单易用的样式组件，同时结合jQuery 提供了一套基础的方便的 Javascript 交互组件。简直就是提供了 Web 前端的一站式解决方案。&lt;/p&gt;
-
-&lt;p&gt;这里我只介绍一下自适应适配最核心之处： Bootstrap 的栅格布局系统。&lt;/p&gt;
-
-&lt;p&gt;首先，我们要为页面内容和栅格系统包裹一个 &lt;code&gt;.container&lt;/code&gt; 容器：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
-  ...
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;.container&lt;/code&gt; 类用于固定宽度和响应式布局的容器，如果占据 100% 的宽度，使用 &lt;code&gt;.container-fluid&lt;/code&gt; 类：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;container-fluid&amp;quot;&amp;gt;
-  ...
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;栅格系统会根据屏幕和视口（viewport）的尺寸，将一行分为最多 &lt;strong&gt;12&lt;/strong&gt; 列，通过预设好的栅格类表示需要占多少个列宽度。比如，可以使用 3 个 &lt;code&gt;.col-xs-4&lt;/code&gt; 可以将页面容器分成 3 个等分。使用 1 个 &lt;code&gt;.col-xs-3&lt;/code&gt; 和 1 个 &lt;code&gt;.col-xs-9&lt;/code&gt; ，可以对页面容器进行 3：9 比例分割，实现一个左侧 Sidebar 的效果。&lt;/p&gt;
-
-&lt;p&gt;比如：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/bootstrap-grid.jpg&#34; alt=&#34;bootstrap-grid&#34; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-8&amp;quot;&amp;gt;.col-md-8&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-6&amp;quot;&amp;gt;.col-md-6&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-6&amp;quot;&amp;gt;.col-md-6&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;除了指定宽度，还可以通过指定 &lt;code&gt;.col-md-offset-*&lt;/code&gt; 等进行偏移。回到一个重要的问题，知道了大致如何布局，那如何进行移动适配呢？&lt;/p&gt;
-
-&lt;p&gt;上面的例子我们看到，有 &lt;code&gt;.col-xs-*&lt;/code&gt; 和 &lt;code&gt;.col-md-*&lt;/code&gt; 等等，其实 xs 、 md 等对应的是不同显示设备。比如：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;.col-xs-*&lt;/code&gt; ：超小屏幕、手机 (&amp;lt;768px)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.col-sm-*&lt;/code&gt; ：小屏幕 平板 (≥768px)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.col-md-*&lt;/code&gt; ：中等屏幕 桌面显示器 (≥992px)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.col-lg-*&lt;/code&gt; ：大屏幕 大桌面显示器 (≥1200px)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;通过给 div 定义多个 &lt;code&gt;col-xx-*&lt;/code&gt; 的组合就可以达到不同移动设备进行布局适配的目的。&lt;/p&gt;
-
-&lt;p&gt;比如下面的示例：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;col-xs-6 col-md-3&amp;quot;&amp;gt;.col-xs-6 .col-md-3&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-xs-6 col-md-9&amp;quot;&amp;gt;.col-xs-6 .col-md-9&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;将实现在手机端进行 6：6 布局，在中等屏幕的PC端进行 3 : 9 布局。&lt;/p&gt;
-
-&lt;h3 id=&#34;总结:0b0432fd07b093099631d3dfda0706d0&#34;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;如今 Bootstrap 已经被广泛使用，国内外大量网站使用 Bootstrap 数不胜数。如果你需要开发一个移动端友好的网站， Bootstrap 是你的不二选择。本文只是 Bootstrap 的粗浅入门，有兴趣的同学可以找资料进行更加深入的学习。&lt;/p&gt;
-
-&lt;p&gt;Bootstrap 官方网站：&lt;a href=&#34;http://getbootstrap.com/&#34;&gt;http://getbootstrap.com/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;对于前端开发的 Bootstrap 这把利器多少有了一些了解，接下来可以去了解了解那些号称1，2周就有大更新，1，2个月就有新冒出来的，3，4个月不学就要落伍的前端框架了。&lt;/p&gt;
 </description>
         </item>
         
