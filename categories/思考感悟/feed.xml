@@ -6,7 +6,85 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Fri, 01 Jan 2016 00:34:08 CST</updated>
+        <updated>Mon, 18 Jan 2016 23:05:24 CST</updated>
+        
+        <item>
+            <title>我和 ThoughtWorks 的一点小故事</title>
+            <link>http://blog.coderzh.com/2016/01/18/thoughtworks-story/</link>
+            <pubDate>Mon, 18 Jan 2016 23:05:24 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/18/thoughtworks-story/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/TW.jpg-wt&#34; alt=&#34;TW&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2009 年的时候买了一本《卓有成效的程序员》，看的热血沸腾，当时还写了一篇读后感《&lt;a href=&#34;http://blog.coderzh.com/2009/07/18/1526082/&#34;&gt;程序员的共鸣 - 读《卓有成效的程序员》&lt;/a&gt;》，现在翻来看还觉得蛮有意思的。从此后，开始用 Launchy ， ClipX 等提高效率的工具，也开始接触代码编辑器神器 Emacs 和 Vim 。当时年少无知先学了 Emacs ，还全程用 Emacs 开发过一个小项目。后来实在是小指按 ctrl 键按到桑爽的不行了，才发现 Vim 是多么和谐的存在。&lt;/p&gt;
+
+&lt;p&gt;这本书是由 &lt;a href=&#34;https://www.thoughtworks.com/&#34;&gt;ThoughtWorks&lt;/a&gt; 中国公司翻译的，再加上当时用的持续集成工具 CCNet 就是 ThoughtWorks 开发的，瞬间觉得这个公司好牛逼。 更加牛逼的是，世界顶级的 OO 专家，敏捷开发创始人之一的 &lt;a href=&#34;http://www.martinfowler.com&#34;&gt;Martin Fowler&lt;/a&gt; 大牛就在 ThoughtWorks 担任首席科学家。&lt;/p&gt;
+
+&lt;p&gt;当时对持续集成，敏捷开发还挺感兴趣，在博客里写了点东西，还特意关注了几个 ThoughtWorks 员工的博客。没事还在博客里留了几次言，突然有一天博客园的短消息里来了这么一条消息：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;标题：如果你真的对coding有如此的热情&lt;/p&gt;
+
+&lt;p&gt;可曾想过来ThoughtWorks?&lt;/p&gt;
+
+&lt;p&gt;我看到你在我Blog上的留言了。如果你对代码如此热情，如果你喜欢体会作为程序员更多的可能，可曾想过来ThoughtWorks? 有兴趣的话请与我联系。作为前3年在各种类型的软件公司混过，后4年一直很enjoy的公司，看到你的Blog, 也许，这里是适合你的地方。&lt;/p&gt;
+
+&lt;p&gt;陈金洲&lt;/p&gt;
+
+&lt;p&gt;PS. 为了能联系到你，专门注册了博客园的账号&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;当时的我工作快 3 年，正处于年少轻狂，自信爆棚，感觉啥都能干就缺一个机会的时代。把《设计模式》来回翻了几遍后，就和 Michael Chen 联系面试了。直到很多年后，我才听说， ThoughtWorks 被人称为“最难面试的 IT 公司”。首先说结论，最后我并没有去 ThoughtWorks 。具体情况见下文。&lt;/p&gt;
+
+&lt;p&gt;第一面是 HR 的&lt;strong&gt;英文电话面试&lt;/strong&gt;，我英语也就四级的水平，听和看还行，但平时口语完全没机会训练。我在家设想了 HR 大概会问的几个问题，简单写了写，列了几个关键字就去了。当然，我还是很紧张，平时我就不太擅长电话里和别人沟通，而且还是要用英文，而且还是面试。 HR 的每个问题我还是听的很清楚的，我也就硬撑着把该说的说了。现在记得 HR 问了类似这样的问题：你的同事都是怎么评价你的？你平时遇到过什么难题又是如何解决的。我当时心里想着，当然要说一些同事夸奖我的话了，技术牛逼，喜欢分享，乐于助人之类的。也没遇到什么特别的难题啊，怎么编呢，一时又乱了方寸。&lt;/p&gt;
+
+&lt;p&gt;第一轮电话面试后，我感觉糟透了，感觉没戏了。等了几周也未见回复，感觉就这样被淘汰了，不甘心就发邮件问了 HR 是不是被 out 了 ，HR 回复说还并没有结果让我再等等，又让我感觉到了一丝的希望。&lt;/p&gt;
+
+&lt;p&gt;不久后，收到了邮件进入下一轮面试：&lt;strong&gt;Home Work&lt;/strong&gt; 。给了几道题，让选其中一道，在家写代码，写好后发给他们。我觉得这个环节不错，不像现场面试需要在高度压力的情况下用笔在纸上写代码。Home Work 是你自己在家做的，是在很自然放松的情况下，可以 google ，可以参考任何别人代码的情况下写的你的代码，是最接近真实工作时的状况。&lt;/p&gt;
+
+&lt;p&gt;一共有三个可选题目：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;PROBLEM ONE:  TRAINS&lt;/li&gt;
+&lt;li&gt;PROBLEM TWO: SALES TAXES&lt;/li&gt;
+&lt;li&gt;PROBLEM THREE: MARS ROVERS&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;我选了题目意思是我最容易看懂的 MARS ROVERS （火星漫游者）。&lt;/strong&gt;大意是给定火星探测机器人的一个坐标位置，然后给它发送一系列的指令，比如左转、右转、前进，最后输出他的目标点的坐标和朝向。&lt;/p&gt;
+
+&lt;p&gt;我当时是这么想的，这题的算法很简单， ThoughtWorks 考察的肯定不是我能不能实现需求这么简单，而是考察我面向对象设计的能力，以及抽象的能力，能否把代码写的足够优雅，同时又具备很好的未来扩展性。而测试驱动开发作为敏捷开发的一个重要理念，我的 Home Work 里至少是需要包含测试代码的。虽然他们并不知道我是先写的代码还是先写的测试，嗯，我还是尝试先写测试代码，至少它的文件创建日期比功能代码会早一些，哈哈。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;这题肯定要用一些设计模式，但是又要避免过度设计。&lt;/strong&gt;于是我把最有可能关联的几个模式套了进去：工厂模式，状态模式，好像还有命令模式。把类分的很清晰，每个函数也很短，命名也是反复琢磨，最后还配上了单元测试案例。最后，把感觉非常完美的一份代码提交了上去。&lt;/p&gt;
+
+&lt;p&gt;然后又等了漫长的几周，通知进入下一轮面试：&lt;strong&gt;电话技术面试&lt;/strong&gt;。面试我的就是 Michael Chen 。前面主要聊我现在的工作，做了一些什么项目，用了一些什么技术，问的很细，聊的挺愉快。聊完项目后，Michael Chen 提示我进入纯粹的答题环节，问了我一些设计模式相关的问题。&lt;/p&gt;
+
+&lt;p&gt;这次电话技术面试聊完后，我感觉有戏，感觉 ThoughtWorks 正在向我招手。这是我理想中的，非常舒服的面试。但是我当时真的准备好了吗？真的准备好了从珠海赶赴西安或者北京去上班吗？我当时觉得地点无所谓，其实是没有太想清楚的。&lt;/p&gt;
+
+&lt;p&gt;又是漫长的等待，&lt;strong&gt;心里面想着下一轮应该是飞到西安去和 ThoughtWorks 的工程师一起 Pair 结对编程了&lt;/strong&gt;。但等了好几周依然没有消息，我也开始考虑真的要去西安工作吗？我能适应那种经常出差的工作的？我以后真的要走咨询师的路线吗？我想了很久，最后某天 HR 突然来了一个电话，说&lt;strong&gt;前面面试的都很不错，但是英语方面还想和我再确认一次，要加一轮电话英语面试&lt;/strong&gt;。听完后，我感觉很不好，辛苦面试了这么久，又让我苦苦等待了这么久，最后又回到了第一轮的英语面试。我当时有点情绪，所以在加试的电话面试里表现的比第一次还差。&lt;/p&gt;
+
+&lt;p&gt;HR 最后和我说，可能是毕业工作后英语口语用太少了，再复习多练习练习是可以的。&lt;strong&gt;建议我再花一个月的时间复习和练习一下英语口语，然后再来面试&lt;/strong&gt;。我当时已经有情绪了，这个面试折腾了 1 个多月，有点心累了。所以，后面我给 HR 发邮件说我不来了。&lt;/p&gt;
+
+&lt;p&gt;直到最近，我才发现在 ThoughtWorks 的面试者中，被要求回去学习一段时间再回来面试的人大有人在，而且很多人最后都成功入职了。也许当时的我处理的是有点草率了。但命运这种东西谁知道呢，&lt;strong&gt;当时的一个决定对未来有什么影响，谁也说不清。我们还是要感恩现在的自己，以及之前做过的所有正确的和不正确的决定，是它们成就了现在的你。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这篇聊 ThoughtWorks 是因为&lt;a href=&#34;http://blog.coderzh.com/2016/01/16/coding-style-share/&#34;&gt;上篇文章&lt;/a&gt;提到的，认识了 ThoughtWorks 的前员工 &lt;a href=&#34;http://seabornlee.cn&#34;&gt;Seaborn Lee&lt;/a&gt; （小波） ，又让我想到了之前的面试经历。于是就和 Seaborn Lee 八卦了一下当年面试我的 Michael Chen 到底是怎样的一个存在。&lt;/p&gt;
+
+&lt;p&gt;小波说了五个字：“&lt;strong&gt;他也是传奇&lt;/strong&gt;”，然后是这样描述的 ：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;一是技术牛&lt;/p&gt;
+
+&lt;p&gt;二是立志做产品&lt;/p&gt;
+
+&lt;p&gt;承诺三年不调薪&lt;/p&gt;
+
+&lt;p&gt;做了几款产品&lt;/p&gt;
+
+&lt;p&gt;金数据成了被收购&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;瞬间让我佩服的五体投地。我从很多 ThoughtWorks 员工那了解到，不管是离职的还是在职的，他们对 ThoughtWorks 公司都是满口的称赞，对公司的认可度非常非常的高，说明这真是一家不错的公司呢。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>我的 2015</title>
@@ -792,102 +870,6 @@ L：呵呵
 &lt;p&gt;也许，下次再有类似争执的时候，我不会说：你说我是错的，那你最好证明你是对的。&lt;/p&gt;
 
 &lt;p&gt;我会告诉他：You are right, but I don&amp;rsquo;t care.&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>小记：网易游戏学院第二届公开日</title>
-            <link>http://blog.coderzh.com/2015/06/28/163GameOpenDay/</link>
-            <pubDate>Sun, 28 Jun 2015 00:00:00 UTC</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/06/28/163GameOpenDay/</guid>
-            <description>
-
-&lt;p&gt;昨天参加了网易游戏学院的公开日《技术进步引发的灵感革命》，干货十足，期间做了一些笔记，分享一下。&lt;/p&gt;
-
-&lt;p&gt;在广州好几年了，也是第一次到科韵路信息港，下午去的早了些就在周围逛了逛，熟悉了一下地形和周边的小吃（主要是没吃午饭，到处找吃，只找到一家全家）。太热了又逛的差不多了，就来到了网易大厦。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163company.jpg-w&#34; alt=&#34;163company&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;我去的太早，还担心里面没人。进去之后，发现好多漂亮的礼仪小姐早已经在迎接嘉宾了（可惜没拍照）。进入会场，大屏幕，电影院的感觉，找了个好位置开始看网易的宣传片。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163show.jpg-w&#34; alt=&#34;163show&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;演讲开始~&lt;/p&gt;
-
-&lt;h3 id=&#34;1-自研引擎力作-乱斗西游-开发经验:3588ff76d10bf10d678f4491e7de2978&#34;&gt;1.自研引擎力作《乱斗西游》开发经验&lt;/h3&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;《乱斗西游》是一款完美融合MOBA和ARPG玩法的革命性3D动作手游，上市以来表现优异，多次获得苹果官方推荐并入选“App Store 2014年度精选”。作为网易第一款3D手游，在自研引擎NeoX上如何做多线程渲染方案？采用了哪些跨平台/渲染/网络同步/存储方案？如何为跨服设计服务器架构？诸多难题，本次由该项目主程陈伊力为您一一详解。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;PPT： &lt;a href=&#34;http://www.youxituoluo.com/78062.html&#34;&gt;http://www.youxituoluo.com/78062.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;注意NeoX的发音，没错，就是牛X引擎，名字够牛。乱斗西游在立项初期，在游戏引擎选择上面也考虑了诸多，比如商业的Unity, Unreal等，也包括网易自研的引擎，最后，他们选择了自研的牛X引擎。服务端架构方面使用了MobileServer多服架构（主要语言Python，没有过多介绍）。数据库使用mongodb，目前乱斗西游4台服务器可支持10万玩家。&lt;/p&gt;
-
-&lt;p&gt;在提供客户端效率方面，采用了多线程渲染。将逻辑线程和渲染线程分离。线程消息队列使用了无锁的RingBuffer和Double Buffer（双缓存交换队列）。通过Profile分析瓶颈，性能得到不断优化。&lt;/p&gt;
-
-&lt;p&gt;同步技术的迭代，这也是我比较关心的内容。在项目初期，考虑到当时的手机网络环境，乱斗西游只考虑了异步对战（即不是很真实的玩家实时对战，对战的只是带有一份玩家数据的机器人）。但是，他们非常的清楚，异步对战不是未来，同期也越来越多游戏加入了同步对战。所以，在同步对战方面，乱斗西游采取了分步骤迭代的方式，不久后推出了WIFI对战功能，即在同一WIFI网络下实现的同步对战功能。实现的方式是主客机的方式，即其中一台机器做主机，另外一台机器做客机，只在WIFI网络内传输数据。再后来，为了跨服跨网络的同步对战，使用了Router服的方式来实现。即玩家连接到Router服，Router服只负责转发。这几种同步对战方式我之前都考虑过，在上家公司做服务端主程时都给出过具体的方案。我也清楚的知道，这也都不是未来，这些方案主要特点是简单，能够快速开发并上线，未来一定是基于服务端计算的真实同步PVP。目前， 乱斗西游正在实现真实同步PVP。&lt;/p&gt;
-
-&lt;p&gt;在同步的实现和优化方面，乱斗西游采取了客户端先行，服务端矫正的方式。比如客户端的移动先行，在位置出现偏差时，采取一种比较温和的方式进行矫正。比如，在角色被强制位移时进行矫正，位移速度根据误差进行缩放等等。&lt;/p&gt;
-
-&lt;p&gt;同步的实现方式，一种是像War3星际的帧同步（帧锁定）方式。这种方式要求严格控帧，服务端和客户端必须步调一致，断线重连比较复杂，落后需要补帧。由于MoibleServer中Python大量使用了dictionary，遍历的时候是无序，使用帧同步方式很难保证每次遍历的顺序都是一致的，再加上其他很多原因，乱斗西游未采取帧同步的方式。&lt;/p&gt;
-
-&lt;p&gt;另外一种同步实现的方式，就是LOL、Dota2等的实现方式，状态同步，服务端承载了所有运算，客户端只负责发出指令和显示。目前乱斗西游采取的是这种方式。&lt;/p&gt;
-
-&lt;p&gt;在同步战斗的网络协议方面，乱斗西游采取了UDP的方式。原因是TCP的滑动窗口流量控制机制太不可控，采用UDP的方式可以做到更加高效，对丢包的处理更加可控。&lt;/p&gt;
-
-&lt;p&gt;优化方面，使用Neon指令集（ARM Cortex™-A 系列处理器的 128 位 SIMD单指令多数据架构扩展）。&lt;/p&gt;
-
-&lt;p&gt;Python常量使用优化（Python并没有提供常量支持，实际使用时会被当做字典的项来进行查找，影响效率，所以上线前将常量自动替换为实际的数值提供效率）。&lt;/p&gt;
-
-&lt;p&gt;为了防止脚本被破解，通过修改脚本虚拟机，将OpCode（字节码）打乱。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-无尽战区-渲染方案迭代分享:3588ff76d10bf10d678f4491e7de2978&#34;&gt;2.《无尽战区》渲染方案迭代分享&lt;/h3&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;作为网易首款TPS视角MOBA游戏，《无尽战区》不仅在玩法上做出了突破，同时在画面效果和品质上也在不断探索和迭代：日式动漫还是美式卡通？虚幻还是真实？在从无到有的紧张开发期中如何打破层层迷障，创造出有自己特色的渲染方案？本次Inception工作室的李冰将为大家分享，在《无尽战区》画面效果迭代中积累的点点滴滴。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;天下引擎，需求：重视手感，响应迅速。风格参考了Team Fortness2。分享了卡通角色渲染方案的迭代过程，最后的渲染效果的确很赞。&lt;/p&gt;
-
-&lt;h3 id=&#34;3-全局光照利器cloudgi技术全解析:3588ff76d10bf10d678f4491e7de2978&#34;&gt;3.全局光照利器CloudGI技术全解析&lt;/h3&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;CloudGI是一款网易自研的烘培器，它可以在数秒钟内计算完软影、AO、间接光照、体光源等全局光照效果（一台机器），已经为网易内部数十款游戏提供烘培服务。本次由CloudGI的开发者李文耀，为大家介绍如何利用GPU把烘培时间减少到几秒的级别，包括烘培基本算法、烘培直接光照、烘培间接光照三个部分。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;很牛逼，能把耗时的烘焙时间减小到10秒，不过只能针对网易自研的引擎烘焙优化。&lt;/p&gt;
-
-&lt;h3 id=&#34;4-次世代无缝大世界-天谕-自研引擎分享:3588ff76d10bf10d678f4491e7de2978&#34;&gt;4.次世代无缝大世界 ——《天谕》自研引擎分享&lt;/h3&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;次世代的画面表现对资源的需求量是巨大的，如何在符合国内玩家软硬件水准的情况下，驱动一个巨大的无缝游戏世界？《天谕》的自研引擎通过严格的Budget系统和细致的Streaming/LOD/Proxy等技术，将大世界渲染中所需的资源降低了1-2个数量级。其中的技术细节和心得体会，会在此逐一道来。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;PPT: &lt;a href=&#34;http://www.youxituoluo.com/78063.html&#34;&gt;http://www.youxituoluo.com/78063.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;天谕的大世界有150平方公里，比魔兽世界的卡利姆多大陆还大（100平方公里）。一同随去的天鸿同学直呼《天谕》引擎的伟大。要求美术所有贴图都有一张替代贴图，场景任意时刻和位置面数不能超过50万面。运用科学的方法，通过机器人跑遍整个场景进行离线分析和LOD优化。通过Proxy技术将场景切分为一个个立方体，对立方体内的模型物件进行整体的LOD优化。在保证了帧数流畅的前提下， 也保证了画面的精致。&lt;/p&gt;
-
-&lt;h3 id=&#34;5-百万在线的基石-梦幻手游服务器架构:3588ff76d10bf10d678f4491e7de2978&#34;&gt;5.百万在线的基石 ——梦幻手游服务器架构&lt;/h3&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;说到手游中的重度游戏MMO，如何提供一个稳定高效的手游MMO服务器引擎？梦幻西游手游如何做到万人同时在线？手游和端游在MMO上有何不同？AOI如何实现？通过什么样的开发流程就可以保证在产品上线时稳定，不会出现大面积DOWN机的情况？ 一整套解决方案，你值得拥有。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;PPT: &lt;a href=&#34;http://www.youxituoluo.com/78130.html&#34;&gt;http://www.youxituoluo.com/78130.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;梦幻手游服务端架构来自端游的服务器架构，支持单服2.2W人，最高在线达到200W人。服务端架构如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/163server.jpg-w&#34; alt=&#34;163server&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;由于是沿用端游的架构吧，这是一种早期比较常见的服务端架构。Server采用单进程多线程的方式，同时保证写逻辑代码时只在单一线程，不需要考虑多线程问题。AOI（Area Of Interest）的实现主要有两种：格子和十字链表。梦幻手游采用的是九宫格的格子算法。（AOI算法主要解决NPC和玩家位置同步，AI事件触发的算法问题，可以这样理解，最简单直接的算法，是遍历整个场景的NPC或玩家，将位置信息同步给玩家。显然这样的效率是很低的，因为离你很远的玩家的位置其实是不需要的。） 数据存储使用udb，nosql，binlog。AI使用行为树，将AI的设定全部交给了策划同学。&lt;/p&gt;
-
-&lt;p&gt;使用valgrind追踪内存泄露问题，统计脚本虚拟机object数量分析瓶颈。IO操作全部异步化。项目管理采用不强制的CodeReview，有自动化的协议测试Case，分析CodeCoverage，使用代码静态分析工具。&lt;/p&gt;
-
-&lt;h3 id=&#34;小结:3588ff76d10bf10d678f4491e7de2978&#34;&gt;小结&lt;/h3&gt;
-
-&lt;p&gt;公开日组织的不错，演讲嘉宾的内容也干货十足。中间和最后有抽奖环节，可惜没中。。在游戏自研领域，网易体现了其强大的研发实力。总的来说，受益匪浅，不虚此行。&lt;/p&gt;
 </description>
         </item>
         
