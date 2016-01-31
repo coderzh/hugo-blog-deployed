@@ -701,171 +701,834 @@
         </item>
         
         <item>
-            <title>程序员的共鸣 - 读《卓有成效的程序员》</title>
-            <link>http://blog.coderzh.com/2009/07/18/1526082/</link>
-            <pubDate>Sat, 18 Jul 2009 00:00:00 UTC</pubDate>
+            <title>《xUnit Test Patterns》学习笔记7(完) - 总结</title>
+            <link>http://blog.coderzh.com/2010/02/07/xUnit-Test-Patterns7-End/</link>
+            <pubDate>Sun, 07 Feb 2010 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2009/07/18/1526082/</guid>
+            <guid>http://blog.coderzh.com/2010/02/07/xUnit-Test-Patterns7-End/</guid>
             <description>
 
-&lt;p&gt;最近读了《卓有成效的程序员》，感觉收获颇大。这是一本写给程序员的难得的好书。书中大都是一些浅显的道理，但作者将这些东西加以收集、归纳、总结，并最终成书。作者为了收集各种提高效率的工具和方法，东奔西走，可谓费了一番苦心。&lt;/p&gt;
+&lt;p&gt;总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和第一部分还是基本一致的。因此，我主要的精力都花在了第一部分，对于后面的第二部分和第三部分，我是跳着看完的。后面的内容当作字典来查询会比较好，因为写的比较详细。&lt;/p&gt;
 
-&lt;p&gt;我觉得此书第一部分总结的一些法则非常好，我提取了一下：&lt;/p&gt;
+&lt;p&gt;其中有一个观点我觉得是比较新颖的，如果你分不清现在做的测试是不是属于单元测试，就请参照一下下面的吧：&lt;/p&gt;
 
-&lt;h3 id=&#34;法则:75179371ca2253094240bd1a512f3764&#34;&gt;法则：&lt;/h3&gt;
+&lt;p&gt;A test is not a unit test if:&lt;/p&gt;
 
-&lt;h4 id=&#34;1-加速法则:75179371ca2253094240bd1a512f3764&#34;&gt;1.加速法则&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;It talks to the database.&lt;/li&gt;
+&lt;li&gt;It communicates across the network.&lt;/li&gt;
+&lt;li&gt;It touches the ﬁle system.&lt;/li&gt;
+&lt;li&gt;It can&amp;#8217;t run correctly at the same time as any of your other unit tests.&lt;/li&gt;
+&lt;li&gt;You have to do special things to your environment (such as editing conﬁg ﬁles) to run it.&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 关注本质，而非形式&lt;/p&gt;
+&lt;p&gt;在讲到代码的可测性设计时，作者提出主要从以下几个方面来提高可测性：&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 一个应用程序列表的有用程度与它的长度成反比&lt;/p&gt;
+&lt;h4 id=&#34;dependency-injection:61305de2f52c04ea1a9f8a750021f1ad&#34;&gt;Dependency Injection&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;程序员的很多时间都浪费在找东西上&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;依赖注入，代码设计中并不依赖于具体的实现，并且运行将特定的实现注入到系统中。注入主要有三种方式：&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 华而不实的东西中看不中用&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Parameter Injection&lt;/li&gt;
+&lt;li&gt;Constructor Injection&lt;/li&gt;
+&lt;li&gt;Setter Injection&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;dependency-lookup:61305de2f52c04ea1a9f8a750021f1ad&#34;&gt;Dependency Lookup&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 键盘输入总比导航快&lt;/p&gt;
+&lt;p&gt;依赖查找，运行时动态查找到所依赖的具体对象。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;首选键盘而非鼠标&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;humble-object:61305de2f52c04ea1a9f8a750021f1ad&#34;&gt;Humble Object&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 地址栏是Windows资源管理器界面中最高效的部分&lt;/p&gt;
+&lt;p&gt;这个名称很抽象，我的理解是在代码中提供一些接口出来，方面测试。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;花点时间来学习你手边的所有隐藏的快捷键&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;test-hook:61305de2f52c04ea1a9f8a750021f1ad&#34;&gt;Test Hook&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 环境切换会消耗时间&lt;/p&gt;
+&lt;p&gt;在代码中加入一些测试逻辑，比如，如果是测试模块，就怎么怎么样。不过，我想这种方式应该是不值得推荐的。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;成批复制粘贴要比反复多次复制粘贴快&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;最后，很欣慰在春节前把这本书看完了，可以说收获还是蛮大的。以后遇到什么问题，可以拿这本书当资料来查。xUnit Test Patterns的官方地址如下：&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 忘记历史就意味着你得再输入一遍&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://xunitpatterns.com/&#34;&gt;http://xunitpatterns.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;可以在这个地址查询到每个测试模式和相关的名称解释。&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/02/07/xUnit-Test-Patterns7-End.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/02/07/xUnit-Test-Patterns7-End.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>《xUnit Test Patterns》学习笔记6 - Test Double</title>
+            <link>http://blog.coderzh.com/2010/01/31/xUnit-Test-Patterns6-Test-Double/</link>
+            <pubDate>Sun, 31 Jan 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/01/31/xUnit-Test-Patterns6-Test-Double/</guid>
+            <description>
+
+&lt;p&gt;我不知道Test Double翻译成中文是什么，测试替身？Test Double就像是陈龙大哥电影里的替身，起到以假乱真的作用。在单元测试时，使用Test Double减少对被测对象的依赖，使得测试更加单一，同时，让测试案例执行的时间更短，运行更加稳定，同时能对SUT内部的输入输出进行验证，让测试更加彻底深入。但是，Test Double也不是万能的，Test Double不能被过度使用，因为实际交付的产品是使用实际对象的，过度使用Test Double会让测试变得越来越脱离实际。&lt;/p&gt;
+
+&lt;p&gt;我感觉，Test Double这玩意比较适合在Java，C#等完全面向对象的语言中使用。并且需要很好的使用依赖注入(&lt;a href=&#34;http://en.wikipedia.org/wiki/Dependency_injection&#34;&gt;Dependency injection&lt;/a&gt;)设计。如果被测系统是使用C或C++开发，使用Test Double将是一个非常困难和痛苦的事情。&lt;/p&gt;
+
+&lt;p&gt;要理解Test Double，必须非常清楚以下几个东西的关系，本文的重点也是说明一下他们之间的关系。他们分别是：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Dummy Object&lt;/li&gt;
+&lt;li&gt;Test Stub&lt;/li&gt;
+&lt;li&gt;Test Spy&lt;/li&gt;
+&lt;li&gt;Mock Object&lt;/li&gt;
+&lt;li&gt;Fake Object&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_2.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_thumb.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;dummy-object:7d90771bbf1c9880ab4be082e80aca74&#34;&gt;Dummy Object&lt;/h4&gt;
+
+&lt;p&gt;Dummy Objects泛指在测试中必须传入的对象，而传入的这些对象实际上并不会产出任何作用，仅仅是为了能够调用被测对象而必须传入的一个东西。&lt;/p&gt;
+
+&lt;p&gt;使用Dummy Object的例子：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testInvoice_addLineItem_DO()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ﬁnal&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;QUANTITY&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Product&amp;nbsp;product&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Product(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;Dummy&amp;nbsp;Product&amp;nbsp;Name&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;getUniqueNumber());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Invoice&amp;nbsp;inv&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Invoice(&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;DummyCustomer()&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;expItem&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;LineItem(inv,&amp;nbsp;product,&amp;nbsp;QUANTITY);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inv.addItemQuantity(product,&amp;nbsp;QUANTITY);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Verify&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List&amp;nbsp;lineItems&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;inv.getLineItems();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;number&amp;nbsp;of&amp;nbsp;items&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;lineItems.size(),&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;actual&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(LineItem)lineItems.get(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertLineItemsEqual(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;rdquo;&amp;rdquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;expItem,&amp;nbsp;actual);
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h4 id=&#34;test-stub:7d90771bbf1c9880ab4be082e80aca74&#34;&gt;Test Stub&lt;/h4&gt;
+
+&lt;p&gt;测试桩是用来接受SUT内部的间接输入(indirect inputs)，并返回特定的值给SUT。可以理解Test Stub是在SUT内部打的一个桩，可以按照我们的要求返回特定的内容给SUT，Test Stub的交互完全在SUT内部，因此，它不会返回内容给测试案例，也不会对SUT内部的输入进行验证。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_4.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_thumb_1.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;使用Test Stub的例子：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testDisplayCurrentTime_exception()
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Exception&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Fixture&amp;nbsp;setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;Testing&amp;nbsp;with&amp;nbsp;Doubles&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;136&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Chapter&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;11&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Using&amp;nbsp;Test&amp;nbsp;Doubles
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;Deﬁne&amp;nbsp;and&amp;nbsp;instantiate&amp;nbsp;Test&amp;nbsp;Stub&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;TimeProvider&amp;nbsp;testStub&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;TimeProvider()
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;Anonymous&amp;nbsp;inner&amp;nbsp;Test&amp;nbsp;Stub&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;Calendar&amp;nbsp;getTime()&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;TimeProviderEx&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;throw&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;TimeProviderEx(&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;Sample&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;);
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;};&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;Instantiate&amp;nbsp;SUT&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;TimeDisplay&amp;nbsp;sut&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;TimeDisplay();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;sut.setTimeProvider(testStub);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&amp;nbsp;SUT&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String&amp;nbsp;result&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;sut.getCurrentTimeAsHtmlFragment();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Verify&amp;nbsp;direct&amp;nbsp;output&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String&amp;nbsp;expectedTimeString&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;lt;span&amp;nbsp;class=&amp;lt;/span&amp;gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;error&amp;lt;/span&amp;gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;gt;Invalid&amp;nbsp;Time&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Exception&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;expectedTimeString,&amp;nbsp;result);
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h4 id=&#34;test-spy:7d90771bbf1c9880ab4be082e80aca74&#34;&gt;Test Spy&lt;/h4&gt;
+
+&lt;p&gt;Test Spy像一个间谍，安插在了SUT内部，专门负责将SUT内部的间接输出(indirect outputs)传到外部。它的特点是将内部的间接输出返回给测试案例，由测试案例进行验证，&lt;font color=&#34;#ff0000&#34;&gt;Test Spy只负责获取内部情报，并把情报发出去，不负责验证情报的正确性&lt;/font&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_6.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_thumb_2.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;使用Test Spy的例子：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testRemoveFlightLogging_recordingTestStub()
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Exception&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Fixture&amp;nbsp;setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FlightDto&amp;nbsp;expectedFlightDto&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;createAnUnregFlight();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FlightManagementFacade&amp;nbsp;facade&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;FlightManagementFacadeImpl();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Test&amp;nbsp;Double&amp;nbsp;setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;AuditLogSpy&amp;nbsp;logSpy&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;AuditLogSpy();&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.setAuditLog(logSpy);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.removeFlight(expectedFlightDto.getFlightNumber());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Verify&amp;nbsp;state&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertFalse(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ﬂight&amp;nbsp;still&amp;nbsp;exists&amp;nbsp;after&amp;nbsp;being&amp;nbsp;removed&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.ﬂightExists(&amp;nbsp;expectedFlightDto.
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;getFlightNumber()));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Verify&amp;nbsp;indirect&amp;nbsp;outputs&amp;nbsp;using&amp;nbsp;retrieval&amp;nbsp;interface&amp;nbsp;of&amp;nbsp;spy&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;number&amp;nbsp;of&amp;nbsp;calls&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;logSpy.getNumberOfCalls()&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;action&amp;nbsp;code&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Helper.REMOVE_FLIGHT_ACTION_CODE,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;logSpy.getActionCode()&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;helper.getTodaysDateWithoutTime(),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;logSpy.getDate()&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;Helper.TEST_USER_NAME,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;logSpy.getUser()&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;detail&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;expectedFlightDto.getFlightNumber(),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;logSpy.getDetail()&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;mock-object:7d90771bbf1c9880ab4be082e80aca74&#34;&gt;Mock Object&lt;/h4&gt;
+
+&lt;p&gt;Mock Object和Test Spy有类似的地方，它也是安插在SUT内部，获取到SUT内部的间接输出(indirect outputs)，不同的是，&lt;font color=&#34;#ff0000&#34;&gt;Mock Object还负责对情报(indirect outputs)进行验证&lt;/font&gt;，总部(外部的测试案例)信任Mock Object的验证结果。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_8.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_thumb_3.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Mock的测试框架有很多，比如：NMock，JMock等等。如果使用Mock Object，建议使用现成的Mock框架，因为框架为我们做了很多琐碎的事情，我们只需要对Mock对象进行一些描述。比如，通常Mock框架都会使用基于行为(Behavior)的描述性调用方法，即，在调用SUT前，只需要描述Mock对象预期会接收什么参数，会执行什么操作，返回什么内容等，这样的案例更加具有可读性。比如下面使用Mock的测试案例：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testRemoveFlight_Mock()&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Exception&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Fixture&amp;nbsp;setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FlightDto&amp;nbsp;expectedFlightDto&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;createAnonRegFlight();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Mock&amp;nbsp;conﬁguration&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;ConﬁgurableMockAuditLog&amp;nbsp;mockLog&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;ConﬁgurableMockAuditLog();
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mockLog.setExpectedLogMessage(
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;helper.getTodaysDateWithoutTime(),
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Helper.TEST_USER_NAME,
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Helper.REMOVE_FLIGHT_ACTION_CODE,
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;expectedFlightDto.getFlightNumber());
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mockLog.setExpectedNumberCalls(&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;);&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Mock&amp;nbsp;installation&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FlightManagementFacade&amp;nbsp;facade&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;FlightManagementFacadeImpl();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.setAuditLog(mockLog);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.removeFlight(expectedFlightDto.getFlightNumber());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Verify&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertFalse(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;ﬂight&amp;nbsp;still&amp;nbsp;exists&amp;nbsp;after&amp;nbsp;being&amp;nbsp;removed&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.ﬂightExists(&amp;nbsp;expectedFlightDto.
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;getFlightNumber()));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;mockLog.verify();
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Fake Object&lt;/p&gt;
+
+&lt;p&gt;经常，我们会把Fake Object和Test Stub搞混，因为它们都和外部没有交互，对内部的输入输出也不进行验证。不同的是，&lt;font color=&#34;#ff0000&#34;&gt;Fake Object并不关注SUT内部的间接输入(indirect inputs)或间接输出(indirect outputs)，它仅仅是用来替代一个实际的对象，并且拥有几乎和实际对象一样的功能，保证SUT能够正常工作&lt;/font&gt;。实际对象过分依赖外部环境，Fake Object可以减少这样的依赖。需要使用Fake Object通常符合以下情形：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;实际对象还未实现出来，先用一个简单的Fake Object代替它。&lt;/li&gt;
+&lt;li&gt;实际对象执行需要太长的时间&lt;/li&gt;
+&lt;li&gt;实际对象在实际环境下可能会有不稳定的情况。比如，网络发送数据包，不能保证每次都能成功发送。&lt;/li&gt;
+&lt;li&gt;实际对象在实际系统环境下不可用，或者很难让它变得可用。比如，使用一个依赖实际数据库的数据库访问层对象，必须安装数据库，并且进行大量的配置，才能生效。&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;一个使用Fake Object的例子是，将一个依赖实际数据库的数据库访问层对象替换成一个基于内存，使用Hash Table对数据进行管理的数据访问层对象，它具有和实际数据库访问层一样的接口实现。
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;InMemoryDatabase&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;implements&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;FlightDao{&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;private&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;List&amp;nbsp;airports&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Vector();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Airport&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;createAirport&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;(String&amp;nbsp;airportCode,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String&amp;nbsp;name,&amp;nbsp;String&amp;nbsp;nearbyCity)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;DataException,&amp;nbsp;InvalidArgumentException&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertParamtersAreValid(&amp;nbsp;&amp;nbsp;airportCode,&amp;nbsp;name,&amp;nbsp;nearbyCity);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertAirportDoesntExist(&amp;nbsp;airportCode);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Airport&amp;nbsp;result&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Airport(getNextAirportId(),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;airportCode,&amp;nbsp;name,&amp;nbsp;createCity(nearbyCity));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;airports.add(result);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;result;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Airport&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;getAirportByPrimaryKey&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;(BigDecimal&amp;nbsp;airportId)
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;DataException,&amp;nbsp;InvalidArgumentException&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertAirportNotNull(airportId);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Airport&amp;nbsp;result&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Iterator&amp;nbsp;i&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;airports.iterator();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;while&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(i.hasNext())&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Airport&amp;nbsp;airport&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(Airport)&amp;nbsp;i.next();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(airport.getId().equals(airportId))&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;airport;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throw&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;DataException(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Airport&amp;nbsp;not&amp;nbsp;found:&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;airportId);
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;说了这么多，可能更加糊涂了。在实际使用时，并不需要过分在意使用的是哪种Test Double。当然，作为思考，可以想一想，以前测试过程中做的一些所谓的&amp;#8220;假的&amp;#8221;东西，到底是Dummy Object, Test Stub, Test Spy, Mock Object, 还是Fake Object呢？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/31/xUnit-Test-Patterns6-Test-Double.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/01/31/xUnit-Test-Patterns6-Test-Double.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>《xUnit Test Patterns》学习笔记5 - xUnit基础</title>
+            <link>http://blog.coderzh.com/2010/01/24/xUnit-Test-Patterns-5/</link>
+            <pubDate>Sun, 24 Jan 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/01/24/xUnit-Test-Patterns-5/</guid>
+            <description>
+
+&lt;p&gt;这几节我看的比较快一些，因为内容之间其实是有联系的，所以合在一起做一个笔记。6-10节主要介绍了什么是Fixture，如何保证一个Fresh Fixture，如何使用Setup，Tearndown，如何进行验证(Verify)，等等。&lt;/p&gt;
+
+&lt;h4 id=&#34;什么是fixture:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;什么是Fixture？&lt;/h4&gt;
+
+&lt;p&gt;&lt;font color=&#34;#ff0000&#34;&gt;The test ﬁxture is everything we need to have in place to exercise the SUT.&lt;/font&gt;&lt;/p&gt;
+
+&lt;p&gt;从作者的英文解释来看，Fixture确实是一个比较难定义的东西，所以作者用了everything这个词。&lt;/p&gt;
+
+&lt;h4 id=&#34;什么是fresh-fixture:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;什么是Fresh Fixture？&lt;/h4&gt;
+
+&lt;p&gt;一个测试案例一般都包含以下几个步骤：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Setup&lt;/li&gt;
+&lt;li&gt;Exercise&lt;/li&gt;
+&lt;li&gt;Verify&lt;/li&gt;
+&lt;li&gt;Teardown&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Fresh Fixture是指每个案例执行时，都会生成一个全新的Fixture，好处是不受其他案例的影响。避免了Interacting Tests(之前有提到的)。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_2.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;什么是setup:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;什么是Setup？&lt;/h4&gt;
+
+&lt;p&gt;Setup是案例的准备阶段，主要有三种实现方式：In-line Fixture Setup, Delegated Setup, Implicit Setup。推荐使用的是Implicit Setup。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;In-line Fixture Setup&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;直接在测试方法内部做一些具体的Setup操作 ：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testStatus_initial()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;In-line&amp;nbsp;setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Airport&amp;nbsp;departureAirport&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Airport(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Calgary&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;YYC&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Airport&amp;nbsp;destinationAirport&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Airport(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Toronto&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;YYZ&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Flight&amp;nbsp;ﬂight&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Flight(&amp;nbsp;ﬂightNumber,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;departureAirport,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;destinationAirport);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&amp;nbsp;SUT&amp;nbsp;and&amp;nbsp;verify&amp;nbsp;outcome&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(FlightState.PROPOSED,&amp;nbsp;ﬂight.getStatus());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;tearDown:
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Garbage-collected&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;缺点是容易造成很多重复的代码，不易维护。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Delegated Setup&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;相比In-line Fixture Setup，将里面具体的Setup操作提取出来，作为一个公用的方法，提高了复用性。
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testGetStatus_inital()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Flight&amp;nbsp;ﬂight&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;createAnonymousFlight();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&amp;nbsp;SUT&amp;nbsp;and&amp;nbsp;verify&amp;nbsp;outcome&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(FlightState.PROPOSED,&amp;nbsp;ﬂight.getStatus());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Teardown
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Garbage-collected&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Implicit Setup&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;几乎所有的xUnit家族的框架都支持SetUp，比如，使用Google Test中指定的函数名SetUp，NUnit使用[Setup]Attribute。这种方法，不需要我们自己去调用Setup方法，框架会在创建Fresh Fixture后调用Setup。因此，我们只管实现SetUp方法。
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Airport&amp;nbsp;departureAirport;
+Airport&amp;nbsp;destinationAirport;
+Flight&amp;nbsp;ﬂight;
+&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testGetStatus_inital()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Implicit&amp;nbsp;setup
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&amp;nbsp;SUT&amp;nbsp;and&amp;nbsp;verify&amp;nbsp;outcome&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(FlightState.PROPOSED,&amp;nbsp;ﬂight.getStatus());
+}
+&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;setUp()&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Exception{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;super&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;.setUp();&amp;nbsp;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;departureAirport&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Airport(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Calgary&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;YYC&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;destinationAirport&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Airport(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Toronto&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;YYZ&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;BigDecimal&amp;nbsp;ﬂightNumber&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;BigDecimal(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;999&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;ﬂight&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Flight(&amp;nbsp;ﬂightNumber&amp;nbsp;,&amp;nbsp;departureAirport,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;destinationAirport);
+}
+&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;什么是Teardown？&lt;/p&gt;
+
+&lt;p&gt;为了保证每个案例都拥有一个Fresh Fixture，必须在案例的结束时做一些清理操作，这就是Teardown。和Setup一样，Teardown也有三种实现方式：In-line Fixture Teardown, Delegated Teardown, Implicit Teardown。同样，推荐使用Implicit Teardown。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_12.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_5.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;什么是Shared Fixture？&lt;/p&gt;
+
+&lt;p&gt;多个测试方法共用一个Fixture，这时，Setup只会在第一个测试方法执行时被执行。gtest中，同时还拥有一个公共的TearDownTestCases方法。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_14.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_6.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Result Verification&lt;/p&gt;
+
+&lt;p&gt;前面说过，测试案例必须拥有Self-Checking的能力。Verification分两种：State Verification和Behavior Verification。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;State Verification&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;执行SUT后，验证SUT的状态：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_16.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_7.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;验证时，可以使用Build-in Assertions，比如xUnit框架提供的assertTrue, assertEquals等方法。或者Custom Assertion等等。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Behavior Verification&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;不仅仅验证SUT的状态，同时还对SUT的行为对外部因素造成的影响进行验证。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_18.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_8.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;比如下面这个例子：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testRemoveFlightLogging_recordingTestStub()
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Exception&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;ﬁxture&amp;nbsp;setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FlightDto&amp;nbsp;expectedFlightDto&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;createAnUnregFlight();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FlightManagementFacade&amp;nbsp;facade&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;FlightManagementFacadeImpl();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Test&amp;nbsp;Double&amp;nbsp;setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;AuditLogSpy&amp;nbsp;logSpy&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;AuditLogSpy();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.setAuditLog(logSpy);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;exercise&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.removeFlight(expectedFlightDto.getFlightNumber());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;verify&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;number&amp;nbsp;of&amp;nbsp;calls&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;logSpy.getNumberOfCalls());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;action&amp;nbsp;code&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Helper.REMOVE_FLIGHT_ACTION_CODE,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;logSpy.getActionCode());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;helper.getTodaysDateWithoutTime(),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;logSpy.getDate());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;Helper.TEST_USER_NAME,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;logSpy.getUser());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;detail&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;expectedFlightDto.getFlightNumber(),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;logSpy.getDetail());
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;除此之外，我们还可以使用一些Mock框架，使用基于行为的验证方式，这种方式，不需要我们显式的调用验证的方法。(Expected Behaivor Specification)
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testRemoveFlight_JMock()&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;throws&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Exception&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;ﬁxture&amp;nbsp;setup&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FlightDto&amp;nbsp;expectedFlightDto&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;createAnonRegFlight();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;FlightManagementFacade&amp;nbsp;facade&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;FlightManagementFacadeImpl();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;mock&amp;nbsp;conﬁguration&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Mock&amp;nbsp;mockLog&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;mock(AuditLog.&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;mockLog.expects(once()).method(&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;logMessage&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;)
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;.with(eq(helper.getTodaysDateWithoutTime()),
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;eq(Helper.TEST_USER_NAME),
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;eq(Helper.REMOVE_FLIGHT_ACTION_CODE),
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;eq(expectedFlightDto.getFlightNumber()));&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;mock&amp;nbsp;installation&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.setAuditLog((AuditLog)&amp;nbsp;mockLog.proxy());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;exercise&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;facade.removeFlight(expectedFlightDto.getFlightNumber());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;verify
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;verify()&amp;nbsp;method&amp;nbsp;called&amp;nbsp;automatically&amp;nbsp;by&amp;nbsp;JMock&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;如何使测试代码变得简洁，减少重复？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Expected Object&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;需要比较对象内部很多属性时，使用对象比较会更简单。&lt;/p&gt;
+
+&lt;p&gt;原有案例代码：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testInvoice_addLineItem7()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;expItem&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;LineItem(inv,&amp;nbsp;product,&amp;nbsp;QUANTITY);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inv.addItemQuantity(product,&amp;nbsp;QUANTITY);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Verify&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List&amp;nbsp;lineItems&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;inv.getLineItems();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;actual&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(LineItem)lineItems.get(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(expItem.getInv(),&amp;nbsp;actual.getInv());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(expItem.getProd(),&amp;nbsp;actual.getProd());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(expItem.getQuantity(),&amp;nbsp;actual.getQuantity());
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;改进后：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;testInvoice_addLineItem8()&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;expItem&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;LineItem(inv,&amp;nbsp;product,&amp;nbsp;QUANTITY);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Exercise&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;inv.addItemQuantity(product,&amp;nbsp;QUANTITY);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&amp;nbsp;Verify&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List&amp;nbsp;lineItems&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;inv.getLineItems();
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;actual&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(LineItem)lineItems.get(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;Item&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;,&amp;nbsp;expItem,&amp;nbsp;actual);&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Custom Assersions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;需要验证的细节很多时，可以自己定义一个Assersion，隐藏掉这些细节。比如：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;static&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;assertLineItemsEqual(
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String&amp;nbsp;&amp;nbsp;msg,&amp;nbsp;LineItem&amp;nbsp;exp,&amp;nbsp;LineItem&amp;nbsp;act)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals&amp;nbsp;(msg&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Inv&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;&amp;nbsp;exp.getInv(),&amp;nbsp;act.getInv());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals&amp;nbsp;(msg&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Prod&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;exp.getProd(),&amp;nbsp;act.getProd());
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals&amp;nbsp;(msg&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;Quan&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;exp.getQuantity(),&amp;nbsp;act.getQuantity());
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Verification Methods&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;和Custom Asserions很像，唯一不同的是，Custom Assertion只包含验证的代码，Verification Methods同时还包含对SUT的操作。比如：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;assertInvoiceContainsOnlyThisLineItem(
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Invoice&amp;nbsp;inv,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;expItem)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;List&amp;nbsp;lineItems&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;nbsp;inv.getLineItems();&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;number&amp;nbsp;of&amp;nbsp;items&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;lineItems.size(),&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;actual&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(LineItem)lineItems.get(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;assertLineItemsEqual(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;rdquo;&amp;rdquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,expItem,&amp;nbsp;actual);
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Parameterized and Data-Driven Tests&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;对于测试逻辑一致，只是测试数据有不同的测试案例，适合使用参数化测试，或者叫数据驱动测试。比如，Google Test就很好的提供了参数化的测试，见：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2009/04/08/1431297.html&#34;&gt;玩转 Google开源C++单元测试框架Google Test系列(gtest)之四 - 参数化&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;通过参数化，可以简化测试代码，不需要为大量不同的输入数据分别编写测试案例。&lt;/p&gt;
+
+&lt;h4 id=&#34;avoiding-conditional-test-logic:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;Avoiding Conditional Test Logic&lt;/h4&gt;
+
+&lt;p&gt;验证时，不要使用一些条件相关的逻辑！比如，&lt;span style=&#34;color: red;&#34;&gt;不要使用if&lt;/span&gt;, loop之类的语句！下面是一个例子：&lt;/p&gt;
+
+&lt;p&gt;使用if的情况：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #000000;&#34;&gt;List&amp;nbsp;lineItems&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;invoice.getLineItems();
+&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(lineItems.size()&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;)&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;expected&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;LineItem(invoice,&amp;nbsp;product,&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;BigDecimal(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;30&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;BigDecimal(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;69.96&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;));
+&amp;nbsp;&amp;nbsp;&amp;nbsp;LineItem&amp;nbsp;actItem&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(LineItem)&amp;nbsp;lineItems.get(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+&amp;nbsp;&amp;nbsp;&amp;nbsp;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;invoice&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;expected,&amp;nbsp;actItem);
+}&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;else&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;{
+&amp;nbsp;&amp;nbsp;&amp;nbsp;fail(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;Invoice&amp;nbsp;should&amp;nbsp;have&amp;nbsp;exactly&amp;nbsp;one&amp;nbsp;line&amp;nbsp;item&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看出，上面的写法是不好的，验证中有逻辑判断意味着有可能案例不够单一，使得案例难以理解。因此，比较好的是改成下面的方式：
+  &lt;div class=&#34;cnblogs_code&#34;&gt;&lt;div&gt;&lt;span style=&#34;color: #000000;&#34;&gt;List&amp;nbsp;lineItems&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;invoice.getLineItems();
+&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;assertEquals(&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;number&amp;nbsp;of&amp;nbsp;items&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;,&amp;nbsp;lineItems.size(),&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;);&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+LineItem&amp;nbsp;expected&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;LineItem(invoice,&amp;nbsp;product,&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;BigDecimal(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;30&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;),
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #0000ff;&#34;&gt;new&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;BigDecimal(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;69.96&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;));
+LineItem&amp;nbsp;actItem&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;nbsp;(LineItem)&amp;nbsp;lineItems.get(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
+assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;invoice&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo;&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;,&amp;nbsp;expected,&amp;nbsp;actItem);&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h4 id=&#34;working-backward:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;Working Backward&lt;/h4&gt;
+
+&lt;p&gt;一个编写测试案例的小技巧或者说是习惯吧，就是&lt;span style=&#34;color: red;&#34;&gt;实现一个测试案例时，从最后一行开始写起&lt;/span&gt;，比如，先写Assertions。可以一试。&lt;/p&gt;
+
+&lt;h4 id=&#34;using-test-driven-development-to-write-test-utility-method:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;Using Test-Driven Development to Write Test Utility Method&lt;/h4&gt;
+
+&lt;p&gt;我们经常实现一些测试用的辅助方法，这些方法在实现过程中，使用TDD的方式去实现，编写一些简单的测试案例，保证辅助方法也是正确的。也就是说，&lt;span style=&#34;color: red;&#34;&gt;测试案例代码本身也是需要被测试的。&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/24/xUnit-Test-Patterns-5.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/01/24/xUnit-Test-Patterns-5.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>《xUnit Test Patterns》学习笔记4 - Principles of Test Automation</title>
+            <link>http://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns-4/</link>
+            <pubDate>Sat, 23 Jan 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns-4/</guid>
+            <description>&lt;p&gt;自动化测试过程中，有一些基本的原则，就如同宣言(Manifesto)。由于大部分的原则在前面其实都提到的，因此，有的不做太多说明了。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Write the Tests First&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Design for Testability&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Use the Front Door First&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;意思是说，从最外层暴露的publish方法开始测试。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Communicate Intent&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;意思是说，测试案例要意图明确，这样才容易理解和维护。比如，命名时，使用Intent-Revealing Names[SBPP]。参考：&lt;a href=&#34;http://architects.dzone.com/news/intention-revealing-designs&#34;&gt;http://architects.dzone.com/news/intention-revealing-designs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Don&amp;#8217;t Modify the SUT&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;不要修改被测的对象。但有时需要使用一些Test Double或Fake对象时，要注意每个替代的对象都被测试。举了个例子，有X,Y,Z三个模块，X依赖于Y和Z，Y依赖于Z，测试X时，可以使用Test Double代替Y和Z，测试Y时，可以使用Test Double代替Z，但是在测试Z时，不能再把Z替换成Test Double了，因为Z就是被测对象。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Keep Tests Independent&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;让测试案例独立，能够单独的执行，不依赖于别的案例。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Isolate the SUT&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;让SUT独立，不依赖外部的环境。SUT往往会依赖一些外部的其他环境，比如，依赖一个外部的应用程序，依赖一个可用的http服务器等等。这使得测试变得不稳定，或者减慢了执行的速度。去除SUT依赖的方法是使用Test Double替换掉外部的因素。比如，需要http服务器，可以自己搭一个假的http服务器。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Minimize Test Overlap&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;最小化重复的测试。我们知道，测试案例的组合是无穷无尽的，我们不可能覆盖所有的组合。但我们可以选择最佳的组合。对被测代码的同一个条件进行重复的测试是没有多少意义的。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Minimize Untestable Code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;最小化不可测试的代码，方法就是，重构！&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Keep Test Logic Out of Production Code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;上一节提到了，不要在产品的代码里添加任何测试的逻辑。比如，像if tesing之类的判断。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Verify One Condition per Test&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;解释的过程中，有个观点比较有意思。手工测试时，通常会做一些复杂的操作，复杂的条件组合在一起，然后看是否出错。这看起来和自动化测试或单元测试完全相反了，为什么呢？这是因为，人能够在复杂的情况下去判断各种执行结果，并能够去分析其中的问题。而我们的案例其实并没有那么智能，为了让案例能够更加精确的定位问题，我们只能检查每个案例只检查一种情况。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Test Conerns Separtely&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Separation of concerns的解释见：&lt;a href=&#34;http://en.wikipedia.org/wiki/Separation_of_concerns&#34;&gt;http://en.wikipedia.org/wiki/Separation_of_concerns&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这里的意思大概是让测试案例做好分层，减少重复的部分，从而更加容易定位问题。&lt;/p&gt;
+
+&lt;p&gt;原则：&lt;strong&gt;Ensure Commensurate Effort and Responsibility&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;编写和维护测试案例的时间，不能超过实现产品代码的时间。因此，要平衡好测试与开发的付出。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/23/xUnit-Test-Patterns-4.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/01/23/xUnit-Test-Patterns-4.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>《xUnit Test Patterns》学习笔记系列</title>
+            <link>http://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns/</link>
+            <pubDate>Sat, 23 Jan 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns/</guid>
+            <description>&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/17/xUnit-Test-Patterns-1.html&#34;&gt;《xUnit Test Patterns》学习笔记1 - Test Smell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/18/xUnit-Test-Patterns-2.html&#34;&gt;《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/21/xUnit-Test-Patterns-3.html&#34;&gt;《xUnit Test Patterns》学习笔记3 - Philosophy of Test Automation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/23/xUnit-Test-Patterns-4.html&#34;&gt;《xUnit Test Patterns》学习笔记4 - Principles of Test Automation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/24/xUnit-Test-Patterns-5.html&#34;&gt;《xUnit Test Patterns》学习笔记5 - xUnit基础&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/31/xUnit-Test-Patterns6-Test-Double.html&#34;&gt;《xUnit Test Patterns》学习笔记6 - Test Double&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/02/07/xUnit-Test-Patterns7-End.html&#34;&gt;《xUnit Test Patterns》学习笔记7(完) - 总结&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/23/xUnit-Test-Patterns.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/01/23/xUnit-Test-Patterns.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>《xUnit Test Patterns》学习笔记3 - Philosophy of Test Automation</title>
+            <link>http://blog.coderzh.com/2010/01/21/xUnit-Test-Patterns-3/</link>
+            <pubDate>Thu, 21 Jan 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/01/21/xUnit-Test-Patterns-3/</guid>
+            <description>
+
+&lt;p&gt;这一章主要讲自动化测试的原则。前面的章节介绍了很多测试的思想，而思想的东西难免有点虚，这一章就是告诉你，遇到了具体的什么问题时，应该怎么办。作者咨询了很多的开发人员和测试人员，同时也和Martin Fowler就自动化测试的一些原则问题进行了交流，有些是显而易见的，有些又是让人把握不定。因此，这章主要讨论了以下几个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Test First or Last?2.  Tests or Examples?3.  Test-by-Test or Test All-at-Once?4.  Outside-In or Inside-Out?5.  State or Behavior Verification?6.  Fixture Design Upfront or Test-by-Test?&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;test-first-or-last:f0ac2162b36dda0c0053a43471ef317a&#34;&gt;Test First or Last?&lt;/h4&gt;
+
+&lt;p&gt;是应该先写代码还是先写测试案例？作者认为应该先写测试案例，然后再写代码。这也是测试驱动开发和敏捷测试的一个重要原则。这样做的原因有很多，比如：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;对一个已完成或旧的代码编写测试案例，比在代码完成前编写测试案例难的多。（面对一个庞大的已完成的系统时，确实会让人无从下手）2.  先写测试案例，可以极大的增强代码的可测性。使得后面编写的代码，天生就具备可测试的能力，因为测试案例已经早于它写好了。3.  先写测试案例，可以对后面的编码起到约束作用，避免编码时添加一些臃肿的、根本就不会用到的函数，使得代码看起来更加精简。&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;个人感受：&lt;/p&gt;
+
+&lt;p&gt;先编写测试案例再写代码，的确有很多好处。但是发现真正这样做的人很少，一方面，对于传统的软件开发公司，要做出一些改变确实有些困难。一方面，先编写测试案例带来的好处并不是立竿见影，很多人尝试了一下就放弃了。因此，需要不断的实践，坚持。(我也要努力了)&lt;/p&gt;
+
+&lt;h4 id=&#34;tests-or-examples:f0ac2162b36dda0c0053a43471ef317a&#34;&gt;Tests or Examples?&lt;/h4&gt;
+
+&lt;p&gt;这一段，说实话，没看懂在讨论什么问题。只看出在表达一个观点，测试案例相对于文档。同时，还提出一个名词：EDD（example-driven development），但后又提到EDD的框架，如RSpec，JBehave，让我有点摸不着头脑，据我说知，RSpec，JBehave应该是BDD框架才对。&lt;/p&gt;
+
+&lt;p&gt;作者最后的观点：Tests are examples.&lt;/p&gt;
+
+&lt;h4 id=&#34;test-by-test-or-test-all-at-once:f0ac2162b36dda0c0053a43471ef317a&#34;&gt;Test-by-Test or Test All-at-Once?&lt;/h4&gt;
+
+&lt;p&gt;到底是应该写一个测试案例，写一段代码呢，还是应该先把测试案例都写好，再写代码？这个问题比较有意思，因为这是一个非常实际的问题。迭代开发(incremental development)中，有一句话：Test a bit, code a bit, test a bit more。当然，这样的做法是比较理想的，因为这样能够更加准确的定位到代码的问题。但是，作者提到，一个更好的办法，是先列一个提纲，把测试案例的函数都填好，里面的实现为空。然后，每次填充一个测试案例，写一段代码。&lt;/p&gt;
+
+&lt;p&gt;我的观点：&lt;/p&gt;
+
+&lt;p&gt;和作者一样。比如，在需要编写一个类前，先假设自己就是代码的调用者，把Test Fixture中的测试案例罗列一下，然后再逐个完成测试案例。每编写完一个测试案例，就把相应的代码实现一下。&lt;/p&gt;
+
+&lt;h4 id=&#34;outside-in-or-inside-out:f0ac2162b36dda0c0053a43471ef317a&#34;&gt;Outside-In or Inside-Out?&lt;/h4&gt;
+
+&lt;p&gt;通常，模块之间会有一些依赖和层次结构，应该从最外层的调用模块开始写案例呢，还是从最里层开始写案例呢？作者的观点是从外到里。&lt;/p&gt;
+
+&lt;p&gt;先看下从里到外的情形：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_2.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_thumb.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;上图，从里到外的开发过程更像传统的开发过程，容易理解，实施起来相对简单。但是，这样的顺序有个缺点，就是上层的SUT必须依赖于已经实现的底层的SUT。如果两个模块是不同的人开发的，上层模块的开发必须等底层模块的开发编写完成才能开始工作。同时，最底层的SUT先实现的话，有可能会过度设计，设计出一些上层模块根本就不使用的一些特性。最终使得整个程序的可测性降低。因此，从外向里的过程会好一些：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_4.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_thumb_1.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;先编写最外层的测试案例，可以使用Test Double对象替代被调用的底层模块，使得SUT天然就具备很好的可测性（依赖注入）。同时，由于时刻都是保持&amp;#8220;从用户或调用者的角度去思考&amp;#8221;，使得SUT对象实现起来目标更加明确，实现的更加精简，从而避免了过度的设计。&lt;/p&gt;
+
+&lt;h4 id=&#34;state-or-behavior-verification:f0ac2162b36dda0c0053a43471ef317a&#34;&gt;State or Behavior Verification?&lt;/h4&gt;
+
+&lt;p&gt;提出的问题是，应该使用基于状态的验证，还是基于行为的验证？基于状态的验证是指在调用SUT后只检查SUT的状态，比如返回值，比如一个求和函数，最后检查一下求和的结果是否正确。而基于行为的验证，通常是，SUT被调用后，不仅仅改变SUT的状态，还会产生其他影响。比如，一个用户注册的函数，除了要检查返回值是否注册成功，还要坚持数据库中是否写入了新的用户记录。BDD(behavior-driven development)，就是基于行为的验证方式。作者最后说，他主要使用基于状态的验证，但有时为了追求代码覆盖率，会使用基于行为的验证。&lt;/p&gt;
+
+&lt;p&gt;我的理解：&lt;/p&gt;
+
+&lt;p&gt;对于功能单一，简单，设计良好的代码，使用State Verification确实已经足够。但往往真实的系统是很复杂的，模块之间互相调用，单个函数的功能可能也不是那么单一。基于行为的测试，其实就是站在了用户的角度，去验证各种行为所产生的各种影响。&lt;/p&gt;
+
+&lt;h4 id=&#34;fixture-design-upfront-or-test-by-test:f0ac2162b36dda0c0053a43471ef317a&#34;&gt;Fixture Design Upfront or Test-by-Test?&lt;/h4&gt;
+
+&lt;p&gt;Fixture是某一类案例的集合，一种观点是，让很多案例都共享一个Fixture，每个测试案例的方法执行时都会创建一个新的Fixture实例，并在案例前执行其中的SetUp方法。另一种观点是，前一个观点的做法，会让案例看起来不那么清晰，不容易找到一个测试案例的方法到底会执行哪些SetUp或TearDown的方法。因此，提出了在每个测试案例方法中，使用自定义的Minimal Fixture，而不是使用一个大的，不容易找到或理解的Fixture。&lt;/p&gt;
+
+&lt;p&gt;我的感受：&lt;/p&gt;
+
+&lt;p&gt;这一点我也有感受，我也发现我写的一些测试案例，都喜欢让很多Test Class继承一个基类Fixture，在里面定义SetUp和TearnDown，同时，子类中，还可以添加额外方法执行一些准备和清理的操作。这样，使得我的测试案例看起来并不清晰，因为很难从我的测试案例的函数中看出，我到底在SetUp里做了些什么，以及执行了哪些SetUp操作。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/21/xUnit-Test-Patterns-3.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/01/21/xUnit-Test-Patterns-3.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation</title>
+            <link>http://blog.coderzh.com/2010/01/18/xUnit-Test-Patterns-2/</link>
+            <pubDate>Mon, 18 Jan 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/01/18/xUnit-Test-Patterns-2/</guid>
+            <description>
+
+&lt;p&gt;或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收获到更多回报。它让我们减少了Bug的数量，减少了调试代码寻找Bug的时间。看下图，有效的自动化测试投资下，测试和开发付出的努力的时间图：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns2GoalOfTestAutomation_FF5C/image_2.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns2GoalOfTestAutomation_FF5C/image_thumb.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;初期，随着测试的介入，开发付出的投入逐渐减少。后期，随着测试案例的完善和自动化，测试和开发所需要付出的投入都减少到一个很低的水平。阴影部分是节省的开发投入。&lt;/p&gt;
+
+&lt;p&gt;同时，如果自动化测试做的不好，在后期，将可能加大测试和开发的负担：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns2GoalOfTestAutomation_FF5C/image_6.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns2GoalOfTestAutomation_FF5C/image_thumb_2.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h3 id=&#34;自动化测试的目标:37286d7576f0ac1ddfe739b00d492425&#34;&gt;自动化测试的目标&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Tests should help us improve quality.&lt;/li&gt;
+&lt;li&gt;Tests should help us understand the SUT.&lt;/li&gt;
+&lt;li&gt;Tests should reduce (and not introduce) risk.&lt;/li&gt;
+&lt;li&gt;Tests should be easy to run.&lt;/li&gt;
+&lt;li&gt;Tests should be easy to write and maintain.&lt;/li&gt;
+&lt;li&gt;Tests should require minimal maintenance as the system evolves around them.&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 嵌入图形化工具的命令提示符让你鱼与熊掌兼得&lt;/p&gt;
+&lt;h4 id=&#34;tests-should-help-us-improve-quality:37286d7576f0ac1ddfe739b00d492425&#34;&gt;Tests should help us improve quality&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 在上下文中学习IDE快捷键，而不要去背长长的列表&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Tests as Specification 测试案例可以验证产品的行为，验证是否&amp;#8220;building the right software&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Bug Repellent 自动化测试的主要目的不是发现Bug，而是预防或防止Bug的出现。&lt;/li&gt;
+&lt;li&gt;Defect Localization 顶层的customer tests只会告诉你案例失败了，unit tests会告诉你为什么失败了，能定位到具体的问题。如果customer tests失败了而所有的unit tests却通过的话，说明单元测试案例缺失了。(Missing Unit Test)&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 当你第二次输入一个复杂结构时，将它做成模板&lt;/p&gt;
+&lt;h4 id=&#34;tests-should-help-us-understand-the-sut:37286d7576f0ac1ddfe739b00d492425&#34;&gt;Tests should help us understand the SUT&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 如果要对多行文本做同样的操作，就应该找出其中的模式，并把它记录为一个宏&lt;/p&gt;
+&lt;p&gt;测试案例是非常好的文档，它告诉了你SUT做了些什么。同时，它还让你可以直接调试测试案例，单步跟踪，去了解整个系统是如何运作的。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;不要总是重复输入相同的命令&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;tests-should-reduce-and-not-introduce-risk:37286d7576f0ac1ddfe739b00d492425&#34;&gt;Tests should reduce (and not introduce) risk&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 每天花一点点时间来使每一天都更高效&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Tests as Safety Net 测试案例应该成为修改代码安全的保障，让我们在重构旧代码时能够大刀阔斧，而不必担心会破坏什么。&lt;/li&gt;
+&lt;li&gt;Do No Harm 测试案例不能对产品造成影响，一个重要的原则是，不要修改SUT。&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;h4 id=&#34;2-专注法则:75179371ca2253094240bd1a512f3764&#34;&gt;2.专注法则&lt;/h4&gt;
+&lt;h4 id=&#34;tests-should-be-easy-to-run:37286d7576f0ac1ddfe739b00d492425&#34;&gt;Tests should be easy to run&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;精力越集中，思维越缜密&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Fully Automated Test 完全自动化&lt;/li&gt;
+&lt;li&gt;Self-Checking Test 能够自我检查，说白了就是不需要人工去检查案例执行的结果对不对&lt;/li&gt;
+&lt;li&gt;Repeatable Test 需要具备可重复性。鼓励开发人员在每一次按下保存按钮时都执行一次测试案例(我没事就喜欢Ctrl+S)。案例需要具备可重复性，必须具备自我清理能力(self-cleaning)，通常，是在Test Fixture的TearDown中进行环境的清理。&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 排除干扰：隔离策略，关掉不需要的提示，创造安静时间&amp;nbsp;&lt;/p&gt;
+&lt;h4 id=&#34;tests-should-be-easy-to-write-and-maintain:37286d7576f0ac1ddfe739b00d492425&#34;&gt;Tests should be easy to write and maintain&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;草堆越大，从中找到一根针就越难&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Simple Tests 一个首要的原则是，让测试案例尽量的简单，使得其更容易维护。一次只测一种条件（Verify One Condition per Test）&lt;/li&gt;
+&lt;li&gt;Expressive Tests 测试案例要达到表达清晰的目的，比如，可以使用一些Creation Mehods和Custom Assertion。有点像BDD。&lt;/li&gt;
+&lt;li&gt;Separation of Concerns 测试案例要尽量测试单一，独立的功能，不要依赖过多。往往需要前期就介入参与产品的可测性设计(design for testability)。&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 不要问文件树，要搜索&lt;/p&gt;
+&lt;h4 id=&#34;tests-should-require-minimal-maintenance-as-the-system-evolves-around-them:37286d7576f0ac1ddfe739b00d492425&#34;&gt;Tests should require minimal maintenance as the system evolves around them&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 使用多显示器&lt;/p&gt;
+&lt;p&gt;测试案例需要最小化维护的工作，因此，我们需要编写健壮的测试案例(Robust Test)。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 虚拟桌面可以让原本杂乱无章的一大堆窗口变得整洁&lt;/p&gt;
+&lt;h3 id=&#34;toc_7:37286d7576f0ac1ddfe739b00d492425&#34;&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/h3&gt;
 
-&lt;h4 id=&#34;3-自动化法则:75179371ca2253094240bd1a512f3764&#34;&gt;3.自动化法则&lt;/h4&gt;
+&lt;p&gt;这章讲的是测试的目标，保持案例简单，稳定，容易维护的声音似乎总是在不停的重复着，是不是有点烦了？也许作者就是希望通过这种不停的唠叨，让我们真正记住、接受，并最终体会和感悟到这些东西给我们带来的好处吧。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 不要重新发明轮子&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/18/xUnit-Test-Patterns-2.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/01/18/xUnit-Test-Patterns-2.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>《xUnit Test Patterns》学习笔记1 - Test Smell</title>
+            <link>http://blog.coderzh.com/2010/01/17/xUnit-Test-Patterns-1/</link>
+            <pubDate>Sun, 17 Jan 2010 00:00:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2010/01/17/xUnit-Test-Patterns-1/</guid>
+            <description>
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 用Selenium浏览网页&lt;/p&gt;
+&lt;p&gt;这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实讲的很全面，并且给很多测试中的东西给出了专业的术语，相信当我读完并吸收完这本书后，会有更多的体会和收获。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 不要浪费时间动手去做可以被自动化的事情&lt;/p&gt;
+&lt;p&gt;第一章是全书概述，直接跳到第二章开始我的笔记。Test Smell，测试的坏味道。和我们通常讲的Code Smell是一样的，不同的是Test Smell是从测试的角度来分析测试过程中的坏味道。测试的坏味道主要分为三类：&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 用Windows Power Shell替代批处理文件&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;code smells&lt;/li&gt;
+&lt;li&gt;behavior smells&lt;/li&gt;
+&lt;li&gt;project smells&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 驯服Subversion命令行&lt;/p&gt;
+&lt;p&gt;这三种坏味道通常不是独立存在的，project smells的根源可能来自code smells和behavior smells。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 以创造性的方式解决问题，有助于在将来解决类似的问题&lt;/p&gt;
+&lt;h4 id=&#34;project-smells:d6e64354f49f91c7e2da3ded66c85fe5&#34;&gt;Project Smells&lt;/h4&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;是否应该自动化的关键在于投资回报率和缓解风险&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;出现下面的情况，可以认为出现了Project Smells：&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 研究性的工作应该放在时间盒里做&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Production Bugs 产品的Bug数量高居不下&lt;/li&gt;
+&lt;li&gt;Daily Integration Build 持续构建总是失败，或者需要花费大量时间去解决一个编译不过的问题&lt;/li&gt;
+&lt;li&gt;Buggy Tests 太多有问题的测试案例，相反会影响到项目的效率&lt;/li&gt;
+&lt;li&gt;Devolopers Not Writing Tests 开发人员不编写测试案例，导致Production Bugs增多&lt;/li&gt;
+&lt;li&gt;Lost Tests 测试案例不足&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 别给牦牛剪毛&lt;/p&gt;
+&lt;h4 id=&#34;behaivor-smells:d6e64354f49f91c7e2da3ded66c85fe5&#34;&gt;Behaivor Smells&lt;/h4&gt;
 
-&lt;h4 id=&#34;4-规范性法则:75179371ca2253094240bd1a512f3764&#34;&gt;4.规范性法则&lt;/h4&gt;
+&lt;p&gt;比较容易发现，不需要刻意去监控，因为测试案例编译不通过，或者是测试案例失败时，通常就是Behavior Smell出现的时候：&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; 对于任何你不自己去构建的东西，只在版本控制中保存一份副本&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Fragile Tests 容易失败的测试案例，稍微一点变化就有可能造成案例失败。通常出现在&amp;#8220;录制回放&amp;#8221;的测试案例中，这样的案例不仅执行不稳定，维护起来也很麻烦。因为自动生成的代码通常难以理解和维护。&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 使用标准的构建服务器&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;造成Fragile Tests原因主要有：&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;通过复制粘贴来复用是邪恶的，不论你复制粘贴的是什么&lt;/span&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Interface Sensitivity 这是最常见的，比如，开发修改了函数接口，界面上某个按钮进行了调整，都可能导致案例执行失败。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 利用虚拟平台使项目依赖标准化&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Behaivor Sensitivity 被测代码的行为发生了变化，测试案例当然要失败了。（如果不失败的话，都说明测试案例有问题）&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 不要让对象 - 关系映射工具（O/R映射器）违反规范原则&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Data Sensitivity 使用数据库的程序，如果数据库中的数据发生变化，可能导致案例失败&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 通过扩展。开放类（open class），或者部分类（partial class） 来为生成的代码增加行为&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Context Sensitivity 环境的变化，导致案例失败。比如：时间变化，硬件设备，系统环境等等3.  Erratic Tests 不稳定的测试案例，有时成功，有时失败：&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 始终保持代码和数据结构的同步&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Interacting Tests 俗称，前面的案例影响了后面的案例。比如，使用Shared Fixture时，前一个案例将Shared Fixture的状态修改，导致后面的案例都失败。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;过时的文档比没有文档更糟，因为它会主动误导你&lt;/span&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Test Run Wars 多个Test Runners使用同一个Shared Fixture，在同一时间执行时。也是指在非常特殊的情况下，才会出现失败的情况。这种BUG，通常也是到最后才会去修复。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 任何需要费劲创造的东西，都让它的创造者欲罢不能&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Unrepeatable Tests 不能保证每次执行都是同样的结果，有时候还需要人工干预一下。4.  Frequent Debugging 太频繁的调试说明自动化的单元测试做的不够，或者是单元测试中，一次测试了太多的功能，不够单一。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;白板 + 数码相机强过任何CASE工具&lt;/span&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Fully Automated Tests 使用TDD的敏捷开发人员每隔几分钟就执行一次测试案例，前提是测试案例一定要自动，不需要手工干预。如果需要手工干预(Manual Intervention)，没有几个人愿意经常执行那些测试案例。&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 尽量生成所有技术文档&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Slow Tests 案例执行一定要快，如果执行慢，将不能很快将结果反馈给开发。当然，也会使得开发不愿意去执行那些又慢又不稳定的案例。解决的办法也是使用Shared Fixture。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &lt;span style=&#34;color: red;&#34;&gt;重复是软件开发中最大的阻力 &lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;code-smells:d6e64354f49f91c7e2da3ded66c85fe5&#34;&gt;Code Smells&lt;/h4&gt;
 
-&lt;h3 id=&#34;工具:75179371ca2253094240bd1a512f3764&#34;&gt;工具：&lt;/h3&gt;
+&lt;p&gt;代码的坏味道，基本上和Martin Fowler的Refactoring中讲的一样。通过看代码，可以发现很多坏味道：&lt;/p&gt;
 
-&lt;p&gt;书中，还提到了大量的提高效率的工具，都是非常不错的。相信很多人都有自己的一个列表，下面是我电脑中必不可少的几款软件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Obscure Tests 如果你的测试案例令人费解，根本不知道你在测试什么。之后的维护者修改这个测试案例，很可能写错，导致成为另一个Buggy Tests。&lt;/li&gt;
+&lt;li&gt;Conditional Test Logic 测试案例逻辑应该尽可能单一，只测试其中一个分支。如果一个测试案例中太多的逻辑，将会让人搞不清楚。&lt;/li&gt;
+&lt;li&gt;Hard-Coded Test Data 测试中的用的数据，使用硬编码，会让人无法理解这些数据，以及这些数据有SUT的联系。&lt;/li&gt;
+&lt;li&gt;Test Code Duplication 减少重复的代码，增加测试代码的复用性。一个常见的方法是使用Test Utility Methods。&lt;/li&gt;
+&lt;li&gt;Test Logic in Production 在产品代码中加入测试的一些逻辑是不好的，永远也无法保证这些测试用的代码不会在产品中被执行。&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 1. FireFox 及其各类插件&lt;/p&gt;
+&lt;p&gt;这一章只是对Test Smell进行了一些简要的说明，在该书的第二部分有更加详细的针对Test Smell的介绍。&lt;/p&gt;
 
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 2. Launchy启动加速器&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 3. Total Commander&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 4. ClipX多重剪切板&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 5. EmEditor文本编辑器&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 6. Vistual Studio的VA插件&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 7. Search And Replace&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 8. Everything&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 9. Miranda IM&lt;/p&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; 10. &amp;hellip;.&lt;/p&gt;
-
-&lt;h3 id=&#34;感触:75179371ca2253094240bd1a512f3764&#34;&gt;感触：&lt;/h3&gt;
-
-&lt;h4 id=&#34;1-愤怒的猴子:75179371ca2253094240bd1a512f3764&#34;&gt;1. 愤怒的猴子&lt;/h4&gt;
-
-&lt;p&gt;在书中的第二部分，提到了很多实践相关的内容。让我感触最深的是&amp;#8220;愤怒的猴子&amp;#8221;的故事：&lt;/p&gt;
-
-&lt;p&gt;&amp;#8220;_早在20世纪60年代（那时候科学家们可以做任何疯狂的事情），行为科学家们进行了一项实验。他们把五只猴子和一架活梯放在一间屋子里，并在天花板上挂了一串香蕉。这些猴子很快就想到它们可以爬上梯子去吃香蕉，但每当它们靠近活梯的时候，科学家们就用冰水浸满整个屋子。我想你能猜到会发生什么：一群愤怒的猴子。很快，再没有一只猴子会去靠近那个梯子了。
-_&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;之后，科学家们将其中一只猴子替换成另一只没有忍受过冰水折磨的新猴子。这只新猴子所做的第一件事就是直奔那架梯子，但当它这么做时其他所有猴子都痛打它。它不明白为什么，但很快就学乖了：不要去靠近那架梯子。科学家们逐渐将最初的那些猴子都替换成新猴子，直到这群猴子中谁都没有被水浸泡过，然而它们还是会去攻击任何靠近梯子的猴子。&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;这说明了什么？软件项目中许多惯例之所以存在，就因为&amp;#8221;我们一直是那样做的&amp;#8220;。换句话说，是因为愤怒的猴子。&lt;/em&gt;&amp;#8221;&lt;/p&gt;
-
-&lt;p&gt;我们小组在制定C++相关的代码规范时就遇到过无数类似的问题。比如，在制定变量的命名规范时，我们针对是否采用匈牙利命名法争论了很久。有的人认为， 几乎以前看到的所有C++代码都采用了匈牙利命名法，甚至，微软定义的所有API都使用了此类命名法。刚开始，我也是有同样的疑惑。&lt;/p&gt;
-
-&lt;p&gt;后来，我们经过仔细分析C++匈牙利命名法由来，渐渐感觉我们就是那些愤怒的猴子，盲目跟从前人的方式，缺乏打破传统的勇气。C++有着其特殊的历史原因，很多标准一直沉淀下来并很少改变。我们再看看后来新生的那些编程语言，C#, Python&amp;#8230;&amp;#8230; 都抛弃了匈牙利命名法，同时再看看现在C++前沿的C++ 0x以及现在出版的一些书中，也渐渐放弃了对匈牙利命名法的使用。因为类型的意义在对象模型中越来越弱化。因此，最后我们放弃了匈牙利命名法这个老古董。&lt;/p&gt;
-
-&lt;h4 id=&#34;2-敏捷开发:75179371ca2253094240bd1a512f3764&#34;&gt;2. 敏捷开发&lt;/h4&gt;
-
-&lt;p&gt;这本书带有强烈的ThoughtWorks色彩，敏捷的思想贯穿全书，包括测试驱动设计，白板，结对编程。这也让我对敏捷产生了更加强烈的兴趣。 其中有一段测试驱动开发TDD的一段故事：&lt;/p&gt;
-
-&lt;p&gt;&amp;#8220;&lt;em&gt;记得第一次和一些已经习惯于单元测试的开发人员一起动手开始修改代码时，我也是非常紧张，因为大量的修改往往会破坏很多东西，但他们看起来丝毫没有犹豫。逐渐地，我也放下心来，因为我慢慢地认识到：有了测试的保证，完全可以放心大胆地去修改代码。&lt;/em&gt;&amp;#8221;&lt;/p&gt;
-
-&lt;h4 id=&#34;3-有趣的故事:75179371ca2253094240bd1a512f3764&#34;&gt;3. 有趣的故事&lt;/h4&gt;
-
-&lt;p&gt;书中还有一些有趣的故事，比如作者的一个朋友在和别人结对编程时，为了养成同伴使用快捷键的习惯，每当同伴未使用快捷键时，他都会要求将操作撤销，然后要求使用快捷键再重复操作3次。然后，在其凶狠的眼神中，同伴很快掌握了快捷键。&lt;/p&gt;
-
-&lt;h3 id=&#34;总结:75179371ca2253094240bd1a512f3764&#34;&gt;总结：&lt;/h3&gt;
-
-&lt;p&gt;这本书很薄，蕴藏的道理却不少，相信每个读过它的人都会从中收获。读过之后，我们不应该局限于书中提到的某些小技巧， 或是书中某一个细节，毕竟，提供效率的方法有很多很多，法则也有很多很多，一本书很难将其穷举完。我们应该从书中吸取其思想，并在实际工作和学习中不断总结，做一个真正的&amp;#8220;卓有成效的程序员&amp;#8221;！&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2009/07/18/1526082.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2009/07/18/1526082.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：&lt;a href=&#34;http://www.cnblogs.com/coderzh/archive/2010/01/17/xUnit-Test-Patterns-1.html&#34;&gt;http://www.cnblogs.com/coderzh/archive/2010/01/17/xUnit-Test-Patterns-1.html&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         
