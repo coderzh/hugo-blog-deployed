@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>创业感悟 - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta name="description" content="时光飞逝，转眼间距离上一篇博客已经快三年时间。这三年里，人们逐渐从博客转移到了微博，看的人少了，写的人也少了。以前，写博客是一种潮流，现在，写博客已经是一种坚持了。连Google都放弃了RSS，我不知道那些曾经订阅过我博客的朋友，你们还在坚持用RSS看文章吗？我写的这篇文章，你们在用Google Reader的替代品看到我的文章吗？如果有看到，并且我的文章对你有帮助，请留言告诉我。这会是我更新博客很好的动力。
+">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="创业感悟 - CoderZh Blog">
+<meta itemprop="description" content="时光飞逝，转眼间距离上一篇博客已经快三年时间。这三年里，人们逐渐从博客转移到了微博，看的人少了，写的人也少了。以前，写博客是一种潮流，现在，写博客已经是一种坚持了。连Google都放弃了RSS，我不知道那些曾经订阅过我博客的朋友，你们还在坚持用RSS看文章吗？我写的这篇文章，你们在用Google Reader的替代品看到我的文章吗？如果有看到，并且我的文章对你有帮助，请留言告诉我。这会是我更新博客很好的动力。
+">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="创业感悟 - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/2014/09/07/startup/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="时光飞逝，转眼间距离上一篇博客已经快三年时间。这三年里，人们逐渐从博客转移到了微博，看的人少了，写的人也少了。以前，写博客是一种潮流，现在，写博客已经是一种坚持了。连Google都放弃了RSS，我不知道那些曾经订阅过我博客的朋友，你们还在坚持用RSS看文章吗？我写的这篇文章，你们在用Google Reader的替代品看到我的文章吗？如果有看到，并且我的文章对你有帮助，请留言告诉我。这会是我更新博客很好的动力。
+">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="创业感悟 - CoderZh Blog">
+<meta name="twitter:description" content="时光飞逝，转眼间距离上一篇博客已经快三年时间。这三年里，人们逐渐从博客转移到了微博，看的人少了，写的人也少了。以前，写博客是一种潮流，现在，写博客已经是一种坚持了。连Google都放弃了RSS，我不知道那些曾经订阅过我博客的朋友，你们还在坚持用RSS看文章吗？我写的这篇文章，你们在用Google Reader的替代品看到我的文章吗？如果有看到，并且我的文章对你有帮助，请留言告诉我。这会是我更新博客很好的动力。
+">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/2014/09/07/startup/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2014/09/07/startup/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="http://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" rel="category tag">思考感悟</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">创业感悟</h1>
+
+                  <p class="post-byline">
+                    by  · 2014年09月07日 · 3098 Words ·
+                    ~7min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2014/2014-09-07-startup.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
+
+<p>时光飞逝，转眼间距离上一篇博客已经快三年时间。这三年里，人们逐渐从博客转移到了微博，看的人少了，写的人也少了。以前，写博客是一种潮流，现在，写博客已经是一种坚持了。连Google都放弃了RSS，我不知道那些曾经订阅过我博客的朋友，你们还在坚持用RSS看文章吗？我写的这篇文章，你们在用Google Reader的替代品看到我的文章吗？如果有看到，并且我的文章对你有帮助，请留言告诉我。这会是我更新博客很好的动力。</p>
+
+<h3 id="编程-游戏:5db9befb7313d7d2c50bf8f9b67bc9db">编程，游戏</h3>
+
+<p>也许是缘分，和游戏结下了不解之缘。从小，我就是个爱玩游戏的小孩。小学时因考三好学生，家人奖励了我一台小霸王游戏机，从此爱不释手。家人怕影响我学习，只有寒暑假才能拿出来玩，所以每次玩有格外珍惜。后来，电脑开始慢慢普及，网络开始盛行。人们开始成群的挤在网吧，玩大富翁4，红警，仙剑，FIFA99。我这时正读初中，参加了QB编程竞赛小组。</p>
+
+<p>那时候的学习资源很有限，走遍整个小县城的书店也找不到几本关于编程的书。竞赛的结果并不理想，但是通过编程小组，让我在很早的时候就接触到了计算机，并且被编程所吸引。不知小叔从哪里找来的一台比386还旧的电脑，于是我就在这台电脑上折腾DOS、QB、WPS。当时编了一个小游戏，随机生成几个字母从左到右移动然后消失，然后需要玩家通过记忆输入刚才出现过的字母，玩的不亦乐乎。</p>
+
+<p>高中时去租电脑光碟，偶然听老板说了一句：现在不用QB了，都流行用VB了。于是开始学VB。高二时还给英语老师做了一套英语听力教学系统，老师讲解一道题，然后出现四个选项，勾选后会出现对错的结果。当时的自豪感还杠杠的。</p>
+
+<p>然而，高考的压力，我并未选择喜欢的计算机专业，而是保守的选择了招生最多的土木工程专业，中南大学的土木系在全国还能排在前几名，但是我不喜欢。于是我开始玩游戏，肆无忌惮的玩游戏，通宵达旦的玩剑一，每天晚上宋金战场抢夺BOSS人头总有我的身影，游戏里拉帮结派，抢地盘，打群架，做买卖。记得有一个帮会的人和我们打了一天架后，居然成了好朋友。至今还记得他们的帮会名字叫洪兴十三妹什么的。也有人被我们欺负后说要来长沙找我人肉PK，当时还真有那么一点害怕。</p>
+
+<p>游戏中有太多有意思的回忆，在此就略过了。从那时起，我才真正意识到一个虚拟的网络世界真的会让人沉迷，忘记了吃饭睡觉，不去上课，考试挂科，对现实世界麻木不仁。当时我也很讨厌自己，为什么会这么没出息？我这学业还能不能完成，我是不是一直在辜负家人的期望。我想改变，但是发现很难。游戏里，我是快乐的，自豪的，精力无限充沛的，而现实中是麻木的，自责的，没精打采的。这种游戏的状态和感受，多年后也不曾再出现过。</p>
+
+<p>游戏之余，同样有个东西吸引着我，那就是编程。并且很幸运加入了学校的学子天空网（中国大学生创业网）。在那里我遇到了很多优秀的同学，学习到太多的东西。它给了我信心，告诉我，也许，土木工程不一定是我的唯一出路。也许，我毕业后可以做自己喜欢的事情，那就是编程。</p>
+
+<p>大学临近毕业了，我们专业的就业机会是很多的，而且各大铁路局都抢着要人。同学们纷纷签订了中铁XX局，XX设计院。而我一直在等待，等待着一个机会。有一天，偶然的机会，我看到金山软件在校本部举行校园招聘的消息。室友陪我一起逃课去参加了招聘会。我选择了WPS的自动化测试工程师，因为只有这个职位需要我熟悉的C#语言。我同学当时选了游戏策划，笔试完后，他异常兴奋，他说这是他从小到大答过的最爽的一次考试，里面问的全是游戏怎么好玩的问题。然而兴奋之余，他竟然在联系电话一栏忘记了填。</p>
+
+<p>后来，我来到了金山软件。他在外面干了几年建筑设计后来回到老家进了个不错的设计院。我来到金山，成为金山训练营第一批成员，从此开始了我的编程生涯。之后从金山WPS，到金山毒霸，后来到西山居，有太多优秀的同事，给予了我巨大的帮助。在金山的这几年，是我学习积累非常重要的几年。测试开发的工作，没有太多项目的压力，不需要加班，可以尽情的利用业余时间去研究各种新奇好玩的技术。我的大部分技术博客，也是在那段时间完成的。</p>
+
+<p>测试开发的工作，主要是编写一些测试代码去对产品代码进行测试，保证其功能的正确性，稳定性，安全性等。其实在我心里，一直都很羡慕直接参与产品开发的程序员。虽然我知道就编程来说，他们的工作其实和我的并没有多大的区别。但是，看着用户在使用着你的产品，关注着你的产品，作为一个产品直接的开发人员，自豪感是更强的。我告诉自己，我不想再测试别人的代码了，我想自己来写！</p>
+
+<p>我一直在寻找和等待着这样一个机会，并且也做了不少的尝试。某天，当我听到我原来的技术老大鱼头要出来创业做游戏时，我已经按捺不住兴奋的心情了。于是我放弃了金山安逸的生活，来到了广州，开始了我的游戏开发的生涯，开始了我的创业生涯。</p>
+
+<h3 id="创业:5db9befb7313d7d2c50bf8f9b67bc9db">创业</h3>
+
+<p>公司初创人员有10几个， 大都来自金山内部。我经历了公司从无到有的整个过程，从申请营业执照，到选取办公地点、办公设备，申请域名，搭建Git，RTX，Wiki，项目管理平台Redmine，持续构建CCNet…… 这些都是一个公司必要的支持。而对于我来说，还是蛮新鲜的，能接触到一些平时不容易接触到的东西，初创人员也是激情四溢，各擅所长，感觉平时听他们聊天都能学习到不少的知识。</p>
+
+<p>即使我平时游戏玩的够多，自认为也算是个中高端游戏玩家。但做为一个刚刚涉入游戏开发领域的新人，心中还是有一些胆怯的，所以我更多的是去听他们的想法，然后在心里理解分析。</p>
+
+<p>关于游戏定位的讨论一开始就进行了。我们认真去玩并且分析了当时市面上刚出的几款端游。比如《征途2》、《凡人修仙传》等。最终，我们给出了我们游戏的定位：面向低端玩家的电脑配置要求低、易上手操作简单的道具收费玄幻题材的3DMMORPG。好吧，前面这句话是我自己总结的，大致是符合当时的想法的。我对于游戏定位的思考，一直贯穿着整个创业过程。但是在当时，身边都是比我有游戏经验的同事，我其实是没有太多的想法的。我的想法就是，信任他们。</p>
+
+<p>为了实现游戏的配置低的目标，我们想出一个办法。就是给所有人的电脑配置都比较低，价格控制在3000块左右。一旦一个不合理的算法出现，或者不合理的美术资源添加，将直接影响到我们自己的游戏体验，从而督促着我们去修改。当时的我配置甚至是一台联想笔记本，在上面开发着3D游戏。</p>
+
+<p>关于这种做法，当时我是纠结的。它的好处是明显的，开发环境和玩家环境一致，可以时刻督促我们的游戏在配置上不至于跑偏。当然，也有另外一个好处就是帮老板省钱。它的坏处也是明显的，严重影响了我们的开发效率。实际上，这条规则并没有一直贯穿执行下去，老同事用着慢如蜗牛的机器，用幻灯片的方式艰难的玩着LOL。新来的同事的配置调到最高却依然满帧。就在前几天，我们给所有程序的电脑升级到8G的内存，并且配置240G的SSD（固态硬盘），我使用了3年的老旧电脑也被替换了下来。用这种极端的方式控制游戏的性能，我也不能完全说是对是错，至少这是我们走过的路。</p>
+
+<p>开始阶段，我负责整个游戏的UI脚本和表现逻辑部分。这在西山居可是两个组干的活，而且我还是个新手，需要不断的在摸索中学习。很快，我就已经上手。UI需要直接和游戏逻辑交互，表现逻辑需要直接和3D引擎交互，很快，我又担当起了游戏逻辑组的重担，并且在3D引擎组打了一手酱油。如今，我已经成为了程序组内的Full Stack，对整体开发环节最了解的一个。</p>
+
+<p>写这篇文章，并不是从程序角度对写过的代码和模块进行总结。而是通过回忆一路走过的创业历程，让自己重新去思考，公司和人员是如何变化的，游戏产品是如何演变的，当然最重要的，是自己的心态和思维方式是如何改变的。</p>
+
+<p>（未完待续……）</p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="http://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2014/09/07/startup/">http://blog.coderzh.com/2014/09/07/startup/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+              <div class="clear"></div>
+              
+              
+              
+            </div>
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p> 微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking <br /></p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2014/05/19/digitalocean/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>DigitalOcean上使用Tornado&#43;MongoDB&#43;Nginx&#43;Supervisor&#43;DnsPod快速搭建个人博客</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+        <a href="http://blog.coderzh.com/2014/09/09/wordpress/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>自豪的使用上了WordPress</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2016. All Rights Reserved. <br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10147768-2', 'auto');
+  ga('send', 'pageview');
+
+  $('#messagesbsb').remove();
+
+</script>
+</body>
+</html>
+
