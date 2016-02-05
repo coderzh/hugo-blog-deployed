@@ -3,8 +3,13 @@
     
     <url>
         <loc>http://blog.coderzh.com/</loc>
-        <lastmod>2016-02-01T23:35:19+08:00</lastmod>
+        <lastmod>2016-02-05T23:55:45+08:00</lastmod>
         <priority>0</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</loc>
+        <lastmod>2016-02-05T23:55:45+08:00</lastmod>
     </url>
     
     <url>

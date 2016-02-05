@@ -6,7 +6,72 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Mon, 01 Feb 2016 23:35:19 CST</updated>
+        <updated>Fri, 05 Feb 2016 23:55:45 CST</updated>
+        
+        <item>
+            <title>博客皮肤单独建了个仓库</title>
+            <link>http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</link>
+            <pubDate>Fri, 05 Feb 2016 23:55:45 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</guid>
+            <description>
+
+&lt;p&gt;有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/issues/1&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/issues/1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;的确，早就应该这么做了。趁着放春节假期了，把这个撸了一遍，单独的皮肤仓库叫：&lt;code&gt;hugo-rapid-theme&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;只是将它从原博客中抽离出来，还有很大优化的空间，需要的同学先用着吧。&lt;/p&gt;
+
+&lt;p&gt;地址：&lt;a href=&#34;https://github.com/coderzh/hugo-rapid-theme&#34;&gt;https://github.com/coderzh/hugo-rapid-theme&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;说明文档:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;说明文档&lt;/h2&gt;
+
+&lt;p&gt;以下是 hugo-rapid-theme 的 README 文档：&lt;/p&gt;
+
+&lt;p&gt;Demo: &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step1-install-hugo:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step1 Install Hugo&lt;/h3&gt;
+
+&lt;p&gt;Set &lt;a href=&#34;http://www.gohugo.org/doc/overview/installing/&#34;&gt;Hugo Install&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step2-create-your-site:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step2 Create your site&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new site your-blog-name
+cd your-blog-name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step3-clone-the-theme-repo:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step3 Clone the theme repo&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
+# replace config file
+rm config.toml
+cp themes/hugo-rapid-theme/config.yaml .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step4-start-your-site:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step4 Start your site&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;# new content
+hugo new about.md
+# start server
+hugo server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step5-have-fun:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step5 Have Fun&lt;/h3&gt;
+
+&lt;p&gt;Now you can open &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Modify the config.yaml and other things, and have fun!&lt;/p&gt;
+
+&lt;p&gt;You can also make this repo as submodule:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
         
         <item>
             <title>追求简单和纯粹，我去掉了博客的评论功能</title>
@@ -1087,79 +1152,6 @@ DEPLOY_DIR = &#39;gh-pages&#39;
 &lt;/ol&gt;
 
 &lt;p&gt;That&amp;rsquo;s all, 祝你好运！&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>走进前端开发之：Vue.js</title>
-            <link>http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</link>
-            <pubDate>Sun, 15 Nov 2015 21:53:51 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</guid>
-            <description>&lt;p&gt;上一篇中，探讨了前端框架的前世今生，最后还列举了当前比较火的几个前端框架，比如：Google 的 Angular，老牌的 Backbone , Facebook 的 React 等等。今天，我只想介绍一个小而美的前端框架：&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 。&lt;/p&gt;
-
-&lt;p&gt;为什么说 &lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 是一个小而美的前端框架呢？因为它小， min 版本大小是 72K （ gzip 压缩后是23 K），而 min 版本的 Angular 144K，React 132K。说它小而美并不单单指它的体积，因为还有很多体积比它小的框架，小而美主要是它使用起来太 TM 的简单直观了！&lt;/p&gt;
-
-&lt;p&gt;Vue.js 的中文主页：&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;http://cn.vuejs.org/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;在主页中，号称“10 秒钟看懂 Vue.js”，的确是这么回事：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;demo&amp;quot;&amp;gt;
-  &amp;lt;p&amp;gt;{{message}}&amp;lt;/p&amp;gt;
-  &amp;lt;input v-model=&amp;quot;message&amp;quot;&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var demo = new Vue({
-  el: &#39;#demo&#39;,
-  data: {
-    message: &#39;Hello Vue.js!&#39;
-  }
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上面例子的效果是在 input 里输入任何内容，会自动出现在 &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 里。非常简单直观的进行了数据绑定，只要数据发生变化， View 会自动发生变化。这就是数据驱动的。&lt;/p&gt;
-
-&lt;p&gt;并不是每个人都需要或者有机会去开发一个大型的 Web 应用，那些流行的框架又需要一定的学习曲线，而且很多功能并不需要使用到。或者说，你只想干一件简单的事情，但是由于引入了那些框架，使得自己不得不按照框架的规定定义一个又一个东西，最后仅仅是为了实现一个简单的功能。&lt;/p&gt;
-
-&lt;p&gt;所以，&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 非常适合用于一些小型项目（当然，大型项目也适合。），因为可以快速上手，简单的看下它的文档就可以开始动手了。而且， Vue.js 的执行速度也非常的快。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;a href=&#34;https://github.com/lhorie/todomvc-perf-comparison&#34;&gt;TodoMVC Benchmark&lt;/a&gt; 的评测中，得出的综合评价：Mercury, &lt;strong&gt;Vue&lt;/strong&gt; and Mithril are king.&lt;/p&gt;
-
-&lt;p&gt;在 Safari 6.1, OS X 的评测里，Vue.js 的性能直接排到了第一的位置：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/todomvc-pef-Safari.png&#34; alt=&#34;todomvc-perf-Safari&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;所以，我现在就有冲动拿 &lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 来做点东西了，刚好目前要做的一个项目可以用上，这样可以少写很多烦人的 JavaScript 代码了，简直完美。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt;（读音 /vjuː/, 类似于 view），是一个构建数据驱动的 web 界面的库。它的作者是个中国人：尤小右，真名尤雨溪，之前在 Google Creative Lab 工作过。正是目睹了 Angular 、 Ember 框架的笨重不够灵活，Backbone 不支持数据绑定 ， Knockout 和 Ractive 在组件的嵌套和组合上不够理想，于是他决定自己重新设计一个简洁的 MVVM 数据绑定的前端框架。&lt;/p&gt;
-
-&lt;p&gt;在 GitHub 上， &lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 已经收集了 9500 多个 Star，为了让更多人参与进来贡献代码，作者坚持保持代码测试的覆盖率为 100% 。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/vue-cov.jpg&#34; alt=&#34;vue-cov&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 的目标是通过尽可能简单的 API 实现&lt;strong&gt;响应的数据绑定&lt;/strong&gt;和&lt;strong&gt;组合的视图组件&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;响应的数据绑定&lt;/strong&gt; 就是数据驱动视图的概念。它让你在写 Web 应用界面时，只需要关注两件事：数据如何展示和数据如何变化。一旦数据发生变化时，比如用户输入，或者 ajax 请求返回后数据发现修改，对应的视图界面会自动的进行更新。（之前的做法是使用 jQuery 手动操作 DOM 更新界面元素。）&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mvvm.jpg&#34; alt=&#34;mvvm&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;定义好数据如何展示，绑定数据后，就只需要关心数据如何变化的事情了，是不是感觉 So Easy ！&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;组合的视图组件&lt;/strong&gt; 是 &lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 的一个重要概念，有了组件系统，可以很好的复用组件，提高效率，从而也为开发一个大型应用提供了很好的技术保证。&lt;/p&gt;
-
-&lt;p&gt;本文并不是要详细介绍 &lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 的特点及使用方法，因为要学习 Vue.js ，看官方的文档是最好的学习方式。作者是中国人，自带中文文档已经足够方便让你学习起步。本文的目的只是想介绍 Vue.js ，因为我认为它很了不起。&lt;/p&gt;
-
-&lt;p&gt;在如此激烈的前端框架竞争环境下， 凭借作者一己之力，用小而美，精简易用，性能还那么好的 &lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 直接挑战了像 Google 、 Facebook 这样公司开发的前端框架。作者在设计框架时，时时刻刻遵循简单、精巧、易用的设计哲学让人钦佩。为保证代码的质量，获得更多的开发者的信赖，作者的每一行代码都经过单元测试，体现了作者的严谨性。这就是我从他身上学到的东西。&lt;/p&gt;
-
-&lt;p&gt;最后，再次给出 Vue.js 的链接：&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;http://cn.vuejs.org/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;走进前端开发系列：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/&#34;&gt;走进前端开发之：Bootstrap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/07/front-end-dev/&#34;&gt;走进前端开发之：框架的演变&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
         </item>
         

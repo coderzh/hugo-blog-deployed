@@ -12,72 +12,252 @@
         }
     }
   </script>
-  <title>追求简单和纯粹，我去掉了博客的评论功能 - CoderZh Blog</title>
+  <title>博客皮肤单独建了个仓库 - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="关闭评论,">
-<meta name="description" content="一直以来，我们都习惯了有评论功能的博客系统，甚至大多数的博客系统还拿评论数来计算分数，作为你的文章热度的一个指标。
+<meta name="keywords" content="hugo,rapid,theme,">
+<meta name="description" content="有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：
 
-曾经我也一度以为评论功能很重要，有时还会去期待有人评论。然而从结果来看，几乎大部分的评论都毫无价值。最近还受到了垃圾评论的骚扰，既浪费了我的时间不停的去删除，也影响了阅读者的体验。
+https://github.com/coderzh/coderzh-hugo-blog/issues/1
 
-真心想和你交流的人，会想尽一切方法找到你。
+的确，早就应该这么做了。趁着放春节假期了，把这个撸了一遍，单独的皮肤仓库叫：hugo-rapid-theme
 
-所以，不必担心收不到有用的用户反馈。而且，那么大一个微信二维码放在那里，只要扫一扫关注一下，就可以给我发消息，当然，找到我的邮箱地址也是很容易的事情。
+只是将它从原博客中抽离出来，还有很大优化的空间，需要的同学先用着吧。
 
-为了追求最佳的阅读体验，追求一个博客的简单和纯粹，我去掉了博客的评论系统。
+地址：https://github.com/coderzh/hugo-rapid-theme
+
+说明文档
+
+以下是 hugo-rapid-theme 的 README 文档：
+
+Demo: http://blog.coderzh.com/
+
+Step1 Install Hugo
+
+Set Hugo Install
+
+Step2 Create your site
+
+hugo new site your-blog-name
+cd your-blog-name
+
+
+Step3 Clone the theme repo
+
+git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
+# replace config file
+rm config.toml
+cp themes/hugo-rapid-theme/config.yaml .
+
+
+Step4 Start your site
+
+# new content
+hugo new about.md
+# start server
+hugo server
+
+
+Step5 Have Fun
+
+Now you can open http://localhost:1313
+
+Modify the config.yaml and other things, and have fun!
+
+You can also make this repo as submodule:
+
+git init
+git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="追求简单和纯粹，我去掉了博客的评论功能 - CoderZh Blog">
-<meta itemprop="description" content="一直以来，我们都习惯了有评论功能的博客系统，甚至大多数的博客系统还拿评论数来计算分数，作为你的文章热度的一个指标。
+<meta itemprop="name" content="博客皮肤单独建了个仓库 - CoderZh Blog">
+<meta itemprop="description" content="有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：
 
-曾经我也一度以为评论功能很重要，有时还会去期待有人评论。然而从结果来看，几乎大部分的评论都毫无价值。最近还受到了垃圾评论的骚扰，既浪费了我的时间不停的去删除，也影响了阅读者的体验。
+https://github.com/coderzh/coderzh-hugo-blog/issues/1
 
-真心想和你交流的人，会想尽一切方法找到你。
+的确，早就应该这么做了。趁着放春节假期了，把这个撸了一遍，单独的皮肤仓库叫：hugo-rapid-theme
 
-所以，不必担心收不到有用的用户反馈。而且，那么大一个微信二维码放在那里，只要扫一扫关注一下，就可以给我发消息，当然，找到我的邮箱地址也是很容易的事情。
+只是将它从原博客中抽离出来，还有很大优化的空间，需要的同学先用着吧。
 
-为了追求最佳的阅读体验，追求一个博客的简单和纯粹，我去掉了博客的评论系统。
+地址：https://github.com/coderzh/hugo-rapid-theme
+
+说明文档
+
+以下是 hugo-rapid-theme 的 README 文档：
+
+Demo: http://blog.coderzh.com/
+
+Step1 Install Hugo
+
+Set Hugo Install
+
+Step2 Create your site
+
+hugo new site your-blog-name
+cd your-blog-name
+
+
+Step3 Clone the theme repo
+
+git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
+# replace config file
+rm config.toml
+cp themes/hugo-rapid-theme/config.yaml .
+
+
+Step4 Start your site
+
+# new content
+hugo new about.md
+# start server
+hugo server
+
+
+Step5 Have Fun
+
+Now you can open http://localhost:1313
+
+Modify the config.yaml and other things, and have fun!
+
+You can also make this repo as submodule:
+
+git init
+git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="追求简单和纯粹，我去掉了博客的评论功能 - CoderZh Blog" />
+<meta property="og:title" content="博客皮肤单独建了个仓库 - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.coderzh.com/2016/02/01/close-comments/" />
+<meta property="og:url" content="http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="一直以来，我们都习惯了有评论功能的博客系统，甚至大多数的博客系统还拿评论数来计算分数，作为你的文章热度的一个指标。
+<meta property="og:description" content="有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：
 
-曾经我也一度以为评论功能很重要，有时还会去期待有人评论。然而从结果来看，几乎大部分的评论都毫无价值。最近还受到了垃圾评论的骚扰，既浪费了我的时间不停的去删除，也影响了阅读者的体验。
+https://github.com/coderzh/coderzh-hugo-blog/issues/1
 
-真心想和你交流的人，会想尽一切方法找到你。
+的确，早就应该这么做了。趁着放春节假期了，把这个撸了一遍，单独的皮肤仓库叫：hugo-rapid-theme
 
-所以，不必担心收不到有用的用户反馈。而且，那么大一个微信二维码放在那里，只要扫一扫关注一下，就可以给我发消息，当然，找到我的邮箱地址也是很容易的事情。
+只是将它从原博客中抽离出来，还有很大优化的空间，需要的同学先用着吧。
 
-为了追求最佳的阅读体验，追求一个博客的简单和纯粹，我去掉了博客的评论系统。
+地址：https://github.com/coderzh/hugo-rapid-theme
+
+说明文档
+
+以下是 hugo-rapid-theme 的 README 文档：
+
+Demo: http://blog.coderzh.com/
+
+Step1 Install Hugo
+
+Set Hugo Install
+
+Step2 Create your site
+
+hugo new site your-blog-name
+cd your-blog-name
+
+
+Step3 Clone the theme repo
+
+git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
+# replace config file
+rm config.toml
+cp themes/hugo-rapid-theme/config.yaml .
+
+
+Step4 Start your site
+
+# new content
+hugo new about.md
+# start server
+hugo server
+
+
+Step5 Have Fun
+
+Now you can open http://localhost:1313
+
+Modify the config.yaml and other things, and have fun!
+
+You can also make this repo as submodule:
+
+git init
+git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
 ">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="追求简单和纯粹，我去掉了博客的评论功能 - CoderZh Blog">
-<meta name="twitter:description" content="一直以来，我们都习惯了有评论功能的博客系统，甚至大多数的博客系统还拿评论数来计算分数，作为你的文章热度的一个指标。
+<meta name="twitter:title" content="博客皮肤单独建了个仓库 - CoderZh Blog">
+<meta name="twitter:description" content="有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：
 
-曾经我也一度以为评论功能很重要，有时还会去期待有人评论。然而从结果来看，几乎大部分的评论都毫无价值。最近还受到了垃圾评论的骚扰，既浪费了我的时间不停的去删除，也影响了阅读者的体验。
+https://github.com/coderzh/coderzh-hugo-blog/issues/1
 
-真心想和你交流的人，会想尽一切方法找到你。
+的确，早就应该这么做了。趁着放春节假期了，把这个撸了一遍，单独的皮肤仓库叫：hugo-rapid-theme
 
-所以，不必担心收不到有用的用户反馈。而且，那么大一个微信二维码放在那里，只要扫一扫关注一下，就可以给我发消息，当然，找到我的邮箱地址也是很容易的事情。
+只是将它从原博客中抽离出来，还有很大优化的空间，需要的同学先用着吧。
 
-为了追求最佳的阅读体验，追求一个博客的简单和纯粹，我去掉了博客的评论系统。
+地址：https://github.com/coderzh/hugo-rapid-theme
+
+说明文档
+
+以下是 hugo-rapid-theme 的 README 文档：
+
+Demo: http://blog.coderzh.com/
+
+Step1 Install Hugo
+
+Set Hugo Install
+
+Step2 Create your site
+
+hugo new site your-blog-name
+cd your-blog-name
+
+
+Step3 Clone the theme repo
+
+git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
+# replace config file
+rm config.toml
+cp themes/hugo-rapid-theme/config.yaml .
+
+
+Step4 Start your site
+
+# new content
+hugo new about.md
+# start server
+hugo server
+
+
+Step5 Have Fun
+
+Now you can open http://localhost:1313
+
+Modify the config.yaml and other things, and have fun!
+
+You can also make this repo as submodule:
+
+git init
+git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://blog.coderzh.com/2016/02/01/close-comments/">
-  <link rel='shortlink' href="http://blog.coderzh.com/2016/02/01/close-comments/"/>
+  <link rel="canonical" href="http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/"/>
   <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -199,7 +379,7 @@
               <ul class="meta-single group">
                 
                 <li class="category">
-                  <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" rel="category tag">思考感悟</a>
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
                 </li>
                 
               </ul>
@@ -211,12 +391,12 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">追求简单和纯粹，我去掉了博客的评论功能</h1>
+                  <h1 class="post-title">博客皮肤单独建了个仓库</h1>
 
                   <p class="post-byline">
-                    by  · 2016年02月01日 · 280 Words ·
+                    by  · 2016年02月05日 · 258 Words ·
                     ~1min reading time |
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-02-01-close-comments.md"
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-02-05-new-hugo-rapid-theme-repo.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -225,15 +405,62 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p>一直以来，我们都习惯了有评论功能的博客系统，甚至大多数的博客系统还拿评论数来计算分数，作为你的文章热度的一个指标。</p>
+                      
 
-<p>曾经我也一度以为评论功能很重要，有时还会去期待有人评论。然而从结果来看，几乎大部分的评论都毫无价值。最近还受到了垃圾评论的骚扰，既浪费了我的时间不停的去删除，也影响了阅读者的体验。</p>
+<p>有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：</p>
 
-<p><strong>真心想和你交流的人，会想尽一切方法找到你。</strong></p>
+<p><a href="https://github.com/coderzh/coderzh-hugo-blog/issues/1">https://github.com/coderzh/coderzh-hugo-blog/issues/1</a></p>
 
-<p>所以，不必担心收不到有用的用户反馈。而且，那么大一个微信二维码放在那里，只要扫一扫关注一下，就可以给我发消息，当然，找到我的邮箱地址也是很容易的事情。</p>
+<p>的确，早就应该这么做了。趁着放春节假期了，把这个撸了一遍，单独的皮肤仓库叫：<code>hugo-rapid-theme</code></p>
 
-<p>为了追求最佳的阅读体验，追求一个博客的简单和纯粹，我去掉了博客的评论系统。</p>
+<p>只是将它从原博客中抽离出来，还有很大优化的空间，需要的同学先用着吧。</p>
+
+<p>地址：<a href="https://github.com/coderzh/hugo-rapid-theme">https://github.com/coderzh/hugo-rapid-theme</a></p>
+
+<h2 id="说明文档:1c7dc7e052e1f712e7a427da9af2576f">说明文档</h2>
+
+<p>以下是 hugo-rapid-theme 的 README 文档：</p>
+
+<p>Demo: <a href="http://blog.coderzh.com/">http://blog.coderzh.com/</a></p>
+
+<h3 id="step1-install-hugo:1c7dc7e052e1f712e7a427da9af2576f">Step1 Install Hugo</h3>
+
+<p>Set <a href="http://www.gohugo.org/doc/overview/installing/">Hugo Install</a></p>
+
+<h3 id="step2-create-your-site:1c7dc7e052e1f712e7a427da9af2576f">Step2 Create your site</h3>
+
+<pre><code>hugo new site your-blog-name
+cd your-blog-name
+</code></pre>
+
+<h3 id="step3-clone-the-theme-repo:1c7dc7e052e1f712e7a427da9af2576f">Step3 Clone the theme repo</h3>
+
+<pre><code>git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
+# replace config file
+rm config.toml
+cp themes/hugo-rapid-theme/config.yaml .
+</code></pre>
+
+<h3 id="step4-start-your-site:1c7dc7e052e1f712e7a427da9af2576f">Step4 Start your site</h3>
+
+<pre><code># new content
+hugo new about.md
+# start server
+hugo server
+</code></pre>
+
+<h3 id="step5-have-fun:1c7dc7e052e1f712e7a427da9af2576f">Step5 Have Fun</h3>
+
+<p>Now you can open <a href="http://localhost:1313">http://localhost:1313</a></p>
+
+<p>Modify the config.yaml and other things, and have fun!</p>
+
+<p>You can also make this repo as submodule:</p>
+
+<pre><code>git init
+git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+</code></pre>
 
                       
                     </div>
@@ -245,7 +472,7 @@
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
                             <br />微信关注：hacker-thinking （一个程序员的思考）
-                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2016/02/01/close-comments/">http://blog.coderzh.com/2016/02/01/close-comments/</a>
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/">http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -299,20 +526,14 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://blog.coderzh.com/2016/01/31/inevitable/" rel="next">
+        <a href="http://blog.coderzh.com/2016/02/01/close-comments/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>张小龙悟透《失控》做出了微信，我们看过了《必然》能做什么？</span>
+          <span>追求简单和纯粹，我去掉了博客的评论功能</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>博客皮肤单独建了个仓库</span>
-        </a>
         
       </li>
     </ul>
