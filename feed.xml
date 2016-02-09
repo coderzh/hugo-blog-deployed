@@ -6,7 +6,72 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Fri, 05 Feb 2016 23:55:45 CST</updated>
+        <updated>Tue, 09 Feb 2016 10:42:05 CST</updated>
+        
+        <item>
+            <title>我的第一台 Mac</title>
+            <link>http://blog.coderzh.com/2016/02/09/my-first-mac/</link>
+            <pubDate>Tue, 09 Feb 2016 10:42:05 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/02/09/my-first-mac/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mac.JPG-w&#34; alt=&#34;mac&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;新年第一篇，祝大家猴年大吉，心想事成，万事如意！&lt;/p&gt;
+
+&lt;p&gt;这两天在家里除了带孩子就是在摆弄新到的 MacBook Pro 了。嗯，前几天咬一咬牙，双手颤抖的点击了下单按钮，第三天就收到了。&lt;/p&gt;
+
+&lt;p&gt;当初在买 MBP 还是 iMac 之间纠结过，因为已经有一个台式机，所以确定了买 MBP。然后就是纠结买 13 吋还是 15 吋。之前我去广州新开的苹果体验店看过，15 吋的略大了点，13 吋的大小刚刚好，本来打算就买 13 吋的。直到下单前，又改变主意了，考虑便携性和性能，我更倾向于性能，于是最后一刻改成了 15 吋标准配置（16 G内存 512闪存）。购买时，我使用了教育商店购买，便宜了 1500 软妹币。我准备了堂弟的学生证，然而第二天苹果直接就给我发货了，并没有要求我出示学生证。后来听说是抽查的。&lt;/p&gt;
+
+&lt;p&gt;一直以来，除了在服务器上编译部署需要使用 Linux，我主要都是在 Windows 的平台下开发的。感觉 Windows 平台下的开发工具链其实挺完善的，写 C/C++ ，C# 有号称宇宙无敌 IDE 的 Visual Studio ，写 Python 有 PyCharm，写 Java 有 IntelliJ ，写 Android 有 Android Studio ，编辑器有 gVim 。对应的效率工具也一应俱全：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Total Commander 装机必备的神器，谁用谁知道。&lt;/li&gt;
+&lt;li&gt;Launchy 效率神器，快速启动程序。作者长时间未更新，最近换成了另外一个神器：Wox 。没用过的赶紧试试，有惊喜。&lt;/li&gt;
+&lt;li&gt;Clipx / Ditto 多重剪贴板。&lt;/li&gt;
+&lt;li&gt;Visual Studio 的 Visual Assist 插件，一个字就是爽。&lt;/li&gt;
+&lt;li&gt;Visual Studio 的 ViEmu 插件，没有 Vim 模式的 IDE 已经没法用了。&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;《必然》一书的『过滤』一章中提到，如果你只接触那些你已经喜欢的东西是有风险的，即你可能会卷入一个以自我为中心的漩涡，从而对任何与你的标准存在细微差异的事情都视而不见，即使你原本会喜欢它。这种现象被称为『过滤器泡沫』。&lt;/p&gt;
+
+&lt;p&gt;所以，我们要勇于尝试新事物。当时觉得 Ubuntu 好玩，在上面使劲折腾过，折腾了一段时间后，感觉还是不太适合作为个人的桌面系统。一直想尝试 Mac OS X，昂贵的价格又有点让人望而却步。从体验 Mac 的这几天来看，感觉付出是非常值的，MBP 的使用体验非常好，为什么我没有早一点入手呢？&lt;/p&gt;
+
+&lt;p&gt;这两天都在研究 Mac 系统怎么玩，看了很多文章，装了一些软件，学习了很多东西。学习曲线大概是这样的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;学习了神奇的触摸板的使用方法。（双指，三指，四指的手法。。。）&lt;/li&gt;
+&lt;li&gt;学习了系统常用的快捷键。&lt;/li&gt;
+&lt;li&gt;学习了在 Mac 上如何安装软件。（Mac App Store、官网下载 dmg、使用 Homebrew）&lt;/li&gt;
+&lt;li&gt;给命令行终端配上漂亮的 Solarized 皮肤，安装配置 Shell 神器：oh-my-zsh&lt;/li&gt;
+&lt;li&gt;安装包管理神器 Homebrew 和 brew cask。&lt;/li&gt;
+&lt;li&gt;安装效率神器：Alfred2。&lt;/li&gt;
+&lt;li&gt;使用 Homebrew 把系统自带的软件包升级到最新版本，比如：git、python、vim 等等。&lt;/li&gt;
+&lt;li&gt;安装和配置 Mac 下的 macvim。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;嗯，完成了以上步骤后，基本上可以开始干活了。对了，再接上 HHKB，调整开关设置，打开开关 2、3、4，启用 Mac 模式，简直完美！&lt;/p&gt;
+
+&lt;p&gt;接着，我还安装了如下的软件：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Chrome 浏览器。&lt;/li&gt;
+&lt;li&gt;Dash 查看各种文档的神器。&lt;/li&gt;
+&lt;li&gt;Mou 编辑 MarkDown 的神器。&lt;/li&gt;
+&lt;li&gt;XCode 现在还用不着，先装上。&lt;/li&gt;
+&lt;li&gt;Android Studio&lt;/li&gt;
+&lt;li&gt;ShiftIt 用来调整窗口位置和大小的神器。&lt;/li&gt;
+&lt;li&gt;WizNote 为知笔记&lt;/li&gt;
+&lt;li&gt;QQ&lt;/li&gt;
+&lt;li&gt;QQ 音乐&lt;/li&gt;
+&lt;li&gt;有道词典&lt;/li&gt;
+&lt;li&gt;迅雷&lt;/li&gt;
+&lt;li&gt;VLC 视频播放器&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Alfred2 和 oh-my-zsh 是我用了的最令人惊叹好用的工具，谁还有好用的软件推荐给我啊~~~&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>博客皮肤单独建了个仓库</title>
@@ -1086,72 +1151,6 @@ AES(SharedKey, Ticket)
 &lt;p&gt;微信扫一扫：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>Hugo 自动化部署脚本</title>
-            <link>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</link>
-            <pubDate>Sat, 21 Nov 2015 17:48:04 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</guid>
-            <description>
-
-&lt;p&gt;之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。&lt;/p&gt;
-
-&lt;p&gt;脚本路径：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;原理:5dd178ee6323378b401661424ca0e072&#34;&gt;原理&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;deploy.py&lt;/code&gt; 会自动执行 hugo 命令生成静态站点，然后将生成的文件拷贝到上层的一个目录里，然后，在那个目录里将文件 push 到你指定的 Git Repository 里。&lt;/p&gt;
-
-&lt;h3 id=&#34;使用方法:5dd178ee6323378b401661424ca0e072&#34;&gt;使用方法&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;将 &lt;code&gt;deploy.py&lt;/code&gt; 放到你的 Hugo 站点目录。（和 config.yaml 等文件放一起）&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;编辑 &lt;code&gt;deploy.py&lt;/code&gt; 文件，修改你要部署到的 Git Repository：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;GIT_REPO = [
-    # [别名,   分支名,     Git Repo 路径]
-    [&#39;origin&#39;,  &#39;gh-pages&#39;, &#39;git@github.com:coderzh/hugo-blog-deployed.git&#39;],
-    [&#39;gitcafe&#39;, &#39;gh-pages&#39;, &#39;git@gitcafe.com:coderzh/coderzh-hugo-blog.git&#39;],
-]
-# 部署到哪里，相对上一级目录。比如下面的配置，会部署到 ../gh-pages 目录里
-DEPLOY_DIR = &#39;gh-pages&#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;如果你的网站需要指定皮肤，需要在 config 文件中指定 &lt;code&gt;theme&lt;/code&gt; 。因为我的脚本在生成静态文件时并不会指定皮肤。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;theme: &amp;quot;rapid&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;第一次执行，使用 &lt;code&gt;first&lt;/code&gt; 参数，它会做一些初始化的操作。并使用 &lt;code&gt;-t&lt;/code&gt; 表示只是测试一下，并不会真的 push 。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;python deploy.py first -t
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;中间可能需要输入密码，如果是自动化部署，可在 Git Repo 里添加一个没有密码的 SSH Key 。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;如果一切正常，切换到 &lt;code&gt;DEPLOY_DIR&lt;/code&gt; 目录，&lt;code&gt;git log&lt;/code&gt; 看看 commit 记录是否正常。如果一切也如你所愿。则可以把 &lt;code&gt;-t&lt;/code&gt; 参数去掉重新执行一遍，执行真的 push 操作：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;python deploy.py first
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;执行完成后，应该已经将生成的静态页面自动 push 到了你指定的 &lt;code&gt;GIT_REPO&lt;/code&gt; 里。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;之后如需再次手工部署，只需要使用 &lt;code&gt;manual&lt;/code&gt; 参数，速度会快很多：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;python deploy.py manual
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;如果你想通过 &lt;code&gt;webhook&lt;/code&gt; 来自动部署，使用 &lt;code&gt;auto&lt;/code&gt; 参数，这样在执行 deploy.py 时，会使用 Git 自动更新你当前的 Hugo 站点目录 ，然后部署：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;python deploy.py auto
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;That&amp;rsquo;s all, 祝你好运！&lt;/p&gt;
 </description>
         </item>
         

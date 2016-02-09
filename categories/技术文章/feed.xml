@@ -6,7 +6,72 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Fri, 05 Feb 2016 23:55:45 CST</updated>
+        <updated>Tue, 09 Feb 2016 10:42:05 CST</updated>
+        
+        <item>
+            <title>我的第一台 Mac</title>
+            <link>http://blog.coderzh.com/2016/02/09/my-first-mac/</link>
+            <pubDate>Tue, 09 Feb 2016 10:42:05 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/02/09/my-first-mac/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mac.JPG-w&#34; alt=&#34;mac&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;新年第一篇，祝大家猴年大吉，心想事成，万事如意！&lt;/p&gt;
+
+&lt;p&gt;这两天在家里除了带孩子就是在摆弄新到的 MacBook Pro 了。嗯，前几天咬一咬牙，双手颤抖的点击了下单按钮，第三天就收到了。&lt;/p&gt;
+
+&lt;p&gt;当初在买 MBP 还是 iMac 之间纠结过，因为已经有一个台式机，所以确定了买 MBP。然后就是纠结买 13 吋还是 15 吋。之前我去广州新开的苹果体验店看过，15 吋的略大了点，13 吋的大小刚刚好，本来打算就买 13 吋的。直到下单前，又改变主意了，考虑便携性和性能，我更倾向于性能，于是最后一刻改成了 15 吋标准配置（16 G内存 512闪存）。购买时，我使用了教育商店购买，便宜了 1500 软妹币。我准备了堂弟的学生证，然而第二天苹果直接就给我发货了，并没有要求我出示学生证。后来听说是抽查的。&lt;/p&gt;
+
+&lt;p&gt;一直以来，除了在服务器上编译部署需要使用 Linux，我主要都是在 Windows 的平台下开发的。感觉 Windows 平台下的开发工具链其实挺完善的，写 C/C++ ，C# 有号称宇宙无敌 IDE 的 Visual Studio ，写 Python 有 PyCharm，写 Java 有 IntelliJ ，写 Android 有 Android Studio ，编辑器有 gVim 。对应的效率工具也一应俱全：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Total Commander 装机必备的神器，谁用谁知道。&lt;/li&gt;
+&lt;li&gt;Launchy 效率神器，快速启动程序。作者长时间未更新，最近换成了另外一个神器：Wox 。没用过的赶紧试试，有惊喜。&lt;/li&gt;
+&lt;li&gt;Clipx / Ditto 多重剪贴板。&lt;/li&gt;
+&lt;li&gt;Visual Studio 的 Visual Assist 插件，一个字就是爽。&lt;/li&gt;
+&lt;li&gt;Visual Studio 的 ViEmu 插件，没有 Vim 模式的 IDE 已经没法用了。&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;《必然》一书的『过滤』一章中提到，如果你只接触那些你已经喜欢的东西是有风险的，即你可能会卷入一个以自我为中心的漩涡，从而对任何与你的标准存在细微差异的事情都视而不见，即使你原本会喜欢它。这种现象被称为『过滤器泡沫』。&lt;/p&gt;
+
+&lt;p&gt;所以，我们要勇于尝试新事物。当时觉得 Ubuntu 好玩，在上面使劲折腾过，折腾了一段时间后，感觉还是不太适合作为个人的桌面系统。一直想尝试 Mac OS X，昂贵的价格又有点让人望而却步。从体验 Mac 的这几天来看，感觉付出是非常值的，MBP 的使用体验非常好，为什么我没有早一点入手呢？&lt;/p&gt;
+
+&lt;p&gt;这两天都在研究 Mac 系统怎么玩，看了很多文章，装了一些软件，学习了很多东西。学习曲线大概是这样的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;学习了神奇的触摸板的使用方法。（双指，三指，四指的手法。。。）&lt;/li&gt;
+&lt;li&gt;学习了系统常用的快捷键。&lt;/li&gt;
+&lt;li&gt;学习了在 Mac 上如何安装软件。（Mac App Store、官网下载 dmg、使用 Homebrew）&lt;/li&gt;
+&lt;li&gt;给命令行终端配上漂亮的 Solarized 皮肤，安装配置 Shell 神器：oh-my-zsh&lt;/li&gt;
+&lt;li&gt;安装包管理神器 Homebrew 和 brew cask。&lt;/li&gt;
+&lt;li&gt;安装效率神器：Alfred2。&lt;/li&gt;
+&lt;li&gt;使用 Homebrew 把系统自带的软件包升级到最新版本，比如：git、python、vim 等等。&lt;/li&gt;
+&lt;li&gt;安装和配置 Mac 下的 macvim。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;嗯，完成了以上步骤后，基本上可以开始干活了。对了，再接上 HHKB，调整开关设置，打开开关 2、3、4，启用 Mac 模式，简直完美！&lt;/p&gt;
+
+&lt;p&gt;接着，我还安装了如下的软件：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Chrome 浏览器。&lt;/li&gt;
+&lt;li&gt;Dash 查看各种文档的神器。&lt;/li&gt;
+&lt;li&gt;Mou 编辑 MarkDown 的神器。&lt;/li&gt;
+&lt;li&gt;XCode 现在还用不着，先装上。&lt;/li&gt;
+&lt;li&gt;Android Studio&lt;/li&gt;
+&lt;li&gt;ShiftIt 用来调整窗口位置和大小的神器。&lt;/li&gt;
+&lt;li&gt;WizNote 为知笔记&lt;/li&gt;
+&lt;li&gt;QQ&lt;/li&gt;
+&lt;li&gt;QQ 音乐&lt;/li&gt;
+&lt;li&gt;有道词典&lt;/li&gt;
+&lt;li&gt;迅雷&lt;/li&gt;
+&lt;li&gt;VLC 视频播放器&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Alfred2 和 oh-my-zsh 是我用了的最令人惊叹好用的工具，谁还有好用的软件推荐给我啊~~~&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>博客皮肤单独建了个仓库</title>
@@ -1503,648 +1568,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;欢迎试用，并且提出意见或建议！谢谢！&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>Go语言极速入门手册.go</title>
-            <link>http://blog.coderzh.com/2015/09/28/go-tips/</link>
-            <pubDate>Mon, 28 Sep 2015 22:43:26 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/09/28/go-tips/</guid>
-            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/golang.jpg&#34; alt=&#34;golang&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Github: &lt;a href=&#34;https://github.com/coderzh/CodeTips&#34;&gt;https://github.com/coderzh/CodeTips&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;/*
-gotips_test.go:
-  Golang速学速查速用代码手册
-
-Source: github.com/coderzh/CodeTips/blob/master/gotips_test.go
-
-Author: coderzh(github.com/coderzh)
-Blog: http://blog.coderzh.com
-参考：《Go语言编程》
-*/
-
-package main
-
-import (
-    &amp;quot;errors&amp;quot;
-    &amp;quot;fmt&amp;quot;
-    &amp;quot;github.com/stretchr/testify/assert&amp;quot;
-    &amp;quot;io&amp;quot;
-    &amp;quot;io/ioutil&amp;quot;
-    &amp;quot;log&amp;quot;
-    &amp;quot;math&amp;quot;
-    &amp;quot;os&amp;quot;
-    &amp;quot;path/filepath&amp;quot;
-    &amp;quot;regexp&amp;quot;
-    &amp;quot;strings&amp;quot;
-    &amp;quot;sync&amp;quot;
-    &amp;quot;testing&amp;quot;
-    &amp;quot;time&amp;quot;
-)
-
-// 0. 注释
-/*
-规范：
- 1. 命名：骆驼命名法（不要用下划线）
-
-命令:
- go get github.com/coderzh/xxx
- go build calc
- go run xxx.go
- go install calc
-*/
-
-// 1. Hello World
-func helloWorld() {
-    fmt.Println(&amp;quot;Hello, 世界&amp;quot;)
-}
-
-// 2.变量类型
-func typeDemo() {
-    // 变量声明
-    var v1 int
-    var (
-        v2 int
-        v3 string
-    )
-    //var p *int // 指针类型
-
-    // 变量初始化
-    var v4 int = 10
-    // 等价于:
-    var v5 = 10
-    // 一般这样就好
-    v6 := 10
-
-    // 赋值，多重赋值
-    v1 = 10
-    v2, v3 = 20, &amp;quot;test&amp;quot;
-    // 匿名变量 _
-    _, v4 = v5, v6
-
-    fmt.Println(v1, v2, v3, v4)
-
-    // 常量
-    const Pi float64 = 3.1415926
-    const MaxPlayer = 10
-
-    // 枚举
-    const (
-        Sunday = iota // iota从0递增
-        Mondy
-        Tuesday
-        // ...
-    )
-
-    // 类型
-    // 1. 布尔
-    var b1 bool
-    b1 = true
-    b1 = (1 == 2)
-
-    fmt.Println(b1)
-
-    // 2. 整形
-    // int8 uint8 int16 uint16 int32 uint32 int64 uint64 int uint uintptr
-    var i32 int32
-    // 强制转换
-    i32 = int32(64)
-    // 运算：+, -, *, /, %（求余）
-    // 比较：&amp;gt;, &amp;lt;, ==, &amp;gt;=, &amp;lt;=, !=
-    // 位运算：x &amp;lt;&amp;lt; y, x &amp;gt;&amp;gt; y, x ^ y, x &amp;amp; y, x | y, ^x （取反）
-
-    fmt.Println(i32)
-
-    // 3. 浮点
-    // float32, float64
-    var f1 float64 = 1.0001
-    var f2 float64 = 1.0002
-    // 浮点比较
-    isEqual := math.Dim(f1, f2) &amp;lt; 0.0001
-
-    fmt.Println(isEqual)
-
-    // 4. 字符串
-    var s1 string
-    s1 = &amp;quot;abc&amp;quot;
-    // 字符串连接
-    s1 = s1 + &amp;quot;ddd&amp;quot;
-    // 取长度
-    n := len(s1)
-    // 取字符
-    c1 := s1[0]
-    // 反引号，不转义，常用于正则表达式
-    s1 = `\w+`
-
-    fmt.Println(c1)
-
-    fmt.Println(strings.HasPrefix(&amp;quot;prefix&amp;quot;, &amp;quot;pre&amp;quot;)) // true
-    fmt.Println(strings.HasSuffix(&amp;quot;suffix&amp;quot;, &amp;quot;fix&amp;quot;)) // true
-
-    // 字节遍历
-    for i := 0; i &amp;lt; n; i++ {
-        ch := s1[i]
-        fmt.Println(ch)
-    }
-    // Unicode字符遍历
-    for i, ch := range s1 {
-        fmt.Println(i, ch)
-    }
-
-    // 5. 数组
-    var arr1 [32]int
-    //var arr2 [3][8]int // 二维数组
-    // 初始化
-    arr1 = [32]int{0}
-    array := [5]int{1, 2, 3, 4, 5}
-    // 临时结构体数组
-    structArray := []struct {
-        name string
-        age  int
-    }{{&amp;quot;Tim&amp;quot;, 18}, {&amp;quot;Jim&amp;quot;, 20}}
-
-    // 数组遍历
-    for i := 0; i &amp;lt; len(array); i++ {
-        fmt.Println(array[i])
-    }
-    for i, v := range structArray {
-        fmt.Println(i, v)
-    }
-    // 数组是值类型，每次参数传递都是一份拷贝
-
-    // 数组切片Slice
-    var mySlice []int = arr1[:2]
-    mySlice1 := make([]int, 5)
-    mySlice2 := make([]int, 5, 10)
-
-    fmt.Println(&amp;quot;len(mySlice2:&amp;quot;, len(mySlice2)) // 5
-    fmt.Println(&amp;quot;cap(mySlice2:&amp;quot;, cap(mySlice2)) // 10
-
-    mySlice3 := append(mySlice, 2, 3, 4)
-    mySlice4 := append(mySlice, mySlice1...)
-
-    copy(mySlice3, mySlice4)
-
-    // 6. Map
-    var m map[int]string
-    m[1] = &amp;quot;ddd&amp;quot;
-    m1 := make(map[int]string)
-    m2 := map[int]string{
-        1: &amp;quot;a&amp;quot;,
-        2: &amp;quot;b&amp;quot;,
-    }
-
-    delete(m2, 1)
-
-    value, ok := m1[1]
-    if ok {
-        fmt.Println(value)
-    }
-
-    for k, v := range m2 {
-        fmt.Println(k, v)
-    }
-
-}
-
-// 3. 流程控制
-func flowDemo() {
-    // if else
-    a := 10
-    if a &amp;lt; 10 {
-        // ..
-    } else {
-        // ..
-    }
-
-    // switch
-    switch a {
-    case 0:
-        fmt.Println(&amp;quot;0&amp;quot;)
-    case 10:
-        fmt.Println(&amp;quot;10&amp;quot;)
-    default:
-        fmt.Println(&amp;quot;default&amp;quot;)
-    }
-
-    switch {
-    case a &amp;lt; 10:
-        fmt.Println(&amp;quot;&amp;lt;10&amp;quot;)
-    case a &amp;lt; 20:
-        fmt.Println(&amp;quot;&amp;lt;20&amp;quot;)
-    }
-
-    // 循环
-    for i := 0; i &amp;lt; 10; i++ {
-    }
-    // 无限循环
-    sum := 0
-    for {
-        sum++
-        if sum &amp;gt; 10 {
-            break
-            // 指定break
-            // break JLoop
-        }
-    }
-
-    goto JLoop
-
-JLoop:
-    // break to here
-
-}
-
-// 4. 函数
-// func 函数名(参数列表)(返回值列表) {
-// }
-func sum1(value1 int, value2 int) (result int, err error) {
-    // err = errors.New(&amp;quot;xxxx&amp;quot;)
-    return value1 + value2, nil
-}
-
-func sum2(value1, value2 int) int {
-    return value1 + value2
-}
-
-// 不定参数
-// myFunc(1, 2, 3, 4, 5)
-func myFunc(args ...int) {
-    for _, arg := range args {
-        fmt.Println(arg)
-    }
-    // 传递
-    // myFunc2(args...)
-    // myFunc2(args[1:]...)
-}
-
-// 任意类型的不定参数
-func myPrintf(args ...interface{}) {
-    for _, arg := range args {
-        switch arg.(type) {
-        case int:
-            fmt.Println(arg, &amp;quot;is int&amp;quot;)
-        case string:
-            fmt.Println(arg, &amp;quot;is string&amp;quot;)
-        default:
-            fmt.Println(arg, &amp;quot;is unknown&amp;quot;)
-        }
-    }
-}
-
-// 匿名函数
-func anonymousFunc() {
-    f := func(a, b int) int {
-        return a + b
-    }
-
-    f(1, 2)
-}
-
-// defer
-func deferDemo(path string) {
-    f, err := os.Open(path)
-    if err != nil {
-        return
-    }
-
-    defer f.Close()
-    // or
-    defer func() {
-        if r := recover(); r != nil {
-            fmt.Printf(&amp;quot;Runtime error caught: %v&amp;quot;, r)
-        }
-    }()
-}
-
-// 5. 结构体
-type Rect struct {
-    // 小写为private
-    x, y float64
-    // 大写为public
-    Width, Height float64
-}
-
-// 大写方法为public，小写为private
-func (r *Rect) Area() float64 {
-    return r.Width * r.Height
-}
-
-func netRect(x, y, width, height float64) *Rect {
-    // 实例化结构体
-    // rect1 := new(Rect)
-    // rect2 := &amp;amp;Rect{}
-    // rect3 := &amp;amp;Rect{Width:100, Height:200}
-    return &amp;amp;Rect{x, y, width, height}
-}
-
-// 匿名组合
-type Base struct {
-    Name string
-}
-
-func (base *Base) Foo() {}
-func (base *Base) Bar() {}
-
-type Foo struct {
-    Base
-    *log.Logger
-}
-
-func (foo *Foo) Bar() {
-    foo.Base.Bar()
-    // ...
-}
-
-// 非侵入式接口
-type IFile interface {
-    Read(buf []byte) (n int, err error)
-    Write(buf []byte) (n int, err error)
-}
-
-type File struct {
-}
-
-func (file *File) Read(buf []byte) (n int, err error) {
-    return 0, nil
-}
-
-func (file *File) Write(buf []byte) (n int, err error) {
-    return 0, nil
-}
-
-func interfaceDemo() {
-    // 只要实现了Read, Write方法即可
-    var file IFile = new(File)
-
-    // 接口查询
-    // 是否实现了IFile接口
-    if file2, ok := file.(IFile); ok {
-        file2.Read([]byte{})
-    }
-    // 实例类型是否是File
-    if file3, ok := file.(*File); ok {
-        file3.Read([]byte{})
-    }
-
-    // 类型查询
-    switch v := file.(type) {
-    }
-}
-
-// 6. 并发编程
-func counting(ch chan int) {
-    ch &amp;lt;- 1
-    fmt.Println(&amp;quot;counting&amp;quot;)
-}
-
-func channelDemo() {
-    chs := make([]chan int, 10)
-    for i := 0; i &amp;lt; len(chs); i++ {
-        chs[i] = make(chan int)
-        // 带缓冲区大小
-        // c: = make(chan int, 1024)
-        // for i:= range c {
-        // }
-        go counting(chs[i])
-    }
-
-    for _, ch := range chs {
-        &amp;lt;-ch
-        // channel select
-        /*
-            select {
-            case &amp;lt;-ch:
-                // ...
-            case ch &amp;lt;- 1:
-            }
-        */
-    }
-
-    // 单向Channel
-    var ch1 chan&amp;lt;- int // 只能写入int
-    var ch2 &amp;lt;-chan int // 只能读出int
-
-    // 关闭Channel
-    close(ch1)
-    _, ok := &amp;lt;-ch2
-    if !ok {
-        // already closed
-    }
-}
-
-// 锁
-var m sync.Mutex
-
-func lockDemo() {
-    m.Lock()
-    // do something
-    defer m.Unlock()
-}
-
-// 全局唯一操作
-var once sync.Once
-
-// once.Do(someFunction)
-
-// 7. 网络编程
-// import &amp;quot;net&amp;quot;
-// net.Dial(&amp;quot;tcp&amp;quot;, &amp;quot;127.0.0.1:8080&amp;quot;)
-
-// 8. json处理
-// import &amp;quot;encoding/json&amp;quot;
-// json.Marshal(obj) 序列化
-// json.Unmarshal() 反序列化
-
-// 9. Web开发
-// import &amp;quot;net/http&amp;quot;
-// 模板
-// import &amp;quot;html/template&amp;quot;
-
-// 10. 常用库
-// import &amp;quot;os&amp;quot;
-// import &amp;quot;io&amp;quot;
-// import &amp;quot;flag&amp;quot;
-// import &amp;quot;strconv&amp;quot;
-// import &amp;quot;crypto/sha1&amp;quot;
-// import &amp;quot;crypto/md5&amp;quot;
-
-// 11. 单元测试
-// _test结尾的go文件： xxx_test.go
-// 函数名以Test开头
-func TestDemo(t *testing.T) {
-    r := sum2(2, 3)
-    if r != 5 {
-        t.Errorf(&amp;quot;sum2(2, 3) failed. Got %d, expect 5.&amp;quot;, r)
-    }
-
-    assert.Equal(t, 1, 1)
-}
-
-// 12. 性能测试
-func benchmarkAdd(b *testing.B) {
-    b.StopTimer()
-    // dosometing
-    b.StartTimer()
-}
-
-/*
- 其他常用的代码片段
-*/
-
-// 1. 遍历文件 filepath.Walk
-// import &amp;quot;path/filepath&amp;quot;
-func doHashWalk(dirPath string) error {
-
-    fullPath, err := filepath.Abs(dirPath)
-
-    if err != nil {
-        return err
-    }
-
-    callback := func(path string, fi os.FileInfo, err error) error {
-        return hashFile(fullPath, path, fi, err)
-    }
-
-    return filepath.Walk(fullPath, callback)
-}
-
-func hashFile(root string, path string, fi os.FileInfo, err error) error {
-    if fi.IsDir() {
-        return nil
-    }
-    rel, err := filepath.Rel(root, path)
-    if err != nil {
-        return err
-    }
-    log.Println(&amp;quot;hash rel:&amp;quot;, rel, &amp;quot;abs:&amp;quot;, path)
-    return nil
-}
-
-// 2. 读取文件
-// import &amp;quot;io/ioutil&amp;quot;
-func readFileDemo(filename string) {
-    content, err := ioutil.ReadFile(filename)
-    if err != nil {
-        //Do something
-    }
-    lines := strings.Split(string(content), &amp;quot;\n&amp;quot;)
-    fmt.Println(&amp;quot;line count:&amp;quot;, len(lines))
-}
-
-// 判断目录或文件是否存在
-func existsPathCheck(path string) (bool, error) {
-    // 判断不存在
-    if _, err := os.Stat(path); os.IsNotExist(err) {
-        // 不存在
-    }
-
-    // 判断是否存在
-    _, err := os.Stat(path)
-    if err == nil {
-        return true, nil
-    }
-    if os.IsNotExist(err) {
-        return false, nil
-    }
-    return true, err
-}
-
-// 文件目录操作
-func fileDirDemo() {
-    // 级联创建目录
-    os.MkdirAll(&amp;quot;/path/to/create&amp;quot;, 0777)
-}
-
-// 拷贝文件
-func copyFile(source string, dest string) (err error) {
-    sf, err := os.Open(source)
-    if err != nil {
-        return err
-    }
-    defer sf.Close()
-    df, err := os.Create(dest)
-    if err != nil {
-        return err
-    }
-    defer df.Close()
-    _, err = io.Copy(df, sf)
-    if err == nil {
-        si, err := os.Stat(source)
-        if err != nil {
-            err = os.Chmod(dest, si.Mode())
-        }
-
-    }
-    return
-}
-
-// 拷贝目录
-func copyDir(source string, dest string) (err error) {
-    fi, err := os.Stat(source)
-    if err != nil {
-        return err
-    }
-    if !fi.IsDir() {
-        return errors.New(source + &amp;quot; is not a directory&amp;quot;)
-    }
-    err = os.MkdirAll(dest, fi.Mode())
-    if err != nil {
-        return err
-    }
-    entries, err := ioutil.ReadDir(source)
-    for _, entry := range entries {
-        sfp := filepath.Join(source, entry.Name())
-        dfp := filepath.Join(dest, entry.Name())
-        if entry.IsDir() {
-            err = copyDir(sfp, dfp)
-            if err != nil {
-                fmt.Println(err)
-            }
-        } else {
-            err = copyFile(sfp, dfp)
-            if err != nil {
-                fmt.Println(err)
-            }
-        }
-
-    }
-    return nil
-}
-
-// 3. 时间处理
-// import &amp;quot;time&amp;quot;
-func TestTimeDemo(t *testing.T) {
-    // Parse
-    postDate, err := time.Parse(&amp;quot;2006-01-02 15:04:05&amp;quot;, &amp;quot;2015-09-30 19:19:00&amp;quot;)
-    fmt.Println(postDate, err)
-
-    // Format
-    assert.Equal(t, &amp;quot;2015/Sep/30 07:19:00&amp;quot;, postDate.Format(&amp;quot;2006/Jan/02 03:04:05&amp;quot;))
-    assert.Equal(t, &amp;quot;2015-09-30T19:19:00Z&amp;quot;, postDate.Format(time.RFC3339))
-}
-
-// 4. 正则表达式
-// import &amp;quot;regexp&amp;quot;
-func TestRegexp(t *testing.T) {
-    // 查找匹配
-    re := regexp.MustCompile(`(\d+)-(\d+)`)
-    r := re.FindAllStringSubmatch(&amp;quot;123-666&amp;quot;, -1)
-
-    assert.Equal(t, 1, len(r))
-    assert.Equal(t, &amp;quot;123&amp;quot;, r[0][1])
-    assert.Equal(t, &amp;quot;666&amp;quot;, r[0][2])
-
-}
-
-func main() {
-    helloWorld()
-}
-&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         
