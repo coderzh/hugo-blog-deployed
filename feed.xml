@@ -1,0 +1,1144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title> on CoderZh Blog</title>
+        <link>http://blog.coderzh.com/</link>
+        <language>zh-CN</language>
+        <author>CoderZh</author>
+        <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
+        <updated>Sun, 21 Feb 2016 19:05:10 CST</updated>
+        
+        <item>
+            <title>《必然》读书笔记之 - 知化Cognifying</title>
+            <link>http://blog.coderzh.com/2016/02/21/inevitable-cognifying/</link>
+            <pubDate>Sun, 21 Feb 2016 19:05:10 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/02/21/inevitable-cognifying/</guid>
+            <description>&lt;p&gt;2002 年左右，KK 参加了谷歌的一个小型聚会，当时谷歌还是一个家专注搜索的小公司。KK 问拉里·佩奇「已经有这么多家搜索公司，干嘛还要做免费网络搜索？」&lt;/p&gt;
+
+&lt;p&gt;佩奇回答说：「哦，我们其实是在做人工智能。」&lt;/p&gt;
+
+&lt;p&gt;「知化」这个词不太好理解，其实主要说的是人工智能，即让机器或物体拥有智能的过程，技术上涉及到神经网络、机器学习、大数据等领域。如果你正在从事相关领域的研究，是很有前途的方向。&lt;/p&gt;
+
+&lt;p&gt;去年公司有次请了个机器学习的专家来讲课，从头到尾我居然没有听懂他在讲什么。。当然，原因主要是在我的。毕竟机器学习这块属于专业的领域，需要有很多专业知识做背书，我之前对这块也了解甚少。&lt;/p&gt;
+
+&lt;p&gt;但我相信机器学习的大致概念其实是很好解释清楚的，即通过设计一些算法，让计算机能够进行自我学习和改进。有人会想，计算机有这么牛逼吗？还会自己学习？其实这正是一个比较容易误解的地方。并非程序员把代码写好，计算机自个儿在哪里跑就把什么都学会了。机器学习其实是需要人为训练的过程，通过人类不断的告诉机器哪些是对的哪些是错的，准备大量训练的数据，机器通过训练来自动修正已有的算法以达到最佳的效果。&lt;/p&gt;
+
+&lt;p&gt;举个栗子，文章开头提到的，谷歌创始人说谷歌其实是在做人工智能。首先，谷歌的搜索引擎有一套基于 Page Rank 的算法，能够根据关键词自动搜索出相关的网页。算法虽然很先进，但毕竟有时会出错，比如最佳的搜索结果并没有排在第一位。但用户是会自己判断哪个搜索结果对自己有用，用户会用脚投票，谷歌通过分析哪个搜索结果的点击率最高，来自动修正搜索引擎的算法，从而找出最合适的结果排在第一位。&lt;/p&gt;
+
+&lt;p&gt;人工智能目前主要应用在比如垃圾邮件检测、数字识别、语音识别、人脸识别、各种智能设备，自动驾驶等领域，人工智能是未来科技发展的「必然」。对于未来的人工智能，除了给人类带来便利之外，人类也表现出了很多担心。在「知乎」里有个著名的讨论「&lt;a href=&#34;https://www.zhihu.com/question/27864852/answer/39007053&#34;&gt;为什么有很多名人让人们警惕人工智能？&lt;/a&gt;」，答案排名第一个的谢熊猫君开头就给出了一个让人震惊的结论：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;人工智能很可能导致人类的永生或者灭绝，而这一切很可能在我们的有生之年发生。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;的确是有点危言耸听，而《必然》的作者 KK 显然是人工智能的乐观派，他相信人工智能并不能完全取代人类，而是对人类不擅长的能力的一种补充。计算机的有些能力是人类所不具备的，比如超强记忆容量，超强的计算能力，所以我们发明了硬盘和 CPU 。我们的思维方式不擅长做统计，于是我们制造出各种统计技术很强的智能设备。人类开车比如容易走神分心，于是我们研究制造自动驾驶。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;「创造聪明绝顶的人工智能是个错误，因而探究更多智能种类显得更为明智」&lt;/strong&gt; 从这句话看来，KK 这个乐观派也未必是那么的乐观。也许他是对的，开发一个聪明绝顶的全面人工智能的机器人，对于人类来说本身就是个错误，何况技术实现也非常困难。所以，只要人工智能在某一种特定的心智表现出色就好。比如自动驾驶的人工智能只会做好驾驶一件事，预测天气的人工智能只会用来预测天气。&lt;/p&gt;
+
+&lt;p&gt;假设人工智能在各个方面都逐渐取代了人类，那必然会导致大量的职业消失。就像自动化实现后，机器代替了农民以及在农场作业的动物，淘汰了当时大多数人的工作。作为程序员，想到的是以后人工智能可以根据用户的语音需求自动编写代码，大量的程序员将失业。&lt;/p&gt;
+
+&lt;p&gt;机器将取代更多人类工种，一切都是时间问题。KK 甚至放出了这样的话：&lt;/p&gt;
+
+&lt;p&gt;「或许很难令人相信，但在本世纪结束前，如今人们从事的职业中有 70% 很可能会被自动化设备取代。不用说，亲爱的读者，你的工作也会被机器取代。广泛的自动化将会触及包括体力劳动和知识型工作在内的所有工种。」&lt;/p&gt;
+
+&lt;p&gt;「无论你是一名医生、律师、建筑师、记者甚至程序员，机器人都将历史性地接管你的工作。」&lt;/p&gt;
+
+&lt;p&gt;所以，不要再以为你的职业一定可以干一辈子，也不要以为在大公司上班就一定可以工作到退休，也许某天你所从事的这个职业本身就消失了。你的搬砖技术练的再好，已经没有任何公司需要人搬砖了。&lt;/p&gt;
+
+&lt;p&gt;那么，人类做什么？会有更多新的职业产生出来。未来自动驾驶的汽车随处可见，而相应的会衍生出一个新的名为行程优化师的新工作。当外科自动化机器人成为常规后，会出现一种新的专业分析师，为你解读数据。（未来代码都由机器来自动编写，测试，部署上线，服务器坏了有机器人自动维修。我想不出会出现什么新的职业，也许程序员会变成一个更高端的职业，主要设计和优化机器人使用的编程语言，开发用来生成代码的代码。）&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;「几乎人人都能得到个人机器人，但是仅仅拥有一个机器人并不是成功的关键。成功将青睐那些以最优化的方式与机器人以及机器一同工作的人。」&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;「人类的工作就是不停地给机器人安排任务，这本身就是一项永远做不完的工作，所以，我们至少还能保留这份『工作』。」&lt;/p&gt;
+
+&lt;p&gt;「将来，无论你现在从事什么工作，收入水平如何，都讲反复经历机器人代替人的以下 7 个步骤：」&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;机器人干不了我的工作。&lt;/li&gt;
+&lt;li&gt;好吧，它会许多事情，但是我做的事情它不一定都会。&lt;/li&gt;
+&lt;li&gt;好吧，我做的事情它都会，但是它常常出故障，这时需要我来处理。&lt;/li&gt;
+&lt;li&gt;好吧，它干常规工作时从不出错，但是我需要训练它学习新任务。&lt;/li&gt;
+&lt;li&gt;好吧，就让它做我原来的工作吧，那工作本来就不是人该干的。&lt;/li&gt;
+&lt;li&gt;哇，机器人正在干我以前做的工作，我的新工作不仅好玩多了，工资还高。&lt;/li&gt;
+&lt;li&gt;真高兴，机器人绝对干不了我现在做的事情。&lt;/li&gt;
+&lt;li&gt;【重复】&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;「未来，你的薪水高低将取决于你能否和机器人默契配合。90% 的同事将会是看不见的机器，而没有他们，你的大部分工作将无法完成。这一切都是必然的。让机器人代替我们从事现在的工作，让我们在它们的帮助下去构想有意义的新工作吧。」&lt;/p&gt;
+
+&lt;p&gt;在未来，使用编程语言手敲代码可能会被视为一种复古行为。趁着现在这个到处就差一个程序员的时代，多敲几行代码，说不定就改变世界了呢？&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>我的第一台 Mac</title>
+            <link>http://blog.coderzh.com/2016/02/09/my-first-mac/</link>
+            <pubDate>Tue, 09 Feb 2016 10:42:05 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/02/09/my-first-mac/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mac.JPG-w&#34; alt=&#34;mac&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;新年第一篇，祝大家猴年大吉，心想事成，万事如意！&lt;/p&gt;
+
+&lt;p&gt;这两天在家里除了带孩子就是在摆弄新到的 MacBook Pro 了。嗯，前几天咬一咬牙，双手颤抖的点击了下单按钮，第三天就收到了。&lt;/p&gt;
+
+&lt;p&gt;当初在买 MBP 还是 iMac 之间纠结过，因为已经有一个台式机，所以确定了买 MBP。然后就是纠结买 13 吋还是 15 吋。之前我去广州新开的苹果体验店看过，15 吋的略大了点，13 吋的大小刚刚好，本来打算就买 13 吋的。直到下单前，又改变主意了，考虑便携性和性能，我更倾向于性能，于是最后一刻改成了 15 吋标准配置（16 G内存 512闪存）。购买时，我使用了教育商店购买，便宜了 1500 软妹币。我准备了堂弟的学生证，然而第二天苹果直接就给我发货了，并没有要求我出示学生证。后来听说是抽查的。&lt;/p&gt;
+
+&lt;p&gt;平常我大都是在 Windows 的平台下开发的，有时用一用 Linux。感觉 Windows 平台下的开发工具链其实挺完善的，写 C/C++ ，C# 有号称宇宙无敌 IDE 的 Visual Studio ，写 Python 有 PyCharm，写 Java 有 IntelliJ ，写 Android 有 Android Studio ，编辑器有 gVim 。对应的效率工具也一应俱全：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Total Commander 装机必备的神器，谁用谁知道。&lt;/li&gt;
+&lt;li&gt;Launchy 效率神器，快速启动程序。作者长时间未更新，最近换成了另外一个神器：Wox 。没用过的赶紧试试，有惊喜。&lt;/li&gt;
+&lt;li&gt;Clipx / Ditto 多重剪贴板。&lt;/li&gt;
+&lt;li&gt;cmder 终端模拟器，好用到爆，从此告别系统自带的命令行窗口。&lt;/li&gt;
+&lt;li&gt;Visual Studio 的 Visual Assist 插件，一个字就是爽。&lt;/li&gt;
+&lt;li&gt;Visual Studio 的 ViEmu 插件，没有 Vim 模式的 IDE 已经没法用了。&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;《必然》一书的『过滤』一章中提到，如果你只接触那些你已经喜欢的东西是有风险的，即你可能会卷入一个以自我为中心的漩涡，从而对任何与你的标准存在细微差异的事情都视而不见，即使你原本会喜欢它。这种现象被称为『过滤器泡沫』。&lt;/p&gt;
+
+&lt;p&gt;所以，我们要勇于尝试新事物。当时觉得 Ubuntu 好玩，在上面使劲折腾过，折腾了一段时间后，感觉还是不太适合作为个人的桌面系统。一直想尝试 Mac OS X，昂贵的价格又有点让人望而却步。从体验 Mac 的这几天来看，感觉付出是非常值的，从设计美感到使用体验都非常好，为什么我没有早一点入手呢？&lt;/p&gt;
+
+&lt;p&gt;这两天都在研究 Mac 系统怎么玩，看了很多文章，装了一些软件，学习了很多东西。学习曲线大概是这样的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;学习了神奇的触摸板的使用方法。（双指，三指，四指的手法。。。）&lt;/li&gt;
+&lt;li&gt;学习了系统常用的快捷键。&lt;/li&gt;
+&lt;li&gt;学习了在 Mac 上如何安装软件。（Mac App Store、官网下载 dmg、使用 Homebrew）&lt;/li&gt;
+&lt;li&gt;给命令行终端配上漂亮的 Solarized 皮肤，安装配置 Shell 神器：oh-my-zsh&lt;/li&gt;
+&lt;li&gt;安装包管理神器 Homebrew 和 brew cask。&lt;/li&gt;
+&lt;li&gt;安装效率神器：Alfred2。&lt;/li&gt;
+&lt;li&gt;使用 Homebrew 把系统自带的软件包升级到最新版本，比如：git、python、vim 等等。&lt;/li&gt;
+&lt;li&gt;安装和配置 Mac 下的 macvim。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;嗯，完成了以上步骤后，基本上可以开始干活了。对了，再接上 HHKB，调整开关设置，打开开关 2、3、4，启用 Mac 模式，简直完美！&lt;/p&gt;
+
+&lt;p&gt;接着，我还安装了如下的软件：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Chrome 浏览器。&lt;/li&gt;
+&lt;li&gt;Dash 查看各种文档的神器。&lt;/li&gt;
+&lt;li&gt;Mou 编辑 MarkDown 的神器。&lt;/li&gt;
+&lt;li&gt;XCode 现在还用不着，先装上。&lt;/li&gt;
+&lt;li&gt;Android Studio&lt;/li&gt;
+&lt;li&gt;ShiftIt 用来调整窗口位置和大小的神器。&lt;/li&gt;
+&lt;li&gt;WizNote 为知笔记&lt;/li&gt;
+&lt;li&gt;QQ&lt;/li&gt;
+&lt;li&gt;微信&lt;/li&gt;
+&lt;li&gt;QQ 音乐&lt;/li&gt;
+&lt;li&gt;有道词典&lt;/li&gt;
+&lt;li&gt;迅雷&lt;/li&gt;
+&lt;li&gt;VLC 视频播放器&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Alfred2 和 oh-my-zsh 是我用了的最令人惊叹好用的工具，谁还有好用的软件推荐给我啊~~~&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>博客皮肤单独建了个仓库</title>
+            <link>http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</link>
+            <pubDate>Fri, 05 Feb 2016 23:55:45 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</guid>
+            <description>
+
+&lt;p&gt;有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/issues/1&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/issues/1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;的确，早就应该这么做了。趁着放春节假期了，把这个撸了一遍，单独的皮肤仓库叫：&lt;code&gt;hugo-rapid-theme&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;只是将它从原博客中抽离出来，还有很大优化的空间，需要的同学先用着吧。&lt;/p&gt;
+
+&lt;p&gt;地址：&lt;a href=&#34;https://github.com/coderzh/hugo-rapid-theme&#34;&gt;https://github.com/coderzh/hugo-rapid-theme&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;说明文档:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;说明文档&lt;/h2&gt;
+
+&lt;p&gt;以下是 hugo-rapid-theme 的 README 文档：&lt;/p&gt;
+
+&lt;p&gt;Demo: &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step1-install-hugo:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step1 Install Hugo&lt;/h3&gt;
+
+&lt;p&gt;Set &lt;a href=&#34;http://www.gohugo.org/doc/overview/installing/&#34;&gt;Hugo Install&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step2-create-your-site:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step2 Create your site&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new site your-blog-name
+cd your-blog-name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step3-clone-the-theme-repo:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step3 Clone the theme repo&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
+# replace config file
+rm config.toml
+cp themes/hugo-rapid-theme/config.yaml .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step4-start-your-site:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step4 Start your site&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;# new content
+hugo new about.md
+# start server
+hugo server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;step5-have-fun:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step5 Have Fun&lt;/h3&gt;
+
+&lt;p&gt;Now you can open &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Modify the config.yaml and other things, and have fun!&lt;/p&gt;
+
+&lt;p&gt;You can also make this repo as submodule:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>追求简单和纯粹，我去掉了博客的评论功能</title>
+            <link>http://blog.coderzh.com/2016/02/01/close-comments/</link>
+            <pubDate>Mon, 01 Feb 2016 23:35:19 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/02/01/close-comments/</guid>
+            <description>&lt;p&gt;一直以来，我们都习惯了有评论功能的博客系统，甚至大多数的博客系统还拿评论数来计算分数，作为你的文章热度的一个指标。&lt;/p&gt;
+
+&lt;p&gt;曾经我也一度以为评论功能很重要，有时还会去期待有人评论。然而从结果来看，几乎大部分的评论都毫无价值。最近还受到了垃圾评论的骚扰，既浪费了我的时间不停的去删除，也影响了阅读者的体验。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;真心想和你交流的人，会想尽一切方法找到你。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;所以，不必担心收不到有用的用户反馈。而且，那么大一个微信二维码放在那里，只要扫一扫关注一下，就可以给我发消息，当然，找到我的邮箱地址也是很容易的事情。&lt;/p&gt;
+
+&lt;p&gt;为了追求最佳的阅读体验，追求一个博客的简单和纯粹，我去掉了博客的评论系统。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>张小龙悟透《失控》做出了微信，我们看过了《必然》能做什么？</title>
+            <link>http://blog.coderzh.com/2016/01/31/inevitable/</link>
+            <pubDate>Sun, 31 Jan 2016 12:22:25 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/31/inevitable/</guid>
+            <description>&lt;p&gt;凯文凯利在 20 多年前在《失控》一书中预言了人类的未来的科技、社会和经济，现今的万维网、博客、维基百科、无人驾驶、电子货币、去中心化等等，都在上个世纪 90 年代被 KK 成功预言，而他在写《失控》一书时，还没有万维网，因特网才刚刚进入实用阶段。&lt;/p&gt;
+
+&lt;p&gt;微信之父张小龙很早前就读过了《失控》，在他最近被爆出来的饭否日记中，他这么写到：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;再问有多少人看了失控，无人。我顿时将自己想象为KK而口若悬河了。&lt;/p&gt;
+
+&lt;p&gt;2011-01-13 17:42 by gzallen&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;张小龙非常推崇《失控》中提到的 &lt;strong&gt;去中心化&lt;/strong&gt; 的思想，这点在微信公众号和朋友圈都有体现。比如并没有一个中心化的公众号列表入口，展示最新最热的公众号文章。每个公众号主只与关注者互相连接，用户与用户之间互相连接，好的内容可以在用户之间以几何倍数的传播。又比如前几天的朋友圈红包照片功能，瞬间引爆了朋友圈。&lt;/p&gt;
+
+&lt;p&gt;《失控》这本书很厚，而且里面的内容需要花大量的时间去理解和琢磨。本文的标题纯粹是为了吸引眼球，因为并不能得出这样的结论：悟透了《失控》就一定能做出像微信这样牛逼的产品。更加现实的是，即使看过了《必然》，我们大多数人什么也做不出来。&lt;/p&gt;
+
+&lt;p&gt;但是看这两本书，有助于你了解人类未来的科技趋势。正如罗振宇所说的：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;这个时代最悲哀的事情，就是——&lt;/p&gt;
+
+&lt;p&gt;你努力，但你不在风口上，&lt;/p&gt;
+
+&lt;p&gt;你聪明，但你不在潮流中。&lt;/p&gt;
+
+&lt;p&gt;知道趋势，意味着已经胜利在望。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;《失控》中预言的很多科技虽然现在已经发生，而在某些领域，比如人工生命、机器人技术、生态学、仿真学等领域，并没有出现新的重大思想。正如他在《必然》中的 &lt;strong&gt;形成(Becomming)&lt;/strong&gt; 中提到的：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;未来的大部分运转人类生活的伟大产品，在 2016 年以前，都还没被发明出来。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我们目睹了从 PC 时代到互联网时代，再到现在的移动互联网时代的转变过程。我们正处于形成的过程中，所以我们感觉不到变化。你今天后悔当初为什么没有和张小龙想到一块去。再过几年十几年，你同样也会感叹，我要是在当时就意识到有那么多可能性该多好啊！&lt;/p&gt;
+
+&lt;p&gt;设想未来你的孙子问你，「爷爷，为什么你年轻的时候马桶还不会说话，裤子还需要手来脱，打字还需要键盘，甚至显示屏幕还要放一个笨重的显示器，你居然还在桌子上放两个？！你当时没想到需要做点什么吗？」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;所以，不要再感叹强大的 BAT 已经垄断市场，未来更大的机会正在发生甚至还未被挖掘，把握最佳的时机，就是现在！&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;有时候我们察觉不到变化，有时候其实是因为并不认可这样的变化，当变化已经形成时却又追悔莫及。所以，我们需要抛弃成见，拥抱变化。&lt;strong&gt;看准方向，找对风口，努力去飞&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;有句话叫：风口上的猪也会飞。其实我并不认可这句话。说现实一点，想让猪飞起来，那得是多大的风啊！真有这样一个好的风口，聪明的人早已经把猪赶到不知道哪里去了，还有猪什么事。真正厉害的不是猪，而是扇风的人。有一句话说的好，「为了这些猪，我没少扇多少风。」&lt;/p&gt;
+
+&lt;p&gt;所以，我对于 &lt;strong&gt;形成&lt;/strong&gt; 的理解是，深刻理解形成的本质，抓住最好的时机，付出持续的努力，遇到反对时能够坚定，遇到挫折时能够总结，跌倒时想着爬起来怎样继续前进。有一天你也许功成名就，也许一事无成。但这有什么关系呢，放眼到整个人类社会，&lt;strong&gt;形成&lt;/strong&gt; 的趋势并不因你而左右，你会感激形成的过程中创造出来的种种机会。&lt;/p&gt;
+
+&lt;p&gt;《必然》这本书一共有 12 个关键词，每个关键词都需要深入的思考。我也感觉到一篇苍白无力的读后感是无法总结这本有深度的书，所以一篇文章聊其中一个关键词已经足够。下次我们再来聊聊下个关键词「&lt;strong&gt;知化(Cognifying)&lt;/strong&gt;」&lt;/p&gt;
+
+&lt;p&gt;附录：&lt;/p&gt;
+
+&lt;p&gt;《必然》十二个关键词：形成、知化、流动、屏读、使用、共享、过滤、重混、互动、追踪、提问、开始。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>我和 ThoughtWorks 的一点小故事</title>
+            <link>http://blog.coderzh.com/2016/01/18/thoughtworks-story/</link>
+            <pubDate>Mon, 18 Jan 2016 23:05:24 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/18/thoughtworks-story/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/TW.jpg-wt&#34; alt=&#34;TW&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2009 年的时候买了一本《卓有成效的程序员》，看的热血沸腾，当时还写了一篇读后感《&lt;a href=&#34;http://blog.coderzh.com/2009/07/18/1526082/&#34;&gt;程序员的共鸣 - 读《卓有成效的程序员》&lt;/a&gt;》，现在翻来看还觉得蛮有意思的。从此后，开始用 Launchy ， ClipX 等提高效率的工具，也开始接触代码编辑器神器 Emacs 和 Vim 。当时年少无知先学了 Emacs ，还全程用 Emacs 开发过一个小项目。后来实在是小指按 ctrl 键按到桑爽的不行了，才发现 Vim 是多么和谐的存在。&lt;/p&gt;
+
+&lt;p&gt;这本书是由 &lt;a href=&#34;https://www.thoughtworks.com/&#34;&gt;ThoughtWorks&lt;/a&gt; 中国公司翻译的，再加上当时用的持续集成工具 CCNet 就是 ThoughtWorks 开发的，瞬间觉得这个公司好牛逼。 更加牛逼的是，世界顶级的 OO 专家，敏捷开发创始人之一的 &lt;a href=&#34;http://www.martinfowler.com&#34;&gt;Martin Fowler&lt;/a&gt; 大牛就在 ThoughtWorks 担任首席科学家。&lt;/p&gt;
+
+&lt;p&gt;当时对持续集成，敏捷开发还挺感兴趣，在博客里写了点东西，还特意关注了几个 ThoughtWorks 员工的博客。没事还在博客里留了几次言，突然有一天博客园的短消息里来了这么一条消息：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;标题：如果你真的对coding有如此的热情&lt;/p&gt;
+
+&lt;p&gt;可曾想过来ThoughtWorks?&lt;/p&gt;
+
+&lt;p&gt;我看到你在我Blog上的留言了。如果你对代码如此热情，如果你喜欢体会作为程序员更多的可能，可曾想过来ThoughtWorks? 有兴趣的话请与我联系。作为前3年在各种类型的软件公司混过，后4年一直很enjoy的公司，看到你的Blog, 也许，这里是适合你的地方。&lt;/p&gt;
+
+&lt;p&gt;陈金洲&lt;/p&gt;
+
+&lt;p&gt;PS. 为了能联系到你，专门注册了博客园的账号&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;当时的我工作快 3 年，正处于年少轻狂，自信爆棚，感觉啥都能干就缺一个机会的时代。把《设计模式》来回翻了几遍后，就和 Michael Chen 联系面试了。直到很多年后，我才听说， ThoughtWorks 被人称为“最难面试的 IT 公司”。首先说结论，最后我并没有去 ThoughtWorks 。具体情况见下文。&lt;/p&gt;
+
+&lt;p&gt;第一面是 HR 的&lt;strong&gt;英文电话面试&lt;/strong&gt;，我英语也就四级的水平，听和看还行，但平时口语完全没机会训练。我在家设想了 HR 大概会问的几个问题，简单写了写，列了几个关键字就去了。当然，我还是很紧张，平时我就不太擅长电话里和别人沟通，而且还是要用英文，而且还是面试。 HR 的每个问题我还是听的很清楚的，我也就硬撑着把该说的说了。现在记得 HR 问了类似这样的问题：你的同事都是怎么评价你的？你平时遇到过什么难题又是如何解决的。我当时心里想着，当然要说一些同事夸奖我的话了，技术牛逼，喜欢分享，乐于助人之类的。也没遇到什么特别的难题啊，怎么编呢，一时又乱了方寸。&lt;/p&gt;
+
+&lt;p&gt;第一轮电话面试后，我感觉糟透了，感觉没戏了。等了几周也未见回复，感觉就这样被淘汰了，不甘心就发邮件问了 HR 是不是被 out 了 ，HR 回复说还并没有结果让我再等等，又让我感觉到了一丝的希望。&lt;/p&gt;
+
+&lt;p&gt;不久后，收到了邮件进入下一轮面试：&lt;strong&gt;Home Work&lt;/strong&gt; 。给了几道题，让选其中一道，在家写代码，写好后发给他们。我觉得这个环节不错，不像现场面试需要在高度压力的情况下用笔在纸上写代码。Home Work 是你自己在家做的，是在很自然放松的情况下，可以 google ，可以参考任何别人代码的情况下写的你的代码，是最接近真实工作时的状况。&lt;/p&gt;
+
+&lt;p&gt;一共有三个可选题目：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;PROBLEM ONE:  TRAINS&lt;/li&gt;
+&lt;li&gt;PROBLEM TWO: SALES TAXES&lt;/li&gt;
+&lt;li&gt;PROBLEM THREE: MARS ROVERS&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;我选了题目意思是我最容易看懂的 MARS ROVERS （火星漫游者）。&lt;/strong&gt;大意是给定火星探测机器人的一个坐标位置，然后给它发送一系列的指令，比如左转、右转、前进，最后输出他的目标点的坐标和朝向。&lt;/p&gt;
+
+&lt;p&gt;我当时是这么想的，这题的算法很简单， ThoughtWorks 考察的肯定不是我能不能实现需求这么简单，而是考察我面向对象设计的能力，以及抽象的能力，能否把代码写的足够优雅，同时又具备很好的未来扩展性。而测试驱动开发作为敏捷开发的一个重要理念，我的 Home Work 里至少是需要包含测试代码的。虽然他们并不知道我是先写的代码还是先写的测试，嗯，我还是尝试先写测试代码，至少它的文件创建日期比功能代码会早一些，哈哈。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;这题肯定要用一些设计模式，但是又要避免过度设计。&lt;/strong&gt;于是我把最有可能关联的几个模式套了进去：工厂模式，状态模式，好像还有命令模式。把类分的很清晰，每个函数也很短，命名也是反复琢磨，最后还配上了单元测试案例。最后，把感觉非常完美的一份代码提交了上去。&lt;/p&gt;
+
+&lt;p&gt;然后又等了漫长的几周，通知进入下一轮面试：&lt;strong&gt;电话技术面试&lt;/strong&gt;。面试我的就是 Michael Chen 。前面主要聊我现在的工作，做了一些什么项目，用了一些什么技术，问的很细，聊的挺愉快。聊完项目后，Michael Chen 提示我进入纯粹的答题环节，问了我一些设计模式相关的问题。&lt;/p&gt;
+
+&lt;p&gt;这次电话技术面试聊完后，我感觉有戏，感觉 ThoughtWorks 正在向我招手。这是我理想中的，非常舒服的面试。但是我当时真的准备好了吗？真的准备好了从珠海赶赴西安或者北京去上班吗？我当时觉得地点无所谓，其实是没有太想清楚的。&lt;/p&gt;
+
+&lt;p&gt;又是漫长的等待，&lt;strong&gt;心里面想着下一轮应该是飞到西安去和 ThoughtWorks 的工程师一起 Pair 结对编程了&lt;/strong&gt;。但等了好几周依然没有消息，我也开始考虑真的要去西安工作吗？我能适应那种经常出差的工作的？我以后真的要走咨询师的路线吗？我想了很久，最后某天 HR 突然来了一个电话，说&lt;strong&gt;前面面试的都很不错，但是英语方面还想和我再确认一次，要加一轮电话英语面试&lt;/strong&gt;。听完后，我感觉很不好，辛苦面试了这么久，又让我苦苦等待了这么久，最后又回到了第一轮的英语面试。我当时有点情绪，所以在加试的电话面试里表现的比第一次还差。&lt;/p&gt;
+
+&lt;p&gt;HR 最后和我说，可能是毕业工作后英语口语用太少了，再复习多练习练习是可以的。&lt;strong&gt;建议我再花一个月的时间复习和练习一下英语口语，然后再来面试&lt;/strong&gt;。我当时已经有情绪了，这个面试折腾了 1 个多月，有点心累了。所以，后面我给 HR 发邮件说我不来了。&lt;/p&gt;
+
+&lt;p&gt;直到最近，我才发现在 ThoughtWorks 的面试者中，被要求回去学习一段时间再回来面试的人大有人在，而且很多人最后都成功入职了。也许当时的我处理的是有点草率了。但命运这种东西谁知道呢，&lt;strong&gt;当时的一个决定对未来有什么影响，谁也说不清。我们还是要感恩现在的自己，以及之前做过的所有正确的和不正确的决定，是它们成就了现在的你。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这篇聊 ThoughtWorks 是因为&lt;a href=&#34;http://blog.coderzh.com/2016/01/16/coding-style-share/&#34;&gt;上篇文章&lt;/a&gt;提到的，认识了 ThoughtWorks 的前员工 &lt;a href=&#34;http://seabornlee.cn&#34;&gt;Seaborn Lee&lt;/a&gt; （小波） ，又让我想到了之前的面试经历。于是就和 Seaborn Lee 八卦了一下当年面试我的 Michael Chen 到底是怎样的一个存在。&lt;/p&gt;
+
+&lt;p&gt;小波说了五个字：“&lt;strong&gt;他也是传奇&lt;/strong&gt;”，然后是这样描述的 ：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;一是技术牛&lt;/p&gt;
+
+&lt;p&gt;二是立志做产品&lt;/p&gt;
+
+&lt;p&gt;承诺三年不调薪&lt;/p&gt;
+
+&lt;p&gt;做了几款产品&lt;/p&gt;
+
+&lt;p&gt;金数据成了被收购&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;瞬间让我佩服的五体投地。我从很多 ThoughtWorks 员工那了解到，不管是离职的还是在职的，他们对 ThoughtWorks 公司都是满口的称赞，对公司的认可度非常非常的高，说明这真是一家不错的公司呢。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>谁也挡不住程序员在微信群里玩起了直播分享</title>
+            <link>http://blog.coderzh.com/2016/01/16/coding-style-share/</link>
+            <pubDate>Sat, 16 Jan 2016 17:19:20 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/16/coding-style-share/</guid>
+            <description>&lt;p&gt;上次写了一篇《&lt;a href=&#34;http://blog.coderzh.com/2015/12/27/code-review/&#34;&gt;大家都应该做的 Code Review&lt;/a&gt;》，在公众号里有位朋友留言：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/comments.jpg&#34; alt=&#34;comment&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;开始的感觉是，哦，又一个在留言里推广自己网站的家伙。但在好奇心驱使下，我打开了这个 &lt;a href=&#34;http://codingstyle.cn&#34;&gt;Codingstyle.cn&lt;/a&gt; 的网站。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/coding-style.jpg&#34; alt=&#34;coding-style&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;界面挺简洁大方的，但好像在哪里见过，哦，原来是 Fork 的 &lt;a href=&#34;https://ruby-china.org/&#34;&gt;Ruby China&lt;/a&gt;。浏览了一些帖子，发现这是一个刚做不久的程序员社区，讨论的主要是敏捷、重构、编程实践、程序人生之类的话题，这位朋友还算比较用心，运营一个程序员社区实属不易，于是我就找了之前的两篇文章贴了过去。&lt;/p&gt;
+
+&lt;p&gt;很快，Seaborn Lee 加了我的微信，并且把我拉到了一个只有 10 几人的“匠艺社区种子用户”的微信群里。然后我发现，群里的其他人都是一些高产博主，Seaborn Lee 正在通过微信群的方式培养自己的种子用户。&lt;/p&gt;
+
+&lt;p&gt;匠艺社区小组每周都组织一次微信分享， Seaborn Lee 问我是否愿意分享一些东西。我婉言拒绝了，对于在微信群里进行语音分享这种事情，我还没经历过，也没有经验，&lt;strong&gt;我更多的是好奇，他们是怎样进行微信群语音分享的？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;经历了两次匠艺社区分享，着实让我吃了一惊。首先，分享并不是在“匠艺社区种子用户”微信群进行的，而是在另一个单独的叫“软件匠艺小组分享”的微信群，到目前为止，这个群已经有 459 个用户，而且全部都是程序员！&lt;/p&gt;
+
+&lt;p&gt;他们一共分享过三期：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/56&#34;&gt;微信群分享第一期 微服务 by 许晓斌&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/77&#34;&gt;微信群分享第二期 正交设计 by 刘光聪&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/81&#34;&gt;微信群分享第三期 TDD 的本质不是 TDD by 丁辉&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;我是从第二期开始参加的，一开始我非常好奇，他们是怎样在那么多人的微信群里进行直播分享的。最后发现其实方法非常简单直接，就是：&lt;strong&gt;发语音，截图，打字&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/coding-style-share.jpg&#34; alt=&#34;coding-style-share&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;分享定在每周三晚上 8:30 到 9:30 ，首先会自愿报名选出一个主持人，负责整场分享的进度把控。分享者的内容是一篇文章，会先在群里发出来，然后分享者开始发语音分享，过程中会穿插打字和截图。分享完后，进行话题讨论，最后贴出分享者的二维码，大家自愿打赏。&lt;/p&gt;
+
+&lt;p&gt;分享群的人数增加很快，程序员们闻风而来，很快就逼近了 500 人上限。可以确定的是，群里都是一些爱学习的程序员，不然谁晚上吃饱了不回去抱老婆还在微信群里听你的语音分享。我还发现一个有趣的现象，群里每个人进群时都加了 Seaborn Lee 好友。这就是 Growth Hack 啊！&lt;/p&gt;
+
+&lt;p&gt;前不久我参加了一个培训，老师让我们所有人把微信打开，查看一下自己有多少个好友。我打开一看，发现有 100 多个，其他同事多的有3，4百个。老师说，她的微信里有 1000 多个好友，并不是随便摇一摇加的好友，都是有一定相关性的好友。她给每个好友都加了标签，遇到问题时在朋友圈一发，立马就有相关的人跳出来帮忙。这就是人脉的力量。&lt;/p&gt;
+
+&lt;p&gt;同样，我也很感叹 Seaborn Lee 的做法，在微信群里组织分享，吸引大量爱学习的程序员过来并加为好友，这些人简直就是程序员社区的精准目标用户啊！于是我对 Seaborn Lee 本人的经历产生了兴趣，原来他之前就职于 &lt;a href=&#34;https://www.thoughtworks.com/&#34;&gt;ThoughtWorks&lt;/a&gt; ，目前于创业公司「深圳湾」任 CTO 。在他的博客里的 &lt;a href=&#34;http://seabornlee.cn/isaid.md&#34;&gt;时间线&lt;/a&gt; 一栏更是了解到他从出生、上学到工作一路走来的坎坷经历。了解了这些后， Seaborn Lee 的形象更加鲜活起来了：好学、上进、有活力、爱分享、组织各种社区活动。&lt;/p&gt;
+
+&lt;p&gt;虽然微信里不能很好的支持视频直播，但谁也挡不住爱分享的程序员在微信群里玩起了语音直播。如果你也有兴趣，加我的微信公众号：hacker-thinking ，并发送“爱学习，爱分享”，我将加你为好友并把你加到刚才提到的“软件匠艺小组分享”群，一起学习进步。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>被脱裤也不怕 - 反馈总结</title>
+            <link>http://blog.coderzh.com/2016/01/13/password-security-additional/</link>
+            <pubDate>Wed, 13 Jan 2016 19:06:42 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/13/password-security-additional/</guid>
+            <description>
+
+&lt;p&gt;在发出前两篇安全相关的文章（&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt; ，&lt;a href=&#34;http://blog.coderzh.com/2016/01/10/a-password-security-design-example/&#34;&gt;即使被拖库，也可以保证密码不泄露&lt;/a&gt;）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。&lt;/p&gt;
+
+&lt;p&gt;正如张小龙说的，“我所说的一切都是错的”。&lt;/p&gt;
+
+&lt;p&gt;所以，我更希望大家从辩证的角度去看待前两篇文章，然后结合自身项目的情况去做相应的设计。同时，我收到不少有价值的反馈，我觉得有必要将这些反馈整理一下，给大家一些参考，也算是对前面文章的补充。&lt;/p&gt;
+
+&lt;p&gt;上篇文章没有提到 &lt;a href=&#34;https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE&#34;&gt;HTTPS&lt;/a&gt;（SSL/TLS），是我疏漏了。作为一个安全的系统，在保证传输安全时强烈建议直接上 HTTPS（SSL/TLS）。文章中使用 &lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt; 交换密钥传输的过程其实和 HTTPS（SSL/TLS）是类似的，只不过 HTTPS（SSL/TLS）实现的要完善太多。&lt;/p&gt;
+
+&lt;p&gt;正如一位朋友反馈所说：“14年的时候 openssl 爆出过一个名为 &lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%BF%83%E8%84%8F%E5%87%BA%E8%A1%80%E6%BC%8F%E6%B4%9E&#34;&gt;Heartbleed&lt;/a&gt; 的漏洞，可见良好的算法不一定被良好的实现，所以从开发者的角度还是不要觉得存在绝对安全的算法比较好。” 所以可以认为我的方案是在 HTTPS（SSL/TLS）基础上再一层加固，当然，如果你认为这一层加固没必要也可以去掉。&lt;/p&gt;
+
+&lt;p&gt;另一方面，目前大量网站还在使用 HTTP ，很多游戏设计时也并未使用 TLS ，所以，我上篇文章使用的方法还是有一定的意义的。&lt;/p&gt;
+
+&lt;h3 id=&#34;反馈汇总:1114219843eb3806f45029c8d223a620&#34;&gt;反馈汇总&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：非常同意！&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：理论上是足够了，而且推荐使用。 如果你的项目安全级别非常高，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：同意，确实不是很必要。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 &lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt;，并没有重新发明什么。文章&lt;strong&gt;重点是对密码的两次加盐哈希以及密码的验证方式&lt;/strong&gt;。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;好了，我所说的也都是错的。欢迎继续交流。&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>即使被拖库，也可以保证密码不泄露</title>
+            <link>http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</link>
+            <pubDate>Sun, 10 Jan 2016 23:06:42 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</guid>
+            <description>
+
+&lt;p&gt;在前一篇文章《&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt;》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。&lt;/p&gt;
+
+&lt;p&gt;首先，我们明确一下安全加密方案的终极目标：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;即使在数据被拖库，代码被泄露，请求被劫持的情况下，也能保障用户的密码不被泄露。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;说具体一些，我们理想中的绝对安全的系统大概是这样的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;首先保障数据很难被拖库。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者也无法从中破解出用户的密码。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者也无法伪造登录请求通过验证。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者劫持了用户的请求数据，也无法破解出用户的密码。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如何保障数据不被拖库，这里就不展开讲了。首先我们来说说密码加密。现在应该很少系统会直接保存用户的密码了吧，至少也是会计算密码的 md5 后保存。md5 这种不可逆的加密方法理论上已经很安全了，但是随着彩虹表的出现，使得大量长度不够的密码可以直接从彩虹表里反推出来。&lt;/p&gt;
+
+&lt;p&gt;所以，只对密码进行 md5 加密是肯定不够的。聪明的程序员想出了个办法，即使用户的密码很短，只要我在他的短密码后面加上一段很长的字符，再计算 md5 ，那反推出原始密码就变得非常困难了。加上的这段长字符，我们称为盐（Salt），通过这种方式加密的结果，我们称为 &lt;code&gt;加盐 Hash&lt;/code&gt; 。比如：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/salt.png&#34; alt=&#34;salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上一篇我们讲过，常用的哈希函数中，SHA-256、SHA-512 会比 md5 更安全，更难破解，出于更高安全性的考虑，我的这个方案中，会使用 SHA-512 代替 md5 。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/sha-512.png&#34; alt=&#34;salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过上面的加盐哈希运算，即使攻击者拿到了最终结果，也很难反推出原始的密码。不能反推，但可以正着推，假设攻击者将 salt 值也拿到了，那么他可以枚举遍历所有 6 位数的简单密码，加盐哈希，计算出一个结果对照表，从而破解出简单的密码。这就是通常所说的暴力破解。&lt;/p&gt;
+
+&lt;p&gt;为了应对暴力破解，我使用了加盐的&lt;strong&gt;慢哈希&lt;/strong&gt;。慢哈希是指执行这个哈希函数非常慢，这样暴力破解需要枚举遍历所有可能结果时，就需要花上非常非常长的时间。比如：bcrypt 就是这样一个慢哈希函数：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/bcrypt.png&#34; alt=&#34;bcrypt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过调整 &lt;code&gt;cost&lt;/code&gt; 参数，可以调整该函数慢到什么程度。假设让 bcrypt 计算一次需要 0.5 秒，遍历 6 位的简单密码，需要的时间为：((26 * 2 + 10)^6) / 2 秒，约 900 年。&lt;/p&gt;
+
+&lt;p&gt;好了，有了上面的基础，来看看我的最终解决方案：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/password_security.jpg&#34; alt=&#34;password_secutity&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图里有很多细节，我分阶段来讲：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 协商密钥&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;基于非对称加密的密钥协商算法，可以在通信内容完全被公开的情况下，双方协商出一个只有双方才知道的密钥，然后使用该密钥进行对称加密传输数据。比如图中所用的 ECDH 密钥协商。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 请求 Salt&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;双方协商出一个密钥 SharedKey 之后，就可以使用 SharedKey 作为 AES 对称加密的密钥进行通信，客户端传给服务端自己的公钥 A ，以及加密了的用户ID（uid）。服务端从数据库中查找到该 uid 对于的 Salt1 和 Salt2 ，然后再加密返回给客户端。&lt;/p&gt;
+
+&lt;p&gt;注意，服务端保存的 Salt1 和 Salt2 最好和用户数据分开存储，存到其他服务器的数据库里，这样即使被 SQL 注入，想要获得 Salt1 和 Salt2 也会非常困难。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. 验证密码&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这是最重要的一步了。客户端拿到 Salt1 和 Salt2 之后，可以计算出两个加盐哈希：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SaltHash1 = bcrypt(SHA512(password), uid + salt1, 10)
+SaltHash2 = SHA512(SaltHash1 + uid + salt2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Ticket = AES(SaltHash2, uid + time + SaltHash1 + RandKey)
+AES(SharedKey, Ticket)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。&lt;/p&gt;
+
+&lt;p&gt;校验两个哈希值是否相等时，使用时间恒定的比较函数，防止试探性攻击。&lt;/p&gt;
+
+&lt;p&gt;time 用于记录数据包发送的时间，用来防止录制回放攻击。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. 加密传输&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;密码验证通过后，服务端生成一个随机的临时密钥 TempKey（使用安全的随机函数），并使用 RandKey 做为密钥，传输给客户端。之后双方的数据交互都通过 TempKey 作为 AES 密钥进行加密。&lt;/p&gt;
+
+&lt;h4 id=&#34;假设被拖库了:348d28cc795f0a1857c92b26f086746c&#34;&gt;假设被拖库了&lt;/h4&gt;
+
+&lt;p&gt;以上就是整个加密传输、存储的全过程。我们来假设几种攻击场景：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;假设数据被拖库了，密码会泄露吗？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;数据库中的 Salt1 ，Salt2 ， SaltHash2 暴露了，想从 SaltHash2 直接反解出原始密码几乎是不可能的事情。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;假设数据被拖库了，攻击者能不能伪造登录请求通过验证？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;攻击者在生成 Ticket 时，需要 SaltHash1 ，但由于并不知道密码，所以无法计算出 SaltHash1 ，又无法从 SaltHash2 反推 SaltHash1 ，所以无法伪造登录请求通过验证。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;假设数据被拖库了，攻击者使用中间人攻击，劫持了用户的请求，密码会被泄露吗？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;中间人拥有真实服务器所有的数据，仿冒了真实的 Server ，因此，他可以解密出 Ticket 中的 SaltHash1 ，&lt;strong&gt;但是 SaltHash1 是无法解密出原始密码的。所以，密码也不会被泄露。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;但是，中间人攻击可以获取到最后的 TempKey ，从而能监听后续的所有通信过程。这是很难解决的问题，因为在服务端所有东西都暴露的情况下，中间人假设可以劫持用户数据，仿冒真实 Server , 是很难和真实的 Server 区分开的。解决的方法也许只有防止被中间人攻击，保证 Server 的公钥在客户端不被篡改。&lt;/p&gt;
+
+&lt;p&gt;假设攻击已经进展到了这样的程度，还有办法补救吗？有。由于攻击者只能监听用户的登录过程，并不知道真实的密码。所以，只需要在服务端对 Salt2 进行升级，即可生成新的 SaltHash2 ，从而让攻击者所有攻击失效。&lt;/p&gt;
+
+&lt;p&gt;具体是这样的：用户正常的登录，服务端验证通过后，生成新的 Salt2 ，然后根据传过来的 SaltHash1 重新计算了 SaltHash2 存入数据库。下次用户再次登录时，获取到的是新的 Salt2 ，密码没有变，同样能登录，攻击者之前拖库的那份数据也失效了。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;q-a:348d28cc795f0a1857c92b26f086746c&#34;&gt;Q &amp;amp; A&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;使用 bcrypt 慢哈希函数，服务端应对大量的用户登录请求，性能承受的了吗？&lt;/p&gt;
+
+&lt;p&gt;该方案中，细心一点会注意到， bcrypt 只是在客户端进行运算的，服务端是直接拿到客户端运算好的结果（ SaltHash1 ）后 SHA-512 计算结果进行验证的。所以，把性能压力分摊到了各个客户端。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为什么要使用两个 Salt 值？&lt;/p&gt;
+
+&lt;p&gt;使用两个 Salt 值，是为了防止拖库后，劫持了用户请求后将密码破解出来。只有拥有密码的用户，才能用第一个 Salt 值计算出 SaltHash1 ，并且不能反推回原始密码。第二个 Salt 值可以加大被拖库后直接解密出 SaltHash1 的难度。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为什么要动态请求 Salt1 和 Salt2 ？&lt;/p&gt;
+
+&lt;p&gt;Salt 值直接写在客户端肯定不好，而且写死了要修改还得升级客户端。动态请求 Salt 值，还可以实现不升级客户端的情况下，对密码进行动态升级：服务端可定期更换 Salt2 ，重新计算 SaltHash2 ，让攻击者即使拖了一次数据也很快处于失效状态。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;数据库都已经全被拖走了，密码不泄露还有什么意义呢？&lt;/p&gt;
+
+&lt;p&gt;其实是有意义的，正如刚刚提到的升级 Salt2 的补救方案，用户可以在完全不知情的情况下，不需要修改密码就升级了账号体系。同时，保护好用户的密码，不被攻击者拿去撞别家网站的库，也是一份责任。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;欢迎大家针对本文的方案进行讨论，如有不实或者考虑不周的地方，请尽情指出。或者有更好的建议或意见，欢迎交流！&lt;/p&gt;
+
+&lt;h3 id=&#34;更新-反馈汇总:348d28cc795f0a1857c92b26f086746c&#34;&gt;更新：反馈汇总&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：非常同意！&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：理论上是足够了，而且推荐使用。 如果你的项目安全级别非常高，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：同意，确实不是很必要。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 &lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt;，并没有重新发明什么。文章&lt;strong&gt;重点是对密码的两次加盐哈希以及密码的验证方式&lt;/strong&gt;。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>设计安全的账号系统的正确姿势</title>
+            <link>http://blog.coderzh.com/2016/01/03/security-design/</link>
+            <pubDate>Sun, 03 Jan 2016 18:23:28 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/03/security-design/</guid>
+            <description>
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/security.jpg-wt&#34; alt=&#34;security&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;引子:c2254085ba550b8986e017a4f607e2b0&#34;&gt;引子&lt;/h3&gt;
+
+&lt;p&gt;最近有个虚拟练习项目，涉及到系统安全保障的设计，于是对安全保障这块做了一些更深入的了解。发现了很多有趣的东西，开阔了眼界。中间查了一些资料，于是我打算重新整理，用更加循序渐进，大家都能懂的方式，说一说如何设计一个安全的系统。&lt;/p&gt;
+
+&lt;h3 id=&#34;著名的安全事件:c2254085ba550b8986e017a4f607e2b0&#34;&gt;著名的安全事件&lt;/h3&gt;
+
+&lt;p&gt;首先来看看最近几年比较著名的拖库撞库后密码泄露的事件：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;2011年12月，国内最大的程序员社区 CSDN 遭拖库，600万个账户信息泄露。&lt;/li&gt;
+&lt;li&gt;2014年3月，携程旅行网的系统存技术漏洞，漏洞可能导致用户的姓名、身份证号码、银行卡类别、银行卡卡号、银行卡CVV码以及银行卡6位Bin泄露。&lt;/li&gt;
+&lt;li&gt;2014年5月，小米论坛涉及800万用户信息遭泄露，信息包括用户名、密码、注册IP、邮箱等。&lt;/li&gt;
+&lt;li&gt;2014年12月，12306遭撞库攻击，13万用户信息泄露，包括用户账号、明文密码、身份证、邮箱等敏感信息。&lt;/li&gt;
+&lt;li&gt;2015年10月，网易邮箱遭攻击，近5亿条用户信息被泄露，包括用户名、密码、密码保护信息、登陆IP以及用户生日等多个原始信息。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;除了密码泄露事件，数据被物理删除的事件也是发生：&lt;/p&gt;
+
+&lt;p&gt;2015年5月，携程网及APP陷入瘫痪，数据库遭物理删除疑似离职员工报复。&lt;/p&gt;
+
+&lt;p&gt;这么多大公司大网站的系统都遭到攻击，泄露用户信息，更别说其他小网站了。这些攻击都可以从技术上来进行防范的，但是我们看到即使是大公司，安全方面也是那么的薄弱。&lt;/p&gt;
+
+&lt;h3 id=&#34;防范方法:c2254085ba550b8986e017a4f607e2b0&#34;&gt;防范方法&lt;/h3&gt;
+
+&lt;p&gt;防范的方法简单来说数据从用户键盘敲出的那一刻，到服务器后台存储都要保持正确的姿势。比如：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;用正确的姿势保存密码。&lt;/li&gt;
+&lt;li&gt;用正确的姿势传输数据。&lt;/li&gt;
+&lt;li&gt;用正确的姿势加密敏感信息。&lt;/li&gt;
+&lt;li&gt;用正确的姿势对数据进行备份和监控。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;用正确的姿势保存密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;用正确的姿势保存密码&lt;/h3&gt;
+
+&lt;p&gt;这一步非常重要，也比较复杂。用户在浏览器里输入密码，传输到服务器端进行验证，服务端将之前保存的密码信息和用户的输入进行比对。&lt;/p&gt;
+
+&lt;h4 id=&#34;1-低级错误-明文保存密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;1. 低级错误：明文保存密码&lt;/h4&gt;
+
+&lt;p&gt;安全性最低的是在服务端明文保存用户的密码，一旦服务器被入侵，数据被拖走（拖库），所有用户的密码都直接的暴露在外面。这是最初级的做法，毫无安全性可言。假如你在一个网站或论坛注册了一个账号，该网站自动发了一封邮件告诉你注册成功，里面明文写了你的密码，赶紧把密码改了然后再也不要访问这个网站。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-低级错误-可逆加密密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;2. 低级错误：可逆加密密码&lt;/h4&gt;
+
+&lt;p&gt;既然不能明文保存密码，那当然是加密保存了。耍个小聪明，比如把密码的字母倒着存，或者每个字母存后一个字母，或者进行异或混淆处理，表面上密码看上去已经看不出来原始的密码是什么了，但实际上这个和明文保存密码并没有本质区别，因为黑客既然可以入侵你的服务器，自然可以拿到你的加密代码，只要按你的算法进行简单的解密就可以得到原始密码。&lt;/p&gt;
+
+&lt;h4 id=&#34;3-错误方法-md5-加密密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;3. 错误方法：md5 加密密码&lt;/h4&gt;
+
+&lt;p&gt;在我还是一个初学者的时候，我已被告知不能用前两种方式保存密码，当时的主流方法是使用 md5 加密密码。（年代久远，现在已绝非主流了。） md5 是一种不可逆的加密方法，即密码被 md5 加密后是无法解密出原始密码的，验证密码是否正确的方法是将用户输入的密码 md5 加密后于数据库里保存的 md5 机密后的结果进行比对。这样，服务器端在不知道真实用户密码的情况下也能对用户密码进行验证了。&lt;/p&gt;
+
+&lt;p&gt;这是早期比较主流的做法，然而，这依然是非常不安全的。因为只要枚举所有短密码进行 md5 加密，做成一个索引表，就能轻易的逆推出原始密码。这种预先计算好的用于逆推加密散列函数的表就是“彩虹表”。随着“彩虹表”不断变大，md5 的加密已经变得非常的不安全。2015年10月网易邮箱的用户密码泄露也被怀疑只对密码进行了 md5 加密。&lt;/p&gt;
+
+&lt;h4 id=&#34;4-正确方法-加盐-hash-保存密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;4. 正确方法：加盐 hash 保存密码&lt;/h4&gt;
+
+&lt;p&gt;加盐 hash 是指在加密密码时，不只是对密码进行 hash ，而是对密码进行调油加醋，放点盐（salt）再加密，一方面，由于你放的这点盐，让密码本身更长强度更高，彩虹表逆推的难度更大，也因你放的这点盐，让黑客进行撞库时运算量更大，破解的难度更高。&lt;/p&gt;
+
+&lt;p&gt;如何进行加盐就是一门很重要的学问了。md5 是一种 hash 算法，以下就拿 md5 来举例。假如密码是 123456 ，md5 的结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/md5.png&#34; alt=&#34;md5&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;像 123456 这样的简单密码，是很容易被逆推出来的。但是假如我们往简单密码里加点盐试试：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/md5-salt.png&#34; alt=&#34;md5-salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上面例子里的 &lt;code&gt;#g5Fv;0Dvk&lt;/code&gt; 就是我们加的盐。加完之后，密码的强度更高了，彩虹表破解的难度加大了。或者进行加盐两次 md5 ：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/double-md5-salt.png&#34; alt=&#34;double-md5-salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;到这里，你一定会有疑问，是不是把 md5 多做几次，或者自定义一些组合的方式就更安全了。其实不是的，黑客既然能拿到数据库里的数据，也很有可能拿到你的代码。&lt;/p&gt;
+
+&lt;p&gt;一个健壮的、牢不可破的系统应该是：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;即使被拿走了数据和所有的代码，也没办法破解里面的数据。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这也是为什么大家不必实现自己的加密算法，而是使用公开的加密算法的原因，比如：RSA、AES、DES 等等。既然无法保证加密代码不被泄露，那就使用公开的加密算法，只要保护好私钥信息，就算你知道我的加密方式也没有任何帮助。&lt;/p&gt;
+
+&lt;p&gt;大部分情况下，使用 md5(md5(password) + salt) 方式加密基本上已经可以了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/salt.png&#34; alt=&#34;salt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其中，最关键的是 salt 从哪里来？ salt 该怎么设置才能安全。有几个重要的点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;不要使用固定不变的 salt。&lt;/li&gt;
+&lt;li&gt;每个用户的 salt 都需要不同。&lt;/li&gt;
+&lt;li&gt;salt 要保持一定的长度。&lt;/li&gt;
+&lt;li&gt;salt 必须由服务端使用安全的随机函数生成。&lt;/li&gt;
+&lt;li&gt;客户端运算需要的 salt 需要从服务端动态获取。&lt;/li&gt;
+&lt;li&gt;客户端加盐 hash 的结果并不是最终服务端存盘的结果。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;由于客户端也需要执行加盐 hash ，所以，salt 不能直接写在客户端，而是应该动态从服务端获得。服务端生成随机的 salt 时，必须使用安全的随机函数，防止随机数被预测。&lt;/p&gt;
+
+&lt;p&gt;各语言安全的随机函数：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Platform&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;CSPRNG&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;PHP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;mcrypt_create_iv, openssl_random_pseudo_bytes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Java&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;java.security.SecureRandom&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Dot NET (C#, VB)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;System.Security.Cryptography.RNGCryptoServiceProvider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Ruby&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;SecureRandom&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Python&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;os.urandom&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Perl&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Math::Random::Secure&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;C/C++&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;(Windows API)   CryptGenRandom&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Any language on GNU/Linux or Unix&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Read from /dev/random or /dev/urandom&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;就算 salt 值动态从服务端获取，也有可能被中间人拦截获取。同时，客户端的加盐 hash 的过程相当于是完全暴露的。一种更安全的做法是，客户端使用 javascript 进行加盐 hash，把结果传到服务器后，服务器对结果再进行一次 &lt;code&gt;加盐 hash&lt;/code&gt; 或者 &lt;code&gt;加密 hash&lt;/code&gt;（比如：&lt;a href=&#34;https://tools.ietf.org/html/rfc2104&#34;&gt;HMAC&lt;/a&gt;） ，然后再和数据库的结果进行比对。&lt;/p&gt;
+
+&lt;p&gt;如果需要达到更高的安全等级，可以考虑：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 使用更安全的 hash 函数用来抵抗碰撞攻击，比如：SHA256, SHA512, RipeMD, WHIRLPOOL。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;两个不同的内容 hash 的结果可能相同，攻击者在不知道真实密码的情况下，使用其他密码进行碰撞攻击从而登录系统。使用更安全的 hash 函数可以减少这种情况的发生。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 可以使用一种大量消耗 cpu 的 hash 算法对抗暴力破解，比如PBKDF2 或者 bcrypt。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;暴力破解就是枚举所有可能的密码进行尝试验证，使用大量消耗 cpu 的 hash 算法可以极大增加暴力破解的时间。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. 比较加盐 md5 结果时，使用时间恒定的比较函数。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在比较两个字符串时，通常都一个字符一个字符进行比较，如果某个字符不匹配就会立即返回。攻击者可以根据验证的时间长短来判断前几位字符是否正确，然后逐步修正最终得到正确的结果。&lt;/p&gt;
+
+&lt;p&gt;因此，在比较 hash 时，使用时间恒定的比较函数，可以让攻击者摸不着头脑。比如下面这段代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static boolean slowEquals(byte[] a, byte[] b)
+{
+    int diff = a.length ^ b.length;
+    for(int i = 0; i &amp;lt; a.length &amp;amp;&amp;amp; i &amp;lt; b.length; i++)
+        diff |= a[i] ^ b[i];
+    return diff == 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;异或（^）操作可以用来判断两个字符是否相等，比如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;0 XOR 0 = 0    1 XOR 1 = 0
+0 XOR 1 = 1    1 XOR 0 = 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的函数枚举每个字符进行异或判断，然后将所有的结果取或运算，得到最终的结果，比较的时间是恒定的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. salt 的值不要和最终 hash 的结果存在同一个数据库。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;SQL 注入是常见的攻击手段，被注入后数据库里的数据被暴露无遗。所以，应该将 salt 分开存储，存到别的机器的数据库里，让攻击者拿不到 salt ，从而无法轻易破解信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5. 最终存储的结果使用基于 key 的 hash 函数，比如 &lt;a href=&#34;https://tools.ietf.org/html/rfc2104&#34;&gt;HMAC&lt;/a&gt;。 key 从外部安全性极高的专属服务中获得。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;有了这层加固，即使数据被拖库，攻击者也无法从 hash 的结果逆推回原始密码。因为使用了加密的 hash 函数。基于 key 的 hash 函数只是进行哈希运算时，除了传入原始内容外，还需要传入一个密钥（key）。攻击者没有 key 几乎不可能对数据进行解密。&lt;/p&gt;
+
+&lt;p&gt;key 可以保存在极高安全性的通用的 key 管理系统，使用加密协议传输，对访问者进行验证，只允许特定的机器有权限访问。&lt;/p&gt;
+
+&lt;h3 id=&#34;用正确的姿势传输数据:c2254085ba550b8986e017a4f607e2b0&#34;&gt;用正确的姿势传输数据&lt;/h3&gt;
+
+&lt;p&gt;使用 HTTP 协议传输数据时，数据都是明文传输的，数据从发出到服务器接收，中间可能被劫持，篡改。比如常见的 DNS 劫持，HTTP 劫持，中间人攻击。&lt;/p&gt;
+
+&lt;p&gt;用正确的姿势传输数据，目的就是为了保证传输的数据安全，简单归纳为两点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;需要确保进行通讯的服务端是官方的、正确的服务端，而不是跟一个假的服务端在通信。&lt;/li&gt;
+&lt;li&gt;确保信息在网络上传输时是加密的，只有客户端和服务端有能力对数据进行解密。&lt;/li&gt;
+&lt;li&gt;确保信息在传输时不被篡改，或者数据被篡改时能立即发现。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;1-验证服务端的合法性:c2254085ba550b8986e017a4f607e2b0&#34;&gt;1. 验证服务端的合法性&lt;/h4&gt;
+
+&lt;p&gt;《改变未来的九大算法》一书中提到了公钥加密和数字签名技术，这是进行安全通信的基础技术保障。这里涉及到了加密技术，先了解两个最基础的概念：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;对称加密：加密和解密时使用的是同一个密钥。&lt;/li&gt;
+&lt;li&gt;非对称加密：需要两个密钥来进行加密和解密：公开密钥（public key，简称公钥）和私有密钥（private key，简称私钥） ，公钥加密的信息只有私钥才能解开，私钥加密的信息只有公钥才能解开。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;非对称加密是实现验证服务端合法性的基础，常见的加密算法有 &lt;a href=&#34;http://baike.baidu.com/view/10613.htm&#34;&gt;RSA&lt;/a&gt; 、 &lt;a href=&#34;http://baike.baidu.com/view/584834.htm&#34;&gt;ECC&lt;/a&gt; 等 。服务端生成一对公钥和私钥，公钥是公开的所有人都知道，客户端需要和服务端通信时，使用该公钥进行数据加密，由于只有真实合法的服务端才拥有对应的私钥，所有只有真实的服务端才能解密该信息，然后返回数据给客户端时，使用客户端自己生成的公钥进行加密，这样数据只有对应的客户端才能理解。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/rsa.gif&#34; alt=&#34;rsa&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;使用 HTTPS 时，数字证书里包含了名称和公钥信息，只要认证该证书是合法的，并且对方能理解用该公钥加密的信息，就能确定是合法的服务端。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-确保通信的安全:c2254085ba550b8986e017a4f607e2b0&#34;&gt;2. 确保通信的安全&lt;/h4&gt;
+
+&lt;p&gt;既然使用非对称加密的方式，可以保证双方安全的通信，那是不是就一直使用非对称加密传输数据就行了？理论上是可以的，但是非对称加密的效率要比对称加密的效率低很多。通常的做法是，通过非对称加密的方法，协商出一个只有双方知道的对称加密密钥。&lt;/p&gt;
+
+&lt;p&gt;即使在不安全的通信环境下，也可以协商出一个只有双方才知道的对称加密密钥。在《改变未来的九大算法》一书里，有一个经典的描述如何交互密钥的例子（在所有沟通都是透明的情况下，如何协商出一个只有你和阿诺德才知道的颜料颜色。）：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/sharedkey.jpg&#34; alt=&#34;sharedkey&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt; 就是基于上面原理设计的密钥交换算法：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/ecdh.png&#34; alt=&#34;ecdh&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;密钥协商好后，双方就可以使用该密钥进行加密传输了，比如使用 AES 、 DES。&lt;/p&gt;
+
+&lt;p&gt;由于 ECDH 密钥交换协议不验证公钥发送者的身份，因此无法阻止中间人攻击。如果监听者 Mallory 截获了 Alice 的公钥，就可以替换为他自己的公钥，并将其发送给 Bob。Mallory 还可以截获 Bob 的公钥，替换为他自己的公钥，并将其发送给 Alice。这样，Mallory 就可以轻松地对 Alice 与 Bob 之间发送的任何消息进行解密。他可以更改消息，用他自己的密钥对消息重新加密，然后将消息发送给接收者。&lt;/p&gt;
+
+&lt;p&gt;解决方法是，Alice 和 Bob 可以在交换公钥之前使用数字签名对公钥进行签名。&lt;/p&gt;
+
+&lt;p&gt;即使攻击者不能解密传输的内容，但仍可以使用重放攻击尝试身份验证或用于欺骗系统。重放攻击是指攻击者将数据包截取后，向目标主机重新发送一遍数据包。&lt;/p&gt;
+
+&lt;p&gt;防御重放攻击的方法主要有：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用时间戳。数据包在一定时间范围内才是有效的。&lt;/li&gt;
+&lt;li&gt;使用递增的序号。收到重复的数据包时可以轻易的发现。&lt;/li&gt;
+&lt;li&gt;使用提问应答方式。收到数据包时可以判断出来是否应答过。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;HTTPS 正是使用了上述的原理，保证了通信的安全。所以，任何对安全有需求的系统都应该使用 HTTPS。如果是使用自有协议开发，比如 APP 或游戏，应该使用上述的方法保障通信的安全。&lt;/p&gt;
+
+&lt;h3 id=&#34;用正确的姿势加密敏感信息:c2254085ba550b8986e017a4f607e2b0&#34;&gt;用正确的姿势加密敏感信息&lt;/h3&gt;
+
+&lt;p&gt;我们都知道，用户的密码不能明文保存，而且要使用不可逆的加密算法，只保存最终的 hash 结果用来验证是否正确。那用户其他的敏感信息呢？比如身份证、银行卡、信用卡等信息，该如何加密保存而不被泄露呢？&lt;/p&gt;
+
+&lt;p&gt;对于身份证信息，可以像密码一样只保存 hash 的结果，可以用于用户输入身份证号后进行验证。假如需要给用户显示身份证信息，只需要保存抹掉了几位数字的身份证号。&lt;/p&gt;
+
+&lt;p&gt;假如你的系统涉及到支付，需要用户的银行卡，信用卡（卡号，CVV码）等信息时，必须遵循 &lt;a href=&#34;http://baike.baidu.com/view/8417913.htm&#34;&gt;PCI DSS&lt;/a&gt; （第三方支付行业数据安全标准）标准。PCI DSS 是由 PCI 安全标准委员会的创始成员(visa、mastercard、American Express、Discover Financial Services、JCB等)制定，力在使国际上采用一致的数据安全措施，包括安全管理、策略、过程、网络体系结构、软件设计的要求的列表等，全面保障交易安全。&lt;/p&gt;
+
+&lt;p&gt;如果只是银行卡，还需要遵循 &lt;a href=&#34;http://baike.baidu.com/subview/1812080/12861982.htm&#34;&gt;ADSS&lt;/a&gt; （银联卡收单机构账户信息安全管理标准） 标准。&lt;/p&gt;
+
+&lt;p&gt;2014年3月携程泄露用户银行卡信息就是因为没有遵循 &lt;a href=&#34;http://baike.baidu.com/view/8417913.htm&#34;&gt;PCI DSS&lt;/a&gt; 标准。&lt;/p&gt;
+
+&lt;h3 id=&#34;用正确的姿势对数据进行备份和监控:c2254085ba550b8986e017a4f607e2b0&#34;&gt;用正确的姿势对数据进行备份和监控&lt;/h3&gt;
+
+&lt;p&gt;2015年5月的携程数据被删事件，就是数据备份没有做好的例子。数据备份是为了防止由于硬盘损坏或人为破坏导致的数据丢失。主要措施有：磁盘 raid，物理备份（磁带库），异地的逻辑备份。同时做好权限控制，并对访问记录做好监控，及时发现问题，保留现场证据。&lt;/p&gt;
+
+&lt;h2 id=&#34;总结:c2254085ba550b8986e017a4f607e2b0&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;本文总结了设计一个安全系统的基本原理和方法，并没有举出一个特定具体的方案，因为不同的系统对安全性的要求各有不同，设计者应该根据自身系统的特点进行具体设计。比如加盐 hash 的具体实施方法，salt 值如何构成等等。&lt;/p&gt;
+
+&lt;p&gt;本文所述内容如有不实之处或者有争议的部分，欢迎交流指出。&lt;/p&gt;
+
+&lt;h4 id=&#34;附录:c2254085ba550b8986e017a4f607e2b0&#34;&gt;附录&lt;/h4&gt;
+
+&lt;p&gt;常用的加密算法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;对称加密：&lt;a href=&#34;http://baike.baidu.com/view/7510.htm&#34;&gt;DES&lt;/a&gt;、&lt;a href=&#34;http://baike.baidu.com/view/350958.htm&#34;&gt;3DES&lt;/a&gt;、TDEA、&lt;a href=&#34;http://baike.baidu.com/view/2208941.htm&#34;&gt;Blowfish&lt;/a&gt;、RC2、RC4、&lt;a href=&#34;http://baike.baidu.com/view/734720.htm&#34;&gt;RC5&lt;/a&gt;、&lt;a href=&#34;http://baike.baidu.com/view/92629.htm&#34;&gt;IDEA&lt;/a&gt;、SKIPJACK、&lt;a href=&#34;http://baike.baidu.com/subview/133041/5358738.htm&#34;&gt;AES&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;非对称加密：&lt;a href=&#34;http://baike.baidu.com/view/7520.htm&#34;&gt;RSA&lt;/a&gt;、&lt;a href=&#34;http://baike.baidu.com/view/46554.htm&#34;&gt;ECC&lt;/a&gt;（椭圆曲线加密算法）、&lt;a href=&#34;http://baike.baidu.com/view/551692.htm&#34;&gt;Diffie-Hellman&lt;/a&gt;、&lt;a href=&#34;http://baike.baidu.com/view/2154827.htm&#34;&gt;El Gamal&lt;/a&gt;、DSA（数字签名用）&lt;/li&gt;
+&lt;li&gt;Hash 算法：MD2、MD4、MD5、HAVAL、SHA-1、SHA256、SHA512、RipeMD、WHIRLPOOL、SHA3、&lt;a href=&#34;https://tools.ietf.org/html/rfc2104&#34;&gt;HMAC&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;DES、3DES、AES 区别：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;DES：1976年由美国联邦政府的国家标准局颁布，密钥为 56 位。&lt;/li&gt;
+&lt;li&gt;3DES：DES加密算法的一种模式，它使用3条56位的密钥对数据进行三次加密。&lt;/li&gt;
+&lt;li&gt;AES：高级加密标准，是下一代的加密算法标准，速度快，安全级别高，用来替代原先的DES。密钥长度可以是128，192或256比特。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;参考文章:c2254085ba550b8986e017a4f607e2b0&#34;&gt;参考文章&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://crackstation.net/hashing-security.htm&#34;&gt;Salted Password Hashing - Doing it Right&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH 算法概述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Rainbow_table&#34;&gt;Rainbow table&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;《改变未来的九大算法》第四章：公钥加密&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>我的 2015</title>
+            <link>http://blog.coderzh.com/2016/01/01/my-2015/</link>
+            <pubDate>Fri, 01 Jan 2016 00:34:08 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/01/01/my-2015/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/2016.jpg-wt&#34; alt=&#34;2016&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2015年对我来说是意义非凡的一年，这一年里，我主要干了以下几件事：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;离开游戏创业公司加入了微信。&lt;/li&gt;
+&lt;li&gt;重新开始写博客，开始写公众号：一个程序员的思考。&lt;/li&gt;
+&lt;li&gt;我可爱的儿子出生了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可以说，2015年我收获颇多，最大的收获是我的小宝宝的到来，欣喜和激动之情难以言表。对于这个新加入的小成员，我们会好好的爱他，呵护他，陪伴他成长，宝宝加油，我们也一起加油哦。&lt;/p&gt;
+
+&lt;p&gt;事业方面，我离开了工作4年的游戏创业公司，这里有太多千丝万缕的故事。2011年，我们从西山居出来时，也是满怀梦想，也曾激情奋斗，一起吃大叔做的菜，一起打闹玩笑，认真工作时为一个问题可以争的面红耳赤，一起玩游戏时可以在 LOL 里 High 到不能自已。&lt;/p&gt;
+
+&lt;p&gt;我努力过，也可以说还不够努力，也许当时我可以做的更好，或许当时我可以更主动去承担起一些责任，或许，我什么也改变不了。创业维艰，只有经历过的人才能体会。当时看着一个又一个最早一起的小伙伴离开，难免伤感，不过他们离开后都有了不错的去处，也是很欣慰的。&lt;/p&gt;
+
+&lt;p&gt;我坚持了4年，领略了游戏行业无情的市场竞争，经历了创业公司面临的种种问题和挑战。当然，我主要工作也只是写程序，很多事情是你无法左右的。所以在我30岁的时候，&lt;strong&gt;我想应该做些改变了&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;于是我加入了微信。做为在职员工，不应该在外面过多评论自己的公司。在这里我就简单说一下自己的感受。腾讯是一家值得尊敬的公司，公司文化氛围很好，活跃而且开放，同事都很优秀，我学习到很多，并且非常庆幸能加入腾讯。&lt;/p&gt;
+
+&lt;p&gt;换工作后，我也逐渐不怎么玩游戏了，把一直想戒也戒不掉的 LOL 给彻底戒掉了。我玩起游戏来很疯，很执着，喜欢专研，熬夜玩，睡觉也想。我大概经历过3次这样的过程。第一次是在大学时玩剑侠情缘一，没日没夜通宵达旦的玩，玩到早上通宵回来又饿又困，倒头睡到中午或下午，起来接着玩。第二次是工作后玩剑三，也沉迷过一段时间，第三次是创业时玩 LOL ，天天沉迷排位赛，看直播比赛，对英雄技能技巧、比赛选手如数家珍。&lt;/p&gt;
+
+&lt;p&gt;从游戏里跳出来后，&lt;strong&gt;我发现其实我也没有那么喜欢游戏&lt;/strong&gt;。一旦我不玩游戏后，那些游戏我碰都不碰了，APP Store 里排名靠前的我也玩不到几天。之前创业时，经常需要加班，总觉得玩游戏的时间都不够，所以业余时间也被占的满满的。现在不玩游戏后，发现其实时间是可以有很多方式来利用的，可以做很多有意义的事情，当你做的越多时，越会觉得时间其实是那么的不够用，为什么还要浪费在一局又一局重复的游戏上面呢？&lt;/p&gt;
+
+&lt;p&gt;所以，我在我的博客上写了这么一句话激励自己：&lt;strong&gt;如果你没有感觉到时间不够用时，你多半正在虚度光阴。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;于是我重新捡起了荒废了3~4年的博客。这几年博客没有更新和创业公司加班及玩游戏有关，也和大环境有关。这几年微博兴起，Google Reader 关闭，博客没落，很多知名的博客都停更了。当然，这都是借口。如今，人们重新意识到了有价值的原创长文的价值，自媒体开始兴起，博客的形式也重新燃起了火花。国外的 &lt;a href=&#34;https://medium.com/&#34;&gt;Medium&lt;/a&gt; ，国内的 &lt;a href=&#34;http://www.jianshu.com/&#34;&gt;简书&lt;/a&gt; ，知乎专栏，新浪微博长文，微信公众号文章等等风生水起。&lt;/p&gt;
+
+&lt;p&gt;虽然我之前在博客园的写的 Google Test 相关的文章已经有几十万的阅读量，但我还是决定从博客园搬家出来，目前使用的是 &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt; 搭建的静态博客网站 &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt; ，同时大部分文章都会在我的微信公众号（一个程序员的思考）里发布。博客起到一个备份和被搜索引擎索引的作用。&lt;/p&gt;
+
+&lt;p&gt;如果算上这篇文章，今年我一共写了48篇文章了，平均一周一篇的节奏。公众号的订阅数也在持续上涨，在这里我要感谢所有订阅了我公众号和一直关注我博客的朋友，祝大家2016年新年快乐！新年新气象，无论学业、事业还是家庭都能顺顺利利。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2016年，我们一起努力！&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>大家都应该做的 Code Review</title>
+            <link>http://blog.coderzh.com/2015/12/27/code-review/</link>
+            <pubDate>Sun, 27 Dec 2015 18:49:15 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/12/27/code-review/</guid>
+            <description>&lt;p&gt;代码审查（Code Review）是个老生常谈的话题了，我以前呆过的大公司也好，创业公司也好，都知道 Code Review 的好处，但真正去有效执行的却很少。有人认为“存在即合理”，大家都不愿意做 Code Review ，可能 Code Review 真的不好，影响开发效率。有的人想做，但是执行起来太困难。&lt;/p&gt;
+
+&lt;p&gt;造成大家放弃 Code Review 的原因有哪些呢？我仔细想了想，大概有这几种：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;时间紧&lt;/strong&gt;：项目赶着上线，一个人干两人的活，天天加班累成狗，哪有时间 Review ，怕影响项目进度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;等不了&lt;/strong&gt;：工作被阻塞，发起评审后，啥也干不了了，我是该催一催那家伙评审一下呢，还是催一催那家伙评审一下呢，什么？他休假了！WTF！&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;效果差&lt;/strong&gt;：我写的那么有气质的代码你看出来了吗？看出来了吗？！什么？！单词拼写错误？代码逻辑为什么是这样？来来来，搬个小板凳过来，我给你解释一下午。（评审者不了解被评审人工作）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;嫌麻烦&lt;/strong&gt;：代码不能直接 commit 或 push ，必须先走评审流程，还能不能愉快的提交代码了？&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;再加上，创业团队成功率本来就低，一种普遍的想法是：最重要是项目能活下去，代码写的挫一点没关系，可以以后再搞。代码写的再好，项目死了也是白搭。&lt;/p&gt;
+
+&lt;p&gt;貌似好有道理啊，要不 Code Review 就不做了吧。不！&lt;strong&gt;我认为，不论大小什么团队，都应该做 Code Review 。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我的核心观点是，产品开发周期内，代码编写所占的时间比例其实是很小的，之后有大量的时间是花在代码调试，修复 Bug 和填之前的坑上。&lt;strong&gt;做 Code Review ，其实可以减少代码调试的时间，更快的定位和修复 Bug 和少挖一些坑。&lt;/strong&gt;在代码编写的阶段通过 Code Review 把控质量，从总的项目周期来看是划算的，甚至是事半功倍的。&lt;/p&gt;
+
+&lt;p&gt;当然，上面提到的“时间紧、等不了、效果差、嫌麻烦”也是真实存在的。要做好 Code Review ，就必须去解决这些问题。核心是提高 Code Review 效率，我的建议也很简单，&lt;strong&gt;用好的工具，做充分的沟通。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;首先要避免 Code Review 工具提交过程过于复杂冗长，相关的工具有很多，不管是开源的还是商业的（比如：&lt;a href=&#34;http://phabricator.org/&#34;&gt;Phabricator&lt;/a&gt;、&lt;a href=&#34;https://www.gerritcodereview.com/&#34;&gt;Gerrit&lt;/a&gt;）。GitHub 的 Pull Request 其实是很好的 Code Review 工具。在 GitHub 上，你发现一个好项目想改进它，你只要点击 Fork ，增加你要的功能，然后通过 Pull Request 贡献你的代码。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/pr.jpg&#34; alt=&#34;pr&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;“废话少说，Send me a pull request!” 是不是感觉这句话叼叼的。&lt;/p&gt;
+
+&lt;p&gt;GitHub 的 Pull Request Merge 相当于 Code Review 的过程，代码原作者 Review 代码，提出意见，最终合并只需要在 GitHub 点几个按钮就可以完成。据了解，已经有不少创业公司的代码直接托管在 GitHub，并采用 PR 的开发模式。&lt;/p&gt;
+
+&lt;p&gt;其次是要做好充分的沟通。实现某个功能时，可以指派给两人，一人负责写代码，一人负责跟踪和讨论，然后交叉进行，有点类似结对编程。如果做到这个比较难，那就需要在代码编写过程中尽可能多的和别人讨论沟通，让评审者充分了解你的工作。可行的方法是老员工带新员工，老员工对新员工的工作比较了解，可以很好的给出评审意见。另一种是老员工之间互相评审，互相交流容易擦出火花。&lt;/p&gt;
+
+&lt;p&gt;而且，做好 Code Review ，除了提高代码质量之外，还可以：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;把控代码的风格和规范，提高代码的可维护性。&lt;/li&gt;
+&lt;li&gt;展示自己的工作内容，让同事对你的工作成果更加了解。&lt;/li&gt;
+&lt;li&gt;从别人的代码里学习到很多编程技巧，解决问题的思路。&lt;/li&gt;
+&lt;li&gt;通过别人的评审意见发现自己的不足，优化自己的代码，扩宽自己的思路。&lt;/li&gt;
+&lt;li&gt;很好的给予新人指导，给出有建设性的意见，帮助新人成长，做好知识的传承。&lt;/li&gt;
+&lt;li&gt;通过评审摩擦火花，互相欣赏，找到心灵相惜的好基友或终身伴侣。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/code-review.jpg&#34; alt=&#34;code-review&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Code Review ，你做了就知道！&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>程序员的思考：我的 K12（我也曾是小学生）</title>
+            <link>http://blog.coderzh.com/2015/12/21/my-k12-pupil/</link>
+            <pubDate>Mon, 21 Dec 2015 22:38:15 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/12/21/my-k12-pupil/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/math.jpeg-wt&#34; alt=&#34;math&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我还记得小学一年级刚开学，老师教我们背字母表，然后对我们进行了测验。背的好的几个小朋友被老师留了下来，我也是其中一个。老师说要选我们当班干部。我当时傻了，从没听说过什么是“班干部”，于是回家后问家长。家长听了后很高兴，而我还是没明白到底啥是“班干部”。&lt;/p&gt;
+
+&lt;p&gt;直到后来我才发现，上课时喊一声“起立”的班干部是班长，收作业本的是学习委员，课间餐给小朋友发吃的的是生活委员。我当时就是个生活委员。从那时起，我开始了我的 K12 从政之路（说的好像有点夸张的样子）。三年级时升为了班长，一直延续到高三，一直是班长。&lt;/p&gt;
+
+&lt;p&gt;班干部的人选通常是按学习成绩来挑选的。小学时认为学习最好的人才会当班长，到初中时才发现默认学习最好的人其实是学习委员。有段时间还特别自卑，因为当时的老师上课时遇到稍难的题时都喜欢点名让几个学习好的同学来回答，而我却很少被点到。出于攀比的心理，我开始怀疑老师理解的班长就是平时只管一管纪律，成绩中上的同学，或者是因为我长的不好从来不点我名。&lt;/p&gt;
+
+&lt;p&gt;从小学到高中，有一条永恒不变的中心线，就是学习成绩。它让我们获得成就感，也让我们灰心。学校和家长不断引导我们和别人攀比，当落后时，我们开始否定自己，变得自卑。让我印象深刻的一件事情是，小学选拔学生参加奥数比赛，经过层层考试筛选最后剩下10个人左右时。每经过一次内部测验，老师都让我们站在台上，按名次排成一排，以警示自己的成绩所在的位置。这10个同学已经是全年级数学最优秀的同学了，但每次排名我都站在靠后接近最后的位置，每次都让我自卑懊恼不已。我怀疑我是不是真的太笨了。&lt;/p&gt;
+
+&lt;p&gt;有一届奥数比赛，已经确定我可以代表学校参加比赛了。就在考试快要开始前，我被告知参加比赛的名额满了，让我在教室等，心里想着平时那么努力了好不容易进入最后关头，到考试上阵前却要被老师换下，心里很不是滋味。&lt;/p&gt;
+
+&lt;p&gt;小学时我疯狂的迷上了乒乓球，常常幻想哪天国家队主教练将我收入麾下，带领中国队冲击世界冠军。&lt;/p&gt;
+
+&lt;p&gt;记得95年那届世乒赛，那时还是邓亚萍、孔令辉和刘国梁。为了在家看决赛，我直接翘课没去参加五年级的奥数选拔考试。之后我的数学老师找到我谈话，她并没有责备我，而是鼓励和肯定了我。不记得有没有单独让我重考了，最后还是让我进入了下一轮的选拔。这是我遇到的第一个很好的老师，她给了我自信，经常鼓励我，甚至感觉经常特殊照顾我。她是数学老师，也是班主任，在考试结束批改完成后，她会满怀欣喜的第一时间告诉我我的成绩。（当然，往往都是成绩不错的情况）有次语文考试成绩不好，她还单独叫我出去给我讲解出错的题。她长的胖胖的，可是我早已经不记得她的名字了。我在五年级最后的一次奥数竞赛时，终于成功逆袭考了个第一名，拿了全市一等奖。&lt;/p&gt;
+
+&lt;p&gt;和我玩的最好的同学，都是学习相对差的同学，也就是别人眼中的差生。因为和他们玩，没有攀比和炫耀，从来不谈论学习成绩，有的是纯粹的乐趣。我还加入了学校的田径队，在和田径队员一起训练的那段时光，是单纯的、充实的、快乐的，虽然训练很辛苦。我的一个要好的同学练习跳高，还有一对传奇的姐弟组合。姐姐和我同级，弟弟小我一岁。据说弟弟从小就绑着沙袋每天跟着家人的自行车跑去买菜。我大他一岁，短跑完全不是他的对手，跑中长跑，也跑不过他的姐姐。我们每天天没亮就开始训练，饶着城区跑，到人民纪念碑跳石阶，拖着轮胎在操场上跑，热身、压腿、准备活动小步跑高抬腿、专项训练，日复一日。按理这比学习累多了，但是我没有放弃。因为在跑不过队里的小伙伴时，没有人会取笑你，你想的只是怎样让自己变得更强。最后，在全市小学生运动会中，我成功的拿下了200米第一和400米第二的成绩。&lt;/p&gt;
+
+&lt;p&gt;数学竞赛本是用来锻炼思维，学习知识的，却成了摧残自信的工具。&lt;/p&gt;
+
+&lt;p&gt;田径训练本是辛苦、单调又重复的，却能获得一些纯粹的快乐。&lt;/p&gt;
+
+&lt;p&gt;因为学习是被动的，田径训练是主动的。如果中间能有好的引导，结果又会不同。&lt;/p&gt;
+
+&lt;p&gt;……&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>程序员的思考：我的 K12（逃学威龙）</title>
+            <link>http://blog.coderzh.com/2015/12/20/my-k12-escape-school/</link>
+            <pubDate>Sun, 20 Dec 2015 21:38:31 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/12/20/my-k12-escape-school/</guid>
+            <description>
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/taoxue.jpg-wt&#34; alt=&#34;taoxue&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我是80后，在我读小学或中学时，如果遇到不会解的题，通常绞尽脑汁自己想，实在不行只能去问老师和同学。如果不好意思问老师同学，只能跳过问题并祈祷考试不要出这样的题。&lt;/p&gt;
+
+&lt;p&gt;如今我已都长大成人，有了自己的孩子，现在的小孩还是像我们以前一样的方式学习吗？遇到不会做的题只能无奈放弃吗？显然不是，前几天浏览 App Store 在线教育分类时，发现有一批题库类的 App 主打功能是扫题出答案。遇到不会做的题，只要拿出手机扫一扫题目，立即就给出答案和详解。&lt;/p&gt;
+
+&lt;p&gt;假如在我小时候，就有这样的扫题神器，结果会怎样呢？这引发了我的思考。对于现在的小学生或中学生是如何通过互联网进行学习的我不太了解，但 LOL 里有大量小学生我倒是清楚（说多了都是泪），如果有人了解现在的学生是怎样学习的，可以给我留言沟通。我的这个系列文章，主要是回顾一下我的小时候，我的 K12 教育，从幼儿园到高三，每想到一处，我都在想，假设当时有（移动）互联网，我的人生会有怎样的改变。&lt;/p&gt;
+
+&lt;h3 id=&#34;逃学威龙:7a3bebc4497d9e03f076df35754a39b6&#34;&gt;逃学威龙&lt;/h3&gt;
+
+&lt;p&gt;首先得从幼儿园说起。我小时候脸长长的，看上去有点老实木讷（现在也差不多……），第一次被送去幼儿园时，我还印象深刻。我没有读学前班和小班，而是直接读的中班。当我进入教室时，老师正在上课，看到一排一排整齐的坐着的和我一样的小孩，我当时肯定纳闷了，这都是在干什么？不知是老师教的还是学别人模样，我坐的很端正，两手放在桌子上平行放着，眼睛盯着老师在台上讲话。但是没过多久，我终于爆发了，我冲出了教室，我感觉这教室太无聊了，我不要上学。&lt;/p&gt;
+
+&lt;p&gt;结果可想而知，我爸把我打了一顿，一定我要去上学。迫于威严，也只能去。这一点不知道有没有人和我有同样的经历。后来认识了一个同班同学 W，而且是我的邻居。于是我们经常结伴玩耍，再到后来，已经不需要家人接送，我俩放学后可以自己走路回家了。我记得回家的路上要经过长长的巷子，然后要经过野外的小路，旁边有池塘，最后走一段马路回到家里。假如是现在，我真的不放心让两个幼儿园的小朋友单独走路回家。&lt;/p&gt;
+
+&lt;p&gt;由于我们是邻居，上学也要一起走路去。但是我们都觉得学校太无聊，不想去上学。于是我们开始学习求雨，学电视里的人念咒语，祈祷今天老天爷下雨，这样就可以在家里玩了。似乎有时候撞上了下雨，但其他时候就不那么管用。于是我们想出了一个办法：&lt;strong&gt;假装去上学&lt;/strong&gt;。上学时间到了，我俩准时背着书包结伴而行去学校。其实我们并没有去学校，而是在大街上溜达，到处玩耍。为了能在放学时间准时回家，我们会随时观察路边小店挂着的钟表（已经不记得什么时候学会看钟表了），然后计算好从放学到走到家里的时间，准时的回去。&lt;/p&gt;
+
+&lt;p&gt;这样瞒天过海的把戏试了几天屡试不爽，老师并没有来找家长（当时根本没有这个概念），反倒是有一次我俩在大街上逛的正爽时，被我爸的一个朋友撞见了，然后告了一个状，这样的好日子就结束了。&lt;/p&gt;
+
+&lt;h3 id=&#34;反思:7a3bebc4497d9e03f076df35754a39b6&#34;&gt;反思&lt;/h3&gt;
+
+&lt;p&gt;当时我为什么那么不喜欢上学？可以肯定的是，我当时并想不清楚为什么不喜欢上学，就是直觉上觉得上学不好玩。除了仅有的几次上课玩橡皮泥，其他都是枯燥无味的老师教念一些不知所云的东西，期中和期末还会根据这些表现给小红花和大红花。如果你把红花领回家，家里人就会夸奖你。而且，这些红花还和学勤挂钩，如果想拿小红花，上课铃一响，你必须准时的飞奔到教室坐好。&lt;/p&gt;
+
+&lt;p&gt;幼儿园没有教有趣的内容，没有培养和挖掘我们的想象力、创造力和动手能力，而是引导我们铃响了就必须在课桌上坐好，必须记住老师塞给你的内容，否则就得不到小红花。家人的鼓励方式是将小红花和小奖状贴在墙上，待亲戚朋友来访时夸奖炫耀一番。&lt;/p&gt;
+
+&lt;h3 id=&#34;改变:7a3bebc4497d9e03f076df35754a39b6&#34;&gt;改变&lt;/h3&gt;
+
+&lt;p&gt;由于逃课，不好好学习，贪玩，开始我只能眼巴巴看着别人把小红花领回家，自己什么也没有，心情很失落。有了对比才知道大家是这么看重学校给予的奖励的，于是之后我默默的改变了，适应学校的规则，铃响了就准时坐好，强记住老师教的东西，坚持了一段时间，终于把小红花搬回了家，可以肯定的是，也受到了家人的夸奖。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;我开始学会了怎样变成老师和家长喜欢的样子。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;……&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>程序员的思考：教育的未来</title>
+            <link>http://blog.coderzh.com/2015/11/29/hacker-thinking-mooc/</link>
+            <pubDate>Sun, 29 Nov 2015 21:21:35 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2015/11/29/hacker-thinking-mooc/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mooc.jpg-wt&#34; alt=&#34;mooc&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;感谢大家的支持！自从上次发了《程序员的思考：分享即提高》一文，订阅数一下从 500 蹦到 1200，已经远远超出了我的预期。&lt;/p&gt;
+
+&lt;p&gt;但隔了两周没有发文章，老婆说，你不会掉粉了吧。我说不怕，我也没有承诺每周必须写一篇，如果仅仅因为隔了几周没发文章就取消订阅的那就取消吧。我不像其他公众号那样高产，因为每周 5 天上班早出晚归，只有周末的时间拿来写作。&lt;/p&gt;
+
+&lt;p&gt;所以周末的时间显得尤为宝贵。写作的内容可以在平时多听多看多想，然后留到周末一气呵成。写文章是一个不断总结的过程，我不希望一直停留在总结过去，所以我还需要不断的学习新的知识，写更多的代码，参与开源项目，或者做有意思的 Side Project。这些都需要大量的业余时间来支撑，如果这些时间被其他东西占据了，写作的时间就会少了。&lt;/p&gt;
+
+&lt;p&gt;是的，前两周未写文章的一个主要原因是时间被占据了。那就是我可爱的宝宝诞生了！男孩，6 斤 8 两，我当爸爸了。我和老婆给小宝宝取了个小名：可乐。出自苏轼的：凡物皆有可观。苟有可观，皆有可乐。希望他快快乐乐的成长。&lt;/p&gt;
+
+&lt;p&gt;进入父亲角色仿佛进入了人生的第二阶段，考虑问题的时候不再仅仅是自己，太阳出来的时候不再抱怨今天太热，而是想着今天宝宝可以好好的晒晒太阳了。即使《琅琊榜》追到一半也要把电视关上（已经在出生前抓紧看完了，嘿嘿），为了不影响宝宝的视力。把《代码大全》换成《育儿宝典》，感觉育儿的知识一点不比代码简单。相信做了父亲的人都会有同样的深刻体会。&lt;/p&gt;
+
+&lt;p&gt;虽然周末的时间大量的花在孩子的身上，但是时间挤挤还是有的。之前听《狗熊月读》介绍《翻转课堂的可汗学院》一书，感觉很有意思，于是在微信读书里买了这本书，利用喂奶和换尿布的间隙大致翻了翻这本书。这是一本关于现代教育思考的一本书，很多观点在我看来非常新颖，引发思考。&lt;/p&gt;
+
+&lt;p&gt;我们都曾经历或正经历着应试教育，我们都曾在太阳当空照，花儿对我笑的时候背上小书包上学校，但我们从未想过为什么要上学校。在我们小的时候，根本不会也不具备思考这样问题的能力，即使我们长大成年，有了自己的孩子，也不会去思考这样的问题，因为上学、考试、升级是再正常不过的事情。&lt;/p&gt;
+
+&lt;p&gt;在《翻转课堂的可汗学院》一书中提到，把学生按年龄划分，集中到课堂，统一授课，根据考试成绩判断是否升级或毕业的教学体系是在 18 世纪由普鲁士人最先实施的。普鲁士人给人的印象是脸上翘着呆板的胡子，戴着拘谨的帽子，采用死板的行军方式。他们靠税金支持的义务教育不仅是一种教育手段，更是一种政治手段。普鲁士人的初衷不是教育出能够独立思考的学生，而是大量炮制忠诚且易管理的国民。&lt;/p&gt;
+
+&lt;p&gt;时代在进步，科技在飞速发展，而我们的教育方式却前进缓慢。&lt;strong&gt;当今社会，我们需要的是具有创造力、充满好奇心并且能自我引导的终身学习者。&lt;/strong&gt;而现在的学校教育不仅不能起到积极引导的作用，反而对学生产生很多负面的影响。&lt;/p&gt;
+
+&lt;p&gt;几千年前孔子就提出因材施教的教育理念，在现代学校教育中，学生被批量的灌输知识，通过考试，达到 60 分即可升一年级，而不管对知识掌握与否。更有甚者，根据考试成绩区分快班慢班。这导致了学习较差者失去信心，由于前面的知识并未巩固，新的知识又不断的灌输进来，导致根本无法理解新知识，从而造成恶性循环。&lt;/p&gt;
+
+&lt;p&gt;问题的根源是那些当前成绩较差者根本无法掌握学习的知识吗？该书作者推崇的精熟教学法坚信，&lt;strong&gt;只要教学条件能够满足学生的需要，那么所有学生都能掌握知识，任何学生都不会掉队或成绩不佳。&lt;/strong&gt;有的人理解知识快，有的人理解慢一些，但如果给他足够的时间，也许能将知识理解的比其他人更加巩固。而学校教育不会照顾到每一个人，他们有按部就班的课时计划，时间到了就得进行下一个课程表的课程。有的人也许贪玩，也许生病请假，也许还在理解上节课的知识，导致某个知识点掌握不好，从而触发后续的连锁反应，最终完全失去信心接受自己差生的标签。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;精熟教育法的核心是指学生在进入更高难度的学习阶段之前，应充分理解之前所学习的概念。常量是学生对知识和概念的高水平理解，而变量是学生为理解问题所花费的时间。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;该书作者创建的可汗学院受到包括比尔盖茨在内的慈善基金的赞助，利用互联网通过在线的方式进行教育，让学生学习的过程变得更加主动，充分运用精熟教学法，自己控制学习的进度。通过软件，精确统计和分析各知识点掌握的情况，从而提供更加准确的辅导。&lt;/p&gt;
+
+&lt;p&gt;更多内容请看原书。看了此书后，我的感想是，在互联网及移动互联网飞速发展的今天，学校传统的教育方式已经逐渐落后，&lt;strong&gt;在线教育也许会是下一个风口&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;设想这么一个创业项目：&lt;strong&gt;滴滴学习&lt;/strong&gt;。在地图上显示附近的讲师和学生列表，讲师有相关背景介绍和过往学生给的评分星级，学生在学习某个知识点有疑问时可以随时呼叫附近的优质讲师进行一对一的辅导讲解，每个讲师都可以在个人页面提供长期课程供学生参加，除了线上互动，定期还会组织线下活动。学习结果的评判标准是学生是否认为已经完全掌握了该知识点并通过一定的测验。所有闲散在家的高学历优质家庭主妇都可以直接在家接单，为附近小区的学生提供优质的教学服务。&lt;/p&gt;
+
+&lt;p&gt;再大胆假设一下，在遥远的未来，集中式的学校彻底关闭，每个人在不同阶段都能在网络上平等的获取优质的教育资源，每个人都能根据自我兴趣自主的选择学习内容。&lt;/p&gt;
+
+&lt;p&gt;未来假设真的如此，那么现在所做的正是通往未来正确之路的努力。有人问特斯拉的创始人埃隆·马斯克，你想过会失败吗？他回答说，我想的是肯定会失败，但我还是要去做，因为即使我不做，别人也会做，电动环保汽车是未来，即使我失败了，也会是人类通往未来的一笔经验。（大概说过类似的话）&lt;/p&gt;
+
+&lt;p&gt;如今，在线教育（MOOC）的概念已经炒起来了，出现了各种 MOOC 网站，比如国外的Coursera、Udacity，国内的各种慕课网，甚至 BAT 也开始布局了，比如腾讯课堂。据腾讯发布的在线教育报告称，K12在线教育已有千亿美元市场。（K12 或 K-12 ，是kindergarten through twelfth grade的简写，是指从幼儿园到十二年级，这两个年级是美国、澳大利亚及English Canada的免费教育头尾的两个年级，此外也可用作对基础教育阶段的通称。）&lt;/p&gt;
+
+&lt;p&gt;滴滴学习，你投吗？&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
