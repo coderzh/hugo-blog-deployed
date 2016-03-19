@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>《必然》读书笔记之 - 知化Cognifying - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="keywords" content="必然,KK,读书笔记,人工智能,机器学习,">
+<meta name="description" content="2002 年左右，KK 参加了谷歌的一个小型聚会，当时谷歌还是一个家专注搜索的小公司。KK 问拉里·佩奇「已经有这么多家搜索公司，干嘛还要做免费网络搜索？」
+
+佩奇回答说：「哦，我们其实是在做人工智能。」
+">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="《必然》读书笔记之 - 知化Cognifying - CoderZh Blog">
+<meta itemprop="description" content="2002 年左右，KK 参加了谷歌的一个小型聚会，当时谷歌还是一个家专注搜索的小公司。KK 问拉里·佩奇「已经有这么多家搜索公司，干嘛还要做免费网络搜索？」
+
+佩奇回答说：「哦，我们其实是在做人工智能。」
+">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="《必然》读书笔记之 - 知化Cognifying - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/2016/02/21/inevitable-cognifying/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="2002 年左右，KK 参加了谷歌的一个小型聚会，当时谷歌还是一个家专注搜索的小公司。KK 问拉里·佩奇「已经有这么多家搜索公司，干嘛还要做免费网络搜索？」
+
+佩奇回答说：「哦，我们其实是在做人工智能。」
+">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="《必然》读书笔记之 - 知化Cognifying - CoderZh Blog">
+<meta name="twitter:description" content="2002 年左右，KK 参加了谷歌的一个小型聚会，当时谷歌还是一个家专注搜索的小公司。KK 问拉里·佩奇「已经有这么多家搜索公司，干嘛还要做免费网络搜索？」
+
+佩奇回答说：「哦，我们其实是在做人工智能。」
+">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/2016/02/21/inevitable-cognifying/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2016/02/21/inevitable-cognifying/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="http://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="category tag">读书笔记</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">《必然》读书笔记之 - 知化Cognifying</h1>
+
+                  <p class="post-byline">
+                    by  · 2016年02月21日 · 2283 Words ·
+                    ~5min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-02-21-inevitable-cognifying.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      <p>2002 年左右，KK 参加了谷歌的一个小型聚会，当时谷歌还是一个家专注搜索的小公司。KK 问拉里·佩奇「已经有这么多家搜索公司，干嘛还要做免费网络搜索？」</p>
+
+<p>佩奇回答说：「哦，我们其实是在做人工智能。」</p>
+
+<p>「知化」这个词不太好理解，其实主要说的是人工智能，即让机器或物体拥有智能的过程，技术上涉及到神经网络、机器学习、大数据等领域。如果你正在从事相关领域的研究，是很有前途的方向。</p>
+
+<p>去年公司有次请了个机器学习的专家来讲课，从头到尾我居然没有听懂他在讲什么。。当然，原因主要是在我的。毕竟机器学习这块属于专业的领域，需要有很多专业知识做背书，我之前对这块也了解甚少。</p>
+
+<p>但我相信机器学习的大致概念其实是很好解释清楚的，即通过设计一些算法，让计算机能够进行自我学习和改进。有人会想，计算机有这么牛逼吗？还会自己学习？其实这正是一个比较容易误解的地方。并非程序员把代码写好，计算机自个儿在哪里跑就把什么都学会了。机器学习其实是需要人为训练的过程，通过人类不断的告诉机器哪些是对的哪些是错的，准备大量训练的数据，机器通过训练来自动修正已有的算法以达到最佳的效果。</p>
+
+<p>举个栗子，文章开头提到的，谷歌创始人说谷歌其实是在做人工智能。首先，谷歌的搜索引擎有一套基于 Page Rank 的算法，能够根据关键词自动搜索出相关的网页。算法虽然很先进，但毕竟有时会出错，比如最佳的搜索结果并没有排在第一位。但用户是会自己判断哪个搜索结果对自己有用，用户会用脚投票，谷歌通过分析哪个搜索结果的点击率最高，来自动修正搜索引擎的算法，从而找出最合适的结果排在第一位。</p>
+
+<p>人工智能目前主要应用在比如垃圾邮件检测、数字识别、语音识别、人脸识别、各种智能设备，自动驾驶等领域，人工智能是未来科技发展的「必然」。对于未来的人工智能，除了给人类带来便利之外，人类也表现出了很多担心。在「知乎」里有个著名的讨论「<a href="https://www.zhihu.com/question/27864852/answer/39007053">为什么有很多名人让人们警惕人工智能？</a>」，答案排名第一个的谢熊猫君开头就给出了一个让人震惊的结论：</p>
+
+<p><strong>人工智能很可能导致人类的永生或者灭绝，而这一切很可能在我们的有生之年发生。</strong></p>
+
+<p>的确是有点危言耸听，而《必然》的作者 KK 显然是人工智能的乐观派，他相信人工智能并不能完全取代人类，而是对人类不擅长的能力的一种补充。计算机的有些能力是人类所不具备的，比如超强记忆容量，超强的计算能力，所以我们发明了硬盘和 CPU 。我们的思维方式不擅长做统计，于是我们制造出各种统计技术很强的智能设备。人类开车比如容易走神分心，于是我们研究制造自动驾驶。</p>
+
+<p><strong>「创造聪明绝顶的人工智能是个错误，因而探究更多智能种类显得更为明智」</strong> 从这句话看来，KK 这个乐观派也未必是那么的乐观。也许他是对的，开发一个聪明绝顶的全面人工智能的机器人，对于人类来说本身就是个错误，何况技术实现也非常困难。所以，只要人工智能在某一种特定的心智表现出色就好。比如自动驾驶的人工智能只会做好驾驶一件事，预测天气的人工智能只会用来预测天气。</p>
+
+<p>假设人工智能在各个方面都逐渐取代了人类，那必然会导致大量的职业消失。就像自动化实现后，机器代替了农民以及在农场作业的动物，淘汰了当时大多数人的工作。作为程序员，想到的是以后人工智能可以根据用户的语音需求自动编写代码，大量的程序员将失业。</p>
+
+<p>机器将取代更多人类工种，一切都是时间问题。KK 甚至放出了这样的话：</p>
+
+<p>「或许很难令人相信，但在本世纪结束前，如今人们从事的职业中有 70% 很可能会被自动化设备取代。不用说，亲爱的读者，你的工作也会被机器取代。广泛的自动化将会触及包括体力劳动和知识型工作在内的所有工种。」</p>
+
+<p>「无论你是一名医生、律师、建筑师、记者甚至程序员，机器人都将历史性地接管你的工作。」</p>
+
+<p>所以，不要再以为你的职业一定可以干一辈子，也不要以为在大公司上班就一定可以工作到退休，也许某天你所从事的这个职业本身就消失了。你的搬砖技术练的再好，已经没有任何公司需要人搬砖了。</p>
+
+<p>那么，人类做什么？会有更多新的职业产生出来。未来自动驾驶的汽车随处可见，而相应的会衍生出一个新的名为行程优化师的新工作。当外科自动化机器人成为常规后，会出现一种新的专业分析师，为你解读数据。（未来代码都由机器来自动编写，测试，部署上线，服务器坏了有机器人自动维修。我想不出会出现什么新的职业，也许程序员会变成一个更高端的职业，主要设计和优化机器人使用的编程语言，开发用来生成代码的代码。）</p>
+
+<p><strong>「几乎人人都能得到个人机器人，但是仅仅拥有一个机器人并不是成功的关键。成功将青睐那些以最优化的方式与机器人以及机器一同工作的人。」</strong></p>
+
+<p>「人类的工作就是不停地给机器人安排任务，这本身就是一项永远做不完的工作，所以，我们至少还能保留这份『工作』。」</p>
+
+<p>「将来，无论你现在从事什么工作，收入水平如何，都讲反复经历机器人代替人的以下 7 个步骤：」</p>
+
+<ol>
+<li>机器人干不了我的工作。</li>
+<li>好吧，它会许多事情，但是我做的事情它不一定都会。</li>
+<li>好吧，我做的事情它都会，但是它常常出故障，这时需要我来处理。</li>
+<li>好吧，它干常规工作时从不出错，但是我需要训练它学习新任务。</li>
+<li>好吧，就让它做我原来的工作吧，那工作本来就不是人该干的。</li>
+<li>哇，机器人正在干我以前做的工作，我的新工作不仅好玩多了，工资还高。</li>
+<li>真高兴，机器人绝对干不了我现在做的事情。</li>
+<li>【重复】</li>
+</ol>
+
+<p>「未来，你的薪水高低将取决于你能否和机器人默契配合。90% 的同事将会是看不见的机器，而没有他们，你的大部分工作将无法完成。这一切都是必然的。让机器人代替我们从事现在的工作，让我们在它们的帮助下去构想有意义的新工作吧。」</p>
+
+<p>在未来，使用编程语言手敲代码可能会被视为一种复古行为。趁着现在这个到处就差一个程序员的时代，多敲几行代码，说不定就改变世界了呢？</p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="http://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫交流</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2016/02/21/inevitable-cognifying/">http://blog.coderzh.com/2016/02/21/inevitable-cognifying/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+              <div class="clear"></div>
+              
+              
+              
+            </div>
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p> 微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking <br /></p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2016/02/09/my-first-mac/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>我的第一台 Mac</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+        <a href="http://blog.coderzh.com/2016/03/06/pomotodo/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>使用番茄工作法一个月感受</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2016. All Rights Reserved. <br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10147768-2', 'auto');
+  ga('send', 'pageview');
+
+  $('#messagesbsb').remove();
+
+</script>
+</body>
+</html>
+

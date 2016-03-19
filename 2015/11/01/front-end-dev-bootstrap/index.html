@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>走进前端开发之：Bootstrap - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="keywords" content="bootstrap,CSS,Javascript,自适应,响应式布局,终端适配,布局,">
+<meta name="description" content="走进前端开发之：Bootstrap">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="走进前端开发之：Bootstrap - CoderZh Blog">
+<meta itemprop="description" content="走进前端开发之：Bootstrap">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="走进前端开发之：Bootstrap - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="走进前端开发之：Bootstrap">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="走进前端开发之：Bootstrap - CoderZh Blog">
+<meta name="twitter:description" content="走进前端开发之：Bootstrap">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="http://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">走进前端开发之：Bootstrap</h1>
+
+                  <p class="post-byline">
+                    by  · 2015年11月01日 · 2613 Words ·
+                    ~6min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-11-01-front-end-dev-bootstrap.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/bootstrap.jpg-wt" alt="bootstrap" /></p>
+
+<p>如今互联网创业热潮此起彼伏，特别是移动互联网，使得前端开发这一职位变得愈加炙手可热。大量公司欲求高端前端开发而不得，进入前端开发浩瀚大军的同学也是日益增多，大家相互厮杀，占领 <code>GitHub</code> ，只为获得前端开发的一席之地。新技术新框架如雨后春笋，层出不穷，未跟上步伐者也以迅雷不及掩耳之势被取代淘汰。这是一个前端开发百花齐放的时代。</p>
+
+<p>这段文绉绉的开场白，只为说明一个道理：再不了解学习前端，你就老了。在我们那个年代（好吧，其实也不久），还未有前端开发这样的职位。那时的网站开发同学哪个不是一把辛酸一把泪的不断挑弄着 <code>CSS</code> 和 <code>JavaScript</code> ，纵然有一万个草泥马崩腾而过，也只能默默忍受这混乱不堪的一切，在浏览器兼容这一世纪难题面前，心中只能默念：能用就行，习惯就好。除了搬弄前端的 CSS 和 Javascript ，那时的网站开发同学还要兼顾后端。那时的MVC更像是一个整体的概念，而如今随着前端表现日益丰富，重心不断往前端移，后端只需提供类似 <code>Restful</code> 接口、处理逻辑、存储数据。单单一个前端，已经衍生出各种MVC框架：Embejs、Angular.js、Backbone.js、Knockout.js、React.js……</p>
+
+<p>然而，这些前端框架我一个也没有用过。我也不是一个前端程序员，所以在写这篇文章时，我也是诚惶诚恐的。毕竟我一个外行，要是让专做前端开发的读者看了，难免班门弄斧贻笑大方，也许还少不了几句点评指责。当然，我也是虚心接受的。“走进前端开发”我打算写成一个系列文章，目的并不是多深入的介绍和学习前端开发，而是“走进”，或者说“走近”、“了解”，站在一个旁观者的角度去观察了解，前端开发到底是怎样一个群体。</p>
+
+<p>这是第一篇，主角是： <code>Bootstrap</code> 。我在做 <a href="http://www.gohugo.org/">http://www.gohugo.org/</a> 时就使用到了 Bootstrap 。或多或少你也许听过 Bootstrap 的大名，或者“响应式布局”是否在哪里听过？何为“响应式布局”？响应式布局是指，一个网站只需要做一个版本，就能自动适应和兼容各个终端平台，比如：PC、手机、平板，呈现出最好的表现效果。</p>
+
+<h3 id="多终端适配:0b0432fd07b093099631d3dfda0706d0">多终端适配</h3>
+
+<p>这样又要说到“多终端适配”的问题了。在响应式布局出现之前，人们是怎么处理多终端适配的呢？主要有两种方式：</p>
+
+<ol>
+<li><p>跳转适配</p>
+
+<p>跳转适配会根据你使用的设备类型跳转到对应的单独地址。比如：你在手机浏览器里输入 163.com ，会自动跳转到 3g.163.com 。实现的方法是在通过 Meta 信息申明，或是 Server 根据 User-Agent 进行跳转。跳转适配需要针对不同设备类型，使用不同的url，做多套界面。</p></li>
+
+<li><p>代码适配</p>
+
+<p>代码适配在不同设备中使用同一个 URL ， Server 会根据 User-Agent 的不同生成不同的 HTML 页面。比如在手机里输入： weixin.qq.com ，虽然地址一样，但看到的内容和PC端是完全不一样的。（你会发现找不到“公众平台”的入口）</p></li>
+</ol>
+
+<p>显然，这两种适配方式的维护成本都比较大。因为要针对不同平台维护不同版本，常常会出现移动版和 PC 版不同步的问题。</p>
+
+<p>接着，就要提到第三种适配方式：</p>
+
+<p><strong>自适应：同一 URL ，同一套 HTML 界面，根据使用设备（PC、移动设备、平板电脑）的不同，根据屏幕尺寸呈现出不同的结果。</strong></p>
+
+<p>“响应式布局”就是自适应适配的一种布局方式。为了让自适应适配更加方便易用，Bootstrap框架应运而生。</p>
+
+<h3 id="bootstrap:0b0432fd07b093099631d3dfda0706d0">Bootstrap</h3>
+
+<p><a href="http://getbootstrap.com/">Bootstrap</a> 是 Twitter 推出的一个用于前端开发的开源工具包。它由 Twitter 的设计师 Mark Otto 和 Jacob Thornton 合作开发，是一个 CSS/HTML 框架。通过 Bootstrap ，你可以非常轻松的设计出移动端友好，又能在不同设备适配良好的网站。</p>
+
+<p>Bootstrap 天生为移动设备而设计，框架由内到外默认都是移动设备优先的。使用 Bootstrap 非常简单，首先将页面设置成 HTML5 文档类型：</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+  ...
+&lt;/html&gt;
+</code></pre>
+
+<p>在 <code>&lt;head&gt;</code> 之间添加 viewport 元数据标签：</p>
+
+<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+</code></pre>
+
+<p>你还可以设置禁用缩放功能，让你的网站在浏览器里看上去更像一个原生应用：</p>
+
+<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+</code></pre>
+
+<p>使用 Bootstrap 最简单快速的方式是直接使用 Bootstrap 中文网提供的 CDN 加速服务。</p>
+
+<pre><code class="language-html">&lt;!-- 新 Bootstrap 核心 CSS 文件 --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
+
+&lt;!-- 可选的Bootstrap主题文件（一般不用引入） --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css&quot;&gt;
+
+&lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&gt;
+&lt;script src=&quot;//cdn.bootcss.com/jquery/1.11.3/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;
+&lt;script src=&quot;//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>你还可以使用 <code>Bower</code> 、 <code>npm</code> 、 <code>Composer</code> 等工具进行安装。为了更强的定制性，你还可以使用 <code>Less/Sass</code> 源码进行编译。</p>
+
+<p>编译？其实就是CSS文件的生成过程。我们知道，CSS 在处理样式时异常灵活，以至于不同人写出来的样式代码五花八门，各种元素之间相互影响相互制约，某处稍一改动就有牵一发而动全身的效果。再加上不同浏览器支持的特性千差万别，使得CSS代码变得非常难以组织和维护。</p>
+
+<p>由此，CSS 预处理应运而生。通过定义一种新的语言，自动实现浏览器兼容、变量、结构体等功能，还支持逻辑判断和循环，最后通过编译生成最终的 CSS 目标文件。使得代码更加简洁，容易维护。而 Less/Sass 就是目前最流行的CSS预处理器。</p>
+
+<p>除了上面的方式，你还可以像我这种懒人一样直接下载现成的示例模板，然后再做一些细微的调整。</p>
+
+<h3 id="bootstrap-布局:0b0432fd07b093099631d3dfda0706d0">Bootstrap 布局</h3>
+
+<p>Bootstrap 提供了一套完整的基础 CSS 模块，预定义了一套简单易用的样式组件，同时结合jQuery 提供了一套基础的方便的 Javascript 交互组件。简直就是提供了 Web 前端的一站式解决方案。</p>
+
+<p>这里我只介绍一下自适应适配最核心之处： Bootstrap 的栅格布局系统。</p>
+
+<p>首先，我们要为页面内容和栅格系统包裹一个 <code>.container</code> 容器：</p>
+
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+
+<p><code>.container</code> 类用于固定宽度和响应式布局的容器，如果占据 100% 的宽度，使用 <code>.container-fluid</code> 类：</p>
+
+<pre><code class="language-html">&lt;div class=&quot;container-fluid&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+
+<p>栅格系统会根据屏幕和视口（viewport）的尺寸，将一行分为最多 <strong>12</strong> 列，通过预设好的栅格类表示需要占多少个列宽度。比如，可以使用 3 个 <code>.col-xs-4</code> 可以将页面容器分成 3 个等分。使用 1 个 <code>.col-xs-3</code> 和 1 个 <code>.col-xs-9</code> ，可以对页面容器进行 3：9 比例分割，实现一个左侧 Sidebar 的效果。</p>
+
+<p>比如：</p>
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/bootstrap-grid.jpg" alt="bootstrap-grid" /></p>
+
+<pre><code class="language-html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-8&quot;&gt;.col-md-8&lt;/div&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+  &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;.col-md-6&lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;.col-md-6&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>除了指定宽度，还可以通过指定 <code>.col-md-offset-*</code> 等进行偏移。回到一个重要的问题，知道了大致如何布局，那如何进行移动适配呢？</p>
+
+<p>上面的例子我们看到，有 <code>.col-xs-*</code> 和 <code>.col-md-*</code> 等等，其实 xs 、 md 等对应的是不同显示设备。比如：</p>
+
+<ul>
+<li><code>.col-xs-*</code> ：超小屏幕、手机 (&lt;768px)</li>
+<li><code>.col-sm-*</code> ：小屏幕 平板 (≥768px)</li>
+<li><code>.col-md-*</code> ：中等屏幕 桌面显示器 (≥992px)</li>
+<li><code>.col-lg-*</code> ：大屏幕 大桌面显示器 (≥1200px)</li>
+</ul>
+
+<p>通过给 div 定义多个 <code>col-xx-*</code> 的组合就可以达到不同移动设备进行布局适配的目的。</p>
+
+<p>比如下面的示例：</p>
+
+<pre><code class="language-html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-xs-6 col-md-3&quot;&gt;.col-xs-6 .col-md-3&lt;/div&gt;
+  &lt;div class=&quot;col-xs-6 col-md-9&quot;&gt;.col-xs-6 .col-md-9&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>将实现在手机端进行 6：6 布局，在中等屏幕的PC端进行 3 : 9 布局。</p>
+
+<h3 id="总结:0b0432fd07b093099631d3dfda0706d0">总结</h3>
+
+<p>如今 Bootstrap 已经被广泛使用，国内外大量网站使用 Bootstrap 数不胜数。如果你需要开发一个移动端友好的网站， Bootstrap 是你的不二选择。本文只是 Bootstrap 的粗浅入门，有兴趣的同学可以找资料进行更加深入的学习。</p>
+
+<p>Bootstrap 官方网站：<a href="http://getbootstrap.com/">http://getbootstrap.com/</a></p>
+
+<p>对于前端开发的 Bootstrap 这把利器多少有了一些了解，接下来可以去了解了解那些号称1，2周就有大更新，1，2个月就有新冒出来的，3，4个月不学就要落伍的前端框架了。</p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="http://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫交流</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/">http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+              <div class="clear"></div>
+              
+              
+              
+            </div>
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p> 微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking <br /></p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2015/10/25/gohugo-org/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>Hugo中文网站gohugo.org上线</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+        <a href="http://blog.coderzh.com/2015/11/01/hugo-translate/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>Hugo中文文档翻译计划</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2016. All Rights Reserved. <br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10147768-2', 'auto');
+  ga('send', 'pageview');
+
+  $('#messagesbsb').remove();
+
+</script>
+</body>
+</html>
+
