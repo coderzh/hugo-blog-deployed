@@ -122,7 +122,7 @@ Library/Preferences/IdeaIC15/options/keymap.xml
 
 &lt;p&gt;&lt;code&gt;configuration_files&lt;/code&gt; 里指定我需要备份的文件即可。非常的简单易用。&lt;/p&gt;
 
-&lt;h3 id=&#34;自带安装软件:50fc662a6f6921bb445d80a429a8e146&#34;&gt;自带安装软件&lt;/h3&gt;
+&lt;h3 id=&#34;自动安装软件:50fc662a6f6921bb445d80a429a8e146&#34;&gt;自动安装软件&lt;/h3&gt;
 
 &lt;p&gt;在一台新机器上，把之前机器装的软件一个一个手动安装也是非常耗时和麻烦的事情。如果你使用的是 Mac OS X，将会变得非常简单，因为绝大部分的软件开发包及软件都可以通过 &lt;a href=&#34;http://brew.sh/&#34;&gt;Homebrew&lt;/a&gt; 和 &lt;a href=&#34;https://caskroom.github.io/&#34;&gt;brew cask&lt;/a&gt; 来安装。&lt;/p&gt;
 
