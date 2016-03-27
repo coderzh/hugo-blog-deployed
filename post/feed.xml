@@ -6,7 +6,150 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 19 Mar 2016 15:05:47 CST</updated>
+        <updated>Sun, 27 Mar 2016 12:57:37 CST</updated>
+        
+        <item>
+            <title>做了一个 Hugo 的主题：hugo-pacman-theme</title>
+            <link>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</link>
+            <pubDate>Sun, 27 Mar 2016 12:57:37 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
+            <description>
+
+&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;
+
+&lt;p&gt;Hugo 本身有很多不错的主题，但挑剔的朋友可能会觉得还不够，希望看到 Jeklly 或 Hexo 里漂亮的主题时也能在 Hugo 里找到对应的主题。其实 Hugo 的主题制作并不复杂，有兴趣的同学可以尝试自己制作主题，或者将其他静态网站生成器里的主题转成 Hugo 的主题。&lt;/p&gt;
+
+&lt;p&gt;不会做的话参考我做的这个主题（&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;hugo-pacman-theme&lt;/a&gt;）代码，基本的 Hugo 模板功能都用上了。&lt;/p&gt;
+
+&lt;h3 id=&#34;pacman:54fdd68c9a36858a04277e9977a250be&#34;&gt;Pacman&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://yangjian.me/pacman/&#34;&gt;Pacman&lt;/a&gt; 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;hugo-pacman-theme&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;演示地址：&lt;a href=&#34;http://coderzh.github.io/hugo-pacman-theme/&#34;&gt;http://coderzh.github.io/hugo-pacman-theme/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;截图:54fdd68c9a36858a04277e9977a250be&#34;&gt;截图&lt;/h4&gt;
+
+&lt;p&gt;主页：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hugo-pacman-tn.png&#34; alt=&#34;hugo-pacman-tn&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;文章页面：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hugo-pacman-theme.png&#34; alt=&#34;hugo-pacman-theme&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;支持功能:54fdd68c9a36858a04277e9977a250be&#34;&gt;支持功能&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;分类&lt;/li&gt;
+&lt;li&gt;标签（标签云）&lt;/li&gt;
+&lt;li&gt;归档&lt;/li&gt;
+&lt;li&gt;RSS&lt;/li&gt;
+&lt;li&gt;文章大纲（Table Of Content）&lt;/li&gt;
+&lt;li&gt;文章分享功能&lt;/li&gt;
+&lt;li&gt;图片点击预览（FancyBox）&lt;/li&gt;
+&lt;li&gt;多说评论（及 Disqus 评论）&lt;/li&gt;
+&lt;li&gt;Google Analytics&lt;/li&gt;
+&lt;li&gt;代码高亮优化（GitHub 配色）&lt;/li&gt;
+&lt;li&gt;高度配置化，你要的东西都可以通过 config.toml 进行配置。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;使用方法:54fdd68c9a36858a04277e9977a250be&#34;&gt;使用方法&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;首先，确保安装了最新版 Hugo。下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;Hugo Release&lt;/a&gt;，如果使用 Mac ，直接用 Homebrew 安装：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ brew install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;把 hugo-pacman-theme clone 下来，放到你的 Hugo 站点的 themes 目录里（Hugo 的使用方法详见：&lt;a href=&#34;http://www.gohugo.org/&#34;&gt;http://www.gohugo.org/&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd themes
+$ git clone https://github.com/coderzh/hugo-pacman-theme
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;配置文件，拷贝一份或者参考：&lt;code&gt;hugo-pacman-theme/exampleSite/config.toml&lt;/code&gt;，配置如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;BaseURL = &amp;quot;http://coderzh.github.io/&amp;quot;
+LanguageCode = &amp;quot;zh-CN&amp;quot;
+HasCJKLanguage = true
+Title = &amp;quot;Hugo PacMan Theme Demo&amp;quot;
+Theme = &amp;quot;hugo-pacman-theme&amp;quot;
+pygmentsStyle = &amp;quot;default&amp;quot;
+pygmentsUseClasses = true
+RSSUri = &amp;quot;feed.xml&amp;quot;
+
+[Author]
+  Name = &amp;quot;coderzh&amp;quot;
+
+[Params]
+  AuthorHomepage = &amp;quot;http://blog.coderzh.com&amp;quot;
+  BottomIntroduce = &amp;quot;Introduce1 &amp;lt;br/&amp;gt; Introduce2&amp;quot;
+  Description = &amp;quot;&amp;quot;
+  Subtitle = &amp;quot;subtitle&amp;quot;
+  Weibo = &amp;quot;coderzh&amp;quot;
+  WeiboID = 1816308191
+  Twitter = &amp;quot;coderzh&amp;quot;
+  GitHub = &amp;quot;coderzh&amp;quot;
+  Facebook = &amp;quot;coderzh&amp;quot;
+  LinkIn = &amp;quot;coderzh&amp;quot;
+  Imglogo = &amp;quot;img/logo.svg&amp;quot;
+  AuthorImg = &amp;quot;img/author.jpg&amp;quot;
+  # 日期时间格式
+  DateFormat = &amp;quot;2006年01月02日&amp;quot;
+  MonthFormat = &amp;quot;2006年01月&amp;quot;
+  FancyBox = true
+
+  # 使用多说评论
+  #[Params.DuoShuo]
+  #  ShortName = &amp;quot;coderzh&amp;quot;
+
+  # 使用 Disqus 评论
+  [Params.Disqus]
+    ShortName = &amp;quot;coderzh&amp;quot;
+
+  # Google 统计
+  [Params.GoogleAnalytics]
+    ID = &amp;quot;UA-10147768-2&amp;quot;
+
+  # 多语言字符串
+  [Params.Strings]
+    Search = &amp;quot;搜索&amp;quot;
+    PageNotFound = &amp;quot;你访问的页面不存在&amp;quot;
+    ShowSideBar = &amp;quot;显示侧边栏&amp;quot;
+    HideSideBar = &amp;quot;隐藏侧边栏&amp;quot;
+    Categories = &amp;quot;分类&amp;quot;
+    Archive = &amp;quot;归档&amp;quot;
+    Tags = &amp;quot;标签&amp;quot;
+    TagCloud = &amp;quot;标签云&amp;quot;
+    Rss = &amp;quot;RSS 订阅&amp;quot;
+    TableOfContents = &amp;quot;文章目录&amp;quot;
+
+[Menu]
+  [[Menu.Main]]
+    Name = &amp;quot;首页&amp;quot;
+    URL = &amp;quot;/&amp;quot;
+    Weight = 1
+  [[Menu.Main]]
+    Name = &amp;quot;关于&amp;quot;
+    URL = &amp;quot;/about&amp;quot;
+    Weight = 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;最后:54fdd68c9a36858a04277e9977a250be&#34;&gt;最后&lt;/h3&gt;
+
+&lt;p&gt;该主题参考的 &lt;a href=&#34;https://github.com/A-limon/pacman&#34;&gt;Pacman&lt;/a&gt;，使用 Hugo 的模板语法纯手工一行一行打造。有需要的朋友尽管拿去使用，有问题欢迎反馈：&lt;/p&gt;
+
+&lt;p&gt;GitHub 地址：&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;https://github.com/coderzh/hugo-pacman-theme&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hugo 中文文档：&lt;a href=&#34;http://www.gohugo.org/&#34;&gt;http://www.gohugo.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hugo 交流 QQ 群：512499080&lt;/p&gt;
+
+&lt;p&gt;该主题已经&lt;a href=&#34;https://github.com/spf13/hugoThemes/issues/121&#34;&gt;提交&lt;/a&gt;到官方的主题列表，相信不久就可以在官方的 &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;http://themes.gohugo.io/&lt;/a&gt; 上看到了。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>懒程序员和他的 dotfiles</title>
@@ -1399,40 +1542,6 @@ AES(SharedKey, Ticket)
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/code-review.jpg&#34; alt=&#34;code-review&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Code Review ，你做了就知道！&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>程序员的思考：我的 K12（我也曾是小学生）</title>
-            <link>http://blog.coderzh.com/2015/12/21/my-k12-pupil/</link>
-            <pubDate>Mon, 21 Dec 2015 22:38:15 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/12/21/my-k12-pupil/</guid>
-            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/math.jpeg-wt&#34; alt=&#34;math&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;我还记得小学一年级刚开学，老师教我们背字母表，然后对我们进行了测验。背的好的几个小朋友被老师留了下来，我也是其中一个。老师说要选我们当班干部。我当时傻了，从没听说过什么是“班干部”，于是回家后问家长。家长听了后很高兴，而我还是没明白到底啥是“班干部”。&lt;/p&gt;
-
-&lt;p&gt;直到后来我才发现，上课时喊一声“起立”的班干部是班长，收作业本的是学习委员，课间餐给小朋友发吃的的是生活委员。我当时就是个生活委员。从那时起，我开始了我的 K12 从政之路（说的好像有点夸张的样子）。三年级时升为了班长，一直延续到高三，一直是班长。&lt;/p&gt;
-
-&lt;p&gt;班干部的人选通常是按学习成绩来挑选的。小学时认为学习最好的人才会当班长，到初中时才发现默认学习最好的人其实是学习委员。有段时间还特别自卑，因为当时的老师上课时遇到稍难的题时都喜欢点名让几个学习好的同学来回答，而我却很少被点到。出于攀比的心理，我开始怀疑老师理解的班长就是平时只管一管纪律，成绩中上的同学，或者是因为我长的不好从来不点我名。&lt;/p&gt;
-
-&lt;p&gt;从小学到高中，有一条永恒不变的中心线，就是学习成绩。它让我们获得成就感，也让我们灰心。学校和家长不断引导我们和别人攀比，当落后时，我们开始否定自己，变得自卑。让我印象深刻的一件事情是，小学选拔学生参加奥数比赛，经过层层考试筛选最后剩下10个人左右时。每经过一次内部测验，老师都让我们站在台上，按名次排成一排，以警示自己的成绩所在的位置。这10个同学已经是全年级数学最优秀的同学了，但每次排名我都站在靠后接近最后的位置，每次都让我自卑懊恼不已。我怀疑我是不是真的太笨了。&lt;/p&gt;
-
-&lt;p&gt;有一届奥数比赛，已经确定我可以代表学校参加比赛了。就在考试快要开始前，我被告知参加比赛的名额满了，让我在教室等，心里想着平时那么努力了好不容易进入最后关头，到考试上阵前却要被老师换下，心里很不是滋味。&lt;/p&gt;
-
-&lt;p&gt;小学时我疯狂的迷上了乒乓球，常常幻想哪天国家队主教练将我收入麾下，带领中国队冲击世界冠军。&lt;/p&gt;
-
-&lt;p&gt;记得95年那届世乒赛，那时还是邓亚萍、孔令辉和刘国梁。为了在家看决赛，我直接翘课没去参加五年级的奥数选拔考试。之后我的数学老师找到我谈话，她并没有责备我，而是鼓励和肯定了我。不记得有没有单独让我重考了，最后还是让我进入了下一轮的选拔。这是我遇到的第一个很好的老师，她给了我自信，经常鼓励我，甚至感觉经常特殊照顾我。她是数学老师，也是班主任，在考试结束批改完成后，她会满怀欣喜的第一时间告诉我我的成绩。（当然，往往都是成绩不错的情况）有次语文考试成绩不好，她还单独叫我出去给我讲解出错的题。她长的胖胖的，可是我早已经不记得她的名字了。我在五年级最后的一次奥数竞赛时，终于成功逆袭考了个第一名，拿了全市一等奖。&lt;/p&gt;
-
-&lt;p&gt;和我玩的最好的同学，都是学习相对差的同学，也就是别人眼中的差生。因为和他们玩，没有攀比和炫耀，从来不谈论学习成绩，有的是纯粹的乐趣。我还加入了学校的田径队，在和田径队员一起训练的那段时光，是单纯的、充实的、快乐的，虽然训练很辛苦。我的一个要好的同学练习跳高，还有一对传奇的姐弟组合。姐姐和我同级，弟弟小我一岁。据说弟弟从小就绑着沙袋每天跟着家人的自行车跑去买菜。我大他一岁，短跑完全不是他的对手，跑中长跑，也跑不过他的姐姐。我们每天天没亮就开始训练，饶着城区跑，到人民纪念碑跳石阶，拖着轮胎在操场上跑，热身、压腿、准备活动小步跑高抬腿、专项训练，日复一日。按理这比学习累多了，但是我没有放弃。因为在跑不过队里的小伙伴时，没有人会取笑你，你想的只是怎样让自己变得更强。最后，在全市小学生运动会中，我成功的拿下了200米第一和400米第二的成绩。&lt;/p&gt;
-
-&lt;p&gt;数学竞赛本是用来锻炼思维，学习知识的，却成了摧残自信的工具。&lt;/p&gt;
-
-&lt;p&gt;田径训练本是辛苦、单调又重复的，却能获得一些纯粹的快乐。&lt;/p&gt;
-
-&lt;p&gt;因为学习是被动的，田径训练是主动的。如果中间能有好的引导，结果又会不同。&lt;/p&gt;
-
-&lt;p&gt;……&lt;/p&gt;
 </description>
         </item>
         

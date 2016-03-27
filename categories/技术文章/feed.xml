@@ -6,7 +6,150 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 19 Mar 2016 15:05:47 CST</updated>
+        <updated>Sun, 27 Mar 2016 12:57:37 CST</updated>
+        
+        <item>
+            <title>做了一个 Hugo 的主题：hugo-pacman-theme</title>
+            <link>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</link>
+            <pubDate>Sun, 27 Mar 2016 12:57:37 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
+            <description>
+
+&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;
+
+&lt;p&gt;Hugo 本身有很多不错的主题，但挑剔的朋友可能会觉得还不够，希望看到 Jeklly 或 Hexo 里漂亮的主题时也能在 Hugo 里找到对应的主题。其实 Hugo 的主题制作并不复杂，有兴趣的同学可以尝试自己制作主题，或者将其他静态网站生成器里的主题转成 Hugo 的主题。&lt;/p&gt;
+
+&lt;p&gt;不会做的话参考我做的这个主题（&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;hugo-pacman-theme&lt;/a&gt;）代码，基本的 Hugo 模板功能都用上了。&lt;/p&gt;
+
+&lt;h3 id=&#34;pacman:54fdd68c9a36858a04277e9977a250be&#34;&gt;Pacman&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://yangjian.me/pacman/&#34;&gt;Pacman&lt;/a&gt; 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;hugo-pacman-theme&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;演示地址：&lt;a href=&#34;http://coderzh.github.io/hugo-pacman-theme/&#34;&gt;http://coderzh.github.io/hugo-pacman-theme/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;截图:54fdd68c9a36858a04277e9977a250be&#34;&gt;截图&lt;/h4&gt;
+
+&lt;p&gt;主页：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hugo-pacman-tn.png&#34; alt=&#34;hugo-pacman-tn&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;文章页面：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hugo-pacman-theme.png&#34; alt=&#34;hugo-pacman-theme&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;支持功能:54fdd68c9a36858a04277e9977a250be&#34;&gt;支持功能&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;分类&lt;/li&gt;
+&lt;li&gt;标签（标签云）&lt;/li&gt;
+&lt;li&gt;归档&lt;/li&gt;
+&lt;li&gt;RSS&lt;/li&gt;
+&lt;li&gt;文章大纲（Table Of Content）&lt;/li&gt;
+&lt;li&gt;文章分享功能&lt;/li&gt;
+&lt;li&gt;图片点击预览（FancyBox）&lt;/li&gt;
+&lt;li&gt;多说评论（及 Disqus 评论）&lt;/li&gt;
+&lt;li&gt;Google Analytics&lt;/li&gt;
+&lt;li&gt;代码高亮优化（GitHub 配色）&lt;/li&gt;
+&lt;li&gt;高度配置化，你要的东西都可以通过 config.toml 进行配置。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;使用方法:54fdd68c9a36858a04277e9977a250be&#34;&gt;使用方法&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;首先，确保安装了最新版 Hugo。下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;Hugo Release&lt;/a&gt;，如果使用 Mac ，直接用 Homebrew 安装：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ brew install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;把 hugo-pacman-theme clone 下来，放到你的 Hugo 站点的 themes 目录里（Hugo 的使用方法详见：&lt;a href=&#34;http://www.gohugo.org/&#34;&gt;http://www.gohugo.org/&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd themes
+$ git clone https://github.com/coderzh/hugo-pacman-theme
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;配置文件，拷贝一份或者参考：&lt;code&gt;hugo-pacman-theme/exampleSite/config.toml&lt;/code&gt;，配置如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;BaseURL = &amp;quot;http://coderzh.github.io/&amp;quot;
+LanguageCode = &amp;quot;zh-CN&amp;quot;
+HasCJKLanguage = true
+Title = &amp;quot;Hugo PacMan Theme Demo&amp;quot;
+Theme = &amp;quot;hugo-pacman-theme&amp;quot;
+pygmentsStyle = &amp;quot;default&amp;quot;
+pygmentsUseClasses = true
+RSSUri = &amp;quot;feed.xml&amp;quot;
+
+[Author]
+  Name = &amp;quot;coderzh&amp;quot;
+
+[Params]
+  AuthorHomepage = &amp;quot;http://blog.coderzh.com&amp;quot;
+  BottomIntroduce = &amp;quot;Introduce1 &amp;lt;br/&amp;gt; Introduce2&amp;quot;
+  Description = &amp;quot;&amp;quot;
+  Subtitle = &amp;quot;subtitle&amp;quot;
+  Weibo = &amp;quot;coderzh&amp;quot;
+  WeiboID = 1816308191
+  Twitter = &amp;quot;coderzh&amp;quot;
+  GitHub = &amp;quot;coderzh&amp;quot;
+  Facebook = &amp;quot;coderzh&amp;quot;
+  LinkIn = &amp;quot;coderzh&amp;quot;
+  Imglogo = &amp;quot;img/logo.svg&amp;quot;
+  AuthorImg = &amp;quot;img/author.jpg&amp;quot;
+  # 日期时间格式
+  DateFormat = &amp;quot;2006年01月02日&amp;quot;
+  MonthFormat = &amp;quot;2006年01月&amp;quot;
+  FancyBox = true
+
+  # 使用多说评论
+  #[Params.DuoShuo]
+  #  ShortName = &amp;quot;coderzh&amp;quot;
+
+  # 使用 Disqus 评论
+  [Params.Disqus]
+    ShortName = &amp;quot;coderzh&amp;quot;
+
+  # Google 统计
+  [Params.GoogleAnalytics]
+    ID = &amp;quot;UA-10147768-2&amp;quot;
+
+  # 多语言字符串
+  [Params.Strings]
+    Search = &amp;quot;搜索&amp;quot;
+    PageNotFound = &amp;quot;你访问的页面不存在&amp;quot;
+    ShowSideBar = &amp;quot;显示侧边栏&amp;quot;
+    HideSideBar = &amp;quot;隐藏侧边栏&amp;quot;
+    Categories = &amp;quot;分类&amp;quot;
+    Archive = &amp;quot;归档&amp;quot;
+    Tags = &amp;quot;标签&amp;quot;
+    TagCloud = &amp;quot;标签云&amp;quot;
+    Rss = &amp;quot;RSS 订阅&amp;quot;
+    TableOfContents = &amp;quot;文章目录&amp;quot;
+
+[Menu]
+  [[Menu.Main]]
+    Name = &amp;quot;首页&amp;quot;
+    URL = &amp;quot;/&amp;quot;
+    Weight = 1
+  [[Menu.Main]]
+    Name = &amp;quot;关于&amp;quot;
+    URL = &amp;quot;/about&amp;quot;
+    Weight = 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;最后:54fdd68c9a36858a04277e9977a250be&#34;&gt;最后&lt;/h3&gt;
+
+&lt;p&gt;该主题参考的 &lt;a href=&#34;https://github.com/A-limon/pacman&#34;&gt;Pacman&lt;/a&gt;，使用 Hugo 的模板语法纯手工一行一行打造。有需要的朋友尽管拿去使用，有问题欢迎反馈：&lt;/p&gt;
+
+&lt;p&gt;GitHub 地址：&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;https://github.com/coderzh/hugo-pacman-theme&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hugo 中文文档：&lt;a href=&#34;http://www.gohugo.org/&#34;&gt;http://www.gohugo.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hugo 交流 QQ 群：512499080&lt;/p&gt;
+
+&lt;p&gt;该主题已经&lt;a href=&#34;https://github.com/spf13/hugoThemes/issues/121&#34;&gt;提交&lt;/a&gt;到官方的主题列表，相信不久就可以在官方的 &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;http://themes.gohugo.io/&lt;/a&gt; 上看到了。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>懒程序员和他的 dotfiles</title>
@@ -1756,60 +1899,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;p&gt;Bootstrap 官方网站：&lt;a href=&#34;http://getbootstrap.com/&#34;&gt;http://getbootstrap.com/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;对于前端开发的 Bootstrap 这把利器多少有了一些了解，接下来可以去了解了解那些号称1，2周就有大更新，1，2个月就有新冒出来的，3，4个月不学就要落伍的前端框架了。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>Hugo中文网站gohugo.org上线</title>
-            <link>http://blog.coderzh.com/2015/10/25/gohugo-org/</link>
-            <pubDate>Sun, 25 Oct 2015 23:37:16 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/10/25/gohugo-org/</guid>
-            <description>
-
-&lt;p&gt;之前我在博客里写了一篇文章：&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;使用hugo搭建个人博客站点&lt;/a&gt;，之后有很多人给我留言或者邮件，列举了在搭建Hugo时遇到的各种问题，并且提出希望能有一个中文的Hugo网站。&lt;/p&gt;
-
-&lt;p&gt;于是，我利用周末的时间，注册域名（居然注册到了 &lt;code&gt;gohugo.org&lt;/code&gt; 这个域名），用&lt;code&gt;Hugo&lt;/code&gt;本身搭建了这个网站，运行在 &lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;DigitalOcean&lt;/a&gt; 的 &lt;code&gt;VPS&lt;/code&gt; 上。这就是 &lt;a href=&#34;http://www.gohugo.org&#34;&gt;http://www.gohugo.org&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;gohugo-org:39bef422aa544bc9d53b933146f67273&#34;&gt;gohugo.org&lt;/h3&gt;
-
-&lt;p&gt;网站的地址是：&lt;a href=&#34;http://www.gohugo.org&#34;&gt;http://www.gohugo.org&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;网站所有内容都在 &lt;code&gt;GitHub&lt;/code&gt; 开源，地址：&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;https://github.com/coderzh/gohugo.org&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;该Repository已经设置了WebHook，只要有push就会自动触发 &lt;code&gt;VPS&lt;/code&gt; 更新部署。如果你感兴趣，可以加入进来，你提的PR一旦被Merged将立即在网站更新出来。&lt;/p&gt;
-
-&lt;h3 id=&#34;截图:39bef422aa544bc9d53b933146f67273&#34;&gt;截图&lt;/h3&gt;
-
-&lt;h4 id=&#34;首页:39bef422aa544bc9d53b933146f67273&#34;&gt;首页&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-index.jpg-w&#34; alt=&#34;gohugo-index&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;文章列表:39bef422aa544bc9d53b933146f67273&#34;&gt;文章列表&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-post.jpg-w&#34; alt=&#34;gohugo-post&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;皮肤列表:39bef422aa544bc9d53b933146f67273&#34;&gt;皮肤列表&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-theme.jpg-w&#34; alt=&#34;gohugo-theme&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;示例网站:39bef422aa544bc9d53b933146f67273&#34;&gt;示例网站&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/gohugo-showcase.jpg-w&#34; alt=&#34;gohugo-showcase&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;关于hugo:39bef422aa544bc9d53b933146f67273&#34;&gt;关于Hugo&lt;/h3&gt;
-
-&lt;p&gt;使用Hugo可以快速的制作一个静态站点，同时Hugo还在不断更新和发展中，相信未来会更加易用、功能越来越好。我给Hugo提过几次PR，看过Hugo的代码，从代码的角度来看，Hugo的代码写非常简洁清晰，模块分类非常的清楚，并且配备完善的单元测试。&lt;/p&gt;
-
-&lt;p&gt;对于如此优秀的东西，希望能与更多人分享，通过分享和交流，希望能促进Hugo变得越来越好，让它更加广为人知。&lt;/p&gt;
-
-&lt;p&gt;因此，所有对Hugo感兴趣的朋友欢迎加入贡献内容，同时也欢迎有任何疑问、建议或交流的朋友加入Hugo交流QQ群：512499080。&lt;/p&gt;
-
-&lt;p&gt;或者微信扫一扫关注我的微信公众号：hacker-thinking&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.coderzh.com/public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
         

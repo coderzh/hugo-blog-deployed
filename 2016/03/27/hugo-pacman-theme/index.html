@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="http://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>做了一个 Hugo 的主题：hugo-pacman-theme - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="keywords" content="Hugo,pacman,主题,">
+<meta name="description" content="Hugo 的 pacman 主题">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="做了一个 Hugo 的主题：hugo-pacman-theme - CoderZh Blog">
+<meta itemprop="description" content="Hugo 的 pacman 主题">
+<meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="做了一个 Hugo 的主题：hugo-pacman-theme - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/" />
+<meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="Hugo 的 pacman 主题">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="做了一个 Hugo 的主题：hugo-pacman-theme - CoderZh Blog">
+<meta name="twitter:description" content="Hugo 的 pacman 主题">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/"/>
+  <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="http://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="http://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="http://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="http://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="http://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="http://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="http://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://blog.coderzh.com/feed.xml" type="application/rss+xml" target="_blank">订阅</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        一个程序员的思考与总结
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="http://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">做了一个 Hugo 的主题：hugo-pacman-theme</h1>
+
+                  <p class="post-byline">
+                    by  · 2016年03月27日 · 1211 Words ·
+                    ~3min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-03-27-hugo-pacman-theme.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
+
+<p>Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 <a href="https://www.staticgen.com/">StaticGen</a> 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。</p>
+
+<p>Hugo 本身有很多不错的主题，但挑剔的朋友可能会觉得还不够，希望看到 Jeklly 或 Hexo 里漂亮的主题时也能在 Hugo 里找到对应的主题。其实 Hugo 的主题制作并不复杂，有兴趣的同学可以尝试自己制作主题，或者将其他静态网站生成器里的主题转成 Hugo 的主题。</p>
+
+<p>不会做的话参考我做的这个主题（<a href="https://github.com/coderzh/hugo-pacman-theme">hugo-pacman-theme</a>）代码，基本的 Hugo 模板功能都用上了。</p>
+
+<h3 id="pacman:54fdd68c9a36858a04277e9977a250be">Pacman</h3>
+
+<p><a href="https://yangjian.me/pacman/">Pacman</a> 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：<a href="https://github.com/coderzh/hugo-pacman-theme">hugo-pacman-theme</a></p>
+
+<p>演示地址：<a href="http://coderzh.github.io/hugo-pacman-theme/">http://coderzh.github.io/hugo-pacman-theme/</a></p>
+
+<h4 id="截图:54fdd68c9a36858a04277e9977a250be">截图</h4>
+
+<p>主页：</p>
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/hugo-pacman-tn.png" alt="hugo-pacman-tn" /></p>
+
+<p>文章页面：</p>
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/hugo-pacman-theme.png" alt="hugo-pacman-theme" /></p>
+
+<h4 id="支持功能:54fdd68c9a36858a04277e9977a250be">支持功能</h4>
+
+<ol>
+<li>分类</li>
+<li>标签（标签云）</li>
+<li>归档</li>
+<li>RSS</li>
+<li>文章大纲（Table Of Content）</li>
+<li>文章分享功能</li>
+<li>图片点击预览（FancyBox）</li>
+<li>多说评论（及 Disqus 评论）</li>
+<li>Google Analytics</li>
+<li>代码高亮优化（GitHub 配色）</li>
+<li>高度配置化，你要的东西都可以通过 config.toml 进行配置。</li>
+</ol>
+
+<h3 id="使用方法:54fdd68c9a36858a04277e9977a250be">使用方法</h3>
+
+<ol>
+<li><p>首先，确保安装了最新版 Hugo。下载地址：<a href="https://github.com/spf13/hugo/releases">Hugo Release</a>，如果使用 Mac ，直接用 Homebrew 安装：</p>
+
+<pre><code>$ brew install hugo
+</code></pre></li>
+
+<li><p>把 hugo-pacman-theme clone 下来，放到你的 Hugo 站点的 themes 目录里（Hugo 的使用方法详见：<a href="http://www.gohugo.org/">http://www.gohugo.org/</a>）。</p>
+
+<pre><code>$ cd themes
+$ git clone https://github.com/coderzh/hugo-pacman-theme
+</code></pre></li>
+
+<li><p>配置文件，拷贝一份或者参考：<code>hugo-pacman-theme/exampleSite/config.toml</code>，配置如下：</p>
+
+<pre><code class="language-toml">BaseURL = &quot;http://coderzh.github.io/&quot;
+LanguageCode = &quot;zh-CN&quot;
+HasCJKLanguage = true
+Title = &quot;Hugo PacMan Theme Demo&quot;
+Theme = &quot;hugo-pacman-theme&quot;
+pygmentsStyle = &quot;default&quot;
+pygmentsUseClasses = true
+RSSUri = &quot;feed.xml&quot;
+
+[Author]
+  Name = &quot;coderzh&quot;
+
+[Params]
+  AuthorHomepage = &quot;http://blog.coderzh.com&quot;
+  BottomIntroduce = &quot;Introduce1 &lt;br/&gt; Introduce2&quot;
+  Description = &quot;&quot;
+  Subtitle = &quot;subtitle&quot;
+  Weibo = &quot;coderzh&quot;
+  WeiboID = 1816308191
+  Twitter = &quot;coderzh&quot;
+  GitHub = &quot;coderzh&quot;
+  Facebook = &quot;coderzh&quot;
+  LinkIn = &quot;coderzh&quot;
+  Imglogo = &quot;img/logo.svg&quot;
+  AuthorImg = &quot;img/author.jpg&quot;
+  # 日期时间格式
+  DateFormat = &quot;2006年01月02日&quot;
+  MonthFormat = &quot;2006年01月&quot;
+  FancyBox = true
+
+  # 使用多说评论
+  #[Params.DuoShuo]
+  #  ShortName = &quot;coderzh&quot;
+
+  # 使用 Disqus 评论
+  [Params.Disqus]
+    ShortName = &quot;coderzh&quot;
+
+  # Google 统计
+  [Params.GoogleAnalytics]
+    ID = &quot;UA-10147768-2&quot;
+
+  # 多语言字符串
+  [Params.Strings]
+    Search = &quot;搜索&quot;
+    PageNotFound = &quot;你访问的页面不存在&quot;
+    ShowSideBar = &quot;显示侧边栏&quot;
+    HideSideBar = &quot;隐藏侧边栏&quot;
+    Categories = &quot;分类&quot;
+    Archive = &quot;归档&quot;
+    Tags = &quot;标签&quot;
+    TagCloud = &quot;标签云&quot;
+    Rss = &quot;RSS 订阅&quot;
+    TableOfContents = &quot;文章目录&quot;
+
+[Menu]
+  [[Menu.Main]]
+    Name = &quot;首页&quot;
+    URL = &quot;/&quot;
+    Weight = 1
+  [[Menu.Main]]
+    Name = &quot;关于&quot;
+    URL = &quot;/about&quot;
+    Weight = 2
+</code></pre></li>
+</ol>
+
+<h3 id="最后:54fdd68c9a36858a04277e9977a250be">最后</h3>
+
+<p>该主题参考的 <a href="https://github.com/A-limon/pacman">Pacman</a>，使用 Hugo 的模板语法纯手工一行一行打造。有需要的朋友尽管拿去使用，有问题欢迎反馈：</p>
+
+<p>GitHub 地址：<a href="https://github.com/coderzh/hugo-pacman-theme">https://github.com/coderzh/hugo-pacman-theme</a></p>
+
+<p>Hugo 中文文档：<a href="http://www.gohugo.org/">http://www.gohugo.org/</a></p>
+
+<p>Hugo 交流 QQ 群：512499080</p>
+
+<p>该主题已经<a href="https://github.com/spf13/hugoThemes/issues/121">提交</a>到官方的主题列表，相信不久就可以在官方的 <a href="http://themes.gohugo.io/">http://themes.gohugo.io/</a> 上看到了。</p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="http://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫交流</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/">http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+              <div class="clear"></div>
+              
+              
+              
+            </div>
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p> 微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking <br /></p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://blog.coderzh.com/2016/03/19/dotfiles/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>懒程序员和他的 dotfiles</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+            <p>Copyright © 2016. All Rights Reserved. <br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10147768-2', 'auto');
+  ga('send', 'pageview');
+
+  $('#messagesbsb').remove();
+
+</script>
+</body>
+</html>
+
