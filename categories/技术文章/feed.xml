@@ -6,7 +6,111 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 27 Mar 2016 12:57:37 CST</updated>
+        <updated>Sat, 09 Apr 2016 14:57:00 UTC</updated>
+        
+        <item>
+            <title>我如何管理我的笔记</title>
+            <link>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</link>
+            <pubDate>Sat, 09 Apr 2016 14:57:00 UTC</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
+            <description>
+
+&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
+
+&lt;p&gt;而如今网络如此发达，大多数的答案都可以通过你问出正确的问题得到解答。凯文·凯利在他的《必然》里有提到，未来，我们不缺乏答案，缺的是问出好的问题。Google 几乎索引了我们想要知道的所有问题的答案（百度索引了所有的相反答案），所以，理论上，我们不再需要记录自己的笔记。&lt;/p&gt;
+
+&lt;p&gt;但事实却并不是这样的，首先，在中国，想要访问 Google 不是一件容易的事情。即使你功夫很好可以畅通无阻的访问，通过 Google 依然不是你最快捷获取已有知识的方式。因为你曾经在 Google 搜索结果里翻了好几页才找到的答案，下次搜索时还要再找一遍，效率是不高的。&lt;/p&gt;
+
+&lt;p&gt;所以，记录笔记的需求一直都在。但是用纸记录笔记已经不适合。每次搬家或清理时，曾经写满笔记的小本子都会被我遗弃掉，如果不翻开那些小本子，我几乎不会记得我曾经记录过什么东西。一旦那些纸质笔记本被我扔掉，之前记录的所有笔记内容都会从我的记忆中抹去。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;所以，用软件记录笔记是目前唯一正确的选择。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我尝试过各种笔记软件，其中「为知笔记」使用了最久，最早是因为他支持目录树的分类，后来是因为他支持直接写 Markdown。但前不久，我把我的几百篇为知笔记导出了（Windows 版支持导出），我打算以一种全新的方式来管理我的笔记。&lt;/p&gt;
+
+&lt;p&gt;既可以说是「全新」，也是可以说是用最「原始」的方式管理笔记。即在本地完全由纯文本的方式来进行笔记管理。这种方式不再依赖任何一个笔记软件。&lt;/p&gt;
+
+&lt;h3 id=&#34;所有的软件都不可靠:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;所有的软件都不可靠&lt;/h3&gt;
+
+&lt;p&gt;现有的所有笔记软件给我们一种假象：我们可以永远记录下去。事实并非如此，现在科技发展如此之快，公司被淘汰的速度也在加速，很有可能现在最流行的笔记软件几年后就关门大吉。&lt;/p&gt;
+
+&lt;p&gt;现在市面上大多数的笔记软件的文件存储都是使用私有格式，一旦它停止服务，你只能寄希望于它提供的导出功能，然后盼望着另外一家笔记软件能导入这些笔记。&lt;/p&gt;
+
+&lt;p&gt;类似的事情不断的在发生着，比如之前我最喜欢的 RSS 订阅服务 Google Reader。出自 Google 这样的大公司，用户体验各方面都做的非常好，但是 2013 年 7 月，Google 以运营成本太大，需求太小众，没有盈利模式等缘由将其永久的关闭了。作为 Google Reader 粉，不得不将订阅列表导出，不情不愿的迁移到 feedly 这样的服务。&lt;/p&gt;
+
+&lt;p&gt;又比如，前不久，Facebook 宣布即将关闭著名的后台即服务（Baas）框架 Parse。Parse 作为全球最受欢迎的 Baas 服务，2013 年被 Facebook 收购后，由于 Facebook 自身业务需要，宣布 2017 年 1 月 28 日正式关闭。&lt;/p&gt;
+
+&lt;p&gt;这将导致之前所有使用 Parse 服务的软件重新去考虑迁移的事宜。而事实上有很多软件已工作多年，而且几乎不再维护，一旦关闭，如果不进行迁移维护，那些软件将会失效。&lt;/p&gt;
+
+&lt;h3 id=&#34;回归原始:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;回归原始&lt;/h3&gt;
+
+&lt;p&gt;使用纯文本在本地进行笔记管理，是最原始的笔记方式。你不必再担心笔记软件停止服务后你的笔记在哪里的问题。你也不依赖于任何一款笔记编辑软件，因为任何文本编辑器都可以直接进行笔记编辑。&lt;/p&gt;
+
+&lt;p&gt;当然，在本地管理笔记必须解决几个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;能不能很好的搜索笔记内容？&lt;/li&gt;
+&lt;li&gt;能不能支持多平台的同步和编辑？（PC和移动端的编辑和同步）&lt;/li&gt;
+&lt;li&gt;能不能保证笔记文件不丢失？&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;笔记搜索:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记搜索&lt;/h4&gt;
+
+&lt;p&gt;从本地文件夹里搜索文件，或者搜索文件里的内容，有很多的工具。这些工具都是可替代的，即使所有 GUI 的工具软件都不能用了，我们还有 find 和 grep 命令。&lt;/p&gt;
+
+&lt;p&gt;Mac 下支持 Markdown 的笔记软件多如牛毛，支持本地文档库管理的笔记软件相对来说少一些，比如：Ulysses、MWeb、Farbox 等等。但是这些软件我都不用，因为我直接用 Alfred 就够了。&lt;/p&gt;
+
+&lt;p&gt;对，没有看错，是&lt;strong&gt;效率神器 Alfred&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;在 Alfred 中我定制了一个笔记管理的 Workflow，当需要查找某一篇笔记时，只需要按下 &lt;code&gt;f&lt;/code&gt; 空格，输入需要检索的标题或正文关键字，Alfred 就可以直接列出对于的笔记文件，回车后即可直接打开。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/find-notes.png-s&#34; alt=&#34;find-notes&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;笔记编辑:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记编辑&lt;/h4&gt;
+
+&lt;p&gt;当我想记录编程相关的笔记时，只需要按下 &lt;code&gt;np&lt;/code&gt; 空格，输入文字标题，将自动在合适的路径创建一个新的笔记并打开编辑。（n = new，p = programming 分类）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/new-notes.png-s&#34; alt=&#34;new-notes&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我会用 Atom 来打开和编辑笔记文件，因为它真的很好用。在 Atom 里，安装如下几个插件，编辑 Markdown 的体验将会爽的飞起：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;markdown-preview&lt;/strong&gt; 默认自带，按快捷键 ctrl + shift + m 即可实时看到预览。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;markdown-scroll-sync&lt;/strong&gt; 配合 markdown-preview 使用，编辑时可以同步滚动预览。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tidy-markdown&lt;/strong&gt; 按保存时，自带帮你修正 Markdown 格式，让你的 Markdown 更规范。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;markdown-wirter&lt;/strong&gt; 用来管理 Markdown 文档，用来写博客会很方便。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zen&lt;/strong&gt; 神器，cmd + ctrl + z 进入无干扰书写模式，其中 Typewriter 打字机模式非常不错，当你输入到屏幕中间时，可以让输入的当前行一直保持在屏幕中间。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/atom-markdown.png-s&#34; alt=&#34;atom-markdown&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;alfred-workflow:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;Alfred Workflow&lt;/h4&gt;
+
+&lt;p&gt;想实现上面 &lt;code&gt;f&lt;/code&gt; 和 &lt;code&gt;np&lt;/code&gt; 之类的功能非常简单，通过组合 Workflow 里的 FileFilter、ScriptFilter、Run Script 即可。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/MyNotes-Workflow.png-s&#34; alt=&#34;MyNotes-Workflow&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;你可以在 Alfred 的 Workflow 中定制自己的快捷键、笔记类别、笔记路径，非常的简单。如果不知道怎样定制，可以参考我的 Workflow：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/alfred-workflows&#34;&gt;https://github.com/coderzh/alfred-workflows&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;笔记多平台同步:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记多平台同步&lt;/h4&gt;
+
+&lt;p&gt;各种网盘，综合考虑后，我选择了 Dropbox。（为了能正常使用 Dropbox 需要一点功夫。）&lt;/p&gt;
+
+&lt;h4 id=&#34;移动端同步与编辑:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;移动端同步与编辑&lt;/h4&gt;
+
+&lt;p&gt;在支持 Dropbox 同步同时又支持 Markdown 编辑的 App 里选择，最后我选择了 &lt;a href=&#34;https://bywordapp.com/&#34;&gt;Byword&lt;/a&gt;，因为它的 Markdown 编写体验真的很好。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/byword.PNG&#34; alt=&#34;byword&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;保证笔记文件不丢失:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;保证笔记文件不丢失&lt;/h3&gt;
+
+&lt;p&gt;除了 Dropbox 同步，我会定期使用 git 进行版本管理，Push 到自己的私人仓库里。&lt;/p&gt;
+
+&lt;p&gt;希望本文对喜欢做笔记的同学有点帮助吧。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>做了一个 Hugo 的主题：hugo-pacman-theme</title>
@@ -1740,165 +1844,6 @@ ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mo
 &lt;p&gt;待翻译文档路径： &lt;a href=&#34;https://github.com/coderzh/gohugo.org/tree/master/content/doc&#34;&gt;https://github.com/coderzh/gohugo.org/tree/master/content/doc&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;然后 Fork 该 &lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;Repo&lt;/a&gt; ，通过 Pull Request 的方式提交过来便是。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>走进前端开发之：Bootstrap</title>
-            <link>http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/</link>
-            <pubDate>Sun, 01 Nov 2015 07:37:56 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/bootstrap.jpg-wt&#34; alt=&#34;bootstrap&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如今互联网创业热潮此起彼伏，特别是移动互联网，使得前端开发这一职位变得愈加炙手可热。大量公司欲求高端前端开发而不得，进入前端开发浩瀚大军的同学也是日益增多，大家相互厮杀，占领 &lt;code&gt;GitHub&lt;/code&gt; ，只为获得前端开发的一席之地。新技术新框架如雨后春笋，层出不穷，未跟上步伐者也以迅雷不及掩耳之势被取代淘汰。这是一个前端开发百花齐放的时代。&lt;/p&gt;
-
-&lt;p&gt;这段文绉绉的开场白，只为说明一个道理：再不了解学习前端，你就老了。在我们那个年代（好吧，其实也不久），还未有前端开发这样的职位。那时的网站开发同学哪个不是一把辛酸一把泪的不断挑弄着 &lt;code&gt;CSS&lt;/code&gt; 和 &lt;code&gt;JavaScript&lt;/code&gt; ，纵然有一万个草泥马崩腾而过，也只能默默忍受这混乱不堪的一切，在浏览器兼容这一世纪难题面前，心中只能默念：能用就行，习惯就好。除了搬弄前端的 CSS 和 Javascript ，那时的网站开发同学还要兼顾后端。那时的MVC更像是一个整体的概念，而如今随着前端表现日益丰富，重心不断往前端移，后端只需提供类似 &lt;code&gt;Restful&lt;/code&gt; 接口、处理逻辑、存储数据。单单一个前端，已经衍生出各种MVC框架：Embejs、Angular.js、Backbone.js、Knockout.js、React.js……&lt;/p&gt;
-
-&lt;p&gt;然而，这些前端框架我一个也没有用过。我也不是一个前端程序员，所以在写这篇文章时，我也是诚惶诚恐的。毕竟我一个外行，要是让专做前端开发的读者看了，难免班门弄斧贻笑大方，也许还少不了几句点评指责。当然，我也是虚心接受的。“走进前端开发”我打算写成一个系列文章，目的并不是多深入的介绍和学习前端开发，而是“走进”，或者说“走近”、“了解”，站在一个旁观者的角度去观察了解，前端开发到底是怎样一个群体。&lt;/p&gt;
-
-&lt;p&gt;这是第一篇，主角是： &lt;code&gt;Bootstrap&lt;/code&gt; 。我在做 &lt;a href=&#34;http://www.gohugo.org/&#34;&gt;http://www.gohugo.org/&lt;/a&gt; 时就使用到了 Bootstrap 。或多或少你也许听过 Bootstrap 的大名，或者“响应式布局”是否在哪里听过？何为“响应式布局”？响应式布局是指，一个网站只需要做一个版本，就能自动适应和兼容各个终端平台，比如：PC、手机、平板，呈现出最好的表现效果。&lt;/p&gt;
-
-&lt;h3 id=&#34;多终端适配:0b0432fd07b093099631d3dfda0706d0&#34;&gt;多终端适配&lt;/h3&gt;
-
-&lt;p&gt;这样又要说到“多终端适配”的问题了。在响应式布局出现之前，人们是怎么处理多终端适配的呢？主要有两种方式：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;跳转适配&lt;/p&gt;
-
-&lt;p&gt;跳转适配会根据你使用的设备类型跳转到对应的单独地址。比如：你在手机浏览器里输入 163.com ，会自动跳转到 3g.163.com 。实现的方法是在通过 Meta 信息申明，或是 Server 根据 User-Agent 进行跳转。跳转适配需要针对不同设备类型，使用不同的url，做多套界面。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;代码适配&lt;/p&gt;
-
-&lt;p&gt;代码适配在不同设备中使用同一个 URL ， Server 会根据 User-Agent 的不同生成不同的 HTML 页面。比如在手机里输入： weixin.qq.com ，虽然地址一样，但看到的内容和PC端是完全不一样的。（你会发现找不到“公众平台”的入口）&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;显然，这两种适配方式的维护成本都比较大。因为要针对不同平台维护不同版本，常常会出现移动版和 PC 版不同步的问题。&lt;/p&gt;
-
-&lt;p&gt;接着，就要提到第三种适配方式：&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;自适应：同一 URL ，同一套 HTML 界面，根据使用设备（PC、移动设备、平板电脑）的不同，根据屏幕尺寸呈现出不同的结果。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;“响应式布局”就是自适应适配的一种布局方式。为了让自适应适配更加方便易用，Bootstrap框架应运而生。&lt;/p&gt;
-
-&lt;h3 id=&#34;bootstrap:0b0432fd07b093099631d3dfda0706d0&#34;&gt;Bootstrap&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://getbootstrap.com/&#34;&gt;Bootstrap&lt;/a&gt; 是 Twitter 推出的一个用于前端开发的开源工具包。它由 Twitter 的设计师 Mark Otto 和 Jacob Thornton 合作开发，是一个 CSS/HTML 框架。通过 Bootstrap ，你可以非常轻松的设计出移动端友好，又能在不同设备适配良好的网站。&lt;/p&gt;
-
-&lt;p&gt;Bootstrap 天生为移动设备而设计，框架由内到外默认都是移动设备优先的。使用 Bootstrap 非常简单，首先将页面设置成 HTML5 文档类型：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;zh-CN&amp;quot;&amp;gt;
-  ...
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在 &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 之间添加 viewport 元数据标签：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;你还可以设置禁用缩放功能，让你的网站在浏览器里看上去更像一个原生应用：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&amp;quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用 Bootstrap 最简单快速的方式是直接使用 Bootstrap 中文网提供的 CDN 加速服务。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- 新 Bootstrap 核心 CSS 文件 --&amp;gt;
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css&amp;quot;&amp;gt;
-
-&amp;lt;!-- 可选的Bootstrap主题文件（一般不用引入） --&amp;gt;
-&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css&amp;quot;&amp;gt;
-
-&amp;lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&amp;gt;
-&amp;lt;script src=&amp;quot;//cdn.bootcss.com/jquery/1.11.3/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-
-&amp;lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&amp;gt;
-&amp;lt;script src=&amp;quot;//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;你还可以使用 &lt;code&gt;Bower&lt;/code&gt; 、 &lt;code&gt;npm&lt;/code&gt; 、 &lt;code&gt;Composer&lt;/code&gt; 等工具进行安装。为了更强的定制性，你还可以使用 &lt;code&gt;Less/Sass&lt;/code&gt; 源码进行编译。&lt;/p&gt;
-
-&lt;p&gt;编译？其实就是CSS文件的生成过程。我们知道，CSS 在处理样式时异常灵活，以至于不同人写出来的样式代码五花八门，各种元素之间相互影响相互制约，某处稍一改动就有牵一发而动全身的效果。再加上不同浏览器支持的特性千差万别，使得CSS代码变得非常难以组织和维护。&lt;/p&gt;
-
-&lt;p&gt;由此，CSS 预处理应运而生。通过定义一种新的语言，自动实现浏览器兼容、变量、结构体等功能，还支持逻辑判断和循环，最后通过编译生成最终的 CSS 目标文件。使得代码更加简洁，容易维护。而 Less/Sass 就是目前最流行的CSS预处理器。&lt;/p&gt;
-
-&lt;p&gt;除了上面的方式，你还可以像我这种懒人一样直接下载现成的示例模板，然后再做一些细微的调整。&lt;/p&gt;
-
-&lt;h3 id=&#34;bootstrap-布局:0b0432fd07b093099631d3dfda0706d0&#34;&gt;Bootstrap 布局&lt;/h3&gt;
-
-&lt;p&gt;Bootstrap 提供了一套完整的基础 CSS 模块，预定义了一套简单易用的样式组件，同时结合jQuery 提供了一套基础的方便的 Javascript 交互组件。简直就是提供了 Web 前端的一站式解决方案。&lt;/p&gt;
-
-&lt;p&gt;这里我只介绍一下自适应适配最核心之处： Bootstrap 的栅格布局系统。&lt;/p&gt;
-
-&lt;p&gt;首先，我们要为页面内容和栅格系统包裹一个 &lt;code&gt;.container&lt;/code&gt; 容器：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
-  ...
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;.container&lt;/code&gt; 类用于固定宽度和响应式布局的容器，如果占据 100% 的宽度，使用 &lt;code&gt;.container-fluid&lt;/code&gt; 类：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;container-fluid&amp;quot;&amp;gt;
-  ...
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;栅格系统会根据屏幕和视口（viewport）的尺寸，将一行分为最多 &lt;strong&gt;12&lt;/strong&gt; 列，通过预设好的栅格类表示需要占多少个列宽度。比如，可以使用 3 个 &lt;code&gt;.col-xs-4&lt;/code&gt; 可以将页面容器分成 3 个等分。使用 1 个 &lt;code&gt;.col-xs-3&lt;/code&gt; 和 1 个 &lt;code&gt;.col-xs-9&lt;/code&gt; ，可以对页面容器进行 3：9 比例分割，实现一个左侧 Sidebar 的效果。&lt;/p&gt;
-
-&lt;p&gt;比如：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/bootstrap-grid.jpg&#34; alt=&#34;bootstrap-grid&#34; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-8&amp;quot;&amp;gt;.col-md-8&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-6&amp;quot;&amp;gt;.col-md-6&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-md-6&amp;quot;&amp;gt;.col-md-6&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;除了指定宽度，还可以通过指定 &lt;code&gt;.col-md-offset-*&lt;/code&gt; 等进行偏移。回到一个重要的问题，知道了大致如何布局，那如何进行移动适配呢？&lt;/p&gt;
-
-&lt;p&gt;上面的例子我们看到，有 &lt;code&gt;.col-xs-*&lt;/code&gt; 和 &lt;code&gt;.col-md-*&lt;/code&gt; 等等，其实 xs 、 md 等对应的是不同显示设备。比如：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;.col-xs-*&lt;/code&gt; ：超小屏幕、手机 (&amp;lt;768px)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.col-sm-*&lt;/code&gt; ：小屏幕 平板 (≥768px)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.col-md-*&lt;/code&gt; ：中等屏幕 桌面显示器 (≥992px)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.col-lg-*&lt;/code&gt; ：大屏幕 大桌面显示器 (≥1200px)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;通过给 div 定义多个 &lt;code&gt;col-xx-*&lt;/code&gt; 的组合就可以达到不同移动设备进行布局适配的目的。&lt;/p&gt;
-
-&lt;p&gt;比如下面的示例：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;col-xs-6 col-md-3&amp;quot;&amp;gt;.col-xs-6 .col-md-3&amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;col-xs-6 col-md-9&amp;quot;&amp;gt;.col-xs-6 .col-md-9&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;将实现在手机端进行 6：6 布局，在中等屏幕的PC端进行 3 : 9 布局。&lt;/p&gt;
-
-&lt;h3 id=&#34;总结:0b0432fd07b093099631d3dfda0706d0&#34;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;如今 Bootstrap 已经被广泛使用，国内外大量网站使用 Bootstrap 数不胜数。如果你需要开发一个移动端友好的网站， Bootstrap 是你的不二选择。本文只是 Bootstrap 的粗浅入门，有兴趣的同学可以找资料进行更加深入的学习。&lt;/p&gt;
-
-&lt;p&gt;Bootstrap 官方网站：&lt;a href=&#34;http://getbootstrap.com/&#34;&gt;http://getbootstrap.com/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;对于前端开发的 Bootstrap 这把利器多少有了一些了解，接下来可以去了解了解那些号称1，2周就有大更新，1，2个月就有新冒出来的，3，4个月不学就要落伍的前端框架了。&lt;/p&gt;
 </description>
         </item>
         

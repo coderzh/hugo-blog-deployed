@@ -12,48 +12,40 @@
         }
     }
   </script>
-  <title>所有的编程技术都会成为历史 - CoderZh Blog</title>
+  <title>我如何管理我的笔记 - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<meta name="description" content="大四的时候，我用当时最新的 ASP.NET 技术给我叔写了一个服装制衣厂管理软件，这个软件用了差不多 10 年，中间几乎没有维护过，到现在还在工作。前几天突然联系我说，这个软件能不能迁移到 Win7 上使用（之前是在 XP 上），我想了想，肯定没问题啊，即使不行，在 Win7 里跑个 XP 的虚拟机也行。
-
-最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。
+<meta name="keywords" content="笔记管理,Markdown,本地文件,">
+<meta name="description" content="我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="所有的编程技术都会成为历史 - CoderZh Blog">
-<meta itemprop="description" content="大四的时候，我用当时最新的 ASP.NET 技术给我叔写了一个服装制衣厂管理软件，这个软件用了差不多 10 年，中间几乎没有维护过，到现在还在工作。前几天突然联系我说，这个软件能不能迁移到 Win7 上使用（之前是在 XP 上），我想了想，肯定没问题啊，即使不行，在 Win7 里跑个 XP 的虚拟机也行。
-
-最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。
+<meta itemprop="name" content="我如何管理我的笔记 - CoderZh Blog">
+<meta itemprop="description" content="我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="所有的编程技术都会成为历史 - CoderZh Blog" />
+<meta property="og:title" content="我如何管理我的笔记 - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.coderzh.com/2016/04/05/programming-languages/" />
+<meta property="og:url" content="http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="大四的时候，我用当时最新的 ASP.NET 技术给我叔写了一个服装制衣厂管理软件，这个软件用了差不多 10 年，中间几乎没有维护过，到现在还在工作。前几天突然联系我说，这个软件能不能迁移到 Win7 上使用（之前是在 XP 上），我想了想，肯定没问题啊，即使不行，在 Win7 里跑个 XP 的虚拟机也行。
-
-最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。
+<meta property="og:description" content="我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。
 ">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="所有的编程技术都会成为历史 - CoderZh Blog">
-<meta name="twitter:description" content="大四的时候，我用当时最新的 ASP.NET 技术给我叔写了一个服装制衣厂管理软件，这个软件用了差不多 10 年，中间几乎没有维护过，到现在还在工作。前几天突然联系我说，这个软件能不能迁移到 Win7 上使用（之前是在 XP 上），我想了想，肯定没问题啊，即使不行，在 Win7 里跑个 XP 的虚拟机也行。
-
-最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。
+<meta name="twitter:title" content="我如何管理我的笔记 - CoderZh Blog">
+<meta name="twitter:description" content="我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://blog.coderzh.com/2016/04/05/programming-languages/">
-  <link rel='shortlink' href="http://blog.coderzh.com/2016/04/05/programming-languages/"/>
+  <link rel="canonical" href="http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/">
+  <link rel='shortlink' href="http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/"/>
   <link rel="shortcut icon" href="http://blog.coderzh.com/public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -175,6 +167,10 @@
               <ul class="meta-single group">
                 
                 <li class="category">
+                  <a href="http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+                <li class="category">
                   <a href="http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" rel="category tag">思考感悟</a>
                 </li>
                 
@@ -187,12 +183,12 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">所有的编程技术都会成为历史</h1>
+                  <h1 class="post-title">我如何管理我的笔记</h1>
 
                   <p class="post-byline">
-                    by  · 2016年04月04日 · 2079 Words ·
+                    by  · 2016年04月09日 · 2105 Words ·
                     ~5min reading time |
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-04-05-programming-languages.md"
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-04-09-how-i-manage-my-notes.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -201,53 +197,101 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p>大四的时候，我用当时最新的 ASP.NET 技术给我叔写了一个服装制衣厂管理软件，这个软件用了差不多 10 年，中间几乎没有维护过，到现在还在工作。前几天突然联系我说，这个软件能不能迁移到 Win7 上使用（之前是在 XP 上），我想了想，肯定没问题啊，即使不行，在 Win7 里跑个 XP 的虚拟机也行。</p>
+                      
 
-<p>最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。</p>
+<p>我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。</p>
 
-<p><strong>于是我想，当时看来挺不错的技术，几年后，或者十年后，会变成怎样。</strong></p>
+<p>而如今网络如此发达，大多数的答案都可以通过你问出正确的问题得到解答。凯文·凯利在他的《必然》里有提到，未来，我们不缺乏答案，缺的是问出好的问题。Google 几乎索引了我们想要知道的所有问题的答案（百度索引了所有的相反答案），所以，理论上，我们不再需要记录自己的笔记。</p>
 
-<p>比如，著名的后端即服务（baas）的框架 <a href="https://parse.com">Parse</a> 在 2013 年时被 Facebook 收购。前不久，在 2016 年 1 月，Facebook 因自身业务需求， 宣布将于 2017 年 1 月 28 日正式关闭 Parse 服务。</p>
+<p>但事实却并不是这样的，首先，在中国，想要访问 Google 不是一件容易的事情。即使你功夫很好可以畅通无阻的访问，通过 Google 依然不是你最快捷获取已有知识的方式。因为你曾经在 Google 搜索结果里翻了好几页才找到的答案，下次搜索时还要再找一遍，效率是不高的。</p>
 
-<p>那些本以为使用了大公司服务就可以高枕无忧的开发者，又要开始忙碌起来，捣鼓起怎么迁移的事情，而且可以想象，有不少开发者使用 Parse 开发的 App 已经运行几年，本来可以忘记这事了，突然被强制要求回去维护，代价可不小。</p>
+<p>所以，记录笔记的需求一直都在。但是用纸记录笔记已经不适合。每次搬家或清理时，曾经写满笔记的小本子都会被我遗弃掉，如果不翻开那些小本子，我几乎不会记得我曾经记录过什么东西。一旦那些纸质笔记本被我扔掉，之前记录的所有笔记内容都会从我的记忆中抹去。</p>
 
-<p>如今，多如牛毛的编程语言，各式各样玲琅满目的编程框架，常常让初学者困惑。「我该学什么编程语言？」「这个技术会不会过时？」这样的问题常常困惑着初学者。</p>
+<p><strong>所以，用软件记录笔记是目前唯一正确的选择。</strong></p>
 
-<p>我的答案是，<strong>所有编程技术都会成为历史</strong>。没有人能够预知未来的趋势，我们只能根据自身情况做出一个相对好的选择。我也走过不少弯路，在没必要的技术上花费了很多时间。</p>
+<p>我尝试过各种笔记软件，其中「为知笔记」使用了最久，最早是因为他支持目录树的分类，后来是因为他支持直接写 Markdown。但前不久，我把我的几百篇为知笔记导出了（Windows 版支持导出），我打算以一种全新的方式来管理我的笔记。</p>
 
-<p>第一个让我入门的编程语言是 QBasic，在我读初二的时候。它让我明白了原来我可以通过写代码控制计算机执行一些操作和运算。为什么会选 QB？当时我还小，连计算机为何物都不清楚，由我们学校的老师硬塞过来。原因只有一个：当时的计算机竞赛是用 QB 的。</p>
+<p>既可以说是「全新」，也是可以说是用最「原始」的方式管理笔记。即在本地完全由纯文本的方式来进行笔记管理。这种方式不再依赖任何一个笔记软件。</p>
 
-<p>当时我被屏幕上跳动的字符所吸引，可是当时学习资源非常匮乏，在我们的小县城连一本 QBasic 教程也很难找到。学校的编程小组纯粹是为了应付竞赛，而我对能否通过编程做出有意思的东西更感兴趣。后来编程竞赛变成了 Pascal，于是又学了 Pascal。</p>
+<h3 id="所有的软件都不可靠:a4eed20b4e8e278ebfafe3eb338f591b">所有的软件都不可靠</h3>
 
-<p>在盗版光盘店里，老板的一句话让我开始学习 Visual Basic，这也是我的第一次主动选择。因为会 QB，理解起 VB 会容易很多。而且，使用 VB 可以做出各种图形界面的软件。我所有关于 VB 的学习资料都来自于一本厚厚的 Visual Basic 编程宝典。</p>
+<p>现有的所有笔记软件给我们一种假象：我们可以永远记录下去。事实并非如此，现在科技发展如此之快，公司被淘汰的速度也在加速，很有可能现在最流行的笔记软件几年后就关门大吉。</p>
 
-<p>上大学后，因为选的土木工程专业，唯一的编程课程是 Fortran。当我意识到我可以比边上同学花更少时间理解和上手 Fortran，我想我是不是应该在编程方面多下点功夫，而不是继续读着不喜欢的专业混到毕业。于是我重新拾起了 VB，报考了计算机二级 VB，非常轻松的通过了。</p>
+<p>现在市面上大多数的笔记软件的文件存储都是使用私有格式，一旦它停止服务，你只能寄希望于它提供的导出功能，然后盼望着另外一家笔记软件能导入这些笔记。</p>
 
-<p>我不断意识到，我可能更适合编程。由于当时上大学，网络也普及了，可以在网络上获取一些学习资料，同时学校图书馆里也有不少关于编程的书，我开始接触到一些新的东西。当时使用 ASP 做网页的技术很火，当我加入学校的一个编程组织时，ASP.NET 开始炒起来，于是我跟风开始学 ASP.NET。</p>
+<p>类似的事情不断的在发生着，比如之前我最喜欢的 RSS 订阅服务 Google Reader。出自 Google 这样的大公司，用户体验各方面都做的非常好，但是 2013 年 7 月，Google 以运营成本太大，需求太小众，没有盈利模式等缘由将其永久的关闭了。作为 Google Reader 粉，不得不将订阅列表导出，不情不愿的迁移到 feedly 这样的服务。</p>
 
-<p>而我当时最熟的是 VB，所以看 C# 很不习惯，特别不理解为什么代码里需要那么多花括号。于是我在开始的相对长的一段时间里，我是使用 VB.NET 来进行 .NET 开发的。当时的我并不理解 VB 和 C# 的区别，觉得既然微软发明了这两种语言，选择自己喜欢的就好了。后来才发现身边的朋友全在用 C#，而我成了一个异类。每次和他们沟通都要在脑海里进行编程语言的转换。终于有一天我受不了了，也学起了 C#。从此 VB 再没有用过了。</p>
+<p>又比如，前不久，Facebook 宣布即将关闭著名的后台即服务（Baas）框架 Parse。Parse 作为全球最受欢迎的 Baas 服务，2013 年被 Facebook 收购后，由于 Facebook 自身业务需要，宣布 2017 年 1 月 28 日正式关闭。</p>
 
-<p>找工作时好多公司都是招 C++ 程序员，而我又不太会，于是找了一份可以使用 C# 的工作。工作后，才发现自己和周围科班出身的同事的差距。于是开始补各种基础知识：计算机原理、数据结构、算法、C/C++ 语言。为了验证学习的效果，我报考并通过了 08 年软件设计师的考试。</p>
+<p>这将导致之前所有使用 Parse 服务的软件重新去考虑迁移的事宜。而事实上有很多软件已工作多年，而且几乎不再维护，一旦关闭，如果不进行迁移维护，那些软件将会失效。</p>
 
-<p>后来和同事沟通时，第一次听说了 Python 这门语言，还有 Ruby On Rails。在这两者中我选择了学习 Python，然后一发不可收拾的爱上了这门语言。</p>
+<h3 id="回归原始:a4eed20b4e8e278ebfafe3eb338f591b">回归原始</h3>
 
-<p>而关于微软的技术，除了 .NET 3.0 刚出来的时候关注过一阵，之后出的各种：WCF，WPF，Silverlight&hellip;&hellip; 等技术时，我只是在一边看着，成功的闪避了，没有在上面浪费过时间。</p>
+<p>使用纯文本在本地进行笔记管理，是最原始的笔记方式。你不必再担心笔记软件停止服务后你的笔记在哪里的问题。你也不依赖于任何一款笔记编辑软件，因为任何文本编辑器都可以直接进行笔记编辑。</p>
 
-<p>后来做游戏开发的时候，已经是专职 C++ 和 Lua 程序员了。之后在业余时间，开始捣鼓起 Go 语言。</p>
+<p>当然，在本地管理笔记必须解决几个问题：</p>
 
-<p>对了，关于 Java，我从未看过任何一本相关的书，都是按照写 C# 的思维来写 Java，除非老板拿枪指着，我也不会拿 Java 去写代码。 当然，写 Android 时会被迫使用 Java。</p>
+<ol>
+<li>能不能很好的搜索笔记内容？</li>
+<li>能不能支持多平台的同步和编辑？（PC和移动端的编辑和同步）</li>
+<li>能不能保证笔记文件不丢失？</li>
+</ol>
 
-<p>目前前端很火，我却不太感冒，各种前端框架停留在能简单使用的状态。Javascript 依葫芦画瓢还是可以的。</p>
+<h4 id="笔记搜索:a4eed20b4e8e278ebfafe3eb338f591b">笔记搜索</h4>
 
-<p>我当时花了不少时间研究和使用，到现在几乎被淘汰的技术还有 Google 的 Google App Engine。如果当时我把学 GAE 的时间拿去学 Ruby 该有多好啊。</p>
+<p>从本地文件夹里搜索文件，或者搜索文件里的内容，有很多的工具。这些工具都是可替代的，即使所有 GUI 的工具软件都不能用了，我们还有 find 和 grep 命令。</p>
 
-<p>总结一下我正统的学习编程语言的历程：</p>
+<p>Mac 下支持 Markdown 的笔记软件多如牛毛，支持本地文档库管理的笔记软件相对来说少一些，比如：Ulysses、MWeb、Farbox 等等。但是这些软件我都不用，因为我直接用 Alfred 就够了。</p>
 
-<p>QB -&gt; Pascal -&gt; VB -&gt; C# -&gt; C/C++ -&gt; Python -&gt; Lua -&gt; Go</p>
+<p>对，没有看错，是<strong>效率神器 Alfred</strong>。</p>
 
-<p>前三个我已经忘的一干二净，但是在当时的情景下，对我的帮助和影响还是巨大的。</p>
+<p>在 Alfred 中我定制了一个笔记管理的 Workflow，当需要查找某一篇笔记时，只需要按下 <code>f</code> 空格，输入需要检索的标题或正文关键字，Alfred 就可以直接列出对于的笔记文件，回车后即可直接打开。</p>
 
-<p>当然，我还在继续前进。下一个编程语言，我准备学习 Swift，纯粹为了好玩，因为「所有的编程技术都会成为历史」，如果一门编程语言能够给你编程语言之外的启发，也就足够了!</p>
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/find-notes.png-s" alt="find-notes" /></p>
+
+<h4 id="笔记编辑:a4eed20b4e8e278ebfafe3eb338f591b">笔记编辑</h4>
+
+<p>当我想记录编程相关的笔记时，只需要按下 <code>np</code> 空格，输入文字标题，将自动在合适的路径创建一个新的笔记并打开编辑。（n = new，p = programming 分类）</p>
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/new-notes.png-s" alt="new-notes" /></p>
+
+<p>我会用 Atom 来打开和编辑笔记文件，因为它真的很好用。在 Atom 里，安装如下几个插件，编辑 Markdown 的体验将会爽的飞起：</p>
+
+<ol>
+<li><strong>markdown-preview</strong> 默认自带，按快捷键 ctrl + shift + m 即可实时看到预览。</li>
+<li><strong>markdown-scroll-sync</strong> 配合 markdown-preview 使用，编辑时可以同步滚动预览。</li>
+<li><strong>tidy-markdown</strong> 按保存时，自带帮你修正 Markdown 格式，让你的 Markdown 更规范。</li>
+<li><strong>markdown-wirter</strong> 用来管理 Markdown 文档，用来写博客会很方便。</li>
+<li><strong>Zen</strong> 神器，cmd + ctrl + z 进入无干扰书写模式，其中 Typewriter 打字机模式非常不错，当你输入到屏幕中间时，可以让输入的当前行一直保持在屏幕中间。</li>
+</ol>
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/atom-markdown.png-s" alt="atom-markdown" /></p>
+
+<h4 id="alfred-workflow:a4eed20b4e8e278ebfafe3eb338f591b">Alfred Workflow</h4>
+
+<p>想实现上面 <code>f</code> 和 <code>np</code> 之类的功能非常简单，通过组合 Workflow 里的 FileFilter、ScriptFilter、Run Script 即可。</p>
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/MyNotes-Workflow.png-s" alt="MyNotes-Workflow" /></p>
+
+<p>你可以在 Alfred 的 Workflow 中定制自己的快捷键、笔记类别、笔记路径，非常的简单。如果不知道怎样定制，可以参考我的 Workflow：</p>
+
+<p><a href="https://github.com/coderzh/alfred-workflows">https://github.com/coderzh/alfred-workflows</a></p>
+
+<h4 id="笔记多平台同步:a4eed20b4e8e278ebfafe3eb338f591b">笔记多平台同步</h4>
+
+<p>各种网盘，综合考虑后，我选择了 Dropbox。（为了能正常使用 Dropbox 需要一点功夫。）</p>
+
+<h4 id="移动端同步与编辑:a4eed20b4e8e278ebfafe3eb338f591b">移动端同步与编辑</h4>
+
+<p>在支持 Dropbox 同步同时又支持 Markdown 编辑的 App 里选择，最后我选择了 <a href="https://bywordapp.com/">Byword</a>，因为它的 Markdown 编写体验真的很好。</p>
+
+<p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/byword.PNG" alt="byword" /></p>
+
+<h3 id="保证笔记文件不丢失:a4eed20b4e8e278ebfafe3eb338f591b">保证笔记文件不丢失</h3>
+
+<p>除了 Dropbox 同步，我会定期使用 git 进行版本管理，Push 到自己的私人仓库里。</p>
+
+<p>希望本文对喜欢做笔记的同学有点帮助吧。</p>
 
                       
                     </div>
@@ -259,7 +303,7 @@
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
                             <br />微信关注：hacker-thinking （一个程序员的思考）
-                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2016/04/05/programming-languages/">http://blog.coderzh.com/2016/04/05/programming-languages/</a>
+                            <br />本文出处：<a target="_blank" href="http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/">http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -313,20 +357,14 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/" rel="next">
+        <a href="http://blog.coderzh.com/2016/04/05/programming-languages/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>做了一个 Hugo 的主题：hugo-pacman-theme</span>
+          <span>所有的编程技术都会成为历史</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>我如何管理我的笔记</span>
-        </a>
         
       </li>
     </ul>
