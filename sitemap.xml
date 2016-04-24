@@ -3,8 +3,13 @@
     
     <url>
         <loc>http://blog.coderzh.com/</loc>
-        <lastmod>2016-04-17T08:47:35+08:00</lastmod>
+        <lastmod>2016-04-24T23:21:16+08:00</lastmod>
         <priority>0</priority>
+    </url>
+    
+    <url>
+        <loc>http://blog.coderzh.com/2016/04/24/swift-tips/</loc>
+        <lastmod>2016-04-24T23:21:16+08:00</lastmod>
     </url>
     
     <url>

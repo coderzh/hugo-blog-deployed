@@ -6,7 +6,735 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 17 Apr 2016 08:47:35 CST</updated>
+        <updated>Sun, 24 Apr 2016 23:21:16 CST</updated>
+        
+        <item>
+            <title>Swift 速查手册</title>
+            <link>http://blog.coderzh.com/2016/04/24/swift-tips/</link>
+            <pubDate>Sun, 24 Apr 2016 23:21:16 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/04/24/swift-tips/</guid>
+            <description>&lt;p&gt;学习一门新的编程语言要多久？答案是随着你的经验的增加，学习花费的时间越来越短。当然，这也和新语言的不断演变进化有关系。&lt;/p&gt;
+
+&lt;p&gt;我利用周末两天时间，把《Swift Programming Language》中文版整整的细看了一遍，然后为了总结提取 Swift 的主要语言特性，又把这本书快速过了第二遍。&lt;/p&gt;
+
+&lt;p&gt;根据我的番茄钟粗略统计，我看书第一遍学习大约花了 5 小时（包括边学，边在 XCode 试验的时间），第二遍主要是快速过一遍主要特性，将主要示例代码提取出来，大约花了 3.5 小时。&lt;/p&gt;
+
+&lt;p&gt;连我自己都觉得有点难以置信，总共只需要 8 小时的学习总结时间，就可以基本入门一门新语言了。&lt;/p&gt;
+
+&lt;p&gt;很多时候，我们想学习某个东西，但是却一直停留在想一想的状态，迟迟都未动手。究其原因，大概是如下几个原因吧：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;恐惧未知。对未知的东西没有把握，怕太难，怕需要太长时间学，所以能拖就拖。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;注意力不能集中。连续玩几个小时游戏一点不累，看半小时书就感觉身心俱疲。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;番茄工作法在这个时候就起作用了，告诉自己，不想太多，开始一个番茄钟试试，在这 25 分钟内，只关注这 25 分钟内要看的内容。然后，很自然的，障碍被逐个击破，番茄钟一个接着一个。&lt;/p&gt;
+
+&lt;p&gt;以下是我学习 Swift 的代码总结，可在之后用于速查。&lt;/p&gt;
+
+&lt;p&gt;代码：&lt;a href=&#34;https://github.com/coderzh/CodeTips/blob/master/swift.swift&#34;&gt;https://github.com/coderzh/CodeTips/blob/master/swift.swift&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/*
+ swift.playground:
+ Swift 速学速查速用代码手册
+ Source: github.com/coderzh/CodeTips/blob/master/swift.swift
+ Author: coderzh(github.com/coderzh)
+ Blog: http://blog.coderzh.com
+ 参考：《Swift Programming Language》
+ */
+
+import Cocoa
+
+// 0. 注释
+/*
+块注释
+行尾分号可不用
+*/
+
+// 1. Hello World
+print(&amp;quot;Hello Swift&amp;quot;)
+
+// 2. 常量变量类型
+let constValue = 3.14
+var variable = 18
+
+variable += 1
+
+// 指定类型
+let age: Int = 18
+// 多重赋值
+var (a, b) = (1, 2)
+// 匿名占位符
+(_, b) = (3, 4)
+
+// 类型会自动推导
+let name = &amp;quot;It&#39;s a string&amp;quot;
+let gravity = 0.98 // 默认 double
+
+// 永远不做隐式转换，必须自己强转
+let sum = Double(age) + gravity
+
+// 运算：+, -, *, /, % 求余
+// 比较：&amp;lt;, &amp;gt;, ==, &amp;gt;=, &amp;lt;=, !=
+// === 恒等，是否为同一个对象
+// !== 不恒等
+// 位运算：~x 取反，&amp;amp; 与，| 或，^ 异或，&amp;lt;&amp;lt; 左移动，&amp;gt;&amp;gt; 右移
+// 溢出运算符 &amp;amp;+ &amp;amp;- &amp;amp;* &amp;amp;/ &amp;amp;% ，这样溢出部分就会丢掉，不会出错，比如：
+var willOverflow = UInt8.max
+willOverflow = willOverflow &amp;amp;+ 1 // = 0
+
+// 类型
+let b1 = true
+let i32: Int32 = 6
+let f64: Float64 = 3.1415
+
+// 字符串
+let str = &amp;quot;swift&amp;quot;
+// 字符串连接，使用\()
+var hello = &amp;quot;hello \(str)&amp;quot;
+let count = str.characters.count
+let c = hello[hello.startIndex]
+for i in hello.characters.indices {
+    print(&amp;quot;\(hello[i])&amp;quot;)
+}
+
+hello.insert(&amp;quot;!&amp;quot;, atIndex: hello.endIndex)
+hello.insertContentsOf(&amp;quot; there&amp;quot;.characters, at: hello.endIndex.predecessor())
+hello.removeAtIndex(hello.endIndex.predecessor())
+hello.hasPrefix(&amp;quot;hello&amp;quot;)
+hello.hasSuffix(&amp;quot;swift&amp;quot;)
+
+let unicode = &amp;quot;你好 swift&amp;quot;
+unicode.characters.count // 8
+
+for codeUnit in unicode.utf8 {
+    print(&amp;quot;\(codeUnit)&amp;quot;, terminator: &amp;quot;&amp;quot;)
+}
+if hello == unicode{
+
+}
+
+// 数组
+var shoppingList = [&amp;quot;test&amp;quot;, &amp;quot;book&amp;quot;, &amp;quot;bike&amp;quot;]
+shoppingList[2] = &amp;quot;joke&amp;quot;
+shoppingList.append(&amp;quot;bus&amp;quot;)
+shoppingList.insert(&amp;quot;foo&amp;quot;, atIndex: 0)
+shoppingList.removeAtIndex(0)
+
+// 类似 slice
+shoppingList[0..&amp;lt;2] // [&amp;quot;test&amp;quot;, &amp;quot;book&amp;quot;]
+shoppingList[0...2] // [&amp;quot;test&amp;quot;, &amp;quot;book&amp;quot;, &amp;quot;joke&amp;quot;]
+
+for item in shoppingList {
+    print(item)
+}
+
+for (index, value) in shoppingList.enumerate() {
+    print(&amp;quot;\(index): \(value)&amp;quot;)
+}
+
+let emptyArray = [String]()
+var someInts = [Int]()
+var someInts2 = [Int](count: 3, repeatedValue: 8) // [8, 8, 8]
+var someInts3 = [Int](count: 3, repeatedValue: 2)
+
+// 任意类型数组
+var anyArray = [Any]()
+anyArray.append(1)
+anyArray.append(&amp;quot;book&amp;quot;)
+
+someInts = someInts2 + someInts3 // [8, 8, 8, 2, 2, 2]
+
+// 元组
+let httpResponse = (404, &amp;quot;Not Found&amp;quot;)
+print(httpResponse.0)
+
+// 集合 Sets
+var setBooks: Set&amp;lt;String&amp;gt; = [&amp;quot;book1&amp;quot;, &amp;quot;book2&amp;quot;]
+// 自动推导
+var setBooks2: Set = [&amp;quot;book1&amp;quot;, &amp;quot;book2&amp;quot;, &amp;quot;book3&amp;quot;]
+
+setBooks.intersect(setBooks2)  // 交集
+setBooks.exclusiveOr(setBooks2)  // 非交集
+setBooks.union(setBooks2)  // 并集
+setBooks.subtract(setBooks2)  // 减集
+
+setBooks.isSubsetOf(setBooks2)
+setBooks2.isSupersetOf(setBooks)
+setBooks.isStrictSubsetOf(setBooks2)  // 被包含且不相等
+
+// 字典
+var map = [
+    &amp;quot;Malcolm&amp;quot;: &amp;quot;hehe&amp;quot;,
+    &amp;quot;Keylee&amp;quot;: 123,
+]
+map[&amp;quot;Keylee&amp;quot;] = 166
+
+var namesOfInt = [Int: String]()
+namesOfInt[10] = &amp;quot;ten&amp;quot;
+
+if let oldValue = namesOfInt.updateValue(&amp;quot;Ten&amp;quot;, forKey: 10) {
+    print(&amp;quot;\(oldValue)&amp;quot;)
+}
+
+if let name = namesOfInt[8] {
+    print(&amp;quot;\(name)&amp;quot;)
+} else {
+    print(&amp;quot;not exist 8&amp;quot;)
+}
+
+for (intKey, strValue) in namesOfInt {
+    print(&amp;quot;\(intKey):\(strValue)&amp;quot;)
+}
+
+// namsOfInt.values
+for intKeys in namesOfInt.keys {
+
+}
+
+let intKeys = [Int](namesOfInt.keys)
+
+// 可空变量，用 ?
+var optionalString: String? = nil
+
+if let name = optionalString {
+    print(&amp;quot;hello \(name)&amp;quot;)
+}
+
+// 3. 流程控制
+// 循环
+// [0, 4)
+for i in 0..&amp;lt;4 {
+    print(&amp;quot;print \(i)&amp;quot;)  // 4 times
+}
+
+// [0, 4]
+for i in 0...4 {
+    print(&amp;quot;print \(i)&amp;quot;)  // 5 times
+}
+
+var i = 0
+while i &amp;lt; 2 {
+    print(&amp;quot;\(i)&amp;quot;)
+    i += 1
+}
+
+repeat {
+    print(&amp;quot;\(i)&amp;quot;)
+    i += 1
+} while i &amp;lt; 5
+
+// 判断
+if i &amp;lt; 5 {
+
+} else if i &amp;lt; 10 {
+
+} else {
+
+}
+
+// 强大的 switch
+// 不需要 break
+switch i {
+case 1, 2, 3:
+    print(&amp;quot;123&amp;quot;)
+case 5:
+    print(&amp;quot;5&amp;quot;)
+case 6..&amp;lt;10:
+    print(&amp;quot;6-9&amp;quot;)
+default:
+    print(&amp;quot;default&amp;quot;)
+}
+
+let somePoint = (1, 1)
+
+switch somePoint {
+case (0, 0):
+    print(&amp;quot;0, 0&amp;quot;)
+case (_, 1):
+    print(&amp;quot;y is 1&amp;quot;)
+case (-2...2, -2...2): // 区间
+    print(&amp;quot;from (-2,-2) to (2, 2)&amp;quot;)
+case (let x, 0):  // 值绑定
+    print(&amp;quot;\(x)&amp;quot;)
+case let (x, y) where x == y:  // where
+    print(&amp;quot;x == y&amp;quot;)
+case (10, 11):
+    fallthrough  // 贯穿，继续向下
+default:
+    print(&amp;quot;default&amp;quot;)
+}
+
+// 控制转移
+// continue break fallthrough retrun throw
+
+// 带标签
+i = 0
+gameLoop: while i &amp;gt; -1 {
+    i = i + 1
+    if i &amp;gt; 3 {
+        break gameLoop
+    }
+}
+
+// 提前退出(提前返回)
+func greet(person: [String:String]) {
+    guard let name = person[&amp;quot;name&amp;quot;] else {
+        return
+    }
+    print(&amp;quot;\(name)&amp;quot;)
+}
+
+greet([&amp;quot;age&amp;quot;:&amp;quot;18&amp;quot;])
+
+// 4. 函数
+func greet(name: String, day: String) {
+    print(&amp;quot;Hello \(name), today is \(day)&amp;quot;)
+}
+
+// 第二个参数默认需要指定名称
+greet(&amp;quot;tom&amp;quot;, day: &amp;quot;2016&amp;quot;)
+
+func sum(a: Int, b: Int) -&amp;gt; Int {
+    return a + b
+}
+
+sum(1, b: 2)
+
+// 多重返回值
+func minMax(array: [Int]) -&amp;gt; (min: Int, max: Int) {
+    // ...
+    return (0, 1)
+}
+
+// 可选返回值加 ?
+func minMax2(array: [Int]) -&amp;gt; (min: Int, max: Int)? {
+    if array.isEmpty { return nil }
+    return (0, 1)
+}
+
+// 指定外部参数名
+func sayHello(to person: String, and anotherPerson: String) {
+    print(&amp;quot;Hello \(person) and \(anotherPerson)&amp;quot;)
+}
+
+sayHello(to: &amp;quot;coderzh&amp;quot;, and: &amp;quot;tom&amp;quot;)
+
+// 忽略外部参数名，使用 _
+func sayHello2(person: String, _ anotherPerson: String) {
+    print(&amp;quot;Hello \(person) and \(anotherPerson)&amp;quot;)
+}
+
+sayHello2(&amp;quot;coderzh&amp;quot;, &amp;quot;jack&amp;quot;)
+
+// 默认参数
+func someFunction(p: Int = 10) {
+    print(&amp;quot;\(p)&amp;quot;)
+}
+
+someFunction()
+
+// 可变参数
+func sum(numbers: Int...) -&amp;gt; Int {
+    var total = 0
+    for n in numbers {
+        total += n
+    }
+
+    return total
+}
+
+sum(1, 2, 3, 4, 5)
+
+// 参数默认是常量类型，如需指定变量类型，前面加 var（swift 3 将移除 var）
+func alignRight(var string: String, totalLength: Int, pad: Character) -&amp;gt; String {
+    string = string + &amp;quot;!&amp;quot;
+    return string
+}
+
+// 传入传出参数 inout
+func swap(inout a: Int, inout _ b: Int) {
+    let temp = a
+    a = b
+    b = temp
+}
+
+var someInt = 7
+var anotherInt = 8
+
+// inout 参数必须加 &amp;amp;
+swap(&amp;amp;someInt, &amp;amp;anotherInt)
+
+// 函数类型，函数变量
+var sumFunc: (Int, Int) -&amp;gt; Int = sum
+sumFunc(1, 2)
+
+// 函数可做参数
+func doSum(handler:(Int, Int) -&amp;gt; Int, _ a: Int, _ b: Int) {
+    handler(a, b)
+}
+
+// 函数可做返回值
+func getSum() -&amp;gt; (Int, Int) -&amp;gt; Int {
+    // 函数可嵌套
+    func someFunc(a: Int, b: Int) -&amp;gt; Int { return a + b }
+    return someFunc
+}
+
+doSum(sum, 2, 3)
+
+// 闭包
+// 闭包是引用类型
+let reversed2 = shoppingList.sort({a, b in a &amp;lt; b})
+let r = shoppingList.sort({ $0 &amp;lt; $1 })
+let r2 = shoppingList.sort(&amp;lt;)
+let r3 = shoppingList.sort{ $0 &amp;lt; $1 }
+
+// 非逃逸闭包（noescape closure）
+// 闭包只能在函数内执行，不能「逃逸」出去
+func someClosure(@noescape closure: () -&amp;gt; Void) {
+    closure()
+}
+
+// 自动闭包（这样不用写花括号了？）
+func autoClosure(@autoclosure provider: () -&amp;gt; String) {
+    provider()
+}
+
+autoClosure(shoppingList.removeAtIndex(0))
+
+// 5. 枚举（一等公民，十分强大）
+// 值类型
+enum Rank: Int {
+    case Ace = 1
+    case Two, Three
+}
+
+var ace = Rank.Ace  // Ace
+Rank.Ace.rawValue  // 1
+let ace1 = Rank(rawValue: 1)  // Ace
+ace = .Two
+
+enum ServerResponse {
+    case Result(String, String)
+    case Error(String)
+}
+
+// 可失败构造器
+enum TemperatureUnit {
+    case Kelvin, Celsius, Fahrenheit
+    init?(symbol: Character) {
+        switch symbol {
+        case &amp;quot;K&amp;quot;:
+            self = .Kelvin
+        case &amp;quot;C&amp;quot;:
+            self = .Celsius
+        case &amp;quot;F&amp;quot;:
+            self = .Fahrenheit
+        default:
+            return nil
+        }
+    }
+}
+
+
+let success = ServerResponse.Result(&amp;quot;6:00am&amp;quot;, &amp;quot;6:00pm&amp;quot;)
+let failure = ServerResponse.Error(&amp;quot;Out of cheese&amp;quot;)
+
+switch success {
+case let .Result(sunrise, sunset):
+    let serverResponse = &amp;quot;sunrise at \(sunrise), sunset at \(sunset)&amp;quot;
+case let .Error(error):
+    let serverResponse = &amp;quot;Error \(error)&amp;quot;
+}
+
+// 枚举递归...
+enum ArithmeticExpression {
+    case Number(Int)
+    indirect case Addition(ArithmeticExpression, ArithmeticExpression)
+    indirect case Multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+
+func evaluate(expression: ArithmeticExpression) -&amp;gt; Int {
+    switch expression {
+    case .Number(let value):
+        return value
+    case .Addition(let left, let right):
+        return evaluate(left) + evaluate(right)
+    case .Multiplication(let left, let right):
+        return evaluate(left) * evaluate(right)
+    }
+}
+
+// 计算 (5 + 4) * 2
+let five = ArithmeticExpression.Number(5)
+let four = ArithmeticExpression.Number(4)
+let sum2 = ArithmeticExpression.Addition(five, four)
+let product = ArithmeticExpression.Multiplication(sum2, ArithmeticExpression.Number(2))
+print(evaluate(product)) // 输出 &amp;quot;18”
+
+// 6. 类和结构体
+// 结构体是值类型，类是引用类型
+class SomeClass {
+    var width = 0
+    var height = 0
+
+    // class 不需要 mutating
+    func incrementWidth() {
+        self.width += 1
+    }
+
+    // 下标操作： [n]
+    subscript(index: Int) -&amp;gt; Int {
+        get {
+            return 0
+        }
+        set(newValue) {
+            // set from newValue
+        }
+    }
+}
+
+let s1 = SomeClass()
+
+struct SomeStruct {
+    static var someValue = 100
+    static func staticFunc() -&amp;gt; Int {
+        return 1
+    }
+
+    var x = 0
+    var y = 0
+
+    var doubleX: Int {
+        get {
+            return x * 2
+        }
+        set {
+            x = newValue / 2
+        }
+    }
+
+    // readonly
+    var doubleY: Int {
+        return y * 2
+    }
+
+    var total: Int {
+        willSet(newTotal) {
+            print(&amp;quot;will set \(newTotal)&amp;quot;)
+        }
+
+        didSet {
+            print(&amp;quot;old: \(oldValue), new: \(total)&amp;quot;)
+        }
+    }
+
+    // 如果会改变类成员，比如声明 mutating
+    mutating func incrementX() {
+        self.x += 1
+    }
+}
+
+var s2 = SomeStruct(x: 2, y: 3, total: 10)
+s2.doubleX = 10  // s2.x == 5
+s2.total = 5
+
+// 继承
+class Animal {
+    // 构造函数
+    init() {
+
+    }
+
+    // 必要构造器，子类必须实现，而且声明为 required
+    required init(name: String, age: Int) {
+
+    }
+
+    func makeNoise() {
+        print(&amp;quot;wowowo&amp;quot;)
+    }
+}
+
+class Cat: Animal {
+    var name: String = &amp;quot;&amp;quot;
+    var nickName: String = &amp;quot;&amp;quot;
+
+    init(name: String) {
+        super.init()
+        self.name = name
+    }
+
+    init(fromNickName nickName: String) {
+        super.init(name: nickName, age: 18)
+        self.nickName = nickName
+    }
+
+    // 便利构造器：必须调用其他构造器
+    convenience override init() {
+        self.init(name: &amp;quot;UnKnown&amp;quot;)
+    }
+
+    // 可失败构造器
+    init?(age: Int) {
+        super.init(name: &amp;quot;UnKnown&amp;quot;, age: age)
+        if age &amp;lt; 0 { return nil }
+    }
+
+    required init(name: String, age: Int) {
+        self.name = name
+        super.init(name: name, age: age)
+    }
+
+    // 析构，默认会先调用父类的析构
+    deinit {
+
+    }
+
+    override func makeNoise() {
+        print(&amp;quot;miaomiaomiao&amp;quot;)
+    }
+}
+
+final class CannotInheirt {
+
+}
+
+// 7. 自动引用计数 ARC
+// weak 弱引用
+// unowned 无主引用
+
+// 8. 可空链式调用
+/* For example:
+if let johnsStreet = john.residence?.address?.street {
+    print(&amp;quot;John&#39;s street name is \(johnsStreet).&amp;quot;)
+} else {
+    print(&amp;quot;Unable to retrieve the address.&amp;quot;)
+}
+*/
+// 如果确定有值，使用!
+// let roomCount = john.residence!.numberOfRooms
+
+
+// 9. 错误处理
+
+enum CustomError : ErrorType {
+    case Invalid
+    case OutOfRange
+}
+
+func makeASandwich() throws -&amp;gt; String {
+    throw CustomError.Invalid
+}
+
+do {
+    try makeASandwich()
+} catch CustomError.Invalid {
+    print(&amp;quot;Invalid&amp;quot;)
+}
+
+// 可空
+let x = try? makeASandwich()
+// 使错误传递失效，肯定不throw，否则 assert
+// let y = try! makeASandwich()
+
+// defer 和 Golang 里的 defer 一样，用来退出清理
+/*
+func processFile(filename: String) throws {
+    if exists(filename) {
+        let file = open(filename)
+        defer {
+            close(file)
+        }
+        while let line = try file.readline() {
+            // 处理文件
+        }
+        // 在这里，作用域的最后调用 close(file)
+    }
+}
+*/
+
+// 10. 类型转换： is as （和 CSharp 类似）
+// 任意类型：
+// 1. AnyObject 任何 class 类型实例
+// 2. Any 任何类型
+
+// 11. 扩展（extension，类似 CSharp 里的扩展方法，但是貌似更强大）
+// 比如：扩展内置类型 Double
+// 几乎一切都可扩展，用到时再查用法吧
+extension Double {
+    var km: Double { return self * 1_000.0 }
+    var m : Double { return self }
+    var cm: Double { return self / 100.0 }
+    var mm: Double { return self / 1_000.0 }
+    var ft: Double { return self / 3.28084 }
+}
+
+// 12. 协议（类似接口的东西）
+// 当同时有继承时，先写继承，再写协议，协议可以有多个
+protocol FullyNamed {
+    var fullName: String { get }
+}
+
+// 协议也可继承
+protocol SubFullyNamed: FullyNamed {
+    var nickName: String { get }
+}
+
+struct Person: FullyNamed{
+    var fullName: String
+}
+
+// 专属协议，指定只能用在 class 上
+protocol ClassOnlyProtocol: class, FullyNamed {
+
+}
+
+protocol Aged {
+    var age: Int { get set }
+}
+
+// 协议合成
+func foo(pro: protocol&amp;lt;FullyNamed, Aged&amp;gt;, base: Any) {
+    // 协议判断
+    if let p = base as? Aged {
+        print(p.age)
+    }
+}
+
+// 可选协议（既然是协议，还可选，醉了）
+// @objc protocol
+
+// 13. 泛型
+func swapTwoValues&amp;lt;T&amp;gt;(inout a: T, inout _ b: T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+// 泛型约束
+func someFunction&amp;lt;T: SomeClass, U: FullyNamed&amp;gt;(someT: T, someU: U) {
+    // 这里是函数主体
+}
+
+// Where
+/*
+func allItemsMatch&amp;lt;
+    C1: Container, C2: Container
+    where C1.ItemType == C2.ItemType, C1.ItemType: Equatable&amp;gt;
+    (someContainer: C1, anotherContainer: C2) -&amp;gt; Bool {
+}
+*/
+
+// 14. 访问控制
+// public internal（默认） private
+// 加在 class var 等前
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
         
         <item>
             <title>程序员的黄金时代</title>
@@ -1728,208 +2456,6 @@ DEPLOY_DIR = &#39;gh-pages&#39;
 &lt;p&gt;假如你不是对一个网站很熟悉，你压根发现不了这广告根本不是网站主投放的。&lt;/p&gt;
 
 &lt;p&gt;这种强行修改你访问网页的内容来植入广告的方式，非常可怕。使得我们在上网的时候没有一点安全感。如果你访问一个网站，都不能保证获取到的内容是该网站原版的内容，而是被肆意的插入广告，被修改的内容。那么之后他很可能会骗取你的账号密码，偷走你的隐私，拿走你的存款，这是多么可怕和不可接受的事。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>走进前端开发之：框架的演变</title>
-            <link>http://blog.coderzh.com/2015/11/07/front-end-dev/</link>
-            <pubDate>Sat, 07 Nov 2015 08:44:26 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/11/07/front-end-dev/</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/angular-backbone-react-logo.jpg-wt&#34; alt=&#34;angular-backbone-react-logo&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;上周挖了个坑，这周末怎么也得填上。对于大多数前端框架，我都并未用过，但我还是想聊一聊，这些前端框架从何而来，解决了什么问题，又有哪些高明之处。&lt;/p&gt;
-
-&lt;p&gt;认识了解问题，切忌一头扎进去研究而未了解其全貌。为此，我们追溯到20世纪90年代，网景浏览器横空出世，占据了浏览器市场第一的份额。那时的网景浏览器已经搭载了 Cookie、 Frames 和 JavaScript 等功能，可惜好景不长，再后来与微软的“浏览器大战”中败下了阵来。&lt;/p&gt;
-
-&lt;p&gt;于是网景公司将代码开源，创造了 Mozilla ，也就是现在的 Firefox。可以说，浏览器大战从未停止过，Opera 、 Safari 、 Google Chrome …… 当然，还有微软的 Internet Explorer 以及一些其他的浏览器。各浏览器引擎不同，标准不一，苦了的就是我们的主角：前端开发。&lt;/p&gt;
-
-&lt;h3 id=&#34;排版引擎:4349a6351ab7878e819f52676aaa004b&#34;&gt;排版引擎&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/web-kit-renders.jpg-wt&#34; alt=&#34;web-kit-renders&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;所有这些浏览器，使用最广泛的无非是这些引擎： &lt;strong&gt;Gecko 、 WebKit 和 Trident&lt;/strong&gt; 。最早的 Netscape 使用的是 Gecko 排版引擎，后来的 Firefox 继承了它的衣钵。微软从 Spyglass 公司买来技术开发了 Internet Explorer ， 使用了 Trident 引擎。苹果开发了 WebKit ，做出了 Safari 浏览器，后来引擎开源， Google 做出了基于 WebKit 的 Chrome 。&lt;/p&gt;
-
-&lt;p&gt;有人会说，那 QQ浏览器、360浏览器、世界之窗、搜狗浏览器之类的，这些浏览器只是套了 Chrome 或 IE 的内核罢了。&lt;/p&gt;
-
-&lt;p&gt;而和前端程序员打交道的，最终就是这三样东西： HTML 、 CSS 、 JavaScript 。&lt;/p&gt;
-
-&lt;h3 id=&#34;javascript:4349a6351ab7878e819f52676aaa004b&#34;&gt;JavaScript&lt;/h3&gt;
-
-&lt;p&gt;HTML 负责描述界面的元素结构， CSS 负责描述界面的样式表现， JavaScript 负责界面元素的交互和与后台数据的交互。早期的静态网页，甚至不需要 JavaScript ，因为不需要太多的交互。即使用到 JavaScript ，最多也是用于表单验证、弹弹提示框。&lt;/p&gt;
-
-&lt;p&gt;随着 Web2.0 的概念炒起来，动态网站逐渐成为主流。早期的动态网站，随便的一个数据更新都要刷新整个页面，体验逐渐变得不可接受。于是，局部数据刷新成了当时的热点，这就是当年炒的很热的 Ajax 技术。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/ajax.jpg&#34; alt=&#34;Ajax&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Ajax 的全称是 Asynchronous JavaScript and XML , 即异步 JavaScript 和 XML 技术。当时炒的神乎其神，而其根本本质其实很简单，就是 XMLHttpRequest ，然后配合 DOM 的操作，就可以变化出各种不同的花样出来。 XMLHttpRequest 负责和服务器交互，返回数据后通过 DOM 的操作动态实时的更新界面元素。&lt;/p&gt;
-
-&lt;p&gt;然而，一个简简单单的 Ajax ，各个浏览器的支持却不同。为了兼容不同的浏览器，导致写 Ajax 变得异常痛苦。比如，一个 XmlHttpRequest 的跨浏览器的通用写法就必须写成这样：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// Provide the XMLHttpRequest class for IE 5.x-6.x:
-// Other browsers (including IE 7.x-8.x) ignore this
-//   when XMLHttpRequest is predefined
-var xmlHttp;
-if (typeof XMLHttpRequest != &amp;quot;undefined&amp;quot;) {
-    xmlHttp = new XMLHttpRequest();
-} else if (window.ActiveXObject) {
-    var aVersions = [&amp;quot;Msxml2.XMLHttp.5.0&amp;quot;, &amp;quot;Msxml2.XMLHttp.4.0&amp;quot;, &amp;quot;Msxml2.XMLHttp.3.0&amp;quot;, &amp;quot;Msxml2.XMLHttp&amp;quot;, &amp;quot;Microsoft.XMLHttp&amp;quot;];
-    for (var i = 0; i &amp;lt; aVersions.length; i++) {
-        try {
-            xmlHttp = new ActiveXObject(aVersions[i]);
-            break;
-        } catch (e) {}
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;单单一个 XmlHttpRequest 就让前端程序员百苦难辩，更别说跨浏览器的 DOM 选择与操作、 CSS 的差异…… 前端程序员只能默默檫干眼泪，为了解决这些问题， jQuery 横空出世。&lt;/p&gt;
-
-&lt;h3 id=&#34;jquery:4349a6351ab7878e819f52676aaa004b&#34;&gt;jQuery&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/jQuery.jpg&#34; alt=&#34;jQuery&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;jQuery 是一套跨浏览器的 JavaScript 库，既然大家都这么痛苦要处理兼容问题，那何不让我一个人来承受。自 jQuery 从 2006 年 1 月发布第一个版本以来，现在已完全占领市场。据统计，全球前10,000个访问最高的网站中，有65%使用了jQuery 。&lt;/p&gt;
-
-&lt;p&gt;jQuery 不仅解决了浏览器兼容的问题，还提供了大量的简便语法，用于选择和操作 DOM 对象、创建动画效果、处理事件以及 Ajax 的支持。&lt;/p&gt;
-
-&lt;p&gt;得麒麟才子者，可得天下。 jQuery 出来后，有种得 jQuery 者可得前端天下的感觉。随后基于 jQuery 的各种 UI 插件、组件层出不穷，如 YUI 等等，也呈现出百花齐放的气象。&lt;/p&gt;
-
-&lt;p&gt;似乎 jQuery 已经解决了所有问题，而我对前端开发的经验，也止于 jQuery 。 jQuery 的确能解决之前的诸多问题，然而互联网在发展，浏览器的地位不断提高，人们对浏览器里的体验的要求也逐渐变高，Web 端的功能越来越重。 Google 甚至认为你的电脑仅仅需要一个浏览器即可。&lt;/p&gt;
-
-&lt;p&gt;需求越来越多，功能越来越复杂，使得 JavaScript 本身的缺点暴露了出来。 JavaScript 过于灵活，代码的组织过于零散，一旦需求变得复杂，这一大坨一大坨的 JavaScript 代码将变得难以维护。特别是如今崇尚的快速开发、快速试错的开发模式，臃肿、难以组织和维护的 JavaScript 代码成了一个需要重要解决的问题。&lt;/p&gt;
-
-&lt;p&gt;于是，如何将 JavaScript 代码有效的组织和分类，如何简化代码的写法成为了研究的重点。就连 1978 年就被提出的 MVC 模式也被应用到了前端开发的框架之中。&lt;/p&gt;
-
-&lt;h3 id=&#34;mvc:4349a6351ab7878e819f52676aaa004b&#34;&gt;MVC&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mvc.jpg&#34; alt=&#34;MVC&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;MVC 是一种软件架构分层的思想。将软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;（控制器 Controller）- 负责转发请求，对请求进行处理。&lt;/li&gt;
-&lt;li&gt;（视图 View） - 界面设计人员进行图形界面设计。&lt;/li&gt;
-&lt;li&gt;（模型 Model） - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;MVC 的优点是将系统进行了分层，单独的分层变得逻辑更加清晰，便于维护，提高了代码的可重用性，由于各司其职，在响应变化时，也能做出快速反应。&lt;/p&gt;
-
-&lt;p&gt;更多关于 MVC 的历史和介绍，可以参考 Martin Fowler 的文章： &lt;a href=&#34;http://www.martinfowler.com/eaaDev/uiArchs.html&#34;&gt;http://www.martinfowler.com/eaaDev/uiArchs.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;应用到前端开发， MVC 里的 Model 、 View 、 Controller 分别对应：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;（控制器 Controller）：业务逻辑，URL Router&lt;/li&gt;
-&lt;li&gt;（视图 View）：用户界面，DOM 处理。&lt;/li&gt;
-&lt;li&gt;（模型 Model）：数据保存&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;除了 MVC ，还有 MVP、 MVVM 等模型。然而，这些所谓的概念真的重要吗？黑猫白猫都是好猫，能解决问题的才是好模型好框架。&lt;/p&gt;
-
-&lt;h3 id=&#34;xxx-js:4349a6351ab7878e819f52676aaa004b&#34;&gt;xxx.js&lt;/h3&gt;
-
-&lt;p&gt;后面出来的 xxx.js 我就不太懂了。比如：&lt;strong&gt;Ember.js、Angular.js、Backbone.js、Knockout.js、React.js&lt;/strong&gt; 。直到写这篇文章前，才打开各自的主页，粗略的浏览了一下各自的 Quick Start ， 了解了一点各自的特性。&lt;/p&gt;
-
-&lt;p&gt;首先，我们来对比一下这几个库在 GitHub 上的 关注度 ：&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;Type&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Ember.js&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Angular.js&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Backbone.js&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Knockout.js&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;React.js&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Watch&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1149&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4036&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1676&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;604&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2261&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Star&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;15036&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;43986&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;23349&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6903&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;30894&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Fork&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3233&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;19973&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5230&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1180&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4833&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;从上面的数据可以看出， &lt;strong&gt;Angular.js 、 Backbone.js 、 React.js&lt;/strong&gt; 几乎占据了半壁江山。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://angularjs.org/&#34;&gt;Angular.js&lt;/a&gt; 由 Google 推出，从上面的 Fork 数据看出， Angular 在社区支持和贡献上最为突出。从首页的介绍示例看出， Angular 使用简单，代码逻辑清晰一看就明白，比如数据双向绑定的示例：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;!doctype html&amp;gt;
-&amp;lt;html ng-app&amp;gt;
-  &amp;lt;head&amp;gt;
-    &amp;lt;script src=&amp;quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-  &amp;lt;/head&amp;gt;
-  &amp;lt;body&amp;gt;
-    &amp;lt;div&amp;gt;
-      &amp;lt;label&amp;gt;Name:&amp;lt;/label&amp;gt;
-      &amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;yourName&amp;quot; placeholder=&amp;quot;Enter a name here&amp;quot;&amp;gt;
-      &amp;lt;hr&amp;gt;
-      &amp;lt;h1&amp;gt;Hello {{yourName}}!&amp;lt;/h1&amp;gt;
-    &amp;lt;/div&amp;gt;
-  &amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://backbonejs.org/&#34;&gt;Backbone.js&lt;/a&gt; 是一个老牌的 JavaScript 框架了，据说后来的 JavaScript 框架都受了它的影响。它的特点是简单、灵活，但是很多事情却要你自己来做。我只是不明白，为什么 Backbone.js 的 Getting Started 会写的那么冗长，对于初学者真的好吗？也许真的是应该是老牌框架的原因吧。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://facebook.github.io/react/&#34;&gt;React.js&lt;/a&gt; 由 FaceBook 开发，现在也是火的不行。 React.js 让人为之眼前一亮的功能是 &lt;strong&gt;虚拟 DOM&lt;/strong&gt; 的机制。前面提到，为了能支持局部刷新，就需要通过 DOM 操作局部更新元素，一旦项目变大需求变的复杂，也会变得难以维护。而虚拟 DOM 解决了这一问题，通过虚拟 DOM ，你只需要关注整体的 DOM ，当数据发生变化时， React 会重新构建整个 DOM 树， 然后与上一次的 DOM 树进行对比，自己计算出需要变化的部分。由于虚拟 DOM 都是在内存中操作，所以性能会非常好。&lt;/p&gt;
-
-&lt;p&gt;React 推崇组件化开发，提供了专有的语言 JSX ，不过并非必须。一个简单的 React 组件的例子：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var HelloMessage = React.createClass({
-  render: function() {
-    return &amp;lt;div&amp;gt;Hello {this.props.name}&amp;lt;/div&amp;gt;;
-  }
-});
-
-ReactDOM.render(&amp;lt;HelloMessage name=&amp;quot;John&amp;quot; /&amp;gt;, mountNode);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;趋势:4349a6351ab7878e819f52676aaa004b&#34;&gt;趋势&lt;/h3&gt;
-
-&lt;p&gt;关于 Angular.js 、 Backbone.js 、 React.js ， 如果你是这三种的使用者，也许更有发言权一些。我在百度指数里对比了 angularjs , backbone , react 这三个关键字：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/angular-backbone-react.jpg-ws&#34; alt=&#34;angular-backbone-react&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;可见 Angular 一经推出便先发制人增长迅猛，而 React 开始阶段和 Backbone几乎并列，但从 2015 年开始爆发，增长速度直指 Angular ， 发展不可估量。&lt;/p&gt;
-
-&lt;h3 id=&#34;总结:4349a6351ab7878e819f52676aaa004b&#34;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;未来前端的世界必定会是天翻地覆，过往的发展历史我能力有限也只能提到这么多。虽然前端框架还在一直往前发展，但我回过头来仔细想想，这样的发展方向正确吗？&lt;/p&gt;
-
-&lt;p&gt;即使很多人并不喜欢 JavaScript ， 但是 JavaScript 凭借早期的浏览器奠定了坚不可摧的地位， JavaScript 有诸多缺陷，后续的框架只是在不断的弥补它的缺陷而已。还有关于各浏览器的支持问题，后续的框架也是在不断的填坑。你们有没有想过，是否有一天，我们能从根本上去解决这些问题，而不是一次又一次的背上历史的包袱。&lt;/p&gt;
-
-&lt;p&gt;为了解决 JavaScript 的问题，甚至出现各种替代语言，而这些所谓的替代语言，也只能算是 JavaScript 的预处理语言，最终还是编译成了 JavaScript 代码，你不觉得有点可笑吗？&lt;/p&gt;
-
-&lt;p&gt;比如，&lt;strong&gt;CoffeeScript、 Flow 、 Dart 、 Babel 、 TypeScript&lt;/strong&gt; 。 而说到 &lt;a href=&#34;http://www.typescriptlang.org/&#34;&gt;TypeScript&lt;/a&gt;，它的作者是鼎鼎大名的 &lt;strong&gt;Anders Hejlsberg&lt;/strong&gt; 。刚才说麒麟之才，这个才真的是麒麟之才！他是 Turbo Pascal 编译器的作者，后来发明了 Delphi ， 加入微软后主导开发了 C# 。现在，他正致力于 TypeScript 的开发。看了最近关于的他的报道，他表示 TypeScript 并不追求替代 JavaScript ， 并不计划直接运行在浏览器或系统里，而仅仅关注如何编译成 JavaScript 。 这是一种妥协吗？ 还是暂时的低调？未来会如何发展，这是留给前端同学的问题。&lt;/p&gt;
 </description>
         </item>
         

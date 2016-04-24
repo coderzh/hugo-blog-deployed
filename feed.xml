@@ -6,7 +6,735 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 17 Apr 2016 08:47:35 CST</updated>
+        <updated>Sun, 24 Apr 2016 23:21:16 CST</updated>
+        
+        <item>
+            <title>Swift 速查手册</title>
+            <link>http://blog.coderzh.com/2016/04/24/swift-tips/</link>
+            <pubDate>Sun, 24 Apr 2016 23:21:16 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/04/24/swift-tips/</guid>
+            <description>&lt;p&gt;学习一门新的编程语言要多久？答案是随着你的经验的增加，学习花费的时间越来越短。当然，这也和新语言的不断演变进化有关系。&lt;/p&gt;
+
+&lt;p&gt;我利用周末两天时间，把《Swift Programming Language》中文版整整的细看了一遍，然后为了总结提取 Swift 的主要语言特性，又把这本书快速过了第二遍。&lt;/p&gt;
+
+&lt;p&gt;根据我的番茄钟粗略统计，我看书第一遍学习大约花了 5 小时（包括边学，边在 XCode 试验的时间），第二遍主要是快速过一遍主要特性，将主要示例代码提取出来，大约花了 3.5 小时。&lt;/p&gt;
+
+&lt;p&gt;连我自己都觉得有点难以置信，总共只需要 8 小时的学习总结时间，就可以基本入门一门新语言了。&lt;/p&gt;
+
+&lt;p&gt;很多时候，我们想学习某个东西，但是却一直停留在想一想的状态，迟迟都未动手。究其原因，大概是如下几个原因吧：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;恐惧未知。对未知的东西没有把握，怕太难，怕需要太长时间学，所以能拖就拖。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;注意力不能集中。连续玩几个小时游戏一点不累，看半小时书就感觉身心俱疲。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;番茄工作法在这个时候就起作用了，告诉自己，不想太多，开始一个番茄钟试试，在这 25 分钟内，只关注这 25 分钟内要看的内容。然后，很自然的，障碍被逐个击破，番茄钟一个接着一个。&lt;/p&gt;
+
+&lt;p&gt;以下是我学习 Swift 的代码总结，可在之后用于速查。&lt;/p&gt;
+
+&lt;p&gt;代码：&lt;a href=&#34;https://github.com/coderzh/CodeTips/blob/master/swift.swift&#34;&gt;https://github.com/coderzh/CodeTips/blob/master/swift.swift&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/*
+ swift.playground:
+ Swift 速学速查速用代码手册
+ Source: github.com/coderzh/CodeTips/blob/master/swift.swift
+ Author: coderzh(github.com/coderzh)
+ Blog: http://blog.coderzh.com
+ 参考：《Swift Programming Language》
+ */
+
+import Cocoa
+
+// 0. 注释
+/*
+块注释
+行尾分号可不用
+*/
+
+// 1. Hello World
+print(&amp;quot;Hello Swift&amp;quot;)
+
+// 2. 常量变量类型
+let constValue = 3.14
+var variable = 18
+
+variable += 1
+
+// 指定类型
+let age: Int = 18
+// 多重赋值
+var (a, b) = (1, 2)
+// 匿名占位符
+(_, b) = (3, 4)
+
+// 类型会自动推导
+let name = &amp;quot;It&#39;s a string&amp;quot;
+let gravity = 0.98 // 默认 double
+
+// 永远不做隐式转换，必须自己强转
+let sum = Double(age) + gravity
+
+// 运算：+, -, *, /, % 求余
+// 比较：&amp;lt;, &amp;gt;, ==, &amp;gt;=, &amp;lt;=, !=
+// === 恒等，是否为同一个对象
+// !== 不恒等
+// 位运算：~x 取反，&amp;amp; 与，| 或，^ 异或，&amp;lt;&amp;lt; 左移动，&amp;gt;&amp;gt; 右移
+// 溢出运算符 &amp;amp;+ &amp;amp;- &amp;amp;* &amp;amp;/ &amp;amp;% ，这样溢出部分就会丢掉，不会出错，比如：
+var willOverflow = UInt8.max
+willOverflow = willOverflow &amp;amp;+ 1 // = 0
+
+// 类型
+let b1 = true
+let i32: Int32 = 6
+let f64: Float64 = 3.1415
+
+// 字符串
+let str = &amp;quot;swift&amp;quot;
+// 字符串连接，使用\()
+var hello = &amp;quot;hello \(str)&amp;quot;
+let count = str.characters.count
+let c = hello[hello.startIndex]
+for i in hello.characters.indices {
+    print(&amp;quot;\(hello[i])&amp;quot;)
+}
+
+hello.insert(&amp;quot;!&amp;quot;, atIndex: hello.endIndex)
+hello.insertContentsOf(&amp;quot; there&amp;quot;.characters, at: hello.endIndex.predecessor())
+hello.removeAtIndex(hello.endIndex.predecessor())
+hello.hasPrefix(&amp;quot;hello&amp;quot;)
+hello.hasSuffix(&amp;quot;swift&amp;quot;)
+
+let unicode = &amp;quot;你好 swift&amp;quot;
+unicode.characters.count // 8
+
+for codeUnit in unicode.utf8 {
+    print(&amp;quot;\(codeUnit)&amp;quot;, terminator: &amp;quot;&amp;quot;)
+}
+if hello == unicode{
+
+}
+
+// 数组
+var shoppingList = [&amp;quot;test&amp;quot;, &amp;quot;book&amp;quot;, &amp;quot;bike&amp;quot;]
+shoppingList[2] = &amp;quot;joke&amp;quot;
+shoppingList.append(&amp;quot;bus&amp;quot;)
+shoppingList.insert(&amp;quot;foo&amp;quot;, atIndex: 0)
+shoppingList.removeAtIndex(0)
+
+// 类似 slice
+shoppingList[0..&amp;lt;2] // [&amp;quot;test&amp;quot;, &amp;quot;book&amp;quot;]
+shoppingList[0...2] // [&amp;quot;test&amp;quot;, &amp;quot;book&amp;quot;, &amp;quot;joke&amp;quot;]
+
+for item in shoppingList {
+    print(item)
+}
+
+for (index, value) in shoppingList.enumerate() {
+    print(&amp;quot;\(index): \(value)&amp;quot;)
+}
+
+let emptyArray = [String]()
+var someInts = [Int]()
+var someInts2 = [Int](count: 3, repeatedValue: 8) // [8, 8, 8]
+var someInts3 = [Int](count: 3, repeatedValue: 2)
+
+// 任意类型数组
+var anyArray = [Any]()
+anyArray.append(1)
+anyArray.append(&amp;quot;book&amp;quot;)
+
+someInts = someInts2 + someInts3 // [8, 8, 8, 2, 2, 2]
+
+// 元组
+let httpResponse = (404, &amp;quot;Not Found&amp;quot;)
+print(httpResponse.0)
+
+// 集合 Sets
+var setBooks: Set&amp;lt;String&amp;gt; = [&amp;quot;book1&amp;quot;, &amp;quot;book2&amp;quot;]
+// 自动推导
+var setBooks2: Set = [&amp;quot;book1&amp;quot;, &amp;quot;book2&amp;quot;, &amp;quot;book3&amp;quot;]
+
+setBooks.intersect(setBooks2)  // 交集
+setBooks.exclusiveOr(setBooks2)  // 非交集
+setBooks.union(setBooks2)  // 并集
+setBooks.subtract(setBooks2)  // 减集
+
+setBooks.isSubsetOf(setBooks2)
+setBooks2.isSupersetOf(setBooks)
+setBooks.isStrictSubsetOf(setBooks2)  // 被包含且不相等
+
+// 字典
+var map = [
+    &amp;quot;Malcolm&amp;quot;: &amp;quot;hehe&amp;quot;,
+    &amp;quot;Keylee&amp;quot;: 123,
+]
+map[&amp;quot;Keylee&amp;quot;] = 166
+
+var namesOfInt = [Int: String]()
+namesOfInt[10] = &amp;quot;ten&amp;quot;
+
+if let oldValue = namesOfInt.updateValue(&amp;quot;Ten&amp;quot;, forKey: 10) {
+    print(&amp;quot;\(oldValue)&amp;quot;)
+}
+
+if let name = namesOfInt[8] {
+    print(&amp;quot;\(name)&amp;quot;)
+} else {
+    print(&amp;quot;not exist 8&amp;quot;)
+}
+
+for (intKey, strValue) in namesOfInt {
+    print(&amp;quot;\(intKey):\(strValue)&amp;quot;)
+}
+
+// namsOfInt.values
+for intKeys in namesOfInt.keys {
+
+}
+
+let intKeys = [Int](namesOfInt.keys)
+
+// 可空变量，用 ?
+var optionalString: String? = nil
+
+if let name = optionalString {
+    print(&amp;quot;hello \(name)&amp;quot;)
+}
+
+// 3. 流程控制
+// 循环
+// [0, 4)
+for i in 0..&amp;lt;4 {
+    print(&amp;quot;print \(i)&amp;quot;)  // 4 times
+}
+
+// [0, 4]
+for i in 0...4 {
+    print(&amp;quot;print \(i)&amp;quot;)  // 5 times
+}
+
+var i = 0
+while i &amp;lt; 2 {
+    print(&amp;quot;\(i)&amp;quot;)
+    i += 1
+}
+
+repeat {
+    print(&amp;quot;\(i)&amp;quot;)
+    i += 1
+} while i &amp;lt; 5
+
+// 判断
+if i &amp;lt; 5 {
+
+} else if i &amp;lt; 10 {
+
+} else {
+
+}
+
+// 强大的 switch
+// 不需要 break
+switch i {
+case 1, 2, 3:
+    print(&amp;quot;123&amp;quot;)
+case 5:
+    print(&amp;quot;5&amp;quot;)
+case 6..&amp;lt;10:
+    print(&amp;quot;6-9&amp;quot;)
+default:
+    print(&amp;quot;default&amp;quot;)
+}
+
+let somePoint = (1, 1)
+
+switch somePoint {
+case (0, 0):
+    print(&amp;quot;0, 0&amp;quot;)
+case (_, 1):
+    print(&amp;quot;y is 1&amp;quot;)
+case (-2...2, -2...2): // 区间
+    print(&amp;quot;from (-2,-2) to (2, 2)&amp;quot;)
+case (let x, 0):  // 值绑定
+    print(&amp;quot;\(x)&amp;quot;)
+case let (x, y) where x == y:  // where
+    print(&amp;quot;x == y&amp;quot;)
+case (10, 11):
+    fallthrough  // 贯穿，继续向下
+default:
+    print(&amp;quot;default&amp;quot;)
+}
+
+// 控制转移
+// continue break fallthrough retrun throw
+
+// 带标签
+i = 0
+gameLoop: while i &amp;gt; -1 {
+    i = i + 1
+    if i &amp;gt; 3 {
+        break gameLoop
+    }
+}
+
+// 提前退出(提前返回)
+func greet(person: [String:String]) {
+    guard let name = person[&amp;quot;name&amp;quot;] else {
+        return
+    }
+    print(&amp;quot;\(name)&amp;quot;)
+}
+
+greet([&amp;quot;age&amp;quot;:&amp;quot;18&amp;quot;])
+
+// 4. 函数
+func greet(name: String, day: String) {
+    print(&amp;quot;Hello \(name), today is \(day)&amp;quot;)
+}
+
+// 第二个参数默认需要指定名称
+greet(&amp;quot;tom&amp;quot;, day: &amp;quot;2016&amp;quot;)
+
+func sum(a: Int, b: Int) -&amp;gt; Int {
+    return a + b
+}
+
+sum(1, b: 2)
+
+// 多重返回值
+func minMax(array: [Int]) -&amp;gt; (min: Int, max: Int) {
+    // ...
+    return (0, 1)
+}
+
+// 可选返回值加 ?
+func minMax2(array: [Int]) -&amp;gt; (min: Int, max: Int)? {
+    if array.isEmpty { return nil }
+    return (0, 1)
+}
+
+// 指定外部参数名
+func sayHello(to person: String, and anotherPerson: String) {
+    print(&amp;quot;Hello \(person) and \(anotherPerson)&amp;quot;)
+}
+
+sayHello(to: &amp;quot;coderzh&amp;quot;, and: &amp;quot;tom&amp;quot;)
+
+// 忽略外部参数名，使用 _
+func sayHello2(person: String, _ anotherPerson: String) {
+    print(&amp;quot;Hello \(person) and \(anotherPerson)&amp;quot;)
+}
+
+sayHello2(&amp;quot;coderzh&amp;quot;, &amp;quot;jack&amp;quot;)
+
+// 默认参数
+func someFunction(p: Int = 10) {
+    print(&amp;quot;\(p)&amp;quot;)
+}
+
+someFunction()
+
+// 可变参数
+func sum(numbers: Int...) -&amp;gt; Int {
+    var total = 0
+    for n in numbers {
+        total += n
+    }
+
+    return total
+}
+
+sum(1, 2, 3, 4, 5)
+
+// 参数默认是常量类型，如需指定变量类型，前面加 var（swift 3 将移除 var）
+func alignRight(var string: String, totalLength: Int, pad: Character) -&amp;gt; String {
+    string = string + &amp;quot;!&amp;quot;
+    return string
+}
+
+// 传入传出参数 inout
+func swap(inout a: Int, inout _ b: Int) {
+    let temp = a
+    a = b
+    b = temp
+}
+
+var someInt = 7
+var anotherInt = 8
+
+// inout 参数必须加 &amp;amp;
+swap(&amp;amp;someInt, &amp;amp;anotherInt)
+
+// 函数类型，函数变量
+var sumFunc: (Int, Int) -&amp;gt; Int = sum
+sumFunc(1, 2)
+
+// 函数可做参数
+func doSum(handler:(Int, Int) -&amp;gt; Int, _ a: Int, _ b: Int) {
+    handler(a, b)
+}
+
+// 函数可做返回值
+func getSum() -&amp;gt; (Int, Int) -&amp;gt; Int {
+    // 函数可嵌套
+    func someFunc(a: Int, b: Int) -&amp;gt; Int { return a + b }
+    return someFunc
+}
+
+doSum(sum, 2, 3)
+
+// 闭包
+// 闭包是引用类型
+let reversed2 = shoppingList.sort({a, b in a &amp;lt; b})
+let r = shoppingList.sort({ $0 &amp;lt; $1 })
+let r2 = shoppingList.sort(&amp;lt;)
+let r3 = shoppingList.sort{ $0 &amp;lt; $1 }
+
+// 非逃逸闭包（noescape closure）
+// 闭包只能在函数内执行，不能「逃逸」出去
+func someClosure(@noescape closure: () -&amp;gt; Void) {
+    closure()
+}
+
+// 自动闭包（这样不用写花括号了？）
+func autoClosure(@autoclosure provider: () -&amp;gt; String) {
+    provider()
+}
+
+autoClosure(shoppingList.removeAtIndex(0))
+
+// 5. 枚举（一等公民，十分强大）
+// 值类型
+enum Rank: Int {
+    case Ace = 1
+    case Two, Three
+}
+
+var ace = Rank.Ace  // Ace
+Rank.Ace.rawValue  // 1
+let ace1 = Rank(rawValue: 1)  // Ace
+ace = .Two
+
+enum ServerResponse {
+    case Result(String, String)
+    case Error(String)
+}
+
+// 可失败构造器
+enum TemperatureUnit {
+    case Kelvin, Celsius, Fahrenheit
+    init?(symbol: Character) {
+        switch symbol {
+        case &amp;quot;K&amp;quot;:
+            self = .Kelvin
+        case &amp;quot;C&amp;quot;:
+            self = .Celsius
+        case &amp;quot;F&amp;quot;:
+            self = .Fahrenheit
+        default:
+            return nil
+        }
+    }
+}
+
+
+let success = ServerResponse.Result(&amp;quot;6:00am&amp;quot;, &amp;quot;6:00pm&amp;quot;)
+let failure = ServerResponse.Error(&amp;quot;Out of cheese&amp;quot;)
+
+switch success {
+case let .Result(sunrise, sunset):
+    let serverResponse = &amp;quot;sunrise at \(sunrise), sunset at \(sunset)&amp;quot;
+case let .Error(error):
+    let serverResponse = &amp;quot;Error \(error)&amp;quot;
+}
+
+// 枚举递归...
+enum ArithmeticExpression {
+    case Number(Int)
+    indirect case Addition(ArithmeticExpression, ArithmeticExpression)
+    indirect case Multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+
+func evaluate(expression: ArithmeticExpression) -&amp;gt; Int {
+    switch expression {
+    case .Number(let value):
+        return value
+    case .Addition(let left, let right):
+        return evaluate(left) + evaluate(right)
+    case .Multiplication(let left, let right):
+        return evaluate(left) * evaluate(right)
+    }
+}
+
+// 计算 (5 + 4) * 2
+let five = ArithmeticExpression.Number(5)
+let four = ArithmeticExpression.Number(4)
+let sum2 = ArithmeticExpression.Addition(five, four)
+let product = ArithmeticExpression.Multiplication(sum2, ArithmeticExpression.Number(2))
+print(evaluate(product)) // 输出 &amp;quot;18”
+
+// 6. 类和结构体
+// 结构体是值类型，类是引用类型
+class SomeClass {
+    var width = 0
+    var height = 0
+
+    // class 不需要 mutating
+    func incrementWidth() {
+        self.width += 1
+    }
+
+    // 下标操作： [n]
+    subscript(index: Int) -&amp;gt; Int {
+        get {
+            return 0
+        }
+        set(newValue) {
+            // set from newValue
+        }
+    }
+}
+
+let s1 = SomeClass()
+
+struct SomeStruct {
+    static var someValue = 100
+    static func staticFunc() -&amp;gt; Int {
+        return 1
+    }
+
+    var x = 0
+    var y = 0
+
+    var doubleX: Int {
+        get {
+            return x * 2
+        }
+        set {
+            x = newValue / 2
+        }
+    }
+
+    // readonly
+    var doubleY: Int {
+        return y * 2
+    }
+
+    var total: Int {
+        willSet(newTotal) {
+            print(&amp;quot;will set \(newTotal)&amp;quot;)
+        }
+
+        didSet {
+            print(&amp;quot;old: \(oldValue), new: \(total)&amp;quot;)
+        }
+    }
+
+    // 如果会改变类成员，比如声明 mutating
+    mutating func incrementX() {
+        self.x += 1
+    }
+}
+
+var s2 = SomeStruct(x: 2, y: 3, total: 10)
+s2.doubleX = 10  // s2.x == 5
+s2.total = 5
+
+// 继承
+class Animal {
+    // 构造函数
+    init() {
+
+    }
+
+    // 必要构造器，子类必须实现，而且声明为 required
+    required init(name: String, age: Int) {
+
+    }
+
+    func makeNoise() {
+        print(&amp;quot;wowowo&amp;quot;)
+    }
+}
+
+class Cat: Animal {
+    var name: String = &amp;quot;&amp;quot;
+    var nickName: String = &amp;quot;&amp;quot;
+
+    init(name: String) {
+        super.init()
+        self.name = name
+    }
+
+    init(fromNickName nickName: String) {
+        super.init(name: nickName, age: 18)
+        self.nickName = nickName
+    }
+
+    // 便利构造器：必须调用其他构造器
+    convenience override init() {
+        self.init(name: &amp;quot;UnKnown&amp;quot;)
+    }
+
+    // 可失败构造器
+    init?(age: Int) {
+        super.init(name: &amp;quot;UnKnown&amp;quot;, age: age)
+        if age &amp;lt; 0 { return nil }
+    }
+
+    required init(name: String, age: Int) {
+        self.name = name
+        super.init(name: name, age: age)
+    }
+
+    // 析构，默认会先调用父类的析构
+    deinit {
+
+    }
+
+    override func makeNoise() {
+        print(&amp;quot;miaomiaomiao&amp;quot;)
+    }
+}
+
+final class CannotInheirt {
+
+}
+
+// 7. 自动引用计数 ARC
+// weak 弱引用
+// unowned 无主引用
+
+// 8. 可空链式调用
+/* For example:
+if let johnsStreet = john.residence?.address?.street {
+    print(&amp;quot;John&#39;s street name is \(johnsStreet).&amp;quot;)
+} else {
+    print(&amp;quot;Unable to retrieve the address.&amp;quot;)
+}
+*/
+// 如果确定有值，使用!
+// let roomCount = john.residence!.numberOfRooms
+
+
+// 9. 错误处理
+
+enum CustomError : ErrorType {
+    case Invalid
+    case OutOfRange
+}
+
+func makeASandwich() throws -&amp;gt; String {
+    throw CustomError.Invalid
+}
+
+do {
+    try makeASandwich()
+} catch CustomError.Invalid {
+    print(&amp;quot;Invalid&amp;quot;)
+}
+
+// 可空
+let x = try? makeASandwich()
+// 使错误传递失效，肯定不throw，否则 assert
+// let y = try! makeASandwich()
+
+// defer 和 Golang 里的 defer 一样，用来退出清理
+/*
+func processFile(filename: String) throws {
+    if exists(filename) {
+        let file = open(filename)
+        defer {
+            close(file)
+        }
+        while let line = try file.readline() {
+            // 处理文件
+        }
+        // 在这里，作用域的最后调用 close(file)
+    }
+}
+*/
+
+// 10. 类型转换： is as （和 CSharp 类似）
+// 任意类型：
+// 1. AnyObject 任何 class 类型实例
+// 2. Any 任何类型
+
+// 11. 扩展（extension，类似 CSharp 里的扩展方法，但是貌似更强大）
+// 比如：扩展内置类型 Double
+// 几乎一切都可扩展，用到时再查用法吧
+extension Double {
+    var km: Double { return self * 1_000.0 }
+    var m : Double { return self }
+    var cm: Double { return self / 100.0 }
+    var mm: Double { return self / 1_000.0 }
+    var ft: Double { return self / 3.28084 }
+}
+
+// 12. 协议（类似接口的东西）
+// 当同时有继承时，先写继承，再写协议，协议可以有多个
+protocol FullyNamed {
+    var fullName: String { get }
+}
+
+// 协议也可继承
+protocol SubFullyNamed: FullyNamed {
+    var nickName: String { get }
+}
+
+struct Person: FullyNamed{
+    var fullName: String
+}
+
+// 专属协议，指定只能用在 class 上
+protocol ClassOnlyProtocol: class, FullyNamed {
+
+}
+
+protocol Aged {
+    var age: Int { get set }
+}
+
+// 协议合成
+func foo(pro: protocol&amp;lt;FullyNamed, Aged&amp;gt;, base: Any) {
+    // 协议判断
+    if let p = base as? Aged {
+        print(p.age)
+    }
+}
+
+// 可选协议（既然是协议，还可选，醉了）
+// @objc protocol
+
+// 13. 泛型
+func swapTwoValues&amp;lt;T&amp;gt;(inout a: T, inout _ b: T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+// 泛型约束
+func someFunction&amp;lt;T: SomeClass, U: FullyNamed&amp;gt;(someT: T, someU: U) {
+    // 这里是函数主体
+}
+
+// Where
+/*
+func allItemsMatch&amp;lt;
+    C1: Container, C2: Container
+    where C1.ItemType == C2.ItemType, C1.ItemType: Equatable&amp;gt;
+    (someContainer: C1, anotherContainer: C2) -&amp;gt; Bool {
+}
+*/
+
+// 14. 访问控制
+// public internal（默认） private
+// 加在 class var 等前
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
         
         <item>
             <title>程序员的黄金时代</title>
@@ -1286,60 +2014,6 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
 &lt;p&gt;同样，我也很感叹 Seaborn Lee 的做法，在微信群里组织分享，吸引大量爱学习的程序员过来并加为好友，这些人简直就是程序员社区的精准目标用户啊！于是我对 Seaborn Lee 本人的经历产生了兴趣，原来他之前就职于 &lt;a href=&#34;https://www.thoughtworks.com/&#34;&gt;ThoughtWorks&lt;/a&gt; ，目前于创业公司「深圳湾」任 CTO 。在他的博客里的 &lt;a href=&#34;http://seabornlee.cn/isaid.md&#34;&gt;时间线&lt;/a&gt; 一栏更是了解到他从出生、上学到工作一路走来的坎坷经历。了解了这些后， Seaborn Lee 的形象更加鲜活起来了：好学、上进、有活力、爱分享、组织各种社区活动。&lt;/p&gt;
 
 &lt;p&gt;虽然微信里不能很好的支持视频直播，但谁也挡不住爱分享的程序员在微信群里玩起了语音直播。如果你也有兴趣，加我的微信公众号：hacker-thinking ，并发送“爱学习，爱分享”，我将加你为好友并把你加到刚才提到的“软件匠艺小组分享”群，一起学习进步。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>被脱裤也不怕 - 反馈总结</title>
-            <link>http://blog.coderzh.com/2016/01/13/password-security-additional/</link>
-            <pubDate>Wed, 13 Jan 2016 19:06:42 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/01/13/password-security-additional/</guid>
-            <description>
-
-&lt;p&gt;在发出前两篇安全相关的文章（&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt; ，&lt;a href=&#34;http://blog.coderzh.com/2016/01/10/a-password-security-design-example/&#34;&gt;即使被拖库，也可以保证密码不泄露&lt;/a&gt;）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。&lt;/p&gt;
-
-&lt;p&gt;正如张小龙说的，“我所说的一切都是错的”。&lt;/p&gt;
-
-&lt;p&gt;所以，我更希望大家从辩证的角度去看待前两篇文章，然后结合自身项目的情况去做相应的设计。同时，我收到不少有价值的反馈，我觉得有必要将这些反馈整理一下，给大家一些参考，也算是对前面文章的补充。&lt;/p&gt;
-
-&lt;p&gt;上篇文章没有提到 &lt;a href=&#34;https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE&#34;&gt;HTTPS&lt;/a&gt;（SSL/TLS），是我疏漏了。作为一个安全的系统，在保证传输安全时强烈建议直接上 HTTPS（SSL/TLS）。文章中使用 &lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt; 交换密钥传输的过程其实和 HTTPS（SSL/TLS）是类似的，只不过 HTTPS（SSL/TLS）实现的要完善太多。&lt;/p&gt;
-
-&lt;p&gt;正如一位朋友反馈所说：“14年的时候 openssl 爆出过一个名为 &lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%BF%83%E8%84%8F%E5%87%BA%E8%A1%80%E6%BC%8F%E6%B4%9E&#34;&gt;Heartbleed&lt;/a&gt; 的漏洞，可见良好的算法不一定被良好的实现，所以从开发者的角度还是不要觉得存在绝对安全的算法比较好。” 所以可以认为我的方案是在 HTTPS（SSL/TLS）基础上再一层加固，当然，如果你认为这一层加固没必要也可以去掉。&lt;/p&gt;
-
-&lt;p&gt;另一方面，目前大量网站还在使用 HTTP ，很多游戏设计时也并未使用 TLS ，所以，我上篇文章使用的方法还是有一定的意义的。&lt;/p&gt;
-
-&lt;h3 id=&#34;反馈汇总:1114219843eb3806f45029c8d223a620&#34;&gt;反馈汇总&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;回复：非常同意！&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;回复：理论上是足够了，而且推荐使用。 如果你的项目安全级别非常高，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;回复：同意，确实不是很必要。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 &lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt;，并没有重新发明什么。文章&lt;strong&gt;重点是对密码的两次加盐哈希以及密码的验证方式&lt;/strong&gt;。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;好了，我所说的也都是错的。欢迎继续交流。&lt;/p&gt;
 </description>
         </item>
         
