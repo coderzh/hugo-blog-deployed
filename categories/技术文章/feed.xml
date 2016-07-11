@@ -6,7 +6,87 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 24 Apr 2016 23:21:16 CST</updated>
+        <updated>Mon, 11 Jul 2016 07:35:59 CST</updated>
+        
+        <item>
+            <title>一次 CTF 之旅</title>
+            <link>http://blog.coderzh.com/2016/07/11/a-ctf-tour/</link>
+            <pubDate>Mon, 11 Jul 2016 07:35:59 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/07/11/a-ctf-tour/</guid>
+            <description>&lt;p&gt;有好几周没有发文章了，具体原因是上上周末去了团建，上周末主要在研读《Android 软件安全与逆向分析》一书。我报名参加了公司第一次 CTF 比赛，结果很幸运组队时抱上了几个大腿进了决赛。本着绝不坑队友的原则，精心准备了一把。结果最后还是坑了，我那道 Android 逆向的题还是没有做出来。虽然比赛已经结束，但心有不甘，这周末又继续搞了两天这题，代码逆向和解题思路都搞的差不多，但是似乎 Native 层的代码理解有一点点偏差。昨晚 11 点多不得已向比赛组委会出题大神请教，解题方法居然没有我想的复杂，我还是太 Naive 了。&lt;/p&gt;
+
+&lt;p&gt;首先介绍一下什么是 CTF。&lt;/p&gt;
+
+&lt;p&gt;CTF（Capture The Flag）夺旗赛，在网络安全领域中指的是网络安全技术人员之间进行技术竞技的一种比赛形式。CTF 起源于 1996 年 DEFCON 全球黑客大会，以代替之前黑客们通过互相发起真实攻击进行技术比拼的方式。&lt;/p&gt;
+
+&lt;p&gt;这次是公司第一次举办 CTF 的比赛。而我在这之前，对 CTF 也是了解甚少。组织这次比赛的是公司 T5 大神所在的实验室，本着学习的态度，就尝试报了名。刚好队里缺 Android 逆向的小伙伴，所有我就专攻 Android 题，其他题交给其他的小伙伴。&lt;/p&gt;
+
+&lt;p&gt;由于是第一次举办，采用了比较初级的「解题模式」。主要分为几类：隐写、逆向、Web、Mobile。举个隐写的例子就明白了。比如让你在一个浏览器页面里找藏在里面的 Flag，只要查看源码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;p&amp;gt;
+找到第一个 Flag!
+&amp;lt;!-- Flag{WelcomeToCTF} --&amp;gt;
+&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;WelcomeToCTF&lt;/code&gt; 就是其中的 Flag。当然，这种属于最初级的题，更多的隐写 Flag 会藏在更深的地方，比如图片、MP3、PDF 等等文件里，你需要做各种数据抽离，找出其中的不同，最终发现写在里面的隐藏内容。&lt;/p&gt;
+
+&lt;p&gt;对 CTF 有兴趣的同学可以自行去了解更多，这里不一一介绍了。一是我本身也专研不深，二是这次比赛我只搞了 Mobile 题。所以，接下来就只聊一聊 Mobile 题。&lt;/p&gt;
+
+&lt;p&gt;Mobile 题主要是 Android 的逆向，Crack 破解或者是找出其中漏洞。同样举个简单的例子，比如破解一个需要序列号的 APP，通过逆向，你找到它里面判断序列号是否正确的地方，把判断条件改反，或者修改判断条件，让它永远返回 True。这样就简单的绕过了验证。&lt;/p&gt;
+
+&lt;p&gt;而实际情况会比这种复杂的多。所以要掌握好 Android 逆向，需要了解 Android 虚拟机的原理及 Dalvik 指令集，熟悉 DEX 文件的格式及反汇编语言 smali。能读懂和理解 ARM 汇编（寄存器和各种寻址）。由于 Java 层的破解相对容易，很多 APP 会把关键功能放在 Android NDK 的 so 里。所以，分析反汇编的 so 代码也是必须要掌握的。&lt;/p&gt;
+
+&lt;p&gt;Android 逆向主要分静态分析和动态调试。静态分析就是查看逆向的代码，找出其他的关键所在，然后修改代码，重新打包、签名，得到最终结果。动态调试是指使用工具动态调试 APP，可在运行时下断点，查看或修改寄存器的值，Dump 一段内存等等。&lt;/p&gt;
+
+&lt;p&gt;常见的 Android 加壳过程就是通过 so 加载一个二进制文件，然后解密出真正的 DEX 文件。通过加壳，把真实的业务代码隐藏了起来，Java 层的逆向你看不到真实的业务逻辑代码，因为只有一个壳。破解的思路也很简单，动态调试 APP，运行到解密完 DEX 的地方（或者是定位到关键函数，比如加载新 DEX 的地方），将 DEX 文件所在的内存 Dump 出来，然后再去分析 Dump 出来的真实 DEX 文件。&lt;/p&gt;
+
+&lt;p&gt;魔高一尺道高一丈。既然动态调试可以这么容易把隐藏的 DEX Dump 出来，那么反破解的方法就是加入「反调试」的逻辑。比如，不断检查 App 的 TracerID，一旦发现有人在调试它，就启动自毁程序。于是，动态调试的难度又增加了，这时候就需要用到「反反调试」。找出其中「反调试」的代码，通过静态分析，想尽一切办法绕过反调试。&lt;/p&gt;
+
+&lt;p&gt;这其中过程说的似乎轻描淡写，实际操作起来却并非那么容易。我体验一段时间之后的感觉是，首先基础要扎实，上看得了 Java，下看得了 smali，C++，arm 汇编，其次，工具使用要熟练。已经很少有人徒手破解了，因为有很多现成的工具可用。比如：APKTool、jd-gui、IDA Pro…… 其中的 IDA Pro 堪称神器，熟练掌握 IDA Pro 几乎成功了一半（瞎说的，因为我不是很熟）。第三，要有敏锐的思路，分析出其中的关键路径，寻出破解的方法。&lt;/p&gt;
+
+&lt;p&gt;基础方面，我恶补了《Android 软件安全与逆向分析》一书。写的确实好，讲的非常系统，入门的首选。我买的纸质书，看完的感受是看此类书还是纸质的比较好。比赛结束后又入了一本《漏洞战争》，最新出炉的安全大作，作者就是文章开头我提到的这次 CTF 组委会出题的大神。&lt;/p&gt;
+
+&lt;p&gt;实践部分我做的就不好了，工具的不熟练使用成了我的一大瓶颈。首先是环境准备部分，我就入了一个大坑。搞 Android 逆向，使用手机真机调试是必不可少的，而且手机必须是 root 过的，同时必须准备好多个 Android API 版本的手机（因为有的题的 APK 对 API Level 有要求。）别人已经在破解调试了，而题目的 APP 在我的手机上正常跑起来却是一个问题。（汗~）&lt;/p&gt;
+
+&lt;p&gt;当然，也是可以使用模拟器的。这又要说到我遇到的另外一个大坑，因为习惯了 Genymotion 模拟器（性能很好），然后发现动态调试使用的 android_server 在 Genymotion 里根本跑不起来。于是当初我就放弃了模拟器方案，最后在这周末的时候发现，使用 Google 原生的模拟器，选择 arm 版本的 SDK 就可以了！（哭~）&lt;/p&gt;
+
+&lt;p&gt;当然，这都没什么。还有一个更大的坑。因为比赛我带的是我的 Mac，而破解工具大多数是在 Windows 里运行的。所以我就选择在 Mac 里装 Windows 虚拟机（VirtualBox），然后就掉坑里了。默认的 NAT 方式，虚拟机里是不能访问宿主机的，所以根本没办法进行动态调试。比赛之前我早有考虑，所以简单的切换到 Bridge 模式就可以解决。然而我还是太 Naive 了，公司里是不允许用 Bridge 方式的，使用后根本就上不了网。&lt;/p&gt;
+
+&lt;p&gt;我不太可能把 Mac 再装个 Windows 双系统，而且我也不会那样做。最后，为了能在虚拟机里使用 IDA Pro 动态调试 Android，我折腾出如下方法：虚拟机同时设置 NAT 模式和 Host-Only 模式，NAT 模式是为了能够上网，Host-Only 模式是为了能访问宿主机器。有了 Host-Only 模式，可以访问到宿主机了，但是还是没办法直接连接到 android_server 的调试端口。&lt;/p&gt;
+
+&lt;p&gt;原理是这样的，android_server 的调试端口 23946 是在手机上开启的，为了在 PC 上能连接这个端口，所有的教程都教你需要输入如下指令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;adb forward tcp:23946 tcp:23946
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;即，将 PC 机上的 23946 端口的数据全部转发到手机的 23946 端口上。在虚拟机的 IDA Pro 里，我直接设置主机的 IP 和端口，是无法连接上的，因为主机只负责转发来自 127.0.0.1 的 23946 端口的数据。于是，我拿出了 nginx 杀手锏，开启了一个监听端口 23950，然后配置成自动转发到本地的 127.0.0.1:23946 上：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;stream {
+    upstream dbg_socket {
+        hash $remote_addr consistent;
+        server 127.0.0.1:23946;
+    }
+
+    server {
+       listen 23950;
+       proxy_connect_timeout 180s;
+       proxy_timeout 3600s;
+       proxy_pass dbg_socket;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在 IDA Pro 里设主机的 IP 和端口 23950，it works!&lt;/p&gt;
+
+&lt;p&gt;第一次参加 CTF 的我真是有点伤不起啊。&lt;strong&gt;如果再来一次，我会告诉自己，带上几台真机，放下你的 Mac，老老实实的带个 Windows 本子去吧。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;至于解题思路方面，需要平时多关注一些安全相关的文章，同时要有开放性的思维。&lt;/p&gt;
+
+&lt;p&gt;这就是我这次 CTF 之旅的血泪史，虽然最后我的成绩不尽人意，但还是收获满满。主要是队友给力，通过比赛，认识了一群 Nice、聪明、激情又好学的朋友，你可以想象我的队友在刚刷出题目 5 秒钟就告诉我们解出来了吗？这就是 CTF！&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>Swift 语言学习及速查手册</title>
@@ -2329,133 +2409,6 @@ DEPLOY_DIR = &#39;gh-pages&#39;
 &lt;li&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/&#34;&gt;走进前端开发之：Bootstrap&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/07/front-end-dev/&#34;&gt;走进前端开发之：框架的演变&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>网站被随机挂广告，疑似被 HTTP 劫持</title>
-            <link>http://blog.coderzh.com/2015/11/14/http-dns-hijack/</link>
-            <pubDate>Sat, 14 Nov 2015 19:36:38 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/11/14/http-dns-hijack/</guid>
-            <description>
-
-&lt;p&gt;最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。&lt;/p&gt;
-
-&lt;h2 id=&#34;现象:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;现象&lt;/h2&gt;
-
-&lt;p&gt;首先，广告长这样：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/blogads.jpg&#34; alt=&#34;blogads&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;太可恨了！我的网站是 &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;， 检查了网站的源文件，没有被修改的痕迹，也根本不会有什么广告代码。所以怀疑是被运营商劫持了！&lt;/p&gt;
-
-&lt;p&gt;我使用的是广州电信100M光纤，被挂广告只有在家里上电信光纤时会出现，连手机里访问也会有广告：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/phoneads.jpg&#34; alt=&#34;phoneads&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;但是如果手机连的是联通4G，就没有一点问题！&lt;/p&gt;
-
-&lt;p&gt;后来在追查过程中，发现遇到这个问题的不止我一个人，比如，云风在他的新浪微博里说到：&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://weibo.com/2388714105/D2013qUSo?type=comment#_rnd1447506909896&#34;&gt;http://weibo.com/2388714105/D2013qUSo?type=comment#_rnd1447506909896&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/yunfengads.jpg-ws&#34; alt=&#34;yunfengads&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;另一个博主也遇到这个问题：&lt;a href=&#34;http://www.lovefcwr.com/20151110-google-ca-pub-8129816473729933&#34;&gt;网站被黑了随机挂ca-pub-8129816473729933的google广告，怎么办？&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;还有一个用户在 Google Adsens 也举报了这个广告主：&lt;a href=&#34;https://productforums.google.com/forum/#!topic/adsense/qeeYrD7kvUA;context-place=forum/adsense&#34;&gt;Please help us to stop this Google Adsense user &lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;初步分析:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;初步分析&lt;/h2&gt;
-
-&lt;p&gt;这个问题出现在最近1，2个月，被插入广告的都属于同一个广告主：ca-pub-8129816473729933 。&lt;/p&gt;
-
-&lt;p&gt;很多网站广告插入的方式和表现是完全一致的。广告隔断时间会出现一次，刷新网页后就消失了。&lt;/p&gt;
-
-&lt;p&gt;我和云风使用的宽带都是广州电信！（我手机换成联通移动 4G 就没问题。）&lt;/p&gt;
-
-&lt;p&gt;所以，不得不怀疑是电信做了手脚，对访问的网站进行了劫持！电信也不是第一次做 &lt;strong&gt;HTTP 劫持&lt;/strong&gt; 这种事。&lt;/p&gt;
-
-&lt;p&gt;于是，我捕捉了一些现场证据，分析了劫持的脚本和基本原理，然后拨通了中国电信 10000 号。&lt;/p&gt;
-
-&lt;h2 id=&#34;10000-号:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;10000 号&lt;/h2&gt;
-
-&lt;p&gt;电信工作人员矢口否认进行了 HTTP 劫持，把原因归咎到电脑是否中毒了，WIFI 路由器被做了手脚等等。我说我的电脑杀过毒并没有问题，不仅电脑，iPhone 手机访问网页也会被嵌入广告，你是说我的 iPhone 也中毒了吗？而且切换成联通 4G 就没有问题，你说和你们没关系？ WIFI 路由器我也试了把 DNS 设置成各种不同的，包括默认的，甚至把路由器恢复出厂设置，通通没用！&lt;/p&gt;
-
-&lt;p&gt;最后他说可能和我拨号分配到的 IP 是内网 IP有关，帮我恢复到公网 IP 试试。 What ! 难道我的网络之前一直属于你们的局域网？？不应该默认就是公网 IP 吗？？&lt;/p&gt;
-
-&lt;p&gt;然而，切换公网 IP 后也并没有什么用！（中间还出现切换出错，导致我几个小时拨号不成功上不了网，哭了~~）&lt;/p&gt;
-
-&lt;p&gt;打 10000 号目前还未解决问题，解决不了去工信部投诉去。&lt;/p&gt;
-
-&lt;h2 id=&#34;深入分析:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;深入分析&lt;/h2&gt;
-
-&lt;p&gt;访问一个网站，网站的内容都是被恶意篡改过的，这多么可怕。&lt;/p&gt;
-
-&lt;p&gt;于是在 Chrome 里 “审查元素”里跟踪了一下，看看到底是如何篡改的。通过查看 Elements ，发现 html 里被嵌入了以下代码：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/adsjs2.jpg-w&#34; alt=&#34;adjs2&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;picturefill.min.js 是我网站使用的一个正常的 js 文件，查看网页源码发现，出现了两条关于 picturefill.min.js 的代码：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;assets/picturefill/picturefill.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&amp;quot;http://blog.coderzh.com/assets/picturefill/picturefill.min.js?_Ax144746802655173=xxA.baidu.com&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然后再查看请求 picturefill.min.js 时返回了什么：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/fakejs.jpg-w&#34; alt=&#34;fakejs&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/rightjs.jpg-w&#34; alt=&#34;rightjs&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;上面显示，请求 picturefill.min.js 时，返回的竟然是被篡改的内容，被篡改的内容里，先是再次请求了一次原版的 picturefill.min.js ，然后就是插入 google 的广告代码。&lt;/p&gt;
-
-&lt;p&gt;从 google 的广告代码看出，广告主的 ID 是：ca-pub-8129816473729933 ， 正是和云风及之前一位博主说到的广告主是同一个！ Google 你还不赶紧查查他！&lt;/p&gt;
-
-&lt;p&gt;最后这段恶意篡改的 js 代码生成出来的嵌入广告是这样的：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/adsjs.jpg-w&#34; alt=&#34;adjs&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;之后又试验了多次，总结了进行 HTTP 劫持的基本套路：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;劫持任一 js 的请求，返回包含原 js 及恶意代码的假的 js 内容。&lt;/li&gt;
-&lt;li&gt;假的 js 通过 DOM 操作，强行在原来的网页内植入广告。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;这种恶意修改 DOM 的方式，和之前常见的把原网站套入一个 iframe 的方式有所不同。基本很难防范。&lt;/p&gt;
-
-&lt;h2 id=&#34;解决方法:cf9192f47b41efddf17d905ebd43dd9c&#34;&gt;解决方法&lt;/h2&gt;
-
-&lt;p&gt;打 10000 号，投诉，投诉，再投诉。&lt;/p&gt;
-
-&lt;p&gt;工信部投诉地址：&lt;a href=&#34;http://www.chinatcc.gov.cn:8080/cms/shensus/&#34;&gt;http://www.chinatcc.gov.cn:8080/cms/shensus/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;为了找出哪一层路由做了手脚，大家通过 traceroute ( Windows 里是 tracert ) 看看访问被植入广告的网站到底经过哪些路由。下面是我的 tracert 结果：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;D:\Code\Go\coderzh-hugo-blog&amp;gt;tracert blog.coderzh.com
-
-通过最多 30 个跃点跟踪
-到 github.map.fastly.net [103.245.222.133] 的路由:
-
-  1    &amp;lt;1 毫秒   &amp;lt;1 毫秒   &amp;lt;1 毫秒 192.168.0.1
-  2    12 ms     2 ms     1 ms  113.109.112.1
-  3     3 ms     3 ms     3 ms  183.56.38.209
-  4     5 ms     3 ms     3 ms  183.56.30.21
-  5     9 ms     8 ms     8 ms  202.97.34.114
-  6     9 ms     8 ms     7 ms  202.97.34.74
-  7   156 ms   158 ms   156 ms  202.97.60.214
-  8   158 ms   168 ms   166 ms  ae-1.r30.tokyjp05.jp.bb.gin.ntt.net [129.250.2.157]
-  9   164 ms   176 ms   175 ms  ae-17.r01.tokyjp03.jp.bb.gin.ntt.net [129.250.6.117]
- 10     *        *        *     请求超时。
- 11   164 ms   164 ms   163 ms  103.245.222.133
-
-跟踪完成。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;假如你不是对一个网站很熟悉，你压根发现不了这广告根本不是网站主投放的。&lt;/p&gt;
-
-&lt;p&gt;这种强行修改你访问网页的内容来植入广告的方式，非常可怕。使得我们在上网的时候没有一点安全感。如果你访问一个网站，都不能保证获取到的内容是该网站原版的内容，而是被肆意的插入广告，被修改的内容。那么之后他很可能会骗取你的账号密码，偷走你的隐私，拿走你的存款，这是多么可怕和不可接受的事。&lt;/p&gt;
 </description>
         </item>
         
