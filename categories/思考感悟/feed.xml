@@ -6,7 +6,43 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 11 Jun 2016 12:24:55 CST</updated>
+        <updated>Sun, 25 Sep 2016 23:43:43 CST</updated>
+        
+        <item>
+            <title>小目标</title>
+            <link>http://blog.coderzh.com/2016/09/25/small-plan/</link>
+            <pubDate>Sun, 25 Sep 2016 23:43:43 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2016/09/25/small-plan/</guid>
+            <description>&lt;p&gt;两个多月没更新了，感谢一直关注的小伙伴们。&lt;/p&gt;
+
+&lt;p&gt;上篇文章《一次 CTF 之旅》有读者评论，会不会因为学习的东西太多而每个都不精通？以我的经验来看，会的。&lt;/p&gt;
+
+&lt;p&gt;曾经我也认为我什么都能学，什么都能做好，但是在具体某一领域，和真正的专家比起来，差距还是比较明显的。如果想成为某一方面的专家，就一定要找准一个点深入下去，在这个点上有持续的积累，你的优势才会凸显。&lt;/p&gt;
+
+&lt;p&gt;道理都明白，但是却很难做到。&lt;/p&gt;
+
+&lt;p&gt;因为学习是一件非常枯燥和困难的事情。只要身边有一点诱惑，就很容易打退堂鼓。&lt;/p&gt;
+
+&lt;p&gt;其他任何一件事，看上去都比学习要容易的多：&lt;/p&gt;
+
+&lt;p&gt;在沙发上来个葛优躺，就算发几分钟呆，也是极舒服和享受的。更不要说看个电影肥皂剧，玩个游戏。&lt;/p&gt;
+
+&lt;p&gt;当你觉得无所事事的时候，视频、微博、微信、游戏会很轻易的填充你的时间。因为任何时间，你只要掏出手机，轻轻一点，马上就会有很强烈的感官刺激，非常及时的反馈，而时间就这样慢慢流逝了。&lt;/p&gt;
+
+&lt;p&gt;学习的反馈非常的慢，但却是更有意义的事情。为了避免枯燥，应尽量选择自己感兴趣或擅长的领域。&lt;/p&gt;
+
+&lt;p&gt;我们只看到大神的谈笑风生，却看不到他们曾经多少个孤独的夜晚。&lt;/p&gt;
+
+&lt;p&gt;学习是一种自我驱动的修行。&lt;/p&gt;
+
+&lt;p&gt;鸡汤三千，取一瓢自饮，本文仅以自勉。&lt;/p&gt;
+
+&lt;p&gt;目标不要定的太远，先写它个小程序，实现个小目标。&lt;/p&gt;
+
+&lt;p&gt;（开玩笑了，小目标是：每周看 10 小时书。微信读书内每周有统计，诸君共勉。）&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>代自己：《致和菜头书》</title>
@@ -832,66 +868,6 @@
 &lt;p&gt;我可以想象到这是一种什么样的场景，就如同我在大学时看一位牛X同学现场教学如何从零开始做一个网站一样，包括写代码、美工P图切图、排版，噼里啪啦一顿快捷键一气呵成，让你看的眼花缭乱，顿时感觉不明觉厉。可惜这位牛X的同学最后还是选择了留校继续研读土木工程。&lt;/p&gt;
 
 &lt;p&gt;对于Livcoding登录中国，我还是有些小期待的。你有兴趣吗？&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>关于开源的思考</title>
-            <link>http://blog.coderzh.com/2015/10/11/open-source-thinking/</link>
-            <pubDate>Sun, 11 Oct 2015 17:17:19 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/10/11/open-source-thinking/</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/OpenSource.png-wt&#34; alt=&#34;OpenSource&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;程序员是一个热衷于开放、分享、协作的群体。他们将有创造力的代码公开分享，供大家审阅、评判、学习和使用，他们接受用户的意见，欢迎一切用户提交的PR改进。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源是需要勇气的。&lt;/strong&gt;用户会用脚投票，依赖混乱、晦涩难懂、风格糟糕的代码会被用户所遗弃。代码也是要看脸的，选择开源意味着需要把自己最美的部分展示。如果一个项目一开始就是开源的，在代码编写过程中肯定会格外注意。根据以往的经验，那些表面光鲜的商业软件，内部的代码往往都是混乱不堪，难以示众的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源不仅仅是把代码公开。&lt;/strong&gt;如果仅仅将代码公开就算开源的话，那和真正的开源离的十万八千里呢。开放源代码只是第一步，后续的社区建设，吸引开发者或用户一起来共同参与，形成社区化的协作模式，将开源社区这个轮子滚动起来才是关键。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源的协作模式是高效的。&lt;/strong&gt;一个出色的开源项目，可以吸引到全世界出色的程序员，他们大都基于爱好或使用需要，无偿贡献自己的代码。当然，最宝贵的是他们付出的时间。他们往往是在业余时间参与开源项目。在GitHub上，不同时区的人们通过Pull Request的方式跟进和推动项目前进。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源需要对代码质量提出更高的要求。&lt;/strong&gt;通过Pull Rquest机制提交的代码，天然需要经过项目维护者的CodeReview才能合入的。在提PR时，需要让代码尽量的整洁，注释规范，有的项目还要求你通过squash合并成1次commit再提交。最后，最重要的环节是给修改的代码补充单元测试案例，保证测试案例是通过的。GitHub提供了这一整套流程的跟踪协作方式，所以程序员们对GitHub如此的爱不释手。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;参与开源是一种极好的学习方式。&lt;/strong&gt;如果还没机会自己创建和维护一个好的开源项目，参与到别人的开源项目中会是一个很好的学习提高的方式。你可以看到牛人的代码是怎么写的，然后偷偷记下来。最好的方式是参与其中，不一定需要你贡献多少有价值的代码，也许一个简单的文档内容修改，也能拉近你和牛人之间的距离。当你对代码有一定的熟悉，你就可以打开Issue列表，看看有哪些问题你可以大展拳脚了。一旦你这么做了，相信对你的帮助是巨大的。这也是我近期的深刻体会。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;代码不需要藏着掖着，用户资源和核心数据才是。&lt;/strong&gt;Facebook大多代码都是直接开源的，给社区贡献了大量高质量的开源代码。对他们来说，选择完全开放，吸引更多的开发者参与其中，只要将用户核心数据和平台资源掌握在手里，这个雪球是可以越滚越大的。这就如同RSA算法，加解密的算法是完全公开的，只要你保证了私钥不被泄露，其他的东西全部公开都是安全的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;开源并不意味着免费，也许还能赚到钱。&lt;/strong&gt;很多程序员参与开源并不是为了赚钱，有的纯粹是爱好，有的是自我价值的实现。随着开源项目越来越大，越来越多人参与，需要参与维护和打理的时间就会变多，甚至有的人会全职来做这个。他们可以通过商业授权、培训咨询、捐赠等方式获得收入。只要认真经营，机会就会自己找上门来。&lt;/p&gt;
-
-&lt;h3 id=&#34;我的切身体会:3583956c9bd42a05e9ead1f80dfc8eab&#34;&gt;我的切身体会&lt;/h3&gt;
-
-&lt;p&gt;很早前我也经常丢一些代码到google code，正如前面所说的，这离真正的开源差的很远。因为我只是把代码一丢，然后就不管不顾了，渐渐下来，代码愈加的鲜人问津。对于别人的开源代码，我也基本是拿来主义。&lt;/p&gt;
-
-&lt;p&gt;今年开始真正的参与到GitHub中去，其中之一就是Hugo静态网站生成器项目。由于对Go语言感兴趣，本着边学边用的态度，尝试给Hugo提了第一个PR，Hugo的维护者@bep和@anthonyfok都非常Nice，整个过程非常舒服和顺畅，随之我又陆续提了几个PR。&lt;/p&gt;
-
-&lt;p&gt;下面是我给Hugo贡献的几个功能：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Add config option &amp;ldquo;disablePathToLower&amp;rdquo; &lt;a href=&#34;https://github.com/spf13/hugo/pull/1392&#34;&gt;#1392&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;WordCount and Summary support CJK Language &lt;a href=&#34;https://github.com/spf13/hugo/pull/1399&#34;&gt;#1399&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Hugo import from Jekyll &lt;a href=&#34;https://github.com/spf13/hugo/pull/1469&#34;&gt;#1469&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;上面的链接可以追溯每次代码提交的详细过程。有的经过了反复讨论和反复修改，大家身处世界各地，时差不同。每天一早起来就可以看到他们给出的反馈。在讨论的过程中，可以看到别人对同一个问题的思考，互相交流，也学习到很多东西。&lt;/p&gt;
-
-&lt;p&gt;Hugo的作者spf13(Steve Francia)可是一个牛人。spf13是大名鼎鼎的开源项目Docker和MongoDB的Chief Operator，另外他还是spf13-vim, Hugo, Cobra &amp;amp; Viper等开源项目的作者。能和这样的牛人交流学习，是一种不错的体验。他的博客地址：&lt;a href=&#34;http://spf13.com&#34;&gt;http://spf13.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;国庆在家给Hugo提了一个不大也不小的功能。就是上面的第三点：Hugo import from Jekyll。给Hugo提供了内置的import命令，将原来的Jekyll博客一键导入到Hugo来。这次提交的代码加上测试案例，有近600行，也算一个不小而且非常有用的改动了。详细介绍见上一篇博客：&lt;a href=&#34;http://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/&#34;&gt;使用Hugo Import一键迁移Jekyll&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;通过hugo import功能刷了近600行代码之后，我在Hugo的贡献者列表里可以看到，已经一共刷了近千行代码了，算上删除的话。：）&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hugo-coderzh.png-ws&#34; alt=&#34;hugo-coderzh&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;由于时区和远程协作的关系，GitHub上协作时有时候需要等待，但我依然认为这是一种非常高效的协作方式。因为社区的力量是强大的，在大量社区用户的推动之下，项目每天都在改进，每天都在向更好的方向推动和前进，这才是项目保持长久活力的重要根本。&lt;/p&gt;
-
-&lt;p&gt;关于开源，我还会继续下去，参与和发掘更多更好玩的东西。也欢迎访问我的GitHub和博客，和我交流，谢谢！&lt;/p&gt;
-
-&lt;p&gt;GitHub：&lt;a href=&#34;https://github.com/coderzh&#34;&gt;https://github.com/coderzh&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;博客：&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         
