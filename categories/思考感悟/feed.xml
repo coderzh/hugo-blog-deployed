@@ -6,7 +6,69 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 25 Sep 2016 23:43:43 CST</updated>
+        <updated>Sun, 01 Jan 2017 00:00:00 CST</updated>
+        
+        <item>
+            <title>我的 2016</title>
+            <link>http://blog.coderzh.com/2017/01/01/my-2016/</link>
+            <pubDate>Sun, 01 Jan 2017 00:00:00 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2017/01/01/my-2016/</guid>
+            <description>
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/baseball.JPG&#34; alt=&#34;baseball&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;光阴似箭，岁月如梭，仿佛去年写「我的 2015」就在昨日，然而时间的确在滴滴答答中度过了 365 天。这一年里，经历了一些事，读了一些书，努力过，收获过，感恩 2016。&lt;/p&gt;
+
+&lt;h4 id=&#34;公众号:177cfd9375830f046ca94878194dad36&#34;&gt;公众号&lt;/h4&gt;
+
+&lt;p&gt;其中一个变化是，我的公众号（博客）的更新频率越来越低了。2016 年我总共写了 20 多篇文章，平均算下来，2 周才有 1 篇。相比去年的 1 周 1 篇少了不少。&lt;/p&gt;
+
+&lt;p&gt;这其中有几个原因，首先，工作占据了我更多的时间。有的时候为了解决问题，不可避免的把工作带回了家。其次，随着小孩的长大，周末需要花更多的时间带小孩，陪家人。第三，见识了越多优秀的人，越发现自己的无知，与其为了 1 周 凑上 1 篇，还不如多沉下心学习，做些更深入的研究，多读点书，多写点代码，多存点干货再来分享。第四，还是因为懒。&lt;/p&gt;
+
+&lt;h4 id=&#34;读书:177cfd9375830f046ca94878194dad36&#34;&gt;读书&lt;/h4&gt;
+
+&lt;p&gt;2016 年，我读了以下书：《必然》、《MacTalk 跨越边界》、《7 Eleven零售的哲学》、《改变未来的九大算法》、《重来》、《马克·扎克伯格传》、《硅谷钢铁侠：埃隆·马斯克》、《途客圈创业记》、《福特自传》、《人类简史：从动物到上帝》、《Google 重新定义公司》、《Android 软件安全与逆向分析》、《第二次机器革命》、《接纳不完美的自己》、《黑客》、《成为乔布斯》……&lt;/p&gt;
+
+&lt;p&gt;其中的《人类简史》开阔了我的思维认识，也是张小龙极力推荐的。但对我的思维改变最大的，是《接纳不完美的自己》这本书。书中提到一个形象的比喻：每个人刚出生时内心都有一座很大的城堡，城堡里有很多的房间，各式各样的房间，每个房间代表一种特质，比如：善良、勇敢、正直、激情，当然也包括了：自私、胆小、愚蠢，奸诈等不好的特质。开始每扇门都是对外敞开的。随着慢慢的长大，你去了别人的城堡，发现有些不好的特质是别人没有的（或许是被藏起来了），于是你把不好特质的门锁上，不让别人进去，甚至是自己。慢慢的，越来越多的门被锁上，偌大的一座城堡，最后你只能在很少的房间活动。&lt;/p&gt;
+
+&lt;p&gt;那些被锁上的房间，正是不完美的自己。有些人选择把锁住的房间遗忘，而一旦发现别人表现出不好的特质，则会异常的激动和排斥。比如，你认为某个人非常的小气，甚至为此感到不齿，其实恰恰说明了你自己正是一个小气之人。因为你害怕别人说你小气，于是小气之门被你严严锁死，一旦你发现某个人表现出小气的特质时，你就会异常的激动，拼命的表现出不齿的感觉以和小气撇清关系。&lt;/p&gt;
+
+&lt;p&gt;所以，接纳不完美的自己，第一步是把自己内心深处的房间打开。每当你觉得别人怎么怎么样时，你越是激动，越要想一想，我是不是越是一样，只是我把门锁上了(直白一点：你越认为别人笨，其实越是你笨。你越是认为别人心机婊，其实你越是心机婊)。于是你会对别人的缺点更加宽容，也能更好的反思自我。第二步是必要时利用你的缺点。比如有人要非法拆迁你的房子，你是不是表现的无赖一些反而会更好。&lt;/p&gt;
+
+&lt;h4 id=&#34;代码:177cfd9375830f046ca94878194dad36&#34;&gt;代码&lt;/h4&gt;
+
+&lt;p&gt;写代码依然是一件非常有意思的事情。2016 年的一个重大变化是，我的开发环境已经全面转向了 Mac。我深刻的感受到了《成为乔布斯》书中提到的乔布斯对艺术和美的追求。一句话：用更好看的 Mac，写代码不折腾。&lt;/p&gt;
+
+&lt;p&gt;编程语言方面，Go 和 Swift 走马观花了一下，node.js 有初步涉及。主力语言还是 Python 和 C++，有时也会被老板用枪指着写点 Java。&lt;/p&gt;
+
+&lt;p&gt;机器学习粗浅了解，还未入门，来年要加大学习投入。&lt;/p&gt;
+
+&lt;p&gt;从 GitHub 统计的我过去一年的贡献活跃度可以看出，下半年开始，我变得非常的不活跃，来年争取填满更多的格子。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/github2016.png&#34; alt=&#34;github2016&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;工作:177cfd9375830f046ca94878194dad36&#34;&gt;工作&lt;/h4&gt;
+
+&lt;p&gt;依然认为是最棒的公司。来年继续加油。&lt;/p&gt;
+
+&lt;h4 id=&#34;不足:177cfd9375830f046ca94878194dad36&#34;&gt;不足&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;公众号（博客）写少了。&lt;/li&gt;
+&lt;li&gt;GitHub 代码写少了。&lt;/li&gt;
+&lt;li&gt;运动少了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;展望:177cfd9375830f046ca94878194dad36&#34;&gt;展望&lt;/h4&gt;
+
+&lt;p&gt;好的习惯继续发扬，不足要改掉，健身的重要性要提高一个 Level。&lt;/p&gt;
+
+&lt;h4 id=&#34;最后:177cfd9375830f046ca94878194dad36&#34;&gt;最后&lt;/h4&gt;
+
+&lt;p&gt;感谢你们！如此低的更新频率下还没有退订，感谢！Happy 2017!&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>小目标</title>
@@ -802,72 +864,6 @@
 &lt;p&gt;微信扫一扫：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>程序员直播写代码网站livecoding.tv即将登陆中国，你有兴趣吗？</title>
-            <link>http://blog.coderzh.com/2015/10/23/livecoding</link>
-            <pubDate>Fri, 23 Oct 2015 07:08:11 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/10/23/livecoding</guid>
-            <description>
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/livecoding.jpg-wt&#34; alt=&#34;livecoding&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;lol直播:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;LOL直播&lt;/h3&gt;
-
-&lt;p&gt;之前玩LOL那段时间，在不玩游戏的时候最爱的就是看别人直播打游戏。最早的时候，是在own3d.tv上看，后来twitch.tv异军突起，直接统领了国外竞技游戏直播平台。比如那时候看HotshotGG玩豹女，Dyrus玩奥拉夫，甚至看他在Ban/Pick阶段切出去玩俄罗斯方块，也极为有趣。后来twitch.tv越来越卡了，随之YY直播主播兴起，以及现在的斗鱼直播，我也十分爱看。有的主播不但技术强，也十分风趣幽默，看他们和高手对决，或者代练虐菜，也十分享受。比如我比较喜欢的主播有阿倪蛋糕店、董小飒，还有玩德莱文玩到逆天的文森特。这些人都不是职业选手，但是他们的操作意识都十分让人惊叹。（也许之前关于LOL的那些好玩事可以单独开一篇来讲。）&lt;/p&gt;
-
-&lt;p&gt;没玩LOL已经一年多了，不知道现在的情况如何了。有一点可以确定，LOL还是那么的火，直播LOL让主播赚的盆满钵满。观众也十分爱看。就像我们小时候总喜欢站在高手后边看他们怎么玩游戏，怎么一币通关是一个道理。&lt;/p&gt;
-
-&lt;h3 id=&#34;直播写代码:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;直播写代码&lt;/h3&gt;
-
-&lt;p&gt;直播越来越火，有人直播唱歌，有人直播玩游戏，甚至有人直播睡觉打呼。&lt;/p&gt;
-
-&lt;p&gt;然而，程序员直播写代码，你会喜欢看吗？&lt;/p&gt;
-
-&lt;p&gt;第一次听说直播写代码，是在《内核恐慌》的第5期关于编程字体的，里面提到美国有个经验丰富的游戏引擎开发者在网上直播写游戏。&lt;/p&gt;
-
-&lt;p&gt;后来查了下资料，具体是这样的：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HandmadeHero.jpg-w&#34; alt=&#34;HandmadeHero&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://mollyrocket.com/casey/about.html&#34;&gt;Casey Muratori&lt;/a&gt;是西雅图的一名经验丰富的游戏引擎开发者，据他的介绍，他已经拥有30年的游戏开发经验，参与开发的游戏引擎被数以千计的游戏采用。但是他经常抱怨现在的开发者有那么好的硬件条件，却做不出高效率的游戏出来。&lt;/p&gt;
-
-&lt;p&gt;于是他决定在网上直播写一个游戏：&lt;a href=&#34;http://handmadehero.org/&#34;&gt;Handmade Hero&lt;/a&gt;，这个游戏不会使用任何游戏引擎，而是一行一行代码直播码出来。在直播的过程中，他除了敲代码，还会有大量的讲解，让观看直播的人获得更多系统的知识。你还可以给他支持15美元，这样你就可以随时获取到他的最新源代码，当游戏最终发布的时候，你还可以直接获得最终的发行版本。&lt;/p&gt;
-
-&lt;p&gt;他是在twitch.tv上直播的，地址是：&lt;a href=&#34;http://www.twitch.tv/handmade_hero&#34;&gt;http://www.twitch.tv/handmade_hero&lt;/a&gt;，在&lt;a href=&#34;https://www.youtube.com/user/handmadeheroarchive&#34;&gt;You Tube&lt;/a&gt;（当然，这个网站并不存在）上可以观看之前的直播内容。&lt;/p&gt;
-
-&lt;p&gt;优酷里有关于这个项目的宣传视频，非常炫酷：&lt;a href=&#34;http://v.youku.com/v_show/id_XODU2NDQxODky.html&#34;&gt;http://v.youku.com/v_show/id_XODU2NDQxODky.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;这样牛逼的程序员在网上直播写代码，你有兴趣看吗？&lt;/p&gt;
-
-&lt;p&gt;我觉得我会喜欢看。&lt;/p&gt;
-
-&lt;h3 id=&#34;livecoding-tv:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;Livecoding.tv&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/livecoding-example.jpg-w&#34; alt=&#34;livecoding-example&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;后来甚至出来一个专门的直播写代码网站：&lt;a href=&#34;http://www.livecoding.tv&#34;&gt;Livecoding&lt;/a&gt;，是Y-Combinator孵化器下的项目，确实是正儿八经的要进军这个看起来非常小众的市场。&lt;/p&gt;
-
-&lt;p&gt;于是我上Livecoding，注册账号，观看直播。在上面你可以针对自己的喜好选择不同的编程语言，可以看当天直播也可以看过往录像，看的时候还可以聊天互动，功能基本和twitch.tv差不多。然而，在国内访问，体验只能用一个字来形容：卡。卡到根本看不了，在我做了各种尝试之后，最后还是放弃了。&lt;/p&gt;
-
-&lt;p&gt;今早收到一封邮件，是Livecoding发来的，标题和正文都是中文。内容是：Livecoding即将全面登录中国。 Livecoding正在国内组建团队，在国内架设服务器，预计2016年能登录中国。有任何意见、想法或者经验的同学，可以联系他们michael@livecoding.tv。&lt;/p&gt;
-
-&lt;h3 id=&#34;小众市场才会比较有趣:37e28bab6010c5ed2db9ee61a3969639&#34;&gt;小众市场才会比较有趣&lt;/h3&gt;
-
-&lt;p&gt;这无疑是个好消息，到时候除了可以顺畅的观看各路大神写代码，甚至自己也可以尝试一下当一回主播，比如直播帮学美术的堂弟写个毕业设计要求的小游戏之类的。&lt;/p&gt;
-
-&lt;p&gt;不过，已经有人尝试过了在虎牙和斗鱼上直播写代码，但观看的人数非常少。相对于美女直播和大神游戏玩家，直播撸代码对大众没有多少吸引力，这确实是一个小众市场。&lt;/p&gt;
-
-&lt;p&gt;然而，小众市场才会更加有趣。大众的东西虽然能吸引到更多的人，但往往趋于平庸，能被小众市场吸引的人，往往本身就对这个东西非常感兴趣，如果在小众市场上挖掘的很深，能更加深入小众用户的心，获得更高的忠诚度。&lt;/p&gt;
-
-&lt;p&gt;假如在程序圈内兴起了一股直播撸代码的热潮，你会想从观看直播过程中获得一些什么呢？比如，我就非常好奇，各路BAT或者业界专家大牛，你们写代码时是怎样一种状态，你们使用什么样的编辑器或IDE，选用什么样的字体，使用哪些快捷键，实现功能的思路是怎样的，怎样查文档，怎么Google，用哪些新奇好玩的工具软件，有哪些实用有趣的编程技巧……&lt;/p&gt;
-
-&lt;p&gt;我可以想象到这是一种什么样的场景，就如同我在大学时看一位牛X同学现场教学如何从零开始做一个网站一样，包括写代码、美工P图切图、排版，噼里啪啦一顿快捷键一气呵成，让你看的眼花缭乱，顿时感觉不明觉厉。可惜这位牛X的同学最后还是选择了留校继续研读土木工程。&lt;/p&gt;
-
-&lt;p&gt;对于Livcoding登录中国，我还是有些小期待的。你有兴趣吗？&lt;/p&gt;
 </description>
         </item>
         

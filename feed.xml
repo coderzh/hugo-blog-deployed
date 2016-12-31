@@ -6,7 +6,69 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 16 Oct 2016 21:55:45 CST</updated>
+        <updated>Sun, 01 Jan 2017 00:00:00 CST</updated>
+        
+        <item>
+            <title>我的 2016</title>
+            <link>http://blog.coderzh.com/2017/01/01/my-2016/</link>
+            <pubDate>Sun, 01 Jan 2017 00:00:00 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>http://blog.coderzh.com/2017/01/01/my-2016/</guid>
+            <description>
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/baseball.JPG&#34; alt=&#34;baseball&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;光阴似箭，岁月如梭，仿佛去年写「我的 2015」就在昨日，然而时间的确在滴滴答答中度过了 365 天。这一年里，经历了一些事，读了一些书，努力过，收获过，感恩 2016。&lt;/p&gt;
+
+&lt;h4 id=&#34;公众号:177cfd9375830f046ca94878194dad36&#34;&gt;公众号&lt;/h4&gt;
+
+&lt;p&gt;其中一个变化是，我的公众号（博客）的更新频率越来越低了。2016 年我总共写了 20 多篇文章，平均算下来，2 周才有 1 篇。相比去年的 1 周 1 篇少了不少。&lt;/p&gt;
+
+&lt;p&gt;这其中有几个原因，首先，工作占据了我更多的时间。有的时候为了解决问题，不可避免的把工作带回了家。其次，随着小孩的长大，周末需要花更多的时间带小孩，陪家人。第三，见识了越多优秀的人，越发现自己的无知，与其为了 1 周 凑上 1 篇，还不如多沉下心学习，做些更深入的研究，多读点书，多写点代码，多存点干货再来分享。第四，还是因为懒。&lt;/p&gt;
+
+&lt;h4 id=&#34;读书:177cfd9375830f046ca94878194dad36&#34;&gt;读书&lt;/h4&gt;
+
+&lt;p&gt;2016 年，我读了以下书：《必然》、《MacTalk 跨越边界》、《7 Eleven零售的哲学》、《改变未来的九大算法》、《重来》、《马克·扎克伯格传》、《硅谷钢铁侠：埃隆·马斯克》、《途客圈创业记》、《福特自传》、《人类简史：从动物到上帝》、《Google 重新定义公司》、《Android 软件安全与逆向分析》、《第二次机器革命》、《接纳不完美的自己》、《黑客》、《成为乔布斯》……&lt;/p&gt;
+
+&lt;p&gt;其中的《人类简史》开阔了我的思维认识，也是张小龙极力推荐的。但对我的思维改变最大的，是《接纳不完美的自己》这本书。书中提到一个形象的比喻：每个人刚出生时内心都有一座很大的城堡，城堡里有很多的房间，各式各样的房间，每个房间代表一种特质，比如：善良、勇敢、正直、激情，当然也包括了：自私、胆小、愚蠢，奸诈等不好的特质。开始每扇门都是对外敞开的。随着慢慢的长大，你去了别人的城堡，发现有些不好的特质是别人没有的（或许是被藏起来了），于是你把不好特质的门锁上，不让别人进去，甚至是自己。慢慢的，越来越多的门被锁上，偌大的一座城堡，最后你只能在很少的房间活动。&lt;/p&gt;
+
+&lt;p&gt;那些被锁上的房间，正是不完美的自己。有些人选择把锁住的房间遗忘，而一旦发现别人表现出不好的特质，则会异常的激动和排斥。比如，你认为某个人非常的小气，甚至为此感到不齿，其实恰恰说明了你自己正是一个小气之人。因为你害怕别人说你小气，于是小气之门被你严严锁死，一旦你发现某个人表现出小气的特质时，你就会异常的激动，拼命的表现出不齿的感觉以和小气撇清关系。&lt;/p&gt;
+
+&lt;p&gt;所以，接纳不完美的自己，第一步是把自己内心深处的房间打开。每当你觉得别人怎么怎么样时，你越是激动，越要想一想，我是不是越是一样，只是我把门锁上了(直白一点：你越认为别人笨，其实越是你笨。你越是认为别人心机婊，其实你越是心机婊)。于是你会对别人的缺点更加宽容，也能更好的反思自我。第二步是必要时利用你的缺点。比如有人要非法拆迁你的房子，你是不是表现的无赖一些反而会更好。&lt;/p&gt;
+
+&lt;h4 id=&#34;代码:177cfd9375830f046ca94878194dad36&#34;&gt;代码&lt;/h4&gt;
+
+&lt;p&gt;写代码依然是一件非常有意思的事情。2016 年的一个重大变化是，我的开发环境已经全面转向了 Mac。我深刻的感受到了《成为乔布斯》书中提到的乔布斯对艺术和美的追求。一句话：用更好看的 Mac，写代码不折腾。&lt;/p&gt;
+
+&lt;p&gt;编程语言方面，Go 和 Swift 走马观花了一下，node.js 有初步涉及。主力语言还是 Python 和 C++，有时也会被老板用枪指着写点 Java。&lt;/p&gt;
+
+&lt;p&gt;机器学习粗浅了解，还未入门，来年要加大学习投入。&lt;/p&gt;
+
+&lt;p&gt;从 GitHub 统计的我过去一年的贡献活跃度可以看出，下半年开始，我变得非常的不活跃，来年争取填满更多的格子。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/github2016.png&#34; alt=&#34;github2016&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;工作:177cfd9375830f046ca94878194dad36&#34;&gt;工作&lt;/h4&gt;
+
+&lt;p&gt;依然认为是最棒的公司。来年继续加油。&lt;/p&gt;
+
+&lt;h4 id=&#34;不足:177cfd9375830f046ca94878194dad36&#34;&gt;不足&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;公众号（博客）写少了。&lt;/li&gt;
+&lt;li&gt;GitHub 代码写少了。&lt;/li&gt;
+&lt;li&gt;运动少了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;展望:177cfd9375830f046ca94878194dad36&#34;&gt;展望&lt;/h4&gt;
+
+&lt;p&gt;好的习惯继续发扬，不足要改掉，健身的重要性要提高一个 Level。&lt;/p&gt;
+
+&lt;h4 id=&#34;最后:177cfd9375830f046ca94878194dad36&#34;&gt;最后&lt;/h4&gt;
+
+&lt;p&gt;感谢你们！如此低的更新频率下还没有退订，感谢！Happy 2017!&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>真正的黑客</title>
@@ -1731,326 +1793,6 @@ RSSUri = &amp;quot;feed.xml&amp;quot;
 &lt;p&gt;Hugo 交流 QQ 群：512499080&lt;/p&gt;
 
 &lt;p&gt;该主题已经&lt;a href=&#34;https://github.com/spf13/hugoThemes/issues/121&#34;&gt;提交&lt;/a&gt;到官方的主题列表，相信不久就可以在官方的 &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;http://themes.gohugo.io/&lt;/a&gt; 上看到了。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>懒程序员和他的 dotfiles</title>
-            <link>http://blog.coderzh.com/2016/03/19/dotfiles/</link>
-            <pubDate>Sat, 19 Mar 2016 15:05:47 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/03/19/dotfiles/</guid>
-            <description>
-
-&lt;p&gt;如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。&lt;/p&gt;
-
-&lt;p&gt;以一段废话开场，引出今天的主题：&lt;code&gt;dotfiles&lt;/code&gt;。软件匠艺社区（&lt;a href=&#34;codingstyle.cn&#34;&gt;codingstyle.cn&lt;/a&gt;）周三晚上有一期分享介绍 Vim 时提到了 dotfiles，这篇文章我们就来好好说一说 dotfiles。&lt;/p&gt;
-
-&lt;h3 id=&#34;什么是-dotfiles:50fc662a6f6921bb445d80a429a8e146&#34;&gt;什么是 dotfiles？&lt;/h3&gt;
-
-&lt;p&gt;dot 即「点」的意思，意思是以点开头的文件。如果你不是程序员，你大概会说，我咋从来没见过这种文件啊？因为这些文件通常都是隐藏文件，平常一般看不到，比如 .git 目录。但这里说的 dotfiles 主要是指用户 home 目录下的点文件，这类文件一般是一些配置文件，比如 vim 的配置文件 .vimrc，zsh 的配置文件 .zshrc 等。通过设置这些配置文件，可以实现出很强大的功能，比如有不少人通过配置 .vimrc，把 vim 活生生变成了一个功能强大的 IDE。还有一些偷懒的程序员在 .profile 之类的文件里设置了大量命令的 alias。以至于你还没看清楚他敲的第一个命令，他已经敲了三四个命令了。&lt;/p&gt;
-
-&lt;p&gt;通过配置各种 dotfiles，程序员可以把系统定制得既顺手又高效。但是问题来了，自己千辛万苦调的设置，如果换一台机器，又得重新设置一遍。这对于追求效率的程序员来说是不可接受的。&lt;/p&gt;
-
-&lt;h3 id=&#34;dotfiles-管理:50fc662a6f6921bb445d80a429a8e146&#34;&gt;dotfiles 管理&lt;/h3&gt;
-
-&lt;p&gt;于是会玩又懒的程序员想出了一个办法，把所有的 dotfiles 放在一个单独的目录进行统一管理，放到 GitHub 或者通过网盘同步。&lt;/p&gt;
-
-&lt;p&gt;为了让 dotfiles 生效，主要有两种方式：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;通过一个脚本，把所有 dotfile 文件 rsync 到 HOME 目录。&lt;/li&gt;
-&lt;li&gt;使用软链，让 HOME 目录的 dotfile 文件指向你目录的 dotfile 文件。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;第一种方式适合机器初装，但是假如你有两台机器，希望配置能方便的进行同步，第二种方式是更好的选择。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ln -s ~/dotfiles/.vimrc ~/.vimrc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;但是，假如你的 dotfile 文件很多，手工去维护那些软链也是一件麻烦的事情。而程序员又是最不能忍受麻烦的，于是造了各种轮子去维护和管理这些 dotfiles 。&lt;/p&gt;
-
-&lt;p&gt;有些人把软链的管理写成一个 Shell 脚本，也有人做成特定的工具。比如：&lt;a href=&#34;https://github.com/thoughtbot/rcm&#34;&gt;rcm&lt;/a&gt;、 &lt;a href=&#34;http://skwp.github.io/dotfiles/&#34;&gt;YARD&lt;/a&gt;、 &lt;a href=&#34;https://pypi.python.org/pypi/dotfiles&#34;&gt;dotfiles&lt;/a&gt;、 &lt;a href=&#34;https://github.com/lra/mackup&#34;&gt;mackup&lt;/a&gt; ……&lt;/p&gt;
-
-&lt;h3 id=&#34;mackup:50fc662a6f6921bb445d80a429a8e146&#34;&gt;mackup&lt;/h3&gt;
-
-&lt;p&gt;在对比了各种 dotfiles 工具后，我最终选择了 &lt;a href=&#34;https://github.com/lra/mackup&#34;&gt;mackup&lt;/a&gt;。理由主要如下：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;使用方便，配置起来非常简单。&lt;/li&gt;
-&lt;li&gt;社区贡献了大量现成的软件的 dotfiles 配置，可以直接使用。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;在 OS X 下，可以直接使用 brew 安装 mackup。其他系统下，可以直接使用 pip 安装。安装好后，备份和还原都只需要一个命令：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# 备份
-$ mackup backup
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在新机器上：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# 还原
-$ mackup restore
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果你不想要那些软链了，只需要执行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ mackup uninstall
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;mackup 可以通过配置文件，指定你希望备份哪些 dotfiles，以及备份到哪里（支持备份到 Dropbox、Google Drive、Copy、iCloud、Box 以及指定的目录。&lt;/p&gt;
-
-&lt;p&gt;比如在我的 mac 上，我的 &lt;a href=&#34;https://github.com/coderzh/dotfiles/blob/master/home/.mackup.cfg&#34;&gt;.mackup.cfg&lt;/a&gt; 这样设置的：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[storage]
-engine = file_system
-path = dotfiles
-directory = home 
-
-[applications_to_sync]
-atom
-pycharmce
-myvim
-ideaic15
-zsh
-mackup
-dash
-karabiner
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;storage&lt;/code&gt; 里指定了备份到文件系统的 ~/dotfiles/home 路径。&lt;code&gt;applications_to_sync&lt;/code&gt; 指定了备份哪些应用的 dotfiles。mackup 预先定义好了大量 application 的 dotfiles，比如：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Atom
-Bash
-Dash
-Emacs
-Flux
-Git
-Gradle
-MacOSX
-MacVim
-npm
-Oh My Zsh
-Vim
-WebStorm
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果你需要定制某个 application 的 dotfiles 也很简单，比如我发现 mackup 自带的配置里没有 IntelliJ Community 版本的配置，我只需要在新建一个文件： ~/.mackup/ideaic15.cfg ：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[application]
-name = My IntelliJ IDEA 15
-
-[configuration_files]
-Library/Preferences/IdeaIC15/keymaps/Mac OS X copy.xml
-Library/Preferences/IdeaIC15/options/keymap.xml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;configuration_files&lt;/code&gt; 里指定我需要备份的文件即可。非常的简单易用。&lt;/p&gt;
-
-&lt;h3 id=&#34;自动安装软件:50fc662a6f6921bb445d80a429a8e146&#34;&gt;自动安装软件&lt;/h3&gt;
-
-&lt;p&gt;在一台新机器上，把之前机器装的软件一个一个手动安装也是非常耗时和麻烦的事情。如果你使用的是 Mac OS X，将会变得非常简单，因为绝大部分的软件开发包及软件都可以通过 &lt;a href=&#34;http://brew.sh/&#34;&gt;Homebrew&lt;/a&gt; 和 &lt;a href=&#34;https://caskroom.github.io/&#34;&gt;brew cask&lt;/a&gt; 来安装。&lt;/p&gt;
-
-&lt;p&gt;我的 Mac 上 99.9% 的软件，可以通过我写的 &lt;a href=&#34;https://github.com/coderzh/dotfiles/blob/master/install/brew.sh&#34;&gt;brew.sh&lt;/a&gt; 脚本来安装：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Install Homebrew
-
-# Ask for the administrator password upfront.
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 &amp;quot;$$&amp;quot; || exit; done 2&amp;gt;/dev/null &amp;amp;
-
-# Check for Homebrew,
-# Install if we don&#39;t have it
-if test ! $(which brew); then
-  echo &amp;quot;Installing homebrew...&amp;quot;
-  ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
-fi
-
-brew tap homebrew/versions
-brew update
-brew upgrade --all
-
-# Install packages
-apps=(
-    caskroom/cask/brew-cask
-    cmake
-    coreutils
-    findutils
-    git
-    gnu-sed --with-default-names
-    go
-    hugo
-    mercurial
-    mackup
-    macvim
-    mysql
-    android-platform-tools
-    python
-    ruby
-    svn
-    vim
-    wget
-    zsh
-)
-
-caskapps=(
-    android-studio
-    alfred
-    atom
-    cheatsheet
-    dash
-    genymotion
-    google-chrome
-    intellij-idea-ce
-    iterm2
-    java
-    karabiner
-    keepassx
-    kindle
-    macdown
-    pomotodo
-    pycharm-ce
-    qq
-    qqmusic
-    qqmacmgr
-    sogouinput
-    thunder
-    vagrant
-    virtualbox
-    vlc
-    wiznote
-    youdao
-)
-
-brew install &amp;quot;${apps[@]}&amp;quot;
-brew tap caskroom/versions
-brew cask update
-brew cask install --appdir=&amp;quot;/Applications&amp;quot; &amp;quot;${caskapps[@]}&amp;quot;
-brew cleanup
-brew cask cleanup
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;pip-npm-gem:50fc662a6f6921bb445d80a429a8e146&#34;&gt;pip、npm、gem&lt;/h3&gt;
-
-&lt;p&gt;使用 pip、npm、gem 安装的包也使用脚本进行一键安装：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pip install --upgrade pip
-pip install powerline-status
-pip install MySQL-python
-pip install tornado
-pip install torndb
-pip install pycrypto
-pip install mock
-# npm、gem ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;os-x-的系统设置:50fc662a6f6921bb445d80a429a8e146&#34;&gt;OS X 的系统设置&lt;/h3&gt;
-
-&lt;p&gt;当你拿到一台新的 Mac 然后开机时，不知道有没有被 Duang~ 的一声吓到的经历。当时吓得的宝宝我赶紧找了如何关闭开机声音的方法（设置静音、插上耳机都不管用！），只要执行一条命令即可：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo nvram SystemAudioVolume=&amp;quot; &amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;很多的系统设置都可以通过命令来完成，比如：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# 电池显示是百分百
-defaults write com.apple.menuextra.battery -bool true
-
-# 设置键盘按键重复的延迟
-defaults write NSGlobalDomain KeyRepeat -int 3
-
-# 禁止自动拼写纠正
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-# Finder 显示状态栏
-defaults write com.apple.finder ShowStatusBar -bool true
-
-# Finder 显示地址栏
-defaults write com.apple.finder ShowPathbar -bool true
-
-# 禁止在网络驱动器上生成 .DS_Store 文件 
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;字体:50fc662a6f6921bb445d80a429a8e146&#34;&gt;字体&lt;/h3&gt;
-
-&lt;p&gt;程序员喜欢折腾的几样东西：键盘、编辑器、字体。程序员钟爱的几种字体，包括 Source Code Pro、Hack、Menlo 等等，其中对 powerline 字体更是最爱。把所有心爱的字体放在 dotfiles/fonts 目录里，通过自动安装脚本里直接拷贝到 ~/Library/Fonts/ 目录下即可。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cp -r ~/dotfiles/fonts/* ~/Library/Fonts/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用 powerline 字体需要安装 powerline-status，这个在前面讲的 pip 脚本里已经安装了。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pip install powerline-status
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;zsh 中使用 powerline 字体，只需要在 .zshrc 中加一句：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;效果如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/zsh-powerline.png&#34; alt=&#34;zsh-powerline&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在 vim 里使用 powerline 字体，只需要在 .vimrc 里加：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
-set laststatus=2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;效果如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/vim-powerline.png&#34; alt=&#34;vim-powerline&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;总结:50fc662a6f6921bb445d80a429a8e146&#34;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;懒程序员如果拿到了一个新的 Mac 机器，他只需要做如下几步，就可以把这台新的机器变成熟悉的一台机器：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;安装 XCode（最好在 Mac Store 里下载安装完整版的 XCode，因为有些软件安装依赖完整版 XCode）：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo softwareupdate -i -a
-$ xcode-select --install
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;自动安装软件及系统设置。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd ~
-$ git clone https://github.com/coderzh/dotfiles.git
-$ source dotfiles/install.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;使用 mackup 恢复 dotfiles。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cp ~/dotfiles/.mackup.cfg ~/
-$ cp -r ~/dotfiles/.mackup ~/
-$ mackup restore
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;如果一切顺利，程序员，你没有浪费上班时间装电脑，你可以开始搬砖了。:-)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;（对了，iTerm2 的 Color 设置好像必须手工操作，配色列表可以在 &lt;a href=&#34;https://github.com/mbadolato/iTerm2-Color-Schemes&#34;&gt;https://github.com/mbadolato/iTerm2-Color-Schemes&lt;/a&gt; 找，作为 JetBrains 粉，最后我选择了 JetBrains Darcula.itermcolors 这一款。）&lt;/p&gt;
-
-&lt;p&gt;在 GitHub 里搜 &lt;code&gt;dotfiles&lt;/code&gt; 可以看到大量的 dotfiles，当然，别忘了 Star 我的 dotfiles：&lt;a href=&#34;https://github.com/coderzh/dotfiles&#34;&gt;https://github.com/coderzh/dotfiles&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;最后，温馨提示下，千万不要把 ssh、mysql 密码相关的内容提交上去呦~&lt;/p&gt;
-
-&lt;p&gt;参考资料：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/mathiasbynens/dotfiles&#34;&gt;https://github.com/mathiasbynens/dotfiles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/skwp/dotfiles&#34;&gt;https://github.com/skwp/dotfiles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/donnemartin/dev-setup&#34;&gt;https://github.com/donnemartin/dev-setup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/webpro/awesome-dotfiles&#34;&gt;https://github.com/webpro/awesome-dotfiles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/jbernard/dotfiles&#34;&gt;https://github.com/jbernard/dotfiles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/lra/mackup&#34;&gt;https://github.com/lra/mackup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/webpro/dotfiles&#34;&gt;https://github.com/webpro/dotfiles&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
         </item>
         
