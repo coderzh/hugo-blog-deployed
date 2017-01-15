@@ -178,7 +178,7 @@
                   <h1 class="post-title">Android应用开发初印象</h1>
 
                   <p class="post-byline">
-                    by  · 2010年03月20日 · 2032 Words ·
+                    by  · 2010年03月20日 · 2018 Words ·
                     ~5min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-03-20-android-first.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -248,13 +248,13 @@
 
 <p>通过上面的示例，我会了解到以下东西：</p>
 
-<h4 id="1-activity:4246d23b71999d07ca2002b53c1bcc8d">1. Activity</h4>
+<h4 id="1-activity">1. Activity</h4>
 
 <p>Activity控制用户界面操作的实体，一个应用程序可以有多个Activity，但同时只能有一个Activity的用户界面呈现在用户面前。我们需要实现一个类，继承自Activity类，通过重写父类的一些特定方法，就能实现在某些事件发生下，执行一些特定的代码。比如，用户按键，触摸屏幕的某个点等等。其中，关于Activity的几个状态，需要重点搞清楚，见下图：</p>
 
 <p><img src="http://developer.android.com/images/activity_lifecycle.png" alt="" />&nbsp;</p>
 
-<h4 id="2-view:4246d23b71999d07ca2002b53c1bcc8d">2. View</h4>
+<h4 id="2-view">2. View</h4>
 
 <p>用户界面布局是通过xml来描述的，比如：</p>
 
@@ -294,19 +294,19 @@
 &nbsp;&nbsp;&nbsp;&nbsp;canvas.drawText(</span><span style="color: #000000;">&ldquo;</span><span style="color: #000000;">Hello</span><span style="color: #000000;">&ldquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #000000;">20</span><span style="color: #000000;">,&nbsp;</span><span style="color: #000000;">20</span><span style="color: #000000;">,&nbsp;mPaint);
 }</span></div></div></p>
 
-<h4 id="3-intent:4246d23b71999d07ca2002b53c1bcc8d">3. Intent</h4>
+<h4 id="3-intent">3. Intent</h4>
 
 <p>Intent表示你想要做什么，AndroidManifest.xml中的filterIntent表示你的应用程序能够处理什么样的Intent。有时，还可以通过Intent来实现不同窗体间互相传递信息。</p>
 
-<h4 id="4-androidmanifest-xml文件:4246d23b71999d07ca2002b53c1bcc8d">4. AndroidManifest.xml文件</h4>
+<h4 id="4-androidmanifest-xml文件">4. AndroidManifest.xml文件</h4>
 
 <p>相当于ASP.NET的Web.config文件了，全局的一些配置。比如，设置Activity，filterIntent等等。</p>
 
-<h4 id="5-资源访问的r-java:4246d23b71999d07ca2002b53c1bcc8d">5. 资源访问的R.java</h4>
+<h4 id="5-资源访问的r-java">5. 资源访问的R.java</h4>
 
 <p>Android里访问资源非常简单，当我们添加了资源到res目录后，ADT插件会自动更新R.java文件，通过R类，就能轻松的访问到任何res中的资源。同时，也可以界面的xml中方面的使用。</p>
 
-<h4 id="6-数据库:4246d23b71999d07ca2002b53c1bcc8d">6. 数据库</h4>
+<h4 id="6-数据库">6. 数据库</h4>
 
 <p>使用sqlite，有现成的SQLiteDatabase类可用来操作数据库。</p>
 

@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>读书笔记 on CoderZh Blog</title>
-        <link>http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+        <link>http://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/feed/index.xml</link>
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 16 Oct 2016 21:55:45 CST</updated>
+        <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
         
         <item>
             <title>真正的黑客</title>
@@ -214,9 +214,7 @@
             <pubDate>Sun, 10 Apr 2016 21:57:06 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/04/10/7-eleven/</guid>
-            <description>
-
-&lt;p&gt;1956 年 4 月，有为青年「铃木敏文」大学毕业，进入东京出版贩卖公司，从「退货负责人」到「出版科学研究所」，再到宣传部杂志「编辑」，生活过的充实有趣。在三十岁之际，铃木打算不依靠公司，以自身的力量制作一个独立的电视节目。&lt;/p&gt;
+            <description>&lt;p&gt;1956 年 4 月，有为青年「铃木敏文」大学毕业，进入东京出版贩卖公司，从「退货负责人」到「出版科学研究所」，再到宣传部杂志「编辑」，生活过的充实有趣。在三十岁之际，铃木打算不依靠公司，以自身的力量制作一个独立的电视节目。 &lt;/p&gt;
 
 &lt;p&gt;铃木找到了赞助商「伊藤洋华堂」，一个经营大型商场的公司。「伊藤洋华堂」总部的人和铃木说：「就在我们这里完成这一项目怎样？」&lt;/p&gt;
 
@@ -256,7 +254,7 @@
 
 &lt;p&gt;这些今天看来司空见惯的东西在当时可是相当创新的。&lt;/p&gt;
 
-&lt;h3 id=&#34;零售的哲学:33b04dcd5bf6f530f0f329b8789dcba3&#34;&gt;零售的哲学&lt;/h3&gt;
+&lt;h3 id=&#34;零售的哲学&#34;&gt;零售的哲学&lt;/h3&gt;
 
 &lt;p&gt;《零售的哲学》这本书是铃木的自述，字里行间透露出了他深刻领悟用户需求，独到的想法，不管多难坚持付诸执行的决心。&lt;/p&gt;
 
@@ -264,8 +262,7 @@
 
 &lt;p&gt;铃木从来都没有喜欢过零售行业，他没有抱怨，想法很简单：既然做了，就要做到最好。&lt;/p&gt;
 
-&lt;p&gt;我们程序员，并不从事零售行业，也能从铃木的自述里得到一些启发。&lt;/p&gt;
-</description>
+&lt;p&gt;我们程序员，并不从事零售行业，也能从铃木的自述里得到一些启发。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -277,6 +274,8 @@
             <description>&lt;p&gt;2002 年左右，KK 参加了谷歌的一个小型聚会，当时谷歌还是一个家专注搜索的小公司。KK 问拉里·佩奇「已经有这么多家搜索公司，干嘛还要做免费网络搜索？」&lt;/p&gt;
 
 &lt;p&gt;佩奇回答说：「哦，我们其实是在做人工智能。」&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;「知化」这个词不太好理解，其实主要说的是人工智能，即让机器或物体拥有智能的过程，技术上涉及到神经网络、机器学习、大数据等领域。如果你正在从事相关领域的研究，是很有前途的方向。&lt;/p&gt;
 
@@ -325,8 +324,7 @@
 
 &lt;p&gt;「未来，你的薪水高低将取决于你能否和机器人默契配合。90% 的同事将会是看不见的机器，而没有他们，你的大部分工作将无法完成。这一切都是必然的。让机器人代替我们从事现在的工作，让我们在它们的帮助下去构想有意义的新工作吧。」&lt;/p&gt;
 
-&lt;p&gt;在未来，使用编程语言手敲代码可能会被视为一种复古行为。趁着现在这个到处就差一个程序员的时代，多敲几行代码，说不定就改变世界了呢？&lt;/p&gt;
-</description>
+&lt;p&gt;在未来，使用编程语言手敲代码可能会被视为一种复古行为。趁着现在这个到处就差一个程序员的时代，多敲几行代码，说不定就改变世界了呢？&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -384,7 +382,8 @@
 &lt;p&gt;附录：&lt;/p&gt;
 
 &lt;p&gt;《必然》十二个关键词：形成、知化、流动、屏读、使用、共享、过滤、重混、互动、追踪、提问、开始。&lt;/p&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -393,9 +392,9 @@
             <pubDate>Sat, 17 Oct 2015 10:16:41 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/10/17/read-growth-hacker/</guid>
-            <description>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/GrowthHacker.jpg-wt&#34; alt=&#34;GrowthHacker&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/GrowthHacker.jpg-wt&#34; alt=&#34;GrowthHacker&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;最近在Kindle上读了范冰的《增长黑客》，对增长黑客有了更系统的了解。联想到我自己的微信公众号hacker-thinking和独立博客&lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;blog.coderzh.com&lt;/a&gt;，我也在苦苦寻找用户增长的终极奥义。我也尝试过各种SEO（搜索引擎优化），比如规范链接地址、nofollow防止权重降低、提供sitemap、增加关键词、规范robots.txt、加快访问速度、增加反向链接等等。肯定有人会说，这些东西然并卵，高质量的内容才是最重要的。这点我同意。&lt;/p&gt;
 
@@ -422,15 +421,15 @@
 
 &lt;p&gt;这是一群以数据驱动营销、以市场指导产品，通过技术化手段贯彻增长目标的人。他们通常既了解技术，又深谙用户心理，擅长发挥创意、绕过限制，通过低成本的手段解决初创公司产品早期的增长问题。&lt;strong&gt;在外行人眼里，他们就像是极客、发明家和广告狂人的混合体。&lt;/strong&gt;再通俗一点形容，他们的职责接近于专门为初创公司设立的市场推广部门，因为很少有用于营销的大笔经费， 所以更多的是将注意力聚焦在产品策略本身带来的自发增长上。&lt;/p&gt;
 
-&lt;h2 id=&#34;growth-hacker:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;Growth Hacker&lt;/h2&gt;
+&lt;h2 id=&#34;growth-hacker&#34;&gt;Growth Hacker&lt;/h2&gt;
 
-&lt;h3 id=&#34;timothy-c-draper:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;Timothy C. Draper&lt;/h3&gt;
+&lt;h3 id=&#34;timothy-c-draper&#34;&gt;Timothy C. Draper&lt;/h3&gt;
 
 &lt;p&gt;Hotmail上线时，Timothy C. Draper给Hotmail两位创始人Sabeer Bhatia和Jack Smith建议在&lt;strong&gt;邮件底部打广告：“附言：我爱你，你可以到Hotmail获得免费电子邮箱”&lt;/strong&gt;。最后广告内容简化成“你可以到Hotmail注册免费电子邮件”。随后促成了产品的几何级数传播。&lt;/p&gt;
 
 &lt;p&gt;这一改动几小时后，新注册用户以每天3000个增长，六个月内斩获100万用户，仅五周后，又获得100万用户，一年半后出售给微软时已经达到了1200万。&lt;/p&gt;
 
-&lt;h3 id=&#34;安迪-琼斯:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;安迪·琼斯&lt;/h3&gt;
+&lt;h3 id=&#34;安迪-琼斯&#34;&gt;安迪·琼斯&lt;/h3&gt;
 
 &lt;p&gt;安迪·琼斯（Andy Johns）是硅谷富有经验的增长黑客，曾效力于Facebook、Twitter、Quora等公司的增长部门。&lt;/p&gt;
 
@@ -459,7 +458,7 @@
 
 &lt;p&gt;从安迪身上看出的增长黑客的特质：数据为王、专注目标、关注细节、富于创意、信息通透。&lt;/p&gt;
 
-&lt;h2 id=&#34;数据为王:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;数据为王&lt;/h2&gt;
+&lt;h2 id=&#34;数据为王&#34;&gt;数据为王&lt;/h2&gt;
 
 &lt;p&gt;不同产品的核心数据指标是不一样的。比如：&lt;/p&gt;
 
@@ -481,7 +480,7 @@
 &lt;li&gt;某天LinkedIn发现来自雷曼公司的访问量骤升，结果第二天雷曼公司就宣布破产倒闭。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;增长黑客工具箱:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;增长黑客工具箱&lt;/h2&gt;
+&lt;h2 id=&#34;增长黑客工具箱&#34;&gt;增长黑客工具箱&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.google.com/analytics/&#34;&gt;Google Analytics&lt;/a&gt;（百度统计、CNZZ统计）&lt;/li&gt;
@@ -494,7 +493,7 @@
 &lt;li&gt;&lt;a href=&#34;http://www.umeng.com/&#34;&gt;友盟&lt;/a&gt; 国内最大的移动应用统计分析平台之一&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;创造正确的产品:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;创造正确的产品&lt;/h2&gt;
+&lt;h2 id=&#34;创造正确的产品&#34;&gt;创造正确的产品&lt;/h2&gt;
 
 &lt;p&gt;凯文·斯特罗姆（Kevin Systrom）开发的基于地理位置服务的签到抢地盘应用Burbn未见起色，发现用户只喜欢使用Burbn的照片分享功能，于是调转方向，孤注一掷只做照片分享，一个月后吸引了100万用户，仅创立551天后，于2012年4月以10亿美元天价被Facebook收购。这就是照片分享社区Instagram。&lt;/p&gt;
 
@@ -510,7 +509,7 @@
 
 &lt;p&gt;雷军称创业“就是要做最肥的市场”。他投资的YY最早是游戏门户，但雷军觉得最多只值1亿美金，劝李学凌改做直播平台，结果一炮打响。&lt;/p&gt;
 
-&lt;h3 id=&#34;mvp:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;MVP&lt;/h3&gt;
+&lt;h3 id=&#34;mvp&#34;&gt;MVP&lt;/h3&gt;
 
 &lt;p&gt;精益创业是指开发团队通过提供最小化可行产品（MVP）获取用户反馈，在此基础上持续快速 迭代（或谋求转型），直至产品达到PMF阶段。&lt;/p&gt;
 
@@ -525,11 +524,11 @@
 
 &lt;p&gt;基于微信公众平台的MVP策略，开发周期短、成本低、无需适配、分发方便、便于收集反馈、数据得以沉淀。（示例：女神进化史、悠泊）&lt;/p&gt;
 
-&lt;h2 id=&#34;获取用户:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;获取用户&lt;/h2&gt;
+&lt;h2 id=&#34;获取用户&#34;&gt;获取用户&lt;/h2&gt;
 
 &lt;p&gt;微信的张小龙曾经说过：如果你不了解女性，你将失去一半以上的用户（在他的推荐书单中包含《女性的起源》这样专门从进化学角度探讨女性的著作）。&lt;/p&gt;
 
-&lt;h3 id=&#34;筛选种子用户:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;筛选种子用户&lt;/h3&gt;
+&lt;h3 id=&#34;筛选种子用户&#34;&gt;筛选种子用户&lt;/h3&gt;
 
 &lt;p&gt;Facebook这家起源于哈佛大学校园的全球最大社交网站，在上线之初仅对常青藤大学的学生开放，随后逐渐向附近学校乃至全美、全世界拓展。这一聪明的策略帮助其在初期积累了大量的高质量种子用户，也勾起了外部世界融入这个精英社交圈的兴趣，为日后向普罗大众扩张奠定了牢靠的基础。&lt;/p&gt;
 
@@ -560,7 +559,7 @@
 &lt;li&gt;走向海外。（Facebook、触宝、猎豹）&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;激发活跃:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;激发活跃&lt;/h2&gt;
+&lt;h2 id=&#34;激发活跃&#34;&gt;激发活跃&lt;/h2&gt;
 
 &lt;p&gt;A/B测试：&lt;/p&gt;
 
@@ -594,11 +593,11 @@
 &lt;li&gt;很有网络游戏里看到在线玩家，实际上执行AI的机器人。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;提高留存:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;提高留存&lt;/h2&gt;
+&lt;h2 id=&#34;提高留存&#34;&gt;提高留存&lt;/h2&gt;
 
 &lt;p&gt;根据美国贝恩公司的调查，在商业社会中5％的客户留存率增长意味着公司利润30％的增长，而 把产品卖给老客户的概率是卖给新客户的3倍。所以在“增长黑客”圈内有一句名言：留住已有的 用户胜过拓展新的客户。&lt;/p&gt;
 
-&lt;h3 id=&#34;留存率:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;留存率&lt;/h3&gt;
+&lt;h3 id=&#34;留存率&#34;&gt;留存率&lt;/h3&gt;
 
 &lt;p&gt;衡量产品留存率的常用指标包括次日留存率、7日留存（周留存）率、30日留存（月留存）率，其计算公式为：第1天的新增用户中，在往后的第N天依然在使用的用户数/第1天的新增用户数。其中的N对应的就是留存指标中代表天数的2、7或30。&lt;/p&gt;
 
@@ -620,7 +619,7 @@
 &lt;li&gt;设计唤醒机制：电子邮件唤醒、消息推送、网页内唤醒移动应用。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;增加收入:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;增加收入&lt;/h2&gt;
+&lt;h2 id=&#34;增加收入&#34;&gt;增加收入&lt;/h2&gt;
 
 &lt;p&gt;免费模式大行其道的原因：&lt;/p&gt;
 
@@ -648,7 +647,7 @@
 
 &lt;p&gt;建立商业智能系统，精细化管理业绩指标。（百姓网）&lt;/p&gt;
 
-&lt;h2 id=&#34;病毒传播:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;病毒传播&lt;/h2&gt;
+&lt;h2 id=&#34;病毒传播&#34;&gt;病毒传播&lt;/h2&gt;
 
 &lt;p&gt;凯文·凯利在1998年出版《新经济，新规则》一书中提出了大名鼎鼎的“传真机效应”：单独一台传真机是没有什么价值的，只有它处于一个网络中时才能被赋予价值。对于拥有一台传真机的人而言，网络中中的传真机越多，你的传真机价值也就越大。&lt;/p&gt;
 
@@ -668,9 +667,9 @@
 
 &lt;p&gt;作者的实践：云诺网盘通过用户点击获得无限容量的活动营销。&lt;/p&gt;
 
-&lt;h2 id=&#34;实例:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;实例&lt;/h2&gt;
+&lt;h2 id=&#34;实例&#34;&gt;实例&lt;/h2&gt;
 
-&lt;h3 id=&#34;airbnb:4c23b88e0ac16f3853bf56fcc20ed9c2&#34;&gt;Airbnb&lt;/h3&gt;
+&lt;h3 id=&#34;airbnb&#34;&gt;Airbnb&lt;/h3&gt;
 
 &lt;p&gt;2007年，住在美国旧金山的两位设计师——布莱恩·彻斯基（Brian Chesky）与乔伊·杰比亚（Joe Gebbia）正在为他们付不起房租而困扰。为了赚点外快，他们计划将阁楼出租出去。传统 的做法是在Craigslist网站发帖子。“但我们不想这么干，因为在Craigslist发千篇一律的帖子会显得冷冰冰的，于是我们打算自己动手建一个网站Airbed&amp;amp;Breakfast。”&lt;/p&gt;
 
@@ -691,8 +690,7 @@
 &lt;li&gt;推广时，通过A/B测试发现，“邀请好友可以获得25美元”的效果就不如“向你的好友赠送25美元旅行经费”更打动人。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;（Tinder、Github、美丽说、外卖库的例子见原书）&lt;/p&gt;
-</description>
+&lt;p&gt;（Tinder、Github、美丽说、外卖库的例子见原书）&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -701,31 +699,31 @@
             <pubDate>Sun, 16 Aug 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/08/16/Books/</guid>
-            <description>
-
-&lt;p&gt;由于我住的比较远，每天上下班单程需要1个半小时左右。因此，车上和地铁的时间成了我每天阅读的时间。&lt;/p&gt;
+            <description>&lt;p&gt;由于我住的比较远，每天上下班单程需要1个半小时左右。因此，车上和地铁的时间成了我每天阅读的时间。&lt;/p&gt;
 
 &lt;p&gt;下面几本是我最近读过的书，分享一下：&lt;/p&gt;
 
-&lt;h3 id=&#34;1-创业维艰-hard-thing-about-hard-thing:7e00911045293764b501e3f40792557f&#34;&gt;1. 《创业维艰》 - Hard Thing About Hard Thing&lt;/h3&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;1-创业维艰-hard-thing-about-hard-thing&#34;&gt;1. 《创业维艰》 - Hard Thing About Hard Thing&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/HardThingAboutHardThing.jpg&#34; alt=&#34;HardThingAboutHardThing&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;我觉得每个创业者都必须看的好书。和其他大谈道理方法论的书不同，作者都是从自身的经历说起，通过一个又一个活生生的例子，通过切身体会得出的人生感悟和管理哲学。而且，作者很有名气，最后也非常成功。书前半部分的故事非常精彩，看的非常有感觉。后半部分的管理哲学也是受益匪浅。保证看过的都说好。&lt;/p&gt;
 
-&lt;h3 id=&#34;2-rework重来:7e00911045293764b501e3f40792557f&#34;&gt;2. 《Rework重来》&lt;/h3&gt;
+&lt;h3 id=&#34;2-rework重来&#34;&gt;2. 《Rework重来》&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/Rework.jpg&#34; alt=&#34;Rework&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这本书道理讲的有点多，而且，大多数道理都有点奇葩，反常理。比如，保持小公司，不要想着公司变大。不要想着以后会想到办法赚钱。不要怀着被收购的想法去创业等等。仔细一想，挺有道理的。喜欢的人会很喜欢。&lt;/p&gt;
 
-&lt;h3 id=&#34;3-乌合之众:7e00911045293764b501e3f40792557f&#34;&gt;3. 《乌合之众》&lt;/h3&gt;
+&lt;h3 id=&#34;3-乌合之众&#34;&gt;3. 《乌合之众》&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/TheCrowd.jpg&#34; alt=&#34;TheCrowd&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;研究群体心理的著作。群体是感性的、本能的情绪特别容易受传染，而理智的、冷静的情绪不起丝毫作用。群体的人会感受到一种强烈的“正义”力量，抱着“法不责众”的想法，会理直气壮的做出平时不可能做出的举动。群体敬畏权威和强权，容易受暗示影响，而且情绪多变。（张小龙对这本书非常推崇，对群体心理这么了解，才做出微信这样的产品吧。）&lt;/p&gt;
 
-&lt;h3 id=&#34;4-改变未来的九大算法:7e00911045293764b501e3f40792557f&#34;&gt;4. 《改变未来的九大算法》&lt;/h3&gt;
+&lt;h3 id=&#34;4-改变未来的九大算法&#34;&gt;4. 《改变未来的九大算法》&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/NineAlgo.jpg&#34; alt=&#34;NineAlgo&#34; /&gt;&lt;/p&gt;
 
@@ -740,20 +738,19 @@
  1. 数字签名
  1. 特别伟大解决一切问题的算法并不存在（PS: 我可以说第九个是凑数的吗？）&lt;/p&gt;
 
-&lt;h3 id=&#34;5-mactalk人生元编程:7e00911045293764b501e3f40792557f&#34;&gt;5. 《MacTalk人生元编程》&lt;/h3&gt;
+&lt;h3 id=&#34;5-mactalk人生元编程&#34;&gt;5. 《MacTalk人生元编程》&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/MacTalk.jpg&#34; alt=&#34;MacTalk&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;作者迟建强前段时间刚加入了锤子科技，看迟建强的文章和头像，每次都容易让我联想到以前一个朋友，形象和气质都和他很像。这本书主要介绍一些Mac的历史、故事、技巧，当然，还有更精彩的作者的编程经历和人生感悟。&lt;/p&gt;
 
-&lt;h3 id=&#34;6-程序员跳槽全攻略:7e00911045293764b501e3f40792557f&#34;&gt;6. 《程序员跳槽全攻略》&lt;/h3&gt;
+&lt;h3 id=&#34;6-程序员跳槽全攻略&#34;&gt;6. 《程序员跳槽全攻略》&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/JobDeer.jpg&#34; alt=&#34;JobDeer&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这本书有点小坑了，只要1块钱就买来看了，1个小时不到就可以读完，然后感慨一下，这样也可以出一本书？ 虽然如此，假如你看一本书，哪怕只有一点点收货，也算是很值了。我觉得书里的这幅图还是挺有意思的，程序员职业发展四大象限：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/JobDeerEBSI.jpg&#34; alt=&#34;JobDeerEBSI&#34; /&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/JobDeerEBSI.jpg&#34; alt=&#34;JobDeerEBSI&#34; /&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -763,6 +760,8 @@
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/05/16/ThinkingAndLearning/</guid>
             <description>&lt;p&gt;《程序员的思维修炼:开发认知潜能的九堂课》 从程序员的角度去认清自己，思考问题，了解我们的大脑，进而发掘潜能。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;作者是亨特(Andy Hunt)，他曾经写过《程序员修炼之道——从小工到专家》，《高效程序员的45个习惯:敏捷开发修炼之道》，《Programming Ruby》，《单元测试之道C#版——使用NUnit 》、《单元测试之道Java版——使用JUnit》、《版本控制之道——使用CVS 》等等。&lt;/p&gt;
 
@@ -906,8 +905,7 @@
 
 &lt;p&gt;欢迎关注我的微信公众号：hacker-thinking，谢谢支持！
 &lt;br /&gt;
-&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/qrcode.jpg&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;
-</description>
+&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/qrcode.jpg&#34; alt=&#34;hacker-thinking&#34; /&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -917,6 +915,8 @@
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/04/26/Category/</guid>
             <description>&lt;p&gt;最近在看罗振宇的《成大事者不纠结》，想想自己平时有什么纠结的事情，当我打开为知笔记看着长长的文件夹分类时，我明白了，其实我一直纠结着“分类”。我有一定的分类整理的习惯，当然也不是特别强迫的那种。比如，记录技术文章时，我会分出：C++，Python，Cocos2d-x，GameServer，Linux，……等等，甚至还会分出若干的二级分类。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;这样分类的结果，就是自从被分入某个子类之后，我再也没有打开过它。甚至平时连看都不曾看见过它，好像它从未存在过。&lt;/p&gt;
 
@@ -936,8 +936,7 @@
 
 &lt;p&gt;分类太细导致新增时到底分到哪个类别要纠结很久，而且放入某个分类后，就相当于被折叠了，打开它至少需要两步操作，以后关注的也会比较少。试想把微信放到一个文件夹里，每次打开微信都要先进入一个文件夹是多么繁杂的事情。&lt;/p&gt;
 
-&lt;p&gt;如果有个东西你不想再看到它，就把它丢到一个分类吧。当然，最好的方法是直接删掉。&lt;/p&gt;
-</description>
+&lt;p&gt;如果有个东西你不想再看到它，就把它丢到一个分类吧。当然，最好的方法是直接删掉。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -946,15 +945,15 @@
             <pubDate>Mon, 20 Apr 2015 00:00:00 UTC</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/04/20/ZeroToOne/</guid>
-            <description>
-
-&lt;p&gt;自从入手了Kindle Paper White，现在已经习惯了在Kindle上购买图书了，已经买了好几本了。在Kindle上读书体验就是好啊，自己也变得越来越爱读书了。呵呵。&lt;/p&gt;
+            <description>&lt;p&gt;自从入手了Kindle Paper White，现在已经习惯了在Kindle上购买图书了，已经买了好几本了。在Kindle上读书体验就是好啊，自己也变得越来越爱读书了。呵呵。&lt;/p&gt;
 
 &lt;p&gt;利用周末和平时闲暇时间，把《从0到1:开启商业与未来的秘密》读了一遍，书中很多观点不错，耐人深思，记录一下。&lt;/p&gt;
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/ZeroToOne.jpg&#34; alt=&#34;ZeroToOne&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;简介:9a56c900e23924928a82a1d8d7925594&#34;&gt;简介&lt;/h3&gt;
+&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
 
 &lt;p&gt;硅谷创投教父、PayPal创始人作品，斯坦福大学改变未来的一堂课，为世界创造价值的商业哲学。&lt;/p&gt;
 
@@ -964,7 +963,7 @@
 
 &lt;p&gt;从0到1，为自己创造无限的机会与价值！&lt;/p&gt;
 
-&lt;h3 id=&#34;笔记摘要:9a56c900e23924928a82a1d8d7925594&#34;&gt;笔记摘要&lt;/h3&gt;
+&lt;h3 id=&#34;笔记摘要&#34;&gt;笔记摘要&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;成功人士总能在意想不到的地方发现价值，他们遵循的是基本原则，而非秘籍。&lt;/li&gt;
@@ -984,8 +983,7 @@
 &lt;li&gt;奇点已经临近，我们唯有做好准备，从0到1。最重要的第一步是独立思考，只有重新认识世界，如同古人第一眼看见这个世界一样新奇，我们才能重构世界，守护未来。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;以上观点值得思考，可以结合BAT以及其他互联网公司的发展和现状自行脑补。&lt;/p&gt;
-</description>
+&lt;p&gt;以上观点值得思考，可以结合BAT以及其他互联网公司的发展和现状自行脑补。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -999,6 +997,8 @@
 &lt;p&gt;春节前，入手了个Kindle PaperWhite。之前一直担心Pad看书已经够用了，实际用下来，发现看书还是用Kindle好。因为Kindle能让你专心看书，不易伤眼，而且续航时间很长。&lt;/p&gt;
 
 &lt;p&gt;之前一直想读《黑客与画家》，于是春节假期用Kindle把它读完。这本书备受赞誉，里面很多观点很好，但是我读下来，高预期之后还是有些落差。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;首先是书名：黑客与画家。书中关于黑客与画家之间的联系描述的很少，主要总结为：程序员写代码并不是一气呵成，而是像画家一般，先画个轮（框）廓（架），再调整细（功）节（能），然后不然修（缺）缮（陷）。黑客写代码是一件有艺术的活，不是工程的活。&lt;/p&gt;
 
@@ -1017,8 +1017,7 @@
 
 &lt;p&gt;再写下去，自己都看不下去了，有点感觉在黑这本书的意思。毕竟是Paul Graham，毕竟是硅谷创业之父，书中很多的观点是耐人寻味，引发思考，而且是非常超前的。比如别人都在开发桌面软件时，他们已经看到未来是服务端的时代（当时还未出现智能手机，但有预言到手机时代），选择了一个未来都看起来很酷，设计理念在现在看起来还很超前，很难也很少人用的编程语言Lisp。可惜他写这本书的时候还没有Go语言，不知道他是否觉得Go会更先进一步呢？至少书中多种语言对比的例子里，现在的Python版本已经可以直接用lambda写上一段很简洁的版本了。&lt;/p&gt;
 
-&lt;p&gt;因为是杂想，所以并不打算罗列书中观点。未看过书的同学还是亲自阅读体验，看过书的也可再拿来回味一番。&lt;/p&gt;
-</description>
+&lt;p&gt;因为是杂想，所以并不打算罗列书中观点。未看过书的同学还是亲自阅读体验，看过书的也可再拿来回味一番。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1045,7 +1044,7 @@
 
 &lt;p&gt;在讲到代码的可测性设计时，作者提出主要从以下几个方面来提高可测性：&lt;/p&gt;
 
-&lt;h4 id=&#34;dependency-injection:61305de2f52c04ea1a9f8a750021f1ad&#34;&gt;Dependency Injection&lt;/h4&gt;
+&lt;h4 id=&#34;dependency-injection&#34;&gt;Dependency Injection&lt;/h4&gt;
 
 &lt;p&gt;依赖注入，代码设计中并不依赖于具体的实现，并且运行将特定的实现注入到系统中。注入主要有三种方式：&lt;/p&gt;
 
@@ -1055,15 +1054,15 @@
 &lt;li&gt;Setter Injection&lt;br /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;dependency-lookup:61305de2f52c04ea1a9f8a750021f1ad&#34;&gt;Dependency Lookup&lt;/h4&gt;
+&lt;h4 id=&#34;dependency-lookup&#34;&gt;Dependency Lookup&lt;/h4&gt;
 
 &lt;p&gt;依赖查找，运行时动态查找到所依赖的具体对象。&lt;/p&gt;
 
-&lt;h4 id=&#34;humble-object:61305de2f52c04ea1a9f8a750021f1ad&#34;&gt;Humble Object&lt;/h4&gt;
+&lt;h4 id=&#34;humble-object&#34;&gt;Humble Object&lt;/h4&gt;
 
 &lt;p&gt;这个名称很抽象，我的理解是在代码中提供一些接口出来，方面测试。&lt;/p&gt;
 
-&lt;h4 id=&#34;test-hook:61305de2f52c04ea1a9f8a750021f1ad&#34;&gt;Test Hook&lt;/h4&gt;
+&lt;h4 id=&#34;test-hook&#34;&gt;Test Hook&lt;/h4&gt;
 
 &lt;p&gt;在代码中加入一些测试逻辑，比如，如果是测试模块，就怎么怎么样。不过，我想这种方式应该是不值得推荐的。&lt;/p&gt;
 
@@ -1102,7 +1101,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_2.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_thumb.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;dummy-object:7d90771bbf1c9880ab4be082e80aca74&#34;&gt;Dummy Object&lt;/h4&gt;
+&lt;h4 id=&#34;dummy-object&#34;&gt;Dummy Object&lt;/h4&gt;
 
 &lt;p&gt;Dummy Objects泛指在测试中必须传入的对象，而传入的这些对象实际上并不会产出任何作用，仅仅是为了能够调用被测对象而必须传入的一个东西。&lt;/p&gt;
 
@@ -1124,7 +1123,7 @@
 
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 
-&lt;h4 id=&#34;test-stub:7d90771bbf1c9880ab4be082e80aca74&#34;&gt;Test Stub&lt;/h4&gt;
+&lt;h4 id=&#34;test-stub&#34;&gt;Test Stub&lt;/h4&gt;
 
 &lt;p&gt;测试桩是用来接受SUT内部的间接输入(indirect inputs)，并返回特定的值给SUT。可以理解Test Stub是在SUT内部打的一个桩，可以按照我们的要求返回特定的内容给SUT，Test Stub的交互完全在SUT内部，因此，它不会返回内容给测试案例，也不会对SUT内部的输入进行验证。&lt;/p&gt;
 
@@ -1155,7 +1154,7 @@
 
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 
-&lt;h4 id=&#34;test-spy:7d90771bbf1c9880ab4be082e80aca74&#34;&gt;Test Spy&lt;/h4&gt;
+&lt;h4 id=&#34;test-spy&#34;&gt;Test Spy&lt;/h4&gt;
 
 &lt;p&gt;Test Spy像一个间谍，安插在了SUT内部，专门负责将SUT内部的间接输出(indirect outputs)传到外部。它的特点是将内部的间接输出返回给测试案例，由测试案例进行验证，&lt;font color=&#34;#ff0000&#34;&gt;Test Spy只负责获取内部情报，并把情报发出去，不负责验证情报的正确性&lt;/font&gt;。&lt;/p&gt;
 
@@ -1192,7 +1191,7 @@
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&#34;color: red;&#34;&gt;logSpy.getDetail()&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;);
 }&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;mock-object:7d90771bbf1c9880ab4be082e80aca74&#34;&gt;Mock Object&lt;/h4&gt;
+&lt;h4 id=&#34;mock-object&#34;&gt;Mock Object&lt;/h4&gt;
 
 &lt;p&gt;Mock Object和Test Spy有类似的地方，它也是安插在SUT内部，获取到SUT内部的间接输出(indirect outputs)，不同的是，&lt;font color=&#34;#ff0000&#34;&gt;Mock Object还负责对情报(indirect outputs)进行验证&lt;/font&gt;，总部(外部的测试案例)信任Mock Object的验证结果。&lt;/p&gt;
 
@@ -1278,13 +1277,13 @@
 
 &lt;p&gt;这几节我看的比较快一些，因为内容之间其实是有联系的，所以合在一起做一个笔记。6-10节主要介绍了什么是Fixture，如何保证一个Fresh Fixture，如何使用Setup，Tearndown，如何进行验证(Verify)，等等。&lt;/p&gt;
 
-&lt;h4 id=&#34;什么是fixture:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;什么是Fixture？&lt;/h4&gt;
+&lt;h4 id=&#34;什么是fixture&#34;&gt;什么是Fixture？&lt;/h4&gt;
 
 &lt;p&gt;&lt;font color=&#34;#ff0000&#34;&gt;The test ﬁxture is everything we need to have in place to exercise the SUT.&lt;/font&gt;&lt;/p&gt;
 
 &lt;p&gt;从作者的英文解释来看，Fixture确实是一个比较难定义的东西，所以作者用了everything这个词。&lt;/p&gt;
 
-&lt;h4 id=&#34;什么是fresh-fixture:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;什么是Fresh Fixture？&lt;/h4&gt;
+&lt;h4 id=&#34;什么是fresh-fixture&#34;&gt;什么是Fresh Fixture？&lt;/h4&gt;
 
 &lt;p&gt;一个测试案例一般都包含以下几个步骤：&lt;/p&gt;
 
@@ -1299,7 +1298,7 @@
 
 &lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_2.png&#34;&gt;&lt;img src=&#34;http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb.png&#34; alt=&#34;image&#34; title=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;什么是setup:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;什么是Setup？&lt;/h4&gt;
+&lt;h4 id=&#34;什么是setup&#34;&gt;什么是Setup？&lt;/h4&gt;
 
 &lt;p&gt;Setup是案例的准备阶段，主要有三种实现方式：In-line Fixture Setup, Delegated Setup, Implicit Setup。推荐使用的是Implicit Setup。&lt;/p&gt;
 
@@ -1498,7 +1497,7 @@ Flight&amp;nbsp;ﬂight;
 
 &lt;p&gt;通过参数化，可以简化测试代码，不需要为大量不同的输入数据分别编写测试案例。&lt;/p&gt;
 
-&lt;h4 id=&#34;avoiding-conditional-test-logic:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;Avoiding Conditional Test Logic&lt;/h4&gt;
+&lt;h4 id=&#34;avoiding-conditional-test-logic&#34;&gt;Avoiding Conditional Test Logic&lt;/h4&gt;
 
 &lt;p&gt;验证时，不要使用一些条件相关的逻辑！比如，&lt;span style=&#34;color: red;&#34;&gt;不要使用if&lt;/span&gt;, loop之类的语句！下面是一个例子：&lt;/p&gt;
 
@@ -1527,11 +1526,11 @@ assertEquals(&lt;/span&gt;&lt;span style=&#34;color: #000000;&#34;&gt;&amp;ldquo
 
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 
-&lt;h4 id=&#34;working-backward:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;Working Backward&lt;/h4&gt;
+&lt;h4 id=&#34;working-backward&#34;&gt;Working Backward&lt;/h4&gt;
 
 &lt;p&gt;一个编写测试案例的小技巧或者说是习惯吧，就是&lt;span style=&#34;color: red;&#34;&gt;实现一个测试案例时，从最后一行开始写起&lt;/span&gt;，比如，先写Assertions。可以一试。&lt;/p&gt;
 
-&lt;h4 id=&#34;using-test-driven-development-to-write-test-utility-method:7d47d71a0d04e88834101d47d7eacb82&#34;&gt;Using Test-Driven Development to Write Test Utility Method&lt;/h4&gt;
+&lt;h4 id=&#34;using-test-driven-development-to-write-test-utility-method&#34;&gt;Using Test-Driven Development to Write Test Utility Method&lt;/h4&gt;
 
 &lt;p&gt;我们经常实现一些测试用的辅助方法，这些方法在实现过程中，使用TDD的方式去实现，编写一些简单的测试案例，保证辅助方法也是正确的。也就是说，&lt;span style=&#34;color: red;&#34;&gt;测试案例代码本身也是需要被测试的。&lt;/span&gt;&lt;/p&gt;
 

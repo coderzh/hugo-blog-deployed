@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>技术文章 on CoderZh Blog</title>
-        <link>http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</link>
+        <link>http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed/index.xml</link>
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Mon, 11 Jul 2016 07:35:59 CST</updated>
+        <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
         
         <item>
             <title>一次 CTF 之旅</title>
@@ -961,9 +961,7 @@ func allItemsMatch&amp;lt;
             <pubDate>Sat, 09 Apr 2016 14:57:00 UTC</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
-            <description>
-
-&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
+            <description>&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
 
 &lt;p&gt;而如今网络如此发达，大多数的答案都可以通过你问出正确的问题得到解答。凯文·凯利在他的《必然》里有提到，未来，我们不缺乏答案，缺的是问出好的问题。Google 几乎索引了我们想要知道的所有问题的答案（百度索引了所有的相反答案），所以，理论上，我们不再需要记录自己的笔记。&lt;/p&gt;
 
@@ -977,7 +975,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;既可以说是「全新」，也是可以说是用最「原始」的方式管理笔记。即在本地完全由纯文本的方式来进行笔记管理。这种方式不再依赖任何一个笔记软件。&lt;/p&gt;
 
-&lt;h3 id=&#34;所有的软件都不可靠:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;所有的软件都不可靠&lt;/h3&gt;
+&lt;h3 id=&#34;所有的软件都不可靠&#34;&gt;所有的软件都不可靠&lt;/h3&gt;
 
 &lt;p&gt;现有的所有笔记软件给我们一种假象：我们可以永远记录下去。事实并非如此，现在科技发展如此之快，公司被淘汰的速度也在加速，很有可能现在最流行的笔记软件几年后就关门大吉。&lt;/p&gt;
 
@@ -989,7 +987,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;这将导致之前所有使用 Parse 服务的软件重新去考虑迁移的事宜。而事实上有很多软件已工作多年，而且几乎不再维护，一旦关闭，如果不进行迁移维护，那些软件将会失效。&lt;/p&gt;
 
-&lt;h3 id=&#34;回归原始:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;回归原始&lt;/h3&gt;
+&lt;h3 id=&#34;回归原始&#34;&gt;回归原始&lt;/h3&gt;
 
 &lt;p&gt;使用纯文本在本地进行笔记管理，是最原始的笔记方式。你不必再担心笔记软件停止服务后你的笔记在哪里的问题。你也不依赖于任何一款笔记编辑软件，因为任何文本编辑器都可以直接进行笔记编辑。&lt;/p&gt;
 
@@ -1001,7 +999,7 @@ func allItemsMatch&amp;lt;
 &lt;li&gt;能不能保证笔记文件不丢失？&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;笔记搜索:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记搜索&lt;/h4&gt;
+&lt;h4 id=&#34;笔记搜索&#34;&gt;笔记搜索&lt;/h4&gt;
 
 &lt;p&gt;从本地文件夹里搜索文件，或者搜索文件里的内容，有很多的工具。这些工具都是可替代的，即使所有 GUI 的工具软件都不能用了，我们还有 find 和 grep 命令。&lt;/p&gt;
 
@@ -1013,7 +1011,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/find-notes.png-s&#34; alt=&#34;find-notes&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;笔记编辑:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记编辑&lt;/h4&gt;
+&lt;h4 id=&#34;笔记编辑&#34;&gt;笔记编辑&lt;/h4&gt;
 
 &lt;p&gt;当我想记录编程相关的笔记时，只需要按下 &lt;code&gt;np&lt;/code&gt; 空格，输入文字标题，将自动在合适的路径创建一个新的笔记并打开编辑。（n = new，p = programming 分类）&lt;/p&gt;
 
@@ -1031,7 +1029,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/atom-markdown.png-s&#34; alt=&#34;atom-markdown&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;alfred-workflow:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;Alfred Workflow&lt;/h4&gt;
+&lt;h4 id=&#34;alfred-workflow&#34;&gt;Alfred Workflow&lt;/h4&gt;
 
 &lt;p&gt;想实现上面 &lt;code&gt;f&lt;/code&gt; 和 &lt;code&gt;np&lt;/code&gt; 之类的功能非常简单，通过组合 Workflow 里的 FileFilter、ScriptFilter、Run Script 即可。&lt;/p&gt;
 
@@ -1041,22 +1039,21 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/alfred-workflows&#34;&gt;https://github.com/coderzh/alfred-workflows&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;笔记多平台同步:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记多平台同步&lt;/h4&gt;
+&lt;h4 id=&#34;笔记多平台同步&#34;&gt;笔记多平台同步&lt;/h4&gt;
 
 &lt;p&gt;各种网盘，综合考虑后，我选择了 Dropbox。（为了能正常使用 Dropbox 需要一点功夫。）&lt;/p&gt;
 
-&lt;h4 id=&#34;移动端同步与编辑:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;移动端同步与编辑&lt;/h4&gt;
+&lt;h4 id=&#34;移动端同步与编辑&#34;&gt;移动端同步与编辑&lt;/h4&gt;
 
 &lt;p&gt;在支持 Dropbox 同步同时又支持 Markdown 编辑的 App 里选择，最后我选择了 &lt;a href=&#34;https://bywordapp.com/&#34;&gt;Byword&lt;/a&gt;，因为它的 Markdown 编写体验真的很好。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/byword.PNG&#34; alt=&#34;byword&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;保证笔记文件不丢失:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;保证笔记文件不丢失&lt;/h3&gt;
+&lt;h3 id=&#34;保证笔记文件不丢失&#34;&gt;保证笔记文件不丢失&lt;/h3&gt;
 
 &lt;p&gt;除了 Dropbox 同步，我会定期使用 git 进行版本管理，Push 到自己的私人仓库里。&lt;/p&gt;
 
-&lt;p&gt;希望本文对喜欢做笔记的同学有点帮助吧。&lt;/p&gt;
-</description>
+&lt;p&gt;希望本文对喜欢做笔记的同学有点帮助吧。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1065,21 +1062,21 @@ func allItemsMatch&amp;lt;
             <pubDate>Sun, 27 Mar 2016 12:57:37 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
-            <description>
+            <description>&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;
 
-&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Hugo 本身有很多不错的主题，但挑剔的朋友可能会觉得还不够，希望看到 Jeklly 或 Hexo 里漂亮的主题时也能在 Hugo 里找到对应的主题。其实 Hugo 的主题制作并不复杂，有兴趣的同学可以尝试自己制作主题，或者将其他静态网站生成器里的主题转成 Hugo 的主题。&lt;/p&gt;
 
 &lt;p&gt;不会做的话参考我做的这个主题（&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;hugo-pacman-theme&lt;/a&gt;）代码，基本的 Hugo 模板功能都用上了。&lt;/p&gt;
 
-&lt;h3 id=&#34;pacman:54fdd68c9a36858a04277e9977a250be&#34;&gt;Pacman&lt;/h3&gt;
+&lt;h3 id=&#34;pacman&#34;&gt;Pacman&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://yangjian.me/pacman/&#34;&gt;Pacman&lt;/a&gt; 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;hugo-pacman-theme&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;演示地址：&lt;a href=&#34;http://coderzh.github.io/hugo-pacman-theme/&#34;&gt;http://coderzh.github.io/hugo-pacman-theme/&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;截图:54fdd68c9a36858a04277e9977a250be&#34;&gt;截图&lt;/h4&gt;
+&lt;h4 id=&#34;截图&#34;&gt;截图&lt;/h4&gt;
 
 &lt;p&gt;主页：&lt;/p&gt;
 
@@ -1089,7 +1086,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hugo-pacman-theme.png&#34; alt=&#34;hugo-pacman-theme&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;支持功能:54fdd68c9a36858a04277e9977a250be&#34;&gt;支持功能&lt;/h4&gt;
+&lt;h4 id=&#34;支持功能&#34;&gt;支持功能&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;分类&lt;/li&gt;
@@ -1105,7 +1102,7 @@ func allItemsMatch&amp;lt;
 &lt;li&gt;高度配置化，你要的东西都可以通过 config.toml 进行配置。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;使用方法:54fdd68c9a36858a04277e9977a250be&#34;&gt;使用方法&lt;/h3&gt;
+&lt;h3 id=&#34;使用方法&#34;&gt;使用方法&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;首先，确保安装了最新版 Hugo。下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;Hugo Release&lt;/a&gt;，如果使用 Mac ，直接用 Homebrew 安装：&lt;/p&gt;
@@ -1188,7 +1185,7 @@ RSSUri = &amp;quot;feed.xml&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;最后:54fdd68c9a36858a04277e9977a250be&#34;&gt;最后&lt;/h3&gt;
+&lt;h3 id=&#34;最后&#34;&gt;最后&lt;/h3&gt;
 
 &lt;p&gt;该主题参考的 &lt;a href=&#34;https://github.com/A-limon/pacman&#34;&gt;Pacman&lt;/a&gt;，使用 Hugo 的模板语法纯手工一行一行打造。有需要的朋友尽管拿去使用，有问题欢迎反馈：&lt;/p&gt;
 
@@ -1198,8 +1195,7 @@ RSSUri = &amp;quot;feed.xml&amp;quot;
 
 &lt;p&gt;Hugo 交流 QQ 群：512499080&lt;/p&gt;
 
-&lt;p&gt;该主题已经&lt;a href=&#34;https://github.com/spf13/hugoThemes/issues/121&#34;&gt;提交&lt;/a&gt;到官方的主题列表，相信不久就可以在官方的 &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;http://themes.gohugo.io/&lt;/a&gt; 上看到了。&lt;/p&gt;
-</description>
+&lt;p&gt;该主题已经&lt;a href=&#34;https://github.com/spf13/hugoThemes/issues/121&#34;&gt;提交&lt;/a&gt;到官方的主题列表，相信不久就可以在官方的 &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;http://themes.gohugo.io/&lt;/a&gt; 上看到了。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1208,19 +1204,19 @@ RSSUri = &amp;quot;feed.xml&amp;quot;
             <pubDate>Sat, 19 Mar 2016 15:05:47 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/03/19/dotfiles/</guid>
-            <description>
+            <description>&lt;p&gt;如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。&lt;/p&gt;
 
-&lt;p&gt;如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;以一段废话开场，引出今天的主题：&lt;code&gt;dotfiles&lt;/code&gt;。软件匠艺社区（&lt;a href=&#34;codingstyle.cn&#34;&gt;codingstyle.cn&lt;/a&gt;）周三晚上有一期分享介绍 Vim 时提到了 dotfiles，这篇文章我们就来好好说一说 dotfiles。&lt;/p&gt;
 
-&lt;h3 id=&#34;什么是-dotfiles:50fc662a6f6921bb445d80a429a8e146&#34;&gt;什么是 dotfiles？&lt;/h3&gt;
+&lt;h3 id=&#34;什么是-dotfiles&#34;&gt;什么是 dotfiles？&lt;/h3&gt;
 
 &lt;p&gt;dot 即「点」的意思，意思是以点开头的文件。如果你不是程序员，你大概会说，我咋从来没见过这种文件啊？因为这些文件通常都是隐藏文件，平常一般看不到，比如 .git 目录。但这里说的 dotfiles 主要是指用户 home 目录下的点文件，这类文件一般是一些配置文件，比如 vim 的配置文件 .vimrc，zsh 的配置文件 .zshrc 等。通过设置这些配置文件，可以实现出很强大的功能，比如有不少人通过配置 .vimrc，把 vim 活生生变成了一个功能强大的 IDE。还有一些偷懒的程序员在 .profile 之类的文件里设置了大量命令的 alias。以至于你还没看清楚他敲的第一个命令，他已经敲了三四个命令了。&lt;/p&gt;
 
 &lt;p&gt;通过配置各种 dotfiles，程序员可以把系统定制得既顺手又高效。但是问题来了，自己千辛万苦调的设置，如果换一台机器，又得重新设置一遍。这对于追求效率的程序员来说是不可接受的。&lt;/p&gt;
 
-&lt;h3 id=&#34;dotfiles-管理:50fc662a6f6921bb445d80a429a8e146&#34;&gt;dotfiles 管理&lt;/h3&gt;
+&lt;h3 id=&#34;dotfiles-管理&#34;&gt;dotfiles 管理&lt;/h3&gt;
 
 &lt;p&gt;于是会玩又懒的程序员想出了一个办法，把所有的 dotfiles 放在一个单独的目录进行统一管理，放到 GitHub 或者通过网盘同步。&lt;/p&gt;
 
@@ -1240,7 +1236,7 @@ RSSUri = &amp;quot;feed.xml&amp;quot;
 
 &lt;p&gt;有些人把软链的管理写成一个 Shell 脚本，也有人做成特定的工具。比如：&lt;a href=&#34;https://github.com/thoughtbot/rcm&#34;&gt;rcm&lt;/a&gt;、 &lt;a href=&#34;http://skwp.github.io/dotfiles/&#34;&gt;YARD&lt;/a&gt;、 &lt;a href=&#34;https://pypi.python.org/pypi/dotfiles&#34;&gt;dotfiles&lt;/a&gt;、 &lt;a href=&#34;https://github.com/lra/mackup&#34;&gt;mackup&lt;/a&gt; ……&lt;/p&gt;
 
-&lt;h3 id=&#34;mackup:50fc662a6f6921bb445d80a429a8e146&#34;&gt;mackup&lt;/h3&gt;
+&lt;h3 id=&#34;mackup&#34;&gt;mackup&lt;/h3&gt;
 
 &lt;p&gt;在对比了各种 dotfiles 工具后，我最终选择了 &lt;a href=&#34;https://github.com/lra/mackup&#34;&gt;mackup&lt;/a&gt;。理由主要如下：&lt;/p&gt;
 
@@ -1316,7 +1312,7 @@ Library/Preferences/IdeaIC15/options/keymap.xml
 
 &lt;p&gt;&lt;code&gt;configuration_files&lt;/code&gt; 里指定我需要备份的文件即可。非常的简单易用。&lt;/p&gt;
 
-&lt;h3 id=&#34;自动安装软件:50fc662a6f6921bb445d80a429a8e146&#34;&gt;自动安装软件&lt;/h3&gt;
+&lt;h3 id=&#34;自动安装软件&#34;&gt;自动安装软件&lt;/h3&gt;
 
 &lt;p&gt;在一台新机器上，把之前机器装的软件一个一个手动安装也是非常耗时和麻烦的事情。如果你使用的是 Mac OS X，将会变得非常简单，因为绝大部分的软件开发包及软件都可以通过 &lt;a href=&#34;http://brew.sh/&#34;&gt;Homebrew&lt;/a&gt; 和 &lt;a href=&#34;https://caskroom.github.io/&#34;&gt;brew cask&lt;/a&gt; 来安装。&lt;/p&gt;
 
@@ -1401,7 +1397,7 @@ brew cleanup
 brew cask cleanup
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;pip-npm-gem:50fc662a6f6921bb445d80a429a8e146&#34;&gt;pip、npm、gem&lt;/h3&gt;
+&lt;h3 id=&#34;pip-npm-gem&#34;&gt;pip、npm、gem&lt;/h3&gt;
 
 &lt;p&gt;使用 pip、npm、gem 安装的包也使用脚本进行一键安装：&lt;/p&gt;
 
@@ -1415,7 +1411,7 @@ pip install mock
 # npm、gem ...
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;os-x-的系统设置:50fc662a6f6921bb445d80a429a8e146&#34;&gt;OS X 的系统设置&lt;/h3&gt;
+&lt;h3 id=&#34;os-x-的系统设置&#34;&gt;OS X 的系统设置&lt;/h3&gt;
 
 &lt;p&gt;当你拿到一台新的 Mac 然后开机时，不知道有没有被 Duang~ 的一声吓到的经历。当时吓得的宝宝我赶紧找了如何关闭开机声音的方法（设置静音、插上耳机都不管用！），只要执行一条命令即可：&lt;/p&gt;
 
@@ -1443,7 +1439,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;字体:50fc662a6f6921bb445d80a429a8e146&#34;&gt;字体&lt;/h3&gt;
+&lt;h3 id=&#34;字体&#34;&gt;字体&lt;/h3&gt;
 
 &lt;p&gt;程序员喜欢折腾的几样东西：键盘、编辑器、字体。程序员钟爱的几种字体，包括 Source Code Pro、Hack、Menlo 等等，其中对 powerline 字体更是最爱。把所有心爱的字体放在 dotfiles/fonts 目录里，通过自动安装脚本里直接拷贝到 ~/Library/Fonts/ 目录下即可。&lt;/p&gt;
 
@@ -1474,7 +1470,7 @@ set laststatus=2
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/vim-powerline.png&#34; alt=&#34;vim-powerline&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;总结:50fc662a6f6921bb445d80a429a8e146&#34;&gt;总结&lt;/h3&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
 
 &lt;p&gt;懒程序员如果拿到了一个新的 Mac 机器，他只需要做如下几步，就可以把这台新的机器变成熟悉的一台机器：&lt;/p&gt;
 
@@ -1518,8 +1514,7 @@ $ mackup restore
 &lt;li&gt;&lt;a href=&#34;https://github.com/jbernard/dotfiles&#34;&gt;https://github.com/jbernard/dotfiles&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/lra/mackup&#34;&gt;https://github.com/lra/mackup&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/webpro/dotfiles&#34;&gt;https://github.com/webpro/dotfiles&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+&lt;/ol&gt;</description>
         </item>
         
         <item>
@@ -1586,7 +1581,8 @@ $ mackup restore
 &lt;/ol&gt;
 
 &lt;p&gt;Alfred2 和 oh-my-zsh 是我用了的最令人惊叹好用的工具，谁还有好用的软件推荐给我啊~~~&lt;/p&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1595,9 +1591,7 @@ $ mackup restore
             <pubDate>Fri, 05 Feb 2016 23:55:45 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</guid>
-            <description>
-
-&lt;p&gt;有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：&lt;/p&gt;
+            <description>&lt;p&gt;有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/issues/1&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/issues/1&lt;/a&gt;&lt;/p&gt;
 
@@ -1607,23 +1601,23 @@ $ mackup restore
 
 &lt;p&gt;地址：&lt;a href=&#34;https://github.com/coderzh/hugo-rapid-theme&#34;&gt;https://github.com/coderzh/hugo-rapid-theme&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;说明文档:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;说明文档&lt;/h2&gt;
+&lt;h2 id=&#34;说明文档&#34;&gt;说明文档&lt;/h2&gt;
 
 &lt;p&gt;以下是 hugo-rapid-theme 的 README 文档：&lt;/p&gt;
 
 &lt;p&gt;Demo: &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;step1-install-hugo:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step1 Install Hugo&lt;/h3&gt;
+&lt;h3 id=&#34;step1-install-hugo&#34;&gt;Step1 Install Hugo&lt;/h3&gt;
 
 &lt;p&gt;Set &lt;a href=&#34;http://www.gohugo.org/doc/overview/installing/&#34;&gt;Hugo Install&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;step2-create-your-site:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step2 Create your site&lt;/h3&gt;
+&lt;h3 id=&#34;step2-create-your-site&#34;&gt;Step2 Create your site&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;hugo new site your-blog-name
 cd your-blog-name
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;step3-clone-the-theme-repo:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step3 Clone the theme repo&lt;/h3&gt;
+&lt;h3 id=&#34;step3-clone-the-theme-repo&#34;&gt;Step3 Clone the theme repo&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
 
@@ -1632,7 +1626,7 @@ rm config.toml
 cp themes/hugo-rapid-theme/config.yaml .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;step4-start-your-site:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step4 Start your site&lt;/h3&gt;
+&lt;h3 id=&#34;step4-start-your-site&#34;&gt;Step4 Start your site&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;# new content
 hugo new about.md
@@ -1640,7 +1634,7 @@ hugo new about.md
 hugo server
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;step5-have-fun:1c7dc7e052e1f712e7a427da9af2576f&#34;&gt;Step5 Have Fun&lt;/h3&gt;
+&lt;h3 id=&#34;step5-have-fun&#34;&gt;Step5 Have Fun&lt;/h3&gt;
 
 &lt;p&gt;Now you can open &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;/p&gt;
 
@@ -1651,7 +1645,8 @@ hugo server
 &lt;pre&gt;&lt;code&gt;git init
 git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
 &lt;/code&gt;&lt;/pre&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1697,7 +1692,8 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
 &lt;p&gt;同样，我也很感叹 Seaborn Lee 的做法，在微信群里组织分享，吸引大量爱学习的程序员过来并加为好友，这些人简直就是程序员社区的精准目标用户啊！于是我对 Seaborn Lee 本人的经历产生了兴趣，原来他之前就职于 &lt;a href=&#34;https://www.thoughtworks.com/&#34;&gt;ThoughtWorks&lt;/a&gt; ，目前于创业公司「深圳湾」任 CTO 。在他的博客里的 &lt;a href=&#34;http://seabornlee.cn/isaid.md&#34;&gt;时间线&lt;/a&gt; 一栏更是了解到他从出生、上学到工作一路走来的坎坷经历。了解了这些后， Seaborn Lee 的形象更加鲜活起来了：好学、上进、有活力、爱分享、组织各种社区活动。&lt;/p&gt;
 
 &lt;p&gt;虽然微信里不能很好的支持视频直播，但谁也挡不住爱分享的程序员在微信群里玩起了语音直播。如果你也有兴趣，加我的微信公众号：hacker-thinking ，并发送“爱学习，爱分享”，我将加你为好友并把你加到刚才提到的“软件匠艺小组分享”群，一起学习进步。&lt;/p&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1706,9 +1702,7 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
             <pubDate>Wed, 13 Jan 2016 19:06:42 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/01/13/password-security-additional/</guid>
-            <description>
-
-&lt;p&gt;在发出前两篇安全相关的文章（&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt; ，&lt;a href=&#34;http://blog.coderzh.com/2016/01/10/a-password-security-design-example/&#34;&gt;即使被拖库，也可以保证密码不泄露&lt;/a&gt;）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。&lt;/p&gt;
+            <description>&lt;p&gt;在发出前两篇安全相关的文章（&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt; ，&lt;a href=&#34;http://blog.coderzh.com/2016/01/10/a-password-security-design-example/&#34;&gt;即使被拖库，也可以保证密码不泄露&lt;/a&gt;）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。&lt;/p&gt;
 
 &lt;p&gt;正如张小龙说的，“我所说的一切都是错的”。&lt;/p&gt;
 
@@ -1720,7 +1714,7 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
 
 &lt;p&gt;另一方面，目前大量网站还在使用 HTTP ，很多游戏设计时也并未使用 TLS ，所以，我上篇文章使用的方法还是有一定的意义的。&lt;/p&gt;
 
-&lt;h3 id=&#34;反馈汇总:1114219843eb3806f45029c8d223a620&#34;&gt;反馈汇总&lt;/h3&gt;
+&lt;h3 id=&#34;反馈汇总&#34;&gt;反馈汇总&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
@@ -1751,7 +1745,8 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
 &lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;好了，我所说的也都是错的。欢迎继续交流。&lt;/p&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1760,9 +1755,7 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
             <pubDate>Sun, 10 Jan 2016 23:06:42 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</guid>
-            <description>
-
-&lt;p&gt;在前一篇文章《&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt;》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。&lt;/p&gt;
+            <description>&lt;p&gt;在前一篇文章《&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt;》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。&lt;/p&gt;
 
 &lt;p&gt;首先，我们明确一下安全加密方案的终极目标：&lt;/p&gt;
 
@@ -1835,7 +1828,7 @@ AES(SharedKey, Ticket)
 
 &lt;p&gt;密码验证通过后，服务端生成一个随机的临时密钥 TempKey（使用安全的随机函数），并使用 RandKey 做为密钥，传输给客户端。之后双方的数据交互都通过 TempKey 作为 AES 密钥进行加密。&lt;/p&gt;
 
-&lt;h4 id=&#34;假设被拖库了:348d28cc795f0a1857c92b26f086746c&#34;&gt;假设被拖库了&lt;/h4&gt;
+&lt;h4 id=&#34;假设被拖库了&#34;&gt;假设被拖库了&lt;/h4&gt;
 
 &lt;p&gt;以上就是整个加密传输、存储的全过程。我们来假设几种攻击场景：&lt;/p&gt;
 
@@ -1859,7 +1852,7 @@ AES(SharedKey, Ticket)
 &lt;p&gt;具体是这样的：用户正常的登录，服务端验证通过后，生成新的 Salt2 ，然后根据传过来的 SaltHash1 重新计算了 SaltHash2 存入数据库。下次用户再次登录时，获取到的是新的 Salt2 ，密码没有变，同样能登录，攻击者之前拖库的那份数据也失效了。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;q-a:348d28cc795f0a1857c92b26f086746c&#34;&gt;Q &amp;amp; A&lt;/h4&gt;
+&lt;h4 id=&#34;q-a&#34;&gt;Q &amp;amp; A&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;使用 bcrypt 慢哈希函数，服务端应对大量的用户登录请求，性能承受的了吗？&lt;/p&gt;
@@ -1881,7 +1874,7 @@ AES(SharedKey, Ticket)
 
 &lt;p&gt;欢迎大家针对本文的方案进行讨论，如有不实或者考虑不周的地方，请尽情指出。或者有更好的建议或意见，欢迎交流！&lt;/p&gt;
 
-&lt;h3 id=&#34;更新-反馈汇总:348d28cc795f0a1857c92b26f086746c&#34;&gt;更新：反馈汇总&lt;/h3&gt;
+&lt;h3 id=&#34;更新-反馈汇总&#34;&gt;更新：反馈汇总&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
@@ -1910,7 +1903,8 @@ AES(SharedKey, Ticket)
 &lt;/ol&gt;
 
 &lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1919,15 +1913,15 @@ AES(SharedKey, Ticket)
             <pubDate>Sun, 03 Jan 2016 18:23:28 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/01/03/security-design/</guid>
-            <description>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/security.jpg-wt&#34; alt=&#34;security&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/security.jpg-wt&#34; alt=&#34;security&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;引子:c2254085ba550b8986e017a4f607e2b0&#34;&gt;引子&lt;/h3&gt;
+&lt;h3 id=&#34;引子&#34;&gt;引子&lt;/h3&gt;
 
 &lt;p&gt;最近有个虚拟练习项目，涉及到系统安全保障的设计，于是对安全保障这块做了一些更深入的了解。发现了很多有趣的东西，开阔了眼界。中间查了一些资料，于是我打算重新整理，用更加循序渐进，大家都能懂的方式，说一说如何设计一个安全的系统。&lt;/p&gt;
 
-&lt;h3 id=&#34;著名的安全事件:c2254085ba550b8986e017a4f607e2b0&#34;&gt;著名的安全事件&lt;/h3&gt;
+&lt;h3 id=&#34;著名的安全事件&#34;&gt;著名的安全事件&lt;/h3&gt;
 
 &lt;p&gt;首先来看看最近几年比较著名的拖库撞库后密码泄露的事件：&lt;/p&gt;
 
@@ -1945,7 +1939,7 @@ AES(SharedKey, Ticket)
 
 &lt;p&gt;这么多大公司大网站的系统都遭到攻击，泄露用户信息，更别说其他小网站了。这些攻击都可以从技术上来进行防范的，但是我们看到即使是大公司，安全方面也是那么的薄弱。&lt;/p&gt;
 
-&lt;h3 id=&#34;防范方法:c2254085ba550b8986e017a4f607e2b0&#34;&gt;防范方法&lt;/h3&gt;
+&lt;h3 id=&#34;防范方法&#34;&gt;防范方法&lt;/h3&gt;
 
 &lt;p&gt;防范的方法简单来说数据从用户键盘敲出的那一刻，到服务器后台存储都要保持正确的姿势。比如：&lt;/p&gt;
 
@@ -1956,25 +1950,25 @@ AES(SharedKey, Ticket)
 &lt;li&gt;用正确的姿势对数据进行备份和监控。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;用正确的姿势保存密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;用正确的姿势保存密码&lt;/h3&gt;
+&lt;h3 id=&#34;用正确的姿势保存密码&#34;&gt;用正确的姿势保存密码&lt;/h3&gt;
 
 &lt;p&gt;这一步非常重要，也比较复杂。用户在浏览器里输入密码，传输到服务器端进行验证，服务端将之前保存的密码信息和用户的输入进行比对。&lt;/p&gt;
 
-&lt;h4 id=&#34;1-低级错误-明文保存密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;1. 低级错误：明文保存密码&lt;/h4&gt;
+&lt;h4 id=&#34;1-低级错误-明文保存密码&#34;&gt;1. 低级错误：明文保存密码&lt;/h4&gt;
 
 &lt;p&gt;安全性最低的是在服务端明文保存用户的密码，一旦服务器被入侵，数据被拖走（拖库），所有用户的密码都直接的暴露在外面。这是最初级的做法，毫无安全性可言。假如你在一个网站或论坛注册了一个账号，该网站自动发了一封邮件告诉你注册成功，里面明文写了你的密码，赶紧把密码改了然后再也不要访问这个网站。&lt;/p&gt;
 
-&lt;h4 id=&#34;2-低级错误-可逆加密密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;2. 低级错误：可逆加密密码&lt;/h4&gt;
+&lt;h4 id=&#34;2-低级错误-可逆加密密码&#34;&gt;2. 低级错误：可逆加密密码&lt;/h4&gt;
 
 &lt;p&gt;既然不能明文保存密码，那当然是加密保存了。耍个小聪明，比如把密码的字母倒着存，或者每个字母存后一个字母，或者进行异或混淆处理，表面上密码看上去已经看不出来原始的密码是什么了，但实际上这个和明文保存密码并没有本质区别，因为黑客既然可以入侵你的服务器，自然可以拿到你的加密代码，只要按你的算法进行简单的解密就可以得到原始密码。&lt;/p&gt;
 
-&lt;h4 id=&#34;3-错误方法-md5-加密密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;3. 错误方法：md5 加密密码&lt;/h4&gt;
+&lt;h4 id=&#34;3-错误方法-md5-加密密码&#34;&gt;3. 错误方法：md5 加密密码&lt;/h4&gt;
 
 &lt;p&gt;在我还是一个初学者的时候，我已被告知不能用前两种方式保存密码，当时的主流方法是使用 md5 加密密码。（年代久远，现在已绝非主流了。） md5 是一种不可逆的加密方法，即密码被 md5 加密后是无法解密出原始密码的，验证密码是否正确的方法是将用户输入的密码 md5 加密后于数据库里保存的 md5 机密后的结果进行比对。这样，服务器端在不知道真实用户密码的情况下也能对用户密码进行验证了。&lt;/p&gt;
 
 &lt;p&gt;这是早期比较主流的做法，然而，这依然是非常不安全的。因为只要枚举所有短密码进行 md5 加密，做成一个索引表，就能轻易的逆推出原始密码。这种预先计算好的用于逆推加密散列函数的表就是“彩虹表”。随着“彩虹表”不断变大，md5 的加密已经变得非常的不安全。2015年10月网易邮箱的用户密码泄露也被怀疑只对密码进行了 md5 加密。&lt;/p&gt;
 
-&lt;h4 id=&#34;4-正确方法-加盐-hash-保存密码:c2254085ba550b8986e017a4f607e2b0&#34;&gt;4. 正确方法：加盐 hash 保存密码&lt;/h4&gt;
+&lt;h4 id=&#34;4-正确方法-加盐-hash-保存密码&#34;&gt;4. 正确方法：加盐 hash 保存密码&lt;/h4&gt;
 
 &lt;p&gt;加盐 hash 是指在加密密码时，不只是对密码进行 hash ，而是对密码进行调油加醋，放点盐（salt）再加密，一方面，由于你放的这点盐，让密码本身更长强度更高，彩虹表逆推的难度更大，也因你放的这点盐，让黑客进行撞库时运算量更大，破解的难度更高。&lt;/p&gt;
 
@@ -2113,7 +2107,7 @@ AES(SharedKey, Ticket)
 
 &lt;p&gt;key 可以保存在极高安全性的通用的 key 管理系统，使用加密协议传输，对访问者进行验证，只允许特定的机器有权限访问。&lt;/p&gt;
 
-&lt;h3 id=&#34;用正确的姿势传输数据:c2254085ba550b8986e017a4f607e2b0&#34;&gt;用正确的姿势传输数据&lt;/h3&gt;
+&lt;h3 id=&#34;用正确的姿势传输数据&#34;&gt;用正确的姿势传输数据&lt;/h3&gt;
 
 &lt;p&gt;使用 HTTP 协议传输数据时，数据都是明文传输的，数据从发出到服务器接收，中间可能被劫持，篡改。比如常见的 DNS 劫持，HTTP 劫持，中间人攻击。&lt;/p&gt;
 
@@ -2125,7 +2119,7 @@ AES(SharedKey, Ticket)
 &lt;li&gt;确保信息在传输时不被篡改，或者数据被篡改时能立即发现。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;1-验证服务端的合法性:c2254085ba550b8986e017a4f607e2b0&#34;&gt;1. 验证服务端的合法性&lt;/h4&gt;
+&lt;h4 id=&#34;1-验证服务端的合法性&#34;&gt;1. 验证服务端的合法性&lt;/h4&gt;
 
 &lt;p&gt;《改变未来的九大算法》一书中提到了公钥加密和数字签名技术，这是进行安全通信的基础技术保障。这里涉及到了加密技术，先了解两个最基础的概念：&lt;/p&gt;
 
@@ -2140,7 +2134,7 @@ AES(SharedKey, Ticket)
 
 &lt;p&gt;使用 HTTPS 时，数字证书里包含了名称和公钥信息，只要认证该证书是合法的，并且对方能理解用该公钥加密的信息，就能确定是合法的服务端。&lt;/p&gt;
 
-&lt;h4 id=&#34;2-确保通信的安全:c2254085ba550b8986e017a4f607e2b0&#34;&gt;2. 确保通信的安全&lt;/h4&gt;
+&lt;h4 id=&#34;2-确保通信的安全&#34;&gt;2. 确保通信的安全&lt;/h4&gt;
 
 &lt;p&gt;既然使用非对称加密的方式，可以保证双方安全的通信，那是不是就一直使用非对称加密传输数据就行了？理论上是可以的，但是非对称加密的效率要比对称加密的效率低很多。通常的做法是，通过非对称加密的方法，协商出一个只有双方知道的对称加密密钥。&lt;/p&gt;
 
@@ -2170,7 +2164,7 @@ AES(SharedKey, Ticket)
 
 &lt;p&gt;HTTPS 正是使用了上述的原理，保证了通信的安全。所以，任何对安全有需求的系统都应该使用 HTTPS。如果是使用自有协议开发，比如 APP 或游戏，应该使用上述的方法保障通信的安全。&lt;/p&gt;
 
-&lt;h3 id=&#34;用正确的姿势加密敏感信息:c2254085ba550b8986e017a4f607e2b0&#34;&gt;用正确的姿势加密敏感信息&lt;/h3&gt;
+&lt;h3 id=&#34;用正确的姿势加密敏感信息&#34;&gt;用正确的姿势加密敏感信息&lt;/h3&gt;
 
 &lt;p&gt;我们都知道，用户的密码不能明文保存，而且要使用不可逆的加密算法，只保存最终的 hash 结果用来验证是否正确。那用户其他的敏感信息呢？比如身份证、银行卡、信用卡等信息，该如何加密保存而不被泄露呢？&lt;/p&gt;
 
@@ -2182,17 +2176,17 @@ AES(SharedKey, Ticket)
 
 &lt;p&gt;2014年3月携程泄露用户银行卡信息就是因为没有遵循 &lt;a href=&#34;http://baike.baidu.com/view/8417913.htm&#34;&gt;PCI DSS&lt;/a&gt; 标准。&lt;/p&gt;
 
-&lt;h3 id=&#34;用正确的姿势对数据进行备份和监控:c2254085ba550b8986e017a4f607e2b0&#34;&gt;用正确的姿势对数据进行备份和监控&lt;/h3&gt;
+&lt;h3 id=&#34;用正确的姿势对数据进行备份和监控&#34;&gt;用正确的姿势对数据进行备份和监控&lt;/h3&gt;
 
 &lt;p&gt;2015年5月的携程数据被删事件，就是数据备份没有做好的例子。数据备份是为了防止由于硬盘损坏或人为破坏导致的数据丢失。主要措施有：磁盘 raid，物理备份（磁带库），异地的逻辑备份。同时做好权限控制，并对访问记录做好监控，及时发现问题，保留现场证据。&lt;/p&gt;
 
-&lt;h2 id=&#34;总结:c2254085ba550b8986e017a4f607e2b0&#34;&gt;总结&lt;/h2&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
 
 &lt;p&gt;本文总结了设计一个安全系统的基本原理和方法，并没有举出一个特定具体的方案，因为不同的系统对安全性的要求各有不同，设计者应该根据自身系统的特点进行具体设计。比如加盐 hash 的具体实施方法，salt 值如何构成等等。&lt;/p&gt;
 
 &lt;p&gt;本文所述内容如有不实之处或者有争议的部分，欢迎交流指出。&lt;/p&gt;
 
-&lt;h4 id=&#34;附录:c2254085ba550b8986e017a4f607e2b0&#34;&gt;附录&lt;/h4&gt;
+&lt;h4 id=&#34;附录&#34;&gt;附录&lt;/h4&gt;
 
 &lt;p&gt;常用的加密算法：&lt;/p&gt;
 
@@ -2210,15 +2204,14 @@ AES(SharedKey, Ticket)
 &lt;li&gt;AES：高级加密标准，是下一代的加密算法标准，速度快，安全级别高，用来替代原先的DES。密钥长度可以是128，192或256比特。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;参考文章:c2254085ba550b8986e017a4f607e2b0&#34;&gt;参考文章&lt;/h4&gt;
+&lt;h4 id=&#34;参考文章&#34;&gt;参考文章&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://crackstation.net/hashing-security.htm&#34;&gt;Salted Password Hashing - Doing it Right&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH 算法概述&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Rainbow_table&#34;&gt;Rainbow table&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;《改变未来的九大算法》第四章：公钥加密&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+&lt;/ol&gt;</description>
         </item>
         
         <item>
@@ -2228,6 +2221,8 @@ AES(SharedKey, Ticket)
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/12/27/code-review/</guid>
             <description>&lt;p&gt;代码审查（Code Review）是个老生常谈的话题了，我以前呆过的大公司也好，创业公司也好，都知道 Code Review 的好处，但真正去有效执行的却很少。有人认为“存在即合理”，大家都不愿意做 Code Review ，可能 Code Review 真的不好，影响开发效率。有的人想做，但是执行起来太困难。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;造成大家放弃 Code Review 的原因有哪些呢？我仔细想了想，大概有这几种：&lt;/p&gt;
 
@@ -2269,8 +2264,7 @@ AES(SharedKey, Ticket)
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/code-review.jpg&#34; alt=&#34;code-review&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Code Review ，你做了就知道！&lt;/p&gt;
-</description>
+&lt;p&gt;Code Review ，你做了就知道！&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -2279,17 +2273,17 @@ AES(SharedKey, Ticket)
             <pubDate>Sat, 21 Nov 2015 17:48:04 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</guid>
-            <description>
-
-&lt;p&gt;之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。&lt;/p&gt;
+            <description>&lt;p&gt;之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。&lt;/p&gt;
 
 &lt;p&gt;脚本路径：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;原理:5dd178ee6323378b401661424ca0e072&#34;&gt;原理&lt;/h3&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;原理&#34;&gt;原理&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;deploy.py&lt;/code&gt; 会自动执行 hugo 命令生成静态站点，然后将生成的文件拷贝到上层的一个目录里，然后，在那个目录里将文件 push 到你指定的 Git Repository 里。&lt;/p&gt;
 
-&lt;h3 id=&#34;使用方法:5dd178ee6323378b401661424ca0e072&#34;&gt;使用方法&lt;/h3&gt;
+&lt;h3 id=&#34;使用方法&#34;&gt;使用方法&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;将 &lt;code&gt;deploy.py&lt;/code&gt; 放到你的 Hugo 站点目录。（和 config.yaml 等文件放一起）&lt;/li&gt;
@@ -2335,8 +2329,7 @@ DEPLOY_DIR = &#39;gh-pages&#39;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;That&amp;rsquo;s all, 祝你好运！&lt;/p&gt;
-</description>
+&lt;p&gt;That&amp;rsquo;s all, 祝你好运！&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -2346,6 +2339,8 @@ DEPLOY_DIR = &#39;gh-pages&#39;
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</guid>
             <description>&lt;p&gt;上一篇中，探讨了前端框架的前世今生，最后还列举了当前比较火的几个前端框架，比如：Google 的 Angular，老牌的 Backbone , Facebook 的 React 等等。今天，我只想介绍一个小而美的前端框架：&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;为什么说 &lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 是一个小而美的前端框架呢？因为它小， min 版本大小是 72K （ gzip 压缩后是23 K），而 min 版本的 Angular 144K，React 132K。说它小而美并不单单指它的体积，因为还有很多体积比它小的框架，小而美主要是它使用起来太 TM 的简单直观了！&lt;/p&gt;
 
@@ -2408,8 +2403,7 @@ DEPLOY_DIR = &#39;gh-pages&#39;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/&#34;&gt;走进前端开发之：Bootstrap&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.coderzh.com/2015/11/07/front-end-dev/&#34;&gt;走进前端开发之：框架的演变&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+&lt;/ol&gt;</description>
         </item>
         
     </channel>

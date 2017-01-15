@@ -191,7 +191,7 @@
                       
                       
 
-<h3 id="历史回顾:2a00df786cb6dec28d1de16c1ce61a2d">历史回顾</h3>
+<h3 id="历史回顾">历史回顾</h3>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;">
 
@@ -201,31 +201,31 @@
 
 </div>
 
-<h3 id="什么是dos:2a00df786cb6dec28d1de16c1ce61a2d">什么是DOS</h3>
+<h3 id="什么是dos">什么是DOS</h3>
 
 <p>DoS是Denial of Service的简称，即拒绝服务，造成DoS的攻击行为被称为DoS攻击，其目的是使计算机或网络无法提供正常的服务。最常见的DoS攻击有计算机网络 带宽攻击和连通性攻击。带宽攻击指以极大的通信量冲击网络，使得所有可用网络资源都被消耗殆尽，最后导致合法的用户请求就无法通过。连通性攻击指用大量的 连接请求冲击计算机，使得所有可用的操作系统资源都被消耗殆尽，最终计算机无法再处理合法用户的请求。</p>
 
-<h3 id="什么是ddos:2a00df786cb6dec28d1de16c1ce61a2d">什么是DDOS</h3>
+<h3 id="什么是ddos">什么是DDOS</h3>
 
 <p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/fig1.gif" alt="" /></p>
 
 <p>分 布式拒绝服务(DDoS:Distributed Denial of Service)攻击指借助于客户/服务器技术，将多个计算机联合起来作为攻击平台，对一个或多个目标发动DoS攻击，从而成倍地提高拒绝服务攻击的威 力。通常，攻击者使用一个偷窃帐号将DDoS主控程序安装在一个计算机上，在一个设定的时间主控程序将与大量代理程序通讯，代理程序已经被安装在 Internet上的许多计算机上。代理程序收到指令时就发动攻击。利用客户/服务器技术，主控程序能在几秒钟内激活成百上千次代理程序的运行。</p>
 
-<h3 id="什么是drdos:2a00df786cb6dec28d1de16c1ce61a2d">什么是DRDOS</h3>
+<h3 id="什么是drdos">什么是DRDOS</h3>
 
 <p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/DRDoS.gif" alt="" /></p>
 
 <p>分 布式拒绝服务攻击（Distributed Reflection Denial Of Servie Attack），简称DRDOS，是新一代的DDOS攻击。当入侵者利用带有请求的SYN数据包对网络路由器进行洪水攻击。这些数据包带有虚假的IP地 址，这些地址都是XXX网站的。这样以来，路由器以为这些 SYN数据包是从XXX网站发送过来的，所以它们便对它们发送SYN/ACK数据包作为三次握手过程的第二步。恶意的数据包就反射到XXX网站的主机上 后，就形成了洪水攻击。</p>
 
-<h3 id="常用手段:2a00df786cb6dec28d1de16c1ce61a2d">常用手段</h3>
+<h3 id="常用手段">常用手段</h3>
 
 <p>常见的DDoS攻击手段有SYN Flood、Ping of Death、ACK Flood、UDP Flood、ICMP Flood、TCP Flood、Connections Flood、Script Flood、Proxy Flood等。</p>
 
-<h3 id="syn-flood:2a00df786cb6dec28d1de16c1ce61a2d">SYN Flood</h3>
+<h3 id="syn-flood">SYN Flood</h3>
 
 <p>据统计，在所有黑客攻击事件中，SYN攻击是最常见又最容易被利用的一种攻击手法。相信很多人还记得2000年YAHOO网站遭受的攻击事例，当时黑客利用的就是简单而有效的SYN攻击，有些网络蠕虫病毒配合SYN攻击造成更大的破坏。</p>
 
-<h4 id="tcp握手协议:2a00df786cb6dec28d1de16c1ce61a2d">TCP握手协议</h4>
+<h4 id="tcp握手协议">TCP握手协议</h4>
 
 <p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/180px-Tcp_normal.png" alt="" /></p>
 
@@ -248,13 +248,13 @@
 <li><tt>半连接存活时间</tt>：是指半连接队列的条目存活的最长时间，也即服务从收到SYN包到确认这个报文无效的最长时间，该时间值是所有重传请求包的最长等待时间总和。有时我们也称半连接存活时间为Timeout时间、SYN_RECV存活时间。</li>
 </ul>
 
-<h4 id="syn攻击原理:2a00df786cb6dec28d1de16c1ce61a2d">SYN攻击原理</h4>
+<h4 id="syn攻击原理">SYN攻击原理</h4>
 
 <p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/180px-Tcp_synflood.png" alt="" /></p>
 
 <p>从 上图可看到，服务器接收到连接请求（syn=j），将此信息加入未连接队列，并发送请求包给客户（syn=k,ack=j+1），此时进入 SYN_RECV状态。当服务器未收到客户端的确认包时，重发请求包，一直到超时，才将此条目从未连接队列删除。配合IP欺骗，SYN攻击能达到很好的效 果，通常，客户端在短时间内伪造大量不存在的IP 地址，向服务器不断地发送syn包，服务器回复确认包，并等待客户的确认，由于源地址是不存在的，服务器需要不断的重发直至超时，这些伪造的SYN包将长 时间占用未连接队列，正常的SYN请求被丢弃，目标系统运行缓慢，严重者引起网络堵塞甚至系统瘫痪。</p>
 
-<h4 id="如何发现syn攻击:2a00df786cb6dec28d1de16c1ce61a2d">如何发现SYN攻击</h4>
+<h4 id="如何发现syn攻击">如何发现SYN攻击</h4>
 
 <p>最简单的方法，使用netstat命令查看是否有很多TCP连接的状态为SYN_RECV 。如：下面的可判定该服务器正在收到SYN攻击。</p>
 
@@ -282,13 +282,13 @@ tcp　0　 0 10.11.11.11:23&nbsp;&nbsp;&nbsp; 236.219.139.207:49162&nbsp; SYN_RE
 
 <p>&nbsp;</p>
 
-<h3 id="ping-of-death:2a00df786cb6dec28d1de16c1ce61a2d">Ping of Death</h3>
+<h3 id="ping-of-death">Ping of Death</h3>
 
 <p>所谓Ping of Death，就是利用一些尺寸超大的ICMP报文对系统进行的一种攻击。IP报文的长度字段为16位，这表明一个IP报文的最大长度为65535。对于 ICMP 回应请求报文，如果数据长度大于65507，就会使ICMP数据＋IP头长度(20)＋ICMP头长度（8）&gt; 65535。对于有些路由器或系统，在接收到一个这样的报文后，由于处理不当，会造成系统崩溃、死机或重启。</p>
 
 <p>实际上从早先版本的Windows上就可以运行 Ping of Death。在命令行下只需键入：&#8220;ping -l 65550 攻击目标&#8221;即可。Windows还有一个漏洞就是它不但在收到这种无效数据时会崩溃，而且还可以在偶然的情况下生成这种数据。Windows的较新版本防 止您发送这些数据。</p>
 
-<h3 id="如何防御拒绝服务攻击:2a00df786cb6dec28d1de16c1ce61a2d">如何防御拒绝服务攻击</h3>
+<h3 id="如何防御拒绝服务攻击">如何防御拒绝服务攻击</h3>
 
 <ol>
 <li><p><tt>监控骨干网络设备，减少骨干网主机的漏洞</tt></p>

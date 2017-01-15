@@ -193,7 +193,7 @@
 
 <p><span style="font-size: 14px;"><span style="color: red;">声明：本文仅供学习研究之用，对于本文提到的某些网站的XSS漏洞，请读者发扬高尚的人道主义精神不要去危害他人，同时希望相应的网站能够尽快修补XSS漏洞。</span></span></p>
 
-<h3 id="简介:8ecfdcad52867c9dd8dec06e7367b9d4">简介</h3>
+<h3 id="简介">简介</h3>
 
 <p>XSS又叫CSS (Cross Site Script) ，跨站脚本攻击。它指的是恶意攻击者往Web页面里插入恶意html代码，当用户浏览该页之时，嵌入其中Web里面的html代码会被执行，从而达到恶意用户的特殊目的。</p>
 
@@ -223,13 +223,13 @@ http://www.xxx.com/reg.asp?name=&lt;script&gt;x=document.cookie;alert(x);&lt;/sc
 
 <p>上面的URL你还认得吗？除非你把它转换出来。（进制转换可以使用Napkin工具，哎，太坏了。。有人问Napkin的下载地址，贴在这里好了：<a href="http://www.0x90.org/releases/napkin/Napkin-1.0-Windows.zip）">http://www.0x90.org/releases/napkin/Napkin-1.0-Windows.zip）</a></p>
 
-<h3 id="根本原因:8ecfdcad52867c9dd8dec06e7367b9d4">根本原因</h3>
+<h3 id="根本原因">根本原因</h3>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;">1. 没有对输入进行约束，没有对输出进行编码
 
 2. 没有严格区分&#8220;数据&#8221;和&#8220;代码&#8221;</div>
 
-<h3 id="示例:8ecfdcad52867c9dd8dec06e7367b9d4">示例</h3>
+<h3 id="示例">示例</h3>
 
 <p>发现大名鼎鼎的淘宝网也存在这样的漏洞，我们在搜索框中输入：</p>
 
@@ -239,7 +239,7 @@ http://www.xxx.com/reg.asp?name=&lt;script&gt;x=document.cookie;alert(x);&lt;/sc
 
 <p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/TAOBAO.JPG" alt="" /></p>
 
-<h3 id="使用时机:8ecfdcad52867c9dd8dec06e7367b9d4">使用时机</h3>
+<h3 id="使用时机">使用时机</h3>
 
 <p>我尝试在各种不同网站寻找 XSS漏洞， baidu, amazon.cn, youku.com, dangdang.com等等。结果，我发现XSS漏洞非常普遍！其实XSS利用的是网页的回显，即，接收用户的输入，然后再在页面显示用户的输入。总结 一下几个可能会出现漏洞的地方：</p>
 
@@ -249,9 +249,9 @@ http://www.xxx.com/reg.asp?name=&lt;script&gt;x=document.cookie;alert(x);&lt;/sc
 
 <p>通过在上面那些类型的页面输入一些特殊的字符（包括&lt; &gt; / &ldquo;），如：&lt;/?jjkk&gt;，然后在结果页中的源码处搜索是否存在原样的：&lt;/?jjkk&gt;，如果存在，恭喜你，发现了一个XSS漏洞。</p>
 
-<h3 id="分类:8ecfdcad52867c9dd8dec06e7367b9d4">分类</h3>
+<h3 id="分类">分类</h3>
 
-<h4 id="1-dom-based-cross-site-scripting:8ecfdcad52867c9dd8dec06e7367b9d4">1. DOM-based cross-site scripting</h4>
+<h4 id="1-dom-based-cross-site-scripting">1. DOM-based cross-site scripting</h4>
 
 <p>页面本身包含一些DOM对象的操作，如果未对输入的参数进行处理，可能会导致执行恶意脚本。如下面一些DOM操作：</p>
 
@@ -319,15 +319,15 @@ http://www.xxx.com/reg.asp?name=&lt;script&gt;x=document.cookie;alert(x);&lt;/sc
 
 <span style="color: #fb660a; font-weight: bold;">&lt;/SCRIPT&gt;</span></div>
 
-<h4 id="nbsp-2-reflected-cross-site-scripting:8ecfdcad52867c9dd8dec06e7367b9d4">&nbsp;2. Reflected cross-site scripting</h4>
+<h4 id="nbsp-2-reflected-cross-site-scripting">&nbsp;2. Reflected cross-site scripting</h4>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 也被称为None-Persistent cross-site scripting，即，非持久化的XSS攻击，是我们通常所说的，也是最常用，使用最广的一种方式。它通过给别人发送带有恶意脚本代码参数的URL，当URL地址被打开时，特有的恶意代码参数被HTML解析、执行。它的特点是非持久化，必须用户点击带有特定参数的链接菜能引起。</p>
 
-<h4 id="nbsp-3-persistent-cross-site-scripting:8ecfdcad52867c9dd8dec06e7367b9d4">&nbsp;3. Persistent cross-site scripting</h4>
+<h4 id="nbsp-3-persistent-cross-site-scripting">&nbsp;3. Persistent cross-site scripting</h4>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 持久化XSS攻击，指的是恶意脚本代码被存储进被攻击的数据库，当其他用户正常浏览网页时，站点从数据库中读取了非法用户存入非法数据，恶意脚本代码被执行。这种攻击类型通常在留言板等地方出现。</p>
 
-<h3 id="实施方式:8ecfdcad52867c9dd8dec06e7367b9d4">实施方式</h3>
+<h3 id="实施方式">实施方式</h3>
 
 <p>我们来试一把Reflected cross-site scripting。当我们在某网站输入参数XXX，发现参数XXX原样的出现在了页面源码中：</p>
 
@@ -399,13 +399,13 @@ eval(a+b+c+d);</div>
 
 <p>更加详细的列表请参见 <a href="http://ha.ckers.org/xss.html">5</a></p>
 
-<h3 id="危害:8ecfdcad52867c9dd8dec06e7367b9d4">危害</h3>
+<h3 id="危害">危害</h3>
 
 <ol>
 <li>盗取各类用户帐号，如机器登录帐号、用户网银帐号、各类管理员帐号2.  控制企业数据，包括读取、篡改、添加、删除企业敏感数据的能力3.  盗窃企业重要的具有商业价值的资料4.  非法转账5.  强制发送电子邮件6.  网站挂马7.  控制受害者机器向其它网站发起攻击</li>
 </ol>
 
-<h3 id="防范:8ecfdcad52867c9dd8dec06e7367b9d4">防范</h3>
+<h3 id="防范">防范</h3>
 
 <ol>
 <li><p>必须明确：一切输入都是有害的，不要信任一切输入的数据。2.  缓和XSS问题的首要法则是确定哪个输入是有效的，并且拒绝所有别的无效输入。3.  替换危险字符，如：&rdquo;&amp;&rdquo;, &ldquo;&lt;&rdquo;, &ldquo;&gt;&rdquo;, &ldquo;&rdquo;&ldquo;，&rdquo;&lsquo;&ldquo;, &ldquo;/&rdquo;, &ldquo;?&ldquo;，&rdquo;;&ldquo;, &ldquo;:&ldquo;, &ldquo;%&rdquo;, &ldquo;&lt;SPACE&gt;&rdquo;, &ldquo;=&rdquo;, &ldquo;+&ldquo;。各种语言替换的程度不尽相同，但是基本上能抵御住一般的XSS攻击。</p>
@@ -549,13 +549,13 @@ eval(a+b+c+d);</div>
 <p><span style="color: #ffffff;">}</span></div></p></li>
 </ol>
 
-<h3 id="发现问题:8ecfdcad52867c9dd8dec06e7367b9d4">发现问题</h3>
+<h3 id="发现问题">发现问题</h3>
 
 <ol>
 <li>查找所有包含用户输入的入口。2.  跟踪流入应用程序的每一个数据。3.  确定数据是否与输出有关系。4.  如果与输出有关，它是不是原始数据，是不是经过处理的？</li>
 </ol>
 
-<h3 id="参考资料:8ecfdcad52867c9dd8dec06e7367b9d4">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 
 <ol>
 <li>Michael Howard, David LeBlanc. &ldquo;Writing Secure Code&rdquo;</li>

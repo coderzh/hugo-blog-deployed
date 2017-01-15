@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title> on CoderZh Blog</title>
-        <link>http://blog.coderzh.com/</link>
+        <title>CoderZh Blog on CoderZh Blog</title>
+        <link>http://blog.coderzh.com/feed/index.xml</link>
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
@@ -20,13 +20,13 @@
 
 &lt;p&gt;光阴似箭，岁月如梭，仿佛去年写「我的 2015」就在昨日，然而时间的确在滴滴答答中度过了 365 天。这一年里，经历了一些事，读了一些书，努力过，收获过，感恩 2016。&lt;/p&gt;
 
-&lt;h4 id=&#34;公众号:177cfd9375830f046ca94878194dad36&#34;&gt;公众号&lt;/h4&gt;
+&lt;h4 id=&#34;公众号&#34;&gt;公众号&lt;/h4&gt;
 
 &lt;p&gt;其中一个变化是，我的公众号（博客）的更新频率越来越低了。2016 年我总共写了 20 多篇文章，平均算下来，2 周才有 1 篇。相比去年的 1 周 1 篇少了不少。&lt;/p&gt;
 
 &lt;p&gt;这其中有几个原因，首先，工作占据了我更多的时间。有的时候为了解决问题，不可避免的把工作带回了家。其次，随着小孩的长大，周末需要花更多的时间带小孩，陪家人。第三，见识了越多优秀的人，越发现自己的无知，与其为了 1 周 凑上 1 篇，还不如多沉下心学习，做些更深入的研究，多读点书，多写点代码，多存点干货再来分享。第四，还是因为懒。&lt;/p&gt;
 
-&lt;h4 id=&#34;读书:177cfd9375830f046ca94878194dad36&#34;&gt;读书&lt;/h4&gt;
+&lt;h4 id=&#34;读书&#34;&gt;读书&lt;/h4&gt;
 
 &lt;p&gt;2016 年，我读了以下书：《必然》、《MacTalk 跨越边界》、《7 Eleven零售的哲学》、《改变未来的九大算法》、《重来》、《马克·扎克伯格传》、《硅谷钢铁侠：埃隆·马斯克》、《途客圈创业记》、《福特自传》、《人类简史：从动物到上帝》、《Google 重新定义公司》、《Android 软件安全与逆向分析》、《第二次机器革命》、《接纳不完美的自己》、《黑客》、《成为乔布斯》……&lt;/p&gt;
 
@@ -36,7 +36,7 @@
 
 &lt;p&gt;所以，接纳不完美的自己，第一步是把自己内心深处的房间打开。每当你觉得别人怎么怎么样时，你越是激动，越要想一想，我是不是越是一样，只是我把门锁上了(直白一点：你越认为别人笨，其实越是你笨。你越是认为别人心机婊，其实你越是心机婊)。于是你会对别人的缺点更加宽容，也能更好的反思自我。第二步是必要时利用你的缺点。比如有人要非法拆迁你的房子，你是不是表现的无赖一些反而会更好。&lt;/p&gt;
 
-&lt;h4 id=&#34;代码:177cfd9375830f046ca94878194dad36&#34;&gt;代码&lt;/h4&gt;
+&lt;h4 id=&#34;代码&#34;&gt;代码&lt;/h4&gt;
 
 &lt;p&gt;写代码依然是一件非常有意思的事情。2016 年的一个重大变化是，我的开发环境已经全面转向了 Mac。我深刻的感受到了《成为乔布斯》书中提到的乔布斯对艺术和美的追求。一句话：用更好看的 Mac，写代码不折腾。&lt;/p&gt;
 
@@ -48,11 +48,11 @@
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/github2016.png&#34; alt=&#34;github2016&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;工作:177cfd9375830f046ca94878194dad36&#34;&gt;工作&lt;/h4&gt;
+&lt;h4 id=&#34;工作&#34;&gt;工作&lt;/h4&gt;
 
 &lt;p&gt;依然认为是最棒的公司。来年继续加油。&lt;/p&gt;
 
-&lt;h4 id=&#34;不足:177cfd9375830f046ca94878194dad36&#34;&gt;不足&lt;/h4&gt;
+&lt;h4 id=&#34;不足&#34;&gt;不足&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;公众号（博客）写少了。&lt;/li&gt;
@@ -60,11 +60,11 @@
 &lt;li&gt;运动少了。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;展望:177cfd9375830f046ca94878194dad36&#34;&gt;展望&lt;/h4&gt;
+&lt;h4 id=&#34;展望&#34;&gt;展望&lt;/h4&gt;
 
 &lt;p&gt;好的习惯继续发扬，不足要改掉，健身的重要性要提高一个 Level。&lt;/p&gt;
 
-&lt;h4 id=&#34;最后:177cfd9375830f046ca94878194dad36&#34;&gt;最后&lt;/h4&gt;
+&lt;h4 id=&#34;最后&#34;&gt;最后&lt;/h4&gt;
 
 &lt;p&gt;感谢你们！如此低的更新频率下还没有退订，感谢！Happy 2017!&lt;/p&gt;
 </description>
@@ -358,7 +358,7 @@
 
 &lt;p&gt;当然，包括这句话也可能是错的。&lt;/p&gt;
 
-&lt;h3 id=&#34;禅定时刻:33f22c57bda1b27d5a03c564ba4d31d4&#34;&gt;禅定时刻&lt;/h3&gt;
+&lt;h3 id=&#34;禅定时刻&#34;&gt;禅定时刻&lt;/h3&gt;
 
 &lt;p&gt;那些你想象中的汹涌流量，也许永远不会到来。&lt;/p&gt;
 
@@ -1439,9 +1439,7 @@ func allItemsMatch&amp;lt;
             <pubDate>Sun, 10 Apr 2016 21:57:06 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/04/10/7-eleven/</guid>
-            <description>
-
-&lt;p&gt;1956 年 4 月，有为青年「铃木敏文」大学毕业，进入东京出版贩卖公司，从「退货负责人」到「出版科学研究所」，再到宣传部杂志「编辑」，生活过的充实有趣。在三十岁之际，铃木打算不依靠公司，以自身的力量制作一个独立的电视节目。&lt;/p&gt;
+            <description>&lt;p&gt;1956 年 4 月，有为青年「铃木敏文」大学毕业，进入东京出版贩卖公司，从「退货负责人」到「出版科学研究所」，再到宣传部杂志「编辑」，生活过的充实有趣。在三十岁之际，铃木打算不依靠公司，以自身的力量制作一个独立的电视节目。 &lt;/p&gt;
 
 &lt;p&gt;铃木找到了赞助商「伊藤洋华堂」，一个经营大型商场的公司。「伊藤洋华堂」总部的人和铃木说：「就在我们这里完成这一项目怎样？」&lt;/p&gt;
 
@@ -1481,7 +1479,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;这些今天看来司空见惯的东西在当时可是相当创新的。&lt;/p&gt;
 
-&lt;h3 id=&#34;零售的哲学:33b04dcd5bf6f530f0f329b8789dcba3&#34;&gt;零售的哲学&lt;/h3&gt;
+&lt;h3 id=&#34;零售的哲学&#34;&gt;零售的哲学&lt;/h3&gt;
 
 &lt;p&gt;《零售的哲学》这本书是铃木的自述，字里行间透露出了他深刻领悟用户需求，独到的想法，不管多难坚持付诸执行的决心。&lt;/p&gt;
 
@@ -1489,8 +1487,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;铃木从来都没有喜欢过零售行业，他没有抱怨，想法很简单：既然做了，就要做到最好。&lt;/p&gt;
 
-&lt;p&gt;我们程序员，并不从事零售行业，也能从铃木的自述里得到一些启发。&lt;/p&gt;
-</description>
+&lt;p&gt;我们程序员，并不从事零售行业，也能从铃木的自述里得到一些启发。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1499,9 +1496,7 @@ func allItemsMatch&amp;lt;
             <pubDate>Sat, 09 Apr 2016 14:57:00 UTC</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
-            <description>
-
-&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
+            <description>&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
 
 &lt;p&gt;而如今网络如此发达，大多数的答案都可以通过你问出正确的问题得到解答。凯文·凯利在他的《必然》里有提到，未来，我们不缺乏答案，缺的是问出好的问题。Google 几乎索引了我们想要知道的所有问题的答案（百度索引了所有的相反答案），所以，理论上，我们不再需要记录自己的笔记。&lt;/p&gt;
 
@@ -1515,7 +1510,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;既可以说是「全新」，也是可以说是用最「原始」的方式管理笔记。即在本地完全由纯文本的方式来进行笔记管理。这种方式不再依赖任何一个笔记软件。&lt;/p&gt;
 
-&lt;h3 id=&#34;所有的软件都不可靠:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;所有的软件都不可靠&lt;/h3&gt;
+&lt;h3 id=&#34;所有的软件都不可靠&#34;&gt;所有的软件都不可靠&lt;/h3&gt;
 
 &lt;p&gt;现有的所有笔记软件给我们一种假象：我们可以永远记录下去。事实并非如此，现在科技发展如此之快，公司被淘汰的速度也在加速，很有可能现在最流行的笔记软件几年后就关门大吉。&lt;/p&gt;
 
@@ -1527,7 +1522,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;这将导致之前所有使用 Parse 服务的软件重新去考虑迁移的事宜。而事实上有很多软件已工作多年，而且几乎不再维护，一旦关闭，如果不进行迁移维护，那些软件将会失效。&lt;/p&gt;
 
-&lt;h3 id=&#34;回归原始:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;回归原始&lt;/h3&gt;
+&lt;h3 id=&#34;回归原始&#34;&gt;回归原始&lt;/h3&gt;
 
 &lt;p&gt;使用纯文本在本地进行笔记管理，是最原始的笔记方式。你不必再担心笔记软件停止服务后你的笔记在哪里的问题。你也不依赖于任何一款笔记编辑软件，因为任何文本编辑器都可以直接进行笔记编辑。&lt;/p&gt;
 
@@ -1539,7 +1534,7 @@ func allItemsMatch&amp;lt;
 &lt;li&gt;能不能保证笔记文件不丢失？&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;笔记搜索:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记搜索&lt;/h4&gt;
+&lt;h4 id=&#34;笔记搜索&#34;&gt;笔记搜索&lt;/h4&gt;
 
 &lt;p&gt;从本地文件夹里搜索文件，或者搜索文件里的内容，有很多的工具。这些工具都是可替代的，即使所有 GUI 的工具软件都不能用了，我们还有 find 和 grep 命令。&lt;/p&gt;
 
@@ -1551,7 +1546,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/find-notes.png-s&#34; alt=&#34;find-notes&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;笔记编辑:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记编辑&lt;/h4&gt;
+&lt;h4 id=&#34;笔记编辑&#34;&gt;笔记编辑&lt;/h4&gt;
 
 &lt;p&gt;当我想记录编程相关的笔记时，只需要按下 &lt;code&gt;np&lt;/code&gt; 空格，输入文字标题，将自动在合适的路径创建一个新的笔记并打开编辑。（n = new，p = programming 分类）&lt;/p&gt;
 
@@ -1569,7 +1564,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/atom-markdown.png-s&#34; alt=&#34;atom-markdown&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;alfred-workflow:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;Alfred Workflow&lt;/h4&gt;
+&lt;h4 id=&#34;alfred-workflow&#34;&gt;Alfred Workflow&lt;/h4&gt;
 
 &lt;p&gt;想实现上面 &lt;code&gt;f&lt;/code&gt; 和 &lt;code&gt;np&lt;/code&gt; 之类的功能非常简单，通过组合 Workflow 里的 FileFilter、ScriptFilter、Run Script 即可。&lt;/p&gt;
 
@@ -1579,22 +1574,21 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/alfred-workflows&#34;&gt;https://github.com/coderzh/alfred-workflows&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;笔记多平台同步:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记多平台同步&lt;/h4&gt;
+&lt;h4 id=&#34;笔记多平台同步&#34;&gt;笔记多平台同步&lt;/h4&gt;
 
 &lt;p&gt;各种网盘，综合考虑后，我选择了 Dropbox。（为了能正常使用 Dropbox 需要一点功夫。）&lt;/p&gt;
 
-&lt;h4 id=&#34;移动端同步与编辑:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;移动端同步与编辑&lt;/h4&gt;
+&lt;h4 id=&#34;移动端同步与编辑&#34;&gt;移动端同步与编辑&lt;/h4&gt;
 
 &lt;p&gt;在支持 Dropbox 同步同时又支持 Markdown 编辑的 App 里选择，最后我选择了 &lt;a href=&#34;https://bywordapp.com/&#34;&gt;Byword&lt;/a&gt;，因为它的 Markdown 编写体验真的很好。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/byword.PNG&#34; alt=&#34;byword&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;保证笔记文件不丢失:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;保证笔记文件不丢失&lt;/h3&gt;
+&lt;h3 id=&#34;保证笔记文件不丢失&#34;&gt;保证笔记文件不丢失&lt;/h3&gt;
 
 &lt;p&gt;除了 Dropbox 同步，我会定期使用 git 进行版本管理，Push 到自己的私人仓库里。&lt;/p&gt;
 
-&lt;p&gt;希望本文对喜欢做笔记的同学有点帮助吧。&lt;/p&gt;
-</description>
+&lt;p&gt;希望本文对喜欢做笔记的同学有点帮助吧。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1607,7 +1601,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;于是我想，当时看来挺不错的技术，几年后，或者十年后，会变成怎样。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt; &lt;strong&gt;于是我想，当时看来挺不错的技术，几年后，或者十年后，会变成怎样。&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;比如，著名的后端即服务（baas）的框架 &lt;a href=&#34;https://parse.com&#34;&gt;Parse&lt;/a&gt; 在 2013 年时被 Facebook 收购。前不久，在 2016 年 1 月，Facebook 因自身业务需求， 宣布将于 2017 年 1 月 28 日正式关闭 Parse 服务。&lt;/p&gt;
 
@@ -1649,8 +1643,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;前三个我已经忘的一干二净，但是在当时的情景下，对我的帮助和影响还是巨大的。&lt;/p&gt;
 
-&lt;p&gt;当然，我还在继续前进。下一个编程语言，我准备学习 Swift，纯粹为了好玩，因为「所有的编程技术都会成为历史」，如果一门编程语言能够给你编程语言之外的启发，也就足够了!&lt;/p&gt;
-</description>
+&lt;p&gt;当然，我还在继续前进。下一个编程语言，我准备学习 Swift，纯粹为了好玩，因为「所有的编程技术都会成为历史」，如果一门编程语言能够给你编程语言之外的启发，也就足够了!&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -1659,21 +1652,21 @@ func allItemsMatch&amp;lt;
             <pubDate>Sun, 27 Mar 2016 12:57:37 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
-            <description>
+            <description>&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;
 
-&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Hugo 本身有很多不错的主题，但挑剔的朋友可能会觉得还不够，希望看到 Jeklly 或 Hexo 里漂亮的主题时也能在 Hugo 里找到对应的主题。其实 Hugo 的主题制作并不复杂，有兴趣的同学可以尝试自己制作主题，或者将其他静态网站生成器里的主题转成 Hugo 的主题。&lt;/p&gt;
 
 &lt;p&gt;不会做的话参考我做的这个主题（&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;hugo-pacman-theme&lt;/a&gt;）代码，基本的 Hugo 模板功能都用上了。&lt;/p&gt;
 
-&lt;h3 id=&#34;pacman:54fdd68c9a36858a04277e9977a250be&#34;&gt;Pacman&lt;/h3&gt;
+&lt;h3 id=&#34;pacman&#34;&gt;Pacman&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://yangjian.me/pacman/&#34;&gt;Pacman&lt;/a&gt; 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：&lt;a href=&#34;https://github.com/coderzh/hugo-pacman-theme&#34;&gt;hugo-pacman-theme&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;演示地址：&lt;a href=&#34;http://coderzh.github.io/hugo-pacman-theme/&#34;&gt;http://coderzh.github.io/hugo-pacman-theme/&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;截图:54fdd68c9a36858a04277e9977a250be&#34;&gt;截图&lt;/h4&gt;
+&lt;h4 id=&#34;截图&#34;&gt;截图&lt;/h4&gt;
 
 &lt;p&gt;主页：&lt;/p&gt;
 
@@ -1683,7 +1676,7 @@ func allItemsMatch&amp;lt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/hugo-pacman-theme.png&#34; alt=&#34;hugo-pacman-theme&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;支持功能:54fdd68c9a36858a04277e9977a250be&#34;&gt;支持功能&lt;/h4&gt;
+&lt;h4 id=&#34;支持功能&#34;&gt;支持功能&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;分类&lt;/li&gt;
@@ -1699,7 +1692,7 @@ func allItemsMatch&amp;lt;
 &lt;li&gt;高度配置化，你要的东西都可以通过 config.toml 进行配置。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;使用方法:54fdd68c9a36858a04277e9977a250be&#34;&gt;使用方法&lt;/h3&gt;
+&lt;h3 id=&#34;使用方法&#34;&gt;使用方法&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;首先，确保安装了最新版 Hugo。下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;Hugo Release&lt;/a&gt;，如果使用 Mac ，直接用 Homebrew 安装：&lt;/p&gt;
@@ -1782,7 +1775,7 @@ RSSUri = &amp;quot;feed.xml&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;最后:54fdd68c9a36858a04277e9977a250be&#34;&gt;最后&lt;/h3&gt;
+&lt;h3 id=&#34;最后&#34;&gt;最后&lt;/h3&gt;
 
 &lt;p&gt;该主题参考的 &lt;a href=&#34;https://github.com/A-limon/pacman&#34;&gt;Pacman&lt;/a&gt;，使用 Hugo 的模板语法纯手工一行一行打造。有需要的朋友尽管拿去使用，有问题欢迎反馈：&lt;/p&gt;
 
@@ -1792,8 +1785,7 @@ RSSUri = &amp;quot;feed.xml&amp;quot;
 
 &lt;p&gt;Hugo 交流 QQ 群：512499080&lt;/p&gt;
 
-&lt;p&gt;该主题已经&lt;a href=&#34;https://github.com/spf13/hugoThemes/issues/121&#34;&gt;提交&lt;/a&gt;到官方的主题列表，相信不久就可以在官方的 &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;http://themes.gohugo.io/&lt;/a&gt; 上看到了。&lt;/p&gt;
-</description>
+&lt;p&gt;该主题已经&lt;a href=&#34;https://github.com/spf13/hugoThemes/issues/121&#34;&gt;提交&lt;/a&gt;到官方的主题列表，相信不久就可以在官方的 &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;http://themes.gohugo.io/&lt;/a&gt; 上看到了。&lt;/p&gt;</description>
         </item>
         
     </channel>

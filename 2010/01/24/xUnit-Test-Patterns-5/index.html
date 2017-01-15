@@ -182,8 +182,8 @@
                   <h1 class="post-title">《xUnit Test Patterns》学习笔记5 - xUnit基础</h1>
 
                   <p class="post-byline">
-                    by  · 2010年01月24日 · 2880 Words ·
-                    ~6min reading time |
+                    by  · 2010年01月24日 · 3467 Words ·
+                    ~7min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-01-24-xUnit-Test-Patterns-5.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -197,13 +197,13 @@
 
 <p>这几节我看的比较快一些，因为内容之间其实是有联系的，所以合在一起做一个笔记。6-10节主要介绍了什么是Fixture，如何保证一个Fresh Fixture，如何使用Setup，Tearndown，如何进行验证(Verify)，等等。</p>
 
-<h4 id="什么是fixture:7d47d71a0d04e88834101d47d7eacb82">什么是Fixture？</h4>
+<h4 id="什么是fixture">什么是Fixture？</h4>
 
 <p><font color="#ff0000">The test ﬁxture is everything we need to have in place to exercise the SUT.</font></p>
 
 <p>从作者的英文解释来看，Fixture确实是一个比较难定义的东西，所以作者用了everything这个词。</p>
 
-<h4 id="什么是fresh-fixture:7d47d71a0d04e88834101d47d7eacb82">什么是Fresh Fixture？</h4>
+<h4 id="什么是fresh-fixture">什么是Fresh Fixture？</h4>
 
 <p>一个测试案例一般都包含以下几个步骤：</p>
 
@@ -218,7 +218,7 @@
 
 <p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_2.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb.png" alt="image" title="image" /></a></p>
 
-<h4 id="什么是setup:7d47d71a0d04e88834101d47d7eacb82">什么是Setup？</h4>
+<h4 id="什么是setup">什么是Setup？</h4>
 
 <p>Setup是案例的准备阶段，主要有三种实现方式：In-line Fixture Setup, Delegated Setup, Implicit Setup。推荐使用的是Implicit Setup。</p>
 
@@ -417,7 +417,7 @@ Flight&nbsp;ﬂight;
 
 <p>通过参数化，可以简化测试代码，不需要为大量不同的输入数据分别编写测试案例。</p>
 
-<h4 id="avoiding-conditional-test-logic:7d47d71a0d04e88834101d47d7eacb82">Avoiding Conditional Test Logic</h4>
+<h4 id="avoiding-conditional-test-logic">Avoiding Conditional Test Logic</h4>
 
 <p>验证时，不要使用一些条件相关的逻辑！比如，<span style="color: red;">不要使用if</span>, loop之类的语句！下面是一个例子：</p>
 
@@ -446,11 +446,11 @@ assertEquals(</span><span style="color: #000000;">&ldquo;</span><span style="col
 
 <p>&nbsp;</p>
 
-<h4 id="working-backward:7d47d71a0d04e88834101d47d7eacb82">Working Backward</h4>
+<h4 id="working-backward">Working Backward</h4>
 
 <p>一个编写测试案例的小技巧或者说是习惯吧，就是<span style="color: red;">实现一个测试案例时，从最后一行开始写起</span>，比如，先写Assertions。可以一试。</p>
 
-<h4 id="using-test-driven-development-to-write-test-utility-method:7d47d71a0d04e88834101d47d7eacb82">Using Test-Driven Development to Write Test Utility Method</h4>
+<h4 id="using-test-driven-development-to-write-test-utility-method">Using Test-Driven Development to Write Test Utility Method</h4>
 
 <p>我们经常实现一些测试用的辅助方法，这些方法在实现过程中，使用TDD的方式去实现，编写一些简单的测试案例，保证辅助方法也是正确的。也就是说，<span style="color: red;">测试案例代码本身也是需要被测试的。</span></p>
 

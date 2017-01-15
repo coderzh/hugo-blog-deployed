@@ -189,9 +189,7 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>在前一篇文章《<a href="http://blog.coderzh.com/2016/01/03/security-design/">设计安全的账号系统的正确姿势</a>》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。</p>
+                      <p>在前一篇文章《<a href="http://blog.coderzh.com/2016/01/03/security-design/">设计安全的账号系统的正确姿势</a>》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。</p>
 
 <p>首先，我们明确一下安全加密方案的终极目标：</p>
 
@@ -264,7 +262,7 @@ AES(SharedKey, Ticket)
 
 <p>密码验证通过后，服务端生成一个随机的临时密钥 TempKey（使用安全的随机函数），并使用 RandKey 做为密钥，传输给客户端。之后双方的数据交互都通过 TempKey 作为 AES 密钥进行加密。</p>
 
-<h4 id="假设被拖库了:348d28cc795f0a1857c92b26f086746c">假设被拖库了</h4>
+<h4 id="假设被拖库了">假设被拖库了</h4>
 
 <p>以上就是整个加密传输、存储的全过程。我们来假设几种攻击场景：</p>
 
@@ -288,7 +286,7 @@ AES(SharedKey, Ticket)
 <p>具体是这样的：用户正常的登录，服务端验证通过后，生成新的 Salt2 ，然后根据传过来的 SaltHash1 重新计算了 SaltHash2 存入数据库。下次用户再次登录时，获取到的是新的 Salt2 ，密码没有变，同样能登录，攻击者之前拖库的那份数据也失效了。</p></li>
 </ol>
 
-<h4 id="q-a:348d28cc795f0a1857c92b26f086746c">Q &amp; A</h4>
+<h4 id="q-a">Q &amp; A</h4>
 
 <ol>
 <li><p>使用 bcrypt 慢哈希函数，服务端应对大量的用户登录请求，性能承受的了吗？</p>
@@ -310,7 +308,7 @@ AES(SharedKey, Ticket)
 
 <p>欢迎大家针对本文的方案进行讨论，如有不实或者考虑不周的地方，请尽情指出。或者有更好的建议或意见，欢迎交流！</p>
 
-<h3 id="更新-反馈汇总:348d28cc795f0a1857c92b26f086746c">更新：反馈汇总</h3>
+<h3 id="更新-反馈汇总">更新：反馈汇总</h3>
 
 <ol>
 <li><p><strong>“应该从源头上禁止用户使用简单密码”</strong></p>
@@ -340,6 +338,7 @@ AES(SharedKey, Ticket)
 
 <p>有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。<strong>应该去推动一下密码安全的业界标准，避免企业犯错用户买单</strong>。同时，<strong>互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！</strong></p>
 
+<p></p>
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

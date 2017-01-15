@@ -178,7 +178,7 @@
                   <h1 class="post-title">Emacs中打造强大的Python IDE</h1>
 
                   <p class="post-byline">
-                    by  · 2009年12月26日 · 1234 Words ·
+                    by  · 2009年12月26日 · 1316 Words ·
                     ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-12-26-emacspythonide.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -193,7 +193,7 @@
 
 <p>本文将介绍，在Emacs中，通过各种扩展，打造强大的Python IDE环境，包括<span style="color: #0000ff;">Snippet工具，智能提示，自动补全，重构工具，调试以及GAE的调试</span>，等等。以下各工具的安装前提是你对Emacs的配置文件有一定的了解，所有相关的el文件都必须放在load_path能够加载的地方。</p>
 
-<h4 id="span-1-yasnippet-http-code-google-com-p-yasnippet-span:b2a7bf5bb5141bc2b7769ca7ec92da83"><span><a href="http://code.google.com/p/yasnippet/">1. YASnippet</a> </span></h4>
+<h4 id="span-1-yasnippet-http-code-google-com-p-yasnippet-span"><span><a href="http://code.google.com/p/yasnippet/">1. YASnippet</a> </span></h4>
 
 <p>snippet工具，可自定义一些模板，必不可少的好东西！看了下面这个很酷的演示动画就明白了：</p>
 
@@ -207,7 +207,7 @@
 (yas/initialize)
 (yas/load-directory&nbsp;"~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")</span></div></div>
 
-<h4 id="toc_1:b2a7bf5bb5141bc2b7769ca7ec92da83">[</h4>
+<h4 id="toc_1">[</h4>
 
 <ol>
 <li>AutoComplete](<a href="http://www.emacswiki.org/emacs/AutoComplete">http://www.emacswiki.org/emacs/AutoComplete</a>)</li>
@@ -233,7 +233,7 @@
 (setq&nbsp;ac</span><span style="color: #000000;">-</span><span style="color: #000000;">dwim&nbsp;t)
 (define</span><span style="color: #000000;">-</span><span style="color: #000000;">key&nbsp;ac</span><span style="color: #000000;">-</span><span style="color: #000000;">mode</span><span style="color: #000000;">-</span><span style="color: #0000ff;">map</span><span style="color: #000000;">&nbsp;(kbd&nbsp;</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000; font-weight: bold;">M-TAB</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000;">)&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">auto-complete)</span></div></div></div></p>
 
-<h4 id="span:b2a7bf5bb5141bc2b7769ca7ec92da83"><span>[</h4>
+<h4 id="span"><span>[</h4>
 
 <ol>
 <li>Rope and Ropemacs](<a href="http://rope.sourceforge.net/ropemacs.html">http://rope.sourceforge.net/ropemacs.html</a>)     </span></li>
@@ -264,7 +264,7 @@
 <div class="cnblogs_code"><div><span style="color: #000000;">(pymacs</span><span style="color: #000000;">-</span><span style="color: #000000;">load&nbsp;</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000; font-weight: bold;">ropemacs</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000; font-weight: bold;">rope-</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000;">)
 (setq&nbsp;ropemacs</span><span style="color: #000000;">-</span><span style="color: #000000;">enable</span><span style="color: #000000;">-</span><span style="color: #000000;">autoimport&nbsp;t)</span></div></div>
 
-<h4 id="toc_3:b2a7bf5bb5141bc2b7769ca7ec92da83">[</h4>
+<h4 id="toc_3">[</h4>
 
 <ol>
 <li>pycomplete](<a href="http://www.rwdev.eu/articles/emacspyeng">http://www.rwdev.eu/articles/emacspyeng</a>)</li>
@@ -288,7 +288,7 @@
 (setq&nbsp;interpreter-mode-alist(cons&nbsp;</span><span style="color: #000000; font-weight: bold;">'</span><span style="color: #000000;">(</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000; font-weight: bold;">python</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">.</span><span style="color: #000000;">&nbsp;python</span><span style="color: #000000;">-</span><span style="color: #000000;">mode)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interpreter</span><span style="color: #000000;">-</span><span style="color: #000000;">mode</span><span style="color: #000000;">-</span><span style="color: #000000;">alist))</span></div></div></div>
 
-<h4 id="5-pdb调试:b2a7bf5bb5141bc2b7769ca7ec92da83">5. pdb调试</h4>
+<h4 id="5-pdb调试">5. pdb调试</h4>
 
 <p>在Emacs中，通过M-x pdb可调出pdb对python代码进行调试。但是发现在Windows系统中，总进入不了调试模式。主要原因有：</p>
 
@@ -316,7 +316,7 @@
 这样就搞定了。
 <br /></p>
 
-<h4 id="6-如何调试gae程序:b2a7bf5bb5141bc2b7769ca7ec92da83">6. 如何调试GAE程序</h4>
+<h4 id="6-如何调试gae程序">6. 如何调试GAE程序</h4>
 
 <p><br />
 GAE是一个Web应用，需要跨线程进行调试，而pdb本身对线程调试支持不好。使用pdb进行线程调试时，只有在需要调试的地方插入下面代码：

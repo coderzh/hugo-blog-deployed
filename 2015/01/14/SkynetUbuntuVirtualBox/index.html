@@ -18,6 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="skynet,ubuntu,VirtualBox,安装增强功能,共享文件夹,GuestAdditions,">
 <meta name="description" content="skynet是一个c和lua实现的轻量级actor模型服务端框架。看了所有文档，对skynet有了大致的了解。还需进一步考察看是否合适做为手游mmo服务端框架。
+
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
@@ -25,6 +26,7 @@
 
 <meta itemprop="name" content="skynet Windows开发方式：VirtualBox中共享文件夹 - CoderZh Blog">
 <meta itemprop="description" content="skynet是一个c和lua实现的轻量级actor模型服务端框架。看了所有文档，对skynet有了大致的了解。还需进一步考察看是否合适做为手游mmo服务端框架。
+
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -33,12 +35,14 @@
 <meta property="og:url" content="http://blog.coderzh.com/2015/01/14/SkynetUbuntuVirtualBox/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
 <meta property="og:description" content="skynet是一个c和lua实现的轻量级actor模型服务端框架。看了所有文档，对skynet有了大致的了解。还需进一步考察看是否合适做为手游mmo服务端框架。
+
 ">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="skynet Windows开发方式：VirtualBox中共享文件夹 - CoderZh Blog">
 <meta name="twitter:description" content="skynet是一个c和lua实现的轻量级actor模型服务端框架。看了所有文档，对skynet有了大致的了解。还需进一步考察看是否合适做为手游mmo服务端框架。
+
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
@@ -193,13 +197,13 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p><a href="https://github.com/cloudwu/skynet">skynet</a>是一个c和lua实现的轻量级actor模型服务端框架。看了所有文档，对skynet有了大致的了解。还需进一步考察看是否合适做为手游mmo服务端框架。</p>
 
-<p><a href="https://github.com/cloudwu/skynet">skynet</a>是一个c和lua实现的轻量级actor模型服务端框架。看了所有文档，对skynet有了大致的了解。还需进一步考察看是否合适做为手游mmo服务端框架。</p>
+<p></p>
 
 <p>由于skynet只有linux版本，如果开发平台是windows就会比较麻烦。于是打算使用虚拟机执行skynet程序，lua脚本放在虚拟机的共享目录里。于是lua可以方便的在Windows中编写，在Linux虚拟机里执行。</p>
 
-<h3 id="virtualbox:d257e2f4020594dc6ae603b9b5c8c284">VirtualBox</h3>
+<h3 id="virtualbox">VirtualBox</h3>
 
 <p>开始我用了个老版本的VirtualBox，增强功能插件总是安装不上，提示：</p>
 
@@ -209,7 +213,7 @@
 
 <p>最后通过下面的帖子才发现，安装个最新版本的VirtualBox就解决问题了。(<a href="http://ubuntuforums.org/showthread.php?t=2231775">http://ubuntuforums.org/showthread.php?t=2231775</a>)</p>
 
-<h3 id="安装增强功能-install-guest-additions:d257e2f4020594dc6ae603b9b5c8c284">安装增强功能(Install Guest Additions)</h3>
+<h3 id="安装增强功能-install-guest-additions">安装增强功能(Install Guest Additions)</h3>
 
 <p>直接挂载共享目录，报错：</p>
 
@@ -265,10 +269,9 @@ $sudo /media/cdrom/VBoxLinuxAdditions.run
 <p>$sudo mount -t vboxsf share /mnt</p>
 </blockquote>
 
-<h3 id="其他问题:d257e2f4020594dc6ae603b9b5c8c284">其他问题</h3>
+<h3 id="其他问题">其他问题</h3>
 
 <p>在mount目录里，sudo执行脚本，总是Read-only file system。google了一会，发现原来是在mount的盘里去写系统路径下的文件就会出这个错。所以，不要执行mount目录的脚本就行了。（拷出来外面执行）</p>
-
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

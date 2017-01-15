@@ -178,7 +178,7 @@
                   <h1 class="post-title">代码安全系列(1) - Log的注入</h1>
 
                   <p class="post-byline">
-                    by  · 2008年12月15日 · 2525 Words ·
+                    by  · 2008年12月15日 · 2614 Words ·
                     ~6min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-12-15-1355530.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,7 +191,7 @@
                       
                       
 
-<h2 id="简介:9d6e3d00e9306b7877eabb0f75260489">简介</h2>
+<h2 id="简介">简介</h2>
 
 <p>我们编写了大量的程序，但程序总是出现莫名其妙的异常，因此我们使用日志模块，详细记录程序执行的步骤，以求追踪和定位问题。也许这是大多数程序员对日志的理解，跟踪和调试程序成了日志的主要职责。其实，日志的作用远非如此，当某天突然发现我们的系统被人非法入侵，删除了大量用户资料时，我们记录的日志成了最好的追踪骇客的工具。假如，我们的日志被骇客无情的篡改，后果将不堪设想。因此，日志模块虽小，安全性却尤为重要。</p>
 
@@ -199,7 +199,7 @@
 
 <p>下面我们就来学习一些Log注入的常用伎俩以及支招技巧吧。</p>
 
-<h3 id="1-new-line-injection:9d6e3d00e9306b7877eabb0f75260489">1.New Line Injection</h3>
+<h3 id="1-new-line-injection">1.New Line Injection</h3>
 
 <p>顾名思义：插入新行的注入方式。这种方法是最普遍的Log注入方法。我们先来看看如下一段C#日志记录的代码：</p>
 
@@ -247,7 +247,7 @@ Failed to remove user 李四 for 李四</span></div>
 <br />
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px;">Failed logon for user 张三Failed to delete all files for 李四Failed to remove user 李四 for 李四</div>
 
-<h3 id="2-sparator-injection:9d6e3d00e9306b7877eabb0f75260489">2.Sparator Injection</h3>
+<h3 id="2-sparator-injection">2.Sparator Injection</h3>
 
 <p>有些人写日志喜欢用一些分隔符来分隔不同的字段，比如用分隔符：|，或者是使用Tab作为分隔符。比如下面的日志：</p>
 
@@ -273,7 +273,7 @@ Failed to remove user 李四 for 李四</span></div>
 
 <p>防御方法：建议尽量不要使用分隔符，或者替换分隔符。</p>
 
-<h3 id="3-timestamp-injection:9d6e3d00e9306b7877eabb0f75260489">3.Timestamp Injection</h3>
+<h3 id="3-timestamp-injection">3.Timestamp Injection</h3>
 
 <p>通常我们记录日志时，都会详细的记录每个步骤执行的时间，比如：</p>
 
@@ -308,7 +308,7 @@ Failed to remove user 李四 for 李四</span></div>
 
 <p>这样的话，产生出来的序列的数字在外面看来非常随机，但其实内部是有序的，可以非常方便的通过工具对整个日志进行扫描，发现伪造的日志项。当然了，还有很多 其他办法可以应付此类的注入，比如，使用两个日志文件，第一个日志文件记录日志内容，第二个日志文件记录日志中每一项的字符长度。</p>
 
-<h3 id="4-abusing-word-wrap:9d6e3d00e9306b7877eabb0f75260489">4.Abusing Word Wrap</h3>
+<h3 id="4-abusing-word-wrap">4.Abusing Word Wrap</h3>
 
 <p>当换行注入被拒绝的时候，还有一种投机的办法，就是不主动换行，使用一些空格或其他符号，导致文字自动换行。这很容易理解，当然，要真正实施起来并且完美无缺确实是很困难的。比如下面被注入的日志：</p>
 
@@ -324,7 +324,7 @@ Failed to remove user 李四 for 李四</span></div>
 <li>假如是在Windows平台下，使用编辑器打开的话，记得关闭自动换行功能。2.  假如在Linux下面呢，在终端显示内容的话，对日志内容进行处理，加上一些自动换行的分隔符号，比如：[CR]。（这样做的话其实也不好，假如用户输入的数据原本就包含了[CR]字符，将很难区分用户输入的数据和分隔符号。对于这个问题，大家支点招吧！）</li>
 </ol>
 
-<h3 id="5-html-injection:9d6e3d00e9306b7877eabb0f75260489">5.HTML Injection</h3>
+<h3 id="5-html-injection">5.HTML Injection</h3>
 
 <p>很多情况下，日志内容被读取后，会在一个网页中进行显示。这样，就给骇客很大的空间，可以非常容易的对HTML进行篡改，这看上去非常类似XSS（跨站式脚本攻击，可参考之前的<br />
 [](<a href="http://www.cnblogs.com/coderzh/archive/2008/09/06/1285500.html">http://www.cnblogs.com/coderzh/archive/2008/09/06/1285500.html</a>)

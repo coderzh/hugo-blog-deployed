@@ -18,6 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="Hugo,博客,搭建,部署,使用,教程,说明,迁移,">
 <meta name="description" content="Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。
+
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
@@ -25,6 +26,7 @@
 
 <meta itemprop="name" content="使用hugo搭建个人博客站点 - CoderZh Blog">
 <meta itemprop="description" content="Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。
+
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -33,12 +35,14 @@
 <meta property="og:url" content="http://blog.coderzh.com/2015/08/29/hugo/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
 <meta property="og:description" content="Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。
+
 ">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="使用hugo搭建个人博客站点 - CoderZh Blog">
 <meta name="twitter:description" content="Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。
+
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
@@ -193,15 +197,15 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p>Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。</p>
 
-<p>Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。</p>
+<p></p>
 
 <p>Hugo生成静态页面的效率很高，我的260多篇博客文章生成几乎是瞬间完成的，而之前用Jekyll需要等待10秒左右。</p>
 
 <p>Hugo自带watch的调试模式，可以在我修改MarkDown文章之后切换到浏览器，页面会检测到更新并且自动刷新，呈现出最终效果，能极大的提高博客书写效率。再加上Hugo是使用Go语言编写，已经没有任何理由不使用Hugo来代替Jekyll作为我的个人博客站点生成器了。</p>
 
-<h3 id="静态网站生成器:826b8fbf4b1c9d49ecec9c1552f05b58">静态网站生成器</h3>
+<h3 id="静态网站生成器">静态网站生成器</h3>
 
 <p>什么是静态网站生成器？如果追溯到最早的网站形式，那时候的网页都是静态的，即一个内容不变的html文件放在服务器上，人们通过互联网访问浏览的都是这个一成不变的页面。后来，人们发现，需要和网页进行交互，能根据用户的输入动态呈现出相应的内容，这就是动态网站。那，为什么现在又回归使用静态网站呢？特别是对于博客网站这种特殊的形式。我的理解是：</p>
 
@@ -228,13 +232,13 @@
 
 <p>我的Hugo博客：<a href="http://blog.coderzh.com/">http://blog.coderzh.com/</a></p>
 
-<h3 id="github-pages:826b8fbf4b1c9d49ecec9c1552f05b58">GitHub Pages</h3>
+<h3 id="github-pages">GitHub Pages</h3>
 
 <p>使用静态网站生成器生成好静态页面之后，需要把文件放到服务器上供别人浏览。比较传统的方式是租用VPS虚拟服务器，比如：linode、digitalocean。将生成好的静态页面手工上传到服务器上。如果你习惯这种方式部署，推荐你使用<a href="https://www.digitalocean.com/?refcode=e131e2bba197">digitalocean</a>。</p>
 
 <p>当然， 还有更好的方式，就是直接把网站托管到GitHub Pages。你只需要在GitHub上创建一个项目，然后将生成出来的静态页面文件push到这个项目的gh-pages分支，保证根目录有一个index.html文件即可。这样，一个免费、无限流量的博客系统就搭建完成了。同时，通过github你可以方便对博客文章进行管理和追踪。</p>
 
-<h3 id="hugo:826b8fbf4b1c9d49ecec9c1552f05b58">Hugo</h3>
+<h3 id="hugo">Hugo</h3>
 
 <p>前面的铺垫介绍的差不多了，该主角上场了。Hugo是什么？它主要做了什么？</p>
 
@@ -244,7 +248,7 @@
 <li>Hugo内置web服务器，可以方便的用于本地调试。</li>
 </ol>
 
-<h3 id="hello-hugo:826b8fbf4b1c9d49ecec9c1552f05b58">Hello Hugo</h3>
+<h3 id="hello-hugo">Hello Hugo</h3>
 
 <p>Hugo官方主页：<a href="https://gohugo.io/">https://gohugo.io/</a></p>
 
@@ -352,7 +356,7 @@ $ git clone https://github.com/spf13/hyde.git
 <li><a href="https://gohugo.io/tutorials/github-pages-blog/">Hosting on GitHub Pages</a></li>
 </ol>
 
-<h3 id="遇到的问题:826b8fbf4b1c9d49ecec9c1552f05b58">遇到的问题</h3>
+<h3 id="遇到的问题">遇到的问题</h3>
 
 <ol>
 <li>默认的ServerSide的代码着色会有问题，有些字的颜色会和背景色一样导致看不见。<br />
@@ -370,7 +374,7 @@ rssuri: &quot;feed.xml&quot;
 </code></li>
 </ol>
 
-<h3 id="jekyll迁移到hugo:826b8fbf4b1c9d49ecec9c1552f05b58">Jekyll迁移到Hugo</h3>
+<h3 id="jekyll迁移到hugo">Jekyll迁移到Hugo</h3>
 
 <p>Jekyll的文章内容迁移到Hugo中，大部分内容是兼容的，但也有一些地方是不兼容的。主要有以下几个地方需要修改：</p>
 
@@ -401,7 +405,7 @@ rssuri: &quot;feed.xml&quot;
 
 <p>将自动把你的Jekyll站点转换成Hugo的站点。欢迎试用并反馈。</p>
 
-<h3 id="关于部署:826b8fbf4b1c9d49ecec9c1552f05b58">关于部署</h3>
+<h3 id="关于部署">关于部署</h3>
 
 <p>假设你需要部署在 <code>GitHub Pages</code> 上，首先在GitHub上创建一个Repository，命名为：<code>coderzh.github.io</code> （coderzh替换为你的github用户名）。</p>
 
@@ -426,7 +430,7 @@ $ git push -u origin master
 
 <p>全自动化部署到GitHub和GitCafe，见我的另一篇博客：<a href="http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/">通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</a></p>
 
-<h3 id="hugo中文文档:826b8fbf4b1c9d49ecec9c1552f05b58">Hugo中文文档</h3>
+<h3 id="hugo中文文档">Hugo中文文档</h3>
 
 <p>Hugo中文文档网站：<a href="http://www.gohugo.org/">http://www.gohugo.org/</a> 已上线， 并且在不断完善中，欢迎访问。</p>
 
@@ -435,7 +439,6 @@ $ git push -u origin master
 <p>以及关注微信公众号：hacker-thinking</p>
 
 <p><img src="http://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" /></p>
-
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

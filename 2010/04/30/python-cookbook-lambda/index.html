@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： def&nbsp;f(x): &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x**2 print&nbsp;f(4) Python中使用lambda的话，写成这样 g&nbsp;=&nbsp;lambda&nbsp;x&nbsp;:&nbsp;x**2 print&nbsp;g(4) lambd">
+<meta name="description" content="lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： def&nbsp;f(x): &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x**2print&nbsp;f(4) Python中使用lambda的话，写成这样 g&nbsp;=&nbsp;lambda&nbsp;x&nbsp;:&nbsp;x**2print&nbsp;g(4) lambda表">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(35) - 细品lambda - CoderZh Blog">
-<meta itemprop="description" content="lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： def&nbsp;f(x): &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x**2 print&nbsp;f(4) Python中使用lambda的话，写成这样 g&nbsp;=&nbsp;lambda&nbsp;x&nbsp;:&nbsp;x**2 print&nbsp;g(4) lambd">
+<meta itemprop="description" content="lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： def&nbsp;f(x): &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x**2print&nbsp;f(4) Python中使用lambda的话，写成这样 g&nbsp;=&nbsp;lambda&nbsp;x&nbsp;:&nbsp;x**2print&nbsp;g(4) lambda表">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(35) - 细品lambda - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2010/04/30/python-cookbook-lambda/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： def&nbsp;f(x): &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x**2 print&nbsp;f(4) Python中使用lambda的话，写成这样 g&nbsp;=&nbsp;lambda&nbsp;x&nbsp;:&nbsp;x**2 print&nbsp;g(4) lambd">
+<meta property="og:description" content="lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： def&nbsp;f(x): &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x**2print&nbsp;f(4) Python中使用lambda的话，写成这样 g&nbsp;=&nbsp;lambda&nbsp;x&nbsp;:&nbsp;x**2print&nbsp;g(4) lambda表">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(35) - 细品lambda - CoderZh Blog">
-<meta name="twitter:description" content="lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： def&nbsp;f(x): &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x**2 print&nbsp;f(4) Python中使用lambda的话，写成这样 g&nbsp;=&nbsp;lambda&nbsp;x&nbsp;:&nbsp;x**2 print&nbsp;g(4) lambd">
+<meta name="twitter:description" content="lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： def&nbsp;f(x): &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;x**2print&nbsp;f(4) Python中使用lambda的话，写成这样 g&nbsp;=&nbsp;lambda&nbsp;x&nbsp;:&nbsp;x**2print&nbsp;g(4) lambda表">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python天天美味(35) - 细品lambda</h1>
 
                   <p class="post-byline">
-                    by  · 2010年04月30日 · 1485 Words ·
+                    by  · 2010年04月30日 · 1475 Words ·
                     ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-04-30-python-cookbook-lambda.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -229,7 +229,7 @@ Console.WriteLine(g(</span><span style="color: #000000;">4</span><span style="co
 <li><p>使用lambda在某些时候让代码更容易理解。</p></li>
 </ol>
 
-<h3 id="lambda基础:e499234b98ff58847b996fa400265fb1">lambda基础</h3>
+<h3 id="lambda基础">lambda基础</h3>
 
 <p>lambda语句中，冒号前是参数，可以有多个，用逗号隔开，冒号右边的返回值。lambda语句构建的其实是一个函数对象，见证一下：</p>
 
@@ -275,7 +275,7 @@ var&nbsp;result&nbsp;</span><span style="color: #000000;">=</span><span style="c
 </div>
 </div>
 
-<h3 id="非lambda不可:e499234b98ff58847b996fa400265fb1">非lambda不可？</h3>
+<h3 id="非lambda不可">非lambda不可？</h3>
 
 <p>上面例子中的map的作用，和C#的Where扩展方法一样，非常简单方便。但是，Python是否非要使用lambda才能做到这样的简洁程度呢？在对象遍历处理方面，其实Python的<span style="color: #0000ff;">for..in..if</span>语法已经很强大，并且在易读上胜过了lambda。比如上面map的例子，可以写成：</p>
 
@@ -293,7 +293,7 @@ var&nbsp;result&nbsp;</span><span style="color: #000000;">=</span><span style="c
 
 <p>所以，什么时候使用lambda，什么时候不用，需要具体情况具体分析，只要表达的意图清晰就好。一般情况下，如果for..in..if能做的，我都不会选择lambda。</p>
 
-<h3 id="lambda-broken:e499234b98ff58847b996fa400265fb1">lambda broken?</h3>
+<h3 id="lambda-broken">lambda broken?</h3>
 
 <p>在数学教学中，经常会使用到lambda，比如有一位老兄就遇到这样一个问题。他想创建一个函数数组fs=[f0,&hellip;,f9] where fi(n)=i+n. 于是乎，就定义了这么一个lambda函数：</p>
 
@@ -379,7 +379,7 @@ i&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;
 
 <p>&nbsp;</p>
 
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html:e499234b98ff58847b996fa400265fb1"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python 天天美味系列（总）</a></h4>
+<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python 天天美味系列（总）</a></h4>
 
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/20/1294947.html">Python 天天美味(30) - python数据结构与算法之快速排序</a>&nbsp;</p>
 

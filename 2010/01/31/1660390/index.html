@@ -203,7 +203,7 @@
 
 <p>（<span><a href="http://www.cnblogs.com/coderzh/archive/2010/01/26/Sharing-Master-Pages-By-DLL.html">VirtualPathProvider</a></span>的作用参考：<a href="http://www.cnblogs.com/coderzh/archive/2010/01/26/Sharing-Master-Pages-By-DLL.html">http://www.cnblogs.com/coderzh/archive/2010/01/26/Sharing-Master-Pages-By-DLL.html</a> ）</p>
 
-<h4 id="app-code-appinitialize:f78f6e78d268b6b517abab6ec1c381c8">App_Code AppInitialize</h4>
+<h4 id="app-code-appinitialize">App_Code AppInitialize</h4>
 
 <p>在App_Code目录里，任意类，实现一个AppInitialize静态方法，原型：</p>
 
@@ -259,17 +259,17 @@
 
 <p>AppInitialize方法在编译时就被特殊处理了。推断，AppInitialize方法想在外面的dll中执行几乎是不可能的。</p>
 
-<h4 id="application-start-nbsp:f78f6e78d268b6b517abab6ec1c381c8">Application_Start&nbsp;</h4>
+<h4 id="application-start-nbsp">Application_Start&nbsp;</h4>
 
 <p>Global.asax继承自HttpApplication，有很多事件(event)可以通过自定义的HttpModule挂上去，比如：AuthenticateRequest，EndRequest。因此，如果HttpApplication有一个类似ApplicationStart的Event，那么我就可以在外部dll中实现一个自定义的HttpModule，然后再Init函数中，将VirtualPathProvider注册的代码挂到ApplicationStart事件中。这样，要做的仅仅是在Web.config中将自定义的HttpModule加进去。可惜，Application_Start并不提供挂载事件。</p>
 
 <p>Application_Start调用的一些细节参考：<a href="http://www.dotnet247.com/247reference/msgs/12/62243.aspx">http://www.dotnet247.com/247reference/msgs/12/62243.aspx</a></p>
 
-<h4 id="web-config:f78f6e78d268b6b517abab6ec1c381c8">Web.config</h4>
+<h4 id="web-config">Web.config</h4>
 
 <p>没有任何迹象表明，允许在Web.config中配置VirtualPathProvider的注册。</p>
 
-<h4 id="总结:f78f6e78d268b6b517abab6ec1c381c8">总结：</h4>
+<h4 id="总结">总结：</h4>
 
 <p>尝试的各种方法都失败了，没办法做到不需要在App_Code和Global.asax中添加任何代码的情况下，通过外部dll将VirtualPathProvider自动注册。还是老老实实在每个需要用到VirtualPathProvider的工程，在Global.asax的Application_Start方法中添加如下方法：</p>
 

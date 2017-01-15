@@ -193,11 +193,11 @@
 
 <p>OpenSTA 基于CORBA的分布式软件测试构架。使用OpenSTA，测试人员可以模拟大量的虚拟用户。OpenSTA的结果分析包括虚拟用户响应时间、web服务器的资源使用情况、数据库服务器的使用情况，可以精确的度量负载测试的结果。详细官方文档：<a href="http://www.opensta.org/docs/gsg/index.htm">OpenSTA教程</a></p>
 
-<h2 id="总括:20c698461721b89a7e11b18c7c15b605">总括</h2>
+<h2 id="总括">总括</h2>
 
 <p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/OpenSTABlack.jpeg" alt="" /></p>
 
-<h2 id="本文内容:20c698461721b89a7e11b18c7c15b605">本文内容</h2>
+<h2 id="本文内容">本文内容</h2>
 
 <p>本文针对OpenSTA中的几个重要部分进行详细介绍，关于其他部分的内容请查看官方文档。本文中，将重点介绍：</p>
 
@@ -223,11 +223,11 @@
 </code></pre></li>
 </ol>
 
-<h3 id="1-nt-performance的配置:20c698461721b89a7e11b18c7c15b605">1. NT Performance的配置</h3>
+<h3 id="1-nt-performance的配置">1. NT Performance的配置</h3>
 
 <p>NT Performance调用的是操作系统自带的Perfmon工具，如何设置添加Windows性能监视这里就不介绍了。</p>
 
-<h3 id="2-script基本介绍:20c698461721b89a7e11b18c7c15b605">2. Script基本介绍</h3>
+<h3 id="2-script基本介绍">2. Script基本介绍</h3>
 
 <p>首先声明一 下，OpenSTA的脚本使用的是其专有的SCL(Script Control Language)语言，语法比较复杂，使用起来相当的困难。所以，我对OpenSTA的定位是：脚本以录制为主，小部分修改，参数设置为辅。我们现在录 制一个最基本的脚本，看看是什么样，比如：访问一个静态页面（最简单的一个页面，输出几个字符），录制脚本如下：</p>
 
@@ -241,9 +241,9 @@
 
 <p>在对脚本的结构有了大致了解后，让我们来看看如何在Definitions中定义变量并在Code中使用我们的变量。</p>
 
-<h3 id="3-script变量实现参数化:20c698461721b89a7e11b18c7c15b605">3. Script变量实现参数化</h3>
+<h3 id="3-script变量实现参数化">3. Script变量实现参数化</h3>
 
-<h4 id="3-1-创建变量:20c698461721b89a7e11b18c7c15b605">3.1 创建变量</h4>
+<h4 id="3-1-创建变量">3.1 创建变量</h4>
 
 <p>通过Script Modeler的菜单 Variables - Create 来创建变量，如下图：</p>
 
@@ -299,7 +299,7 @@
 </ol></li>
 </ul>
 
-<h4 id="3-2-使用定义好的变量:20c698461721b89a7e11b18c7c15b605">3.2 使用定义好的变量</h4>
+<h4 id="3-2-使用定义好的变量">3.2 使用定义好的变量</h4>
 
 <p>假如我们在刚才的步骤中创建了USERNAME和PASSWORD两个变量，Scope定义为SCRIPT，再创建MY_USERNAME和MY_PASSWORD两个Local变量。在Definitions中的定义如下：</p>
 
@@ -337,7 +337,7 @@
 
 <p>有了上面的四种不同范围的变量，相信要实现不同类型的参数化就变的相当的简单和方便了。</p>
 
-<h3 id="4-dom对象实现关联:20c698461721b89a7e11b18c7c15b605">4. DOM对象实现关联</h3>
+<h3 id="4-dom对象实现关联">4. DOM对象实现关联</h3>
 
 <p>DOM是Document Object Model文档对象模型的缩写。DOM是一种与浏览器，平台，语言无关的接口，使得你可以访问页面其他的标准组件。通过DOM，我们可以动态的获取返回的 HTML或XML，并方便的取出里面相应节点的内容进行检查或他用。OpenSTA在录制时会把这些信息记录在一个后缀为.ALL的文件中，光标定位到 PRIMARY POST URI 或是 PRIMARY GET URI处，点击工具栏黄色右箭头按钮，如图：</p>
 
@@ -373,7 +373,7 @@
 
 <p>每次访问页面的时候Cookie的值都会不一样，OpenSTA自动为我们处理了这个需要动态获取的东西，处理的方式和刚才的ReturnText是一样的。</p>
 
-<h3 id="5-如何添加task-group:20c698461721b89a7e11b18c7c15b605">5. 如何添加Task Group</h3>
+<h3 id="5-如何添加task-group">5. 如何添加Task Group</h3>
 
 <p>在Commander中添 加一个Task Group比较变态，首先点击Tests右键创建一个Test，然后在左边的目录树中把要运行的Script或是Collector拖动拖到Task Group的TaskX(1,2,3&hellip;)列，可以看到，一个Task Group可以有多个Task，这里要注意的是：</p>
 
@@ -381,7 +381,7 @@
 <li>Collector不允许和Script放在同一个Taks Group*   Task Group有多个Task时，执行顺序是按Task编号执行，比如有四个Task，执行顺序是：Task1 &#8594; Task2 &#8594; Task3 &#8594; Task4*   如果是多用户执行多个Task，某个用户先执行完Task1，不会等待其他用户执行完Task1，而是直接执行后面的Task2。即，用户不会集合，都是单独执行。</li>
 </ul>
 
-<h3 id="6-task-group各个参数选项说明:20c698461721b89a7e11b18c7c15b605">6. Task Group各个参数选项说明</h3>
+<h3 id="6-task-group各个参数选项说明">6. Task Group各个参数选项说明</h3>
 
 <p>首先看看Task Group有哪些列：</p>
 
@@ -424,19 +424,19 @@
 </ul></li>
 </ul>
 
-<h3 id="7-monitoring-results简单介绍:20c698461721b89a7e11b18c7c15b605">7. Monitoring、Results简单介绍</h3>
+<h3 id="7-monitoring-results简单介绍">7. Monitoring、Results简单介绍</h3>
 
 <ul>
 <li>Monitoring只在Test运行期间可用，比较变态，很废的东西。*   Results部分十分简陋，感觉收集的信息太少，图表不能合并，画出的图十分的难看。。。不错的是支持导出数据。。。。</li>
 </ul>
 
-<h3 id="8-设置负载生成器:20c698461721b89a7e11b18c7c15b605">8. 设置负载生成器</h3>
+<h3 id="8-设置负载生成器">8. 设置负载生成器</h3>
 
 <p>负载生成器机器即被控制 执行测试的机器(Loader)，必须运行OpenSTA Name Server，右键 - Configure - Repository Host(晕！界面上看只有Repository这个单词，原来这个也显示不全。。。) - 输入运行了OpenSTA Commander的主控机器(Controller)的IP。注意修改了Repository Host后要重启服务。这样，在主控制机器(Controller)的Commander中的设置Host Name - 输入负载生成器机器的IP。搞定。</p>
 
 <p>这样做似乎有一些确定，因为假如我要控制别的机器运行测试案例，需要在别的机器上指定我的机器的IP，当我要用另一台机器做控制端(Controller)时，又需要修改那些机器的设置，不像LoadRunner一样方便，不需要修改什么。</p>
 
-<h3 id="9-总结:20c698461721b89a7e11b18c7c15b605">9. 总结</h3>
+<h3 id="9-总结">9. 总结</h3>
 
 <p>用过了LoadRunner，看过了WebLOAD等其他工具，总体感觉OpenSTA还是不错的，给人的感觉是小巧，简洁。在通过变量实现参数化的过程中感觉非常的灵活，同时，在构建一个场景相对简单的性能测试案例时，OpenSTA是一个不错的选择。然而OpenSTA又有着许多不足：</p>
 

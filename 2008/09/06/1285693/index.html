@@ -191,7 +191,7 @@
                       
                       
 
-<h3 id="堆栈溢出:689154c51ab6a73fe4490db17ec1713c">堆栈溢出</h3>
+<h3 id="堆栈溢出">堆栈溢出</h3>
 
 <p>堆栈溢出通常是所有的缓冲区溢出中最容易进行利用的。了解堆栈溢出之前，先了解以下几个概念：</p>
 
@@ -268,7 +268,7 @@
 
 <p>所以，从上图来看，假如我们输入的buffer1超长了，直接覆盖掉后面的sfp和ret，就可以修改该函数的返回地址了。下面来看一个示例吧。</p>
 
-<h3 id="示例:689154c51ab6a73fe4490db17ec1713c">示例</h3>
+<h3 id="示例">示例</h3>
 
 <p>关于如何编写Shell Code，如何在内存中预先准备好一段危险的执行代码以及如何精确计算通过缓冲区溢出执行那段危险代码同时又让返回地址调回原来返回地址&#8230;&#8230;这中间涉及太 多的底层汇编知识，小弟不才也只是走马观花，成不了真正的黑客高手。但从黑客朋友的水平之高看来，提高我们的代码安全性是非常必要的！</p>
 
@@ -492,9 +492,9 @@ os<span style="color: #666666;">.</span>system(cmd)</div>
 <span style="color: #ffffff;">Augh</span><span style="color: #ffffff;">!</span> <span style="color: #ffffff;">I</span><span style="color: #ffffff;">'</span><span style="color: #ffffff;">ve</span> <span style="color: #ffffff;">been</span> <span style="color: #ffffff;">hacked</span><span style="color: #ffffff;">!</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">//哈哈！bar函数果然被执行了！</span></div>
 </div>
 
-<h3 id="堆溢出及其他溢出:689154c51ab6a73fe4490db17ec1713c">堆溢出及其他溢出</h3>
+<h3 id="堆溢出及其他溢出">堆溢出及其他溢出</h3>
 
-<h4 id="堆溢出:689154c51ab6a73fe4490db17ec1713c">堆溢出</h4>
+<h4 id="堆溢出">堆溢出</h4>
 
 <p>堆是内存的一个区域，它 被应用程序利用并在运行时被动态分配。堆内存与堆栈内存的不同在于它在函数之间更持久稳固。这意味着分配给一个函数的内存会持续保持分配直到完全被释放为 止。这说明一个堆溢出可能发生了但却没被注意到，直到该内存段在后面被使用。这里只是简单了解一下，下面看一个最简单的堆溢出例子：</p>
 
@@ -568,7 +568,7 @@ os<span style="color: #666666;">.</span>system(cmd)</div>
 <li><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/simpleheep.jpg" alt="" /></li>
 </ul>
 
-<h4 id="格式化字符串错误:689154c51ab6a73fe4490db17ec1713c">格式化字符串错误</h4>
+<h4 id="格式化字符串错误">格式化字符串错误</h4>
 
 <p>这类错误是指使用printf，sprintf，fprint等函数时，没有使用格式化字符串，比如：正确用法是：</p>
 
@@ -588,7 +588,7 @@ os<span style="color: #666666;">.</span>system(cmd)</div>
 
 <p>将会出现漏洞，当input输入一些非法制造的字符时，内存将有可能被改写，执行一些非法指令。</p>
 
-<h4 id="unicode和ansi缓冲区大小不匹配:689154c51ab6a73fe4490db17ec1713c">Unicode和ANSI缓冲区大小不匹配</h4>
+<h4 id="unicode和ansi缓冲区大小不匹配">Unicode和ANSI缓冲区大小不匹配</h4>
 
 <p>我们经常碰到需要在Unicode和ANSI之间互相转换，绝大多数Unicode函数按照宽字符格式（双字节）大小，而不是按照字节大小来计算缓冲区大小，因此，转换的时候不注意的话就可能会造成溢出。比如最常受到攻击的函数是MultiByteToWideChar，看下面的代码：</p>
 
@@ -634,9 +634,9 @@ os<span style="color: #666666;">.</span>system(cmd)</div>
 
 <p>曾真实出现的Internet打印协议缓冲区溢出就是由于此类问题导致的。</p>
 
-<h3 id="预防和发现问题:689154c51ab6a73fe4490db17ec1713c">预防和发现问题</h3>
+<h3 id="预防和发现问题">预防和发现问题</h3>
 
-<h4 id="不安全的函数:689154c51ab6a73fe4490db17ec1713c">不安全的函数</h4>
+<h4 id="不安全的函数">不安全的函数</h4>
 
 <p>避免使用不安全的字符串处理函数，比如使用安全的函数代替：</p>
 
@@ -705,11 +705,11 @@ os<span style="color: #666666;">.</span>system(cmd)</div>
 </tbody></table>
 </div>
 
-<h4 id="visual-c-net的-gs选项:689154c51ab6a73fe4490db17ec1713c">Visual C++ NET的/GS选项</h4>
+<h4 id="visual-c-net的-gs选项">Visual C++ NET的/GS选项</h4>
 
 <p>/GS选项能够阻止堆栈的破坏，保证堆栈的完整性，但是不能完全防止缓冲区溢出问题，比如，对于堆溢出，/GS是无能为力的。</p>
 
-<h4 id="源代码扫描:689154c51ab6a73fe4490db17ec1713c">源代码扫描</h4>
+<h4 id="源代码扫描">源代码扫描</h4>
 
 <p>最简单的源代码扫描：</p>
 
@@ -719,14 +719,14 @@ os<span style="color: #666666;">.</span>system(cmd)</div>
 
 <p>然后就是一些开源的或是商业的源代码扫描工具了。</p>
 
-<h3 id="工具:689154c51ab6a73fe4490db17ec1713c">工具</h3>
+<h3 id="工具">工具</h3>
 
 <ul>
 <li>源代码工具包含ApplicationDefense、SPLINT、ITS4和Flawfinder。</li>
 <li>二进制工具包含各种fuzzing工具包和静态分析程序，例如Bugscan。</li>
 </ul>
 
-<h3 id="参考资料:689154c51ab6a73fe4490db17ec1713c">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 
 <ol>
 <li>Michael Howard, David LeBlanc. &ldquo;Writing Secure Code&rdquo;</li>

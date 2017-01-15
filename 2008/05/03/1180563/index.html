@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="join 方法用于连接字符串数组 s&nbsp;=&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;,&nbsp;&#39;c&#39;,&nbsp;&#39;d&#39;] print&nbsp;&#39;&#39;.join(s) print&nbsp;&#39;-&#39;.join(s) 输出结果： abcd a-b-c-d 使用 % 连接多个变量 a&nbsp;=&nbsp;&#39;hello&#39; b&nbsp;=&nbsp;&#39;python&#39; c&nbsp;=&nbsp;1 print&nbsp;&#39;%s&nbsp;%s&nbsp;%s&nbsp;%s&#39;&nbsp;%&nbsp;(a,&nbsp;b,&nbsp;c,&nbsp;s) 输出结果： hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;] Python 天天美味系列（总） Python 天天美味(5) - ljust rjust center &nbsp;">
+<meta name="description" content="join 方法用于连接字符串数组 s&nbsp;=&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;,&nbsp;&#39;c&#39;,&nbsp;&#39;d&#39;] print&nbsp;&#39;&#39;.join(s) print&nbsp;&#39;-&#39;.join(s) 输出结果： abcd a-b-c-d 使用 % 连接多个变量 a&nbsp;=&nbsp;&#39;hello&#39;b&nbsp;=&nbsp;&#39;python&#39;c&nbsp;=&nbsp;1print&nbsp;&#39;%s&nbsp;%s&nbsp;%s&nbsp;%s&#39;&nbsp;%&nbsp;(a,&nbsp;b,&nbsp;c,&nbsp;s) 输出结果： hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;] Python 天天美味系列（总） Python 天天美味(5) - ljust rjust center &nbsp; Python 天天">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(7) - 连接字符串(join %) - CoderZh Blog">
-<meta itemprop="description" content="join 方法用于连接字符串数组 s&nbsp;=&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;,&nbsp;&#39;c&#39;,&nbsp;&#39;d&#39;] print&nbsp;&#39;&#39;.join(s) print&nbsp;&#39;-&#39;.join(s) 输出结果： abcd a-b-c-d 使用 % 连接多个变量 a&nbsp;=&nbsp;&#39;hello&#39; b&nbsp;=&nbsp;&#39;python&#39; c&nbsp;=&nbsp;1 print&nbsp;&#39;%s&nbsp;%s&nbsp;%s&nbsp;%s&#39;&nbsp;%&nbsp;(a,&nbsp;b,&nbsp;c,&nbsp;s) 输出结果： hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;] Python 天天美味系列（总） Python 天天美味(5) - ljust rjust center &nbsp;">
+<meta itemprop="description" content="join 方法用于连接字符串数组 s&nbsp;=&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;,&nbsp;&#39;c&#39;,&nbsp;&#39;d&#39;] print&nbsp;&#39;&#39;.join(s) print&nbsp;&#39;-&#39;.join(s) 输出结果： abcd a-b-c-d 使用 % 连接多个变量 a&nbsp;=&nbsp;&#39;hello&#39;b&nbsp;=&nbsp;&#39;python&#39;c&nbsp;=&nbsp;1print&nbsp;&#39;%s&nbsp;%s&nbsp;%s&nbsp;%s&#39;&nbsp;%&nbsp;(a,&nbsp;b,&nbsp;c,&nbsp;s) 输出结果： hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;] Python 天天美味系列（总） Python 天天美味(5) - ljust rjust center &nbsp; Python 天天">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(7) - 连接字符串(join %) - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2008/05/03/1180563/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="join 方法用于连接字符串数组 s&nbsp;=&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;,&nbsp;&#39;c&#39;,&nbsp;&#39;d&#39;] print&nbsp;&#39;&#39;.join(s) print&nbsp;&#39;-&#39;.join(s) 输出结果： abcd a-b-c-d 使用 % 连接多个变量 a&nbsp;=&nbsp;&#39;hello&#39; b&nbsp;=&nbsp;&#39;python&#39; c&nbsp;=&nbsp;1 print&nbsp;&#39;%s&nbsp;%s&nbsp;%s&nbsp;%s&#39;&nbsp;%&nbsp;(a,&nbsp;b,&nbsp;c,&nbsp;s) 输出结果： hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;] Python 天天美味系列（总） Python 天天美味(5) - ljust rjust center &nbsp;">
+<meta property="og:description" content="join 方法用于连接字符串数组 s&nbsp;=&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;,&nbsp;&#39;c&#39;,&nbsp;&#39;d&#39;] print&nbsp;&#39;&#39;.join(s) print&nbsp;&#39;-&#39;.join(s) 输出结果： abcd a-b-c-d 使用 % 连接多个变量 a&nbsp;=&nbsp;&#39;hello&#39;b&nbsp;=&nbsp;&#39;python&#39;c&nbsp;=&nbsp;1print&nbsp;&#39;%s&nbsp;%s&nbsp;%s&nbsp;%s&#39;&nbsp;%&nbsp;(a,&nbsp;b,&nbsp;c,&nbsp;s) 输出结果： hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;] Python 天天美味系列（总） Python 天天美味(5) - ljust rjust center &nbsp; Python 天天">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(7) - 连接字符串(join %) - CoderZh Blog">
-<meta name="twitter:description" content="join 方法用于连接字符串数组 s&nbsp;=&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;,&nbsp;&#39;c&#39;,&nbsp;&#39;d&#39;] print&nbsp;&#39;&#39;.join(s) print&nbsp;&#39;-&#39;.join(s) 输出结果： abcd a-b-c-d 使用 % 连接多个变量 a&nbsp;=&nbsp;&#39;hello&#39; b&nbsp;=&nbsp;&#39;python&#39; c&nbsp;=&nbsp;1 print&nbsp;&#39;%s&nbsp;%s&nbsp;%s&nbsp;%s&#39;&nbsp;%&nbsp;(a,&nbsp;b,&nbsp;c,&nbsp;s) 输出结果： hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;] Python 天天美味系列（总） Python 天天美味(5) - ljust rjust center &nbsp;">
+<meta name="twitter:description" content="join 方法用于连接字符串数组 s&nbsp;=&nbsp;[&#39;a&#39;,&nbsp;&#39;b&#39;,&nbsp;&#39;c&#39;,&nbsp;&#39;d&#39;] print&nbsp;&#39;&#39;.join(s) print&nbsp;&#39;-&#39;.join(s) 输出结果： abcd a-b-c-d 使用 % 连接多个变量 a&nbsp;=&nbsp;&#39;hello&#39;b&nbsp;=&nbsp;&#39;python&#39;c&nbsp;=&nbsp;1print&nbsp;&#39;%s&nbsp;%s&nbsp;%s&nbsp;%s&#39;&nbsp;%&nbsp;(a,&nbsp;b,&nbsp;c,&nbsp;s) 输出结果： hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;] Python 天天美味系列（总） Python 天天美味(5) - ljust rjust center &nbsp; Python 天天">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python天天美味(7) - 连接字符串(join %)</h1>
 
                   <p class="post-byline">
-                    by  · 2008年05月03日 · 226 Words ·
+                    by  · 2008年05月03日 · 218 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-05-03-1180563.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -219,7 +219,7 @@ c&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;
 
 <p>hello python 1 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d&rsquo;]</p>
 
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html:cfc3943f87bb9f49b942f27ed3150d3b"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
+<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
 
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/02/1179709.html">Python    天天美味(5) - ljust rjust center</a> &nbsp;   <p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/02/1179725.html">Python    天天美味(6) - strip lstrip rstrip</a> &nbsp;</p>
 

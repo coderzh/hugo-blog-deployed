@@ -20,6 +20,7 @@
 <meta name="description" content="DigitalOcean
 
 之前买了个便宜的VPS并且在上面搭建了我自己写的博客程序，后来VPS里运行MongoDB经常自己挂掉就索性没理了。直到现在VPS已经过期，服务器被强制关掉了。周末在家索性想着把这个博客程序重新搭建起来。
+
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
@@ -29,6 +30,7 @@
 <meta itemprop="description" content="DigitalOcean
 
 之前买了个便宜的VPS并且在上面搭建了我自己写的博客程序，后来VPS里运行MongoDB经常自己挂掉就索性没理了。直到现在VPS已经过期，服务器被强制关掉了。周末在家索性想着把这个博客程序重新搭建起来。
+
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -39,6 +41,7 @@
 <meta property="og:description" content="DigitalOcean
 
 之前买了个便宜的VPS并且在上面搭建了我自己写的博客程序，后来VPS里运行MongoDB经常自己挂掉就索性没理了。直到现在VPS已经过期，服务器被强制关掉了。周末在家索性想着把这个博客程序重新搭建起来。
+
 ">
 
 <meta name="twitter:card" content="summary">
@@ -47,6 +50,7 @@
 <meta name="twitter:description" content="DigitalOcean
 
 之前买了个便宜的VPS并且在上面搭建了我自己写的博客程序，后来VPS里运行MongoDB经常自己挂掉就索性没理了。直到现在VPS已经过期，服务器被强制关掉了。周末在家索性想着把这个博客程序重新搭建起来。
+
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
@@ -201,11 +205,11 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<h3 id="digitalocean:51858cffc176cb478720d9c052e82245">DigitalOcean</h3>
+                      <h3 id="digitalocean">DigitalOcean</h3>
 
 <p>之前买了个便宜的VPS并且在上面搭建了我自己写的博客程序，后来VPS里运行MongoDB经常自己挂掉就索性没理了。直到现在VPS已经过期，服务器被强制关掉了。周末在家索性想着把这个博客程序重新搭建起来。</p>
+
+<p></p>
 
 <p>选择Linode还是云主机（阿里云等等）？阿里云貌似有些贵，而且还有一堆备案的流程。Linode最近推出SSD服务，20刀/月的价格，加量不加价，很是吸引人。但无奈还是花的有些心疼。忽然另外一个VPS服务<a href="https://www.digitalocean.com/?refcode=e131e2bba197">DigitalOcean</a>(链接含refcode喔)被我无意发现。DigitalOcean是一家IaaS服务提供商，其特色就是提供快速的固态硬盘服务器，该公司宣称可在55秒之内搭建好一台云服务器，所有的服务器均拥有1G的网络接口，每月基础套餐为1TB，最低套餐费用仅为5美元/月。</p>
 
@@ -218,7 +222,7 @@
 <p>有兴趣的同学可以用我的推荐链接注册哦，我也能得到一些好处。注册链接：<a href="https://www.digitalocean.com/?refcode=e131e2bba197">DigitalOcean</a>
 用到哪天不想用了，DigitalOcean还提供了生成一个镜像(Image)的功能，然后你取消掉VPS服务器(Droplets)，之后将不收取费用。哪天忽然又想用了再开通它，用之前的镜像一还原，马上就恢复了之前的环境，很是方便。</p>
 
-<h3 id="vps安装必要的软件:51858cffc176cb478720d9c052e82245">VPS安装必要的软件</h3>
+<h3 id="vps安装必要的软件">VPS安装必要的软件</h3>
 
 <pre><code>sudo apt-get install git
 sudo apt-get install python-pip
@@ -232,7 +236,7 @@ sudo pip install beautifulsoup4
 <p>（我安装了beautifulsoup是因为我做了个工具把博客园的博客导入过来。）
 mongodb 安装：<a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/</a></p>
 
-<h3 id="博客程序:51858cffc176cb478720d9c052e82245">博客程序</h3>
+<h3 id="博客程序">博客程序</h3>
 
 <p>之前我用python+tornado+pymongo写了一套博客程序，只是给我自己使用，所以我放在了私有仓库<a href="http://bitbucket.org">bitbucket</a>上。
 网站程序一般放在/var/www目录里。所以我用git clone把我的代码放到了/var/www/coderzh</p>
@@ -242,7 +246,7 @@ cd /var/www
 git clone https://xxxxx.xxxx.xxx
 </code></pre>
 
-<h3 id="mongodb:51858cffc176cb478720d9c052e82245">MongoDB</h3>
+<h3 id="mongodb">MongoDB</h3>
 
 <p>由于我的程序没有使用MongoDB默认的端口27017，所以我需要修改端口的设置。找到MongoDB的配置文件，修改port字段：</p>
 
@@ -256,7 +260,7 @@ git clone https://xxxxx.xxxx.xxx
 sudo service mongodb start
 </code></pre>
 
-<h3 id="运行博客程序:51858cffc176cb478720d9c052e82245">运行博客程序</h3>
+<h3 id="运行博客程序">运行博客程序</h3>
 
 <p>博客程序运行需要的环境已经基本配置好，这时运行博客程序看是否能正常起来：</p>
 
@@ -265,7 +269,7 @@ sudo service mongodb start
 
 <p>打开浏览器试试能不能访问: <code>http://服务器IP:8001</code>   OK，太棒了，一起正常。</p>
 
-<h3 id="supervisor:51858cffc176cb478720d9c052e82245">Supervisor</h3>
+<h3 id="supervisor">Supervisor</h3>
 
 <p>停掉刚才的main.py，这时候要上一个好东西。它就是Supervisor，它是一个进程监控守护程序。它负责开机时自动启动你配置好的程序，并且在你的程序莫名其妙挂掉时，Supervisor会自动去重启他们。可以说，它是网站稳定运行的后勤保障啊。</p>
 
@@ -291,7 +295,7 @@ supervisorctl start all
 
 <p>再次访问: <code>http://服务器IP:8001</code>   试试，嗯，一起正常。Supervisor工作了。</p>
 
-<h3 id="nginx:51858cffc176cb478720d9c052e82245">Nginx</h3>
+<h3 id="nginx">Nginx</h3>
 
 <p>接下来上Nginx，它是一个HTTP和反向代理服务器。最终网站的访问经过域名解析到服务器后，都要通过Nginx将访问请求转到main.py中处理。理解Nginx的配置文件很重要，好吧，说实话，我当初摸Nginx，Apache之类的东西时都是一头雾水的。Nginx的主要配置文件路径在：/etc/nginx/nginx.conf</p>
 
@@ -364,14 +368,13 @@ server {
 
 <p>这时已经可以用80端口访问了。</p>
 
-<h3 id="dnspod:51858cffc176cb478720d9c052e82245">DnsPod</h3>
+<h3 id="dnspod">DnsPod</h3>
 
 <p>接下来就是通过DnsPod将域名解析到这台VPS服务器。应该不是什么问题，有问题可以查看DnsPod帮助。</p>
 
-<h3 id="部署完成:51858cffc176cb478720d9c052e82245">部署完成</h3>
+<h3 id="部署完成">部署完成</h3>
 
 <p>执行导入工具，将博客园的博客导入进来。访问：<a href="http://www.coderzh.com">http://www.coderzh.com</a>。HOHO，大功告成。</p>
-
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

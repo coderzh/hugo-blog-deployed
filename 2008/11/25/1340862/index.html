@@ -178,7 +178,7 @@
                   <h1 class="post-title">C# 中使用JSON - DataContractJsonSerializer</h1>
 
                   <p class="post-byline">
-                    by  · 2008年11月25日 · 461 Words ·
+                    by  · 2008年11月25日 · 455 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-11-25-1340862.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -197,7 +197,7 @@
 
 <p><a href="http://www.json.org/">http://www.json.org/</a></p>
 
-<h4 id="一-using:3bc67ceed611c71b53a2cc9a537de06a">一、Using</h4>
+<h4 id="一-using">一、Using</h4>
 
 <p>需要添加引用：System.ServiceModel.Web 和 System.Runtime.Serialization，然后使用Using：</p>
 
@@ -205,7 +205,7 @@
 <br />
 </span><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;System.Runtime.Serialization;</span></div>
 
-<h4 id="nbsp-二-定义序列化的类:3bc67ceed611c71b53a2cc9a537de06a">&nbsp;二、定义序列化的类</h4>
+<h4 id="nbsp-二-定义序列化的类">&nbsp;二、定义序列化的类</h4>
 
 <p>假如我们要转化的JSON字符串格式为：</p>
 
@@ -263,7 +263,7 @@
 <br />
 }</span></span></div>
 
-<h4 id="三-对象转化为json字符串:3bc67ceed611c71b53a2cc9a537de06a">三、对象转化为JSON字符串</h4>
+<h4 id="三-对象转化为json字符串">三、对象转化为JSON字符串</h4>
 
 <p>使用WriteObject方法：</p>
 
@@ -297,7 +297,7 @@ Console.WriteLine(</span><span style="color: #800000;">"</span><span style="colo
 <br />
 Console.WriteLine(dataString);</span></span></div>
 
-<h4 id="四-json字符串转对象:3bc67ceed611c71b53a2cc9a537de06a">四、JSON字符串转对象</h4>
+<h4 id="四-json字符串转对象">四、JSON字符串转对象</h4>
 
 <p>使用ReadObject方法：</p>
 
@@ -321,7 +321,7 @@ Console.WriteLine(</span><span style="color: #800000;">"</span><span style="colo
 <br />
 Console.WriteLine(</span><span style="color: #800000;">"</span><span style="color: #800000;">indent.use_space&nbsp;is:&nbsp;{0}</span><span style="color: #800000;">"</span><span style="color: #000000;">,&nbsp;readConfig.indent.use_space);</span></span></div>
 
-<h4 id="nbsp-五-输出结果:3bc67ceed611c71b53a2cc9a537de06a">&nbsp;五、输出结果：</h4>
+<h4 id="nbsp-五-输出结果">&nbsp;五、输出结果：</h4>
 
 <div class="cnblogs_code"><span style="color: #000000;">JSON&nbsp;</span><span style="color: #0000ff;">string</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">is</span><span style="color: #000000;">:
 <br />

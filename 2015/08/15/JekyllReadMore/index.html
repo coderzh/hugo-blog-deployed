@@ -18,6 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <meta name="description" content="今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。
+
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
@@ -25,6 +26,7 @@
 
 <meta itemprop="name" content="使用Jekyll官方的ReadMore摘要功能 - CoderZh Blog">
 <meta itemprop="description" content="今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。
+
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -33,12 +35,14 @@
 <meta property="og:url" content="http://blog.coderzh.com/2015/08/15/JekyllReadMore/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
 <meta property="og:description" content="今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。
+
 ">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="使用Jekyll官方的ReadMore摘要功能 - CoderZh Blog">
 <meta name="twitter:description" content="今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。
+
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
@@ -182,7 +186,7 @@
                   <h1 class="post-title">使用Jekyll官方的ReadMore摘要功能</h1>
 
                   <p class="post-byline">
-                    by  · 2015年08月15日 · 206 Words ·
+                    by  · 2015年08月15日 · 239 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-08-15-JekyllReadMore.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -193,27 +197,27 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p>今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。</p>
 
-<p>今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。</p>
+<p></p>
 
 <p>我之前的方法，在index.html中</p>
 
-<pre><code class="language-html"> {{ post.content ||split:'' | first }} 
+<pre><code class="language-html"> {{ post.content ||split:'&lt;!--more--&gt;' | first }} 
 </code></pre>
 
-<p>然后在Post里，需要分隔的摘要后面加<code>。</code></p>
+<p>然后在Post里，需要分隔的摘要后面加<code>&lt;!--more--&gt;。</code></p>
 
 <pre><code class="language-html">摘要内容...
-
+&lt;!--more--&gt;
 正文内容...
 </code></pre>
 
-<h3 id="官方做法-excerpt:b34704c1c1176e970544bf334bae729d">官方做法: excerpt</h3>
+<h3 id="官方做法-excerpt">官方做法: excerpt</h3>
 
 <p>官方的方法是，在_config.yml里，指定摘要的分隔符：</p>
 
-<pre><code class="language-html">excerpt_separator:  ''
+<pre><code class="language-html">excerpt_separator:  '&lt;!--more--&gt;'
 </code></pre>
 
 <p>然后，在index.html中：</p>
@@ -226,8 +230,7 @@
 <pre><code class="language-html">  {{ post.excerpt | strip_html }} 
 </code></pre>
 
-<p>然后，和前一种方法一样，在摘要后面加``  即可。</p>
-
+<p>然后，和前一种方法一样，在摘要后面加<code>&lt;!--more--&gt;</code>  即可。</p>
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

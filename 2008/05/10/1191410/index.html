@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python天天美味(17) - open读写文件</h1>
 
                   <p class="post-byline">
-                    by  · 2008年05月10日 · 619 Words ·
+                    by  · 2008年05月10日 · 647 Words ·
                     ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-05-10-1191410.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -193,7 +193,7 @@
 
 <p>Python中文件操作可以通过open函数，这的确很像C语言中的fopen。通过open函数获取一个file object，然后调用read()，write()等方法对文件进行读写操作。</p>
 
-<h3 id="1-open:6fe866e74bb687899878c48e13ea471c">1.open</h3>
+<h3 id="1-open">1.open</h3>
 
 <p>使用open打开文件后一定要记得调用文件对象的close()方法。比如可以用try/finally语句来确保最后能关闭文件。</p>
 
@@ -209,9 +209,9 @@
 
 <p>注：不能把open语句放在try块里，因为当打开文件出现异常时，文件对象file_object无法执行close()方法。</p>
 
-<h3 id="2-读文件:6fe866e74bb687899878c48e13ea471c">2.读文件</h3>
+<h3 id="2-读文件">2.读文件</h3>
 
-<h4 id="读文本文件:6fe866e74bb687899878c48e13ea471c">读文本文件</h4>
+<h4 id="读文本文件">读文本文件</h4>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">input&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;open(</span><span style="color: #800000;">'</span><span style="color: #800000;">data</span><span style="color: #800000;">'</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">r</span><span style="color: #800000;">'</span><span style="color: #000000;">)
 
@@ -221,11 +221,11 @@
 
 </span></div>
 
-<h4 id="读二进制文件:6fe866e74bb687899878c48e13ea471c">读二进制文件</h4>
+<h4 id="读二进制文件">读二进制文件</h4>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">input&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;open(</span><span style="color: #800000;">'</span><span style="color: #800000;">data</span><span style="color: #800000;">'</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">rb</span><span style="color: #800000;">'</span><span style="color: #000000;">)</span></div>
 
-<h4 id="读取所有内容:6fe866e74bb687899878c48e13ea471c">读取所有内容</h4>
+<h4 id="读取所有内容">读取所有内容</h4>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">file_object&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;open(</span><span style="color: #800000;">'</span><span style="color: #800000;">thefile.txt</span><span style="color: #800000;">'</span><span style="color: #000000;">)
 
@@ -237,7 +237,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;file_object.close(&nbsp;)</span></div>
 
-<h4 id="读固定字节:6fe866e74bb687899878c48e13ea471c">读固定字节</h4>
+<h4 id="读固定字节">读固定字节</h4>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">file_object&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;open(</span><span style="color: #800000;">'</span><span style="color: #800000;">abinfile</span><span style="color: #800000;">'</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">rb</span><span style="color: #800000;">'</span><span style="color: #000000;">)
 
@@ -257,7 +257,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;file_object.close(&nbsp;)</span></div>
 
-<h4 id="读每行:6fe866e74bb687899878c48e13ea471c">读每行</h4>
+<h4 id="读每行">读每行</h4>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">list_of_all_the_lines&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;file_object.readlines(&nbsp;)</span></div>
 
@@ -297,7 +297,7 @@ file_object.close(&nbsp;)</span></div>
 
 <p>&nbsp;</p>
 
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html:6fe866e74bb687899878c48e13ea471c"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
+<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
 
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/06/1185755.html">Python    天天美味(15) - Python正则表达式操作指南(re使用)(转)</a> &nbsp;</p>
 

@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="其他语言中，比如C＃，我们通常遍历数组是的方法是： for&nbsp;(int&nbsp;i = 0; i &lt; list.Length; i&#43;&#43;) ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)![](http://www.cnblogs.com/Images/dot.gif){ ![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)&nbsp;&nbsp;&nbsp;&nbsp;//todo with list[i] ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)} 在Python中，我们习惯这样遍历： for&nbsp;item&nbsp;in&nbsp;sequence: &nbsp;&nbsp;&nbsp; process(item) 这样遍历取不到item的">
+<meta name="description" content="其他语言中，比如C＃，我们通常遍历数组是的方法是： for&nbsp;(int&nbsp;i= 0; i &lt; list.Length; i&#43;&#43;) ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)![](http://www.cnblogs.com/Images/dot.gif){ ![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)&nbsp;&nbsp;&nbsp;&nbsp;//todo with list[i]![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)} 在Python中，我们习惯这样遍历： for&nbsp;item&nbsp;in&nbsp;sequence: &nbsp;&nbsp;&nbsp; process(item) 这样遍历取不到item的序号">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(23) - enumerate遍历数组 - CoderZh Blog">
-<meta itemprop="description" content="其他语言中，比如C＃，我们通常遍历数组是的方法是： for&nbsp;(int&nbsp;i = 0; i &lt; list.Length; i&#43;&#43;) ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)![](http://www.cnblogs.com/Images/dot.gif){ ![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)&nbsp;&nbsp;&nbsp;&nbsp;//todo with list[i] ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)} 在Python中，我们习惯这样遍历： for&nbsp;item&nbsp;in&nbsp;sequence: &nbsp;&nbsp;&nbsp; process(item) 这样遍历取不到item的">
+<meta itemprop="description" content="其他语言中，比如C＃，我们通常遍历数组是的方法是： for&nbsp;(int&nbsp;i= 0; i &lt; list.Length; i&#43;&#43;) ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)![](http://www.cnblogs.com/Images/dot.gif){ ![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)&nbsp;&nbsp;&nbsp;&nbsp;//todo with list[i]![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)} 在Python中，我们习惯这样遍历： for&nbsp;item&nbsp;in&nbsp;sequence: &nbsp;&nbsp;&nbsp; process(item) 这样遍历取不到item的序号">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(23) - enumerate遍历数组 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2008/05/17/1201509/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="其他语言中，比如C＃，我们通常遍历数组是的方法是： for&nbsp;(int&nbsp;i = 0; i &lt; list.Length; i&#43;&#43;) ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)![](http://www.cnblogs.com/Images/dot.gif){ ![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)&nbsp;&nbsp;&nbsp;&nbsp;//todo with list[i] ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)} 在Python中，我们习惯这样遍历： for&nbsp;item&nbsp;in&nbsp;sequence: &nbsp;&nbsp;&nbsp; process(item) 这样遍历取不到item的">
+<meta property="og:description" content="其他语言中，比如C＃，我们通常遍历数组是的方法是： for&nbsp;(int&nbsp;i= 0; i &lt; list.Length; i&#43;&#43;) ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)![](http://www.cnblogs.com/Images/dot.gif){ ![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)&nbsp;&nbsp;&nbsp;&nbsp;//todo with list[i]![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)} 在Python中，我们习惯这样遍历： for&nbsp;item&nbsp;in&nbsp;sequence: &nbsp;&nbsp;&nbsp; process(item) 这样遍历取不到item的序号">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(23) - enumerate遍历数组 - CoderZh Blog">
-<meta name="twitter:description" content="其他语言中，比如C＃，我们通常遍历数组是的方法是： for&nbsp;(int&nbsp;i = 0; i &lt; list.Length; i&#43;&#43;) ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)![](http://www.cnblogs.com/Images/dot.gif){ ![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)&nbsp;&nbsp;&nbsp;&nbsp;//todo with list[i] ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)} 在Python中，我们习惯这样遍历： for&nbsp;item&nbsp;in&nbsp;sequence: &nbsp;&nbsp;&nbsp; process(item) 这样遍历取不到item的">
+<meta name="twitter:description" content="其他语言中，比如C＃，我们通常遍历数组是的方法是： for&nbsp;(int&nbsp;i= 0; i &lt; list.Length; i&#43;&#43;) ![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)![](http://www.cnblogs.com/Images/dot.gif){ ![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)&nbsp;&nbsp;&nbsp;&nbsp;//todo with list[i]![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)} 在Python中，我们习惯这样遍历： for&nbsp;item&nbsp;in&nbsp;sequence: &nbsp;&nbsp;&nbsp; process(item) 这样遍历取不到item的序号">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -219,7 +219,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;process(index,&nbsp;item)</span></div>
 
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html:58205235bc37710f33633da5e722605e"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
+<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
 
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201449.html">Python    天天美味(21) - httplib，smtplib</a> &nbsp;</p>
 

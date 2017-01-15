@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python 天天美味(37) - 让python的unittest像gtest一样输出</h1>
 
                   <p class="post-byline">
-                    by  · 2010年08月23日 · 1076 Words ·
+                    by  · 2010年08月23日 · 1051 Words ·
                     ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-08-23-custom-python-unittestoutput-as-gtest.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -307,7 +307,7 @@ std_out_handle&nbsp;</span><span style="color: #000000;">=</span><span style="co
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;bool</span></div>
 </div>
 
-<h4 id="testrunner类:b7d902483da9f3aeb87148ff022fd8a4">TestRunner类</h4>
+<h4 id="testrunner类">TestRunner类</h4>
 
 <div class="cnblogs_code">
 <div><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;MyTestRunner:
@@ -389,7 +389,7 @@ std_out_handle&nbsp;</span><span style="color: #000000;">=</span><span style="co
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;result</span></div>
 </div>
 
-<h4 id="testresult类:b7d902483da9f3aeb87148ff022fd8a4">TestResult类</h4>
+<h4 id="testresult类">TestResult类</h4>
 
 <div class="cnblogs_code">
 <div><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;MyTestResult(unittest.TestResult):
@@ -477,7 +477,7 @@ std_out_handle&nbsp;</span><span style="color: #000000;">=</span><span style="co
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.stream.write(self._exc_info_to_string(err,&nbsp;test))</span></div>
 </div>
 
-<h4 id="执行:b7d902483da9f3aeb87148ff022fd8a4">执行</h4>
+<h4 id="执行">执行</h4>
 
 <div class="cnblogs_code">
 <div><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;</span><span style="color: #800080;">__name__</span><span style="color: #000000;">==</span><span style="color: #800000;">'</span><span style="color: #800000;">__main__</span><span style="color: #800000;">'</span><span style="color: #000000;">:
@@ -487,7 +487,7 @@ std_out_handle&nbsp;</span><span style="color: #000000;">=</span><span style="co
 
 <p>&nbsp;</p>
 
-<h4 id="效果:b7d902483da9f3aeb87148ff022fd8a4">效果</h4>
+<h4 id="效果">效果</h4>
 
 <p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/myunittestoutput.jpg" alt="" /></p>
 

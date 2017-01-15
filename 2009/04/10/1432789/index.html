@@ -178,7 +178,7 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之六 - 运行参数</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月10日 · 3120 Words ·
+                    by  · 2009年04月10日 · 3104 Words ·
                     ~7min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-10-1432789.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,11 +191,11 @@
                       
                       
 
-<h4 id="一-前言:b06922c295909042e0f1d12cb37a8cb1">一、前言</h4>
+<h4 id="一-前言">一、前言</h4>
 
 <p>使用gtest编写的测试案例通常本身就是一个可执行文件，因此运行起来非常方便。同时，gtest也为我们提供了一系列的运行参数（环境变量、命令行参数或代码里指定），使得我们可以对案例的执行进行一些有效的控制。</p>
 
-<h4 id="二-基本介绍:b06922c295909042e0f1d12cb37a8cb1">二、基本介绍</h4>
+<h4 id="二-基本介绍">二、基本介绍</h4>
 
 <p>前面提到，对于运行参数，gtest提供了三种设置的途径：</p>
 
@@ -249,7 +249,7 @@
 
 <p>2.&nbsp; 有一个命令行参数例外，那就是&ndash;gtest_list_tests，它是不接受系统环境变量的。（只是用来罗列测试案例名称）</p>
 
-<h4 id="三-参数列表:b06922c295909042e0f1d12cb37a8cb1">三、参数列表</h4>
+<h4 id="三-参数列表">三、参数列表</h4>
 
 <p>了解了上面的内容，我这里就直接将所有命令行参数总结和罗列一下。如果想要获得详细的命令行说明，直接运行你的案例，输入命令行参数：/? 或 &ndash;help 或 -help</p>
 
@@ -411,7 +411,7 @@
      </tr>
 </table>
 
-<h4 id="四-xml报告输出格式:b06922c295909042e0f1d12cb37a8cb1">四、XML报告输出格式</h4>
+<h4 id="四-xml报告输出格式">四、XML报告输出格式</h4>
 
 <div class="cnblogs_code"><span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml&nbsp;version="1.0"&nbsp;encoding="UTF-8"</span><span style="color: #0000ff;">?&gt;</span><span style="color: #000000;">
 </span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">testsuites&nbsp;</span><span style="color: #ff0000;">tests</span><span style="color: #0000ff;">="3"</span><span style="color: #ff0000;">&nbsp;failures</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;">&nbsp;errors</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;">&nbsp;time</span><span style="color: #0000ff;">="35"</span><span style="color: #ff0000;">&nbsp;name</span><span style="color: #0000ff;">="AllTests"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
@@ -439,7 +439,7 @@ Expected:&nbsp;0"</span><span style="color: #ff0000;">&nbsp;type</span><span sty
 
 <p>在我使用过程中发现一个问题，当我同时设置了&ndash;gtest_filter参数时，输出的xml报告中还是会包含所有测试案例的信息，只不过那些不被执行的测试案例的status值为&#8220;notrun&#8221;。而我之前认为的输出的xml报告应该只包含我需要运行的测试案例的信息。不知是否可提供一个只输出需要执行的测试案例的xml报告。因为当我需要在1000个案例中执行其中1个案例时，在报告中很难找到我运行的那个案例，虽然可以查找，但还是很麻烦。</p>
 
-<h4 id="五-总结:b06922c295909042e0f1d12cb37a8cb1">五、总结</h4>
+<h4 id="五-总结">五、总结</h4>
 
 <p>本篇主要介绍了gtest案例执行时提供的一些参数的使用方法，这些参数都非常有用。在实际编写gtest测试案例时肯定会需要用到的时候。至少我现在比较常用的就是：</p>
 

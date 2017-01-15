@@ -178,7 +178,7 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之五 - 死亡测试</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月08日 · 2204 Words ·
+                    by  · 2009年04月08日 · 2190 Words ·
                     ~5min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-08-1432043.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,11 +191,11 @@
                       
                       
 
-<h4 id="一-前言:c28a91e95496d38eb54ab7a4d8954bf0">一、前言</h4>
+<h4 id="一-前言">一、前言</h4>
 
 <p>&#8220;死亡测试&#8221;名字比较恐怖，这里的&#8220;死亡&#8221;指的的是程序的崩溃。通常在测试过程中，我们需要考虑各种各样的输入，有的输入可能直接导致程序崩溃，这时我们就需要检查程序是否按照预期的方式挂掉，这也就是所谓的&#8220;死亡测试&#8221;。gtest的死亡测试能做到在一个安全的环境下执行崩溃的测试案例，同时又对崩溃结果进行验证。</p>
 
-<h4 id="二-使用的宏:c28a91e95496d38eb54ab7a4d8954bf0">二、使用的宏</h4>
+<h4 id="二-使用的宏">二、使用的宏</h4>
 
 <table>
      <tr>
@@ -219,7 +219,7 @@
 
 <p>由于有些异常只在Debug下抛出，因此还提供了*_DEBUG_DEATH，用来处理Debug和Realease下的不同。</p>
 
-<h4 id="三-death-statement-regex:c28a91e95496d38eb54ab7a4d8954bf0">三、*_DEATH(statement, regex`)</h4>
+<h4 id="三-death-statement-regex">三、*_DEATH(statement, regex`)</h4>
 
 <ol>
 <li><p>statement是被测试的代码语句</p></li>
@@ -251,7 +251,7 @@ TEST(FooDeathTest,&nbsp;Demo)
 
 <p>重要：编写死亡测试案例时，TEST的第一个参数，即testcase_name，请使用DeathTest后缀。原因是gtest会优先运行死亡测试案例，应该是为线程安全考虑。</p>
 
-<h4 id="四-tt-exit-tt-statement-predicate-regex:c28a91e95496d38eb54ab7a4d8954bf0">四、*_<tt>EXIT(</tt><em>statement, predicate, regex</em>`)</h4>
+<h4 id="四-tt-exit-tt-statement-predicate-regex">四、*_<tt>EXIT(</tt><em>statement, predicate, regex</em>`)</h4>
 
 <ol>
 <li><p>statement是被测试的代码语句</p></li>
@@ -281,7 +281,7 @@ TEST(FooDeathTest,&nbsp;Demo)
 
 <p>&nbsp;</p>
 
-<h4 id="五-debug-death:c28a91e95496d38eb54ab7a4d8954bf0">五、*_DEBUG_DEATH</h4>
+<h4 id="五-debug-death">五、*_DEBUG_DEATH</h4>
 
 <p>先来看定义：
 <div class="cnblogs_code"><span style="color: #000000;">#ifdef&nbsp;NDEBUG
@@ -330,7 +330,7 @@ TEST(TestCase,&nbsp;TestDieOr12WorksInDgbAndOpt)
 
 <p>&nbsp;</p>
 
-<h4 id="六-关于正则表达式:c28a91e95496d38eb54ab7a4d8954bf0">六、关于正则表达式</h4>
+<h4 id="六-关于正则表达式">六、关于正则表达式</h4>
 
 <p>在<a name="Regular_Expression_Syntax">POSIX系统（</a><a name="Regular_Expression_Syntax">Linux, Cygwin, 和 Mac</a><a name="Regular_Expression_Syntax">）</a>中，gtest的死亡测试中使用的是<a name="Regular_Expression_Syntax">POSIX风格的正则表达式，</a><a name="Regular_Expression_Syntax">想了解POSIX风格</a>表达式可参考：</p>
 
@@ -357,7 +357,7 @@ TEST(TestCase,&nbsp;TestDieOr12WorksInDgbAndOpt)
 <li>Simple风格：<tt>GTEST_USES_SIMPLE_RE=1</tt></li>
 </ol>
 
-<h4 id="七-死亡测试运行方式:c28a91e95496d38eb54ab7a4d8954bf0">七、死亡测试运行方式</h4>
+<h4 id="七-死亡测试运行方式">七、死亡测试运行方式</h4>
 
 <ol>
 <li>fast方式（默认的方式）
@@ -388,7 +388,7 @@ TEST(MyDeathTest,&nbsp;TestTwo)&nbsp;{
 
 <p>&nbsp;</p>
 
-<h4 id="八-注意事项:c28a91e95496d38eb54ab7a4d8954bf0">八、注意事项</h4>
+<h4 id="八-注意事项">八、注意事项</h4>
 
 <ol>
 <li><p>不要在死亡测试里释放内存。</p></li>
@@ -398,7 +398,7 @@ TEST(MyDeathTest,&nbsp;TestTwo)&nbsp;{
 <li><p>不要在程序中使用内存堆检查。</p></li>
 </ol>
 
-<h4 id="九-总结:c28a91e95496d38eb54ab7a4d8954bf0">九、总结</h4>
+<h4 id="九-总结">九、总结</h4>
 
 <p>关于死亡测试，gtest官方的文档已经很详细了，同时在源码中也有大量的示例。如想了解更多的请参考官方的文档，或是直接看gtest源码。</p>
 

@@ -18,6 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="unreferenced symbols,">
 <meta name="description" content="C&#43;&#43;程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。
+
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
@@ -25,6 +26,7 @@
 
 <meta itemprop="name" content="强制链接静态库所有符号(包括未被使用的) - CoderZh Blog">
 <meta itemprop="description" content="C&#43;&#43;程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。
+
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -33,12 +35,14 @@
 <meta property="og:url" content="http://blog.coderzh.com/2015/06/14/LinkAllSymbols/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
 <meta property="og:description" content="C&#43;&#43;程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。
+
 ">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="强制链接静态库所有符号(包括未被使用的) - CoderZh Blog">
 <meta name="twitter:description" content="C&#43;&#43;程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。
+
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
@@ -193,9 +197,9 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p>C++程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。</p>
 
-<p>C++程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。</p>
+<p></p>
 
 <p>为什么会有这样的需求？的确，存在这种需求的是少数情况，但是一旦你遇到下面的需求，就变得必须了。比如：</p>
 
@@ -334,7 +338,7 @@ def find_matches(lines, regex, exclude_list):
 
 <p>在使用该静态库的工程代码中，只需要#include &ldquo;LinkAllSymbols.h&rdquo; 就可以了。</p>
 
-<h3 id="对比:179e17d63a7cb0a81de7975037280b66">对比</h3>
+<h3 id="对比">对比</h3>
 
 <p>使用OpenCppCoverage进行代码覆盖率测试，对比如下：</p>
 
@@ -346,10 +350,9 @@ def find_matches(lines, regex, exclude_list):
 
 <p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/included.png-w" alt="included" /></p>
 
-<h3 id="github:179e17d63a7cb0a81de7975037280b66">github</h3>
+<h3 id="github">github</h3>
 
 <p>所有代码见：<a href="https://github.com/coderzh/LinkAllSymbols">https://github.com/coderzh/LinkAllSymbols</a></p>
-
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

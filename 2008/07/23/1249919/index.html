@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="1. 首先VC&#43;&#43;的DLL的导出函数定义成标准C的导出函数： ![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)#ifdef&nbsp;LRDLLTEST_EXPORTS #define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport) #else #define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllimport) #endif extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b); extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar); //a&nbsp;&#43;&nbsp;b LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b) { &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;&#43;&nbsp;b; } //Get&nbsp;a&nbsp;string LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar) { &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;&#34;Hello&nbsp;DLL&#34;); } 2. Python中调用如下： from&nbsp;ctypes&nbsp;import&nbsp;* fileName=&#34;LRDllTest.dll&#34; func=cdll.LoadLibrary(fileName) str&nbsp;=&nbsp;create_string_buffer(20) n&nbsp;=&nbsp;func.Sum(2,&nbsp;3) func.GetString(str) print&nbsp;n print&nbsp;str.raw 关于C语">
+<meta name="description" content="1. 首先VC&#43;&#43;的DLL的导出函数定义成标准C的导出函数： ![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)#ifdef&nbsp;LRDLLTEST_EXPORTS#define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport)#else#define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllimport)#endifextern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b); extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar); //a&nbsp;&#43;&nbsp;b LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b) { &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;&#43;&nbsp;b; } //Get&nbsp;a&nbsp;string LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar) { &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;&#34;Hello&nbsp;DLL&#34;); } 2. Python中调用如下： from&nbsp;ctypes&nbsp;import&nbsp;*fileName=&#34;LRDllTest.dll&#34;func=cdll.LoadLibrary(fileName) str&nbsp;=&nbsp;create_string_buffer(20) n&nbsp;=&nbsp;func.Sum(2,&nbsp;3) func.GetString(str) print&nbsp;n print&nbsp;str.raw 关于C语言中的一些参数">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL) - CoderZh Blog">
-<meta itemprop="description" content="1. 首先VC&#43;&#43;的DLL的导出函数定义成标准C的导出函数： ![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)#ifdef&nbsp;LRDLLTEST_EXPORTS #define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport) #else #define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllimport) #endif extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b); extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar); //a&nbsp;&#43;&nbsp;b LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b) { &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;&#43;&nbsp;b; } //Get&nbsp;a&nbsp;string LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar) { &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;&#34;Hello&nbsp;DLL&#34;); } 2. Python中调用如下： from&nbsp;ctypes&nbsp;import&nbsp;* fileName=&#34;LRDllTest.dll&#34; func=cdll.LoadLibrary(fileName) str&nbsp;=&nbsp;create_string_buffer(20) n&nbsp;=&nbsp;func.Sum(2,&nbsp;3) func.GetString(str) print&nbsp;n print&nbsp;str.raw 关于C语">
+<meta itemprop="description" content="1. 首先VC&#43;&#43;的DLL的导出函数定义成标准C的导出函数： ![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)#ifdef&nbsp;LRDLLTEST_EXPORTS#define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport)#else#define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllimport)#endifextern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b); extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar); //a&nbsp;&#43;&nbsp;b LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b) { &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;&#43;&nbsp;b; } //Get&nbsp;a&nbsp;string LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar) { &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;&#34;Hello&nbsp;DLL&#34;); } 2. Python中调用如下： from&nbsp;ctypes&nbsp;import&nbsp;*fileName=&#34;LRDllTest.dll&#34;func=cdll.LoadLibrary(fileName) str&nbsp;=&nbsp;create_string_buffer(20) n&nbsp;=&nbsp;func.Sum(2,&nbsp;3) func.GetString(str) print&nbsp;n print&nbsp;str.raw 关于C语言中的一些参数">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL) - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.coderzh.com/2008/07/23/1249919/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="1. 首先VC&#43;&#43;的DLL的导出函数定义成标准C的导出函数： ![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)#ifdef&nbsp;LRDLLTEST_EXPORTS #define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport) #else #define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllimport) #endif extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b); extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar); //a&nbsp;&#43;&nbsp;b LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b) { &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;&#43;&nbsp;b; } //Get&nbsp;a&nbsp;string LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar) { &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;&#34;Hello&nbsp;DLL&#34;); } 2. Python中调用如下： from&nbsp;ctypes&nbsp;import&nbsp;* fileName=&#34;LRDllTest.dll&#34; func=cdll.LoadLibrary(fileName) str&nbsp;=&nbsp;create_string_buffer(20) n&nbsp;=&nbsp;func.Sum(2,&nbsp;3) func.GetString(str) print&nbsp;n print&nbsp;str.raw 关于C语">
+<meta property="og:description" content="1. 首先VC&#43;&#43;的DLL的导出函数定义成标准C的导出函数： ![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)#ifdef&nbsp;LRDLLTEST_EXPORTS#define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport)#else#define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllimport)#endifextern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b); extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar); //a&nbsp;&#43;&nbsp;b LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b) { &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;&#43;&nbsp;b; } //Get&nbsp;a&nbsp;string LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar) { &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;&#34;Hello&nbsp;DLL&#34;); } 2. Python中调用如下： from&nbsp;ctypes&nbsp;import&nbsp;*fileName=&#34;LRDllTest.dll&#34;func=cdll.LoadLibrary(fileName) str&nbsp;=&nbsp;create_string_buffer(20) n&nbsp;=&nbsp;func.Sum(2,&nbsp;3) func.GetString(str) print&nbsp;n print&nbsp;str.raw 关于C语言中的一些参数">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL) - CoderZh Blog">
-<meta name="twitter:description" content="1. 首先VC&#43;&#43;的DLL的导出函数定义成标准C的导出函数： ![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)#ifdef&nbsp;LRDLLTEST_EXPORTS #define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport) #else #define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllimport) #endif extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b); extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar); //a&nbsp;&#43;&nbsp;b LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b) { &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;&#43;&nbsp;b; } //Get&nbsp;a&nbsp;string LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar) { &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;&#34;Hello&nbsp;DLL&#34;); } 2. Python中调用如下： from&nbsp;ctypes&nbsp;import&nbsp;* fileName=&#34;LRDllTest.dll&#34; func=cdll.LoadLibrary(fileName) str&nbsp;=&nbsp;create_string_buffer(20) n&nbsp;=&nbsp;func.Sum(2,&nbsp;3) func.GetString(str) print&nbsp;n print&nbsp;str.raw 关于C语">
+<meta name="twitter:description" content="1. 首先VC&#43;&#43;的DLL的导出函数定义成标准C的导出函数： ![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)#ifdef&nbsp;LRDLLTEST_EXPORTS#define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport)#else#define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllimport)#endifextern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b); extern&nbsp;&#34;C&#34;&nbsp;LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar); //a&nbsp;&#43;&nbsp;b LRDLLTEST_API&nbsp;int&nbsp;Sum(int&nbsp;a&nbsp;,&nbsp;int&nbsp;b) { &nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;&#43;&nbsp;b; } //Get&nbsp;a&nbsp;string LRDLLTEST_API&nbsp;void&nbsp;GetString(char*&nbsp;pChar) { &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;&#34;Hello&nbsp;DLL&#34;); } 2. Python中调用如下： from&nbsp;ctypes&nbsp;import&nbsp;*fileName=&#34;LRDllTest.dll&#34;func=cdll.LoadLibrary(fileName) str&nbsp;=&nbsp;create_string_buffer(20) n&nbsp;=&nbsp;func.Sum(2,&nbsp;3) func.GetString(str) print&nbsp;n print&nbsp;str.raw 关于C语言中的一些参数">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL)</h1>
 
                   <p class="post-byline">
-                    by  · 2008年07月23日 · 325 Words ·
+                    by  · 2008年07月23日 · 324 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-07-23-1249919.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,7 +191,7 @@
                       
                       
 
-<h3 id="1-首先vc-的dll的导出函数定义成标准c的导出函数:e04f2a5baadeb687f48446ebc9cdec89">1. 首先VC++的DLL的导出函数定义成标准C的导出函数：</h3>
+<h3 id="1-首先vc-的dll的导出函数定义成标准c的导出函数">1. 首先VC++的DLL的导出函数定义成标准C的导出函数：</h3>
 
 <div class="cnblogs_code" onclick="cnblogs_code_show('910eb973-7829-4cc7-96f7-84bb6de389c1')">![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)<div id="cnblogs_code_open_910eb973-7829-4cc7-96f7-84bb6de389c1"><div><span style="color: #008000;">#</span><span style="color: #008000;">ifdef&nbsp;LRDLLTEST_EXPORTS</span><span style="color: #008000;">
 #</span><span style="color: #008000;">define&nbsp;LRDLLTEST_API&nbsp;__declspec(dllexport)</span><span style="color: #008000;">
@@ -214,7 +214,7 @@ LRDLLTEST_API&nbsp;void&nbsp;GetString(char</span><span style="color: #000000;">
 &nbsp;&nbsp;&nbsp;&nbsp;strcpy(pChar,&nbsp;</span><span style="color: #800000;">"</span><span style="color: #800000;">Hello&nbsp;DLL</span><span style="color: #800000;">"</span><span style="color: #000000;">);
 }</span></div></div></div>
 
-<h3 id="2-python中调用如下:e04f2a5baadeb687f48446ebc9cdec89">2. Python中调用如下：</h3>
+<h3 id="2-python中调用如下">2. Python中调用如下：</h3>
 
 <div class="cnblogs_code"><div><span style="color: #0000ff;">from</span><span style="color: #000000;">&nbsp;ctypes&nbsp;</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">*</span><span style="color: #000000;">
 <br />
@@ -229,14 +229,14 @@ func.GetString(str)
 
 <p>关于C语言中的一些参数类型详见：<a href="http://www.python.org/doc/2.5/lib/node454.html">http://www.python.org/doc/2.5/lib/node454.html</a></p>
 
-<h3 id="3-输出结果:e04f2a5baadeb687f48446ebc9cdec89">3. 输出结果：</h3>
+<h3 id="3-输出结果">3. 输出结果：</h3>
 
 <div class="cnblogs_code"><div><span style="color: #000000;">5</span><span style="color: #000000;">
 Hello&nbsp;DLL</span></div></div>
 
 <p>&nbsp;</p>
 
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html:e04f2a5baadeb687f48446ebc9cdec89"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python   天天美味系列（总）</a></h4>
+<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python   天天美味系列（总）</a></h4>
 
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/06/07/1215607.html">Python     天天美味(27) - 网络编程起步(Socket发送消息)</a> &nbsp;</p>
 

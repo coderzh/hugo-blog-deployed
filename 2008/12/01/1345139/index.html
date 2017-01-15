@@ -178,7 +178,7 @@
                   <h1 class="post-title">(转)使用Google App Engine Helper for Django</h1>
 
                   <p class="post-byline">
-                    by  · 2008年12月01日 · 3720 Words ·
+                    by  · 2008年12月01日 · 3716 Words ·
                     ~8min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-12-01-1345139.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,7 +191,7 @@
                       
                       
 
-<h2 id="使用google-app-engine-helper-for-django:74de11664cbf9d4185cf25420b034824">使用Google App Engine Helper for Django</h2>
+<h2 id="使用google-app-engine-helper-for-django">使用Google App Engine Helper for Django</h2>
 
 <p>原著： <em>Matt Brown</em></p>
 
@@ -201,13 +201,13 @@
 
 <p>译文链接： <a href="http://danmarner.yo2.cn/appengine_helper_for_django_cn/">http://danmarner.yo2.cn/appengine_helper_for_django_cn/</a></p>
 
-<h3 id="引言:74de11664cbf9d4185cf25420b034824">引言</h3>
+<h3 id="引言">引言</h3>
 
 <p>Google App Engine可以运行任何WSGI兼容的程序。由于Django支持该标准，所以在Google App Engine上建立（或者移植既成的）Django程序是完全可能的。</p>
 
 <p>本文将通过重新包装<a href="http://www.djangoproject.com/documentation/tutorial01/">Django官方教程</a> 中问卷调查程序的开始部分来让你体验建立一个Django项目并且在Google App Engine上面运行的全过程。 各步骤中针对App Engine环境的改动是本文的重点。</p>
 
-<h3 id="理解google-app-engine中的django环境:74de11664cbf9d4185cf25420b034824">理解Google App Engine中的Django环境</h3>
+<h3 id="理解google-app-engine中的django环境">理解Google App Engine中的Django环境</h3>
 
 <p>Google App Engine提供的环境与Django程序相比有两个主要区别：</p>
 
@@ -218,7 +218,7 @@
 
 <p>我们创建了一个helper程序来省掉这些区别给你带来的麻烦。这个helper程序提供了Django在Google App Engine无法使用部分的替代实现。</p>
 
-<h3 id="获取helper:74de11664cbf9d4185cf25420b034824">获取Helper</h3>
+<h3 id="获取helper">获取Helper</h3>
 
 <p>你可以在这个开源项目的网站下载该helper模块：<a href="http://code.google.com/p/google-app-engine-django">http://code.google.com/p/google-app-engine-django</a>。</p>
 
@@ -226,7 +226,7 @@
 
 <p>在这个文件夹里你可以看到一个标准Django工程的结构(settings.py, url.py等等)以及一个名为appengine_django的子文件夹（或者根据Django的术语，程序）。这就是整合Django和 Google App Engine的helper了。</p>
 
-<h3 id="接入google-app-engine-sdk:74de11664cbf9d4185cf25420b034824">接入Google App Engine SDK</h3>
+<h3 id="接入google-app-engine-sdk">接入Google App Engine SDK</h3>
 
 <p>helper程序使用到了Google App Engine SDK。如果你在使用Mac OS并且你使用了Google提供的安装程序你可以立即进入下一步（确认环境设置正确） 。Helper知道安装程序安装SDK的位置并且会自动的从那里到入它。</p>
 
@@ -270,7 +270,7 @@ INFO:root:Running&nbsp;application&nbsp;appengine</span><span style="color: #000
 <p>&nbsp;</p>
 </blockquote>
 
-<h3 id="更改程序名:74de11664cbf9d4185cf25420b034824">更改程序名</h3>
+<h3 id="更改程序名">更改程序名</h3>
 
 <p>用你喜欢的编辑器打开app.yaml，把application那一行包含的名字改为你的程序名。例如：</p>
 
@@ -298,7 +298,7 @@ views.py</span></div>
 <p>&nbsp;</p>
 </blockquote>
 
-<h3 id="建立models:74de11664cbf9d4185cf25420b034824">建立Models</h3>
+<h3 id="建立models">建立Models</h3>
 
 <p>polls程序包含两个model：polls和choice（DaNmarner:参见Django的官方教程）。你需要用helper和 Google App Engine提供的datastore属性来建立它们。标准的Django Model和Property类是无法使用的。虽然你的models无法使用Django的Model类，helper会确保这些model和 Django的形式相近并且在Django里注册这些models。</p>
 
@@ -376,7 +376,7 @@ django</span><span style="color: #000000;">/</span><span style="color: #000000;"
 <p>&nbsp;</p>
 </blockquote>
 
-<h3 id="上传程序:74de11664cbf9d4185cf25420b034824">上传程序</h3>
+<h3 id="上传程序">上传程序</h3>
 
 <p>如果你使用以上描述的Django 0.97并且在<a href="http://appengine.google.com注册了你的程序，你可以使用manage.py的update命令一步搞定上传步骤：">http://appengine.google.com注册了你的程序，你可以使用manage.py的update命令一步搞定上传步骤：</a></p>
 
@@ -434,7 +434,7 @@ ROOT_URLCONF&nbsp;</span><span style="color: #000000;">=</span><span style="colo
 TIME_ZONE&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">UTC</span><span style="color: #800000;">'</span></div>
 </blockquote>
 
-<h3 id="贡献你的力量:74de11664cbf9d4185cf25420b034824">贡献你的力量</h3>
+<h3 id="贡献你的力量">贡献你的力量</h3>
 
 <p>目前的helper模块仅仅实现了Django和Google App Engine整合的皮毛。如果你有一些新特性的建议或者想提交你的helper代码，请在项目站点<a href="http://code.google.com/p/google-app-engine-django/issues/entry">http://code.google.com/p/google-app-engine-django/issues/entry</a>上提交一个bug报告文件。</p>
 

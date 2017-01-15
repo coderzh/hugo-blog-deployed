@@ -193,7 +193,7 @@
 
 <p>快速排序的原理是将取出第一个数，将整个数组分为两波，一拨都大于这个数，另一波都小于这个数，然后递归用同样的方法处理第一波数字和第二波数字。都说是&#8220;快速排序&#8221;，效率肯定比其他的一般排序算法高，下面我们就来验证一把，比较一下所谓的&#8220;快速排序&#8221;和&#8220;冒泡排序&#8221;的性能差异。</p>
 
-<h3 id="1-快速排序:5a8eac2743d919cb0e43bca7a59889c1">1. 快速排序</h3>
+<h3 id="1-快速排序">1. 快速排序</h3>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;"><span style="color: #f0e68c;">def</span> <span style="color: #ffffff;">quicksort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">low</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">0</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">high</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">None</span><span style="color: #ffffff;">):</span>
 
@@ -233,7 +233,7 @@
 
 <span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">quicksort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">high</span><span style="color: #ffffff;">)</span></div>
 
-<h3 id="2-冒泡排序:5a8eac2743d919cb0e43bca7a59889c1">2. 冒泡排序</h3>
+<h3 id="2-冒泡排序">2. 冒泡排序</h3>
 
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;"><span style="color: #f0e68c;">def</span> <span style="color: #ffffff;">bubblesort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">):</span>
 
@@ -247,7 +247,7 @@
 
 <p>&nbsp;</p>
 
-<h3 id="3-性能比较:5a8eac2743d919cb0e43bca7a59889c1">3. 性能比较</h3>
+<h3 id="3-性能比较">3. 性能比较</h3>
 
 <p>上面看来，冒泡排序只需要5行，够简洁的，但性能咋样呢？来比较一下吧：</p>
 
@@ -281,7 +281,7 @@
 
 <p>&nbsp;</p>
 
-<h3 id="4-结果:5a8eac2743d919cb0e43bca7a59889c1">4. 结果</h3>
+<h3 id="4-结果">4. 结果</h3>
 
 <p>通过对随机的2000个数字进行排序，下面的结果可非常容易的看出，快速排序的优势是非常大的。</p>
 
@@ -302,7 +302,7 @@ bubblesort <span style="color: #00ff00;">0:00:03.563000</span></div>
 
 <p>&nbsp;</p>
 
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html:5a8eac2743d919cb0e43bca7a59889c1"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python    天天美味系列（总）</a></h4>
+<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python    天天美味系列（总）</a></h4>
 
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/06/07/1215657.html">Python      天天美味(28) - urlopen</a>&nbsp;&nbsp; &nbsp;</p>
 

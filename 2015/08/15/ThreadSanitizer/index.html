@@ -189,13 +189,13 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p>ThreadSanitizer又叫TSan，是一个检查线程Data Race的C/C++工具。它集成在新版的gcc和clang中，通过编译时加-fsanitize=thread，可以在运行时检测出Data Race的问题。</p>
 
-<p>ThreadSanitizer又叫TSan，是一个检查线程Data Race的C/C++工具。它集成在新版的gcc和clang中，通过编译时加-fsanitize=thread，可以在运行时检测出Data Race的问题。</p>
+<p></p>
 
 <p>ThreadSanitizer官网：<a href="https://code.google.com/p/thread-sanitizer">https://code.google.com/p/thread-sanitizer</a></p>
 
-<h3 id="data-race:ee3062e1786be8171e5aa95e9b33a1dc">Data Race</h3>
+<h3 id="data-race">Data Race</h3>
 
 <p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/Data-race.jpg" alt="DataRace" /></p>
 
@@ -203,14 +203,14 @@
 
 <p>Data Race的问题非常难查，Data Race一旦发生，结果是不可预期的，也许直接就Crash了，也许导致执行流程错乱了，也许把内存破坏导致之后某个时刻突然Crash了。</p>
 
-<h3 id="环境要求:ee3062e1786be8171e5aa95e9b33a1dc">环境要求</h3>
+<h3 id="环境要求">环境要求</h3>
 
 <ol>
 <li>Linux x86_64，内核版本不要太旧。（经测试，公司旧的开发机Linux内核是2.6.16是跑不了的，新的tlinux内核3.10.0可以）</li>
 <li>gcc 4.8版本以上（clang也集成了，3.2版本以上）</li>
 </ol>
 
-<h3 id="官方示例:ee3062e1786be8171e5aa95e9b33a1dc">官方示例</h3>
+<h3 id="官方示例">官方示例</h3>
 
 <pre><code class="language-cpp">$ cat simple_race.cc
 #include &lt;pthread.h&gt;
@@ -265,7 +265,7 @@ ThreadSanitizer: reported 1 warnings
 <pre><code>$ ./a.out &gt;result.txt 2&gt;&amp;1
 </code></pre>
 
-<h3 id="关键要点:ee3062e1786be8171e5aa95e9b33a1dc">关键要点</h3>
+<h3 id="关键要点">关键要点</h3>
 
 <ol>
 <li>除了加-fsanitize=thread外，一定要加-fPIE -pie。</li>
@@ -274,7 +274,6 @@ ThreadSanitizer: reported 1 warnings
 <li>只支持64位，最好指定编译64位(-m64)</li>
 <li>如果依赖其他静态库，其他静态库编译时必须指定-fPIC（如果不是请重编）</li>
 </ol>
-
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

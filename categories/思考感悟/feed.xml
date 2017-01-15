@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>思考感悟 on CoderZh Blog</title>
-        <link>http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</link>
+        <link>http://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/feed/index.xml</link>
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 01 Jan 2017 00:00:00 CST</updated>
+        <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
         
         <item>
             <title>我的 2016</title>
@@ -20,13 +20,13 @@
 
 &lt;p&gt;光阴似箭，岁月如梭，仿佛去年写「我的 2015」就在昨日，然而时间的确在滴滴答答中度过了 365 天。这一年里，经历了一些事，读了一些书，努力过，收获过，感恩 2016。&lt;/p&gt;
 
-&lt;h4 id=&#34;公众号:177cfd9375830f046ca94878194dad36&#34;&gt;公众号&lt;/h4&gt;
+&lt;h4 id=&#34;公众号&#34;&gt;公众号&lt;/h4&gt;
 
 &lt;p&gt;其中一个变化是，我的公众号（博客）的更新频率越来越低了。2016 年我总共写了 20 多篇文章，平均算下来，2 周才有 1 篇。相比去年的 1 周 1 篇少了不少。&lt;/p&gt;
 
 &lt;p&gt;这其中有几个原因，首先，工作占据了我更多的时间。有的时候为了解决问题，不可避免的把工作带回了家。其次，随着小孩的长大，周末需要花更多的时间带小孩，陪家人。第三，见识了越多优秀的人，越发现自己的无知，与其为了 1 周 凑上 1 篇，还不如多沉下心学习，做些更深入的研究，多读点书，多写点代码，多存点干货再来分享。第四，还是因为懒。&lt;/p&gt;
 
-&lt;h4 id=&#34;读书:177cfd9375830f046ca94878194dad36&#34;&gt;读书&lt;/h4&gt;
+&lt;h4 id=&#34;读书&#34;&gt;读书&lt;/h4&gt;
 
 &lt;p&gt;2016 年，我读了以下书：《必然》、《MacTalk 跨越边界》、《7 Eleven零售的哲学》、《改变未来的九大算法》、《重来》、《马克·扎克伯格传》、《硅谷钢铁侠：埃隆·马斯克》、《途客圈创业记》、《福特自传》、《人类简史：从动物到上帝》、《Google 重新定义公司》、《Android 软件安全与逆向分析》、《第二次机器革命》、《接纳不完美的自己》、《黑客》、《成为乔布斯》……&lt;/p&gt;
 
@@ -36,7 +36,7 @@
 
 &lt;p&gt;所以，接纳不完美的自己，第一步是把自己内心深处的房间打开。每当你觉得别人怎么怎么样时，你越是激动，越要想一想，我是不是越是一样，只是我把门锁上了(直白一点：你越认为别人笨，其实越是你笨。你越是认为别人心机婊，其实你越是心机婊)。于是你会对别人的缺点更加宽容，也能更好的反思自我。第二步是必要时利用你的缺点。比如有人要非法拆迁你的房子，你是不是表现的无赖一些反而会更好。&lt;/p&gt;
 
-&lt;h4 id=&#34;代码:177cfd9375830f046ca94878194dad36&#34;&gt;代码&lt;/h4&gt;
+&lt;h4 id=&#34;代码&#34;&gt;代码&lt;/h4&gt;
 
 &lt;p&gt;写代码依然是一件非常有意思的事情。2016 年的一个重大变化是，我的开发环境已经全面转向了 Mac。我深刻的感受到了《成为乔布斯》书中提到的乔布斯对艺术和美的追求。一句话：用更好看的 Mac，写代码不折腾。&lt;/p&gt;
 
@@ -48,11 +48,11 @@
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/github2016.png&#34; alt=&#34;github2016&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;工作:177cfd9375830f046ca94878194dad36&#34;&gt;工作&lt;/h4&gt;
+&lt;h4 id=&#34;工作&#34;&gt;工作&lt;/h4&gt;
 
 &lt;p&gt;依然认为是最棒的公司。来年继续加油。&lt;/p&gt;
 
-&lt;h4 id=&#34;不足:177cfd9375830f046ca94878194dad36&#34;&gt;不足&lt;/h4&gt;
+&lt;h4 id=&#34;不足&#34;&gt;不足&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;公众号（博客）写少了。&lt;/li&gt;
@@ -60,11 +60,11 @@
 &lt;li&gt;运动少了。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;展望:177cfd9375830f046ca94878194dad36&#34;&gt;展望&lt;/h4&gt;
+&lt;h4 id=&#34;展望&#34;&gt;展望&lt;/h4&gt;
 
 &lt;p&gt;好的习惯继续发扬，不足要改掉，健身的重要性要提高一个 Level。&lt;/p&gt;
 
-&lt;h4 id=&#34;最后:177cfd9375830f046ca94878194dad36&#34;&gt;最后&lt;/h4&gt;
+&lt;h4 id=&#34;最后&#34;&gt;最后&lt;/h4&gt;
 
 &lt;p&gt;感谢你们！如此低的更新频率下还没有退订，感谢！Happy 2017!&lt;/p&gt;
 </description>
@@ -176,7 +176,7 @@
 
 &lt;p&gt;当然，包括这句话也可能是错的。&lt;/p&gt;
 
-&lt;h3 id=&#34;禅定时刻:33f22c57bda1b27d5a03c564ba4d31d4&#34;&gt;禅定时刻&lt;/h3&gt;
+&lt;h3 id=&#34;禅定时刻&#34;&gt;禅定时刻&lt;/h3&gt;
 
 &lt;p&gt;那些你想象中的汹涌流量，也许永远不会到来。&lt;/p&gt;
 
@@ -256,9 +256,7 @@
             <pubDate>Sat, 09 Apr 2016 14:57:00 UTC</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
-            <description>
-
-&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
+            <description>&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
 
 &lt;p&gt;而如今网络如此发达，大多数的答案都可以通过你问出正确的问题得到解答。凯文·凯利在他的《必然》里有提到，未来，我们不缺乏答案，缺的是问出好的问题。Google 几乎索引了我们想要知道的所有问题的答案（百度索引了所有的相反答案），所以，理论上，我们不再需要记录自己的笔记。&lt;/p&gt;
 
@@ -272,7 +270,7 @@
 
 &lt;p&gt;既可以说是「全新」，也是可以说是用最「原始」的方式管理笔记。即在本地完全由纯文本的方式来进行笔记管理。这种方式不再依赖任何一个笔记软件。&lt;/p&gt;
 
-&lt;h3 id=&#34;所有的软件都不可靠:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;所有的软件都不可靠&lt;/h3&gt;
+&lt;h3 id=&#34;所有的软件都不可靠&#34;&gt;所有的软件都不可靠&lt;/h3&gt;
 
 &lt;p&gt;现有的所有笔记软件给我们一种假象：我们可以永远记录下去。事实并非如此，现在科技发展如此之快，公司被淘汰的速度也在加速，很有可能现在最流行的笔记软件几年后就关门大吉。&lt;/p&gt;
 
@@ -284,7 +282,7 @@
 
 &lt;p&gt;这将导致之前所有使用 Parse 服务的软件重新去考虑迁移的事宜。而事实上有很多软件已工作多年，而且几乎不再维护，一旦关闭，如果不进行迁移维护，那些软件将会失效。&lt;/p&gt;
 
-&lt;h3 id=&#34;回归原始:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;回归原始&lt;/h3&gt;
+&lt;h3 id=&#34;回归原始&#34;&gt;回归原始&lt;/h3&gt;
 
 &lt;p&gt;使用纯文本在本地进行笔记管理，是最原始的笔记方式。你不必再担心笔记软件停止服务后你的笔记在哪里的问题。你也不依赖于任何一款笔记编辑软件，因为任何文本编辑器都可以直接进行笔记编辑。&lt;/p&gt;
 
@@ -296,7 +294,7 @@
 &lt;li&gt;能不能保证笔记文件不丢失？&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&#34;笔记搜索:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记搜索&lt;/h4&gt;
+&lt;h4 id=&#34;笔记搜索&#34;&gt;笔记搜索&lt;/h4&gt;
 
 &lt;p&gt;从本地文件夹里搜索文件，或者搜索文件里的内容，有很多的工具。这些工具都是可替代的，即使所有 GUI 的工具软件都不能用了，我们还有 find 和 grep 命令。&lt;/p&gt;
 
@@ -308,7 +306,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/find-notes.png-s&#34; alt=&#34;find-notes&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;笔记编辑:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记编辑&lt;/h4&gt;
+&lt;h4 id=&#34;笔记编辑&#34;&gt;笔记编辑&lt;/h4&gt;
 
 &lt;p&gt;当我想记录编程相关的笔记时，只需要按下 &lt;code&gt;np&lt;/code&gt; 空格，输入文字标题，将自动在合适的路径创建一个新的笔记并打开编辑。（n = new，p = programming 分类）&lt;/p&gt;
 
@@ -326,7 +324,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/atom-markdown.png-s&#34; alt=&#34;atom-markdown&#34; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;alfred-workflow:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;Alfred Workflow&lt;/h4&gt;
+&lt;h4 id=&#34;alfred-workflow&#34;&gt;Alfred Workflow&lt;/h4&gt;
 
 &lt;p&gt;想实现上面 &lt;code&gt;f&lt;/code&gt; 和 &lt;code&gt;np&lt;/code&gt; 之类的功能非常简单，通过组合 Workflow 里的 FileFilter、ScriptFilter、Run Script 即可。&lt;/p&gt;
 
@@ -336,22 +334,21 @@
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/alfred-workflows&#34;&gt;https://github.com/coderzh/alfred-workflows&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;笔记多平台同步:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;笔记多平台同步&lt;/h4&gt;
+&lt;h4 id=&#34;笔记多平台同步&#34;&gt;笔记多平台同步&lt;/h4&gt;
 
 &lt;p&gt;各种网盘，综合考虑后，我选择了 Dropbox。（为了能正常使用 Dropbox 需要一点功夫。）&lt;/p&gt;
 
-&lt;h4 id=&#34;移动端同步与编辑:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;移动端同步与编辑&lt;/h4&gt;
+&lt;h4 id=&#34;移动端同步与编辑&#34;&gt;移动端同步与编辑&lt;/h4&gt;
 
 &lt;p&gt;在支持 Dropbox 同步同时又支持 Markdown 编辑的 App 里选择，最后我选择了 &lt;a href=&#34;https://bywordapp.com/&#34;&gt;Byword&lt;/a&gt;，因为它的 Markdown 编写体验真的很好。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/byword.PNG&#34; alt=&#34;byword&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;保证笔记文件不丢失:a4eed20b4e8e278ebfafe3eb338f591b&#34;&gt;保证笔记文件不丢失&lt;/h3&gt;
+&lt;h3 id=&#34;保证笔记文件不丢失&#34;&gt;保证笔记文件不丢失&lt;/h3&gt;
 
 &lt;p&gt;除了 Dropbox 同步，我会定期使用 git 进行版本管理，Push 到自己的私人仓库里。&lt;/p&gt;
 
-&lt;p&gt;希望本文对喜欢做笔记的同学有点帮助吧。&lt;/p&gt;
-</description>
+&lt;p&gt;希望本文对喜欢做笔记的同学有点帮助吧。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -364,7 +361,7 @@
 
 &lt;p&gt;最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;于是我想，当时看来挺不错的技术，几年后，或者十年后，会变成怎样。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt; &lt;strong&gt;于是我想，当时看来挺不错的技术，几年后，或者十年后，会变成怎样。&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;比如，著名的后端即服务（baas）的框架 &lt;a href=&#34;https://parse.com&#34;&gt;Parse&lt;/a&gt; 在 2013 年时被 Facebook 收购。前不久，在 2016 年 1 月，Facebook 因自身业务需求， 宣布将于 2017 年 1 月 28 日正式关闭 Parse 服务。&lt;/p&gt;
 
@@ -406,8 +403,7 @@
 
 &lt;p&gt;前三个我已经忘的一干二净，但是在当时的情景下，对我的帮助和影响还是巨大的。&lt;/p&gt;
 
-&lt;p&gt;当然，我还在继续前进。下一个编程语言，我准备学习 Swift，纯粹为了好玩，因为「所有的编程技术都会成为历史」，如果一门编程语言能够给你编程语言之外的启发，也就足够了!&lt;/p&gt;
-</description>
+&lt;p&gt;当然，我还在继续前进。下一个编程语言，我准备学习 Swift，纯粹为了好玩，因为「所有的编程技术都会成为历史」，如果一门编程语言能够给你编程语言之外的启发，也就足够了!&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -491,7 +487,8 @@
 &lt;p&gt;所以，不必担心收不到有用的用户反馈。而且，那么大一个微信二维码放在那里，只要扫一扫关注一下，就可以给我发消息，当然，找到我的邮箱地址也是很容易的事情。&lt;/p&gt;
 
 &lt;p&gt;为了追求最佳的阅读体验，追求一个博客的简单和纯粹，我去掉了博客的评论系统。&lt;/p&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -501,6 +498,8 @@
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2016/01/18/thoughtworks-story/</guid>
             <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/TW.jpg-wt&#34; alt=&#34;TW&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;2009 年的时候买了一本《卓有成效的程序员》，看的热血沸腾，当时还写了一篇读后感《&lt;a href=&#34;http://blog.coderzh.com/2009/07/18/1526082/&#34;&gt;程序员的共鸣 - 读《卓有成效的程序员》&lt;/a&gt;》，现在翻来看还觉得蛮有意思的。从此后，开始用 Launchy ， ClipX 等提高效率的工具，也开始接触代码编辑器神器 Emacs 和 Vim 。当时年少无知先学了 Emacs ，还全程用 Emacs 开发过一个小项目。后来实在是小指按 ctrl 键按到桑爽的不行了，才发现 Vim 是多么和谐的存在。&lt;/p&gt;
 
@@ -568,8 +567,7 @@
 &lt;p&gt;金数据成了被收购&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;瞬间让我佩服的五体投地。我从很多 ThoughtWorks 员工那了解到，不管是离职的还是在职的，他们对 ThoughtWorks 公司都是满口的称赞，对公司的认可度非常非常的高，说明这真是一家不错的公司呢。&lt;/p&gt;
-</description>
+&lt;p&gt;瞬间让我佩服的五体投地。我从很多 ThoughtWorks 员工那了解到，不管是离职的还是在职的，他们对 ThoughtWorks 公司都是满口的称赞，对公司的认可度非常非常的高，说明这真是一家不错的公司呢。&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -611,7 +609,8 @@
 &lt;p&gt;如果算上这篇文章，今年我一共写了48篇文章了，平均一周一篇的节奏。公众号的订阅数也在持续上涨，在这里我要感谢所有订阅了我公众号和一直关注我博客的朋友，祝大家2016年新年快乐！新年新气象，无论学业、事业还是家庭都能顺顺利利。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2016年，我们一起努力！&lt;/strong&gt;&lt;/p&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -621,6 +620,8 @@
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/12/27/code-review/</guid>
             <description>&lt;p&gt;代码审查（Code Review）是个老生常谈的话题了，我以前呆过的大公司也好，创业公司也好，都知道 Code Review 的好处，但真正去有效执行的却很少。有人认为“存在即合理”，大家都不愿意做 Code Review ，可能 Code Review 真的不好，影响开发效率。有的人想做，但是执行起来太困难。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;造成大家放弃 Code Review 的原因有哪些呢？我仔细想了想，大概有这几种：&lt;/p&gt;
 
@@ -662,8 +663,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/code-review.jpg&#34; alt=&#34;code-review&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Code Review ，你做了就知道！&lt;/p&gt;
-</description>
+&lt;p&gt;Code Review ，你做了就知道！&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -673,6 +673,8 @@
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/12/21/my-k12-pupil/</guid>
             <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/math.jpeg-wt&#34; alt=&#34;math&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;我还记得小学一年级刚开学，老师教我们背字母表，然后对我们进行了测验。背的好的几个小朋友被老师留了下来，我也是其中一个。老师说要选我们当班干部。我当时傻了，从没听说过什么是“班干部”，于是回家后问家长。家长听了后很高兴，而我还是没明白到底啥是“班干部”。&lt;/p&gt;
 
@@ -696,8 +698,7 @@
 
 &lt;p&gt;因为学习是被动的，田径训练是主动的。如果中间能有好的引导，结果又会不同。&lt;/p&gt;
 
-&lt;p&gt;……&lt;/p&gt;
-</description>
+&lt;p&gt;……&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -706,9 +707,9 @@
             <pubDate>Sun, 20 Dec 2015 21:38:31 CST</pubDate>
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/12/20/my-k12-escape-school/</guid>
-            <description>
+            <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/taoxue.jpg-wt&#34; alt=&#34;taoxue&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/taoxue.jpg-wt&#34; alt=&#34;taoxue&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;我是80后，在我读小学或中学时，如果遇到不会解的题，通常绞尽脑汁自己想，实在不行只能去问老师和同学。如果不好意思问老师同学，只能跳过问题并祈祷考试不要出这样的题。&lt;/p&gt;
 
@@ -716,7 +717,7 @@
 
 &lt;p&gt;假如在我小时候，就有这样的扫题神器，结果会怎样呢？这引发了我的思考。对于现在的小学生或中学生是如何通过互联网进行学习的我不太了解，但 LOL 里有大量小学生我倒是清楚（说多了都是泪），如果有人了解现在的学生是怎样学习的，可以给我留言沟通。我的这个系列文章，主要是回顾一下我的小时候，我的 K12 教育，从幼儿园到高三，每想到一处，我都在想，假设当时有（移动）互联网，我的人生会有怎样的改变。&lt;/p&gt;
 
-&lt;h3 id=&#34;逃学威龙:7a3bebc4497d9e03f076df35754a39b6&#34;&gt;逃学威龙&lt;/h3&gt;
+&lt;h3 id=&#34;逃学威龙&#34;&gt;逃学威龙&lt;/h3&gt;
 
 &lt;p&gt;首先得从幼儿园说起。我小时候脸长长的，看上去有点老实木讷（现在也差不多……），第一次被送去幼儿园时，我还印象深刻。我没有读学前班和小班，而是直接读的中班。当我进入教室时，老师正在上课，看到一排一排整齐的坐着的和我一样的小孩，我当时肯定纳闷了，这都是在干什么？不知是老师教的还是学别人模样，我坐的很端正，两手放在桌子上平行放着，眼睛盯着老师在台上讲话。但是没过多久，我终于爆发了，我冲出了教室，我感觉这教室太无聊了，我不要上学。&lt;/p&gt;
 
@@ -726,20 +727,19 @@
 
 &lt;p&gt;这样瞒天过海的把戏试了几天屡试不爽，老师并没有来找家长（当时根本没有这个概念），反倒是有一次我俩在大街上逛的正爽时，被我爸的一个朋友撞见了，然后告了一个状，这样的好日子就结束了。&lt;/p&gt;
 
-&lt;h3 id=&#34;反思:7a3bebc4497d9e03f076df35754a39b6&#34;&gt;反思&lt;/h3&gt;
+&lt;h3 id=&#34;反思&#34;&gt;反思&lt;/h3&gt;
 
 &lt;p&gt;当时我为什么那么不喜欢上学？可以肯定的是，我当时并想不清楚为什么不喜欢上学，就是直觉上觉得上学不好玩。除了仅有的几次上课玩橡皮泥，其他都是枯燥无味的老师教念一些不知所云的东西，期中和期末还会根据这些表现给小红花和大红花。如果你把红花领回家，家里人就会夸奖你。而且，这些红花还和学勤挂钩，如果想拿小红花，上课铃一响，你必须准时的飞奔到教室坐好。&lt;/p&gt;
 
 &lt;p&gt;幼儿园没有教有趣的内容，没有培养和挖掘我们的想象力、创造力和动手能力，而是引导我们铃响了就必须在课桌上坐好，必须记住老师塞给你的内容，否则就得不到小红花。家人的鼓励方式是将小红花和小奖状贴在墙上，待亲戚朋友来访时夸奖炫耀一番。&lt;/p&gt;
 
-&lt;h3 id=&#34;改变:7a3bebc4497d9e03f076df35754a39b6&#34;&gt;改变&lt;/h3&gt;
+&lt;h3 id=&#34;改变&#34;&gt;改变&lt;/h3&gt;
 
 &lt;p&gt;由于逃课，不好好学习，贪玩，开始我只能眼巴巴看着别人把小红花领回家，自己什么也没有，心情很失落。有了对比才知道大家是这么看重学校给予的奖励的，于是之后我默默的改变了，适应学校的规则，铃响了就准时坐好，强记住老师教的东西，坚持了一段时间，终于把小红花搬回了家，可以肯定的是，也受到了家人的夸奖。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;我开始学会了怎样变成老师和家长喜欢的样子。&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;……&lt;/strong&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;strong&gt;……&lt;/strong&gt;&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -749,6 +749,8 @@
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/11/29/hacker-thinking-mooc/</guid>
             <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mooc.jpg-wt&#34; alt=&#34;mooc&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;感谢大家的支持！自从上次发了《程序员的思考：分享即提高》一文，订阅数一下从 500 蹦到 1200，已经远远超出了我的预期。&lt;/p&gt;
 
@@ -786,8 +788,7 @@
 
 &lt;p&gt;如今，在线教育（MOOC）的概念已经炒起来了，出现了各种 MOOC 网站，比如国外的Coursera、Udacity，国内的各种慕课网，甚至 BAT 也开始布局了，比如腾讯课堂。据腾讯发布的在线教育报告称，K12在线教育已有千亿美元市场。（K12 或 K-12 ，是kindergarten through twelfth grade的简写，是指从幼儿园到十二年级，这两个年级是美国、澳大利亚及English Canada的免费教育头尾的两个年级，此外也可用作对基础教育阶段的通称。）&lt;/p&gt;
 
-&lt;p&gt;滴滴学习，你投吗？&lt;/p&gt;
-</description>
+&lt;p&gt;滴滴学习，你投吗？&lt;/p&gt;</description>
         </item>
         
         <item>
@@ -797,6 +798,8 @@
             <author>CoderZh</author>
             <guid>http://blog.coderzh.com/2015/11/22/hacker-thinking-study/</guid>
             <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/learning.jpg-wt&#34; alt=&#34;learning&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;从今年2月底开通微信公众账号以来，到现在差不多9个月的时间，订阅的用户差不多有 500 人了。这个数字当然不能和那些大 V 的订阅数相比，甚至那些大 V 在文章结尾处给别人的账号做个推荐，一天的订阅数也许都会超过我的。但是，我对 500 个订阅数的结果是很满意的。&lt;/p&gt;
 
@@ -863,8 +866,7 @@
 
 &lt;p&gt;微信扫一扫：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;img src=&#34;public/qrcode.jpg&#34; alt=&#34;qrcode&#34; /&gt;&lt;/p&gt;</description>
         </item>
         
     </channel>

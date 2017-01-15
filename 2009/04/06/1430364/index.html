@@ -178,7 +178,7 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之二 - 断言</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月06日 · 2514 Words ·
+                    by  · 2009年04月06日 · 2645 Words ·
                     ~6min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-06-1430364.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,7 +191,7 @@
                       
                       
 
-<h4 id="一-前言:a913df3b8f68f4db4158dcb930d51fcd">一、前言</h4>
+<h4 id="一-前言">一、前言</h4>
 
 <p>这篇文章主要总结gtest中的所有断言相关的宏。 gtest中，断言的宏可以理解为分为两类，一类是ASSERT系列，一类是EXPECT系列。一个直观的解释就是：</p>
 
@@ -201,7 +201,7 @@
 <li><p>EXPECT_* 系列的断言，当检查点失败时，继续往下执行。</p></li>
 </ol>
 
-<h4 id="二-示例:a913df3b8f68f4db4158dcb930d51fcd">二、示例</h4>
+<h4 id="二-示例">二、示例</h4>
 
 <div class="cnblogs_code"><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;int型比较，预期值：3，实际值：Add(1,&nbsp;2)</span><span style="color: #008000;">
 </span><span style="color: #000000;">EXPECT_EQ(</span><span style="color: #800080;">3</span><span style="color: #000000;">,&nbsp;Add(</span><span style="color: #800080;">1</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800080;">2</span><span style="color: #000000;">))
@@ -263,7 +263,7 @@ Vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;differ&nbsp;at&nbsp;index&nbsp;</span><span 
 
 <p>&nbsp;</p>
 
-<h4 id="三-布尔值检查:a913df3b8f68f4db4158dcb930d51fcd">三、布尔值检查</h4>
+<h4 id="三-布尔值检查">三、布尔值检查</h4>
 
 <table>
      <tr>
@@ -285,7 +285,7 @@ Vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;differ&nbsp;at&nbsp;index&nbsp;</span><span 
 
 <p>&nbsp;</p>
 
-<h4 id="四-数值型数据检查:a913df3b8f68f4db4158dcb930d51fcd">四、数值型数据检查</h4>
+<h4 id="四-数值型数据检查">四、数值型数据检查</h4>
 
 <table>
      <tr>
@@ -327,7 +327,7 @@ Vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;differ&nbsp;at&nbsp;index&nbsp;</span><span 
 
 <p>&nbsp;</p>
 
-<h4 id="五-字符串检查:a913df3b8f68f4db4158dcb930d51fcd">五、字符串检查</h4>
+<h4 id="五-字符串检查">五、字符串检查</h4>
 
 <table>
      <tr>
@@ -395,7 +395,7 @@ Vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;differ&nbsp;at&nbsp;index&nbsp;</span><span 
 
 <p>&nbsp;</p>
 
-<h4 id="六-显示返回成功或失败:a913df3b8f68f4db4158dcb930d51fcd">六、显示返回成功或失败</h4>
+<h4 id="六-显示返回成功或失败">六、显示返回成功或失败</h4>
 
 <p>直接返回成功：<tt>SUCCEED();</tt></p>
 
@@ -428,7 +428,7 @@ Vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;differ&nbsp;at&nbsp;index&nbsp;</span><span 
 <br />
 }</span></div>
 
-<h4 id="七-异常检查:a913df3b8f68f4db4158dcb930d51fcd">七、异常检查</h4>
+<h4 id="七-异常检查">七、异常检查</h4>
 
 <table>
      <tr>
@@ -489,7 +489,7 @@ TEST(FooTest,&nbsp;HandleZeroInput)
 <br />
 }</span></div>
 
-<h4 id="八-predicate-assertions:a913df3b8f68f4db4158dcb930d51fcd">八、Predicate Assertions</h4>
+<h4 id="八-predicate-assertions">八、Predicate Assertions</h4>
 
 <p>在使用EXPECT_TRUE或ASSERT_TRUE时，有时希望能够输出更加详细的信息，比如检查一个函数的返回值TRUE还是FALSE时，希望能够输出传入的参数是什么，以便失败后好跟踪。因此提供了如下的断言：</p>
 
@@ -604,7 +604,7 @@ TEST(AssertFooTest,&nbsp;HandleFail)
 
 <p>是不是更温馨呢，呵呵。</p>
 
-<h4 id="九-浮点型检查:a913df3b8f68f4db4158dcb930d51fcd">九、浮点型检查</h4>
+<h4 id="九-浮点型检查">九、浮点型检查</h4>
 
 <table>
      <tr>
@@ -651,7 +651,7 @@ EXPECT_PRED_FORMAT2(testing::DoubleLE,&nbsp;val1,&nbsp;val2);</span></div>
 
 <p>&nbsp;</p>
 
-<h4 id="十-windows-hresult-assertions:a913df3b8f68f4db4158dcb930d51fcd">十、Windows HRESULT assertions</h4>
+<h4 id="十-windows-hresult-assertions">十、Windows HRESULT assertions</h4>
 
 <table height="107" width="987">
      <tr>
@@ -685,7 +685,7 @@ ASSERT_HRESULT_SUCCEEDED(shell</span><span style="color: #000000;">-&gt;</span><
 
 <p>&nbsp;</p>
 
-<h4 id="十一-类型检查:a913df3b8f68f4db4158dcb930d51fcd">十一、类型检查</h4>
+<h4 id="十一-类型检查">十一、类型检查</h4>
 
 <p>类型检查失败时，直接导致代码编不过，难得用处就在这？看下面的例子：</p>
 
@@ -709,7 +709,7 @@ TEST(TypeAssertionTest,&nbsp;Demo)
 
 <p>&nbsp;</p>
 
-<h4 id="十二-总结:a913df3b8f68f4db4158dcb930d51fcd">十二、总结</h4>
+<h4 id="十二-总结">十二、总结</h4>
 
 <p>&nbsp;本篇将常用的断言都介绍了一遍，内容比较多，有些还是很有用的。要真的到写案例的时候，也行只是一两种是最常用的，现在时知道有这么多种选择，以后才方便查询。</p>
 

@@ -207,7 +207,7 @@
 
 <p>这三种坏味道通常不是独立存在的，project smells的根源可能来自code smells和behavior smells。</p>
 
-<h4 id="project-smells:d6e64354f49f91c7e2da3ded66c85fe5">Project Smells</h4>
+<h4 id="project-smells">Project Smells</h4>
 
 <p>出现下面的情况，可以认为出现了Project Smells：</p>
 
@@ -219,20 +219,19 @@
 <li>Lost Tests 测试案例不足</li>
 </ol>
 
-<h4 id="behaivor-smells:d6e64354f49f91c7e2da3ded66c85fe5">Behaivor Smells</h4>
+<h4 id="behaivor-smells">Behaivor Smells</h4>
 
 <p>比较容易发现，不需要刻意去监控，因为测试案例编译不通过，或者是测试案例失败时，通常就是Behavior Smell出现的时候：</p>
 
 <ol>
 <li>Fragile Tests 容易失败的测试案例，稍微一点变化就有可能造成案例失败。通常出现在&#8220;录制回放&#8221;的测试案例中，这样的案例不仅执行不稳定，维护起来也很麻烦。因为自动生成的代码通常难以理解和维护。</li>
+<li>造成Fragile Tests原因主要有：</li>
+</ol>
 
-<li><p>造成Fragile Tests原因主要有：</p></li>
-
-<li><p>Interface Sensitivity 这是最常见的，比如，开发修改了函数接口，界面上某个按钮进行了调整，都可能导致案例执行失败。</p></li>
-
-<li><p>Behaivor Sensitivity 被测代码的行为发生了变化，测试案例当然要失败了。（如果不失败的话，都说明测试案例有问题）</p></li>
-
-<li><p>Data Sensitivity 使用数据库的程序，如果数据库中的数据发生变化，可能导致案例失败</p></li>
+<ul>
+<li>Interface Sensitivity 这是最常见的，比如，开发修改了函数接口，界面上某个按钮进行了调整，都可能导致案例执行失败。</li>
+<li>Behaivor Sensitivity 被测代码的行为发生了变化，测试案例当然要失败了。（如果不失败的话，都说明测试案例有问题）</li>
+<li>Data Sensitivity 使用数据库的程序，如果数据库中的数据发生变化，可能导致案例失败</li>
 
 <li><p>Context Sensitivity 环境的变化，导致案例失败。比如：时间变化，硬件设备，系统环境等等3.  Erratic Tests 不稳定的测试案例，有时成功，有时失败：</p></li>
 
@@ -245,9 +244,9 @@
 <li><p>Fully Automated Tests 使用TDD的敏捷开发人员每隔几分钟就执行一次测试案例，前提是测试案例一定要自动，不需要手工干预。如果需要手工干预(Manual Intervention)，没有几个人愿意经常执行那些测试案例。</p></li>
 
 <li><p>Slow Tests 案例执行一定要快，如果执行慢，将不能很快将结果反馈给开发。当然，也会使得开发不愿意去执行那些又慢又不稳定的案例。解决的办法也是使用Shared Fixture。</p></li>
-</ol>
+</ul>
 
-<h4 id="code-smells:d6e64354f49f91c7e2da3ded66c85fe5">Code Smells</h4>
+<h4 id="code-smells">Code Smells</h4>
 
 <p>代码的坏味道，基本上和Martin Fowler的Refactoring中讲的一样。通过看代码，可以发现很多坏味道：</p>
 

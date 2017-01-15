@@ -191,11 +191,11 @@
                       
                       
 
-<h3 id="简介:5a00c558a4965722e8228c1d008385c3">简介</h3>
+<h3 id="简介">简介</h3>
 
 <p>有些网站将直接拿用户的输入 来拼接SQL语句，进行查询等操作，同时也将错误信息暴露给用户。这就给不怀好意的同学可乘之机，利用输入一些奇特的查询字符串，拼接成特定的SQL语 句，即可达到注入的目的。不仅可以获取数据库重要信息，权限没有设置好的话甚至可以删除掉整个表。因此，SQL注入漏洞还是相当的严重的。发现以前偶刚学 写的网站的时候也是靠拼接SQL语句吃饭滴&#8230;&#8230;</p>
 
-<h3 id="示例:5a00c558a4965722e8228c1d008385c3">示例</h3>
+<h3 id="示例">示例</h3>
 
 <p>为了更好了学习和了解SQL注入的方法，做了一个示例网页，界面如下：</p>
 
@@ -351,23 +351,23 @@
 
 <p>&nbsp;</p>
 
-<h3 id="探测:5a00c558a4965722e8228c1d008385c3">探测</h3>
+<h3 id="探测">探测</h3>
 
 <ol>
 <li>非常简单，输入一个单引号(&lsquo;)，看页面是否出错，要是页面出错了，而且又将错误信息暴露给你了那就太好了。2.  从错误信息中观察确定是哪种数据库，比如Access，SQL Server等。不同数据库的SQL语句有些差别3.  静态代码分析，从代码中检查SQL语句是否是由字符串拼接而成。</li>
 </ol>
 
-<h3 id="实施方式:5a00c558a4965722e8228c1d008385c3">实施方式</h3>
+<h3 id="实施方式">实施方式</h3>
 
 <p>详见示例网站</p>
 
-<h3 id="危害:5a00c558a4965722e8228c1d008385c3">危害</h3>
+<h3 id="危害">危害</h3>
 
 <ol>
 <li>变态性的，服务器被远程控制，想干嘛干嘛。2.  盗取性的，盗取了数据库中的机密信息，谋取私利或其他。3.  破坏性的，直接破坏数据库。4.  修改性的，篡改数据，比如通过大学成绩查询修改成绩。5.  我也没干过，想不出来了。</li>
 </ol>
 
-<h3 id="防范:5a00c558a4965722e8228c1d008385c3">防范</h3>
+<h3 id="防范">防范</h3>
 
 <p>在示例中也说明了如何防范，在这里再精炼一下所谓的防止SQL注入四大法宝：</p>
 
@@ -403,7 +403,9 @@
 </code></pre></li>
 
 <li><p>特别注意：也许有很多人告诉过你使用存储过程能免受SQL注入攻击。这是错的！这只能阻止某些种类的攻击。比如存在sp_GetName存储过程，我们的代码如下：</p></li>
+</ol>
 
+<ul>
 <li><div dir="ltr">
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #cdcaa9; font-weight: bold;">string</span> <span style="color: #ffffff;">name</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">...;</span> <span style="color: #008800; font-style: italic; background-color: #0f140f;">//name from user</span>
 
@@ -422,9 +424,9 @@
 <div dir="ltr">
 <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;">exec sp_GetName 'Black' insert into Users values(2008, 'Green') -- '</div>
 </div></li>
-</ol>
+</ul>
 
-<h3 id="参考资料:5a00c558a4965722e8228c1d008385c3">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 
 <ol>
 <li>Michael Howard, David LeBlanc. &ldquo;Writing Secure Code&rdquo;</li>

@@ -178,7 +178,7 @@
                   <h1 class="post-title">悟透LoadRunner - 调用外部DLL的点点滴滴</h1>
 
                   <p class="post-byline">
-                    by  · 2008年04月02日 · 1555 Words ·
+                    by  · 2008年04月02日 · 1560 Words ·
                     ~4min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-04-02-1135118.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -204,7 +204,7 @@
 <li>（全局设置，所有脚本）通过修改<span style="color: red;"> mdrv.dat </span>文件实现。</li>
 </ol>
 
-<h3 id="对dll的要求:eccab7d6f9b93f731e55d422b6ff60f4">对DLL的要求</h3>
+<h3 id="对dll的要求">对DLL的要求</h3>
 
 <p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; VuGen只能识别标准C编译的DLL， 所以使用VC6创建的函数必须在函数开头加上extern &ldquo;C&rdquo;，它告诉编译器对这个函数按照标准C的方式进行编译。而如果你想调用C#编译出来DLL，那就只能望而却步啦。如何想查看DLL中是否有符合要求的导出函数，可以使用微软的SDK里自带的Dependency Walker工具。如图：</p>
 
@@ -212,7 +212,7 @@
 
 <p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <img src="http://www.cnblogs.com/images/cnblogs_com/zcr1985/DependencyWalker.jpg" alt="" /></p>
 
-<h3 id="dll的创建:eccab7d6f9b93f731e55d422b6ff60f4">DLL的创建</h3>
+<h3 id="dll的创建">DLL的创建</h3>
 
 <p>&nbsp;&nbsp;&nbsp; 启动VC6，新建一个Win32 Dynamic-Link Library的工程，取名：LRDllTest</p>
 
@@ -236,7 +236,7 @@
 
 <p>&nbsp;&nbsp;&nbsp; 编译，生成DLL：LRDllTest.dll</p>
 
-<h3 id="lr-load-dll方法:eccab7d6f9b93f731e55d422b6ff60f4">lr_load_dll方法</h3>
+<h3 id="lr-load-dll方法">lr_load_dll方法</h3>
 
 <p>&nbsp;&nbsp;&nbsp; 有了符合要求的DLL，调用lr_load_dll函数显得非常的简单。lr_load_dll的函数原型是：</p>
 
@@ -270,7 +270,7 @@
 
 &nbsp;&nbsp;&nbsp; }</span></div>
 
-<h3 id="load-generators调用远程机器进行加压时调用lr-load-dll的方法:eccab7d6f9b93f731e55d422b6ff60f4">Load Generators调用远程机器进行加压时调用lr_load_dll的方法</h3>
+<h3 id="load-generators调用远程机器进行加压时调用lr-load-dll的方法">Load Generators调用远程机器进行加压时调用lr_load_dll的方法</h3>
 
 <p>&nbsp;&nbsp;&nbsp; 有人会遇到这种情况，使用lr_load_dll加载DLL的脚本在本机是可以顺利执行的，但是在Controller中通过负载生成器(Load Generators)调用远程机器执行脚本时，脚本会无法顺利执行，错误信息：</p>
 
@@ -283,7 +283,7 @@
 <p>&nbsp;&nbsp;&nbsp; 菜单&#8220;<span style="color: red;">File-Add file to script</span>&#8221;，把要引用的DLL加进来，一切搞定！
 注意，Agent的Enable Firewall Agent选项不要勾上。</p>
 
-<h3 id="mdrv-dat方法:eccab7d6f9b93f731e55d422b6ff60f4">mdrv.dat方法</h3>
+<h3 id="mdrv-dat方法">mdrv.dat方法</h3>
 
 <p>&nbsp;&nbsp;&nbsp; 这个办法比较毒，通过修改mdrv.dat文件，无需调用lr_load_dll即可使用该DLL任何导出函数。具体实施方法如下：</p>
 

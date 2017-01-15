@@ -178,7 +178,7 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之三 - 事件机制</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月06日 · 1270 Words ·
+                    by  · 2009年04月06日 · 1267 Words ·
                     ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-06-1430396.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,7 +191,7 @@
                       
                       
 
-<h4 id="一-前言:ae35129858ff961cd69591082d0c6745">一、前言</h4>
+<h4 id="一-前言">一、前言</h4>
 
 <p>gtest提供了多种事件机制，非常方便我们在案例之前或之后做一些操作。总结一下gtest的事件一共有3种：</p>
 
@@ -203,7 +203,7 @@
 <li><p>TestCase级别的，每个TestCase前后。</p></li>
 </ol>
 
-<h4 id="二-全局事件:ae35129858ff961cd69591082d0c6745">二、全局事件</h4>
+<h4 id="二-全局事件">二、全局事件</h4>
 
 <p>要实现全局事件，必须写一个类，继承testing::Environment类，实现里面的SetUp和TearDown方法。</p>
 
@@ -255,7 +255,7 @@
 
 <p>&nbsp;</p>
 
-<h4 id="三-testsuite事件:ae35129858ff961cd69591082d0c6745">三、TestSuite事件</h4>
+<h4 id="三-testsuite事件">三、TestSuite事件</h4>
 
 <p>我们需要写一个类，继承<a name="Sharing_Resources_Between_Tests_in_the_Same_Test_Case">testing::Test，然后实现两个静态方法</a></p>
 
@@ -308,7 +308,7 @@ TEST_F(FooTest,&nbsp;Test2)
 <br />
 </span><span style="color: #000000;">}</span></div></p>
 
-<h4 id="四-testcase事件:ae35129858ff961cd69591082d0c6745">四、TestCase事件</h4>
+<h4 id="四-testcase事件">四、TestCase事件</h4>
 
 <p>TestCase事件是挂在每个案例执行前后的，实现方式和上面的几乎一样，不过需要实现的是SetUp方法和TearDown方法：</p>
 
@@ -362,7 +362,7 @@ TEST_F(FooCalcTest,&nbsp;HandleNoneZeroInput_Error)
 
 <p>&nbsp;</p>
 
-<h4 id="五-总结:ae35129858ff961cd69591082d0c6745">五、总结</h4>
+<h4 id="五-总结">五、总结</h4>
 
 <p>gtest提供的这三种事件机制还是非常的简单和灵活的。同时，通过继承Test类，使用TEST_F宏，我们可以在案例之间共享一些通用方法，共享资源。使得我们的案例更加的简洁，清晰。</p>
 

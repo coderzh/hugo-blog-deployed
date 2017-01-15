@@ -201,7 +201,7 @@
 <li>Test First or Last?2.  Tests or Examples?3.  Test-by-Test or Test All-at-Once?4.  Outside-In or Inside-Out?5.  State or Behavior Verification?6.  Fixture Design Upfront or Test-by-Test?<br /></li>
 </ol>
 
-<h4 id="test-first-or-last:f0ac2162b36dda0c0053a43471ef317a">Test First or Last?</h4>
+<h4 id="test-first-or-last">Test First or Last?</h4>
 
 <p>是应该先写代码还是先写测试案例？作者认为应该先写测试案例，然后再写代码。这也是测试驱动开发和敏捷测试的一个重要原则。这样做的原因有很多，比如：</p>
 
@@ -213,13 +213,13 @@
 
 <p>先编写测试案例再写代码，的确有很多好处。但是发现真正这样做的人很少，一方面，对于传统的软件开发公司，要做出一些改变确实有些困难。一方面，先编写测试案例带来的好处并不是立竿见影，很多人尝试了一下就放弃了。因此，需要不断的实践，坚持。(我也要努力了)</p>
 
-<h4 id="tests-or-examples:f0ac2162b36dda0c0053a43471ef317a">Tests or Examples?</h4>
+<h4 id="tests-or-examples">Tests or Examples?</h4>
 
 <p>这一段，说实话，没看懂在讨论什么问题。只看出在表达一个观点，测试案例相对于文档。同时，还提出一个名词：EDD（example-driven development），但后又提到EDD的框架，如RSpec，JBehave，让我有点摸不着头脑，据我说知，RSpec，JBehave应该是BDD框架才对。</p>
 
 <p>作者最后的观点：Tests are examples.</p>
 
-<h4 id="test-by-test-or-test-all-at-once:f0ac2162b36dda0c0053a43471ef317a">Test-by-Test or Test All-at-Once?</h4>
+<h4 id="test-by-test-or-test-all-at-once">Test-by-Test or Test All-at-Once?</h4>
 
 <p>到底是应该写一个测试案例，写一段代码呢，还是应该先把测试案例都写好，再写代码？这个问题比较有意思，因为这是一个非常实际的问题。迭代开发(incremental development)中，有一句话：Test a bit, code a bit, test a bit more。当然，这样的做法是比较理想的，因为这样能够更加准确的定位到代码的问题。但是，作者提到，一个更好的办法，是先列一个提纲，把测试案例的函数都填好，里面的实现为空。然后，每次填充一个测试案例，写一段代码。</p>
 
@@ -227,7 +227,7 @@
 
 <p>和作者一样。比如，在需要编写一个类前，先假设自己就是代码的调用者，把Test Fixture中的测试案例罗列一下，然后再逐个完成测试案例。每编写完一个测试案例，就把相应的代码实现一下。</p>
 
-<h4 id="outside-in-or-inside-out:f0ac2162b36dda0c0053a43471ef317a">Outside-In or Inside-Out?</h4>
+<h4 id="outside-in-or-inside-out">Outside-In or Inside-Out?</h4>
 
 <p>通常，模块之间会有一些依赖和层次结构，应该从最外层的调用模块开始写案例呢，还是从最里层开始写案例呢？作者的观点是从外到里。</p>
 
@@ -241,7 +241,7 @@
 
 <p>先编写最外层的测试案例，可以使用Test Double对象替代被调用的底层模块，使得SUT天然就具备很好的可测性（依赖注入）。同时，由于时刻都是保持&#8220;从用户或调用者的角度去思考&#8221;，使得SUT对象实现起来目标更加明确，实现的更加精简，从而避免了过度的设计。</p>
 
-<h4 id="state-or-behavior-verification:f0ac2162b36dda0c0053a43471ef317a">State or Behavior Verification?</h4>
+<h4 id="state-or-behavior-verification">State or Behavior Verification?</h4>
 
 <p>提出的问题是，应该使用基于状态的验证，还是基于行为的验证？基于状态的验证是指在调用SUT后只检查SUT的状态，比如返回值，比如一个求和函数，最后检查一下求和的结果是否正确。而基于行为的验证，通常是，SUT被调用后，不仅仅改变SUT的状态，还会产生其他影响。比如，一个用户注册的函数，除了要检查返回值是否注册成功，还要坚持数据库中是否写入了新的用户记录。BDD(behavior-driven development)，就是基于行为的验证方式。作者最后说，他主要使用基于状态的验证，但有时为了追求代码覆盖率，会使用基于行为的验证。</p>
 
@@ -249,7 +249,7 @@
 
 <p>对于功能单一，简单，设计良好的代码，使用State Verification确实已经足够。但往往真实的系统是很复杂的，模块之间互相调用，单个函数的功能可能也不是那么单一。基于行为的测试，其实就是站在了用户的角度，去验证各种行为所产生的各种影响。</p>
 
-<h4 id="fixture-design-upfront-or-test-by-test:f0ac2162b36dda0c0053a43471ef317a">Fixture Design Upfront or Test-by-Test?</h4>
+<h4 id="fixture-design-upfront-or-test-by-test">Fixture Design Upfront or Test-by-Test?</h4>
 
 <p>Fixture是某一类案例的集合，一种观点是，让很多案例都共享一个Fixture，每个测试案例的方法执行时都会创建一个新的Fixture实例，并在案例前执行其中的SetUp方法。另一种观点是，前一个观点的做法，会让案例看起来不那么清晰，不容易找到一个测试案例的方法到底会执行哪些SetUp或TearDown的方法。因此，提出了在每个测试案例方法中，使用自定义的Minimal Fixture，而不是使用一个大的，不容易找到或理解的Fixture。</p>
 

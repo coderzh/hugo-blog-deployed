@@ -178,8 +178,8 @@
                   <h1 class="post-title">代码覆盖率浅谈</h1>
 
                   <p class="post-byline">
-                    by  · 2009年03月29日 · 2968 Words ·
-                    ~6min reading time |
+                    by  · 2009年03月29日 · 3074 Words ·
+                    ~7min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-03-29-1424344.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -199,7 +199,7 @@
 
 <p>上面简短精悍的文字非常准确的描述了代码覆盖率的含义。而代码覆盖程度的度量方式是有很多种的，这里介绍一下最常用的几种：</p>
 
-<h4 id="1-语句覆盖-statementcoverage:d4da63979640808cbaf761b77d60fca7">1. 语句覆盖(StatementCoverage)</h4>
+<h4 id="1-语句覆盖-statementcoverage">1. 语句覆盖(StatementCoverage)</h4>
 
 <p>又称行覆盖(LineCoverage)，段覆盖(SegmentCoverage)，基本块覆盖(BasicBlockCoverage)，这是最常用也是最常见的一种覆盖方式，就是<span style="color: #0000ff;">度量被测代码中每个可执行语句是否被执行到了</span>。这里说的是&#8220;可执行语句&#8221;，因此就不会包括像C＋＋的头文件声明，代码注释，空行，等等。非常好理解，只统计能够执行的代码被执行了多少行。需要注意的是，单独一行的花括号｛｝ 也常常被统计进去。语句覆盖常常被人指责为&#8220;<span style="color: #008000;">最弱的覆盖</span>&#8221;，它只管覆盖代码中的执行语句，却不考虑各种分支的组合等等。假如你的上司只要求你达到语句覆盖，那么你可以省下很多功夫，但是，换来的确实测试效果的不明显，很难更多地发现代码中的问题。</p>
 
@@ -285,7 +285,7 @@ TestCase1:&nbsp;a&nbsp;</span><span style="color: #000000;">=</span><span style=
 
 <p>我们看到，虽然我们完整的做到了条件覆盖，但是我们却没有做到完整的判定覆盖，我们只覆盖了分支一。上面的例子也可以看出，这两种覆盖方式看起来似乎都不咋滴。我们接下来看看第四种覆盖方式。</p>
 
-<h4 id="4-路径覆盖-pathcoverage:d4da63979640808cbaf761b77d60fca7">4. 路径覆盖(PathCoverage)</h4>
+<h4 id="4-路径覆盖-pathcoverage">4. 路径覆盖(PathCoverage)</h4>
 
 <p>又称断言覆盖(PredicateCoverage)。<span style="color: #0000ff;">它度量了是否函数的每一个分支都被执行了</span>。 这句话也非常好理解，就是所有可能的分支都执行一遍，有多个分支嵌套时，需要对多个分支进行排列组合，可想而知，测试路径随着分支的数量指数级别增加。比如下面的测试代码中有两个判定分支：</p>
 
@@ -373,7 +373,7 @@ TestCase1:&nbsp;a&nbsp;</span><span style="color: #000000;">=</span><span style=
 
 <p>还有一些其他的覆盖方式，如：循环覆盖(LoopCoverage)，它度量是否对循环体执行了零次，一次和多余一次循环。剩下一些其他覆盖方式就不介绍了。</p>
 
-<h4 id="总结:d4da63979640808cbaf761b77d60fca7">总结</h4>
+<h4 id="总结">总结</h4>
 
 <p>通过上面的学习，我们再回头想想，覆盖率数据到底有多大意义。我总结了如下几个观点，欢迎大家讨论：</p>
 

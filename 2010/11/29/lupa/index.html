@@ -178,7 +178,7 @@
                   <h1 class="post-title">Lupa - Python中调用Lua</h1>
 
                   <p class="post-byline">
-                    by  · 2010年11月29日 · 295 Words ·
+                    by  · 2010年11月29日 · 277 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-11-29-lupa.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -193,7 +193,7 @@
 
 <p><a href="http://pypi.python.org/pypi/lupa/0.18">Lupa</a>将LuaJIT集成到了Python模块中，可以在Python中执行Lua代码。 比较有意思，也许以后用的着，记录一下。</p>
 
-<h4 id="基本用法:b69af2524c3a01af848dbfa3cce98ce5">基本用法：</h4>
+<h4 id="基本用法">基本用法：</h4>
 
 <div class="cnblogs_code"><div><span style="color: #000000;">&gt;&gt;&gt;</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;lupa
 </span><span style="color: #000000;">&gt;&gt;&gt;</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">from</span><span style="color: #000000;">&nbsp;lupa&nbsp;</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;LuaRuntime
@@ -214,7 +214,7 @@ True
 True
 </span></div></div>
 
-<h4 id="lua中的python对象-nbsp:b69af2524c3a01af848dbfa3cce98ce5">Lua中的Python对象&nbsp;</h4>
+<h4 id="lua中的python对象-nbsp">Lua中的Python对象&nbsp;</h4>
 
 <div class="cnblogs_code"><div><span style="color: #000000;">&gt;&gt;&gt;</span><span style="color: #000000;">&nbsp;lua_func&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;lua.eval(</span><span style="color: #800000;">'</span><span style="color: #800000;">function(obj)&nbsp;return&nbsp;obj["get"]&nbsp;end</span><span style="color: #800000;">'</span><span style="color: #000000;">)
 </span><span style="color: #000000;">&gt;&gt;&gt;</span><span style="color: #000000;">&nbsp;d&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;{</span><span style="color: #800000;">'</span><span style="color: #800000;">get</span><span style="color: #800000;">'</span><span style="color: #000000;">&nbsp;:&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">got</span><span style="color: #800000;">'</span><span style="color: #000000;">}
@@ -234,7 +234,7 @@ True
 True
 </span></div></div>
 
-<h4 id="lua中的迭代循环:b69af2524c3a01af848dbfa3cce98ce5">Lua中的迭代循环：</h4>
+<h4 id="lua中的迭代循环">Lua中的迭代循环：</h4>
 
 <div class="cnblogs_code"><div><span style="color: #000000;">&gt;&gt;&gt;</span><span style="color: #000000;">&nbsp;lua_copy&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;lua.eval(</span><span style="color: #800000;">'''</span><span style="color: #800000;">
 ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function(L)
@@ -254,7 +254,7 @@ True
 </span><span style="color: #000000;">1</span><span style="color: #000000;">
 </span></div></div>
 
-<h4 id="lua中的table:b69af2524c3a01af848dbfa3cce98ce5">Lua中的Table：</h4>
+<h4 id="lua中的table">Lua中的Table：</h4>
 
 <div class="cnblogs_code"><div><span style="color: #000000;">&gt;&gt;&gt;</span><span style="color: #000000;">&nbsp;table&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;lua.eval(</span><span style="color: #800000;">'</span><span style="color: #800000;">{10,20,30,40}</span><span style="color: #800000;">'</span><span style="color: #000000;">)
 </span><span style="color: #000000;">&gt;&gt;&gt;</span><span style="color: #000000;">&nbsp;table[</span><span style="color: #000000;">1</span><span style="color: #000000;">]
@@ -295,7 +295,7 @@ True
 
 <p>&nbsp;</p>
 
-<h4 id="参考:b69af2524c3a01af848dbfa3cce98ce5">参考：</h4>
+<h4 id="参考">参考：</h4>
 
 <ol>
 <li><p><a href="http://pypi.python.org/pypi/lupa/0.18">http://pypi.python.org/pypi/lupa/0.18</a></p>

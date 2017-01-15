@@ -178,8 +178,8 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之八 - 打造自己的单元测试框架</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月12日 · 2503 Words ·
-                    ~5min reading time |
+                    by  · 2009年04月12日 · 2763 Words ·
+                    ~6min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-12-1434155.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -191,11 +191,11 @@
                       
                       
 
-<h4 id="一-前言:be304866dab667d7439ede17bb2152ef">一、前言</h4>
+<h4 id="一-前言">一、前言</h4>
 
 <p>上一篇我们分析了gtest的一些内部实现，总的来说整体的流程并不复杂。本篇我们就尝试编写一个精简版本的C++单元测试框架：nancytest ，通过编写这个简单的测试框架，将有助于我们理解gtest。</p>
 
-<h4 id="二-整体设计:be304866dab667d7439ede17bb2152ef">二、整体设计</h4>
+<h4 id="二-整体设计">二、整体设计</h4>
 
 <p>使用最精简的设计，我们就用两个类，够简单吧：</p>
 
@@ -208,7 +208,7 @@
 
 <p>负责所有测试案例的执行，管理。</p>
 
-<h4 id="三-testcase类:be304866dab667d7439ede17bb2152ef">三、TestCase类</h4>
+<h4 id="三-testcase类">三、TestCase类</h4>
 
 <p>TestCase类包含一个测试案例的基本信息，包括：测试案例名称，测试案例执行结果，同时还提供了测试案例执行的方法。我们编写的测试案例都继承自TestCase类。</p>
 
@@ -226,7 +226,7 @@
 
 <p>&nbsp;</p>
 
-<h4 id="四-unittest类:be304866dab667d7439ede17bb2152ef">四、UnitTest类</h4>
+<h4 id="四-unittest类">四、UnitTest类</h4>
 
 <p>我们的UnitTest类和gtest的一样，是一个单件。我们的UnitTest类的逻辑非常简单：</p>
 
@@ -300,7 +300,7 @@ TestCase</span><span style="color: #000000;"></em></span><span style="color: #00
 &nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;nTestResult;
 }</span></div></p>
 
-<h4 id="五-ntest宏:be304866dab667d7439ede17bb2152ef">五、NTEST宏</h4>
+<h4 id="五-ntest宏">五、NTEST宏</h4>
 
 <p>接下来定一个宏NTEST，方便我们写我们的测试案例的类。</p>
 
@@ -327,13 +327,13 @@ TestCase</span><span style="color: #000000;">*</span><span style="color: #000000
 
 <p>&nbsp;</p>
 
-<h4 id="六-run-all-test宏:be304866dab667d7439ede17bb2152ef">六、RUN_ALL_TEST宏</h4>
+<h4 id="六-run-all-test宏">六、RUN_ALL_TEST宏</h4>
 
 <p>然后是执行所有测试案例的一个宏：
 <div class="cnblogs_code"><span style="color: #0000ff;">#define</span><span style="color: #000000;">&nbsp;RUN_ALL_TESTS()&nbsp;&lt;/span&gt;<span style="color: #000000;">
 &nbsp;&nbsp;&nbsp;&nbsp;UnitTest::GetInstance()</span><span style="color: #000000;">-&gt;</span><span style="color: #000000;">Run();</span></div></p>
 
-<h4 id="七-断言的宏expect-eq:be304866dab667d7439ede17bb2152ef">七、断言的宏EXPECT_EQ</h4>
+<h4 id="七-断言的宏expect-eq">七、断言的宏EXPECT_EQ</h4>
 
 <p>这里，我只写一个简单的EXPECT_EQ ：</p>
 
@@ -348,7 +348,7 @@ TestCase</span><span style="color: #000000;">*</span><span style="color: #000000
 
 <p>&nbsp;</p>
 
-<h4 id="八-案例demo:be304866dab667d7439ede17bb2152ef">八、案例Demo</h4>
+<h4 id="八-案例demo">八、案例Demo</h4>
 
 <p>够简单吧，再来看看案例怎么写：</p>
 
@@ -380,7 +380,7 @@ NTEST(FooTest_FailDemo)
 
 <p>&nbsp;<img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/nancytest.jpg" alt="" /></p>
 
-<h4 id="九-总结:be304866dab667d7439ede17bb2152ef">九、总结</h4>
+<h4 id="九-总结">九、总结</h4>
 
 <p>本篇介绍性的文字比较少，主要是我们在上一篇深入解析gtest时已经将整个流程弄清楚了，而现在编写的nancytest又是其非常的精简版本，所有直接看代码就可以完全理解。希望通过这个Demo，能够让大家对gtest有更加直观的了解。回到开篇时所说的，我们没有必要每个人都造一个轮子，因为gtest已经非常出色的为我们做好了这一切。如果我们每个人都写一个自己的框架的话，一方面我们要付出大量的维护成本，一方面，这个框架也许只能对你有用，无法让大家从中受益。
 gtest正是这么一个优秀C++单元测试框架，它完全开源，允许我们一起为其贡献力量，并能让更多人从中受益。如果你在使用gtest过程中发现gtest不能满足你的需求时（或发现BUG），gtest的开发人员非常急切的想知道他们哪来没做好，或者是gtest其实有这个功能，但是很多用户都不知道。所以你可以直接联系gtest的开发人员，或者你直接在这里回帖，我会将您的意见转告给gtest的主要开发人员。

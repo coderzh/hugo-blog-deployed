@@ -178,8 +178,8 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之七 - 深入解析gtest</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月11日 · 5604 Words ·
-                    ~12min reading time |
+                    by  · 2009年04月11日 · 7089 Words ·
+                    ~15min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-11-1433744.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -191,11 +191,11 @@
                       
                       
 
-<h4 id="一-前言:b0a4be1b6becb52dcdece1c821eda165">一、前言</h4>
+<h4 id="一-前言">一、前言</h4>
 
 <p>&#8220;深入解析&#8221;对我来说的确有些难度，所以我尽量将我学习到和观察到的gtest内部实现介绍给大家。本文算是抛砖引玉吧，只能是对gtest的整体结构的一些介绍，想要了解更多细节最好的办法还是看gtest源码，如果你看过gtest源码，你会发现里面的注释非常的详细！好了，下面就开始了解gtest吧。</p>
 
-<h4 id="二-从test宏开始:b0a4be1b6becb52dcdece1c821eda165">二、从TEST宏开始</h4>
+<h4 id="二-从test宏开始">二、从TEST宏开始</h4>
 
 <p>前面的文章已经介绍过TEST宏的用法了，通过TEST宏，我们可以非法简单、方便的编写测试案例，比如：</p>
 
@@ -504,7 +504,7 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 
 <p>&nbsp;</p>
 
-<h4 id="三-回过头看看test宏的定义:b0a4be1b6becb52dcdece1c821eda165">三、回过头看看TEST宏的定义</h4>
+<h4 id="三-回过头看看test宏的定义">三、回过头看看TEST宏的定义</h4>
 
 <div class="cnblogs_code"><span style="color: #0000ff;">#define</span><span style="color: #000000;">&nbsp;TEST(test_case_name,&nbsp;test_name)\</span><span style="color: #000000;">
 &nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_(test_case_name,&nbsp;test_name,&nbsp;\
@@ -514,30 +514,30 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 
 <p>同时也看看TEST_F宏
 <div class="cnblogs_code"><span style="color: #0000ff;">#define</span><span style="color: #000000;">&nbsp;TEST_F(test_fixture,&nbsp;test_name)&lt;/span&gt;<span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;GTEST<em>TEST</em>(test_fixture,&nbsp;test_name,&nbsp;test_fixture,&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;GTEST<em>TEST</em>(test_fixture,&nbsp;test_name,&nbsp;test_fixture,&nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::testing::</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::GetTypeId</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">test_fixture</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">())</span></div></p>
 
 <p>都是使用了GTEST_TEST_宏，在看看这个宏如何定义的：
 <div class="cnblogs_code"><span style="color: #0000ff;">#define</span><span style="color: #000000;">&nbsp;GTEST<em>TEST</em>(test_case_name,&nbsp;test_name,&nbsp;parent_class,&nbsp;parent_id)&lt;/span&gt;<span style="color: #000000;">
-</span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)&nbsp;:&nbsp;</span><span style="color: #0000ff;">public</span><span style="color: #000000;">&nbsp;parent_class&nbsp;{\
-</span><span style="color: #0000ff;">public</span><span style="color: #000000;">:\
-&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)()&nbsp;{}\
-</span><span style="color: #0000ff;">private</span><span style="color: #000000;">:\
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">virtual</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;TestBody();\
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;::testing::TestInfo</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;test<em>info</em>;\
-&nbsp;&nbsp;&nbsp;&nbsp;GTEST_DISALLOW_COPY_AND<em>ASSIGN</em>(\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name));\
-};\
-\
-::testing::TestInfo</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)\
-&nbsp;&nbsp;&nbsp;&nbsp;::test<em>info</em>&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::testing::</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::MakeAndRegisterTestInfo(\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#test_case_name,&nbsp;#test_name,&nbsp;</span><span style="color: #800000;">&rdquo;&rdquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">&rdquo;&rdquo;</span><span style="color: #000000;">,&nbsp;\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(parent_id),&nbsp;\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent_class::SetUpTestCase,&nbsp;\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent_class::TearDownTestCase,&nbsp;\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">new</span><span style="color: #000000;">&nbsp;::testing::</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TestFactoryImpl</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">);\
+</span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)&nbsp;:&nbsp;</span><span style="color: #0000ff;">public</span><span style="color: #000000;">&nbsp;parent_class&nbsp;{<br />
+</span><span style="color: #0000ff;">public</span><span style="color: #000000;">:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)()&nbsp;{}<br />
+</span><span style="color: #0000ff;">private</span><span style="color: #000000;">:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">virtual</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;TestBody();<br />
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;::testing::TestInfo</span><span style="color: #000000;"><em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;test<em>info</em>;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;GTEST_DISALLOW_COPY_AND<em>ASSIGN</em>(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name));<br />
+};<br />
+<br />
+::testing::TestInfo</span><span style="color: #000000;"></em></span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">const</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;::test<em>info</em>&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::testing::</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::MakeAndRegisterTestInfo(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#test_case_name,&nbsp;#test_name,&nbsp;</span><span style="color: #800000;">&rdquo;&rdquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">&rdquo;&rdquo;</span><span style="color: #000000;">,&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(parent_id),&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent_class::SetUpTestCase,&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent_class::TearDownTestCase,&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">new</span><span style="color: #000000;">&nbsp;::testing::</span><span style="color: #0000ff;">internal</span><span style="color: #000000;">::TestFactoryImpl</span><span style="color: #000000;">&lt;</span><span style="color: #000000;"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">);<br />
 </span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;GTEST_TEST_CLASS<em>NAME</em>(test_case_name,&nbsp;test_name)::TestBody()</span></div></p>
 
 <p>&nbsp;</p>
@@ -550,7 +550,7 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 
 <p>正如这个宏的名字一样，它是用于防止对对象进行拷贝和赋值操作的。</p>
 
-<h4 id="四-再来了解run-all-tests宏:b0a4be1b6becb52dcdece1c821eda165">四、再来了解RUN_ALL_TESTS宏</h4>
+<h4 id="四-再来了解run-all-tests宏">四、再来了解RUN_ALL_TESTS宏</h4>
 
 <p>我们的测试案例的运行就是通过这个宏发起的。RUN_ALL_TEST的定义非常简单：</p>
 
@@ -784,7 +784,7 @@ GetUnitTestImpl()是获取UnitTestImpl对象：
 
 <p>上面的代码里非常极其以及特别的兴奋的看到了执行测试案例的前后事件，测试案例执行TestBody()的代码。仿佛整个gtest的流程在眼前一目了然了。</p>
 
-<h4 id="四-总结:b0a4be1b6becb52dcdece1c821eda165">四、总结</h4>
+<h4 id="四-总结">四、总结</h4>
 
 <p>本文通过分析TEST宏和RUN_ALL_TEST宏，了解到了整个gtest运作过程，可以说整个过程简洁而优美。之前读《代码之美》，感触颇深，现在读过gtest代码，再次让我感触深刻。记得很早前，我对设计的理解是&#8220;功能越强大越好，设计越复杂越好，那样才显得牛&#8221;，渐渐得，我才发现，简单才是最好。我曾总结过自己写代码的设计原则：功能明确，设计简单。了解了gtest代码后，猛然发现gtest不就是这样吗，同时gtest也给了我很多惊喜，因此，我对gtest的评价是：<span style="color: red;">功能强大，设计简单，使用方便</span>。</p>
 

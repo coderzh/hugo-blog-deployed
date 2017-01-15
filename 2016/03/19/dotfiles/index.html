@@ -18,6 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="dotfiles,">
 <meta name="description" content="如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。
+
 ">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
@@ -25,6 +26,7 @@
 
 <meta itemprop="name" content="懒程序员和他的 dotfiles - CoderZh Blog">
 <meta itemprop="description" content="如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。
+
 ">
 <meta itemprop="image" content="http://blog.coderzh.com/public/coderzh.jpg">
 
@@ -33,12 +35,14 @@
 <meta property="og:url" content="http://blog.coderzh.com/2016/03/19/dotfiles/" />
 <meta property="og:image" content="http://blog.coderzh.com/public/coderzh.jpg" />
 <meta property="og:description" content="如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。
+
 ">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="懒程序员和他的 dotfiles - CoderZh Blog">
 <meta name="twitter:description" content="如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。
+
 ">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="http://blog.coderzh.com/public/coderzh.jpg">
@@ -193,19 +197,19 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p>如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。</p>
 
-<p>如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。</p>
+<p></p>
 
 <p>以一段废话开场，引出今天的主题：<code>dotfiles</code>。软件匠艺社区（<a href="codingstyle.cn">codingstyle.cn</a>）周三晚上有一期分享介绍 Vim 时提到了 dotfiles，这篇文章我们就来好好说一说 dotfiles。</p>
 
-<h3 id="什么是-dotfiles:50fc662a6f6921bb445d80a429a8e146">什么是 dotfiles？</h3>
+<h3 id="什么是-dotfiles">什么是 dotfiles？</h3>
 
 <p>dot 即「点」的意思，意思是以点开头的文件。如果你不是程序员，你大概会说，我咋从来没见过这种文件啊？因为这些文件通常都是隐藏文件，平常一般看不到，比如 .git 目录。但这里说的 dotfiles 主要是指用户 home 目录下的点文件，这类文件一般是一些配置文件，比如 vim 的配置文件 .vimrc，zsh 的配置文件 .zshrc 等。通过设置这些配置文件，可以实现出很强大的功能，比如有不少人通过配置 .vimrc，把 vim 活生生变成了一个功能强大的 IDE。还有一些偷懒的程序员在 .profile 之类的文件里设置了大量命令的 alias。以至于你还没看清楚他敲的第一个命令，他已经敲了三四个命令了。</p>
 
 <p>通过配置各种 dotfiles，程序员可以把系统定制得既顺手又高效。但是问题来了，自己千辛万苦调的设置，如果换一台机器，又得重新设置一遍。这对于追求效率的程序员来说是不可接受的。</p>
 
-<h3 id="dotfiles-管理:50fc662a6f6921bb445d80a429a8e146">dotfiles 管理</h3>
+<h3 id="dotfiles-管理">dotfiles 管理</h3>
 
 <p>于是会玩又懒的程序员想出了一个办法，把所有的 dotfiles 放在一个单独的目录进行统一管理，放到 GitHub 或者通过网盘同步。</p>
 
@@ -225,7 +229,7 @@
 
 <p>有些人把软链的管理写成一个 Shell 脚本，也有人做成特定的工具。比如：<a href="https://github.com/thoughtbot/rcm">rcm</a>、 <a href="http://skwp.github.io/dotfiles/">YARD</a>、 <a href="https://pypi.python.org/pypi/dotfiles">dotfiles</a>、 <a href="https://github.com/lra/mackup">mackup</a> ……</p>
 
-<h3 id="mackup:50fc662a6f6921bb445d80a429a8e146">mackup</h3>
+<h3 id="mackup">mackup</h3>
 
 <p>在对比了各种 dotfiles 工具后，我最终选择了 <a href="https://github.com/lra/mackup">mackup</a>。理由主要如下：</p>
 
@@ -301,7 +305,7 @@ Library/Preferences/IdeaIC15/options/keymap.xml
 
 <p><code>configuration_files</code> 里指定我需要备份的文件即可。非常的简单易用。</p>
 
-<h3 id="自动安装软件:50fc662a6f6921bb445d80a429a8e146">自动安装软件</h3>
+<h3 id="自动安装软件">自动安装软件</h3>
 
 <p>在一台新机器上，把之前机器装的软件一个一个手动安装也是非常耗时和麻烦的事情。如果你使用的是 Mac OS X，将会变得非常简单，因为绝大部分的软件开发包及软件都可以通过 <a href="http://brew.sh/">Homebrew</a> 和 <a href="https://caskroom.github.io/">brew cask</a> 来安装。</p>
 
@@ -386,7 +390,7 @@ brew cleanup
 brew cask cleanup
 </code></pre>
 
-<h3 id="pip-npm-gem:50fc662a6f6921bb445d80a429a8e146">pip、npm、gem</h3>
+<h3 id="pip-npm-gem">pip、npm、gem</h3>
 
 <p>使用 pip、npm、gem 安装的包也使用脚本进行一键安装：</p>
 
@@ -400,7 +404,7 @@ pip install mock
 # npm、gem ...
 </code></pre>
 
-<h3 id="os-x-的系统设置:50fc662a6f6921bb445d80a429a8e146">OS X 的系统设置</h3>
+<h3 id="os-x-的系统设置">OS X 的系统设置</h3>
 
 <p>当你拿到一台新的 Mac 然后开机时，不知道有没有被 Duang~ 的一声吓到的经历。当时吓得的宝宝我赶紧找了如何关闭开机声音的方法（设置静音、插上耳机都不管用！），只要执行一条命令即可：</p>
 
@@ -428,7 +432,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 </code></pre>
 
-<h3 id="字体:50fc662a6f6921bb445d80a429a8e146">字体</h3>
+<h3 id="字体">字体</h3>
 
 <p>程序员喜欢折腾的几样东西：键盘、编辑器、字体。程序员钟爱的几种字体，包括 Source Code Pro、Hack、Menlo 等等，其中对 powerline 字体更是最爱。把所有心爱的字体放在 dotfiles/fonts 目录里，通过自动安装脚本里直接拷贝到 ~/Library/Fonts/ 目录下即可。</p>
 
@@ -459,7 +463,7 @@ set laststatus=2
 
 <p><img src="http://7xlx3k.com1.z0.glb.clouddn.com/vim-powerline.png" alt="vim-powerline" /></p>
 
-<h3 id="总结:50fc662a6f6921bb445d80a429a8e146">总结</h3>
+<h3 id="总结">总结</h3>
 
 <p>懒程序员如果拿到了一个新的 Mac 机器，他只需要做如下几步，就可以把这台新的机器变成熟悉的一台机器：</p>
 
@@ -504,7 +508,6 @@ $ mackup restore
 <li><a href="https://github.com/lra/mackup">https://github.com/lra/mackup</a></li>
 <li><a href="https://github.com/webpro/dotfiles">https://github.com/webpro/dotfiles</a></li>
 </ol>
-
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

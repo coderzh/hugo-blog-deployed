@@ -193,7 +193,7 @@
 
 <p>之前的解决办法是在前台界面的js里进行时间的转换，这样做不是很好，还发现在IE中显示会有不正确的时候。因此，打算使用Django自定义filter的方式来做。其中有一些需要注意的事项，一不小心就可能弄错，导致页面出错。</p>
 
-<h4 id="1-添加-templatetags-目录:2760d87cec3d8b21b6c9eff5e2c39c50">1. 添加 templatetags 目录。</h4>
+<h4 id="1-添加-templatetags-目录">1. 添加 templatetags 目录。</h4>
 
 <p>需要注意的是：</p>
 
@@ -213,7 +213,7 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;- templatetags</p></li>
 </ol>
 
-<h4 id="2-settings-py中设置installed-apps:2760d87cec3d8b21b6c9eff5e2c39c50">2. settings.py中设置INSTALLED_APPS</h4>
+<h4 id="2-settings-py中设置installed-apps">2. settings.py中设置INSTALLED_APPS</h4>
 
 <p>为了能找到 templatetags，我们需要在settings.py中的NSTALLED_APPS添加一个路径，比如我添加：</p>
 
@@ -229,7 +229,7 @@
 <br />
 </span><span style="color: #000000;">)</span></div>
 
-<h4 id="nbsp-3-开始编写我们的filter:2760d87cec3d8b21b6c9eff5e2c39c50">&nbsp;3. 开始编写我们的filter</h4>
+<h4 id="nbsp-3-开始编写我们的filter">&nbsp;3. 开始编写我们的filter</h4>
 
 <p>在 templatetags目录下建立任意文件名的文件，如：filters.py，我们现在是要做一个时区的转换filter，因此代码如下：</p>
 
@@ -245,7 +245,7 @@ register&nbsp;</span><span style="color: #000000;">=</span><span style="color: #
 <br />
 register.filter(timezone)</span></div>
 
-<h4 id="4-在模板文件的开头加上-load-filters-然后就可以这样使用了:2760d87cec3d8b21b6c9eff5e2c39c50">4. 在模板文件的开头加上{% load filters %}，然后就可以这样使用了：</h4>
+<h4 id="4-在模板文件的开头加上-load-filters-然后就可以这样使用了">4. 在模板文件的开头加上{% load filters %}，然后就可以这样使用了：</h4>
 
 <p><div class="cnblogs_code"><span style="color: #000000;">{{log.date</span><span style="color: #000000;">|</span><span style="color: #000000;">timezone:</span><span style="color: #000000;">8</span><span style="color: #000000;">|</span><span style="color: #000000;">date:</span><span style="color: #800000;">&ldquo;</span><span style="color: #800000;">Y-m-d&nbsp;H:i:s</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">}}</span></div>
 <br />

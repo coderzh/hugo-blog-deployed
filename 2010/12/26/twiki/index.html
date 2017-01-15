@@ -178,7 +178,7 @@
                   <h1 class="post-title">TWiki安装和使用心得</h1>
 
                   <p class="post-byline">
-                    by  · 2010年12月26日 · 1317 Words ·
+                    by  · 2010年12月26日 · 1342 Words ·
                     ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-12-26-twiki.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -198,7 +198,7 @@
 
 <p>TWiki部署起来稍微有点复杂，下面是我在Ubuntu上部署TWiki的一些心得。</p>
 
-<h4 id="1-环境准备:0a9d9e8d22c50ae21f83321216225a16">1. 环境准备</h4>
+<h4 id="1-环境准备">1. 环境准备</h4>
 
 <div class="cnblogs_code"><div><span style="color: #000000;">$</span><span style="color: #000000;">&nbsp;sudo&nbsp;apt</span><span style="color: #000000;">-</span><span style="color: #000000;">get&nbsp;install&nbsp;apache2&nbsp;perl&nbsp;cron&nbsp;grep&nbsp;rcs&nbsp;patch&nbsp;php5
 </span><span style="color: #000000;">$</span><span style="color: #000000;">&nbsp;sudo&nbsp;apt</span><span style="color: #000000;">-</span><span style="color: #000000;">get&nbsp;install&nbsp;libapache2</span><span style="color: #000000;">-</span><span style="color: #000000;">mod</span><span style="color: #000000;">-</span><span style="color: #000000;">php5&nbsp;libcgi</span><span style="color: #000000;">-</span><span style="color: #000000;">session</span><span style="color: #000000;">-</span><span style="color: #000000;">perl&nbsp;libdigest</span><span style="color: #000000;">-</span><span style="color: #000000;">sha1</span><span style="color: #000000;">-</span><span style="color: #000000;">perl&nbsp;libhtml</span><span style="color: #000000;">-</span><span style="color: #000000;">parser</span><span style="color: #000000;">-</span><span style="color: #000000;">perl</span></div></div>
@@ -206,7 +206,7 @@
 <p>&nbsp;
 <div></p>
 
-<h4 id="2-下载:0a9d9e8d22c50ae21f83321216225a16">2. 下载</h4>
+<h4 id="2-下载">2. 下载</h4>
 
 <div class="cnblogs_code"><div><span style="color: #000000;">$</span><span style="color: #000000;">&nbsp;wget&nbsp;http:</span><span style="color: #000000;">//</span><span style="color: #000000;">downloads.sourceforge.net</span><span style="color: #000000;">/</span><span style="color: #000000;">project</span><span style="color: #000000;">/</span><span style="color: #000000;">twiki</span><span style="color: #000000;">/</span><span style="color: #000000;">TWiki</span><span style="color: #000000;">%</span><span style="color: #000000;">20</span><span style="color: #0000ff;">for</span><span style="color: #000000;">%</span><span style="color: #000000;">20all</span><span style="color: #000000;">%</span><span style="color: #000000;">20Platforms</span><span style="color: #000000;">/</span><span style="color: #000000;">TWiki</span><span style="color: #000000;">-</span><span style="color: #000000;">5.0</span><span style="color: #000000;">.</span><span style="color: #000000;">1</span><span style="color: #000000;">/</span><span style="color: #000000;">TWiki</span><span style="color: #000000;">-</span><span style="color: #000000;">5.0</span><span style="color: #000000;">.</span><span style="color: #000000;">1</span><span style="color: #000000;">.tgz</span><span style="color: #000000;">?</span><span style="color: #000000;">r</span><span style="color: #000000;">=&amp;</span><span style="color: #000000;">ts</span><span style="color: #000000;">=</span><span style="color: #000000;">1293085896</span><span style="color: #000000;">&amp;</span><span style="color: #000000;">use_mirror</span><span style="color: #000000;">=</span><span style="color: #000000;">nchc
 </span><span style="color: #000000;">$</span><span style="color: #000000;">&nbsp;sudo&nbsp;tar&nbsp;</span><span style="color: #000000;">-</span><span style="color: #000000;">xvzf&nbsp;TWiki</span><span style="color: #000000;">-</span><span style="color: #000000;">5.0</span><span style="color: #000000;">.</span><span style="color: #000000;">1</span><span style="color: #000000;">.tgz
@@ -215,7 +215,7 @@
 
 <p></div><div></p>
 
-<h4 id="3-配置:0a9d9e8d22c50ae21f83321216225a16">3. 配置</h4>
+<h4 id="3-配置">3. 配置</h4>
 
 <div class="cnblogs_code"><div><span style="color: #000000;">$</span><span style="color: #000000;">&nbsp;sudo&nbsp;cp&nbsp;</span><span style="color: #000000;">/</span><span style="color: #000000;">var</span><span style="color: #000000;">/</span><span style="color: #000000;">www</span><span style="color: #000000;">/</span><span style="color: #000000;">twiki</span><span style="color: #000000;">/</span><span style="color: #000000;">bin</span><span style="color: #000000;">/</span><span style="color: #000000;">LocalLib.cfg.txt&nbsp;</span><span style="color: #000000;">/</span><span style="color: #000000;">var</span><span style="color: #000000;">/</span><span style="color: #000000;">www</span><span style="color: #000000;">/</span><span style="color: #000000;">twiki</span><span style="color: #000000;">/</span><span style="color: #000000;">bin</span><span style="color: #000000;">/</span><span style="color: #000000;">LocalLib.cfg</span></div></div>
 <br />
@@ -243,9 +243,9 @@ Require&nbsp;user&nbsp;CoderZh</span></div></div>
 
 <p>&nbsp;</p>
 
-<h3 id="使用技巧:0a9d9e8d22c50ae21f83321216225a16">使用技巧</h3>
+<h3 id="使用技巧">使用技巧</h3>
 
-<h4 id="1-中文支持:0a9d9e8d22c50ae21f83321216225a16">1. 中文支持</h4>
+<h4 id="1-中文支持">1. 中文支持</h4>
 
 <div>TWiki默认是iso8859-1编码，不支持中文编辑， 界面也是全英文。让TWiki支持中文，首先，确保服务器的locale安装有zh_CN.UTF-8。</div><div class="cnblogs_code"><div><span style="color: #000000;">$</span><span style="color: #000000;">&nbsp;sudo&nbsp;locale</span><span style="color: #000000;">-</span><span style="color: #000000;">gen&nbsp;zh_CN
 </span><span style="color: #000000;">$</span><span style="color: #000000;">&nbsp;sudo&nbsp;locale</span><span style="color: #000000;">-</span><span style="color: #000000;">gen&nbsp;zh_CN.UTF</span><span style="color: #000000;">-</span><span style="color: #000000;">8</span><span style="color: #000000;">
@@ -279,13 +279,13 @@ Require&nbsp;user&nbsp;CoderZh</span></div></div>
 
 <p>&nbsp;</p>
 
-<h4 id="3-批量添加用户:0a9d9e8d22c50ae21f83321216225a16">3. 批量添加用户</h4>
+<h4 id="3-批量添加用户">3. 批量添加用户</h4>
 
 <p>进入页面：http://&lt;ipaddress&gt;/twiki/bin/view/TWiki/BulkRegistration ，里面有详细说明。</p>
 
 <p>&nbsp;</p>
 
-<h4 id="4-页面设置:0a9d9e8d22c50ae21f83321216225a16">4. 页面设置</h4>
+<h4 id="4-页面设置">4. 页面设置</h4>
 
 <p>WebPreferences和TopicPreferences页面，可对Web或Topic进行设置，比如权限等等。详细的有哪些设置项，可参考：</p>
 

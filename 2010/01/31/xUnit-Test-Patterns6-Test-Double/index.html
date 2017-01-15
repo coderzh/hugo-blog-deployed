@@ -182,8 +182,8 @@
                   <h1 class="post-title">《xUnit Test Patterns》学习笔记6 - Test Double</h1>
 
                   <p class="post-byline">
-                    by  · 2010年01月31日 · 2964 Words ·
-                    ~6min reading time |
+                    by  · 2010年01月31日 · 3149 Words ·
+                    ~7min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-01-31-xUnit-Test-Patterns6-Test-Double.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -212,7 +212,7 @@
 
 <p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_2.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns6TestDouble_106E8/image_thumb.png" alt="image" title="image" /></a></p>
 
-<h4 id="dummy-object:7d90771bbf1c9880ab4be082e80aca74">Dummy Object</h4>
+<h4 id="dummy-object">Dummy Object</h4>
 
 <p>Dummy Objects泛指在测试中必须传入的对象，而传入的这些对象实际上并不会产出任何作用，仅仅是为了能够调用被测对象而必须传入的一个东西。</p>
 
@@ -234,7 +234,7 @@
 
 <p>&nbsp;</p>
 
-<h4 id="test-stub:7d90771bbf1c9880ab4be082e80aca74">Test Stub</h4>
+<h4 id="test-stub">Test Stub</h4>
 
 <p>测试桩是用来接受SUT内部的间接输入(indirect inputs)，并返回特定的值给SUT。可以理解Test Stub是在SUT内部打的一个桩，可以按照我们的要求返回特定的内容给SUT，Test Stub的交互完全在SUT内部，因此，它不会返回内容给测试案例，也不会对SUT内部的输入进行验证。</p>
 
@@ -265,7 +265,7 @@
 
 <p>&nbsp;</p>
 
-<h4 id="test-spy:7d90771bbf1c9880ab4be082e80aca74">Test Spy</h4>
+<h4 id="test-spy">Test Spy</h4>
 
 <p>Test Spy像一个间谍，安插在了SUT内部，专门负责将SUT内部的间接输出(indirect outputs)传到外部。它的特点是将内部的间接输出返回给测试案例，由测试案例进行验证，<font color="#ff0000">Test Spy只负责获取内部情报，并把情报发出去，不负责验证情报的正确性</font>。</p>
 
@@ -302,7 +302,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: red;">logSpy.getDetail()</span><span style="color: #000000;">);
 }</span></div></div></p>
 
-<h4 id="mock-object:7d90771bbf1c9880ab4be082e80aca74">Mock Object</h4>
+<h4 id="mock-object">Mock Object</h4>
 
 <p>Mock Object和Test Spy有类似的地方，它也是安插在SUT内部，获取到SUT内部的间接输出(indirect outputs)，不同的是，<font color="#ff0000">Mock Object还负责对情报(indirect outputs)进行验证</font>，总部(外部的测试案例)信任Mock Object的验证结果。</p>
 

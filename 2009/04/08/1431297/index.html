@@ -178,7 +178,7 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之四 - 参数化</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月08日 · 2484 Words ·
+                    by  · 2009年04月08日 · 2467 Words ·
                     ~5min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-08-1431297.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,11 +191,11 @@
                       
                       
 
-<h4 id="一-前言:c33a3ebff33c2857fd74ae86d5a0d42c">一、前言</h4>
+<h4 id="一-前言">一、前言</h4>
 
 <p>在设计测试案例时，经常需要考虑给被测函数传入不同的值的情况。我们之前的做法通常是写一个通用方法，然后编写在测试案例调用它。即使使用了通用方法，这样的工作也是有很多重复性的，程序员都懒，都希望能够少写代码，多复用代码。Google的程序员也一样，他们考虑到了这个问题，并且提供了一个灵活的参数化测试的方案。</p>
 
-<h4 id="二-旧的方案:c33a3ebff33c2857fd74ae86d5a0d42c">二、旧的方案</h4>
+<h4 id="二-旧的方案">二、旧的方案</h4>
 
 <p>为了对比，我还是把旧的方案提一下。首先我先把被测函数IsPrime帖过来(在gtest的example1.cc中)，这个函数是用来判断传入的数值是否为质数的。
 <div class="cnblogs_code"><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;Returns&nbsp;true&nbsp;iff&nbsp;n&nbsp;is&nbsp;a&nbsp;prime&nbsp;number.</span><span style="color: #008000;">
@@ -240,7 +240,7 @@
 
 <p>接下来，就来看看gtest是如何为我们解决这些问题的。</p>
 
-<h4 id="三-使用参数化后的方案:c33a3ebff33c2857fd74ae86d5a0d42c">三、使用参数化后的方案</h4>
+<h4 id="三-使用参数化后的方案">三、使用参数化后的方案</h4>
 
 <ol>
 <li>告诉gtest你的参数类型是什么</li>
@@ -296,7 +296,7 @@
 &nbsp;
 <br /></p>
 
-<h4 id="四-参数化后的测试案例名:c33a3ebff33c2857fd74ae86d5a0d42c">四、参数化后的测试案例名</h4>
+<h4 id="四-参数化后的测试案例名">四、参数化后的测试案例名</h4>
 
 <p><br />
 因为使用了参数化的方式执行案例，我非常想知道运行案例时，每个案例名称是如何命名的。我执行了上面的代码，输出如下：
@@ -308,7 +308,7 @@
 prefix/test_case_name.test.name/index
 <br /></p>
 
-<h4 id="五-类型参数化:c33a3ebff33c2857fd74ae86d5a0d42c">五、类型参数化</h4>
+<h4 id="五-类型参数化">五、类型参数化</h4>
 
 <p><br />
 gtest还提供了应付各种不同类型的数据时的方案，以及参数化类型的方案。我个人感觉这个方案有些复杂。首先要了解一下类型化测试，就用gtest里的例子了。
@@ -380,7 +380,7 @@ INSTANTIATE_TYPED_TEST_CASE_P(My,&nbsp;FooTest,&nbsp;MyTypes);</span></div></p>
 
 <p>这种方案相比之前的方案提供更加好的灵活度，当然，框架越灵活，复杂度也会随之增加。</p>
 
-<h4 id="六-总结:c33a3ebff33c2857fd74ae86d5a0d42c">六、总结</h4>
+<h4 id="六-总结">六、总结</h4>
 
 <p>gtest为我们提供的参数化测试的功能给我们的测试带来了极大的方便，使得我们可以写更少更优美的代码，完成多种参数类型的测试案例。</p>
 

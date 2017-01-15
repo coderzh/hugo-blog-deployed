@@ -178,8 +178,8 @@
                   <h1 class="post-title">Linux服务器性能数据收集 - Sysstat介绍</h1>
 
                   <p class="post-byline">
-                    by  · 2008年05月05日 · 4701 Words ·
-                    ~10min reading time |
+                    by  · 2008年05月05日 · 5093 Words ·
+                    ~11min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-05-05-1183125.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -193,7 +193,7 @@
 
 <p>Linux中的top,free等命令不能完全满足我们性能数据收集的要求，我们需要一个更加强大的工具来收集性能数据。经过考察和对比，发现Sysstat是一个非常强大的工具，因此下载了试了下，效果不错。Sysstat是一个工具集，包括<a href="http://pagesperso-orange.fr/sebastien.godard/man_sar.html">sar</a>、<a href="http://pagesperso-orange.fr/sebastien.godard/man_pidstat.html">pidstat</a>、<a href="http://pagesperso-orange.fr/sebastien.godard/man_iostat.html">iostat</a>、<a href="http://pagesperso-orange.fr/sebastien.godard/man_mpstat.html">mpstat</a>、<a href="http://pagesperso-orange.fr/sebastien.godard/man_sadf.html">sadf</a>、<a href="http://pagesperso-orange.fr/sebastien.godard/man_sadc.html">sadc</a>。其中sar是其中最强大，也是最能符合我们测试要求的工具，同时pidstat也是非常有用的东东，因此本文结合性能测试重点介绍这两个工具。</p>
 
-<h3 id="sysstat的安装:b8fd3b1c68027da205fd05f1caba5b70">Sysstat的安装</h3>
+<h3 id="sysstat的安装">Sysstat的安装</h3>
 
 <p>从<a href="http://pagesperso-orange.fr/sebastien.godard/download.html下载最新版本，解压，安装">http://pagesperso-orange.fr/sebastien.godard/download.html下载最新版本，解压，安装</a></p>
 
@@ -216,7 +216,7 @@
 <pre></pre></p></li>
 </ul>
 
-<h3 id="监视某个进程:b8fd3b1c68027da205fd05f1caba5b70">监视某个进程</h3>
+<h3 id="监视某个进程">监视某个进程</h3>
 
 <ol>
 <li><p>通过ps命令找到相应进程的PID：</p>
@@ -240,7 +240,7 @@
 <li><p>很可惜的是，pidstat命令没有保存性能数据的功能。</p></li>
 </ol>
 
-<h3 id="查看性能数据:b8fd3b1c68027da205fd05f1caba5b70">查看性能数据</h3>
+<h3 id="查看性能数据">查看性能数据</h3>
 
 <p>在sysstat工具包中，sar是最强大的了，通过sar几乎可以监视所有的性能数据，同时，sar还支持将性能数据保存起来。</p>
 
@@ -268,7 +268,7 @@
 </span><span style="color: #008000;">//</span><span style="color: #008000;">每隔2秒，显示5次，网络吞吐量情况</span></div></li>
 </ol>
 
-<h3 id="保存性能数据:b8fd3b1c68027da205fd05f1caba5b70">保存性能数据</h3>
+<h3 id="保存性能数据">保存性能数据</h3>
 
 <p>sar支持保存成两种格式的文件，一种是文本文件，一种是二进制文件（只有通过sar自己的命令才能查看）。</p>
 

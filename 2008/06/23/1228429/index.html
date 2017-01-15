@@ -178,7 +178,7 @@
                   <h1 class="post-title">Foundations of Python Network Programming - 读书笔记系列(2) - Web Services</h1>
 
                   <p class="post-byline">
-                    by  · 2008年06月23日 · 1953 Words ·
+                    by  · 2008年06月23日 · 1943 Words ·
                     ~4min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-06-23-1228429.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,13 +191,13 @@
                       
                       
 
-<h3 id="web-client-access:22b3d54de2e45ca4ad4067fc97107837">Web Client Access</h3>
+<h3 id="web-client-access">Web Client Access</h3>
 
 <p>HTTP(Hypertext Transfer Prototol)协议是如今使用最广的协议之一。Python中通常使用urllib2模块来实现HTTP协议。</p>
 
 <p>urllib和urllib2的区别？urllib2更据扩展性，同时和urllib一样具备了基本的功能。而urllib提供了较多的一些实用的功能。</p>
 
-<h4 id="1-fetching-web-pages:22b3d54de2e45ca4ad4067fc97107837">1. Fetching Web Pages</h4>
+<h4 id="1-fetching-web-pages">1. Fetching Web Pages</h4>
 
 <div class="cnblogs_code"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;sys,&nbsp;urllib2
 <br />
@@ -425,7 +425,7 @@ info&nbsp;</span><span style="color: #000000;">=</span><span style="color: #0000
 
 <p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/HTTPError.JPG" alt="" /></p>
 
-<h4 id="6-cathing-data-errors:22b3d54de2e45ca4ad4067fc97107837">6. Cathing Data Errors</h4>
+<h4 id="6-cathing-data-errors">6. Cathing Data Errors</h4>
 
 <p>前面是捕捉了连接时的异常，同样，在读数据或写数据时，也会发生异常。有两种情况：一是当使用read()时，连接出现异常(communication error)，会抛出socket.error，这时我们捕获这个异常就可以了。二是读取的文件读到一半意外被中断，比如服务器的某个程序崩溃了，这时，连接会被正常的关闭，你接受不到任何异常的信息。这时，你就必须从header里找Content-Length，然后和自己接收的数据大小进行比较。（Content-Length在其他非HTTP协议中通常是没有的）</p>
 
@@ -491,11 +491,11 @@ bytesread&nbsp;</span><span style="color: #000000;">=</span><span style="color: 
 <br />
 <br />
 <br />
-</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;fd.info().has_key(</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">Content-Length</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">)&nbsp;</span><span style="color: #0000ff;">and</span><span style="color: #000000;">&nbsp;\
+</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;fd.info().has_key(</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">Content-Length</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">)&nbsp;</span><span style="color: #0000ff;">and</span><span style="color: #000000;">&nbsp;<br />
 <br />
 &nbsp;&nbsp;&nbsp;long(fd.info()[</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">Content-Length</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">])&nbsp;</span><span style="color: #000000;">!=</span><span style="color: #000000;">&nbsp;long(bytesread):
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&ldquo;</span><span style="color: #800000;">Expected&nbsp;a&nbsp;document&nbsp;of&nbsp;size&nbsp;%d,&nbsp;but&nbsp;read&nbsp;%d&nbsp;bytes</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">%</span><span style="color: #000000;">&nbsp;\
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&ldquo;</span><span style="color: #800000;">Expected&nbsp;a&nbsp;document&nbsp;of&nbsp;size&nbsp;%d,&nbsp;but&nbsp;read&nbsp;%d&nbsp;bytes</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">%</span><span style="color: #000000;">&nbsp;<br />
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(long(fd.info()[</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">Content-Length</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">]),&nbsp;bytesread)
 <br />

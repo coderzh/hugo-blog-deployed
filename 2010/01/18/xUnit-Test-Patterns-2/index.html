@@ -207,7 +207,7 @@
 
 <p>&nbsp;</p>
 
-<h3 id="自动化测试的目标:37286d7576f0ac1ddfe739b00d492425">自动化测试的目标</h3>
+<h3 id="自动化测试的目标">自动化测试的目标</h3>
 
 <ol>
 <li>Tests should help us improve quality.</li>
@@ -218,7 +218,7 @@
 <li>Tests should require minimal maintenance as the system evolves around them.<br /></li>
 </ol>
 
-<h4 id="tests-should-help-us-improve-quality:37286d7576f0ac1ddfe739b00d492425">Tests should help us improve quality</h4>
+<h4 id="tests-should-help-us-improve-quality">Tests should help us improve quality</h4>
 
 <ol>
 <li>Tests as Specification 测试案例可以验证产品的行为，验证是否&#8220;building the right software&#8221;</li>
@@ -226,18 +226,18 @@
 <li>Defect Localization 顶层的customer tests只会告诉你案例失败了，unit tests会告诉你为什么失败了，能定位到具体的问题。如果customer tests失败了而所有的unit tests却通过的话，说明单元测试案例缺失了。(Missing Unit Test)<br /></li>
 </ol>
 
-<h4 id="tests-should-help-us-understand-the-sut:37286d7576f0ac1ddfe739b00d492425">Tests should help us understand the SUT</h4>
+<h4 id="tests-should-help-us-understand-the-sut">Tests should help us understand the SUT</h4>
 
 <p>测试案例是非常好的文档，它告诉了你SUT做了些什么。同时，它还让你可以直接调试测试案例，单步跟踪，去了解整个系统是如何运作的。</p>
 
-<h4 id="tests-should-reduce-and-not-introduce-risk:37286d7576f0ac1ddfe739b00d492425">Tests should reduce (and not introduce) risk</h4>
+<h4 id="tests-should-reduce-and-not-introduce-risk">Tests should reduce (and not introduce) risk</h4>
 
 <ol>
 <li>Tests as Safety Net 测试案例应该成为修改代码安全的保障，让我们在重构旧代码时能够大刀阔斧，而不必担心会破坏什么。</li>
 <li>Do No Harm 测试案例不能对产品造成影响，一个重要的原则是，不要修改SUT。<br /></li>
 </ol>
 
-<h4 id="tests-should-be-easy-to-run:37286d7576f0ac1ddfe739b00d492425">Tests should be easy to run</h4>
+<h4 id="tests-should-be-easy-to-run">Tests should be easy to run</h4>
 
 <ol>
 <li>Fully Automated Test 完全自动化</li>
@@ -245,7 +245,7 @@
 <li>Repeatable Test 需要具备可重复性。鼓励开发人员在每一次按下保存按钮时都执行一次测试案例(我没事就喜欢Ctrl+S)。案例需要具备可重复性，必须具备自我清理能力(self-cleaning)，通常，是在Test Fixture的TearDown中进行环境的清理。<br /></li>
 </ol>
 
-<h4 id="tests-should-be-easy-to-write-and-maintain:37286d7576f0ac1ddfe739b00d492425">Tests should be easy to write and maintain</h4>
+<h4 id="tests-should-be-easy-to-write-and-maintain">Tests should be easy to write and maintain</h4>
 
 <ol>
 <li>Simple Tests 一个首要的原则是，让测试案例尽量的简单，使得其更容易维护。一次只测一种条件（Verify One Condition per Test）</li>
@@ -253,11 +253,11 @@
 <li>Separation of Concerns 测试案例要尽量测试单一，独立的功能，不要依赖过多。往往需要前期就介入参与产品的可测性设计(design for testability)。<br /></li>
 </ol>
 
-<h4 id="tests-should-require-minimal-maintenance-as-the-system-evolves-around-them:37286d7576f0ac1ddfe739b00d492425">Tests should require minimal maintenance as the system evolves around them</h4>
+<h4 id="tests-should-require-minimal-maintenance-as-the-system-evolves-around-them">Tests should require minimal maintenance as the system evolves around them</h4>
 
 <p>测试案例需要最小化维护的工作，因此，我们需要编写健壮的测试案例(Robust Test)。</p>
 
-<h3 id="toc_7:37286d7576f0ac1ddfe739b00d492425">&mdash;&mdash;&mdash;&mdash;&mdash;</h3>
+<h3 id="toc_7">&mdash;&mdash;&mdash;&mdash;&mdash;</h3>
 
 <p>这章讲的是测试的目标，保持案例简单，稳定，容易维护的声音似乎总是在不停的重复着，是不是有点烦了？也许作者就是希望通过这种不停的唠叨，让我们真正记住、接受，并最终体会和感悟到这些东西给我们带来的好处吧。</p>
 
