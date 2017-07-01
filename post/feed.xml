@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on CoderZh Blog</title>
-        <link>http://blog.coderzh.com/post/feed/index.xml</link>
+        <link>https://blog.coderzh.com/post/feed/index.xml</link>
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>我的 2016</title>
-            <link>http://blog.coderzh.com/2017/01/01/my-2016/</link>
+            <link>https://blog.coderzh.com/2017/01/01/my-2016/</link>
             <pubDate>Sun, 01 Jan 2017 00:00:00 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2017/01/01/my-2016/</guid>
+            <guid>https://blog.coderzh.com/2017/01/01/my-2016/</guid>
             <description>
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/baseball.JPG&#34; alt=&#34;baseball&#34; /&gt;&lt;/p&gt;
@@ -72,10 +72,10 @@
         
         <item>
             <title>真正的黑客</title>
-            <link>http://blog.coderzh.com/2016/10/16/real-hacker/</link>
+            <link>https://blog.coderzh.com/2016/10/16/real-hacker/</link>
             <pubDate>Sun, 16 Oct 2016 21:55:45 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/10/16/real-hacker/</guid>
+            <guid>https://blog.coderzh.com/2016/10/16/real-hacker/</guid>
             <description>&lt;p&gt;当听到「黑客」一词时，你的第一反应是什么？是行为古怪，专门通过计算机干坏事的坏蛋，还是深藏不漏令人敬仰的技术大神。我们从小形成的固有观点认为，黑客等同于坏蛋，是具有贬义的。但在《黑客与画家》一书中，作者认为黑客是被称为书呆子，技术出众而且富有创造力，做着改变世界的一群人。&lt;/p&gt;
 
 &lt;p&gt;如果想更深入了解「黑客」一词的起源，就得从《黑客》这本书看起。《黑客》一书中，绘声绘色的描述了世界上第一批黑客的诞生，他们从哪里来，具备什么特点，他们想干些什么。&lt;/p&gt;
@@ -138,10 +138,10 @@
         
         <item>
             <title>小目标</title>
-            <link>http://blog.coderzh.com/2016/09/25/small-plan/</link>
+            <link>https://blog.coderzh.com/2016/09/25/small-plan/</link>
             <pubDate>Sun, 25 Sep 2016 23:43:43 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/09/25/small-plan/</guid>
+            <guid>https://blog.coderzh.com/2016/09/25/small-plan/</guid>
             <description>&lt;p&gt;两个多月没更新了，感谢一直关注的小伙伴们。&lt;/p&gt;
 
 &lt;p&gt;上篇文章《一次 CTF 之旅》有读者评论，会不会因为学习的东西太多而每个都不精通？以我的经验来看，会的。&lt;/p&gt;
@@ -174,10 +174,10 @@
         
         <item>
             <title>一次 CTF 之旅</title>
-            <link>http://blog.coderzh.com/2016/07/11/a-ctf-tour/</link>
+            <link>https://blog.coderzh.com/2016/07/11/a-ctf-tour/</link>
             <pubDate>Mon, 11 Jul 2016 07:35:59 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/07/11/a-ctf-tour/</guid>
+            <guid>https://blog.coderzh.com/2016/07/11/a-ctf-tour/</guid>
             <description>&lt;p&gt;有好几周没有发文章了，具体原因是上上周末去了团建，上周末主要在研读《Android 软件安全与逆向分析》一书。我报名参加了公司第一次 CTF 比赛，结果很幸运组队时抱上了几个大腿进了决赛。本着绝不坑队友的原则，精心准备了一把。结果最后还是坑了，我那道 Android 逆向的题还是没有做出来。虽然比赛已经结束，但心有不甘，这周末又继续搞了两天这题，代码逆向和解题思路都搞的差不多，但是似乎 Native 层的代码理解有一点点偏差。昨晚 11 点多不得已向比赛组委会出题大神请教，解题方法居然没有我想的复杂，我还是太 Naive 了。&lt;/p&gt;
 
 &lt;p&gt;首先介绍一下什么是 CTF。&lt;/p&gt;
@@ -254,10 +254,10 @@
         
         <item>
             <title>聊聊播客</title>
-            <link>http://blog.coderzh.com/2016/06/19/podcasts/</link>
+            <link>https://blog.coderzh.com/2016/06/19/podcasts/</link>
             <pubDate>Sun, 19 Jun 2016 18:53:33 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/06/19/podcasts/</guid>
+            <guid>https://blog.coderzh.com/2016/06/19/podcasts/</guid>
             <description>&lt;p&gt;播客（Podcast）已经不是什么新鲜的东西了。记得大概在 06 年左右，我经常逛博客园，当时 .NET 圈有个人开了一个独立播客，每篇文章就是一段录好的音频。我使劲回忆，各种搜索，十年前的记忆已经模糊。我只记得当时他讲的东西着实有趣，好像还是一个系列，但是关于其他的一切都已不记得了。&lt;/p&gt;
 
 &lt;p&gt;也许那是我第一次听播客，当时我也曾天真的认为这个东西也许会和博客一样火。很显然，现在连博客都已经没落，更不要说播客了。&lt;/p&gt;
@@ -290,10 +290,10 @@
         
         <item>
             <title>代自己：《致和菜头书》</title>
-            <link>http://blog.coderzh.com/2016/06/11/to-hecaitou/</link>
+            <link>https://blog.coderzh.com/2016/06/11/to-hecaitou/</link>
             <pubDate>Sat, 11 Jun 2016 12:24:55 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/06/11/to-hecaitou/</guid>
+            <guid>https://blog.coderzh.com/2016/06/11/to-hecaitou/</guid>
             <description>
 
 &lt;p&gt;和菜头先生，&lt;/p&gt;
@@ -374,10 +374,10 @@
         
         <item>
             <title>马斯克的冒险</title>
-            <link>http://blog.coderzh.com/2016/06/05/elon-musk/</link>
+            <link>https://blog.coderzh.com/2016/06/05/elon-musk/</link>
             <pubDate>Sun, 05 Jun 2016 14:16:25 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/06/05/elon-musk/</guid>
+            <guid>https://blog.coderzh.com/2016/06/05/elon-musk/</guid>
             <description>&lt;p&gt;埃隆·马斯克（Elon Musk）出生在一个冒险家庭。他的外祖父约书亚就是个不折不扣的冒险家。在约书亚 7 岁时父亲就去世了，于是他便维持起了家里的生计。他学会了各种技能，包括开垦荒地、驯养野马、拳击和摔跤，甚至组织牛仔竞技表演。后来经济大衰退，导致约书亚失去了自己的农场，陷入了经济危机。&lt;/p&gt;
 
 &lt;p&gt;后来约书亚娶了一位加拿大舞蹈老师，并开了一家按摩诊所，挣了不少钱，便玩起了私人飞机。后来约书亚不满加拿大道德的沦陷，决定放弃一切，变卖了所有家产，举家搬到南非准备重新开始。&lt;/p&gt;
@@ -436,10 +436,10 @@
         
         <item>
             <title>游戏必将改变世界</title>
-            <link>http://blog.coderzh.com/2016/05/29/game-changed-world/</link>
+            <link>https://blog.coderzh.com/2016/05/29/game-changed-world/</link>
             <pubDate>Sun, 29 May 2016 00:28:18 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/05/29/game-changed-world/</guid>
+            <guid>https://blog.coderzh.com/2016/05/29/game-changed-world/</guid>
             <description>&lt;p&gt;有一项活动，它人为的制作了种种不必要的障碍，而你却自愿参与，即使过程需要花费大量时间，艰苦的工作，但是你却依然乐在其中。&lt;/p&gt;
 
 &lt;p&gt;这项活动叫：游戏。&lt;/p&gt;
@@ -508,10 +508,10 @@
         
         <item>
             <title>善良比聪明更难</title>
-            <link>http://blog.coderzh.com/2016/05/15/kind-or-clever/</link>
+            <link>https://blog.coderzh.com/2016/05/15/kind-or-clever/</link>
             <pubDate>Sun, 15 May 2016 11:32:15 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/05/15/kind-or-clever/</guid>
+            <guid>https://blog.coderzh.com/2016/05/15/kind-or-clever/</guid>
             <description>&lt;blockquote&gt;
 &lt;p&gt;Jeff, one day you&amp;rsquo;ll understand that it&amp;rsquo;s harder to be kind than clever.&lt;/p&gt;
 
@@ -568,10 +568,10 @@
         
         <item>
             <title>Swift 语言学习及速查手册</title>
-            <link>http://blog.coderzh.com/2016/04/24/swift-tips/</link>
+            <link>https://blog.coderzh.com/2016/04/24/swift-tips/</link>
             <pubDate>Sun, 24 Apr 2016 23:21:16 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/04/24/swift-tips/</guid>
+            <guid>https://blog.coderzh.com/2016/04/24/swift-tips/</guid>
             <description>&lt;p&gt;学习一门新的编程语言要多久？答案是随着你的经验的增加，学习花费的时间越来越短。当然，这也和新语言的不断演变进化有关系。&lt;/p&gt;
 
 &lt;p&gt;我利用周末两天时间，把《Swift Programming Language》中文版整整的细看了一遍，然后为了总结提取 Swift 的主要语言特性，又把这本书快速过了第二遍。&lt;/p&gt;
@@ -1296,10 +1296,10 @@ func allItemsMatch&amp;lt;
         
         <item>
             <title>程序员的黄金时代</title>
-            <link>http://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</link>
+            <link>https://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</link>
             <pubDate>Sun, 17 Apr 2016 08:47:35 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</guid>
+            <guid>https://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</guid>
             <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/goldtime.jpg&#34; alt=&#34;goldtime&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;（第一次尝试写小说，本文仅向王小波致敬，情节纯属虚构，切勿对号入座。）&lt;/p&gt;
@@ -1435,10 +1435,10 @@ func allItemsMatch&amp;lt;
         
         <item>
             <title>7-Eleven 零售的哲学</title>
-            <link>http://blog.coderzh.com/2016/04/10/7-eleven/</link>
+            <link>https://blog.coderzh.com/2016/04/10/7-eleven/</link>
             <pubDate>Sun, 10 Apr 2016 21:57:06 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/04/10/7-eleven/</guid>
+            <guid>https://blog.coderzh.com/2016/04/10/7-eleven/</guid>
             <description>&lt;p&gt;1956 年 4 月，有为青年「铃木敏文」大学毕业，进入东京出版贩卖公司，从「退货负责人」到「出版科学研究所」，再到宣传部杂志「编辑」，生活过的充实有趣。在三十岁之际，铃木打算不依靠公司，以自身的力量制作一个独立的电视节目。 &lt;/p&gt;
 
 &lt;p&gt;铃木找到了赞助商「伊藤洋华堂」，一个经营大型商场的公司。「伊藤洋华堂」总部的人和铃木说：「就在我们这里完成这一项目怎样？」&lt;/p&gt;
@@ -1492,10 +1492,10 @@ func allItemsMatch&amp;lt;
         
         <item>
             <title>我如何管理我的笔记</title>
-            <link>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</link>
+            <link>https://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</link>
             <pubDate>Sat, 09 Apr 2016 14:57:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
+            <guid>https://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
             <description>&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
 
 &lt;p&gt;而如今网络如此发达，大多数的答案都可以通过你问出正确的问题得到解答。凯文·凯利在他的《必然》里有提到，未来，我们不缺乏答案，缺的是问出好的问题。Google 几乎索引了我们想要知道的所有问题的答案（百度索引了所有的相反答案），所以，理论上，我们不再需要记录自己的笔记。&lt;/p&gt;
@@ -1593,10 +1593,10 @@ func allItemsMatch&amp;lt;
         
         <item>
             <title>所有的编程技术都会成为历史</title>
-            <link>http://blog.coderzh.com/2016/04/05/programming-languages/</link>
+            <link>https://blog.coderzh.com/2016/04/05/programming-languages/</link>
             <pubDate>Mon, 04 Apr 2016 16:28:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/04/05/programming-languages/</guid>
+            <guid>https://blog.coderzh.com/2016/04/05/programming-languages/</guid>
             <description>&lt;p&gt;大四的时候，我用当时最新的 ASP.NET 技术给我叔写了一个服装制衣厂管理软件，这个软件用了差不多 10 年，中间几乎没有维护过，到现在还在工作。前几天突然联系我说，这个软件能不能迁移到 Win7 上使用（之前是在 XP 上），我想了想，肯定没问题啊，即使不行，在 Win7 里跑个 XP 的虚拟机也行。&lt;/p&gt;
 
 &lt;p&gt;最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。&lt;/p&gt;
@@ -1648,10 +1648,10 @@ func allItemsMatch&amp;lt;
         
         <item>
             <title>做了一个 Hugo 的主题：hugo-pacman-theme</title>
-            <link>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</link>
+            <link>https://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</link>
             <pubDate>Sun, 27 Mar 2016 12:57:37 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
+            <guid>https://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
             <description>&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;

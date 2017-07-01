@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>思想感悟 on CoderZh Blog</title>
-        <link>http://blog.coderzh.com/categories/%E6%80%9D%E6%83%B3%E6%84%9F%E6%82%9F/feed/index.xml</link>
+        <link>https://blog.coderzh.com/categories/%E6%80%9D%E6%83%B3%E6%84%9F%E6%82%9F/feed/index.xml</link>
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>聊聊播客</title>
-            <link>http://blog.coderzh.com/2016/06/19/podcasts/</link>
+            <link>https://blog.coderzh.com/2016/06/19/podcasts/</link>
             <pubDate>Sun, 19 Jun 2016 18:53:33 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/06/19/podcasts/</guid>
+            <guid>https://blog.coderzh.com/2016/06/19/podcasts/</guid>
             <description>&lt;p&gt;播客（Podcast）已经不是什么新鲜的东西了。记得大概在 06 年左右，我经常逛博客园，当时 .NET 圈有个人开了一个独立播客，每篇文章就是一段录好的音频。我使劲回忆，各种搜索，十年前的记忆已经模糊。我只记得当时他讲的东西着实有趣，好像还是一个系列，但是关于其他的一切都已不记得了。&lt;/p&gt;
 
 &lt;p&gt;也许那是我第一次听播客，当时我也曾天真的认为这个东西也许会和博客一样火。很显然，现在连博客都已经没落，更不要说播客了。&lt;/p&gt;

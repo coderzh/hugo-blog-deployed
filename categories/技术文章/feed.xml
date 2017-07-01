@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>技术文章 on CoderZh Blog</title>
-        <link>http://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed/index.xml</link>
+        <link>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed/index.xml</link>
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>一次 CTF 之旅</title>
-            <link>http://blog.coderzh.com/2016/07/11/a-ctf-tour/</link>
+            <link>https://blog.coderzh.com/2016/07/11/a-ctf-tour/</link>
             <pubDate>Mon, 11 Jul 2016 07:35:59 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/07/11/a-ctf-tour/</guid>
+            <guid>https://blog.coderzh.com/2016/07/11/a-ctf-tour/</guid>
             <description>&lt;p&gt;有好几周没有发文章了，具体原因是上上周末去了团建，上周末主要在研读《Android 软件安全与逆向分析》一书。我报名参加了公司第一次 CTF 比赛，结果很幸运组队时抱上了几个大腿进了决赛。本着绝不坑队友的原则，精心准备了一把。结果最后还是坑了，我那道 Android 逆向的题还是没有做出来。虽然比赛已经结束，但心有不甘，这周末又继续搞了两天这题，代码逆向和解题思路都搞的差不多，但是似乎 Native 层的代码理解有一点点偏差。昨晚 11 点多不得已向比赛组委会出题大神请教，解题方法居然没有我想的复杂，我还是太 Naive 了。&lt;/p&gt;
 
 &lt;p&gt;首先介绍一下什么是 CTF。&lt;/p&gt;
@@ -90,10 +90,10 @@
         
         <item>
             <title>Swift 语言学习及速查手册</title>
-            <link>http://blog.coderzh.com/2016/04/24/swift-tips/</link>
+            <link>https://blog.coderzh.com/2016/04/24/swift-tips/</link>
             <pubDate>Sun, 24 Apr 2016 23:21:16 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/04/24/swift-tips/</guid>
+            <guid>https://blog.coderzh.com/2016/04/24/swift-tips/</guid>
             <description>&lt;p&gt;学习一门新的编程语言要多久？答案是随着你的经验的增加，学习花费的时间越来越短。当然，这也和新语言的不断演变进化有关系。&lt;/p&gt;
 
 &lt;p&gt;我利用周末两天时间，把《Swift Programming Language》中文版整整的细看了一遍，然后为了总结提取 Swift 的主要语言特性，又把这本书快速过了第二遍。&lt;/p&gt;
@@ -818,10 +818,10 @@ func allItemsMatch&amp;lt;
         
         <item>
             <title>程序员的黄金时代</title>
-            <link>http://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</link>
+            <link>https://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</link>
             <pubDate>Sun, 17 Apr 2016 08:47:35 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</guid>
+            <guid>https://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</guid>
             <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/goldtime.jpg&#34; alt=&#34;goldtime&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;（第一次尝试写小说，本文仅向王小波致敬，情节纯属虚构，切勿对号入座。）&lt;/p&gt;
@@ -957,10 +957,10 @@ func allItemsMatch&amp;lt;
         
         <item>
             <title>我如何管理我的笔记</title>
-            <link>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</link>
+            <link>https://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</link>
             <pubDate>Sat, 09 Apr 2016 14:57:00 UTC</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
+            <guid>https://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
             <description>&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;
 
 &lt;p&gt;而如今网络如此发达，大多数的答案都可以通过你问出正确的问题得到解答。凯文·凯利在他的《必然》里有提到，未来，我们不缺乏答案，缺的是问出好的问题。Google 几乎索引了我们想要知道的所有问题的答案（百度索引了所有的相反答案），所以，理论上，我们不再需要记录自己的笔记。&lt;/p&gt;
@@ -1058,10 +1058,10 @@ func allItemsMatch&amp;lt;
         
         <item>
             <title>做了一个 Hugo 的主题：hugo-pacman-theme</title>
-            <link>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</link>
+            <link>https://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</link>
             <pubDate>Sun, 27 Mar 2016 12:57:37 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
+            <guid>https://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
             <description>&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -1200,10 +1200,10 @@ RSSUri = &amp;quot;feed.xml&amp;quot;
         
         <item>
             <title>懒程序员和他的 dotfiles</title>
-            <link>http://blog.coderzh.com/2016/03/19/dotfiles/</link>
+            <link>https://blog.coderzh.com/2016/03/19/dotfiles/</link>
             <pubDate>Sat, 19 Mar 2016 15:05:47 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/03/19/dotfiles/</guid>
+            <guid>https://blog.coderzh.com/2016/03/19/dotfiles/</guid>
             <description>&lt;p&gt;如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -1519,10 +1519,10 @@ $ mackup restore
         
         <item>
             <title>我的第一台 Mac</title>
-            <link>http://blog.coderzh.com/2016/02/09/my-first-mac/</link>
+            <link>https://blog.coderzh.com/2016/02/09/my-first-mac/</link>
             <pubDate>Tue, 09 Feb 2016 10:42:05 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/02/09/my-first-mac/</guid>
+            <guid>https://blog.coderzh.com/2016/02/09/my-first-mac/</guid>
             <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/mac.JPG-w&#34; alt=&#34;mac&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;新年第一篇，祝大家猴年大吉，心想事成，万事如意！&lt;/p&gt;
@@ -1587,10 +1587,10 @@ $ mackup restore
         
         <item>
             <title>博客皮肤单独建了个仓库</title>
-            <link>http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</link>
+            <link>https://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</link>
             <pubDate>Fri, 05 Feb 2016 23:55:45 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</guid>
+            <guid>https://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</guid>
             <description>&lt;p&gt;有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/issues/1&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/issues/1&lt;/a&gt;&lt;/p&gt;
@@ -1651,10 +1651,10 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
         
         <item>
             <title>谁也挡不住程序员在微信群里玩起了直播分享</title>
-            <link>http://blog.coderzh.com/2016/01/16/coding-style-share/</link>
+            <link>https://blog.coderzh.com/2016/01/16/coding-style-share/</link>
             <pubDate>Sat, 16 Jan 2016 17:19:20 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/01/16/coding-style-share/</guid>
+            <guid>https://blog.coderzh.com/2016/01/16/coding-style-share/</guid>
             <description>&lt;p&gt;上次写了一篇《&lt;a href=&#34;http://blog.coderzh.com/2015/12/27/code-review/&#34;&gt;大家都应该做的 Code Review&lt;/a&gt;》，在公众号里有位朋友留言：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/comments.jpg&#34; alt=&#34;comment&#34; /&gt;&lt;/p&gt;
@@ -1698,10 +1698,10 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
         
         <item>
             <title>被脱裤也不怕 - 反馈总结</title>
-            <link>http://blog.coderzh.com/2016/01/13/password-security-additional/</link>
+            <link>https://blog.coderzh.com/2016/01/13/password-security-additional/</link>
             <pubDate>Wed, 13 Jan 2016 19:06:42 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/01/13/password-security-additional/</guid>
+            <guid>https://blog.coderzh.com/2016/01/13/password-security-additional/</guid>
             <description>&lt;p&gt;在发出前两篇安全相关的文章（&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt; ，&lt;a href=&#34;http://blog.coderzh.com/2016/01/10/a-password-security-design-example/&#34;&gt;即使被拖库，也可以保证密码不泄露&lt;/a&gt;）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。&lt;/p&gt;
 
 &lt;p&gt;正如张小龙说的，“我所说的一切都是错的”。&lt;/p&gt;
@@ -1751,10 +1751,10 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
         
         <item>
             <title>即使被拖库，也可以保证密码不泄露</title>
-            <link>http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</link>
+            <link>https://blog.coderzh.com/2016/01/10/a-password-security-design-example/</link>
             <pubDate>Sun, 10 Jan 2016 23:06:42 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/01/10/a-password-security-design-example/</guid>
+            <guid>https://blog.coderzh.com/2016/01/10/a-password-security-design-example/</guid>
             <description>&lt;p&gt;在前一篇文章《&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt;》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。&lt;/p&gt;
 
 &lt;p&gt;首先，我们明确一下安全加密方案的终极目标：&lt;/p&gt;
@@ -1909,10 +1909,10 @@ AES(SharedKey, Ticket)
         
         <item>
             <title>设计安全的账号系统的正确姿势</title>
-            <link>http://blog.coderzh.com/2016/01/03/security-design/</link>
+            <link>https://blog.coderzh.com/2016/01/03/security-design/</link>
             <pubDate>Sun, 03 Jan 2016 18:23:28 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2016/01/03/security-design/</guid>
+            <guid>https://blog.coderzh.com/2016/01/03/security-design/</guid>
             <description>&lt;p&gt;&lt;img src=&#34;http://7xlx3k.com1.z0.glb.clouddn.com/security.jpg-wt&#34; alt=&#34;security&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -2216,10 +2216,10 @@ AES(SharedKey, Ticket)
         
         <item>
             <title>大家都应该做的 Code Review</title>
-            <link>http://blog.coderzh.com/2015/12/27/code-review/</link>
+            <link>https://blog.coderzh.com/2015/12/27/code-review/</link>
             <pubDate>Sun, 27 Dec 2015 18:49:15 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/12/27/code-review/</guid>
+            <guid>https://blog.coderzh.com/2015/12/27/code-review/</guid>
             <description>&lt;p&gt;代码审查（Code Review）是个老生常谈的话题了，我以前呆过的大公司也好，创业公司也好，都知道 Code Review 的好处，但真正去有效执行的却很少。有人认为“存在即合理”，大家都不愿意做 Code Review ，可能 Code Review 真的不好，影响开发效率。有的人想做，但是执行起来太困难。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -2269,10 +2269,10 @@ AES(SharedKey, Ticket)
         
         <item>
             <title>Hugo 自动化部署脚本</title>
-            <link>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</link>
+            <link>https://blog.coderzh.com/2015/11/21/hugo-deploy-script/</link>
             <pubDate>Sat, 21 Nov 2015 17:48:04 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/11/21/hugo-deploy-script/</guid>
+            <guid>https://blog.coderzh.com/2015/11/21/hugo-deploy-script/</guid>
             <description>&lt;p&gt;之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。&lt;/p&gt;
 
 &lt;p&gt;脚本路径：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&lt;/a&gt;&lt;/p&gt;
@@ -2334,10 +2334,10 @@ DEPLOY_DIR = &#39;gh-pages&#39;
         
         <item>
             <title>走进前端开发之：Vue.js</title>
-            <link>http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</link>
+            <link>https://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</link>
             <pubDate>Sun, 15 Nov 2015 21:53:51 CST</pubDate>
             <author>CoderZh</author>
-            <guid>http://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</guid>
+            <guid>https://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</guid>
             <description>&lt;p&gt;上一篇中，探讨了前端框架的前世今生，最后还列举了当前比较火的几个前端框架，比如：Google 的 Angular，老牌的 Backbone , Facebook 的 React 等等。今天，我只想介绍一个小而美的前端框架：&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
