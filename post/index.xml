@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on CoderZh Blog</title>
-        <link>https://blog.coderzh.com/post/feed/index.xml</link>
+        <link>https://blog.coderzh.com/post/index.xml</link>
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
