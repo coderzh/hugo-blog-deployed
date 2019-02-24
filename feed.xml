@@ -6,7 +6,131 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 23 Feb 2019 15:50:19 CST</updated>
+        <updated>Sun, 24 Feb 2019 21:01:02 CST</updated>
+        
+        <item>
+            <title>C&#43;&#43; 的指定初始化器</title>
+            <link>https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/</link>
+            <pubDate>Sun, 24 Feb 2019 21:01:02 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/</guid>
+            <description>&lt;p&gt;C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。&lt;/p&gt;
+
+&lt;p&gt;比如下面的结构体：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;typedef struct Rect {
+    int x;
+    int y;
+    int width;
+    int height;
+} Rect;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以这样初始化：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;Rect r = {
+    .width = 100,
+    .height = 100,
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中 x, y 未指定的话，会自动初始化为 0。花括号里的字段顺序也没有要求。如果要初始化一个全是 0 的结构体，可以这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;Rect r = {0};
+// Or
+Rect r1 = {};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;需要特别注意的是，第一种写法 &lt;code&gt;{0}&lt;/code&gt;，里的 0，并不是说每个字段都赋值成 0，而是说第一个字段赋值为 0，其余字段用默认值（刚好也是 0）。&lt;/p&gt;
+
+&lt;p&gt;假如我们写成：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;Rect r = {1};
+// r will be { 1, 0, 0, 0}, not {1, 1, 1, 1}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再来看看几个数组初始化的列子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int a[8] = {[5] = 25, [2] = 15 };
+// Or
+int a[8] = {[5]25 , [2]15 };
+// Equals
+int a[8] = { 0, 0, 15, 0, 0, 25, 0, 0 };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;甚至可以用 &lt;code&gt;[first...last]=value&lt;/code&gt; 来指定一个区间的值：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int a[] = {[2 ... 3] = 2, [5] = 25};
+// Equals
+int a[] = { 0, 0, 2, 2, 0, 25 }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意 &lt;code&gt;[first...last]&lt;/code&gt; 是从 first 到 last 的闭区间。&lt;/p&gt;
+
+&lt;p&gt;指定初始化甚至还可以嵌套，假如结构体定义是这样的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;typedef struct Point {
+  int x;
+  int y;
+} Point;
+
+typedef struct PointCloud {
+  Point p[10];
+  int width;
+  int height;
+} PointCloud;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以这样初始化 PointCloud:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;Rect r = {
+    .p[0] = {
+        .x= 10,
+        .y= 10
+    },
+    .width = 100,
+    .height = 100
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后，甚至可以写出像这样的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void init_some(PointCloud* p) {
+  // do some init
+}
+
+int main(int argc, char* argv[]) {
+
+  init_some(&amp;amp;(PointCloud){
+    .p[0] = {
+      .x = 10,
+      .y = 10
+    },
+    .width = 100,
+    .height = 100
+  });
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;上面代码如果使用 C++ 编译，会报错：&lt;code&gt;error: taking the address of a temporary object of type &#39;PointCloud&#39; [-Waddress-of-temporary]&lt;/code&gt;，可以加编译参数 -Wno-address-of-temporary 解决。不过不是很推荐这么做，关掉这个可能会带来其他隐藏的 BUG。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;上面的代码看上去已经不像 C 了，像是另外一门语言。但是简化了初始化的过程。&lt;/p&gt;
+
+&lt;p&gt;好了，看上去非常酷，但前面的代码都是纯 C 的，那 C++ 支不支持指定初始化器呢？遗憾的是，直到 C++20 才开始支持指定初始化器（都什么年代了，别人家的 C，99 年就支持了）。&lt;/p&gt;
+
+&lt;p&gt;如果在 linux 上用 gcc C++11 去编译上面的代码，会报下面的错：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sorry, unimplemented: non-trivial designated initializers not supported
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;也别太难过，好消息是作为现代编译器的 &lt;code&gt;clang&lt;/code&gt;，早早的就通过扩展的方式实现了指定初始化器。所以，即使是 C++11，使用 clang 编译和跑上面的代码，也是没有问题的。（Windows 的 MSVC 大概是指望不上了）&lt;/p&gt;
+
+&lt;p&gt;回到移动平台，Android NDK 开发时，能不能使用这一特性呢？Android NDK r11 开始就建议大家从 GCC 切到 clang，而且从 NDK r13 开始，默认使用 clang 编译。所以，只要 NDK r13 及以上，都可以愉快的使用这一特性。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>我的 2018</title>
@@ -725,66 +849,6 @@ echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &amp;gt; c
 &lt;p&gt;游戏化是必然的趋势。如果你还不曾领略游戏的魅力，你可以再想象一下，假如有一件事，需要你每天花 3 ~ 5 个小时，期间必须严格集中注意力，需要解决各种人为制造的不必要的麻烦，有时候甚至是机械的重复劳动，不但没有任何酬劳，还需要你不断往里充钱，似乎对现实的你也没有一点益处。你会做这件事吗？但假如是游戏，你却会自愿的去接受那些艰苦的工作，这就是游戏的魅力。&lt;/p&gt;
 
 &lt;p&gt;游戏必将改变世界，那些能够弥补现实生活不足，增强现实生活能力，让现实更美好的游戏更甚。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>善良比聪明更难</title>
-            <link>https://blog.coderzh.com/2016/05/15/kind-or-clever/</link>
-            <pubDate>Sun, 15 May 2016 11:32:15 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>https://blog.coderzh.com/2016/05/15/kind-or-clever/</guid>
-            <description>&lt;blockquote&gt;
-&lt;p&gt;Jeff, one day you&amp;rsquo;ll understand that it&amp;rsquo;s harder to be kind than clever.&lt;/p&gt;
-
-&lt;p&gt;杰夫，总有一天你会明白，善良比聪明更难。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Jeff Bezos 毕业于普林斯顿大学，是美国亚马逊的创始人。在 2010 年普林斯顿大学学士毕业典礼上，贝索斯发表了演讲《善良比聪明更难》。&lt;/p&gt;
-
-&lt;p&gt;演讲中，他提到在 10 岁时一次家庭房车旅游中，祖父一边开着车，祖母在旁一边抽着烟。贝索斯不喜欢烟的味道，于是自作主张的根据一个吸烟广告的数据计算了起来。最后他得意的拍了拍祖母的肩膀，骄傲的宣称：「如果两分钟就吸一口烟的话，你就会少活 9 年！」&lt;/p&gt;
-
-&lt;p&gt;贝索斯很聪明，他本以为会得到家人的赞许，因为里面涉及了很多数学计算。然而他的自作聪明，却伤害了他的祖母，祖母开始哭泣起来。&lt;/p&gt;
-
-&lt;p&gt;下车后，祖父对贝索斯说：「杰夫，总有一天你会明白，善良比聪明更难。」&lt;/p&gt;
-
-&lt;p&gt;演讲视频很容易在网上找到，建议有兴趣的同学都去看看原版视频，因为我发现很多持有反对意见的人是没有看过原版视频的。&lt;/p&gt;
-
-&lt;p&gt;首先，贝索斯的演讲对象是普林斯顿大学的毕业生，毫无疑问，是一群聪明绝伦的人。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;聪明是一种天赋，而善良是一种选择。天赋得来很容易——毕竟它们与生俱来。而选择则颇为不易。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;聪明的人面临选择时，是选择一条伤害他人获利自己的路，还是选择一条即使更难但始终保持善良的路？&lt;/p&gt;
-
-&lt;p&gt;这是贝索斯抛出的问题。&lt;/p&gt;
-
-&lt;p&gt;不聪明的人作恶，很容易被发现或被制止，他们往往做些小恶，贪图一些小便宜，如果做大恶，代价太大，容易被识破或触犯法律，当然也不排除铤而走险的人。&lt;/p&gt;
-
-&lt;p&gt;聪明的人作恶更容易，他们知道如何在获取巨大利益的同时，掩盖自己的恶。比如《笑傲江湖》里的岳不群。&lt;/p&gt;
-
-&lt;p&gt;人之初，性本善。作恶之人会把原因归咎于社会，归咎于环境，他们擅长寻找心里慰藉，很多人甚至不认为那是恶，他们会说：「人为财死，鸟为食亡」。他们会为自己做的恶找很多借口，他们会说：「我顶多只能算推波助澜，真正作恶的是别人。」&lt;/p&gt;
-
-&lt;p&gt;社会不如我们想象中的美好，通过作恶获取巨大利益给了聪明人巨大的诱惑，而且他们善于掩盖和包装所做的恶，直到催眠自己，把一切都看作理所当然。&lt;/p&gt;
-
-&lt;p&gt;社会也不像我们想象中的那么差，依然有大量心怀善意的人，他们影响着他人，甚至改变着世界。&lt;/p&gt;
-
-&lt;p&gt;贝索斯的演讲就是告诉我们，当我们面临选择时，请选择一条善意的路，尽管它更难。&lt;/p&gt;
-
-&lt;p&gt;有人会问，选择善良会容易吃亏吗？&lt;/p&gt;
-
-&lt;p&gt;不聪明的人对你做恶，往往只是想占你一点小便宜。聪明的人对你作恶，错的不是你太善良，而是你不够聪明。&lt;/p&gt;
-
-&lt;p&gt;我也曾在百度搜过几种疾病，本能的我会意识到其中的广告成分，我会选择不去相信。当然，作为国内最大的搜索引擎，想靠用户去甄别真的很难。&lt;/p&gt;
-
-&lt;p&gt;于是我再聪明一点，我选择不用百度。尽管很难，我坚持使用 Google，因为这是一家推崇「不作恶」的公司。&lt;/p&gt;
-
-&lt;p&gt;再举个栗子：&lt;/p&gt;
-
-&lt;p&gt;《琅琊榜》里，梁王谋反篡位，陷害忠良，东宫太子和誉王为夺皇位无恶不作。誉王、夏江、秦般弱都是聪明之人，手段也很毒辣，怎奈还是敌不过更加聪明一等，并且保持善良的梅长苏！这个剧被热播，也正好说明了人们人心向善的愿望，能有个梅长苏替自己给险恶之人以沉痛一击，岂不快哉！&lt;/p&gt;
-
-&lt;p&gt;「To be or not to be, 这不是一个问题。」&lt;/p&gt;
 </description>
         </item>
         

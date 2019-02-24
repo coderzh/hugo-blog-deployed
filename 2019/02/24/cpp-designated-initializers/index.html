@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>我的 2018 - CoderZh Blog</title>
+  <title>C&#43;&#43; 的指定初始化器 - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<meta name="description" content="做为一年一度的年更文章，我觉得还是有必要写下。18 年过的真是一个快字，但仔细回想一下，中间还是发生很多事，最终凝结成两个字：感恩。 读书 2018 年，">
+<meta name="keywords" content="C&#43;&#43;,Designated Initializers,">
+<meta name="description" content="C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。 比如下面的结构体： typedef struct Rect { int x;">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="我的 2018 - CoderZh Blog">
-<meta itemprop="description" content="做为一年一度的年更文章，我觉得还是有必要写下。18 年过的真是一个快字，但仔细回想一下，中间还是发生很多事，最终凝结成两个字：感恩。 读书 2018 年，">
+<meta itemprop="name" content="C&#43;&#43; 的指定初始化器 - CoderZh Blog">
+<meta itemprop="description" content="C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。 比如下面的结构体： typedef struct Rect { int x;">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="我的 2018 - CoderZh Blog" />
+<meta property="og:title" content="C&#43;&#43; 的指定初始化器 - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.coderzh.com/2019/02/23/my-2018/" />
+<meta property="og:url" content="https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="做为一年一度的年更文章，我觉得还是有必要写下。18 年过的真是一个快字，但仔细回想一下，中间还是发生很多事，最终凝结成两个字：感恩。 读书 2018 年，">
+<meta property="og:description" content="C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。 比如下面的结构体： typedef struct Rect { int x;">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="我的 2018 - CoderZh Blog">
-<meta name="twitter:description" content="做为一年一度的年更文章，我觉得还是有必要写下。18 年过的真是一个快字，但仔细回想一下，中间还是发生很多事，最终凝结成两个字：感恩。 读书 2018 年，">
+<meta name="twitter:title" content="C&#43;&#43; 的指定初始化器 - CoderZh Blog">
+<meta name="twitter:description" content="C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。 比如下面的结构体： typedef struct Rect { int x;">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="https://blog.coderzh.com/2019/02/23/my-2018/">
-  <link rel='shortlink' href="https://blog.coderzh.com/2019/02/23/my-2018/"/>
+  <link rel="canonical" href="https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/">
+  <link rel='shortlink' href="https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/"/>
   <link rel="shortcut icon" href="https://blog.coderzh.com/public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="https://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -163,7 +163,7 @@
               <ul class="meta-single group">
                 
                 <li class="category">
-                  <a href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" rel="category tag">思考感悟</a>
+                  <a href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
                 </li>
                 
               </ul>
@@ -175,12 +175,12 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">我的 2018</h1>
+                  <h1 class="post-title">C&#43;&#43; 的指定初始化器</h1>
 
                   <p class="post-byline">
-                    by  · 2019年02月23日 · 1065 Words ·
-                    ~3min reading time |
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2019/2019-02-23-my-2018.md"
+                    by  · 2019年02月24日 · 915 Words ·
+                    ~2min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2019/2019-02-24-c-designated-initializers.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -189,39 +189,121 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p>C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。</p>
 
-<p>做为一年一度的年更文章，我觉得还是有必要写下。18 年过的真是一个快字，但仔细回想一下，中间还是发生很多事，最终凝结成两个字：感恩。</p>
+<p>比如下面的结构体：</p>
 
-<h3 id="读书">读书</h3>
+<pre><code class="language-cpp">typedef struct Rect {
+    int x;
+    int y;
+    int width;
+    int height;
+} Rect;
+</code></pre>
 
-<p>2018 年，买了两本纸质书《编程语言实现模式》、《编译原理（第2版）》。一方面，买的纸质书少了，原因是发现很多技术类书都可以从广州图书馆里借到，所谓书非借不能读也。另一方面，当时买这两本书是为了更深入的学习和研究 V8 JavaScript 引擎。因为新的开发岗位，需要大量和 V8 打交道，所以想研究的更深入一些。这一年，V8 相关研究了不少，之后有机会的话写个系列文章分享一下。但是遗憾的是，买的这两本书还并没有怎么翻，这也侧面说明了我研究的还不够深入吧，2019 年继续加油。</p>
+<p>可以这样初始化：</p>
 
-<p>图书馆借阅的技术类书包括：《WebKit技术内幕》、《Effective Javascript》、《深入实践C++模板编程》、《深入理解C++11》、《高级C/C++编译技术》、《WebGL编程指南》、《高性能JavaScript》、《C++性能优化指南》、《网络多人游戏架构与编程》、《HTML5动画创作技术：DragonBones》、《C++必知必会》、《C++之旅：英文版》、《ZeroMQ：云时代极速消息通信库》、《网络多人游戏架构与编程》等等。不足之处是书即使是借的也不一定真的读了。</p>
+<pre><code class="language-cpp">Rect r = {
+    .width = 100,
+    .height = 100,
+};
+</code></pre>
 
-<p>微信读书里真的看完的书有：《区块链：定义未来金融与经济新格局》、《OKR工作法：谷歌、领英等顶级公司的高绩效秘籍》、《快速阅读术》、《原则》、《蒙台梭利的早期教育》、《儿童教育心理学》、《硅谷之火：人与计算机的未来》、《AI迷航2：复活爱因斯坦》、《未来世界的幸存者》、《软技能：代码之外的生存指南》、《流浪地球》等等。</p>
+<p>其中 x, y 未指定的话，会自动初始化为 0。花括号里的字段顺序也没有要求。如果要初始化一个全是 0 的结构体，可以这样：</p>
 
-<p>总结一下就是，主动看书的时间很少，大部分是在地铁上被动看的微信读书。2019年希望能有更多的主动阅读时间，争取做到借阅的书看完再还。</p>
+<pre><code class="language-cpp">Rect r = {0};
+// Or
+Rect r1 = {};
+</code></pre>
 
-<h3 id="代码">代码</h3>
+<p>需要特别注意的是，第一种写法 <code>{0}</code>，里的 0，并不是说每个字段都赋值成 0，而是说第一个字段赋值为 0，其余字段用默认值（刚好也是 0）。</p>
 
-<p>2018 年在 GitHub 上的代码提交次数寥寥无几。gohugo.org 和 Q 群也几乎没有维护过。hugo-pacman-theme 主题也因为长期不维护，被移出了 Hugo 官方主题列表。这一年，写的主要是工作相关的代码，业余时间写代码的时间真的很少，19 年希望有所改善。</p>
+<p>假如我们写成：</p>
 
-<h3 id="工作">工作</h3>
+<pre><code class="language-cpp">Rect r = {1};
+// r will be { 1, 0, 0, 0}, not {1, 1, 1, 1}
+</code></pre>
 
-<p>18 年初转岗到现在刚好一年，很快适应了新的岗位。非常庆幸去年做的选择，工作的内容更加聚焦，有趣，而且富有挑战，希望 19 年有更大的突破。</p>
+<p>再来看看几个数组初始化的列子：</p>
 
-<h3 id="锻炼">锻炼</h3>
+<pre><code class="language-cpp">int a[8] = {[5] = 25, [2] = 15 };
+// Or
+int a[8] = {[5]25 , [2]15 };
+// Equals
+int a[8] = { 0, 0, 15, 0, 0, 25, 0, 0 };
+</code></pre>
 
-<p>去年开始固定每周打乒乓球，买了专业的拍子，甚至小区里还有热心教练指导练球。后来春节期间中断了一段时间，现在准备继续打起来。佳明 Forerunner 235 找了很久也找到了，但是跑步很少，主要感觉跑步时间又长又无聊，相比起来，乒乓球真是不错的运动。</p>
+<p>甚至可以用 <code>[first...last]=value</code> 来指定一个区间的值：</p>
 
-<h3 id="全新出发">全新出发</h3>
+<pre><code class="language-cpp">int a[] = {[2 ... 3] = 2, [5] = 25};
+// Equals
+int a[] = { 0, 0, 2, 2, 0, 25 }
+</code></pre>
 
-<p>2018 有不足，也有惊喜。</p>
+<p>注意 <code>[first...last]</code> 是从 first 到 last 的闭区间。</p>
 
-<p>《动物世界》电影里有句台词：『该打的仗我已经打过了，该跑的路我也跑到了尽头，老子信的道老子自己来守。』</p>
+<p>指定初始化甚至还可以嵌套，假如结构体定义是这样的：</p>
 
-<p>2019，继续守自己的道，心态上全新出发，希望在更多方面能够有所突破，加油！</p>
+<pre><code>typedef struct Point {
+  int x;
+  int y;
+} Point;
+
+typedef struct PointCloud {
+  Point p[10];
+  int width;
+  int height;
+} PointCloud;
+</code></pre>
+
+<p>可以这样初始化 PointCloud:</p>
+
+<pre><code class="language-cpp">Rect r = {
+    .p[0] = {
+        .x= 10,
+        .y= 10
+    },
+    .width = 100,
+    .height = 100
+};
+</code></pre>
+
+<p>然后，甚至可以写出像这样的代码：</p>
+
+<pre><code>void init_some(PointCloud* p) {
+  // do some init
+}
+
+int main(int argc, char* argv[]) {
+
+  init_some(&amp;(PointCloud){
+    .p[0] = {
+      .x = 10,
+      .y = 10
+    },
+    .width = 100,
+    .height = 100
+  });
+  // ...
+}
+</code></pre>
+
+<blockquote>
+<p>上面代码如果使用 C++ 编译，会报错：<code>error: taking the address of a temporary object of type 'PointCloud' [-Waddress-of-temporary]</code>，可以加编译参数 -Wno-address-of-temporary 解决。不过不是很推荐这么做，关掉这个可能会带来其他隐藏的 BUG。</p>
+</blockquote>
+
+<p>上面的代码看上去已经不像 C 了，像是另外一门语言。但是简化了初始化的过程。</p>
+
+<p>好了，看上去非常酷，但前面的代码都是纯 C 的，那 C++ 支不支持指定初始化器呢？遗憾的是，直到 C++20 才开始支持指定初始化器（都什么年代了，别人家的 C，99 年就支持了）。</p>
+
+<p>如果在 linux 上用 gcc C++11 去编译上面的代码，会报下面的错：</p>
+
+<pre><code class="language-shell">sorry, unimplemented: non-trivial designated initializers not supported
+</code></pre>
+
+<p>也别太难过，好消息是作为现代编译器的 <code>clang</code>，早早的就通过扩展的方式实现了指定初始化器。所以，即使是 C++11，使用 clang 编译和跑上面的代码，也是没有问题的。（Windows 的 MSVC 大概是指望不上了）</p>
+
+<p>回到移动平台，Android NDK 开发时，能不能使用这一特性呢？Android NDK r11 开始就建议大家从 GCC 切到 clang，而且从 NDK r13 开始，默认使用 clang 编译。所以，只要 NDK r13 及以上，都可以愉快的使用这一特性。</p>
 
                       
                     </div>
@@ -233,7 +315,7 @@
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
                             <br />微信关注：hacker-thinking （一个程序员的思考）
-                            <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2019/02/23/my-2018/">https://blog.coderzh.com/2019/02/23/my-2018/</a>
+                            <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/">https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -287,20 +369,14 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2018/10/14/cquery/" rel="next">
+        <a href="https://blog.coderzh.com/2019/02/23/my-2018/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Mac 上配置 VSCode 的 cquery 插件</span>
+          <span>我的 2018</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>C&#43;&#43; 的指定初始化器</span>
-        </a>
         
       </li>
     </ul>
