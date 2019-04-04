@@ -16,49 +16,45 @@
             <guid>https://blog.coderzh.com/2019/04/01/gdc2019/2/</guid>
             <description>&lt;p&gt;前面讲到了曲折的签证过程，这篇本来再打算讲讲美国的风土人情，人文历史，旧金山及周边的风貌等等。但是一想，这些东西，除非亲身经历，感受不会太深。如果想从文章或者书本中系统的了解美国这个国家，极力推荐林达的《近距离看美国》系列丛书。&lt;/p&gt;
 
-&lt;p&gt;所以这篇，打算直接切入 GDC 主题。前面讲到，GDC 期间有大量的游戏开发者的技术分享交流。这个所谓『大量』是真的很大量！可以打开这个网址感受一下庞大的 Session 列表：&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://schedule.gdconf.com/pass-type/all-access&#34;&gt;https://schedule.gdconf.com/pass-type/all-access&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;持续 5 天，总共有近 800 场技术分享，每天平均有 160 场。这么多讲座，根本听不过来，所以每天都要计划好每个时间点去听哪个讲座。当然，也不是所有讲座都有权限去听的。GDC 的门票类型主要有 6 种，分别的价格也不一样：&lt;/p&gt;
+&lt;p&gt;所以这篇，打算直接切入 GDC 主题。前面讲到，GDC 期间有大量的游戏开发者的技术分享交流。这个所谓『大量』是真的很大量！可以打开这个网址感受一下庞大的 Session 列表： &lt;a href=&#34;https://schedule.gdconf.com/pass-type/all-access&#34;&gt;https://schedule.gdconf.com/pass-type/all-access&lt;/a&gt; 持续 5 天，总共有近 800 场技术分享，每天平均有 160 场。这么多讲座，根本听不过来，所以每天都要计划好每个时间点去听哪个讲座。当然，也不是所有讲座都有权限去听的。GDC 的门票类型主要有 6 种，分别的价格也不一样：&lt;/p&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;Pass Type&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Price&lt;/th&gt;
+&lt;th&gt;Pass Type&lt;/th&gt;
+&lt;th&gt;Price($)&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;All Access&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;$2399&lt;/td&gt;
+&lt;td&gt;All Access&lt;/td&gt;
+&lt;td&gt;2399&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;GDC Conference + Summits&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;$2099&lt;/td&gt;
+&lt;td&gt;GDC Conference + Summits&lt;/td&gt;
+&lt;td&gt;2099&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;GDC Conference&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;$1449&lt;/td&gt;
+&lt;td&gt;GDC Conference&lt;/td&gt;
+&lt;td&gt;1449&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;GDC Summits&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;$949&lt;/td&gt;
+&lt;td&gt;GDC Summits&lt;/td&gt;
+&lt;td&gt;949&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Expo Plus&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;$349&lt;/td&gt;
+&lt;td&gt;Expo Plus&lt;/td&gt;
+&lt;td&gt;349&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Expo&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;$249&lt;/td&gt;
+&lt;td&gt;Expo&lt;/td&gt;
+&lt;td&gt;249&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
