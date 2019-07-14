@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://blog.coderzh.com/2019/07/14/quickjs/</loc>
+        <lastmod>2019-07-14T08:31:18+08:00</lastmod>
+    </url>
+    
+    <url>
         <loc>https://blog.coderzh.com/2019/04/01/gdc2019/2/</loc>
         <lastmod>2019-04-01T06:00:13+08:00</lastmod>
     </url>
@@ -1649,13 +1654,13 @@
     
     <url>
         <loc>https://blog.coderzh.com/feed.xml</loc>
-        <lastmod>2019-04-01T06:00:13+08:00</lastmod>
+        <lastmod>2019-07-14T08:31:18+08:00</lastmod>
         <priority>0</priority>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/post/</loc>
-        <lastmod>2019-04-01T06:00:13+08:00</lastmod>
+        <lastmod>2019-07-14T08:31:18+08:00</lastmod>
         <priority>0</priority>
     </url>
     
@@ -1673,7 +1678,7 @@
     
     <url>
         <loc>https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</loc>
-        <lastmod>2019-04-01T06:00:13+08:00</lastmod>
+        <lastmod>2019-07-14T08:31:18+08:00</lastmod>
         <priority>0</priority>
     </url>
     
