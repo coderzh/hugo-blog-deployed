@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">三言两语话敏捷(1) - 反馈</h1>
 
                   <p class="post-byline">
-                    by  · 2010年04月18日 · 1288 Words ·
+                    by  · 2010年04月18日 · 1239 Words ·
                     ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-04-18-talk-about-agile-1.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -190,67 +190,61 @@
                     <div class="entry-inner">
                       
                       <p>最近很多人都在体验VS2010，我忙着很多事，没有去体验。但我了解到其中一点，VS2010为敏捷开发提供了更多的支持。以前我所认为的敏捷开发，只有在理想公司，理想团队才可能开展，现在微软通过IDE，将敏捷的思想进行大范围的普及，让敏捷更加的深入人心。</p>
-
-<p><a href="http://agilemanifesto.org/">敏捷宣言</a>中只有简短的几句话，但是能真正做到不是那么容易。
-  <div class="cnblogs_code"><div><span style="color: #000000;">Individuals&nbsp;and&nbsp;interactions&nbsp;over&nbsp;processes&nbsp;and&nbsp;tools
-Working&nbsp;software&nbsp;over&nbsp;comprehensive&nbsp;documentation
-Customer&nbsp;collaboration&nbsp;over&nbsp;contract&nbsp;negotiation
-Responding&nbsp;to&nbsp;change&nbsp;over&nbsp;following&nbsp;a&nbsp;plan</span></div></div></p>
-
+<p><a href="http://agilemanifesto.org/">敏捷宣言</a>中只有简短的几句话，但是能真正做到不是那么容易。</p>
+<!-- raw HTML omitted -->
 <p><a href="http://book.douban.com/subject/1767907/">Practices of an Agile Developer</a>一书中，对敏捷开发做了一个精辟的概括：</p>
-
-<p><span style="color: red;">敏捷开发就是在一个高度协作的环境中，不断地使用反馈进行自我调整和完善。</span></p>
-
-<p>今天我就谈谈&#8220;反馈&#8221;。</p>
-
+<p><!-- raw HTML omitted -->敏捷开发就是在一个高度协作的环境中，不断地使用反馈进行自我调整和完善。<!-- raw HTML omitted --></p>
+<p>今天我就谈谈“反馈”。</p>
 <p>最近我在做一个项目，单枪匹马，只有我一个人，看上去一点都不敏捷对吗？敏捷团队通常是一些小型团队，但是小到一个人，也不好。理想的团队应该是10人左右。每天早上的站立式会议上，我都是自报进度，对于遇到的困难，别人也很难给出意见，因为他们都没有参与进来。但是有一点，他们是这个项目未来的客户，站立式会议上，我可以听到作为客户的反馈。</p>
-
 <p>这个项目是一个基于VMWare Esx的虚拟化管理平台，我有一个大客户，就是服务器管理员C。和C讨论过系统的需求和基本实现后，我开始将任务分成了以下几个部分：</p>
-
 <ol>
-<li><p>VMWare Esx API的封装。</p></li>
-
-<li><p>分布式Controller, Agent控制系统。</p></li>
-
-<li><p>数据库设计</p></li>
-
-<li><p>Web界面</p></li>
+<li>
+<p>VMWare Esx API的封装。</p>
+</li>
+<li>
+<p>分布式Controller, Agent控制系统。</p>
+</li>
+<li>
+<p>数据库设计</p>
+</li>
+<li>
+<p>Web界面</p>
+</li>
 </ol>
-
-<p>整个过程计划在一周的时间完成，并且能够上线，提供一个基本可用的版本。看上去几乎是不可完成的任务，于是我开始了高效的Coding。过程中，我不断的收到了来自&#8220;用户&#8221;的反馈：</p>
-
+<p>整个过程计划在一周的时间完成，并且能够上线，提供一个基本可用的版本。看上去几乎是不可完成的任务，于是我开始了高效的Coding。过程中，我不断的收到了来自“用户”的反馈：</p>
 <ol>
-<li><p>&#8220;<em>可以暂时使用原有系统的数据库系统，用户才不关心他的数据存在哪里。</em>&#8221;
-&gt; 于是，&#8220;数据库设计&#8221;暂时砍掉。</p></li>
-
-<li><p>&#8220;<em>我最关心的是系统最基本的申请和释放功能，至于其他的细节问题，我可以暂时不关心。</em>&#8221;
-&gt; 于是，&#8220;分布式Controller, Agent控制系统。&#8221;也暂时被砍掉了。不过，这个反馈来的太晚，我已经花费了一天的时间实现和调试。</p></li>
-
-<li><p>&#8220;<em>这个数据列表我希望是横着排的。</em>&#8221;
-&gt; 在我把数据列表做好，自我感觉很好给C演示时，他表示希望列表是横着排列的。而这时我已经在这个竖的列表花费了不少时间。</p></li>
-
-<li><p>&#8220;<em>也许，我们可以考虑使用另外一种方式实现。</em>&#8221;
-&gt; 听到这句崩溃的话时，已经周五了。这是我将系统实现的差不多的时候，找C聊天，C蹦出来的一句话。经过分析，确实可行，亡羊补牢，为时未晚。新的方案一定程度上还是对之前方案的简化，并且更加可行。</p></li>
+<li>“<em>可以暂时使用原有系统的数据库系统，用户才不关心他的数据存在哪里。</em>”</li>
 </ol>
-
-<p>&#8230;</p>
-
+<blockquote>
+<p>于是，“数据库设计”暂时砍掉。</p>
+</blockquote>
+<ol start="2">
+<li>“<em>我最关心的是系统最基本的申请和释放功能，至于其他的细节问题，我可以暂时不关心。</em>”</li>
+</ol>
+<blockquote>
+<p>于是，“分布式Controller, Agent控制系统。”也暂时被砍掉了。不过，这个反馈来的太晚，我已经花费了一天的时间实现和调试。</p>
+</blockquote>
+<ol start="3">
+<li>“<em>这个数据列表我希望是横着排的。</em>”</li>
+</ol>
+<blockquote>
+<p>在我把数据列表做好，自我感觉很好给C演示时，他表示希望列表是横着排列的。而这时我已经在这个竖的列表花费了不少时间。</p>
+</blockquote>
+<ol start="4">
+<li>“<em>也许，我们可以考虑使用另外一种方式实现。</em>”</li>
+</ol>
+<blockquote>
+<p>听到这句崩溃的话时，已经周五了。这是我将系统实现的差不多的时候，找C聊天，C蹦出来的一句话。经过分析，确实可行，亡羊补牢，为时未晚。新的方案一定程度上还是对之前方案的简化，并且更加可行。</p>
+</blockquote>
+<p>…</p>
 <p>在不断的用户反馈中，不断的纠正了我的方向，才使得我能够在一周的时间内完成。</p>
-
 <p>有时，</p>
-
 <p>我们关注的，用户不一定关注。</p>
-
 <p>我们认为重要的，用户不一定觉得重要。</p>
-
 <p>我们认为很酷的，用户不一定想要。</p>
-
 <p>我们认为没所谓的，用户反而觉得非常重要！</p>
-
 <p>所以，做用户最想要的软件，关注用户的反馈，如果可能，让用户也加入到团队的开发中来。这就是敏捷宣言中所说的：</p>
-
 <p><strong>Customer collaboration over contract negotiation（客户协作胜过合同谈判）</strong></p>
-
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2010/04/18/talk-about-agile-1.html">http://www.cnblogs.com/coderzh/archive/2010/04/18/talk-about-agile-1.html</a></strong></p>
 
                       
@@ -262,7 +256,7 @@ Responding&nbsp;to&nbsp;change&nbsp;over&nbsp;following&nbsp;a&nbsp;plan</span><
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2010/04/18/talk-about-agile-1/">https://blog.coderzh.com/2010/04/18/talk-about-agile-1/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -317,19 +311,19 @@ Responding&nbsp;to&nbsp;change&nbsp;over&nbsp;following&nbsp;a&nbsp;plan</span><
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2010/03/27/three-years-work-thinking/" rel="next">
+        <a href="https://blog.coderzh.com/2010/04/21/talk-about-agile-continuousIntegration/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>三年之痒</span>
+          <span>三言两语话敏捷(2) - 持续集成</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2010/04/21/talk-about-agile-continuousIntegration/" rel="prev">
+        <a href="https://blog.coderzh.com/2010/03/27/three-years-work-thinking/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>三言两语话敏捷(2) - 持续集成</span>
+          <span>三年之痒</span>
         </a>
         
       </li>

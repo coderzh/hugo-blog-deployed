@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="using&nbsp;System; using&nbsp;System.Collections.Generic; using&nbsp;System.Windows.Forms; using&nbsp;System.Threading; using&nbsp;System.Diagnostics; using&nbsp;System.Reflection; namespace&nbsp;MyClient { &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;class&nbsp;Program &nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&lt;summary&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;The&nbsp;main&nbsp;entry&nbsp;point&nbsp;for&nbsp;the&nbsp;application. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&lt;/summary&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[STAThread] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;Main(string[]&nbsp;args) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.EnableVisualStyles(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.SetCompatibleTextRenderingDefault(false); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//bool&nbsp;blnCreate;//Another method to make sure only one instance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Mutex&nbsp;m&nbsp;=&nbsp;new&nbsp;Mutex(true,&nbsp;&#34;MyClient&#34;,&nbsp;out&nbsp;blnCreate); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if&nbsp;(blnCreate)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CloseRunningInstance(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.Run(new&nbsp;MainFrm()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Close&nbsp;the&nbsp;existed&nbsp;instance&nbsp;of&nbsp;my&nbsp;application&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;CloseRunningInstance() &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;current&nbsp;=&nbsp;Process.GetCurrentProcess(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process[]&nbsp;processes&nbsp;=&nbsp;Process.GetProcessesByName(current.ProcessName); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Loop&nbsp;through&nbsp;the&nbsp;running&nbsp;processes&nbsp;in&nbsp;with&nbsp;the&nbsp;same&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(Process&nbsp;process&nbsp;in&nbsp;processes) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Ignore&nbsp;the&nbsp;current&nbsp;process&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(process.Id&nbsp;!=&nbsp;current.Id) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Make&nbsp;sure&nbsp;that&nbsp;the&nbsp;process&nbsp;is&nbsp;running&nbsp;from&nbsp;the&nbsp;exe&nbsp;file.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Assembly.GetExecutingAssembly().Location.Replace(&#34;/&#34;,&nbsp;&#34;\\&#34;)&nbsp;==&nbsp;current.MainModule.FileName) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Close&nbsp;the&nbsp;other&nbsp;process&nbsp;instance.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.Kill(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.WaitForExit(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;} } [温馨提示]：该文章由原博客园导入而来，如排版效果">
+<meta name="description" content="usingSystem.Collections.Generic; usingSystem.Windows.Forms; usingSystem.Threading; usingSystem.Diagnostics; usingSystem.Reflection; namespaceMyClient { staticclassProgram { ///&lt;summary&gt; ///The main entry point for the application. ///&lt;/summary&gt;[STAThread] staticvoidMain(string[] args) { Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false); //bool blnCreate;//Another method to make sure only one instance //Mutex m = new Mutex(true, &ldquo;MyClient&rdquo;, out blnCreate); //if (blnCreate)CloseRunningInstance(); Application.Run(newMainFrm()); } //Close the existed instance of my applicationstaticvoidCloseRunningInstance() { Process current =Process.GetCurrentProcess(); Process[] processes =Process.GetProcessesByName(current.ProcessName); //Loop through the running processes in with the same name foreach(Process process">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="保证程序只有一个实例运行并且先将旧实例关闭再运行新实例 - CoderZh Blog">
-<meta itemprop="description" content="using&nbsp;System; using&nbsp;System.Collections.Generic; using&nbsp;System.Windows.Forms; using&nbsp;System.Threading; using&nbsp;System.Diagnostics; using&nbsp;System.Reflection; namespace&nbsp;MyClient { &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;class&nbsp;Program &nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&lt;summary&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;The&nbsp;main&nbsp;entry&nbsp;point&nbsp;for&nbsp;the&nbsp;application. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&lt;/summary&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[STAThread] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;Main(string[]&nbsp;args) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.EnableVisualStyles(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.SetCompatibleTextRenderingDefault(false); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//bool&nbsp;blnCreate;//Another method to make sure only one instance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Mutex&nbsp;m&nbsp;=&nbsp;new&nbsp;Mutex(true,&nbsp;&#34;MyClient&#34;,&nbsp;out&nbsp;blnCreate); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if&nbsp;(blnCreate)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CloseRunningInstance(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.Run(new&nbsp;MainFrm()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Close&nbsp;the&nbsp;existed&nbsp;instance&nbsp;of&nbsp;my&nbsp;application&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;CloseRunningInstance() &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;current&nbsp;=&nbsp;Process.GetCurrentProcess(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process[]&nbsp;processes&nbsp;=&nbsp;Process.GetProcessesByName(current.ProcessName); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Loop&nbsp;through&nbsp;the&nbsp;running&nbsp;processes&nbsp;in&nbsp;with&nbsp;the&nbsp;same&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(Process&nbsp;process&nbsp;in&nbsp;processes) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Ignore&nbsp;the&nbsp;current&nbsp;process&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(process.Id&nbsp;!=&nbsp;current.Id) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Make&nbsp;sure&nbsp;that&nbsp;the&nbsp;process&nbsp;is&nbsp;running&nbsp;from&nbsp;the&nbsp;exe&nbsp;file.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Assembly.GetExecutingAssembly().Location.Replace(&#34;/&#34;,&nbsp;&#34;\\&#34;)&nbsp;==&nbsp;current.MainModule.FileName) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Close&nbsp;the&nbsp;other&nbsp;process&nbsp;instance.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.Kill(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.WaitForExit(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;} } [温馨提示]：该文章由原博客园导入而来，如排版效果">
+<meta itemprop="description" content="usingSystem.Collections.Generic; usingSystem.Windows.Forms; usingSystem.Threading; usingSystem.Diagnostics; usingSystem.Reflection; namespaceMyClient { staticclassProgram { ///&lt;summary&gt; ///The main entry point for the application. ///&lt;/summary&gt;[STAThread] staticvoidMain(string[] args) { Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false); //bool blnCreate;//Another method to make sure only one instance //Mutex m = new Mutex(true, &ldquo;MyClient&rdquo;, out blnCreate); //if (blnCreate)CloseRunningInstance(); Application.Run(newMainFrm()); } //Close the existed instance of my applicationstaticvoidCloseRunningInstance() { Process current =Process.GetCurrentProcess(); Process[] processes =Process.GetProcessesByName(current.ProcessName); //Loop through the running processes in with the same name foreach(Process process">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="保证程序只有一个实例运行并且先将旧实例关闭再运行新实例 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2007/12/10/989375/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="using&nbsp;System; using&nbsp;System.Collections.Generic; using&nbsp;System.Windows.Forms; using&nbsp;System.Threading; using&nbsp;System.Diagnostics; using&nbsp;System.Reflection; namespace&nbsp;MyClient { &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;class&nbsp;Program &nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&lt;summary&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;The&nbsp;main&nbsp;entry&nbsp;point&nbsp;for&nbsp;the&nbsp;application. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&lt;/summary&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[STAThread] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;Main(string[]&nbsp;args) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.EnableVisualStyles(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.SetCompatibleTextRenderingDefault(false); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//bool&nbsp;blnCreate;//Another method to make sure only one instance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Mutex&nbsp;m&nbsp;=&nbsp;new&nbsp;Mutex(true,&nbsp;&#34;MyClient&#34;,&nbsp;out&nbsp;blnCreate); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if&nbsp;(blnCreate)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CloseRunningInstance(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.Run(new&nbsp;MainFrm()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Close&nbsp;the&nbsp;existed&nbsp;instance&nbsp;of&nbsp;my&nbsp;application&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;CloseRunningInstance() &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;current&nbsp;=&nbsp;Process.GetCurrentProcess(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process[]&nbsp;processes&nbsp;=&nbsp;Process.GetProcessesByName(current.ProcessName); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Loop&nbsp;through&nbsp;the&nbsp;running&nbsp;processes&nbsp;in&nbsp;with&nbsp;the&nbsp;same&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(Process&nbsp;process&nbsp;in&nbsp;processes) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Ignore&nbsp;the&nbsp;current&nbsp;process&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(process.Id&nbsp;!=&nbsp;current.Id) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Make&nbsp;sure&nbsp;that&nbsp;the&nbsp;process&nbsp;is&nbsp;running&nbsp;from&nbsp;the&nbsp;exe&nbsp;file.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Assembly.GetExecutingAssembly().Location.Replace(&#34;/&#34;,&nbsp;&#34;\\&#34;)&nbsp;==&nbsp;current.MainModule.FileName) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Close&nbsp;the&nbsp;other&nbsp;process&nbsp;instance.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.Kill(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.WaitForExit(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;} } [温馨提示]：该文章由原博客园导入而来，如排版效果">
+<meta property="og:description" content="usingSystem.Collections.Generic; usingSystem.Windows.Forms; usingSystem.Threading; usingSystem.Diagnostics; usingSystem.Reflection; namespaceMyClient { staticclassProgram { ///&lt;summary&gt; ///The main entry point for the application. ///&lt;/summary&gt;[STAThread] staticvoidMain(string[] args) { Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false); //bool blnCreate;//Another method to make sure only one instance //Mutex m = new Mutex(true, &ldquo;MyClient&rdquo;, out blnCreate); //if (blnCreate)CloseRunningInstance(); Application.Run(newMainFrm()); } //Close the existed instance of my applicationstaticvoidCloseRunningInstance() { Process current =Process.GetCurrentProcess(); Process[] processes =Process.GetProcessesByName(current.ProcessName); //Loop through the running processes in with the same name foreach(Process process">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="保证程序只有一个实例运行并且先将旧实例关闭再运行新实例 - CoderZh Blog">
-<meta name="twitter:description" content="using&nbsp;System; using&nbsp;System.Collections.Generic; using&nbsp;System.Windows.Forms; using&nbsp;System.Threading; using&nbsp;System.Diagnostics; using&nbsp;System.Reflection; namespace&nbsp;MyClient { &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;class&nbsp;Program &nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&lt;summary&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;The&nbsp;main&nbsp;entry&nbsp;point&nbsp;for&nbsp;the&nbsp;application. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&lt;/summary&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[STAThread] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;Main(string[]&nbsp;args) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.EnableVisualStyles(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.SetCompatibleTextRenderingDefault(false); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//bool&nbsp;blnCreate;//Another method to make sure only one instance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Mutex&nbsp;m&nbsp;=&nbsp;new&nbsp;Mutex(true,&nbsp;&#34;MyClient&#34;,&nbsp;out&nbsp;blnCreate); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//if&nbsp;(blnCreate)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CloseRunningInstance(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.Run(new&nbsp;MainFrm()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Close&nbsp;the&nbsp;existed&nbsp;instance&nbsp;of&nbsp;my&nbsp;application&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;void&nbsp;CloseRunningInstance() &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;current&nbsp;=&nbsp;Process.GetCurrentProcess(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process[]&nbsp;processes&nbsp;=&nbsp;Process.GetProcessesByName(current.ProcessName); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Loop&nbsp;through&nbsp;the&nbsp;running&nbsp;processes&nbsp;in&nbsp;with&nbsp;the&nbsp;same&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(Process&nbsp;process&nbsp;in&nbsp;processes) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Ignore&nbsp;the&nbsp;current&nbsp;process&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(process.Id&nbsp;!=&nbsp;current.Id) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Make&nbsp;sure&nbsp;that&nbsp;the&nbsp;process&nbsp;is&nbsp;running&nbsp;from&nbsp;the&nbsp;exe&nbsp;file.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(Assembly.GetExecutingAssembly().Location.Replace(&#34;/&#34;,&nbsp;&#34;\\&#34;)&nbsp;==&nbsp;current.MainModule.FileName) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Close&nbsp;the&nbsp;other&nbsp;process&nbsp;instance.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.Kill(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.WaitForExit(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;} } [温馨提示]：该文章由原博客园导入而来，如排版效果">
+<meta name="twitter:description" content="usingSystem.Collections.Generic; usingSystem.Windows.Forms; usingSystem.Threading; usingSystem.Diagnostics; usingSystem.Reflection; namespaceMyClient { staticclassProgram { ///&lt;summary&gt; ///The main entry point for the application. ///&lt;/summary&gt;[STAThread] staticvoidMain(string[] args) { Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false); //bool blnCreate;//Another method to make sure only one instance //Mutex m = new Mutex(true, &ldquo;MyClient&rdquo;, out blnCreate); //if (blnCreate)CloseRunningInstance(); Application.Run(newMainFrm()); } //Close the existed instance of my applicationstaticvoidCloseRunningInstance() { Process current =Process.GetCurrentProcess(); Process[] processes =Process.GetProcessesByName(current.ProcessName); //Loop through the running processes in with the same name foreach(Process process">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">保证程序只有一个实例运行并且先将旧实例关闭再运行新实例</h1>
 
                   <p class="post-byline">
-                    by  · 2007年12月10日 · 70 Words ·
+                    by  · 2007年12月10日 · 200 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2007-12-10-989375.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,102 +189,54 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;System;
-
-</span><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;System.Collections.Generic;
-
-</span><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;System.Windows.Forms;
-
-</span><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;System.Threading;
-
-</span><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;System.Diagnostics;
-
-</span><span style="color: #0000ff;">using</span><span style="color: #000000;">&nbsp;System.Reflection;
-
-</span><span style="color: #0000ff;">namespace</span><span style="color: #000000;">&nbsp;MyClient
-
-{
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;Program
-
-&nbsp;&nbsp;&nbsp;&nbsp;{</span><span style="color: #000000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #808080;">///</span><span style="color: #008000;">&nbsp;</span><span style="color: #808080;">&lt;summary&gt;</span><span style="color: #008000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #808080;">///</span><span style="color: #008000;">&nbsp;The&nbsp;main&nbsp;entry&nbsp;point&nbsp;for&nbsp;the&nbsp;application.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #808080;">///</span><span style="color: #008000;">&nbsp;</span><span style="color: #808080;">&lt;/summary&gt;</span><span style="color: #808080;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[STAThread]
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;Main(</span><span style="color: #0000ff;">string</span><span style="color: #000000;">[]&nbsp;args)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</span><span style="color: #000000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.EnableVisualStyles();
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.SetCompatibleTextRenderingDefault(</span><span style="color: #0000ff;">false</span><span style="color: #000000;">);
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">bool&nbsp;blnCreate;//Another method to make sure only one instance
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">Mutex&nbsp;m&nbsp;=&nbsp;new&nbsp;Mutex(true,&nbsp;"MyClient",&nbsp;out&nbsp;blnCreate);
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">if&nbsp;(blnCreate)</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CloseRunningInstance();
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application.Run(</span><span style="color: #0000ff;">new</span><span style="color: #000000;">&nbsp;MainFrm());
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">Close&nbsp;the&nbsp;existed&nbsp;instance&nbsp;of&nbsp;my&nbsp;application</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">static</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;CloseRunningInstance()
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;current&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;Process.GetCurrentProcess();
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process[]&nbsp;processes&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;Process.GetProcessesByName(current.ProcessName);
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">Loop&nbsp;through&nbsp;the&nbsp;running&nbsp;processes&nbsp;in&nbsp;with&nbsp;the&nbsp;same&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">foreach</span><span style="color: #000000;">&nbsp;(Process&nbsp;process&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;processes)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">Ignore&nbsp;the&nbsp;current&nbsp;process&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;(process.Id&nbsp;</span><span style="color: #000000;">!=</span><span style="color: #000000;">&nbsp;current.Id)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">Make&nbsp;sure&nbsp;that&nbsp;the&nbsp;process&nbsp;is&nbsp;running&nbsp;from&nbsp;the&nbsp;exe&nbsp;file.&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;(Assembly.GetExecutingAssembly().Location.Replace(</span><span style="color: #000000;">"</span><span style="color: #000000;">/</span><span style="color: #000000;">"</span><span style="color: #000000;">,&nbsp;</span><span style="color: #000000;">"</span><span style="color: #000000;">\\</span><span style="color: #000000;">"</span><span style="color: #000000;">)&nbsp;</span><span style="color: #000000;">==</span><span style="color: #000000;">&nbsp;current.MainModule.FileName)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">Close&nbsp;the&nbsp;other&nbsp;process&nbsp;instance.&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.Kill();
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process.WaitForExit();
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;}
-
-}</span></div>
-
+                      <!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->using<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Collections.Generic;</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->using<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Windows.Forms;</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->using<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Threading;</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->using<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Diagnostics;</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->using<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Reflection;</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->namespace<!-- raw HTML omitted --><!-- raw HTML omitted --> MyClient</p>
+<p>{</p>
+<p>    </p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->static<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->class<!-- raw HTML omitted --><!-- raw HTML omitted --> Program</p>
+<p>    {<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->///<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;summary&gt;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->///<!-- raw HTML omitted --><!-- raw HTML omitted --> The main entry point for the application.</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->///<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;/summary&gt;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->        [STAThread]</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->static<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> Main(<!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted -->[] args)</p>
+<p>        {<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>            Application.EnableVisualStyles();</p>
+<p>            Application.SetCompatibleTextRenderingDefault(<!-- raw HTML omitted --><!-- raw HTML omitted -->false<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->bool blnCreate;//Another method to make sure only one instance</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->Mutex m = new Mutex(true, &ldquo;MyClient&rdquo;, out blnCreate);</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->if (blnCreate)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->            CloseRunningInstance();</p>
+<p>            Application.Run(<!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> MainFrm());</p>
+<p>        }</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->Close the existed instance of my application<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->static<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> CloseRunningInstance()</p>
+<p>        {</p>
+<p>            Process current <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> Process.GetCurrentProcess();</p>
+<p>            Process[] processes <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> Process.GetProcessesByName(current.ProcessName);</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->Loop through the running processes in with the same name    <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->foreach<!-- raw HTML omitted --><!-- raw HTML omitted --> (Process process <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> processes)</p>
+<p>            {</p>
+<p>                <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->Ignore the current process    <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> (process.Id <!-- raw HTML omitted --><!-- raw HTML omitted -->!=<!-- raw HTML omitted --><!-- raw HTML omitted --> current.Id)</p>
+<p>                {</p>
+<p>                    <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->Make sure that the process is running from the exe file.    <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->                    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> (Assembly.GetExecutingAssembly().Location.Replace(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->/<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->, <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->\<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->) <!-- raw HTML omitted --><!-- raw HTML omitted -->==<!-- raw HTML omitted --><!-- raw HTML omitted --> current.MainModule.FileName)</p>
+<p>                    {</p>
+<p>                        <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->Close the other process instance.   <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->                        process.Kill();</p>
+<p>                        process.WaitForExit();</p>
+<p>                    }</p>
+<p>                }</p>
+<p>            }</p>
+<p>        } </p>
+<p>    }</p>
+<p>}<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2007/12/10/989375.html">http://www.cnblogs.com/coderzh/archive/2007/12/10/989375.html</a></strong></p>
 
                       
@@ -296,7 +248,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2007/12/10/989375/">https://blog.coderzh.com/2007/12/10/989375/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -351,19 +303,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2007/12/03/981119/" rel="next">
+        <a href="https://blog.coderzh.com/2007/12/27/1016924/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>VBS获取本机IP地址</span>
+          <span>C#程序实现动态调用DLL的研究(转载)</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2007/12/27/1016924/" rel="prev">
+        <a href="https://blog.coderzh.com/2007/12/03/981119/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>C#程序实现动态调用DLL的研究(转载)</span>
+          <span>VBS获取本机IP地址</span>
         </a>
         
       </li>

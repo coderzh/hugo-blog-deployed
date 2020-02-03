@@ -1,0 +1,3298 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on CoderZh Blog</title>
+    <link>https://blog.coderzh.com/post/</link>
+    <description>Recent content in Posts on CoderZh Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 14 Jul 2019 08:31:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.coderzh.com/post/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>由 QuickJS 想到的</title>
+      <link>https://blog.coderzh.com/2019/07/14/quickjs/</link>
+      <pubDate>Sun, 14 Jul 2019 08:31:18 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2019/07/14/quickjs/</guid>
+      <description>前几天，一个叫 Fabrice Bellard 的大牛程序员发布了一个新的 JS 引擎：QuickJS，引起了业界轰动。QuickJS 的主要特点是小，嵌入式，完整支持 ES2019 语法，和</description>
+    </item>
+    
+    <item>
+      <title>GDC2019小记（二）</title>
+      <link>https://blog.coderzh.com/2019/04/01/gdc2019/2/</link>
+      <pubDate>Mon, 01 Apr 2019 06:00:13 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2019/04/01/gdc2019/2/</guid>
+      <description>前面讲到了曲折的签证过程，这篇本来再打算讲讲美国的风土人情，人文历史，旧金山及周边的风貌等等。但是一想，这些东西，除非亲身经历，感受不会太深</description>
+    </item>
+    
+    <item>
+      <title>GDC2019 小记（一）</title>
+      <link>https://blog.coderzh.com/2019/03/30/gdc2019/1/</link>
+      <pubDate>Sat, 30 Mar 2019 23:00:36 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2019/03/30/gdc2019/1/</guid>
+      <description>GDC(Game Developers Conference) 是一年一度全球性的游戏开发者盛会，期间有大量的游戏开发者的技术分享交流，同时还会有游戏展览，以及游戏奖项颁奖，比如独立游戏节，游戏开发</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; 的指定初始化器</title>
+      <link>https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/</link>
+      <pubDate>Sun, 24 Feb 2019 21:01:02 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/</guid>
+      <description>C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。 比如下面的结构体： typedef struct Rect { int x;</description>
+    </item>
+    
+    <item>
+      <title>我的 2018</title>
+      <link>https://blog.coderzh.com/2019/02/23/my-2018/</link>
+      <pubDate>Sat, 23 Feb 2019 15:50:19 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2019/02/23/my-2018/</guid>
+      <description>做为一年一度的年更文章，我觉得还是有必要写下。18 年过的真是一个快字，但仔细回想一下，中间还是发生很多事，最终凝结成两个字：感恩。 读书 2018 年，</description>
+    </item>
+    
+    <item>
+      <title>Mac 上配置 VSCode 的 cquery 插件</title>
+      <link>https://blog.coderzh.com/2018/10/14/cquery/</link>
+      <pubDate>Sun, 14 Oct 2018 17:56:47 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2018/10/14/cquery/</guid>
+      <description>VSCode 已经成了我的主力编辑器，包括用来写 C++。虽然默认的 cpptools 插件已经很好用了，但 cquery 插件更加强大，极力推荐。 cquery 是基于 LSP（Language-Se</description>
+    </item>
+    
+    <item>
+      <title>短内容博客</title>
+      <link>https://blog.coderzh.com/2018/10/13/short/</link>
+      <pubDate>Sat, 13 Oct 2018 22:25:11 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2018/10/13/short/</guid>
+      <description>之前定的一个月写一篇博客还是没有做到，想来主要是以下几个原因： 带娃 下班了就想放松一下，玩玩游戏（王者荣耀、刺激战场） 写长内容太费时间精力 没什</description>
+    </item>
+    
+    <item>
+      <title>读一本书，只为邂逅那一句</title>
+      <link>https://blog.coderzh.com/2018/03/11/readbook/</link>
+      <pubDate>Sun, 11 Mar 2018 22:36:27 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2018/03/11/readbook/</guid>
+      <description>『读一本书，只为邂逅那一句』，是我从《快速阅读术》里读来最深的一句感悟。 书的作者是一名专业的书评人，每年阅读的书数量达到 700本。</description>
+    </item>
+    
+    <item>
+      <title>带娃的一点心得</title>
+      <link>https://blog.coderzh.com/2018/03/04/education/</link>
+      <pubDate>Sun, 04 Mar 2018 22:17:48 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2018/03/04/education/</guid>
+      <description>不欺骗 讲原则，说到做到 正向引导，不说反话 不轻易打断，保护专注力 认真陪他玩，不玩手机 鼓励各种探索尝试，只要确保没有危险</description>
+    </item>
+    
+    <item>
+      <title>我的 2017</title>
+      <link>https://blog.coderzh.com/2018/02/25/my-2017/</link>
+      <pubDate>Sun, 25 Feb 2018 00:15:00 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2018/02/25/my-2017/</guid>
+      <description>2017 总结：写了一篇博客，发了一篇公众号。完。 为什么写的少了，如果说因为带娃太忙没有时间，都是借口，时间挤一挤总会有的。这一年，我看了一些书，学</description>
+    </item>
+    
+    <item>
+      <title>我的 2016</title>
+      <link>https://blog.coderzh.com/2017/01/01/my-2016/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2017/01/01/my-2016/</guid>
+      <description>光阴似箭，岁月如梭，仿佛去年写「我的 2015」就在昨日，然而时间的确在滴滴答答中度过了 365 天。这一年里，经历了一些事，读了一些书，努力过，收获</description>
+    </item>
+    
+    <item>
+      <title>真正的黑客</title>
+      <link>https://blog.coderzh.com/2016/10/16/real-hacker/</link>
+      <pubDate>Sun, 16 Oct 2016 21:55:45 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/10/16/real-hacker/</guid>
+      <description>当听到「黑客」一词时，你的第一反应是什么？是行为古怪，专门通过计算机干坏事的坏蛋，还是深藏不漏令人敬仰的技术大神。我们从小形成的固有观点认为</description>
+    </item>
+    
+    <item>
+      <title>小目标</title>
+      <link>https://blog.coderzh.com/2016/09/25/small-plan/</link>
+      <pubDate>Sun, 25 Sep 2016 23:43:43 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/09/25/small-plan/</guid>
+      <description>两个多月没更新了，感谢一直关注的小伙伴们。 上篇文章《一次 CTF 之旅》有读者评论，会不会因为学习的东西太多而每个都不精通？以我的经验来看，会的。 曾</description>
+    </item>
+    
+    <item>
+      <title>一次 CTF 之旅</title>
+      <link>https://blog.coderzh.com/2016/07/11/a-ctf-tour/</link>
+      <pubDate>Mon, 11 Jul 2016 07:35:59 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/07/11/a-ctf-tour/</guid>
+      <description>有好几周没有发文章了，具体原因是上上周末去了团建，上周末主要在研读《Android 软件安全与逆向分析》一书。我报名参加了公司第一次 CTF 比赛，结</description>
+    </item>
+    
+    <item>
+      <title>聊聊播客</title>
+      <link>https://blog.coderzh.com/2016/06/19/podcasts/</link>
+      <pubDate>Sun, 19 Jun 2016 18:53:33 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/06/19/podcasts/</guid>
+      <description>播客（Podcast）已经不是什么新鲜的东西了。记得大概在 06 年左右，我经常逛博客园，当时 .NET 圈有个人开了一个独立播客，每篇文章就是一段录好的音</description>
+    </item>
+    
+    <item>
+      <title>代自己：《致和菜头书》</title>
+      <link>https://blog.coderzh.com/2016/06/11/to-hecaitou/</link>
+      <pubDate>Sat, 11 Jun 2016 12:24:55 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/06/11/to-hecaitou/</guid>
+      <description>和菜头先生， 恭喜您在《得到》APP 开启了《槽边往事》新的篇章！我是读者 CoderZh，你开设付费栏目后第一时间付费并给你写信的人。你也许会好</description>
+    </item>
+    
+    <item>
+      <title>马斯克的冒险</title>
+      <link>https://blog.coderzh.com/2016/06/05/elon-musk/</link>
+      <pubDate>Sun, 05 Jun 2016 14:16:25 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/06/05/elon-musk/</guid>
+      <description>埃隆·马斯克（Elon Musk）出生在一个冒险家庭。他的外祖父约书亚就是个不折不扣的冒险家。在约书亚 7 岁时父亲就去世了，于是他便维持起了家里</description>
+    </item>
+    
+    <item>
+      <title>游戏必将改变世界</title>
+      <link>https://blog.coderzh.com/2016/05/29/game-changed-world/</link>
+      <pubDate>Sun, 29 May 2016 00:28:18 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/05/29/game-changed-world/</guid>
+      <description>有一项活动，它人为的制作了种种不必要的障碍，而你却自愿参与，即使过程需要花费大量时间，艰苦的工作，但是你却依然乐在其中。 这项活动叫：游戏。 我</description>
+    </item>
+    
+    <item>
+      <title>善良比聪明更难</title>
+      <link>https://blog.coderzh.com/2016/05/15/kind-or-clever/</link>
+      <pubDate>Sun, 15 May 2016 11:32:15 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/05/15/kind-or-clever/</guid>
+      <description>Jeff, one day you&amp;rsquo;ll understand that it&amp;rsquo;s harder to be kind than clever. 杰夫，总有一天你会明白，善良比聪明更难。 Jeff Bezos 毕业于普林斯顿大学，是美国亚马逊的创始人。在 2010 年普林斯顿大学学士毕业典</description>
+    </item>
+    
+    <item>
+      <title>Swift 语言学习及速查手册</title>
+      <link>https://blog.coderzh.com/2016/04/24/swift-tips/</link>
+      <pubDate>Sun, 24 Apr 2016 23:21:16 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/04/24/swift-tips/</guid>
+      <description>学习一门新的编程语言要多久？答案是随着你的经验的增加，学习花费的时间越来越短。当然，这也和新语言的不断演变进化有关系。 我利用周末两天时间，把</description>
+    </item>
+    
+    <item>
+      <title>程序员的黄金时代</title>
+      <link>https://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</link>
+      <pubDate>Sun, 17 Apr 2016 08:47:35 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/04/17/gold-time-of-programmer/</guid>
+      <description>（第一次尝试写小说，本文仅向王小波致敬，情节纯属虚构，切勿对号入座。） 我叫张三，身高 1.9 米，不要看我身材高大，我的手可细的很。我敲键盘的速度可</description>
+    </item>
+    
+    <item>
+      <title>7-Eleven 零售的哲学</title>
+      <link>https://blog.coderzh.com/2016/04/10/7-eleven/</link>
+      <pubDate>Sun, 10 Apr 2016 21:57:06 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/04/10/7-eleven/</guid>
+      <description>&lt;p&gt;1956 年 4 月，有为青年「铃木敏文」大学毕业，进入东京出版贩卖公司，从「退货负责人」到「出版科学研究所」，再到宣传部杂志「编辑」，生活过的充实有趣。在三十岁之际，铃木打算不依靠公司，以自身的力量制作一个独立的电视节目。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我如何管理我的笔记</title>
+      <link>https://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</link>
+      <pubDate>Sat, 09 Apr 2016 14:57:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/04/09/how-i-manage-my-notes/</guid>
+      <description>&lt;p&gt;我们从小就被教育：「好记性不如烂笔头。」我是一个笔记重度用户，也许是从小培养的习惯，喜欢把有意思的东西记在本子里。记录笔记有一种成就感，像玩游戏达成一个又一个成就。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>所有的编程技术都会成为历史</title>
+      <link>https://blog.coderzh.com/2016/04/05/programming-languages/</link>
+      <pubDate>Mon, 04 Apr 2016 16:28:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/04/05/programming-languages/</guid>
+      <description>&lt;p&gt;大四的时候，我用当时最新的 ASP.NET 技术给我叔写了一个服装制衣厂管理软件，这个软件用了差不多 10 年，中间几乎没有维护过，到现在还在工作。前几天突然联系我说，这个软件能不能迁移到 Win7 上使用（之前是在 XP 上），我想了想，肯定没问题啊，即使不行，在 Win7 里跑个 XP 的虚拟机也行。&lt;/p&gt;
+&lt;p&gt;最后，我还是给 ASP.NET 和 IIS 跪了，出各种莫名其妙的错误，从出错的内容里根本看不出任何可追踪的信息。 一个工作了近 10 年的系统，中间迁移重装过几次，工作的很好的系统，突然告诉我一个莫名其妙的错误，我猜八成是 .NET 或 IIS 的 Bug，关于 ASP.NET 的技术我已经忘光了，而且我再也不想在 .NET 上浪费光阴了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>做了一个 Hugo 的主题：hugo-pacman-theme</title>
+      <link>https://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</link>
+      <pubDate>Sun, 27 Mar 2016 12:57:37 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/03/27/hugo-pacman-theme/</guid>
+      <description>&lt;p&gt;Hugo 是由 Go 语言实现的静态网站生成器，通过 Hugo 可以快速生成一个静态网站，比如个人博客。在 &lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt; 的静态网站生成器排名里，Hugo 排名第五，也是相当的不错。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>懒程序员和他的 dotfiles</title>
+      <link>https://blog.coderzh.com/2016/03/19/dotfiles/</link>
+      <pubDate>Sat, 19 Mar 2016 15:05:47 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/03/19/dotfiles/</guid>
+      <description>&lt;p&gt;如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用番茄工作法一个月感受</title>
+      <link>https://blog.coderzh.com/2016/03/06/pomotodo/</link>
+      <pubDate>Sun, 06 Mar 2016 21:40:47 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/03/06/pomotodo/</guid>
+      <description>之前就听说过「番茄工作法」，但是一直没有尝试。春节期间，新买的 MacBook Pro 到了之后，开始装各种效率软件时，发现有人推荐 pomotodo 这个番茄工作法的软件。于是试</description>
+    </item>
+    
+    <item>
+      <title>《必然》读书笔记之 - 知化Cognifying</title>
+      <link>https://blog.coderzh.com/2016/02/21/inevitable-cognifying/</link>
+      <pubDate>Sun, 21 Feb 2016 19:05:10 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/02/21/inevitable-cognifying/</guid>
+      <description>&lt;p&gt;2002 年左右，KK 参加了谷歌的一个小型聚会，当时谷歌还是一个家专注搜索的小公司。KK 问拉里·佩奇「已经有这么多家搜索公司，干嘛还要做免费网络搜索？」&lt;/p&gt;
+&lt;p&gt;佩奇回答说：「哦，我们其实是在做人工智能。」&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我的第一台 Mac</title>
+      <link>https://blog.coderzh.com/2016/02/09/my-first-mac/</link>
+      <pubDate>Tue, 09 Feb 2016 10:42:05 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/02/09/my-first-mac/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/mac.JPG-w&#34; alt=&#34;mac&#34;&gt;&lt;/p&gt;
+&lt;p&gt;新年第一篇，祝大家猴年大吉，心想事成，万事如意！&lt;/p&gt;
+&lt;p&gt;这两天在家里除了带孩子就是在摆弄新到的 MacBook Pro 了。嗯，前几天咬一咬牙，双手颤抖的点击了下单按钮，第三天就收到了。&lt;/p&gt;
+&lt;p&gt;当初在买 MBP 还是 iMac 之间纠结过，因为已经有一个台式机，所以确定了买 MBP。然后就是纠结买 13 吋还是 15 吋。之前我去广州新开的苹果体验店看过，15 吋的略大了点，13 吋的大小刚刚好，本来打算就买 13 吋的。直到下单前，又改变主意了，考虑便携性和性能，我更倾向于性能，于是最后一刻改成了 15 吋标准配置（16 G内存 512闪存）。购买时，我使用了教育商店购买，便宜了 1500 软妹币。我准备了堂弟的学生证，然而第二天苹果直接就给我发货了，并没有要求我出示学生证。后来听说是抽查的。&lt;/p&gt;
+&lt;p&gt;平常我大都是在 Windows 的平台下开发的，有时用一用 Linux。感觉 Windows 平台下的开发工具链其实挺完善的，写 C/C++ ，C# 有号称宇宙无敌 IDE 的 Visual Studio ，写 Python 有 PyCharm，写 Java 有 IntelliJ ，写 Android 有 Android Studio ，编辑器有 gVim 。对应的效率工具也一应俱全：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Total Commander 装机必备的神器，谁用谁知道。&lt;/li&gt;
+&lt;li&gt;Launchy 效率神器，快速启动程序。作者长时间未更新，最近换成了另外一个神器：Wox 。没用过的赶紧试试，有惊喜。&lt;/li&gt;
+&lt;li&gt;Clipx / Ditto 多重剪贴板。&lt;/li&gt;
+&lt;li&gt;cmder 终端模拟器，好用到爆，从此告别系统自带的命令行窗口。&lt;/li&gt;
+&lt;li&gt;Visual Studio 的 Visual Assist 插件，一个字就是爽。&lt;/li&gt;
+&lt;li&gt;Visual Studio 的 ViEmu 插件，没有 Vim 模式的 IDE 已经没法用了。&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;《必然》一书的『过滤』一章中提到，如果你只接触那些你已经喜欢的东西是有风险的，即你可能会卷入一个以自我为中心的漩涡，从而对任何与你的标准存在细微差异的事情都视而不见，即使你原本会喜欢它。这种现象被称为『过滤器泡沫』。&lt;/p&gt;
+&lt;p&gt;所以，我们要勇于尝试新事物。当时觉得 Ubuntu 好玩，在上面使劲折腾过，折腾了一段时间后，感觉还是不太适合作为个人的桌面系统。一直想尝试 Mac OS X，昂贵的价格又有点让人望而却步。从体验 Mac 的这几天来看，感觉付出是非常值的，从设计美感到使用体验都非常好，为什么我没有早一点入手呢？&lt;/p&gt;
+&lt;p&gt;这两天都在研究 Mac 系统怎么玩，看了很多文章，装了一些软件，学习了很多东西。学习曲线大概是这样的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;学习了神奇的触摸板的使用方法。（双指，三指，四指的手法。。。）&lt;/li&gt;
+&lt;li&gt;学习了系统常用的快捷键。&lt;/li&gt;
+&lt;li&gt;学习了在 Mac 上如何安装软件。（Mac App Store、官网下载 dmg、使用 Homebrew）&lt;/li&gt;
+&lt;li&gt;给命令行终端配上漂亮的 Solarized 皮肤，安装配置 Shell 神器：oh-my-zsh&lt;/li&gt;
+&lt;li&gt;安装包管理神器 Homebrew 和 brew cask。&lt;/li&gt;
+&lt;li&gt;安装效率神器：Alfred2。&lt;/li&gt;
+&lt;li&gt;使用 Homebrew 把系统自带的软件包升级到最新版本，比如：git、python、vim 等等。&lt;/li&gt;
+&lt;li&gt;安装和配置 Mac 下的 macvim。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;嗯，完成了以上步骤后，基本上可以开始干活了。对了，再接上 HHKB，调整开关设置，打开开关 2、3、4，启用 Mac 模式，简直完美！&lt;/p&gt;
+&lt;p&gt;接着，我还安装了如下的软件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Chrome 浏览器。&lt;/li&gt;
+&lt;li&gt;Dash 查看各种文档的神器。&lt;/li&gt;
+&lt;li&gt;Mou 编辑 MarkDown 的神器。&lt;/li&gt;
+&lt;li&gt;XCode 现在还用不着，先装上。&lt;/li&gt;
+&lt;li&gt;Android Studio&lt;/li&gt;
+&lt;li&gt;ShiftIt 用来调整窗口位置和大小的神器。&lt;/li&gt;
+&lt;li&gt;WizNote 为知笔记&lt;/li&gt;
+&lt;li&gt;QQ&lt;/li&gt;
+&lt;li&gt;微信&lt;/li&gt;
+&lt;li&gt;QQ 音乐&lt;/li&gt;
+&lt;li&gt;有道词典&lt;/li&gt;
+&lt;li&gt;迅雷&lt;/li&gt;
+&lt;li&gt;VLC 视频播放器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Alfred2 和 oh-my-zsh 是我用了的最令人惊叹好用的工具，谁还有好用的软件推荐给我啊~~~&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>博客皮肤单独建了个仓库</title>
+      <link>https://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</link>
+      <pubDate>Fri, 05 Feb 2016 23:55:45 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/02/05/new-hugo-rapid-theme-repo/</guid>
+      <description>&lt;p&gt;有同学提到希望将这个博客的皮肤单独建个仓库，方便使用：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/issues/1&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/issues/1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;的确，早就应该这么做了。趁着放春节假期了，把这个撸了一遍，单独的皮肤仓库叫：&lt;code&gt;hugo-rapid-theme&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;只是将它从原博客中抽离出来，还有很大优化的空间，需要的同学先用着吧。&lt;/p&gt;
+&lt;p&gt;地址：&lt;a href=&#34;https://github.com/coderzh/hugo-rapid-theme&#34;&gt;https://github.com/coderzh/hugo-rapid-theme&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;说明文档&#34;&gt;说明文档&lt;/h2&gt;
+&lt;p&gt;以下是 hugo-rapid-theme 的 README 文档：&lt;/p&gt;
+&lt;p&gt;Demo: &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;step1-install-hugo&#34;&gt;Step1 Install Hugo&lt;/h3&gt;
+&lt;p&gt;Set &lt;a href=&#34;http://www.gohugo.org/doc/overview/installing/&#34;&gt;Hugo Install&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;step2-create-your-site&#34;&gt;Step2 Create your site&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;hugo new site your-blog-name
+cd your-blog-name
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step3-clone-the-theme-repo&#34;&gt;Step3 Clone the theme repo&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+
+# replace config file
+rm config.toml
+cp themes/hugo-rapid-theme/config.yaml .
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step4-start-your-site&#34;&gt;Step4 Start your site&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# new content
+hugo new about.md
+# start server
+hugo server
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step5-have-fun&#34;&gt;Step5 Have Fun&lt;/h3&gt;
+&lt;p&gt;Now you can open &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Modify the config.yaml and other things, and have fun!&lt;/p&gt;
+&lt;p&gt;You can also make this repo as submodule:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git init
+git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>追求简单和纯粹，我去掉了博客的评论功能</title>
+      <link>https://blog.coderzh.com/2016/02/01/close-comments/</link>
+      <pubDate>Mon, 01 Feb 2016 23:35:19 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/02/01/close-comments/</guid>
+      <description>&lt;p&gt;一直以来，我们都习惯了有评论功能的博客系统，甚至大多数的博客系统还拿评论数来计算分数，作为你的文章热度的一个指标。&lt;/p&gt;
+&lt;p&gt;曾经我也一度以为评论功能很重要，有时还会去期待有人评论。然而从结果来看，几乎大部分的评论都毫无价值。最近还受到了垃圾评论的骚扰，既浪费了我的时间不停的去删除，也影响了阅读者的体验。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;真心想和你交流的人，会想尽一切方法找到你。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以，不必担心收不到有用的用户反馈。而且，那么大一个微信二维码放在那里，只要扫一扫关注一下，就可以给我发消息，当然，找到我的邮箱地址也是很容易的事情。&lt;/p&gt;
+&lt;p&gt;为了追求最佳的阅读体验，追求一个博客的简单和纯粹，我去掉了博客的评论系统。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>张小龙悟透《失控》做出了微信，我们看过了《必然》能做什么？</title>
+      <link>https://blog.coderzh.com/2016/01/31/inevitable/</link>
+      <pubDate>Sun, 31 Jan 2016 12:22:25 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/01/31/inevitable/</guid>
+      <description>&lt;p&gt;凯文凯利在 20 多年前在《失控》一书中预言了人类的未来的科技、社会和经济，现今的万维网、博客、维基百科、无人驾驶、电子货币、去中心化等等，都在上个世纪 90 年代被 KK 成功预言，而他在写《失控》一书时，还没有万维网，因特网才刚刚进入实用阶段。&lt;/p&gt;
+&lt;p&gt;微信之父张小龙很早前就读过了《失控》，在他最近被爆出来的饭否日记中，他这么写到：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;再问有多少人看了失控，无人。我顿时将自己想象为KK而口若悬河了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2011-01-13 17:42 by gzallen&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;张小龙非常推崇《失控》中提到的 &lt;strong&gt;去中心化&lt;/strong&gt; 的思想，这点在微信公众号和朋友圈都有体现。比如并没有一个中心化的公众号列表入口，展示最新最热的公众号文章。每个公众号主只与关注者互相连接，用户与用户之间互相连接，好的内容可以在用户之间以几何倍数的传播。又比如前几天的朋友圈红包照片功能，瞬间引爆了朋友圈。&lt;/p&gt;
+&lt;p&gt;《失控》这本书很厚，而且里面的内容需要花大量的时间去理解和琢磨。本文的标题纯粹是为了吸引眼球，因为并不能得出这样的结论：悟透了《失控》就一定能做出像微信这样牛逼的产品。更加现实的是，即使看过了《必然》，我们大多数人什么也做不出来。&lt;/p&gt;
+&lt;p&gt;但是看这两本书，有助于你了解人类未来的科技趋势。正如罗振宇所说的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个时代最悲哀的事情，就是——&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;你努力，但你不在风口上，&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;你聪明，但你不在潮流中。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;知道趋势，意味着已经胜利在望。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;《失控》中预言的很多科技虽然现在已经发生，而在某些领域，比如人工生命、机器人技术、生态学、仿真学等领域，并没有出现新的重大思想。正如他在《必然》中的 &lt;strong&gt;形成(Becomming)&lt;/strong&gt; 中提到的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;未来的大部分运转人类生活的伟大产品，在 2016 年以前，都还没被发明出来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我们目睹了从 PC 时代到互联网时代，再到现在的移动互联网时代的转变过程。我们正处于形成的过程中，所以我们感觉不到变化。你今天后悔当初为什么没有和张小龙想到一块去。再过几年十几年，你同样也会感叹，我要是在当时就意识到有那么多可能性该多好啊！&lt;/p&gt;
+&lt;p&gt;设想未来你的孙子问你，「爷爷，为什么你年轻的时候马桶还不会说话，裤子还需要手来脱，打字还需要键盘，甚至显示屏幕还要放一个笨重的显示器，你居然还在桌子上放两个？！你当时没想到需要做点什么吗？」&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以，不要再感叹强大的 BAT 已经垄断市场，未来更大的机会正在发生甚至还未被挖掘，把握最佳的时机，就是现在！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;有时候我们察觉不到变化，有时候其实是因为并不认可这样的变化，当变化已经形成时却又追悔莫及。所以，我们需要抛弃成见，拥抱变化。&lt;strong&gt;看准方向，找对风口，努力去飞&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;有句话叫：风口上的猪也会飞。其实我并不认可这句话。说现实一点，想让猪飞起来，那得是多大的风啊！真有这样一个好的风口，聪明的人早已经把猪赶到不知道哪里去了，还有猪什么事。真正厉害的不是猪，而是扇风的人。有一句话说的好，「为了这些猪，我没少扇多少风。」&lt;/p&gt;
+&lt;p&gt;所以，我对于 &lt;strong&gt;形成&lt;/strong&gt; 的理解是，深刻理解形成的本质，抓住最好的时机，付出持续的努力，遇到反对时能够坚定，遇到挫折时能够总结，跌倒时想着爬起来怎样继续前进。有一天你也许功成名就，也许一事无成。但这有什么关系呢，放眼到整个人类社会，&lt;strong&gt;形成&lt;/strong&gt; 的趋势并不因你而左右，你会感激形成的过程中创造出来的种种机会。&lt;/p&gt;
+&lt;p&gt;《必然》这本书一共有 12 个关键词，每个关键词都需要深入的思考。我也感觉到一篇苍白无力的读后感是无法总结这本有深度的书，所以一篇文章聊其中一个关键词已经足够。下次我们再来聊聊下个关键词「&lt;strong&gt;知化(Cognifying)&lt;/strong&gt;」&lt;/p&gt;
+&lt;p&gt;附录：&lt;/p&gt;
+&lt;p&gt;《必然》十二个关键词：形成、知化、流动、屏读、使用、共享、过滤、重混、互动、追踪、提问、开始。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我和 ThoughtWorks 的一点小故事</title>
+      <link>https://blog.coderzh.com/2016/01/18/thoughtworks-story/</link>
+      <pubDate>Mon, 18 Jan 2016 23:05:24 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/01/18/thoughtworks-story/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/TW.jpg-wt&#34; alt=&#34;TW&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>谁也挡不住程序员在微信群里玩起了直播分享</title>
+      <link>https://blog.coderzh.com/2016/01/16/coding-style-share/</link>
+      <pubDate>Sat, 16 Jan 2016 17:19:20 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/01/16/coding-style-share/</guid>
+      <description>&lt;p&gt;上次写了一篇《&lt;a href=&#34;http://blog.coderzh.com/2015/12/27/code-review/&#34;&gt;大家都应该做的 Code Review&lt;/a&gt;》，在公众号里有位朋友留言：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/comments.jpg&#34; alt=&#34;comment&#34;&gt;&lt;/p&gt;
+&lt;p&gt;开始的感觉是，哦，又一个在留言里推广自己网站的家伙。但在好奇心驱使下，我打开了这个 &lt;a href=&#34;http://codingstyle.cn&#34;&gt;Codingstyle.cn&lt;/a&gt; 的网站。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/coding-style.jpg&#34; alt=&#34;coding-style&#34;&gt;&lt;/p&gt;
+&lt;p&gt;界面挺简洁大方的，但好像在哪里见过，哦，原来是 Fork 的 &lt;a href=&#34;https://ruby-china.org/&#34;&gt;Ruby China&lt;/a&gt;。浏览了一些帖子，发现这是一个刚做不久的程序员社区，讨论的主要是敏捷、重构、编程实践、程序人生之类的话题，这位朋友还算比较用心，运营一个程序员社区实属不易，于是我就找了之前的两篇文章贴了过去。&lt;/p&gt;
+&lt;p&gt;很快，Seaborn Lee 加了我的微信，并且把我拉到了一个只有 10 几人的“匠艺社区种子用户”的微信群里。然后我发现，群里的其他人都是一些高产博主，Seaborn Lee 正在通过微信群的方式培养自己的种子用户。&lt;/p&gt;
+&lt;p&gt;匠艺社区小组每周都组织一次微信分享， Seaborn Lee 问我是否愿意分享一些东西。我婉言拒绝了，对于在微信群里进行语音分享这种事情，我还没经历过，也没有经验，&lt;strong&gt;我更多的是好奇，他们是怎样进行微信群语音分享的？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;经历了两次匠艺社区分享，着实让我吃了一惊。首先，分享并不是在“匠艺社区种子用户”微信群进行的，而是在另一个单独的叫“软件匠艺小组分享”的微信群，到目前为止，这个群已经有 459 个用户，而且全部都是程序员！&lt;/p&gt;
+&lt;p&gt;他们一共分享过三期：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/56&#34;&gt;微信群分享第一期 微服务 by 许晓斌&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/77&#34;&gt;微信群分享第二期 正交设计 by 刘光聪&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/81&#34;&gt;微信群分享第三期 TDD 的本质不是 TDD by 丁辉&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我是从第二期开始参加的，一开始我非常好奇，他们是怎样在那么多人的微信群里进行直播分享的。最后发现其实方法非常简单直接，就是：&lt;strong&gt;发语音，截图，打字&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/coding-style-share.jpg&#34; alt=&#34;coding-style-share&#34;&gt;&lt;/p&gt;
+&lt;p&gt;分享定在每周三晚上 8:30 到 9:30 ，首先会自愿报名选出一个主持人，负责整场分享的进度把控。分享者的内容是一篇文章，会先在群里发出来，然后分享者开始发语音分享，过程中会穿插打字和截图。分享完后，进行话题讨论，最后贴出分享者的二维码，大家自愿打赏。&lt;/p&gt;
+&lt;p&gt;分享群的人数增加很快，程序员们闻风而来，很快就逼近了 500 人上限。可以确定的是，群里都是一些爱学习的程序员，不然谁晚上吃饱了不回去抱老婆还在微信群里听你的语音分享。我还发现一个有趣的现象，群里每个人进群时都加了 Seaborn Lee 好友。这就是 Growth Hack 啊！&lt;/p&gt;
+&lt;p&gt;前不久我参加了一个培训，老师让我们所有人把微信打开，查看一下自己有多少个好友。我打开一看，发现有 100 多个，其他同事多的有3，4百个。老师说，她的微信里有 1000 多个好友，并不是随便摇一摇加的好友，都是有一定相关性的好友。她给每个好友都加了标签，遇到问题时在朋友圈一发，立马就有相关的人跳出来帮忙。这就是人脉的力量。&lt;/p&gt;
+&lt;p&gt;同样，我也很感叹 Seaborn Lee 的做法，在微信群里组织分享，吸引大量爱学习的程序员过来并加为好友，这些人简直就是程序员社区的精准目标用户啊！于是我对 Seaborn Lee 本人的经历产生了兴趣，原来他之前就职于 &lt;a href=&#34;https://www.thoughtworks.com/&#34;&gt;ThoughtWorks&lt;/a&gt; ，目前于创业公司「深圳湾」任 CTO 。在他的博客里的 &lt;a href=&#34;http://seabornlee.cn/isaid.md&#34;&gt;时间线&lt;/a&gt; 一栏更是了解到他从出生、上学到工作一路走来的坎坷经历。了解了这些后， Seaborn Lee 的形象更加鲜活起来了：好学、上进、有活力、爱分享、组织各种社区活动。&lt;/p&gt;
+&lt;p&gt;虽然微信里不能很好的支持视频直播，但谁也挡不住爱分享的程序员在微信群里玩起了语音直播。如果你也有兴趣，加我的微信公众号：hacker-thinking ，并发送“爱学习，爱分享”，我将加你为好友并把你加到刚才提到的“软件匠艺小组分享”群，一起学习进步。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>被脱裤也不怕 - 反馈总结</title>
+      <link>https://blog.coderzh.com/2016/01/13/password-security-additional/</link>
+      <pubDate>Wed, 13 Jan 2016 19:06:42 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/01/13/password-security-additional/</guid>
+      <description>&lt;p&gt;在发出前两篇安全相关的文章（&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt; ，&lt;a href=&#34;http://blog.coderzh.com/2016/01/10/a-password-security-design-example/&#34;&gt;即使被拖库，也可以保证密码不泄露&lt;/a&gt;）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。&lt;/p&gt;
+&lt;p&gt;正如张小龙说的，“我所说的一切都是错的”。&lt;/p&gt;
+&lt;p&gt;所以，我更希望大家从辩证的角度去看待前两篇文章，然后结合自身项目的情况去做相应的设计。同时，我收到不少有价值的反馈，我觉得有必要将这些反馈整理一下，给大家一些参考，也算是对前面文章的补充。&lt;/p&gt;
+&lt;p&gt;上篇文章没有提到 &lt;a href=&#34;https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE&#34;&gt;HTTPS&lt;/a&gt;（SSL/TLS），是我疏漏了。作为一个安全的系统，在保证传输安全时强烈建议直接上 HTTPS（SSL/TLS）。文章中使用 &lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt; 交换密钥传输的过程其实和 HTTPS（SSL/TLS）是类似的，只不过 HTTPS（SSL/TLS）实现的要完善太多。&lt;/p&gt;
+&lt;p&gt;正如一位朋友反馈所说：“14年的时候 openssl 爆出过一个名为 &lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%BF%83%E8%84%8F%E5%87%BA%E8%A1%80%E6%BC%8F%E6%B4%9E&#34;&gt;Heartbleed&lt;/a&gt; 的漏洞，可见良好的算法不一定被良好的实现，所以从开发者的角度还是不要觉得存在绝对安全的算法比较好。” 所以可以认为我的方案是在 HTTPS（SSL/TLS）基础上再一层加固，当然，如果你认为这一层加固没必要也可以去掉。&lt;/p&gt;
+&lt;p&gt;另一方面，目前大量网站还在使用 HTTP ，很多游戏设计时也并未使用 TLS ，所以，我上篇文章使用的方法还是有一定的意义的。&lt;/p&gt;
+&lt;h3 id=&#34;反馈汇总&#34;&gt;反馈汇总&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：非常同意！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：理论上是足够了，而且推荐使用。 如果你的项目安全级别非常高，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：同意，确实不是很必要。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 &lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt;，并没有重新发明什么。文章&lt;strong&gt;重点是对密码的两次加盐哈希以及密码的验证方式&lt;/strong&gt;。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;好了，我所说的也都是错的。欢迎继续交流。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>即使被拖库，也可以保证密码不泄露</title>
+      <link>https://blog.coderzh.com/2016/01/10/a-password-security-design-example/</link>
+      <pubDate>Sun, 10 Jan 2016 23:06:42 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/01/10/a-password-security-design-example/</guid>
+      <description>&lt;p&gt;在前一篇文章《&lt;a href=&#34;http://blog.coderzh.com/2016/01/03/security-design/&#34;&gt;设计安全的账号系统的正确姿势&lt;/a&gt;》中，主要提出了一些设计的方法和思路，并没有给出一个更加具体的，可以实施的安全加密方案。经过我仔细的思考并了解了目前一些方案后，我设计了一个自认为还比较安全的安全加密方案。本文主要就是讲述这个方案，非常欢迎和期待有读者一起来讨论。&lt;/p&gt;
+&lt;p&gt;首先，我们明确一下安全加密方案的终极目标：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;即使在数据被拖库，代码被泄露，请求被劫持的情况下，也能保障用户的密码不被泄露。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;说具体一些，我们理想中的绝对安全的系统大概是这样的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先保障数据很难被拖库。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者也无法从中破解出用户的密码。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者也无法伪造登录请求通过验证。&lt;/li&gt;
+&lt;li&gt;即使数据被拖库，攻击者劫持了用户的请求数据，也无法破解出用户的密码。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如何保障数据不被拖库，这里就不展开讲了。首先我们来说说密码加密。现在应该很少系统会直接保存用户的密码了吧，至少也是会计算密码的 md5 后保存。md5 这种不可逆的加密方法理论上已经很安全了，但是随着彩虹表的出现，使得大量长度不够的密码可以直接从彩虹表里反推出来。&lt;/p&gt;
+&lt;p&gt;所以，只对密码进行 md5 加密是肯定不够的。聪明的程序员想出了个办法，即使用户的密码很短，只要我在他的短密码后面加上一段很长的字符，再计算 md5 ，那反推出原始密码就变得非常困难了。加上的这段长字符，我们称为盐（Salt），通过这种方式加密的结果，我们称为 &lt;code&gt;加盐 Hash &lt;/code&gt; 。比如：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/salt.png&#34; alt=&#34;salt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上一篇我们讲过，常用的哈希函数中，SHA-256、SHA-512 会比 md5 更安全，更难破解，出于更高安全性的考虑，我的这个方案中，会使用 SHA-512 代替 md5 。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/sha-512.png&#34; alt=&#34;salt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;通过上面的加盐哈希运算，即使攻击者拿到了最终结果，也很难反推出原始的密码。不能反推，但可以正着推，假设攻击者将 salt 值也拿到了，那么他可以枚举遍历所有 6 位数的简单密码，加盐哈希，计算出一个结果对照表，从而破解出简单的密码。这就是通常所说的暴力破解。&lt;/p&gt;
+&lt;p&gt;为了应对暴力破解，我使用了加盐的&lt;strong&gt;慢哈希&lt;/strong&gt;。慢哈希是指执行这个哈希函数非常慢，这样暴力破解需要枚举遍历所有可能结果时，就需要花上非常非常长的时间。比如：bcrypt 就是这样一个慢哈希函数：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/bcrypt.png&#34; alt=&#34;bcrypt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;通过调整 &lt;code&gt;cost&lt;/code&gt; 参数，可以调整该函数慢到什么程度。假设让 bcrypt 计算一次需要 0.5 秒，遍历 6 位的简单密码，需要的时间为：((26 * 2 + 10)^6) / 2 秒，约 900 年。&lt;/p&gt;
+&lt;p&gt;好了，有了上面的基础，来看看我的最终解决方案：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/password_security.jpg&#34; alt=&#34;password_secutity&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上图里有很多细节，我分阶段来讲：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 协商密钥&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;基于非对称加密的密钥协商算法，可以在通信内容完全被公开的情况下，双方协商出一个只有双方才知道的密钥，然后使用该密钥进行对称加密传输数据。比如图中所用的 ECDH 密钥协商。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. 请求 Salt&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;双方协商出一个密钥 SharedKey 之后，就可以使用 SharedKey 作为 AES 对称加密的密钥进行通信，客户端传给服务端自己的公钥 A ，以及加密了的用户ID（uid）。服务端从数据库中查找到该 uid 对于的 Salt1 和 Salt2 ，然后再加密返回给客户端。&lt;/p&gt;
+&lt;p&gt;注意，服务端保存的 Salt1 和 Salt2 最好和用户数据分开存储，存到其他服务器的数据库里，这样即使被 SQL 注入，想要获得 Salt1 和 Salt2 也会非常困难。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. 验证密码&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这是最重要的一步了。客户端拿到 Salt1 和 Salt2 之后，可以计算出两个加盐哈希：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SaltHash1 = bcrypt(SHA512(password), uid + salt1, 10)
+SaltHash2 = SHA512(SaltHash1 + uid + salt2)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Ticket = AES(SaltHash2, uid + time + SaltHash1 + RandKey)
+AES(SharedKey, Ticket)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。&lt;/p&gt;
+&lt;p&gt;校验两个哈希值是否相等时，使用时间恒定的比较函数，防止试探性攻击。&lt;/p&gt;
+&lt;p&gt;time 用于记录数据包发送的时间，用来防止录制回放攻击。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. 加密传输&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;密码验证通过后，服务端生成一个随机的临时密钥 TempKey（使用安全的随机函数），并使用 RandKey 做为密钥，传输给客户端。之后双方的数据交互都通过 TempKey 作为 AES 密钥进行加密。&lt;/p&gt;
+&lt;h4 id=&#34;假设被拖库了&#34;&gt;假设被拖库了&lt;/h4&gt;
+&lt;p&gt;以上就是整个加密传输、存储的全过程。我们来假设几种攻击场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;假设数据被拖库了，密码会泄露吗？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数据库中的 Salt1 ，Salt2 ， SaltHash2 暴露了，想从 SaltHash2 直接反解出原始密码几乎是不可能的事情。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;假设数据被拖库了，攻击者能不能伪造登录请求通过验证？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;攻击者在生成 Ticket 时，需要 SaltHash1 ，但由于并不知道密码，所以无法计算出 SaltHash1 ，又无法从 SaltHash2 反推 SaltHash1 ，所以无法伪造登录请求通过验证。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;假设数据被拖库了，攻击者使用中间人攻击，劫持了用户的请求，密码会被泄露吗？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;中间人拥有真实服务器所有的数据，仿冒了真实的 Server ，因此，他可以解密出 Ticket 中的 SaltHash1 ，&lt;strong&gt;但是 SaltHash1 是无法解密出原始密码的。所以，密码也不会被泄露。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;但是，中间人攻击可以获取到最后的 TempKey ，从而能监听后续的所有通信过程。这是很难解决的问题，因为在服务端所有东西都暴露的情况下，中间人假设可以劫持用户数据，仿冒真实 Server , 是很难和真实的 Server 区分开的。解决的方法也许只有防止被中间人攻击，保证 Server 的公钥在客户端不被篡改。&lt;/p&gt;
+&lt;p&gt;假设攻击已经进展到了这样的程度，还有办法补救吗？有。由于攻击者只能监听用户的登录过程，并不知道真实的密码。所以，只需要在服务端对 Salt2 进行升级，即可生成新的 SaltHash2 ，从而让攻击者所有攻击失效。&lt;/p&gt;
+&lt;p&gt;具体是这样的：用户正常的登录，服务端验证通过后，生成新的 Salt2 ，然后根据传过来的 SaltHash1 重新计算了 SaltHash2 存入数据库。下次用户再次登录时，获取到的是新的 Salt2 ，密码没有变，同样能登录，攻击者之前拖库的那份数据也失效了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;q--a&#34;&gt;Q &amp;amp; A&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用 bcrypt 慢哈希函数，服务端应对大量的用户登录请求，性能承受的了吗？&lt;/p&gt;
+&lt;p&gt;该方案中，细心一点会注意到， bcrypt 只是在客户端进行运算的，服务端是直接拿到客户端运算好的结果（ SaltHash1 ）后 SHA-512 计算结果进行验证的。所以，把性能压力分摊到了各个客户端。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为什么要使用两个 Salt 值？&lt;/p&gt;
+&lt;p&gt;使用两个 Salt 值，是为了防止拖库后，劫持了用户请求后将密码破解出来。只有拥有密码的用户，才能用第一个 Salt 值计算出 SaltHash1 ，并且不能反推回原始密码。第二个 Salt 值可以加大被拖库后直接解密出 SaltHash1 的难度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为什么要动态请求 Salt1 和 Salt2 ？&lt;/p&gt;
+&lt;p&gt;Salt 值直接写在客户端肯定不好，而且写死了要修改还得升级客户端。动态请求 Salt 值，还可以实现不升级客户端的情况下，对密码进行动态升级：服务端可定期更换 Salt2 ，重新计算 SaltHash2 ，让攻击者即使拖了一次数据也很快处于失效状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库都已经全被拖走了，密码不泄露还有什么意义呢？&lt;/p&gt;
+&lt;p&gt;其实是有意义的，正如刚刚提到的升级 Salt2 的补救方案，用户可以在完全不知情的情况下，不需要修改密码就升级了账号体系。同时，保护好用户的密码，不被攻击者拿去撞别家网站的库，也是一份责任。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;欢迎大家针对本文的方案进行讨论，如有不实或者考虑不周的地方，请尽情指出。或者有更好的建议或意见，欢迎交流！&lt;/p&gt;
+&lt;h3 id=&#34;更新反馈汇总&#34;&gt;更新：反馈汇总&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“应该从源头上禁止用户使用简单密码”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：非常同意！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：理论上是足够了，而且推荐使用。 如果你的项目安全级别非常高，本着不信任绝对安全的角度可考虑再一层加固。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：同意，确实不是很必要。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 &lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx&#34;&gt;ECDH&lt;/a&gt;，并没有重新发明什么。文章&lt;strong&gt;重点是对密码的两次加盐哈希以及密码的验证方式&lt;/strong&gt;。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。&lt;strong&gt;应该去推动一下密码安全的业界标准，避免企业犯错用户买单&lt;/strong&gt;。同时，&lt;strong&gt;互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>设计安全的账号系统的正确姿势</title>
+      <link>https://blog.coderzh.com/2016/01/03/security-design/</link>
+      <pubDate>Sun, 03 Jan 2016 18:23:28 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/01/03/security-design/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/security.jpg-wt&#34; alt=&#34;security&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我的 2015</title>
+      <link>https://blog.coderzh.com/2016/01/01/my-2015/</link>
+      <pubDate>Fri, 01 Jan 2016 00:34:08 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/01/01/my-2015/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/2016.jpg-wt&#34; alt=&#34;2016&#34;&gt;&lt;/p&gt;
+&lt;p&gt;2015年对我来说是意义非凡的一年，这一年里，我主要干了以下几件事：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;离开游戏创业公司加入了微信。&lt;/li&gt;
+&lt;li&gt;重新开始写博客，开始写公众号：一个程序员的思考。&lt;/li&gt;
+&lt;li&gt;我可爱的儿子出生了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以说，2015年我收获颇多，最大的收获是我的小宝宝的到来，欣喜和激动之情难以言表。对于这个新加入的小成员，我们会好好的爱他，呵护他，陪伴他成长，宝宝加油，我们也一起加油哦。&lt;/p&gt;
+&lt;p&gt;事业方面，我离开了工作4年的游戏创业公司，这里有太多千丝万缕的故事。2011年，我们从西山居出来时，也是满怀梦想，也曾激情奋斗，一起吃大叔做的菜，一起打闹玩笑，认真工作时为一个问题可以争的面红耳赤，一起玩游戏时可以在 LOL 里 High 到不能自已。&lt;/p&gt;
+&lt;p&gt;我努力过，也可以说还不够努力，也许当时我可以做的更好，或许当时我可以更主动去承担起一些责任，或许，我什么也改变不了。创业维艰，只有经历过的人才能体会。当时看着一个又一个最早一起的小伙伴离开，难免伤感，不过他们离开后都有了不错的去处，也是很欣慰的。&lt;/p&gt;
+&lt;p&gt;我坚持了4年，领略了游戏行业无情的市场竞争，经历了创业公司面临的种种问题和挑战。当然，我主要工作也只是写程序，很多事情是你无法左右的。所以在我30岁的时候，&lt;strong&gt;我想应该做些改变了&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;于是我加入了微信。做为在职员工，不应该在外面过多评论自己的公司。在这里我就简单说一下自己的感受。腾讯是一家值得尊敬的公司，公司文化氛围很好，活跃而且开放，同事都很优秀，我学习到很多，并且非常庆幸能加入腾讯。&lt;/p&gt;
+&lt;p&gt;换工作后，我也逐渐不怎么玩游戏了，把一直想戒也戒不掉的 LOL 给彻底戒掉了。我玩起游戏来很疯，很执着，喜欢专研，熬夜玩，睡觉也想。我大概经历过3次这样的过程。第一次是在大学时玩剑侠情缘一，没日没夜通宵达旦的玩，玩到早上通宵回来又饿又困，倒头睡到中午或下午，起来接着玩。第二次是工作后玩剑三，也沉迷过一段时间，第三次是创业时玩 LOL ，天天沉迷排位赛，看直播比赛，对英雄技能技巧、比赛选手如数家珍。&lt;/p&gt;
+&lt;p&gt;从游戏里跳出来后，&lt;strong&gt;我发现其实我也没有那么喜欢游戏&lt;/strong&gt;。一旦我不玩游戏后，那些游戏我碰都不碰了，APP Store 里排名靠前的我也玩不到几天。之前创业时，经常需要加班，总觉得玩游戏的时间都不够，所以业余时间也被占的满满的。现在不玩游戏后，发现其实时间是可以有很多方式来利用的，可以做很多有意义的事情，当你做的越多时，越会觉得时间其实是那么的不够用，为什么还要浪费在一局又一局重复的游戏上面呢？&lt;/p&gt;
+&lt;p&gt;所以，我在我的博客上写了这么一句话激励自己：&lt;strong&gt;如果你没有感觉到时间不够用时，你多半正在虚度光阴。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;于是我重新捡起了荒废了3~4年的博客。这几年博客没有更新和创业公司加班及玩游戏有关，也和大环境有关。这几年微博兴起，Google Reader 关闭，博客没落，很多知名的博客都停更了。当然，这都是借口。如今，人们重新意识到了有价值的原创长文的价值，自媒体开始兴起，博客的形式也重新燃起了火花。国外的 &lt;a href=&#34;https://medium.com/&#34;&gt;Medium&lt;/a&gt; ，国内的 &lt;a href=&#34;http://www.jianshu.com/&#34;&gt;简书&lt;/a&gt; ，知乎专栏，新浪微博长文，微信公众号文章等等风生水起。&lt;/p&gt;
+&lt;p&gt;虽然我之前在博客园的写的 Google Test 相关的文章已经有几十万的阅读量，但我还是决定从博客园搬家出来，目前使用的是 &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt; 搭建的静态博客网站 &lt;a href=&#34;http://blog.coderzh.com/&#34;&gt;http://blog.coderzh.com/&lt;/a&gt; ，同时大部分文章都会在我的微信公众号（一个程序员的思考）里发布。博客起到一个备份和被搜索引擎索引的作用。&lt;/p&gt;
+&lt;p&gt;如果算上这篇文章，今年我一共写了48篇文章了，平均一周一篇的节奏。公众号的订阅数也在持续上涨，在这里我要感谢所有订阅了我公众号和一直关注我博客的朋友，祝大家2016年新年快乐！新年新气象，无论学业、事业还是家庭都能顺顺利利。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2016年，我们一起努力！&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>大家都应该做的 Code Review</title>
+      <link>https://blog.coderzh.com/2015/12/27/code-review/</link>
+      <pubDate>Sun, 27 Dec 2015 18:49:15 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/12/27/code-review/</guid>
+      <description>&lt;p&gt;代码审查（Code Review）是个老生常谈的话题了，我以前呆过的大公司也好，创业公司也好，都知道 Code Review 的好处，但真正去有效执行的却很少。有人认为“存在即合理”，大家都不愿意做 Code Review ，可能 Code Review 真的不好，影响开发效率。有的人想做，但是执行起来太困难。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序员的思考：我的 K12（我也曾是小学生）</title>
+      <link>https://blog.coderzh.com/2015/12/21/my-k12-pupil/</link>
+      <pubDate>Mon, 21 Dec 2015 22:38:15 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/12/21/my-k12-pupil/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/math.jpeg-wt&#34; alt=&#34;math&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序员的思考：我的 K12（逃学威龙）</title>
+      <link>https://blog.coderzh.com/2015/12/20/my-k12-escape-school/</link>
+      <pubDate>Sun, 20 Dec 2015 21:38:31 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/12/20/my-k12-escape-school/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/taoxue.jpg-wt&#34; alt=&#34;taoxue&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序员的思考：教育的未来</title>
+      <link>https://blog.coderzh.com/2015/11/29/hacker-thinking-mooc/</link>
+      <pubDate>Sun, 29 Nov 2015 21:21:35 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/11/29/hacker-thinking-mooc/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/mooc.jpg-wt&#34; alt=&#34;mooc&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序员的思考：分享即提高</title>
+      <link>https://blog.coderzh.com/2015/11/22/hacker-thinking-study/</link>
+      <pubDate>Sun, 22 Nov 2015 10:36:35 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/11/22/hacker-thinking-study/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/learning.jpg-wt&#34; alt=&#34;learning&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo 自动化部署脚本</title>
+      <link>https://blog.coderzh.com/2015/11/21/hugo-deploy-script/</link>
+      <pubDate>Sat, 21 Nov 2015 17:48:04 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/11/21/hugo-deploy-script/</guid>
+      <description>&lt;p&gt;之前我写了一个脚本用来自动部署我的 Hugo 博客，今天闲来无事完善了一下这个脚本，使这个脚本更加通用一些。&lt;/p&gt;
+&lt;p&gt;脚本路径：&lt;a href=&#34;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&#34;&gt;https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>走进前端开发之：Vue.js</title>
+      <link>https://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</link>
+      <pubDate>Sun, 15 Nov 2015 21:53:51 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/</guid>
+      <description>&lt;p&gt;上一篇中，探讨了前端框架的前世今生，最后还列举了当前比较火的几个前端框架，比如：Google 的 Angular，老牌的 Backbone , Facebook 的 React 等等。今天，我只想介绍一个小而美的前端框架：&lt;a href=&#34;http://cn.vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; 。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网站被随机挂广告，疑似被 HTTP 劫持</title>
+      <link>https://blog.coderzh.com/2015/11/14/http-dns-hijack/</link>
+      <pubDate>Sat, 14 Nov 2015 19:36:38 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/11/14/http-dns-hijack/</guid>
+      <description>&lt;p&gt;最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>走进前端开发之：框架的演变</title>
+      <link>https://blog.coderzh.com/2015/11/07/front-end-dev/</link>
+      <pubDate>Sat, 07 Nov 2015 08:44:26 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/11/07/front-end-dev/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/angular-backbone-react-logo.jpg-wt&#34; alt=&#34;angular-backbone-react-logo&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo中文文档翻译计划</title>
+      <link>https://blog.coderzh.com/2015/11/01/hugo-translate/</link>
+      <pubDate>Sun, 01 Nov 2015 23:52:31 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/11/01/hugo-translate/</guid>
+      <description>&lt;p&gt;中文文档：&lt;a href=&#34;http://www.gohugo.org/doc/&#34;&gt;http://www.gohugo.org/doc/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub：&lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;https://github.com/coderzh/gohugo.org&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;hugo-介绍&#34;&gt;Hugo 介绍&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://spf13.com&#34;&gt;spf13&lt;/a&gt; 对于 Hugo 的英文原版介绍地址在这，就不另行翻译了：&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;https://gohugo.io/overview/introduction/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;原文大致意思是当前的静态网站生成工具对环境依赖过多，性能较差，于是使用 Go 语言写了一个静态网站生成器 Hugo 。不仅解决了环境依赖、性能较差的问题，还有使用简单、部署方便等诸多优点，通过 Liveload 实时刷新，极大的优化文章的写作体验。&lt;/p&gt;
+&lt;h4 id=&#34;hugo-能做什么&#34;&gt;Hugo 能做什么&lt;/h4&gt;
+&lt;p&gt;通过 Hugo 你可以快速搭建你的静态网站，比如博客系统、文档介绍、公司主页、产品介绍等等。相对于其他静态网站生成器来说，Hugo 具备如下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;极快的页面编译生成速度。（ ~1 ms 每页面）&lt;/li&gt;
+&lt;li&gt;完全跨平台支持，可以运行在 &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; Mac OS X, &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; Linux, &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; Windows, 以及更多!&lt;/li&gt;
+&lt;li&gt;安装方便 &lt;a href=&#34;http://www.gohugo.org/doc/overview/installing/&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;本地调试 &lt;a href=&#34;http://www.gohugo.org/doc/overview/usage/&#34;&gt;Usage&lt;/a&gt; 时通过 &lt;a href=&#34;http://www.gohugo.org/doc/extras/livereload/&#34;&gt;LiveReload&lt;/a&gt; 自动即时刷新页面。&lt;/li&gt;
+&lt;li&gt;完全的皮肤支持。&lt;/li&gt;
+&lt;li&gt;可以部署在任何的支持 HTTP 的服务器上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;关于翻译文档&#34;&gt;关于翻译文档&lt;/h3&gt;
+&lt;p&gt;中文翻译文档目的是让 Hugo 在中国能得到更好的推广，让有需要和对 Hugo 感兴趣的人能从此文档中获得微薄帮助。&lt;/p&gt;
+&lt;p&gt;此中文文档的英文原版皆从 Hugo 官方 GitHub 上来：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/tree/v0.14.docs&#34;&gt;https://github.com/spf13/hugo/tree/v0.14.docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;取自 v0.14.0 版本，基于 revision: &lt;a href=&#34;https://github.com/spf13/hugo/tree/acd6ad92c181cd7cdb485467cef0e8986911fb02&#34;&gt;acd6ad9&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;翻译文档最麻烦的是能否跟上官方文档的更新， Hugo 官方文档目前虽在 v0.14.0 版本，但也经常有些更新，待本文档翻译完成之后，每隔一定的周期，根据本文所记录的 revision 对原文档进行 diff，然后补上更新内容。&lt;/p&gt;
+&lt;p&gt;此次翻译我也希望借助社区之力，如果你对此有兴趣，请前往本站的 GitHub &lt;strong&gt;提交一个 Issue，标题注明希望翻译的文档名称&lt;/strong&gt; 即可。&lt;/p&gt;
+&lt;p&gt;Issue 提交地址： &lt;a href=&#34;https://github.com/coderzh/gohugo.org/issues&#34;&gt;https://github.com/coderzh/gohugo.org/issues&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;待翻译文档路径： &lt;a href=&#34;https://github.com/coderzh/gohugo.org/tree/master/content/doc&#34;&gt;https://github.com/coderzh/gohugo.org/tree/master/content/doc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然后 Fork 该 &lt;a href=&#34;https://github.com/coderzh/gohugo.org&#34;&gt;Repo&lt;/a&gt; ，通过 Pull Request 的方式提交过来便是。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>走进前端开发之：Bootstrap</title>
+      <link>https://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/</link>
+      <pubDate>Sun, 01 Nov 2015 07:37:56 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/bootstrap.jpg-wt&#34; alt=&#34;bootstrap&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo中文网站gohugo.org上线</title>
+      <link>https://blog.coderzh.com/2015/10/25/gohugo-org/</link>
+      <pubDate>Sun, 25 Oct 2015 23:37:16 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/10/25/gohugo-org/</guid>
+      <description>&lt;p&gt;之前我在博客里写了一篇文章：&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;使用hugo搭建个人博客站点&lt;/a&gt;，之后有很多人给我留言或者邮件，列举了在搭建Hugo时遇到的各种问题，并且提出希望能有一个中文的Hugo网站。&lt;/p&gt;
+&lt;p&gt;于是，我利用周末的时间，注册域名（居然注册到了 &lt;code&gt;gohugo.org&lt;/code&gt; 这个域名），用&lt;code&gt;Hugo&lt;/code&gt;本身搭建了这个网站，运行在 &lt;a href=&#34;https://www.digitalocean.com/?refcode=e131e2bba197&#34;&gt;DigitalOcean&lt;/a&gt; 的 &lt;code&gt;VPS&lt;/code&gt; 上。这就是 &lt;a href=&#34;http://www.gohugo.org&#34;&gt;http://www.gohugo.org&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序员直播写代码网站livecoding.tv即将登陆中国，你有兴趣吗？</title>
+      <link>https://blog.coderzh.com/2015/10/23/livecoding/</link>
+      <pubDate>Fri, 23 Oct 2015 07:08:11 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/10/23/livecoding/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/livecoding.jpg-wt&#34; alt=&#34;livecoding&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一篇文章了解什么是增长黑客</title>
+      <link>https://blog.coderzh.com/2015/10/17/read-growth-hacker/</link>
+      <pubDate>Sat, 17 Oct 2015 10:16:41 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/10/17/read-growth-hacker/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/GrowthHacker.jpg-wt&#34; alt=&#34;GrowthHacker&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于开源的思考</title>
+      <link>https://blog.coderzh.com/2015/10/11/open-source-thinking/</link>
+      <pubDate>Sun, 11 Oct 2015 17:17:19 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/10/11/open-source-thinking/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/OpenSource.png-wt&#34; alt=&#34;OpenSource&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Hugo Import一键迁移Jekyll</title>
+      <link>https://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</link>
+      <pubDate>Sun, 11 Oct 2015 10:06:11 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/HugoImportJekyll.png-wt&#34; alt=&#34;HugoImportJekyll&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go语言极速入门手册.go</title>
+      <link>https://blog.coderzh.com/2015/09/28/go-tips/</link>
+      <pubDate>Mon, 28 Sep 2015 22:43:26 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/28/go-tips/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/golang.jpg&#34; alt=&#34;golang&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Github: &lt;a href=&#34;https://github.com/coderzh/CodeTips&#34;&gt;https://github.com/coderzh/CodeTips&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>说说刚入手的程序员键盘神器：HHKB Pro2</title>
+      <link>https://blog.coderzh.com/2015/09/26/my-hhkb-pro2/</link>
+      <pubDate>Sat, 26 Sep 2015 13:54:33 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/26/my-hhkb-pro2/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/hhkb-types.jpg&#34; alt=&#34;hhkb-types&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于最近的XcodeGhost事件，我也来说两句</title>
+      <link>https://blog.coderzh.com/2015/09/21/xcode-ghost/</link>
+      <pubDate>Mon, 21 Sep 2015 00:56:13 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/21/xcode-ghost/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/xcodeghost.jpg-w&#34; alt=&#34;xcodeghost&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>博客图片切换到七牛</title>
+      <link>https://blog.coderzh.com/2015/09/20/qiuniu/</link>
+      <pubDate>Sun, 20 Sep 2015 20:37:42 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/20/qiuniu/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://portal.qiniu.com/signup?code=3llo7yfu1ib7y&#34;&gt;&lt;img src=&#34;http://image.coderzh.com/qiniu.jpg&#34; alt=&#34;qiniu&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;做为一个独立博客，稳定、速度快是非常重要的指标。在博客的运营过程中，经常会不可避免的需要做迁移。比如，从WordPress到Jekyll，从Jekyll到Hugo。迁移之后，文章里的链接还能不能用，图片还能不能访问，是一个比较重要的问题。文章链接地址可以使用域名或者相对地址的方式方便迁移，而图片则稍微复杂一点点。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>微信公众号开通了原创保护功能</title>
+      <link>https://blog.coderzh.com/2015/09/19/mp-new-start/</link>
+      <pubDate>Sat, 19 Sep 2015 00:35:48 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/19/mp-new-start/</guid>
+      <description>&lt;p&gt;周三非常意外的收到了微信的原创保护功能邀请，之所以说意外，是因为我没想到这么快就给我发了邀请，毕竟我的公众号关注的数量还不多。但我保证了每篇文章都是原汁原味的原创内容，而且目前保持了一周一更的速度。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>坑爹的多说评论</title>
+      <link>https://blog.coderzh.com/2015/09/18/holy-shit-duoshuo/</link>
+      <pubDate>Fri, 18 Sep 2015 19:38:18 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/18/holy-shit-duoshuo/</guid>
+      <description>&lt;p&gt;运用了各种奇技淫巧的黑科技手段，终于把之前旧页面的多说评论全部转过来了。如果再来选择一次的话，我绝不选多说。之后有时间，全部转移到disqus吧。&lt;/p&gt;
+&lt;p&gt;多说简直就没人维护啊有木有，居然还那么多人用着。罗列一下多说评论的各种不人性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</title>
+      <link>https://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/</link>
+      <pubDate>Sun, 13 Sep 2015 08:48:52 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/</guid>
+      <description>&lt;p&gt;本文的主要内容如标题所示，通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages。如果你正好有这个需求，看这篇文章正好，可以节省你不少时间。如果不是，了解一下也无妨。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>周末折腾的各种东西</title>
+      <link>https://blog.coderzh.com/2015/09/05/busy-weekend/</link>
+      <pubDate>Sat, 05 Sep 2015 23:44:48 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/05/busy-weekend/</guid>
+      <description>&lt;p&gt;这个周末放了3天假，第一天当然是要看盛大的阅兵仪式了，剩下的时间一半多是在折腾博客系统Hugo，剩下的时间在折腾各种工具、IDE，还有学习了一下Unity。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>给Hugo提交了一个PR</title>
+      <link>https://blog.coderzh.com/2015/09/03/a-hugo-pull-request/</link>
+      <pubDate>Thu, 03 Sep 2015 08:55:31 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/09/03/a-hugo-pull-request/</guid>
+      <description>&lt;p&gt;给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用hugo搭建个人博客站点</title>
+      <link>https://blog.coderzh.com/2015/08/29/hugo/</link>
+      <pubDate>Sat, 29 Aug 2015 16:52:15 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/08/29/hugo/</guid>
+      <description>&lt;p&gt;Hugo是一个用Go语言编写的静态网站生成器，它使用起来非常简单，相对于Jekyll复杂的安装设置来说，Hugo仅需要一个二进制文件hugo(hugo.exe)即可轻松用于本地调试和生成静态页面。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>最近读的几本书</title>
+      <link>https://blog.coderzh.com/2015/08/16/Books/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/08/16/Books/</guid>
+      <description>&lt;p&gt;由于我住的比较远，每天上下班单程需要1个半小时左右。因此，车上和地铁的时间成了我每天阅读的时间。&lt;/p&gt;
+&lt;p&gt;下面几本是我最近读过的书，分享一下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Jekyll官方的ReadMore摘要功能</title>
+      <link>https://blog.coderzh.com/2015/08/15/JekyllReadMore/</link>
+      <pubDate>Sat, 15 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/08/15/JekyllReadMore/</guid>
+      <description>&lt;p&gt;今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用ThreadSanitizer线程检查工具</title>
+      <link>https://blog.coderzh.com/2015/08/15/ThreadSanitizer/</link>
+      <pubDate>Sat, 15 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/08/15/ThreadSanitizer/</guid>
+      <description>&lt;p&gt;ThreadSanitizer又叫TSan，是一个检查线程Data Race的C/C++工具。它集成在新版的gcc和clang中，通过编译时加-fsanitize=thread，可以在运行时检测出Data Race的问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>你说我是错的，那你最好证明你是对的</title>
+      <link>https://blog.coderzh.com/2015/08/08/IDonnotCare/</link>
+      <pubDate>Sat, 08 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/08/08/IDonnotCare/</guid>
+      <description>&lt;p&gt;&amp;ldquo;你说我是错的，那你最好证明你是对的&amp;rdquo; &amp;ndash; Michael Jackson&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小记：网易游戏学院第二届公开日</title>
+      <link>https://blog.coderzh.com/2015/06/28/163GameOpenDay/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/06/28/163GameOpenDay/</guid>
+      <description>&lt;p&gt;昨天参加了网易游戏学院的公开日《技术进步引发的灵感革命》，干货十足，期间做了一些笔记，分享一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>强制链接静态库所有符号(包括未被使用的)</title>
+      <link>https://blog.coderzh.com/2015/06/14/LinkAllSymbols/</link>
+      <pubDate>Sun, 14 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/06/14/LinkAllSymbols/</guid>
+      <description>&lt;p&gt;C++程序在链接一个静态库时，如果该静态库里的某些方法没有任何地方调用到，最终这些没有被调用到的方法或变量将会被丢弃掉，不会被链接到目标程序中。这样做大大减小生成二进制文件的体积。但是，某些时候，即使静态库里的某些方法没有任何地方使用到，我们也希望将这些没有使用到的代码编译进最终的二进制文件中。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>开启Github之旅</title>
+      <link>https://blog.coderzh.com/2015/06/13/StartGithub/</link>
+      <pubDate>Sat, 13 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/06/13/StartGithub/</guid>
+      <description>&lt;p&gt;在那个远古时代，我以为可以用GoogleCode干点事，结果啥也没干好。如今，Github已经成为了业界标杆，就连Google、微软、Facebook的开源项目都往Github搬。Github作为全球最大的同性交友网站，假如你在上面有几个加星数不错的Project，一定会为你的简历增色不少。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cocos2d-x3.6 Android编译问题</title>
+      <link>https://blog.coderzh.com/2015/06/06/Cocos2dx36/</link>
+      <pubDate>Sat, 06 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/06/06/Cocos2dx36/</guid>
+      <description>&lt;p&gt;在Cocod2d-x论坛上看到越来越多人吐槽新版本更新太快，改动太大，而且经常有BUG导致升级要折腾很久很久。。但我就是喜欢折腾，喜欢升级到最新版本，看看有了哪些新功能，哪些改进。为此也折腾了不少，遇到一点就记录一点吧。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读《程序员的思维训练》</title>
+      <link>https://blog.coderzh.com/2015/05/16/ThinkingAndLearning/</link>
+      <pubDate>Sat, 16 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/05/16/ThinkingAndLearning/</guid>
+      <description>&lt;p&gt;《程序员的思维修炼:开发认知潜能的九堂课》 从程序员的角度去认清自己，思考问题，了解我们的大脑，进而发掘潜能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>最近的一些变化</title>
+      <link>https://blog.coderzh.com/2015/05/11/NewChange/</link>
+      <pubDate>Mon, 11 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/05/11/NewChange/</guid>
+      <description>&lt;p&gt;有关注我博客的朋友也许会发现，从3月份开始，我的博客又活跃了起来，平均每周会有一篇，而且，我也开通了微信公众号：一个程序员的思考。为什么会有这个变化呢？因为，我换工作了。工作内容有了很大的变化，平时的生活娱乐方式也有了一定的变化。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>成大事者不纠结</title>
+      <link>https://blog.coderzh.com/2015/04/26/Category/</link>
+      <pubDate>Sun, 26 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/04/26/Category/</guid>
+      <description>&lt;p&gt;最近在看罗振宇的《成大事者不纠结》，想想自己平时有什么纠结的事情，当我打开为知笔记看着长长的文件夹分类时，我明白了，其实我一直纠结着“分类”。我有一定的分类整理的习惯，当然也不是特别强迫的那种。比如，记录技术文章时，我会分出：C++，Python，Cocos2d-x，GameServer，Linux，……等等，甚至还会分出若干的二级分类。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读《从0到1》</title>
+      <link>https://blog.coderzh.com/2015/04/20/ZeroToOne/</link>
+      <pubDate>Mon, 20 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/04/20/ZeroToOne/</guid>
+      <description>&lt;p&gt;自从入手了Kindle Paper White，现在已经习惯了在Kindle上购买图书了，已经买了好几本了。在Kindle上读书体验就是好啊，自己也变得越来越爱读书了。呵呵。&lt;/p&gt;
+&lt;p&gt;利用周末和平时闲暇时间，把《从0到1:开启商业与未来的秘密》读了一遍，书中很多观点不错，耐人深思，记录一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OpenWrt资料汇总</title>
+      <link>https://blog.coderzh.com/2015/04/18/OpenWrt/</link>
+      <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/04/18/OpenWrt/</guid>
+      <description>&lt;p&gt;上周末折腾了一下OpenWrt，打算把Facebook的网络模拟工具部署到上面，最终以失败告终。上github看，发现已经有人给作者提了issue，作者表示部署在OpenWrt上会很有用，但确实在OpenWrt上跑ATC会很困难。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;开源代码覆盖率工具OpenCppCoverage介绍(Windows)</title>
+      <link>https://blog.coderzh.com/2015/04/10/OpenCppCoverage/</link>
+      <pubDate>Fri, 10 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/04/10/OpenCppCoverage/</guid>
+      <description>&lt;p&gt;Windows平台下开源的C++代码覆盖率工具，使用简单，功能齐全而强大。2014年才推出的，只恨没有早点发现。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Facebook网络模拟测试工具ATC使用</title>
+      <link>https://blog.coderzh.com/2015/03/29/AugmentedTrafficControl/</link>
+      <pubDate>Sun, 29 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/03/29/AugmentedTrafficControl/</guid>
+      <description>&lt;p&gt;就在上周，Facebook在其工程博客（&lt;a href=&#34;https://code.facebook.com/posts/1561127100804165/augmented-traffic-control-a-tool-to-simulate-network-conditions/&#34;&gt;原文&lt;/a&gt;）上宣布开源移动网络测试工具Augmented Traffic Control（&lt;a href=&#34;https://github.com/facebook/augmented-traffic-control&#34;&gt;ATC&lt;/a&gt;），我迅速试用了一番，非常不错，对手游或者其他APP的调试和测试都非常有帮助，介绍给大家。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>新的开始，新的挑战</title>
+      <link>https://blog.coderzh.com/2015/03/15/NewStart/</link>
+      <pubDate>Sun, 15 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/03/15/NewStart/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/NewStart.jpg-w&#34; alt=&#34;NewStart&#34;&gt;&lt;/p&gt;
+&lt;p&gt;人的选择，有时候看上去是有规律或刻意的，有时候又像是自然而然的。既然选择了远方，就要鼓足勇气去面对挑战。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>为什么心跳包(HeartBeat)是必须的？</title>
+      <link>https://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/</link>
+      <pubDate>Thu, 05 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/Heartbeats.jpg-w&#34; alt=&#34;HeartBeat&#34;&gt;&lt;/p&gt;
+&lt;p&gt;几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《黑客与画家》杂想</title>
+      <link>https://blog.coderzh.com/2015/03/01/HackerAndPainter/</link>
+      <pubDate>Sun, 01 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/03/01/HackerAndPainter/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/hackerspainters.jpg&#34; alt=&#34;HackersAndPainters&#34;&gt;&lt;/p&gt;
+&lt;p&gt;春节前，入手了个Kindle PaperWhite。之前一直担心Pad看书已经够用了，实际用下来，发现看书还是用Kindle好。因为Kindle能让你专心看书，不易伤眼，而且续航时间很长。&lt;/p&gt;
+&lt;p&gt;之前一直想读《黑客与画家》，于是春节假期用Kindle把它读完。这本书备受赞誉，里面很多观点很好，但是我读下来，高预期之后还是有些落差。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于创业</title>
+      <link>https://blog.coderzh.com/2015/02/18/Starup/</link>
+      <pubDate>Wed, 18 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/02/18/Starup/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/StartUP-header.jpg-w&#34; alt=&#34;StartUp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;有人说，现在是创业的黄金时代。有个不错的idea，有差不多靠谱的团队，一个简单的demo甚至只有想法，就可以拉来一笔投资开始干了。其实并非如此容易，至少我现在还没这勇气魄力和这分自信。不过也的确没有那么难，不然哪来这么多雨后春笋般的创业公司。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>skynet Windows开发方式：VirtualBox中共享文件夹</title>
+      <link>https://blog.coderzh.com/2015/01/14/SkynetUbuntuVirtualBox/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/01/14/SkynetUbuntuVirtualBox/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/cloudwu/skynet&#34;&gt;skynet&lt;/a&gt;是一个c和lua实现的轻量级actor模型服务端框架。看了所有文档，对skynet有了大致的了解。还需进一步考察看是否合适做为手游mmo服务端框架。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>你好2015</title>
+      <link>https://blog.coderzh.com/2015/01/10/2015Jekyll/</link>
+      <pubDate>Sat, 10 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2015/01/10/2015Jekyll/</guid>
+      <description>&lt;p&gt;2015已经到来，转眼间已步入而立之年。不畏将来，不念过去。2015年是一个新的开始，正如我又将这博客从WordPress转移到了Jekyll，而且很顺利的将之前博客园的博文导入到了这个博客中。2015，对于我的独立博客来说，是个全新的开始。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何看待：微软将以25亿美元收购Minecraft开发商Mojang</title>
+      <link>https://blog.coderzh.com/2014/09/10/mincraft/</link>
+      <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2014/09/10/mincraft/</guid>
+      <description>&lt;h3 id=&#34;背景&#34;&gt;背景&lt;/h3&gt;
+&lt;p&gt;相信很多人已经玩过《Minecraft》，这是一款3D沙盒游戏，玩家通过采集不同的材料，使用不同的公式合成各种其他材料。然后像搭积木一般将这些方块状的材料搭建出各种木屋，城堡，宏伟的建筑，并且可以加入脚本，设计各种关卡玩法，可谓自由度极高。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>自豪的使用上了WordPress</title>
+      <link>https://blog.coderzh.com/2014/09/09/wordpress/</link>
+      <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2014/09/09/wordpress/</guid>
+      <description>&lt;p&gt;自从购买了DigitalOcean的VPS，就一直在上面折腾着。首当其冲的，是把我的博客转移到VPS中来，实现自己的独立博客。开始打算的是一切自己DIY，并且我之前也写过一套博客程序，用Python+Tornado+mongodb实现的。虽然很久没有维护，但还是可用的状态。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>创业感悟</title>
+      <link>https://blog.coderzh.com/2014/09/07/startup/</link>
+      <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2014/09/07/startup/</guid>
+      <description>&lt;p&gt;时光飞逝，转眼间距离上一篇博客已经快三年时间。这三年里，人们逐渐从博客转移到了微博，看的人少了，写的人也少了。以前，写博客是一种潮流，现在，写博客已经是一种坚持了。连Google都放弃了RSS，我不知道那些曾经订阅过我博客的朋友，你们还在坚持用RSS看文章吗？我写的这篇文章，你们在用Google Reader的替代品看到我的文章吗？如果有看到，并且我的文章对你有帮助，请留言告诉我。这会是我更新博客很好的动力。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DigitalOcean上使用Tornado&#43;MongoDB&#43;Nginx&#43;Supervisor&#43;DnsPod快速搭建个人博客</title>
+      <link>https://blog.coderzh.com/2014/05/19/digitalocean/</link>
+      <pubDate>Mon, 19 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2014/05/19/digitalocean/</guid>
+      <description>&lt;h3 id=&#34;digitalocean&#34;&gt;DigitalOcean&lt;/h3&gt;
+&lt;p&gt;之前买了个便宜的VPS并且在上面搭建了我自己写的博客程序，后来VPS里运行MongoDB经常自己挂掉就索性没理了。直到现在VPS已经过期，服务器被强制关掉了。周末在家索性想着把这个博客程序重新搭建起来。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ViEmuVS2013-3.2.1 破解</title>
+      <link>https://blog.coderzh.com/2014/04/02/3640179/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2014/04/02/3640179/</guid>
+      <description>VS升级到2013后，作为一个Vimer，自然需要更新最新的ViEmu插件，因为现在离了Vim，写代码已经寸步难行了。 ViEmu 3.2.1的破解其实</description>
+    </item>
+    
+    <item>
+      <title>tornado</title>
+      <link>https://blog.coderzh.com/2013/03/13/2958224/</link>
+      <pubDate>Wed, 13 Mar 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2013/03/13/2958224/</guid>
+      <description>wget https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea sh setuptools_xxx.egg MongoDB官网：http://www.mongodb.org/ 如何在 Ubuntu 12.04 (Precise) Server 上安装 MongoDB sudo apt-key adv –keyserver keyserver.ubuntu.com –recv 7F0CEB10 echo “</description>
+    </item>
+    
+    <item>
+      <title>从CEGUI源码看代码规范</title>
+      <link>https://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style/</link>
+      <pubDate>Sun, 08 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2011/05/08/CEGUI_Coding_Style/</guid>
+      <description>CEGUI（Crazy Eddie’s GUI）是一个使用C++实现的基于LGPL协议的的开源GUI库，主要应用于游戏界面。连著名的开源游戏引擎</description>
+    </item>
+    
+    <item>
+      <title>Android刷机备忘录</title>
+      <link>https://blog.coderzh.com/2011/03/06/flash-android/</link>
+      <pubDate>Sun, 06 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2011/03/06/flash-android/</guid>
+      <description>G2 Magic上的Android1.6用了好久一直没去刷，直到今天早上实在忍不住刷到了Android2.2。刷之前在网上看了很多教程和注意事项</description>
+    </item>
+    
+    <item>
+      <title>启程2011</title>
+      <link>https://blog.coderzh.com/2011/01/06/start2011/</link>
+      <pubDate>Thu, 06 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2011/01/06/start2011/</guid>
+      <description>2011年已经来临，我甚至还来不及对2010年做个总结，过去的2010年是折腾的一年。回顾了09年的总结，2010年我主要完成做了： 1. 博客6</description>
+    </item>
+    
+    <item>
+      <title>Google Test交流与测试开发经验总结</title>
+      <link>https://blog.coderzh.com/2010/12/31/testing-topic/</link>
+      <pubDate>Fri, 31 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/12/31/testing-topic/</guid>
+      <description>昨天晚上做的一个讲座。想了很多，希望对这几年来的测试开发工作做一个总结。PPT花了一些心思，尽量做到配图，每个Slide尽量少的字，代码尽量</description>
+    </item>
+    
+    <item>
+      <title>TWiki安装和使用心得</title>
+      <link>https://blog.coderzh.com/2010/12/26/twiki/</link>
+      <pubDate>Sun, 26 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/12/26/twiki/</guid>
+      <description>TWiki是一个开源（GPL）的wiki程序。软件定位为“灵活、强大、易于使用的企业协作平台”，运行于Perl环境。拥有编程技能的人可以使用</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;与Lua互操作学习</title>
+      <link>https://blog.coderzh.com/2010/12/01/cpp-and-lua/</link>
+      <pubDate>Wed, 01 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/12/01/cpp-and-lua/</guid>
+      <description>今天了解了一下C++与Lua之间的互操作，感觉还算简单，不像之前不了解时那么神秘了。 下面是找到的很好的学习资料，不知道是不是原出处了，反正我</description>
+    </item>
+    
+    <item>
+      <title>Google App Engine的14宗罪</title>
+      <link>https://blog.coderzh.com/2010/11/30/goodby-google-app-engine/</link>
+      <pubDate>Tue, 30 Nov 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/11/30/goodby-google-app-engine/</guid>
+      <description>最近一位老外朋友很郁闷，使用Google App Engine平台，花了15000欧(), 却用的很不爽。于是耐心的写了一篇《Goodbye Google App Eng</description>
+    </item>
+    
+    <item>
+      <title>Lupa - Python中调用Lua</title>
+      <link>https://blog.coderzh.com/2010/11/29/lupa/</link>
+      <pubDate>Mon, 29 Nov 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/11/29/lupa/</guid>
+      <description>Lupa将LuaJIT集成到了Python模块中，可以在Python中执行Lua代码。 比较有意思，也许以后用的着，记录一下。 基本用法： Lua</description>
+    </item>
+    
+    <item>
+      <title>NancyWiki1.0.1更新 - 代码自动着色</title>
+      <link>https://blog.coderzh.com/2010/11/08/nancywiki1_0_1/</link>
+      <pubDate>Mon, 08 Nov 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/11/08/nancywiki1_0_1/</guid>
+      <description>NancyWiki1.0.1版本更新如下： 增加“索引”菜单链接。 代码自动着色。（无需指定编程语言） 修复代码中“_”被转义成“&amp;amp;# 95</description>
+    </item>
+    
+    <item>
+      <title>NX Client开发步骤</title>
+      <link>https://blog.coderzh.com/2010/10/07/nxclient-develop/</link>
+      <pubDate>Thu, 07 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/10/07/nxclient-develop/</guid>
+      <description>在freenx的svn库里有好几个NX Client工程，比如：qtnx，还有Python的实现版本gnx（仅限linux系统），因此，可以参</description>
+    </item>
+    
+    <item>
+      <title>瘦客户端那些事 - NoMachine的秘密</title>
+      <link>https://blog.coderzh.com/2010/10/07/thinclient-secret-of-nomachine/</link>
+      <pubDate>Thu, 07 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/10/07/thinclient-secret-of-nomachine/</guid>
+      <description>上篇中我们介绍了各种远程传输协议用于实现瘦客户端，在各种协议当中，NX要我要重点推荐和介绍的。理由很简单，性能！大家都知道，网络带宽、网络传</description>
+    </item>
+    
+    <item>
+      <title>关于版本控制软件</title>
+      <link>https://blog.coderzh.com/2010/09/29/version-control/</link>
+      <pubDate>Wed, 29 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/09/29/version-control/</guid>
+      <description>最近加入公司一个新的团队，发现他们使用的源代码版本控制软件是CVS，感觉自己有点倒退了，因为之前一直用的是SVN来进行版本控制的，平时自己也</description>
+    </item>
+    
+    <item>
+      <title>瘦客户端那些事 - 远程传输协议</title>
+      <link>https://blog.coderzh.com/2010/09/24/thinclient-protocol/</link>
+      <pubDate>Fri, 24 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/09/24/thinclient-protocol/</guid>
+      <description>上篇说到了关于瘦客户端的一些现状和遐想，接下来我们开始探索这种技术实现的可能。要实现瘦客户端，最重要的是选择一种客户端和服务端都能理解的沟通</description>
+    </item>
+    
+    <item>
+      <title>ASP.NET Web Application中使用链接文件</title>
+      <link>https://blog.coderzh.com/2010/09/16/build-linked-files-with-web-application/</link>
+      <pubDate>Thu, 16 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/09/16/build-linked-files-with-web-application/</guid>
+      <description>最近重构一个内部的平台系统，作为一个平台，其下有几个子系统，每个子系统有自己的网站系统。而每个网站使用的是统一的风格，统一的验证机制，反馈系</description>
+    </item>
+    
+    <item>
+      <title>Pyjamas - 用python代替javascript编写基于浏览器的应用</title>
+      <link>https://blog.coderzh.com/2010/09/16/Pyjamas-python-write-javascirpt/</link>
+      <pubDate>Thu, 16 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/09/16/Pyjamas-python-write-javascirpt/</guid>
+      <description>如果能用python代替Javascript编写基于浏览器的应用，该有多好啊。但是，Javascript是唯一一种能在浏览器里执行的语言（F</description>
+    </item>
+    
+    <item>
+      <title>发布基于GAE的个人Wiki系统 - NancyWiki</title>
+      <link>https://blog.coderzh.com/2010/09/12/nancywiki/</link>
+      <pubDate>Sun, 12 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/09/12/nancywiki/</guid>
+      <description>介绍 一个周末的时间，我写了这个Wiki系统。[](http://wiki.coderzh.com/)[NancyWiki](http://w</description>
+    </item>
+    
+    <item>
+      <title>瘦客户端那些事 - 开篇</title>
+      <link>https://blog.coderzh.com/2010/09/11/thincilent/</link>
+      <pubDate>Sat, 11 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/09/11/thincilent/</guid>
+      <description>人类活动最大的成本花费在哪里？我认为在沟通和学习上。我们从哇哇落地开始，就在不断的学习前人总结的经验。学校教育，大大加速了这一进程。随着互联</description>
+    </item>
+    
+    <item>
+      <title>Python测试开发分享感悟</title>
+      <link>https://blog.coderzh.com/2010/08/27/python-testing/</link>
+      <pubDate>Fri, 27 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/08/27/python-testing/</guid>
+      <description>今天Zoom.Quiet在公司内部分享了对Python测试开发的一些感悟，TDD以及一些开源的Python测试的库。由于一直在测试一线奋战，</description>
+    </item>
+    
+    <item>
+      <title>Python 天天美味(37) - 让python的unittest像gtest一样输出</title>
+      <link>https://blog.coderzh.com/2010/08/23/custom-python-unittestoutput-as-gtest/</link>
+      <pubDate>Mon, 23 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/08/23/custom-python-unittestoutput-as-gtest/</guid>
+      <description>Python自带的unittest已经很简单易用了，不过我一直不喜欢的是它的命令行输出，格式显得有点乱。而我比较喜欢的是gtest的命令行输</description>
+    </item>
+    
+    <item>
+      <title>(转)fork()函数的理解</title>
+      <link>https://blog.coderzh.com/2010/08/21/fork/</link>
+      <pubDate>Sat, 21 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/08/21/fork/</guid>
+      <description>对于刚刚接触Unix/Linux操作系统，在Linux下 编写多进程的人来说，fork是最难理解的概念之一：它执行一次却返回两个值。 首先我们来</description>
+    </item>
+    
+    <item>
+      <title>Chrome默认字体太小解决办法</title>
+      <link>https://blog.coderzh.com/2010/07/18/chrome-minimum-font-size/</link>
+      <pubDate>Sun, 18 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/07/18/chrome-minimum-font-size/</guid>
+      <description>当网站的字体为12px时，在Chrome里显示的非常小，看起来非常的吃力。修改的方法： 务必先关闭你的Chrome浏览器。（不先关闭的话，修改</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu中让SSH自动重连</title>
+      <link>https://blog.coderzh.com/2010/07/17/autossh/</link>
+      <pubDate>Sat, 17 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/07/17/autossh/</guid>
+      <description>Ubuntu中让SSH自动重连，简单的办法是安装autossh和expect。autossh负责自动重连，expect负责自动输入密码。 安装</description>
+    </item>
+    
+    <item>
+      <title>多彩的程序人生</title>
+      <link>https://blog.coderzh.com/2010/07/12/programming-life/</link>
+      <pubDate>Mon, 12 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/07/12/programming-life/</guid>
+      <description>常常想程序人生的问题，也常常在网上看程序人生相关的话题，但听大师讲程序人生，还是第一次。这位大师，就是侯捷。 侯捷，两岸著名技术教育者，计算机</description>
+    </item>
+    
+    <item>
+      <title>AntiXSS - 支持Html同时防止XSS攻击</title>
+      <link>https://blog.coderzh.com/2010/06/24/AntiXSS/</link>
+      <pubDate>Thu, 24 Jun 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/06/24/AntiXSS/</guid>
+      <description>跨站脚本攻击（XSS）已经不是什么新鲜的话题了，甚至很多大公司也为此吃尽苦头。最简单直接的防范方法，就是不允许任何html标签输入，对用户输</description>
+    </item>
+    
+    <item>
+      <title>人人都是全面手还是专业分工</title>
+      <link>https://blog.coderzh.com/2010/06/15/1758489/</link>
+      <pubDate>Tue, 15 Jun 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/06/15/1758489/</guid>
+      <description>美国当年打越南，武力装备都在越南之上，最终还是失败告终。有人总结了这样一个说法：美国军队虽然总人数占优，但由于其专业的分工，一个战士还配个医</description>
+    </item>
+    
+    <item>
+      <title>Python获取IAccessible接口</title>
+      <link>https://blog.coderzh.com/2010/06/05/1752141/</link>
+      <pubDate>Sat, 05 Jun 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/06/05/1752141/</guid>
+      <description>MSAA的全称是Microsoft Active Accessibility。这是类似DCOM技术。技术模型是这样的，UI程序可以暴露出一个Interfa</description>
+    </item>
+    
+    <item>
+      <title>Get IHTMLDocument2 for UI Automation in Python</title>
+      <link>https://blog.coderzh.com/2010/05/05/Get-IHTMLDocument2-UIAutomation-Python/</link>
+      <pubDate>Wed, 05 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/05/05/Get-IHTMLDocument2-UIAutomation-Python/</guid>
+      <description>Get IHTMLDocument2 interface Also see：http://support.microsoft.com/kb/249232 Here is my python implentment： Multithreading IHTMLDocument2 is thread safe, we can not</description>
+    </item>
+    
+    <item>
+      <title>Python操作IHTMLDocument2用于自动化测试</title>
+      <link>https://blog.coderzh.com/2010/05/05/python-IHTMLDocument2-automation/</link>
+      <pubDate>Wed, 05 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/05/05/python-IHTMLDocument2-automation/</guid>
+      <description>获取IHTMLDocument2接口 参考：http://support.microsoft.com/kb/249232 相应的Python实现</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(36) - 用Python实现Spy&#43;&#43;</title>
+      <link>https://blog.coderzh.com/2010/05/02/python-cookbook-pyspy/</link>
+      <pubDate>Sun, 02 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/05/02/python-cookbook-pyspy/</guid>
+      <description>Spy++是微软出品的用来获取Window窗口信息的一个小工具。实现的原理其实不难，通过调用某些特定的Windows API即可。于是，我打算</description>
+    </item>
+    
+    <item>
+      <title>成功将ubuntu9.10升级到了10.04</title>
+      <link>https://blog.coderzh.com/2010/05/02/ubuntu-upgrade-from-910-to-1004/</link>
+      <pubDate>Sun, 02 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/05/02/ubuntu-upgrade-from-910-to-1004/</guid>
+      <description>今天早上起来折腾Ubuntu10.04LTS，于是，首先我打算直接使用cn99的源通过sudo apt-get upgrade升级上来。但是升级完成后，发现</description>
+    </item>
+    
+    <item>
+      <title>(原创)攻击方式学习系列（总）</title>
+      <link>https://blog.coderzh.com/2010/04/30/security/</link>
+      <pubDate>Fri, 30 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/30/security/</guid>
+      <description>之前研究安全性测试时的一些总结，汇总一下。 (原 创)攻击方式学习之(2) - SQL注入(SQL Injection) 番外篇： 代码 安全系列(1) - Log的注入 代码 安全</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(35) - 细品lambda</title>
+      <link>https://blog.coderzh.com/2010/04/30/python-cookbook-lambda/</link>
+      <pubDate>Fri, 30 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/30/python-cookbook-lambda/</guid>
+      <description>lambda函数也叫匿名函数，即，函数没有具体的名称。先来看一个最简单例子： Python中使用lambda的话，写成这样 lambda表达式在</description>
+    </item>
+    
+    <item>
+      <title>收集的QCon 北京(Beijing) 2010 PPT 及总结</title>
+      <link>https://blog.coderzh.com/2010/04/28/qcon-beijing-2010-ppt-slideshare/</link>
+      <pubDate>Wed, 28 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/28/qcon-beijing-2010-ppt-slideshare/</guid>
+      <description>Really. JavaScript(Douglas Crockford) - http://www.slideshare.net/douglascrockford/really-javascript-3771995 Big Data in Real-Time at Twitter(Nick Kallen) - http://www.slideshare.net/nkallen/q-con-3770885 3. 让测试敏捷起来(段念) - http://www.slideboom.com/presentations/1265</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(34) - Decorators详解</title>
+      <link>https://blog.coderzh.com/2010/04/27/python-cookbook33-Decorators/</link>
+      <pubDate>Tue, 27 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/27/python-cookbook33-Decorators/</guid>
+      <description>Python中的Decorators表面看起来很像C#的Attribute，其实不然，Python的Decorators和C#的Attrib</description>
+    </item>
+    
+    <item>
+      <title>PyCharm - 又一强大Python IDE</title>
+      <link>https://blog.coderzh.com/2010/04/26/PyCharm/</link>
+      <pubDate>Mon, 26 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/26/PyCharm/</guid>
+      <description>PyCharm是由JetBrains打造的一款Python IDE。我们知道，VS2010的重构插件Resharper就是出自JetBrain</description>
+    </item>
+    
+    <item>
+      <title>C# 4.0新特性学习资料汇总</title>
+      <link>https://blog.coderzh.com/2010/04/24/csharp4-new-features/</link>
+      <pubDate>Sat, 24 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/24/csharp4-new-features/</guid>
+      <description>今天了解了一下C# 4.0的一些新特性，并在VS2010里试了几把，主要的特性包括： 1. Dynamic binding 2. Named and Optional Arguments 3. Features for COM interop 4. Variance 5. Relationship with Visual Basic 学习资料 New Features in C# 4.0</description>
+    </item>
+    
+    <item>
+      <title>ASP.NET4.0新的语法用于HTML Encoding</title>
+      <link>https://blog.coderzh.com/2010/04/21/aspnet4-htmlencoding/</link>
+      <pubDate>Wed, 21 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/21/aspnet4-htmlencoding/</guid>
+      <description>从ScottGu大神那里看到的，ASP.NET4.0启用新的&amp;lt;%: %&amp;gt;语法用于HTML编码。Html Encoding的一般用于防</description>
+    </item>
+    
+    <item>
+      <title>三言两语话敏捷(2) - 持续集成</title>
+      <link>https://blog.coderzh.com/2010/04/21/talk-about-agile-continuousIntegration/</link>
+      <pubDate>Wed, 21 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/21/talk-about-agile-continuousIntegration/</guid>
+      <description>这篇，我只谈“持续集成”。 有人说敏捷必须有持续集成，有人说持续集成就是敏捷。如果你还不了解持续集成，赶紧看看《持续集成》第二版的中译本。 持续</description>
+    </item>
+    
+    <item>
+      <title>三言两语话敏捷(1) - 反馈</title>
+      <link>https://blog.coderzh.com/2010/04/18/talk-about-agile-1/</link>
+      <pubDate>Sun, 18 Apr 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/04/18/talk-about-agile-1/</guid>
+      <description>最近很多人都在体验VS2010，我忙着很多事，没有去体验。但我了解到其中一点，VS2010为敏捷开发提供了更多的支持。以前我所认为的敏捷开发</description>
+    </item>
+    
+    <item>
+      <title>三年之痒</title>
+      <link>https://blog.coderzh.com/2010/03/27/three-years-work-thinking/</link>
+      <pubDate>Sat, 27 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/03/27/three-years-work-thinking/</guid>
+      <description>眼看就要工作满三年了，对于大多数人来说是一个特殊的时期，对于我来说，也不例外。我也常常在想，我自己的定位是什么，我以后想要做什么，我该怎么选</description>
+    </item>
+    
+    <item>
+      <title>Android游戏开发 - NancyGLines设计</title>
+      <link>https://blog.coderzh.com/2010/03/23/android-nancyglines-design/</link>
+      <pubDate>Tue, 23 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/03/23/android-nancyglines-design/</guid>
+      <description>今天把之前用Python实现的NancyGLines游戏迁移到了Android中，虽然现在还只是算个毛坯版，界面比较丑陋，功能也不够完善，但</description>
+    </item>
+    
+    <item>
+      <title>Android应用开发初印象</title>
+      <link>https://blog.coderzh.com/2010/03/20/android-first/</link>
+      <pubDate>Sat, 20 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/03/20/android-first/</guid>
+      <description>前段时间终于拿下了蓄谋已久的HTC G2 TIM，并且在手机上安装了各种各样的软件好好的玩了一把。总体感觉Android的应用相对来说还是少了一些</description>
+    </item>
+    
+    <item>
+      <title>gtest参数化测试代码示例</title>
+      <link>https://blog.coderzh.com/2010/03/19/gtest_demo/</link>
+      <pubDate>Fri, 19 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/03/19/gtest_demo/</guid>
+      <description>在玩转 Google开源C++单元测试框架Google Test系列(gtest)之四 - 参数化中已经介绍过了如何使用gtest进行参数化测试。在</description>
+    </item>
+    
+    <item>
+      <title>把操作系统的cmd命令行搞崩溃</title>
+      <link>https://blog.coderzh.com/2010/03/17/cmd-crash/</link>
+      <pubDate>Wed, 17 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/03/17/cmd-crash/</guid>
+      <description>今天偶然点了几下cmd命令行属性对话框的几个属性，cmd就崩溃了。重试几次，都能崩溃，然后又在同事的机器上，试了一下，也崩了。在公司装的wi</description>
+    </item>
+    
+    <item>
+      <title>白话云计算</title>
+      <link>https://blog.coderzh.com/2010/03/13/talk-cloudcomputing/</link>
+      <pubDate>Sat, 13 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/03/13/talk-cloudcomputing/</guid>
+      <description>凭着我对云计算的一知半解，用大白话表达一下对云计算的见解，如有不对的地方，也希望能够指出。首先，我们都知道，云计算现在很热，很多大公司，像G</description>
+    </item>
+    
+    <item>
+      <title>通过NBehave了解BDD(Behavior Driven Development)</title>
+      <link>https://blog.coderzh.com/2010/02/28/BDD-By-NBehave/</link>
+      <pubDate>Sun, 28 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/02/28/BDD-By-NBehave/</guid>
+      <description>之前写过一篇介绍BDD的文章(优美的测试代码 - 行为驱动开发(BDD))，很多同学都表示很感兴趣，但感觉过于抽象。因此，本文通过使用NBeha</description>
+    </item>
+    
+    <item>
+      <title>春节随想</title>
+      <link>https://blog.coderzh.com/2010/02/22/thinking2010/</link>
+      <pubDate>Mon, 22 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/02/22/thinking2010/</guid>
+      <description>今天开始上班了。虽然春节已经过去，趁着大家还在回味春节的点滴，向所有订阅我博客的朋友拜个晚年了！您的订阅对我来说是莫大的支持，也是让我坚持的</description>
+    </item>
+    
+    <item>
+      <title>《xUnit Test Patterns》学习笔记7(完) - 总结</title>
+      <link>https://blog.coderzh.com/2010/02/07/xUnit-Test-Patterns7-End/</link>
+      <pubDate>Sun, 07 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/02/07/xUnit-Test-Patterns7-End/</guid>
+      <description>总体来说，这本书是不错的。后面的第二部分和第三部分，主要针对Test Smells和Test Patterns进行了更加具体的描述，主要的内容和</description>
+    </item>
+    
+    <item>
+      <title>VirtualPathProvider注册的问题</title>
+      <link>https://blog.coderzh.com/2010/01/31/1660390/</link>
+      <pubDate>Sun, 31 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/31/1660390/</guid>
+      <description>MSDN里有描述，VirtualPathProvider只允许在两个地方注册： App_Code目录中任意类的AppInitialize静态方</description>
+    </item>
+    
+    <item>
+      <title>《xUnit Test Patterns》学习笔记6 - Test Double</title>
+      <link>https://blog.coderzh.com/2010/01/31/xUnit-Test-Patterns6-Test-Double/</link>
+      <pubDate>Sun, 31 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/31/xUnit-Test-Patterns6-Test-Double/</guid>
+      <description>我不知道Test Double翻译成中文是什么，测试替身？Test Double就像是陈龙大哥电影里的替身，起到以假乱真的作用。在单元测试时，使</description>
+    </item>
+    
+    <item>
+      <title>将母版页或ASPX等其他资源编译到DLL，在多个ASP.NET工程中共享</title>
+      <link>https://blog.coderzh.com/2010/01/26/Sharing-Master-Pages-By-DLL/</link>
+      <pubDate>Tue, 26 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/26/Sharing-Master-Pages-By-DLL/</guid>
+      <description>这篇文章的标题实在不好取，因为需求比较复杂：希望将母版页或ASPX等其他资源编译到一个动态链接库中，然后在Web Application中添加</description>
+    </item>
+    
+    <item>
+      <title>《xUnit Test Patterns》学习笔记5 - xUnit基础</title>
+      <link>https://blog.coderzh.com/2010/01/24/xUnit-Test-Patterns-5/</link>
+      <pubDate>Sun, 24 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/24/xUnit-Test-Patterns-5/</guid>
+      <description>这几节我看的比较快一些，因为内容之间其实是有联系的，所以合在一起做一个笔记。6-10节主要介绍了什么是Fixture，如何保证一个Fresh</description>
+    </item>
+    
+    <item>
+      <title>激动 - 《赢在测试：中国软件测试先行者之道》</title>
+      <link>https://blog.coderzh.com/2010/01/24/win-in-testing/</link>
+      <pubDate>Sun, 24 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/24/win-in-testing/</guid>
+      <description>今天睡了个懒觉，起来打开Google Reader看到一本关于测试的新书：《赢在测试：中国软件测试先行者之道》，很激动，因为第九章是华姐的“服</description>
+    </item>
+    
+    <item>
+      <title>《xUnit Test Patterns》学习笔记4 - Principles of Test Automation</title>
+      <link>https://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns-4/</link>
+      <pubDate>Sat, 23 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns-4/</guid>
+      <description>自动化测试过程中，有一些基本的原则，就如同宣言(Manifesto)。由于大部分的原则在前面其实都提到的，因此，有的不做太多说明了。 原则：W</description>
+    </item>
+    
+    <item>
+      <title>《xUnit Test Patterns》学习笔记系列</title>
+      <link>https://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns/</link>
+      <pubDate>Sat, 23 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/23/xUnit-Test-Patterns/</guid>
+      <description>《xUnit Test Patterns》学习笔记1 - Test Smell 《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation 《xUnit Test Patterns》学习笔记</description>
+    </item>
+    
+    <item>
+      <title>《xUnit Test Patterns》学习笔记3 - Philosophy of Test Automation</title>
+      <link>https://blog.coderzh.com/2010/01/21/xUnit-Test-Patterns-3/</link>
+      <pubDate>Thu, 21 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/21/xUnit-Test-Patterns-3/</guid>
+      <description>这一章主要讲自动化测试的原则。前面的章节介绍了很多测试的思想，而思想的东西难免有点虚，这一章就是告诉你，遇到了具体的什么问题时，应该怎么办。</description>
+    </item>
+    
+    <item>
+      <title>《xUnit Test Patterns》学习笔记2 - Goal Of Test Automation</title>
+      <link>https://blog.coderzh.com/2010/01/18/xUnit-Test-Patterns-2/</link>
+      <pubDate>Mon, 18 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/18/xUnit-Test-Patterns-2/</guid>
+      <description>或许有人觉得单元测试可有可无，因为觉得需要付出太多的精力，而客户并不需要它。这就涉及到投资回报率的问题，其实所付出的用于测试的投资，往往会收</description>
+    </item>
+    
+    <item>
+      <title>《xUnit Test Patterns》学习笔记1 - Test Smell</title>
+      <link>https://blog.coderzh.com/2010/01/17/xUnit-Test-Patterns-1/</link>
+      <pubDate>Sun, 17 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/17/xUnit-Test-Patterns-1/</guid>
+      <description>这本书找来很久了，一直没读。关于软件测试的好书相当少，对于测试代码的重构及模式的书就更加难得了。虽然我才读了前几章，给我的感受是，这本书确实</description>
+    </item>
+    
+    <item>
+      <title>Python查询Google PageRank</title>
+      <link>https://blog.coderzh.com/2010/01/11/python-googlerank/</link>
+      <pubDate>Mon, 11 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/11/python-googlerank/</guid>
+      <description>Corey Goldberg为我们实现的Python脚本，用于查询Google PageRank。Corey Goldberg还有很多很好玩的开源项目，比</description>
+    </item>
+    
+    <item>
+      <title>编写优美的GTest测试案例</title>
+      <link>https://blog.coderzh.com/2010/01/09/beautiful-testcase/</link>
+      <pubDate>Sat, 09 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/09/beautiful-testcase/</guid>
+      <description>使用gtest也有很长一段时间了，这期间也积累了一些经验，所以分享一下。GTest为我们提供了便捷的测试框架，让我们只需要关注案例本身。如何</description>
+    </item>
+    
+    <item>
+      <title>时间管理GTD工具</title>
+      <link>https://blog.coderzh.com/2010/01/03/1638096/</link>
+      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/03/1638096/</guid>
+      <description>GTD，Getting Things Done的缩写。来自于David Allen的一本畅销书《Getting Things Done》。GTD的核心理念在于只有将你心中</description>
+    </item>
+    
+    <item>
+      <title>《深入浅出JavaScript》学习笔记</title>
+      <link>https://blog.coderzh.com/2010/01/02/1637943/</link>
+      <pubDate>Sat, 02 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/02/1637943/</guid>
+      <description>有一个与Script相反的标签: noscript，用于在javascript不可用时显示内容。 分号是可选的，但最好使用它。 大括号后面不需要使</description>
+    </item>
+    
+    <item>
+      <title>我的测试生活感悟5 - 不要被代码覆盖率蒙蔽双眼</title>
+      <link>https://blog.coderzh.com/2010/01/02/MyTestThinking5/</link>
+      <pubDate>Sat, 02 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/02/MyTestThinking5/</guid>
+      <description>新年新开始，继续我的测试生活感悟。“代码覆盖率”是一个有意思的话题，围绕它的讨论有很多。基本上，人们都认识到了，代码覆盖率并不能说明测试的好</description>
+    </item>
+    
+    <item>
+      <title>2010年01月01日0时0分 - 总结我的2009</title>
+      <link>https://blog.coderzh.com/2010/01/01/1637239/</link>
+      <pubDate>Fri, 01 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/01/1637239/</guid>
+      <description>每年这个时候，很多人都开始总结，我也来一个总结。月光博客写了400篇，老赵写了250篇，阮一峰写了150篇，我数了一下，2009年我写了49</description>
+    </item>
+    
+    <item>
+      <title>Tornado Unit Testing - Tornado应用的单元测试</title>
+      <link>https://blog.coderzh.com/2010/01/01/Tornado-Unit-Testing/</link>
+      <pubDate>Fri, 01 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2010/01/01/Tornado-Unit-Testing/</guid>
+      <description>之前在测试Django应用时，使用了非常方便的django.test.TestCase。在测试Tornado时，我也包装了一个TestCas</description>
+    </item>
+    
+    <item>
+      <title>Emacs中打造强大的Python IDE</title>
+      <link>https://blog.coderzh.com/2009/12/26/emacspythonide/</link>
+      <pubDate>Sat, 26 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/12/26/emacspythonide/</guid>
+      <description>本文将介绍，在Emacs中，通过各种扩展，打造强大的Python IDE环境，包括Snippet工具，智能提示，自动补全，重构工具，调试以及G</description>
+    </item>
+    
+    <item>
+      <title>最常用的Emacs的基本操作</title>
+      <link>https://blog.coderzh.com/2009/12/26/CommonEmacs/</link>
+      <pubDate>Sat, 26 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/12/26/CommonEmacs/</guid>
+      <description>什么是Emacs？ Emacs是一种强大的文本编辑器，在程序员和其他以技术工作为主的计算机用户中广受欢迎。EMACS，即Editor MACro</description>
+    </item>
+    
+    <item>
+      <title>NancyBlog - 我的Google App Engine Blog</title>
+      <link>https://blog.coderzh.com/2009/12/25/nancyblog/</link>
+      <pubDate>Fri, 25 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/12/25/nancyblog/</guid>
+      <description>我的Google App Engine博客地址：http://blog.coderzh.com (由于我们伟大的。。。备用地址：http://pyzh</description>
+    </item>
+    
+    <item>
+      <title>成功将ubuntu8.10升级到了9.10</title>
+      <link>https://blog.coderzh.com/2009/12/07/1618923/</link>
+      <pubDate>Mon, 07 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/12/07/1618923/</guid>
+      <description>中间费了不少周折，折腾的总算成功升级上来了。其他方面都很满意，唯一不满意的是系统启动和关机时候的声音，“嘣”的一声，很吓人。 需要提醒的是，选</description>
+    </item>
+    
+    <item>
+      <title>Django单元测试案例代码覆盖率统计 - 自定义test runner</title>
+      <link>https://blog.coderzh.com/2009/12/01/djangocoverage/</link>
+      <pubDate>Tue, 01 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/12/01/djangocoverage/</guid>
+      <description>如何在Django中编写单元测试案例，以及使用测试用的test_setting和test runner，见：django单元测试历险记 代码很好</description>
+    </item>
+    
+    <item>
+      <title>Python 代码覆盖率统计工具 coverage.py</title>
+      <link>https://blog.coderzh.com/2009/12/01/pythoncoverage/</link>
+      <pubDate>Tue, 01 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/12/01/pythoncoverage/</guid>
+      <description>coverage.py是一个用来统计python程序代码覆盖率的工具。它使用起来非常简单，并且支持最终生成界面友好的html报告。在最新版本</description>
+    </item>
+    
+    <item>
+      <title>google app engine备忘录</title>
+      <link>https://blog.coderzh.com/2009/11/25/1610939/</link>
+      <pubDate>Wed, 25 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/11/25/1610939/</guid>
+      <description>删除本地数据库 http://code.google.com/appengine/docs/python/tools/devserver.html [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh</description>
+    </item>
+    
+    <item>
+      <title>django单元测试历险记</title>
+      <link>https://blog.coderzh.com/2009/11/15/1603315/</link>
+      <pubDate>Sun, 15 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/11/15/1603315/</guid>
+      <description>最近需要测试一个服务器端的django项目，查看了一下django的文档，发现django为了更加方便的对web应用进行测试，提供了一些便捷</description>
+    </item>
+    
+    <item>
+      <title>使用UI Automation库用于UI自动化测试</title>
+      <link>https://blog.coderzh.com/2009/11/14/1603109/</link>
+      <pubDate>Sat, 14 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/11/14/1603109/</guid>
+      <description>UI Automation也不是什么新东西了，很久以前曾经用过一次，最近又在一个测试中打算使用，于是又翻了一遍MSDN。MSDN里的介绍确实非常</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;中根据HKey查找当前打开的注册表路径Key Name</title>
+      <link>https://blog.coderzh.com/2009/11/10/1599732/</link>
+      <pubDate>Tue, 10 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/11/10/1599732/</guid>
+      <description>在StackOverFlow里找到的，一定要收藏起来。 输出： [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://w</description>
+    </item>
+    
+    <item>
+      <title>ReaderWriterLock（转）</title>
+      <link>https://blog.coderzh.com/2009/10/20/1586268/</link>
+      <pubDate>Tue, 20 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/10/20/1586268/</guid>
+      <description>ReaderWriterLock类 通常来讲，一个类型的实例对于并行的读操作是线程安全的，但是并行地根性操作则不是（并行地读和更新也不是）。 这</description>
+    </item>
+    
+    <item>
+      <title>.NET Remoting相关的</title>
+      <link>https://blog.coderzh.com/2009/10/18/1585553/</link>
+      <pubDate>Sun, 18 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/10/18/1585553/</guid>
+      <description>资料： http://code.google.com/p/coderzh/source/browse/trunk/Apress%20-%20Advanced%20.NET%20Remoting%20(CSharp%20Edition).chm 需要弄懂的几件事： 这东西的由来，和DCOM，WebService的区别？优势在哪？ 为啥远程对象成员使用NLog对象可以吗？ .NET Remo</description>
+    </item>
+    
+    <item>
+      <title>使用SharpSvn方便调用svn</title>
+      <link>https://blog.coderzh.com/2009/10/18/sharpsvn/</link>
+      <pubDate>Sun, 18 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/10/18/sharpsvn/</guid>
+      <description>需要调用svn去做一些操作时，有两种方式：调用svn.exe命令行和调用svn api接口。我不太喜欢调用命令行的方式，是因为它需要依赖一个外</description>
+    </item>
+    
+    <item>
+      <title>通过.NET Remoting调用CCNET接口的方法</title>
+      <link>https://blog.coderzh.com/2009/10/18/CallCCNETByRemoting/</link>
+      <pubDate>Sun, 18 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/10/18/CallCCNETByRemoting/</guid>
+      <description>像我们用的cctray，可以设置.NET Remoting的方式添加一个主机，然后获取服务器编译的结果并提供手工触发编译的功能。因为工作需要，</description>
+    </item>
+    
+    <item>
+      <title>《微软的软件测试之道》(How We Test Software at Microsoft)</title>
+      <link>https://blog.coderzh.com/2009/10/02/1577396/</link>
+      <pubDate>Fri, 02 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/10/02/1577396/</guid>
+      <description>好早就下了英文电子版，一直没有看，如今中文版已经出来并且已经可以买到了，准备入手一本。 [温馨提示]：该文章由原博客园导入而来，如排版效果不佳</description>
+    </item>
+    
+    <item>
+      <title>我的测试生活感悟4 - 谈谈面试</title>
+      <link>https://blog.coderzh.com/2009/10/02/1577408/</link>
+      <pubDate>Fri, 02 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/10/02/1577408/</guid>
+      <description>我是一个没有什么经验的面试官，偶尔才参与几次面试。发现面试他人是一件技术要求非常高的工作，我们必须在很短的时间内了解一个人，如果方法不当，很</description>
+    </item>
+    
+    <item>
+      <title>我的测试生活感悟3 - 淘宝的接口测试白皮书</title>
+      <link>https://blog.coderzh.com/2009/09/08/MyTestingThink3/</link>
+      <pubDate>Tue, 08 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/09/08/MyTestingThink3/</guid>
+      <description>今天晚上回来后看到淘宝测试团队发出来的《接口测试白皮书》，一口气将它读完，写的还是相当不错的，有非常多值得借鉴和学习的地方。 在工作的流程上，</description>
+    </item>
+    
+    <item>
+      <title>我的测试生活感悟2 - Art Of Unit Testing</title>
+      <link>https://blog.coderzh.com/2009/09/07/MyTestingThink2/</link>
+      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/09/07/MyTestingThink2/</guid>
+      <description>怎么定义一个好的测试案例呢？好的测试案例应该是在N年后还能运行良好并易于维护的。 TOOD - Testabled Object-Oriended Design。作者也提到了这个颇有争议的问题，许多人</description>
+    </item>
+    
+    <item>
+      <title>我的测试生活感悟1</title>
+      <link>https://blog.coderzh.com/2009/09/06/MyTestingThink1/</link>
+      <pubDate>Sun, 06 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/09/06/MyTestingThink1/</guid>
+      <description>如果您觉得有用，请您告诉我，谢谢！[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.co</description>
+    </item>
+    
+    <item>
+      <title>Visual Studio 中创建带有向导的项目模板</title>
+      <link>https://blog.coderzh.com/2009/08/09/1542120/</link>
+      <pubDate>Sun, 09 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/08/09/1542120/</guid>
+      <description>对于测试开发来说，建立新工程的次数要远远高于专职开发人员。由于每次建立一个测试工程都要例行公事的设置一大堆属性，例行公事的写一些同样的代码，</description>
+    </item>
+    
+    <item>
+      <title>RubyCocoa</title>
+      <link>https://blog.coderzh.com/2009/08/06/1540016/</link>
+      <pubDate>Thu, 06 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/08/06/1540016/</guid>
+      <description>RubyCocoa是一个Mac OS X的界面开发包，你可以通过它使用面向对象的Ruby进行Cocoa开发。你可以用Ruby来创建并使用Cocoa</description>
+    </item>
+    
+    <item>
+      <title>以后学习一下Ruby，再了解一下其自动化测试框架Watir</title>
+      <link>https://blog.coderzh.com/2009/08/05/1540005/</link>
+      <pubDate>Wed, 05 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/08/05/1540005/</guid>
+      <description>Ruby： http://rubyforge.org/frs/?group_id=167Watir: http://rubyforge.org/frs/?group_id=104Watir用户手册: http://wiki.openqa.org/display/WTR/TutorialWatir 主页：http://wtr.r</description>
+    </item>
+    
+    <item>
+      <title>gtest中如何跳出当前测试案例</title>
+      <link>https://blog.coderzh.com/2009/08/02/1536901/</link>
+      <pubDate>Sun, 02 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/08/02/1536901/</guid>
+      <description>在前面的玩转gtest - 断言中， 我们提到了ASSERT_*系列的断言只是在当前函数返回，并非退出当前测试案例，因为ASSERT_*系列是通过</description>
+    </item>
+    
+    <item>
+      <title>UI Automation Out of Control</title>
+      <link>https://blog.coderzh.com/2009/08/02/1536914/</link>
+      <pubDate>Sun, 02 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/08/02/1536914/</guid>
+      <description>From：http://blogs.msdn.com/imtesty/archive/2009/08/01/automation.aspx **Not</description>
+    </item>
+    
+    <item>
+      <title>优美的测试代码 - 行为驱动开发(BDD)</title>
+      <link>https://blog.coderzh.com/2009/07/26/1531633/</link>
+      <pubDate>Sun, 26 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/07/26/1531633/</guid>
+      <description>可理解的代码非常重要，测试代码也是如此。在我看来，优秀的测试代码，必须做到一个重要的事情就是保持测试逻辑的清晰。一个完整的测试案例通常包括三</description>
+    </item>
+    
+    <item>
+      <title>文件批量搜索替换工具比较</title>
+      <link>https://blog.coderzh.com/2009/07/25/1530840/</link>
+      <pubDate>Sat, 25 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/07/25/1530840/</guid>
+      <description>今天尝试和比较了各种各样的文件搜索替换工具，比如：Search And Replace, Actual Search &amp;amp; Replace, PowerGREP, AKS Text Replacer, TextCrawler, Quick Search and Replace, Multiple File Search and Replace 等等。我对工具的要求并不高，只要求支持</description>
+    </item>
+    
+    <item>
+      <title>期待《 Beautiful Testing 》( 测试之美 )</title>
+      <link>https://blog.coderzh.com/2009/07/22/1528249/</link>
+      <pubDate>Wed, 22 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/07/22/1528249/</guid>
+      <description>之前看过《Beautiful Code》，相当不错。今天在testingreflections里看到Karen N. Johnson发的一篇文章，说</description>
+    </item>
+    
+    <item>
+      <title>程序员的共鸣 - 读《卓有成效的程序员》</title>
+      <link>https://blog.coderzh.com/2009/07/18/1526082/</link>
+      <pubDate>Sat, 18 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/07/18/1526082/</guid>
+      <description>最近读了《卓有成效的程序员》，感觉收获颇大。这是一本写给程序员的难得的好书。书中大都是一些浅显的道理，但作者将这些东西加以收集、归纳、总结，</description>
+    </item>
+    
+    <item>
+      <title>正则表达式 - 你必须掌握的</title>
+      <link>https://blog.coderzh.com/2009/07/16/1525170/</link>
+      <pubDate>Thu, 16 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/07/16/1525170/</guid>
+      <description>很多人不愿意修改公共代码，因为公共代码一修改，将可能影响到别的工程代码，必须同时修改大量的别的工程代码。对于简单的修改，比如函数名修改，使用</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;代码覆盖率工具Coverage Validator</title>
+      <link>https://blog.coderzh.com/2009/07/11/1521706/</link>
+      <pubDate>Sat, 11 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/07/11/1521706/</guid>
+      <description>市面上的C++代码覆盖率工具大都收费，Coverage Validator也不例外。Coverage Validator应该少有人听过，我也是在</description>
+    </item>
+    
+    <item>
+      <title>CoverageMeter中关于“line coverage”不准确的解释</title>
+      <link>https://blog.coderzh.com/2009/07/11/1521739/</link>
+      <pubDate>Sat, 11 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/07/11/1521739/</guid>
+      <description>在之前的代码覆盖率浅谈中其实已经谈到了关于行覆盖的缺陷，但由于行覆盖足够简单，还是被广泛使用着。另我惊讶的是，作为一个商业的C++代码覆盖率</description>
+    </item>
+    
+    <item>
+      <title>PyQt4学习资料汇总</title>
+      <link>https://blog.coderzh.com/2009/06/28/1512654/</link>
+      <pubDate>Sun, 28 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/06/28/1512654/</guid>
+      <description>一个月前研究了下PyQt4，感觉比较不错。相比wxpython，界面美观了很多，并且将界面设计与代码逻辑很好的分离了开来。关于PyQt4的资</description>
+    </item>
+    
+    <item>
+      <title>程序员的信仰</title>
+      <link>https://blog.coderzh.com/2009/06/13/1500042/</link>
+      <pubDate>Sat, 13 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/06/13/1500042/</guid>
+      <description>老婆经常夸我有想法，得益于老婆大人的鼓励，我才打算将自己平时所想，所总结的东西写下来。人是需要不断总结的，有总结才会有进步。所谓总结，并不一</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之八 - 打造自己的单元测试框架</title>
+      <link>https://blog.coderzh.com/2009/04/12/1434155/</link>
+      <pubDate>Sun, 12 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/12/1434155/</guid>
+      <description>一、前言 上一篇我们分析了gtest的一些内部实现，总的来说整体的流程并不复杂。本篇我们就尝试编写一个精简版本的C++单元测试框架：nancy</description>
+    </item>
+    
+    <item>
+      <title>试用了Eric4，打算在Eric4中使用Pyqt4写个GUI程序</title>
+      <link>https://blog.coderzh.com/2009/04/12/1433989/</link>
+      <pubDate>Sun, 12 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/12/1433989/</guid>
+      <description>之前一直用WingIDE写Python代码，虽然WingIDE在很多方面非常优秀，但是它存在一些问题： 速度太慢，有时候自己只是想写一个小脚本</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之七 - 深入解析gtest</title>
+      <link>https://blog.coderzh.com/2009/04/11/1433744/</link>
+      <pubDate>Sat, 11 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/11/1433744/</guid>
+      <description>一、前言 “深入解析”对我来说的确有些难度，所以我尽量将我学习到和观察到的gtest内部实现介绍给大家。本文算是抛砖引玉吧，只能是对gtest</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之六 - 运行参数</title>
+      <link>https://blog.coderzh.com/2009/04/10/1432789/</link>
+      <pubDate>Fri, 10 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/10/1432789/</guid>
+      <description>一、前言 使用gtest编写的测试案例通常本身就是一个可执行文件，因此运行起来非常方便。同时，gtest也为我们提供了一系列的运行参数（环境变</description>
+    </item>
+    
+    <item>
+      <title>Google App Engine已经支持JAVA了</title>
+      <link>https://blog.coderzh.com/2009/04/08/1431954/</link>
+      <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/08/1431954/</guid>
+      <description>虽然我对JAVA不怎么感冒，我还是不得不感叹一下Google动作的迅速，还有消息称Google有员工正在利用20%的时间让GAE支持Perl</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之五 - 死亡测试</title>
+      <link>https://blog.coderzh.com/2009/04/08/1432043/</link>
+      <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/08/1432043/</guid>
+      <description>一、前言 “死亡测试”名字比较恐怖，这里的“死亡”指的的是程序的崩溃。通常在测试过程中，我们需要考虑各种各样的输入，有的输入可能直接导致程序崩</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之四 - 参数化</title>
+      <link>https://blog.coderzh.com/2009/04/08/1431297/</link>
+      <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/08/1431297/</guid>
+      <description>一、前言 在设计测试案例时，经常需要考虑给被测函数传入不同的值的情况。我们之前的做法通常是写一个通用方法，然后编写在测试案例调用它。即使使用了</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)(总)</title>
+      <link>https://blog.coderzh.com/2009/04/06/1426755/</link>
+      <pubDate>Mon, 06 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/06/1426755/</guid>
+      <description>前段时间学习和了解了下Google的开源C++单元测试框架Google Test，简称gtest，非常的不错。 我们原来使用的是自己实现的一套单</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之一 - 初识gtest</title>
+      <link>https://blog.coderzh.com/2009/04/06/1426758/</link>
+      <pubDate>Mon, 06 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/06/1426758/</guid>
+      <description>一、前言 本篇将介绍一些gtest的基本使用，包括下载，安装，编译，建立我们第一个测试Demo工程，以及编写一个最简单的测试案例。 二、下载 如果</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之三 - 事件机制</title>
+      <link>https://blog.coderzh.com/2009/04/06/1430396/</link>
+      <pubDate>Mon, 06 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/06/1430396/</guid>
+      <description>一、前言 gtest提供了多种事件机制，非常方便我们在案例之前或之后做一些操作。总结一下gtest的事件一共有3种： 全局的，所有案例执行前后。</description>
+    </item>
+    
+    <item>
+      <title>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之二 - 断言</title>
+      <link>https://blog.coderzh.com/2009/04/06/1430364/</link>
+      <pubDate>Mon, 06 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/06/1430364/</guid>
+      <description>一、前言 这篇文章主要总结gtest中的所有断言相关的宏。 gtest中，断言的宏可以理解为分为两类，一类是ASSERT系列，一类是EXPECT</description>
+    </item>
+    
+    <item>
+      <title>CCNET&#43;MSBuild&#43;SVN实时构建的优化总结</title>
+      <link>https://blog.coderzh.com/2009/04/05/1429858/</link>
+      <pubDate>Sun, 05 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/04/05/1429858/</guid>
+      <description>本文不是介绍如何使用CCNET+MSBuild+SVN构建自动编译系统，相关的内容可以从很多地方获取，可以再园子里搜一下。 随着我们的SVN库</description>
+    </item>
+    
+    <item>
+      <title>代码覆盖率浅谈</title>
+      <link>https://blog.coderzh.com/2009/03/29/1424344/</link>
+      <pubDate>Sun, 29 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/03/29/1424344/</guid>
+      <description>在做单元测试时，代码覆盖率常常被拿来作为衡量测试好坏的指标，甚至，用代码覆盖率来考核测试任务完成情况，比如，代码覆盖率必须达到80％或 90％</description>
+    </item>
+    
+    <item>
+      <title>代码覆盖率工具大全</title>
+      <link>https://blog.coderzh.com/2009/03/21/1418355/</link>
+      <pubDate>Sat, 21 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/03/21/1418355/</guid>
+      <description>BullseyeCoverage Kind of Tool Code Coverage Analyzer for C++/C Organization Bullseye Testing Technology http://www.bullseye.com/ Software Description BullseyeCoverage is a full-featured code coverage analyzer for C++/C running on Microsoft and Unix operating systems. BullseyeCoverage quickly finds untested code and measures testing completeness. BullseyeCoverage increases testing productivity by showing you the regions of your source code that are not adequately tested. Platforms Windows and Unix Entry updated January 7, 2003. Insure++ http://www.parasoft.com/</description>
+    </item>
+    
+    <item>
+      <title>最近遇到个关于接口的奇怪的问题</title>
+      <link>https://blog.coderzh.com/2009/03/19/1416192/</link>
+      <pubDate>Thu, 19 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/03/19/1416192/</guid>
+      <description>接口的作用众所周知了，而且C#的接口，必须明确两点： 1.必须实现接口中定义的方法、属性等，原型必须一样（返回值类型、函数名，参数类型） 2.实</description>
+    </item>
+    
+    <item>
+      <title>装上Window7</title>
+      <link>https://blog.coderzh.com/2009/03/19/1416114/</link>
+      <pubDate>Thu, 19 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/03/19/1416114/</guid>
+      <description>今天把Window7的装上了，7057的版本。 之前听了几次Window7的讲座，被Window7吸引了，今天晚上装上后感觉非常不错 ！赞一个！</description>
+    </item>
+    
+    <item>
+      <title>Mono，想说爱你不容易</title>
+      <link>https://blog.coderzh.com/2009/02/18/1393510/</link>
+      <pubDate>Wed, 18 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/02/18/1393510/</guid>
+      <description>看了《在Mono平台开发前你应该知道》非常有感触，特别是开头的那句话：在Mono平台开发前应该做的第一个事情就是，调整好心情，降低期望值 没有</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu8.10安装小记</title>
+      <link>https://blog.coderzh.com/2009/02/14/1386531/</link>
+      <pubDate>Sat, 14 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/02/14/1386531/</guid>
+      <description>如果你还没有玩过Ubuntu，赶紧装一个试试吧。安装过程非常的简单，可以直接在Windows中安装一般的软件一样来安装它。之前玩过Ubunt</description>
+    </item>
+    
+    <item>
+      <title>Java学习小记</title>
+      <link>https://blog.coderzh.com/2009/02/02/1382475/</link>
+      <pubDate>Mon, 02 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/02/02/1382475/</guid>
+      <description>实例化对象时提供重载方法。 [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/co</description>
+    </item>
+    
+    <item>
+      <title>ESAPI = Enterprise Security API</title>
+      <link>https://blog.coderzh.com/2009/01/16/1377140/</link>
+      <pubDate>Fri, 16 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/01/16/1377140/</guid>
+      <description>[](http://www.youtube.com/watch?v=QAPD1jPn04g &amp;ldquo;http://www.youtube.com/watch?v=QAPD1jPn04g&amp;quot;) 下面是OWASP里的说明，其实简单一点来说，ESAPI就是为编写出更加安全的代码设计出来的一些API，方便使用者调用，从而方便的编写安全</description>
+    </item>
+    
+    <item>
+      <title>JSF简介</title>
+      <link>https://blog.coderzh.com/2009/01/16/1377152/</link>
+      <pubDate>Fri, 16 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/01/16/1377152/</guid>
+      <description>由于接触Java不多，经常会出现一些陌生的东西，当然对于属性Java的人来说是很简单的东西了。今天了解了一下什么是JSF，大致了解到JSF其</description>
+    </item>
+    
+    <item>
+      <title>JNDI概述(转载)</title>
+      <link>https://blog.coderzh.com/2009/01/05/1368804/</link>
+      <pubDate>Mon, 05 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2009/01/05/1368804/</guid>
+      <description>JNDI是 Java 命名与目录接口（Java Naming and Directory Interface），在J2EE规范中是重要的规范之一，不少专家认为，没有透彻理解JNDI的意义和</description>
+    </item>
+    
+    <item>
+      <title>代码安全系列(2) - Race Condition</title>
+      <link>https://blog.coderzh.com/2008/12/31/1365994/</link>
+      <pubDate>Wed, 31 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/31/1365994/</guid>
+      <description>Race Condion中文名不知道怎么翻译，竞态条件？紊乱条件？冲突条件？在多线程编程过程中，我们常常关心的是我们的线程是否会出现死锁(deadl</description>
+    </item>
+    
+    <item>
+      <title>2008年下半年软考(软件设计师)考试试题及答案</title>
+      <link>https://blog.coderzh.com/2008/12/21/1359364/</link>
+      <pubDate>Sun, 21 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/21/1359364/</guid>
+      <description>热心网友 潘以及综合大家意见的答案，准确率应该很高：上午答案: 1-10 bdbcb adaca 11-20 cdddb adbca 21-30 bdbdd cbacd 31-40 cadcb cabdd 41-50 bcdba dcbda 51-60 ddcbb cbcac 61-70 abdcc accab 71-75 dbacd 下午答案: 试题一：[问题1(4&amp;r</description>
+    </item>
+    
+    <item>
+      <title>Java代码扫描</title>
+      <link>https://blog.coderzh.com/2008/12/17/1356473/</link>
+      <pubDate>Wed, 17 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/17/1356473/</guid>
+      <description>Checkstyle* Eclipse TPTP* FindBugs* Fortify SCA* Jlint* Lint4j* PMD* QJPro [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coder</description>
+    </item>
+    
+    <item>
+      <title>读《Automated Code Review Tools for Security》</title>
+      <link>https://blog.coderzh.com/2008/12/17/1357039/</link>
+      <pubDate>Wed, 17 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/17/1357039/</guid>
+      <description>这是12月份发表在Computer杂志的一篇文章 [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnb</description>
+    </item>
+    
+    <item>
+      <title>代码安全系列(1) - Log的注入</title>
+      <link>https://blog.coderzh.com/2008/12/15/1355530/</link>
+      <pubDate>Mon, 15 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/15/1355530/</guid>
+      <description>简介 我们编写了大量的程序，但程序总是出现莫名其妙的异常，因此我们使用日志模块，详细记录程序执行的步骤，以求追踪和定位问题。也许这是大多数程序</description>
+    </item>
+    
+    <item>
+      <title>Google App Engine 中通过自定义Django的filter解决时区问题</title>
+      <link>https://blog.coderzh.com/2008/12/13/1354381/</link>
+      <pubDate>Sat, 13 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/13/1354381/</guid>
+      <description>之前的解决办法是在前台界面的js里进行时间的转换，这样做不是很好，还发现在IE中显示会有不正确的时候。因此，打算使用Django自定义fil</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(33) - 五分钟理解元类（Metaclasses）[转]</title>
+      <link>https://blog.coderzh.com/2008/12/07/1349735/</link>
+      <pubDate>Sun, 07 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/07/1349735/</guid>
+      <description>五分钟理解元类（Metaclasses） 真的，它并非巫术。 原文地址：http://www.voidspace.org.uk/python/a</description>
+    </item>
+    
+    <item>
+      <title>xmlrcp学习 - python中使用xmlrpc</title>
+      <link>https://blog.coderzh.com/2008/12/03/1346994/</link>
+      <pubDate>Wed, 03 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/03/1346994/</guid>
+      <description>一、简介 为了解决在系统的80端口提供RPC的服务，而又不影响正在执行的WEB服务，人们想出了用HTTP协议传输RPC包的办法。对于几乎是专门</description>
+    </item>
+    
+    <item>
+      <title>没有计划 - 之CoderZh也流水账</title>
+      <link>https://blog.coderzh.com/2008/12/03/1347120/</link>
+      <pubDate>Wed, 03 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/03/1347120/</guid>
+      <description>想写一个python的Web应用，因此在GAE，Django，Zope中徘徊了许久。最后的结论： GAE推出不久，是学习和使用的好时机，免费的</description>
+    </item>
+    
+    <item>
+      <title>(转)使用Google App Engine Helper for Django</title>
+      <link>https://blog.coderzh.com/2008/12/01/1345139/</link>
+      <pubDate>Mon, 01 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/01/1345139/</guid>
+      <description>使用Google App Engine Helper for Django 原著： Matt Brown 译者： DaNmarner 原文链接： http://code.google.com/appengine/articles/appengine_helper_for_django.html 译文链接： http://danmarner.yo2.cn/appengine_helper_for_django_cn/ 引言 Google App Engine可以运行任何WSGI兼容的程序。由于Django支持</description>
+    </item>
+    
+    <item>
+      <title>_stdcall与_cdecl的区别</title>
+      <link>https://blog.coderzh.com/2008/12/01/1345053/</link>
+      <pubDate>Mon, 01 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/12/01/1345053/</guid>
+      <description>2、C调用约定（即用__cdecl关键字说明）（The C default calling convention）按从右至左的顺序压参数入栈，由调用者把参数弹出栈。对于传送</description>
+    </item>
+    
+    <item>
+      <title>WingIDE中调试GAE(google app engine)</title>
+      <link>https://blog.coderzh.com/2008/11/30/1344478/</link>
+      <pubDate>Sun, 30 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/30/1344478/</guid>
+      <description>之前调试一直在用print。。。很寒，其实在WingIDE中可以直接断点调试GAE的，下面介绍两种常用的方法： 在WingIDE中设置 dev_</description>
+    </item>
+    
+    <item>
+      <title>Zope学习汇总</title>
+      <link>https://blog.coderzh.com/2008/11/29/1343848/</link>
+      <pubDate>Sat, 29 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/29/1343848/</guid>
+      <description>手头有本英文的zope book 2.6，然后在woodpecker找到一些Zope3Book中文翻译，但发现那个页面从2005年开始已经没有更新过了</description>
+    </item>
+    
+    <item>
+      <title>C# string与byte[]互转</title>
+      <link>https://blog.coderzh.com/2008/11/25/1340790/</link>
+      <pubDate>Tue, 25 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/25/1340790/</guid>
+      <description>老是忘记。。。 [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh/</description>
+    </item>
+    
+    <item>
+      <title>C# 中使用JSON - DataContractJsonSerializer</title>
+      <link>https://blog.coderzh.com/2008/11/25/1340862/</link>
+      <pubDate>Tue, 25 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/25/1340862/</guid>
+      <description>C#中使用JSON不需要使用第三方库，使用.NET Framwork3.5自带的System.Runtime.Serialization.Js</description>
+    </item>
+    
+    <item>
+      <title>C# 发送Http请求 - WebClient类</title>
+      <link>https://blog.coderzh.com/2008/11/25/1340794/</link>
+      <pubDate>Tue, 25 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/25/1340794/</guid>
+      <description>WebClient位于System.Net命名空间下，通过这个类可以方便的创建Http请求并获取返回内容。 一、用法1 - DownloadData 二、用法2 - OpenRead [温馨</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;实现发送HTTP请求</title>
+      <link>https://blog.coderzh.com/2008/11/24/1340134/</link>
+      <pubDate>Mon, 24 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/24/1340134/</guid>
+      <description>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh/archive</description>
+    </item>
+    
+    <item>
+      <title>IE弹出&#34;是否停止运行此脚本&#34;脚本超时时间设置</title>
+      <link>https://blog.coderzh.com/2008/11/23/1335754/</link>
+      <pubDate>Sun, 23 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/23/1335754/</guid>
+      <description>打开注册表HKEY_CURRENT_USER\Software\Microsoft\InternetExplorer\Styles，如果 Styles 键</description>
+    </item>
+    
+    <item>
+      <title>Oracle Notes</title>
+      <link>https://blog.coderzh.com/2008/11/23/1288850/</link>
+      <pubDate>Sun, 23 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/23/1288850/</guid>
+      <description>最近工作中用到了Oracle，笔记记录一下： 游标cursor create or replace procedure sp_test(seq_id number) as cursor curData is select t.propertyname, t.propertyvalue from kinfoc3.new_prop_39460 t where t.id = prop_id; begin for rowData in curData loop &amp;ndash; do something with rowData end loop; end; 使用游标查询</description>
+    </item>
+    
+    <item>
+      <title>wxpython学习笔记</title>
+      <link>https://blog.coderzh.com/2008/11/23/1339310/</link>
+      <pubDate>Sun, 23 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/23/1339310/</guid>
+      <description>一、简介 wxPython是Python编程语言的一个GUI工具箱。他使得Python程序员能够轻松的创建具有健壮、功能强大的图形用户界面的程</description>
+    </item>
+    
+    <item>
+      <title>jQuery</title>
+      <link>https://blog.coderzh.com/2008/11/18/1335752/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/18/1335752/</guid>
+      <description>大多数Javascript开发者首先需要完成的就是添加下边这个代码到他们的程序中： CODE: window.onload = function(){ &amp;hellip; } 这其中的代码使你想要在页面被载入时执行的处理。</description>
+    </item>
+    
+    <item>
+      <title>Linux 命令</title>
+      <link>https://blog.coderzh.com/2008/11/18/1335755/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/18/1335755/</guid>
+      <description>netstat -n|awk &amp;lsquo;/^tcp/{++S[$NF]} END {for(a in S) print a,S[a]}&amp;rsquo; [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderz</description>
+    </item>
+    
+    <item>
+      <title>LoadRunner</title>
+      <link>https://blog.coderzh.com/2008/11/18/1335753/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/11/18/1335753/</guid>
+      <description>lr_output_message(&amp;quot;%s&amp;rdquo;, lr_eval_string(&amp;quot;&amp;lt;&amp;lt;id&amp;gt;&amp;gt;&amp;quot;)); 不能双重使用&amp;lt;&amp;gt;、{} Winsock协议使用&amp;lt;&amp;gt;，Web协议使用{} [温馨提示]：该文章由原博客园导入而来，如排</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(32) - python数据结构与算法之堆排序</title>
+      <link>https://blog.coderzh.com/2008/09/22/1296195/</link>
+      <pubDate>Mon, 22 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/22/1296195/</guid>
+      <description>1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，…… foriinrange(len(data)-1):min=data[i]k=iforjinrange(i,len(data)):ifdata[j]&amp;lt;min:min=data[j]k=jifi&amp;lt;&amp;gt;k:data[i],data[k]=data[k],data[i] 堆排序 堆排序的原理将数组调整成</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(31) - python数据结构与算法之插入排序</title>
+      <link>https://blog.coderzh.com/2008/09/21/1295434/</link>
+      <pubDate>Sun, 21 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/21/1295434/</guid>
+      <description>1. 直接插入排序 插入排序算法思路是: 假定这个数组的序是排好的,然后从头往后,如果有数比当前外层元素的值大,则将这个数的位置往后挪,直到当前外层</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(30) - python数据结构与算法之快速排序</title>
+      <link>https://blog.coderzh.com/2008/09/20/1294947/</link>
+      <pubDate>Sat, 20 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/20/1294947/</guid>
+      <description>快速排序的原理是将取出第一个数，将整个数组分为两波，一拨都大于这个数，另一波都小于这个数，然后递归用同样的方法处理第一波数字和第二波数字。都</description>
+    </item>
+    
+    <item>
+      <title>(原创)攻击方式学习之(4) - 拒绝服务(DOS/DDOS/DRDOS)</title>
+      <link>https://blog.coderzh.com/2008/09/17/1292808/</link>
+      <pubDate>Wed, 17 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/17/1292808/</guid>
+      <description>历史回顾 2000年2月的“电子珍珠港事件”，正是互联网史上这样噩梦的集中时刻。2月7日、8日、9日连续三天，黑客对美国包括雅虎、亚马逊、国家</description>
+    </item>
+    
+    <item>
+      <title>博客园仿真足球竞赛平台Python版SDK</title>
+      <link>https://blog.coderzh.com/2008/09/11/1289302/</link>
+      <pubDate>Thu, 11 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/11/1289302/</guid>
+      <description>为了方便喜欢Python的同学能使用Python开发自己的球队，所以编写了此SDK。这个SDK基本上是参照C#版SDK改过来的，除了一些复杂</description>
+    </item>
+    
+    <item>
+      <title>Matplotlib Notes</title>
+      <link>https://blog.coderzh.com/2008/09/10/1288044/</link>
+      <pubDate>Wed, 10 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/10/1288044/</guid>
+      <description>import matplotlib.numerix as n a = n.arange(10) #a = array[0, 1, 2, 3, 4, 5, 6, 7, 8, 9] b = n.take(a, range(2, 5)) #b = array[2, 3, 4] xlable(&amp;lsquo;time (s)&#39;) #x轴的标题 ylable(&amp;rsquo; volts &amp;lsquo;) #y轴的标题 title(&amp;lsquo;A really simple plot&amp;rsquo;) #图表的标题 grid(True) #是否有网格 删除前面画的图</description>
+    </item>
+    
+    <item>
+      <title>(原创)攻击方式学习之(1) - 跨站式脚本(Cross-Site Scripting)</title>
+      <link>https://blog.coderzh.com/2008/09/06/1285500/</link>
+      <pubDate>Sat, 06 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/06/1285500/</guid>
+      <description>声明：本文仅供学习研究之用，对于本文提到的某些网站的XSS漏洞，请读者发扬高尚的人道主义精神不要去危害他人，同时希望相应的网站能够尽快修补X</description>
+    </item>
+    
+    <item>
+      <title>(原创)攻击方式学习之(2) - SQL注入(SQL Injection)</title>
+      <link>https://blog.coderzh.com/2008/09/06/1285556/</link>
+      <pubDate>Sat, 06 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/06/1285556/</guid>
+      <description>简介 有些网站将直接拿用户的输入 来拼接SQL语句，进行查询等操作，同时也将错误信息暴露给用户。这就给不怀好意的同学可乘之机，利用输入一些奇特的</description>
+    </item>
+    
+    <item>
+      <title>(原创)攻击方式学习之(3) - 缓冲区溢出(Buffer Overflow)</title>
+      <link>https://blog.coderzh.com/2008/09/06/1285693/</link>
+      <pubDate>Sat, 06 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/06/1285693/</guid>
+      <description>堆栈溢出 堆栈溢出通常是所有的缓冲区溢出中最容易进行利用的。了解堆栈溢出之前，先了解以下几个概念： 缓冲区 * 简单说来是一块连续的计算机内存区域，</description>
+    </item>
+    
+    <item>
+      <title>(项目启动)pygogogo性能测试工具(Python)开发</title>
+      <link>https://blog.coderzh.com/2008/09/05/1285374/</link>
+      <pubDate>Fri, 05 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/09/05/1285374/</guid>
+      <description>项目名称：pygogogo含义：python 跑跑跑，就是说执行高负载测试依然流畅自如。 说明： 该项目准备用Python开发一个开源的性能测试工</description>
+    </item>
+    
+    <item>
+      <title>解决rhythmbox中文名乱码问题</title>
+      <link>https://blog.coderzh.com/2008/08/25/1275508/</link>
+      <pubDate>Mon, 25 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/08/25/1275508/</guid>
+      <description>sudo apt-get install python-mutagen mid3iconv -e gbk *.mp3 将中文歌曲名转换编码 当前目录下的所有 mp3 (包括子目录) find . -iname &amp;ldquo;*.mp3&amp;rdquo; -execdir mid3iconv -e gbk {} ; [温馨提示]：该文章由原博客园导入而来，如排版效果不</description>
+    </item>
+    
+    <item>
+      <title>ASCII表查看</title>
+      <link>https://blog.coderzh.com/2008/08/20/1272022/</link>
+      <pubDate>Wed, 20 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/08/20/1272022/</guid>
+      <description>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh/archive</description>
+    </item>
+    
+    <item>
+      <title>经典转载 - 缓冲区溢出的原理和实践(Phrack)</title>
+      <link>https://blog.coderzh.com/2008/08/20/1272183/</link>
+      <pubDate>Wed, 20 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/08/20/1272183/</guid>
+      <description>在过去的几个月中,被发现和利用的缓冲区溢出漏洞呈现上升趋势.例如syslog, splitvt, sendmail 8.7.5, Linux/FreeBSD mount, Xt library, at等等.本文试图 解释什么是缓冲区溢出, 以及如何</description>
+    </item>
+    
+    <item>
+      <title>gdb调试程序</title>
+      <link>https://blog.coderzh.com/2008/08/19/1271347/</link>
+      <pubDate>Tue, 19 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/08/19/1271347/</guid>
+      <description>1. 查看寄存器 info registers 查看寄存器的情况。（除了浮点寄存器） info all-registers 查看所有寄存器的情况。（包括浮点寄存器） info registers ebp 查看所指定的寄存器的情况。 2. 查看汇编 disassemble</description>
+    </item>
+    
+    <item>
+      <title>找找看XSS漏洞!!!</title>
+      <link>https://blog.coderzh.com/2008/08/05/1261058/</link>
+      <pubDate>Tue, 05 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/08/05/1261058/</guid>
+      <description>跨站式脚本攻击(XSS)被评为07年排名第一的Web安全漏洞，拿“找找看”试了一把，发现存在漏洞，希望管理员尽快改掉XSS示例 ： 诱骗别人点击</description>
+    </item>
+    
+    <item>
+      <title>CoderZh首款Python联机对战游戏 - NancyTetris1.0倾情发布（二）</title>
+      <link>https://blog.coderzh.com/2008/08/01/1258160/</link>
+      <pubDate>Fri, 01 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/08/01/1258160/</guid>
+      <description>设计比较简单，因此画了几个图： [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/</description>
+    </item>
+    
+    <item>
+      <title>GAE申请成功！</title>
+      <link>https://blog.coderzh.com/2008/08/01/1258114/</link>
+      <pubDate>Fri, 01 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/08/01/1258114/</guid>
+      <description>刚开始移动手机收不到短信，后来在Google网站投诉，过了2天收到开通的邮件。太好了。 今天中午把GAE的Getting Started文档看完</description>
+    </item>
+    
+    <item>
+      <title>CoderZh首款Python联机对战游戏 - NancyTetris1.0倾情发布（一）</title>
+      <link>https://blog.coderzh.com/2008/07/28/1255061/</link>
+      <pubDate>Mon, 28 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/28/1255061/</guid>
+      <description>第一次写游戏，第一次用Python写游戏，所以决定写个俄罗斯，还支持联机对战！ 由于在游戏编写的数据结构及算法设计上经验不足，同时在实现联机对</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL)</title>
+      <link>https://blog.coderzh.com/2008/07/23/1249919/</link>
+      <pubDate>Wed, 23 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/23/1249919/</guid>
+      <description>1. 首先VC++的DLL的导出函数定义成标准C的导出函数： //a +b LRDLLTEST_API int Sum(int a , int b) { returna +b; } //Get a string LRDLLTEST_API void GetString(char*pChar) { strcpy(pChar, &amp;quot;Hello DLL&amp;quot;); }2. Python中调用如下： 关于C语言中</description>
+    </item>
+    
+    <item>
+      <title>OpenSTA从入门到精通</title>
+      <link>https://blog.coderzh.com/2008/07/21/1248088/</link>
+      <pubDate>Mon, 21 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/21/1248088/</guid>
+      <description>OpenSTA 基于CORBA的分布式软件测试构架。使用OpenSTA，测试人员可以模拟大量的虚拟用户。OpenSTA的结果分析包括虚拟用户响应时间、we</description>
+    </item>
+    
+    <item>
+      <title>Linux下VNCSERVER使用</title>
+      <link>https://blog.coderzh.com/2008/07/16/1243990/</link>
+      <pubDate>Wed, 16 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/16/1243990/</guid>
+      <description>启动 图形界面 自启动 设置密码 客户端登陆 [温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.c</description>
+    </item>
+    
+    <item>
+      <title>(LoadRunner)包装一个DLL的经验总结</title>
+      <link>https://blog.coderzh.com/2008/07/15/1243659/</link>
+      <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/15/1243659/</guid>
+      <description>LoadRunner里可以直接调用VC++的DLL，关于DLL基本的制作及调用请见： http://www.cnblogs.com/coderzh/archive/2008/04/02/1135118.html 今天包装一个由开发写好的加密解模块，中间遇到不少问题，</description>
+    </item>
+    
+    <item>
+      <title>(转)g&#43;&#43;和gcc的误区</title>
+      <link>https://blog.coderzh.com/2008/07/09/1238995/</link>
+      <pubDate>Wed, 09 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/09/1238995/</guid>
+      <description>gcc和g++都是GNU(组织)的一个编译器。 误区一:gcc只能编译c代码,g++只能编译c++代码 两者都可以，但是请注意： 1.后缀为.c的</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu设置开机自动挂载所有格式硬盘分区</title>
+      <link>https://blog.coderzh.com/2008/07/09/1239055/</link>
+      <pubDate>Wed, 09 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/09/1239055/</guid>
+      <description>原来那么简单，安装下面的东东，运行，设置，搞定！[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnb</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(总)</title>
+      <link>https://blog.coderzh.com/2008/07/08/pythoncookbook/</link>
+      <pubDate>Tue, 08 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/08/pythoncookbook/</guid>
+      <description>PythonEat me![](http://www.cnblogs.com/coderzh/archive/2008/12/07/1349735.html) Python 天天美味(1) - 交换变量 Python 天天美味(2) - 字符遍历的艺术 Python 天天美味(3) - 字符转换 Python 天天美味(4) - isinstance判断对象类型 Python</description>
+    </item>
+    
+    <item>
+      <title>Foundations of Python Network Programming - 读书笔记系列(3) - Email Services</title>
+      <link>https://blog.coderzh.com/2008/07/02/1234269/</link>
+      <pubDate>Wed, 02 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/07/02/1234269/</guid>
+      <description>Email Services这一章因为用的不多，因此大致过了一下，现在仔细看到后来会忘掉一大半。因此，到时候用到再看也不迟，这里先给个简单的例子： [温</description>
+    </item>
+    
+    <item>
+      <title>TCP/IP详解卷1，2，3PDF下载</title>
+      <link>https://blog.coderzh.com/2008/06/27/1230935/</link>
+      <pubDate>Fri, 27 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/27/1230935/</guid>
+      <description>好东西啊！！ TCP/IP详解 卷1 下载地址 TCP/IP详解 卷2 下载地址 TCP/IP详解 卷3 下载地址 [温馨提示]：该文章由原博客园导入而来，如排</description>
+    </item>
+    
+    <item>
+      <title>WebRequest, HttpWebRequest 的用法</title>
+      <link>https://blog.coderzh.com/2008/06/24/1228675/</link>
+      <pubDate>Tue, 24 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/24/1228675/</guid>
+      <description>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：http://www.cnblogs.com/coderzh/archive</description>
+    </item>
+    
+    <item>
+      <title>(转)国外人气最旺的软件测试网站</title>
+      <link>https://blog.coderzh.com/2008/06/23/1228379/</link>
+      <pubDate>Mon, 23 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/23/1228379/</guid>
+      <description>http://bdonline.sqe.com/ 一个关于网站测试方面的网页,对这方面感兴趣的人可以参考 http://citeseer.nj.nec.com/ 一个丰富的电子书库,内容很多,而且提供著作的相关文档参考和下载,是作者非常推荐的一</description>
+    </item>
+    
+    <item>
+      <title>Foundations of Python Network Programming - 读书笔记系列(2) - Web Services</title>
+      <link>https://blog.coderzh.com/2008/06/23/1228429/</link>
+      <pubDate>Mon, 23 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/23/1228429/</guid>
+      <description>Web Client Access HTTP(Hypertext Transfer Prototol)协议是如今使用最广的协议之一。Python中通常使用urllib2模块来实现HTTP协议。 urllib和urll</description>
+    </item>
+    
+    <item>
+      <title>SilkPerformer2008下载</title>
+      <link>https://blog.coderzh.com/2008/06/18/1224525/</link>
+      <pubDate>Wed, 18 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/18/1224525/</guid>
+      <description>用过LoadRunner，WebLOAD，OpenSTA后，打算再试试SilkPerformer，装上以前下载的SilkPerformer2</description>
+    </item>
+    
+    <item>
+      <title>Foundations of Python Network Programming - 读书笔记系列(1) - Low-Level Networking</title>
+      <link>https://blog.coderzh.com/2008/06/16/1223287/</link>
+      <pubDate>Mon, 16 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/16/1223287/</guid>
+      <description>以前，人们热衷于如何将两台机器互相连接，许多连接的方法在今天已经过时，还有很多方法沿用至今。TCP/IP就是之一，可以说，TCP/IP协议是</description>
+    </item>
+    
+    <item>
+      <title>Foundations of Python Network Programming - 读书笔记系列(完)</title>
+      <link>https://blog.coderzh.com/2008/06/10/1216962/</link>
+      <pubDate>Tue, 10 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/10/1216962/</guid>
+      <description>最近突然对网络编程兴趣剧增，因此找来了《Foundations of Python Network Programming》，这本书有中文翻译版本《Python网络编程基础</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(27) - 网络编程起步(Socket发送消息)</title>
+      <link>https://blog.coderzh.com/2008/06/07/1215607/</link>
+      <pubDate>Sat, 07 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/07/1215607/</guid>
+      <description>现在开始学习网络编程，先从简单的UDP协议发送消息开始。我们需要有接受消息的服务端程序(Server.py)和发送消息的客户端程序(Clie</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(28) - urlopen</title>
+      <link>https://blog.coderzh.com/2008/06/07/1215657/</link>
+      <pubDate>Sat, 07 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/07/1215657/</guid>
+      <description>一、打开一个网页获取所有的内容 二、获取Http头 三、使用代理 1. 查看环境变量 2. 设置环境变量 3. 使用代理 Python 天天美味系列（总） Python 天天美味(26) - g</description>
+    </item>
+    
+    <item>
+      <title>开始使用Emacs</title>
+      <link>https://blog.coderzh.com/2008/06/03/1213078/</link>
+      <pubDate>Tue, 03 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/03/1213078/</guid>
+      <description>最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT&amp;quot;*&amp;quot;\shellex被破坏</description>
+    </item>
+    
+    <item>
+      <title>SaveFileDialog与Castle(ActiveRecord)有冲突？？</title>
+      <link>https://blog.coderzh.com/2008/06/02/1212410/</link>
+      <pubDate>Mon, 02 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/06/02/1212410/</guid>
+      <description>使用SaveFileDialog，点击保存按钮后，再执行Castle的操作，出错~~很郁闷，不知道有没有人和我一样，还是我自己的问题。 运行：</description>
+    </item>
+    
+    <item>
+      <title>做人、做事，做架构师——架构师能力模型解析(转)</title>
+      <link>https://blog.coderzh.com/2008/05/31/1211422/</link>
+      <pubDate>Sat, 31 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/31/1211422/</guid>
+      <description>做人、做事，做架构师——架构师能力模型解析 要想从一名普通程序员发展成为优秀的架构师，“个人特性”与“技术技能”缺一不可；而“技术专业能力”、</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(26) - __getattr__与__setattr__</title>
+      <link>https://blog.coderzh.com/2008/05/25/1206931/</link>
+      <pubDate>Sun, 25 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/25/1206931/</guid>
+      <description>__getattr__和__setattr__可以用来对属性的设置和取值进行处理，比如下面的例子：上面的例子中，在赋值书的value属性时，</description>
+    </item>
+    
+    <item>
+      <title>开源Granados介绍 - SSH连接远程Linux服务器(C#)</title>
+      <link>https://blog.coderzh.com/2008/05/20/1203574/</link>
+      <pubDate>Tue, 20 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/20/1203574/</guid>
+      <description>Granados是一个基于.NET的SSH客户端库。它有以下特点： 1.Granados是一个C#的开源项目。源码地址：http://www.</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(24) - 初始化多维数组</title>
+      <link>https://blog.coderzh.com/2008/05/18/1201993/</link>
+      <pubDate>Sun, 18 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/18/1201993/</guid>
+      <description>Python中初始化一个5 x 3每项为0的数组，最好方法是： 我们知道，为了初始化一个一维数组，我们可以这样做： 没错，那我们初始化一个二维数组时</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(25) - 深入理解yield</title>
+      <link>https://blog.coderzh.com/2008/05/18/1202040/</link>
+      <pubDate>Sun, 18 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/18/1202040/</guid>
+      <description>yield的英文单词意思是生产，刚接触Python的时候感到非常困惑，一直没弄明白yield的用法。只是粗略的知道yield可以用来为一个函</description>
+    </item>
+    
+    <item>
+      <title>推荐一款非常酷的学习笔记软件 - Basket Note Pads</title>
+      <link>https://blog.coderzh.com/2008/05/18/1201983/</link>
+      <pubDate>Sun, 18 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/18/1201983/</guid>
+      <description>Ubuntu下的软件每次都是让人爽心悦目，比如翻译软件StarDict(星际译王)，MultiGet下载，甚至是自带的那些小游戏都极具创意。</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(21) - httplib，smtplib</title>
+      <link>https://blog.coderzh.com/2008/05/17/1201449/</link>
+      <pubDate>Sat, 17 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/17/1201449/</guid>
+      <description>例一：使用httplib访问某个url然后获取返回的内容： conn=httplib.HTTPConnection(&amp;quot;www.cnblogs.com&amp;quot;) conn.request(&amp;quot;GET&amp;quot;, &amp;quot;/coderzh/archive/2008/05/13/1194445.html&amp;quot;) r=conn.getresponse() printr.read() #获取所有内容例二：使用smtplib发送邮件 smtpServer =&#39;smtp.xxx.com&#39;fromaddr =&#39;foo@xxx.com&#39;toaddrs =&#39;your@xxx.com&#39;msg =&#39;Subject: xxxxxxxxx&#39;server =smtplib.SMTP(smtpServer) server.sendmail(fromaddr, toaddrs, msg) server.quit( )Python 天</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）</title>
+      <link>https://blog.coderzh.com/2008/05/17/1201506/</link>
+      <pubDate>Sat, 17 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/17/1201506/</guid>
+      <description>Python中的对象之间赋值时是按引用传递的，如果需要拷贝对象，需要使用标准库中的copy模块。 copy.copy 浅拷贝 只拷贝父对象，不会拷贝对象的内部的子</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(23) - enumerate遍历数组</title>
+      <link>https://blog.coderzh.com/2008/05/17/1201509/</link>
+      <pubDate>Sat, 17 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/17/1201509/</guid>
+      <description>其他语言中，比如C＃，我们通常遍历数组是的方法是： { //todo with list[i]}在Python中，我们习惯这样遍历： process(item)这样遍</description>
+    </item>
+    
+    <item>
+      <title>试用IronPython</title>
+      <link>https://blog.coderzh.com/2008/05/17/1201319/</link>
+      <pubDate>Sat, 17 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/17/1201319/</guid>
+      <description>今天装上IronPython Studio体验了一下，能在VS里写Python还是感觉不错的。想体验的可以通过下面的地址安装。 1.安装VS20</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(19) - 时间处理datetime</title>
+      <link>https://blog.coderzh.com/2008/05/16/1201074/</link>
+      <pubDate>Fri, 16 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/16/1201074/</guid>
+      <description>Python Cook书中有很多章节都是针对某个库的使用进行介绍或是通过组合多个函数实现一些复杂的功能。我这里直接跳过了上一章节中对于文件处理的一些章节</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(20) - 命令行参数sys.argv</title>
+      <link>https://blog.coderzh.com/2008/05/16/1201079/</link>
+      <pubDate>Fri, 16 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/16/1201079/</guid>
+      <description>命令行参数是通过sys.argv[]来获取的，sys.argv[0]是代码文件本身的路径，因此参数是从1开始的。比如设置参数为： spe Pytho</description>
+    </item>
+    
+    <item>
+      <title>决定学习WebLOAD</title>
+      <link>https://blog.coderzh.com/2008/05/16/1200880/</link>
+      <pubDate>Fri, 16 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/16/1200880/</guid>
+      <description>做性能测试两个多月了，对性能测试也有了一定的了解。对性能测试工具的选择当然是首选LoadRunner了，今后还要继续在博客中补充LoadRu</description>
+    </item>
+    
+    <item>
+      <title>Ken Thompson 的经典 C 程序</title>
+      <link>https://blog.coderzh.com/2008/05/13/1194426/</link>
+      <pubDate>Tue, 13 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/13/1194426/</guid>
+      <description>&#39;\t&#39;, &#39;0&#39;, &#39;\n&#39;, &#39;}&#39;, &#39;;&#39;, &#39;\n&#39;, &#39;\n&#39;, &#39;m&#39;, &#39;a&#39;, &#39;i&#39;, &#39;n&#39;, &#39;(&#39;, &#39;)&#39;, &#39;\n&#39;, &#39;{&#39;, &#39;\n&#39;, &#39;\t&#39;, &#39;i&#39;, &#39;n&#39;, &#39;t&#39;, &#39;&#39;, &#39;i&#39;, &#39;;&#39;, &#39;\n&#39;, &#39;\n&#39;, &#39;\t&#39;, &#39;p&#39;, &#39;r&#39;, &#39;i&#39;, &#39;n&#39;, &#39;t&#39;, &#39;f&#39;, &#39;(&#39;, &#39;&amp;quot;&#39;, &#39;c&#39;, &#39;h&#39;, &#39;a&#39;, &#39;r&#39;, &#39;&#39;, &#39;s&#39;, &#39;[&#39;, &#39;]&#39;, &#39;=&#39;, &#39;{&#39;, &#39;\&#39;, &#39;n&#39;, &#39;&amp;quot;&#39;, &#39;)&#39;, &#39;;&#39;, &#39;\n&#39;, &#39;\t&#39;, &#39;f&#39;, &#39;o&#39;, &#39;r&#39;, &#39;(&#39;, &#39;i&#39;, &#39;=&#39;, &#39;0&#39;, &#39;;&#39;, &#39;&#39;, &#39;s&#39;, &#39;[&#39;, &#39;i&#39;, &#39;]&#39;, &#39;;&#39;, &#39;&#39;, &#39;i&#39;, &#39;+&#39;, &#39;+&#39;, &#39;)&#39;,</description>
+    </item>
+    
+    <item>
+      <title>Ken Thompson爷爷的经典复制自身代码程序 - Python版本(只用两行！)</title>
+      <link>https://blog.coderzh.com/2008/05/13/1194445/</link>
+      <pubDate>Tue, 13 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/13/1194445/</guid>
+      <description>Ken Thompson可是大牛人了！不认识的人赶快Google/百度一下。Ken爷爷是Unix创始人，C语言鼻祖！Ken 当时大学时候没游戏玩，就</description>
+    </item>
+    
+    <item>
+      <title>linecache.py</title>
+      <link>https://blog.coderzh.com/2008/05/10/1191649/</link>
+      <pubDate>Sat, 10 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/10/1191649/</guid>
+      <description>This is intended to read lines from modules imported &amp;ndash; hence if a filename is not found, it will look down the module search path for a file by that name. &amp;quot;&amp;ldquo;&amp;ldquo;importsys importos __all__=[&amp;quot;getline&amp;quot;, &amp;quot;clearcache&amp;quot;, &amp;quot;checkcache&amp;quot;] defgetline(filename, lineno, module_globals=None): lines =getlines(filename, module_globals) if1&amp;lt;=lineno &amp;lt;=len(lines): returnlines[lineno-1] else: return&#39;&amp;lsquo;#The cachecache ={} #The cachedefclearcache(): &amp;quot;&amp;ldquo;&amp;ldquo;Clear the cache entirely.&amp;quot;&amp;ldquo;&amp;ldquo; globalcache cache ={} defgetlines(filename, module_globals=None): &amp;quot;&amp;ldquo;&amp;ldquo;Get the lines for a file from the cache. Update</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(17) - open读写文件</title>
+      <link>https://blog.coderzh.com/2008/05/10/1191410/</link>
+      <pubDate>Sat, 10 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/10/1191410/</guid>
+      <description>Python中文件操作可以通过open函数，这的确很像C语言中的fopen。通过open函数获取一个file object，然后调用read(</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(18) - linecache.getline()读取文件中特定一行</title>
+      <link>https://blog.coderzh.com/2008/05/10/1191641/</link>
+      <pubDate>Sat, 10 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/10/1191641/</guid>
+      <description>Python中使用标准库中的linecache中的getline方法可以从某个文件中读取出特定的一行。比如： printlinecache.getline(&#39;2.1_open.py&#39;, 4)将返回我上一节事例代码文件</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(16) - 过滤字符串的技巧,map与itertools.imap</title>
+      <link>https://blog.coderzh.com/2008/05/09/1190173/</link>
+      <pubDate>Fri, 09 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/09/1190173/</guid>
+      <description>Python中的map函数非常有用，在字符转换和字符遍历两节都出现过，现在，它又出现了，会给我们带来什么样的惊喜呢？是不是要告诉我们，map</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(15) - Python正则表达式操作指南(re使用)(转)</title>
+      <link>https://blog.coderzh.com/2008/05/06/1185755/</link>
+      <pubDate>Tue, 06 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/06/1185755/</guid>
+      <description>简介 Python 自1.5版本起增加了re 模块，它提供 Perl 风格的正则表达式模式。Python 1.5之前版本则是通过 regex 模块提供 Emecs 风格的模式。Emacs 风格模</description>
+    </item>
+    
+    <item>
+      <title>Linux服务器性能数据收集 - Sysstat介绍</title>
+      <link>https://blog.coderzh.com/2008/05/05/1183125/</link>
+      <pubDate>Mon, 05 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/05/1183125/</guid>
+      <description>Linux中的top,free等命令不能完全满足我们性能数据收集的要求，我们需要一个更加强大的工具来收集性能数据。经过考察和对比，发现Sys</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(14) - splitlines</title>
+      <link>https://blog.coderzh.com/2008/05/05/1183967/</link>
+      <pubDate>Mon, 05 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/05/1183967/</guid>
+      <description>Python中的splitlines用来分割行。当传入的参数为True时，表示保留换行符 \n。通过下面的例子就很明白了: Wellcome to Python&amp;rsquo;s world! There are a lot of interesting</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(10) - 除法小技巧</title>
+      <link>https://blog.coderzh.com/2008/05/04/1181250/</link>
+      <pubDate>Sun, 04 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/04/1181250/</guid>
+      <description>Python中将两个整数相除，默认结果是为整数的。但我们可以通过下面的方法，使得两个整数相除的结果为小数。 print7/3输出结果： 2.3333333333 Python 天天</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(11) - 可爱的大小写</title>
+      <link>https://blog.coderzh.com/2008/05/04/1181340/</link>
+      <pubDate>Sun, 04 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/04/1181340/</guid>
+      <description>转换大小写 和其他语言一样，Python为string对象提供了转换大小写的方法：upper() 和 lower()。还不止这些，Python还为</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(12) - 条件判断的缩写</title>
+      <link>https://blog.coderzh.com/2008/05/04/1181416/</link>
+      <pubDate>Sun, 04 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/04/1181416/</guid>
+      <description>开始以为Python中没有像其他语言一样的条件判断的缩写形式： 其实，在Python中，是这样写的： 输出结果： Not bad Python 天天美味系列（总） Python 天天美</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(13) - struct.unpack</title>
+      <link>https://blog.coderzh.com/2008/05/04/1181462/</link>
+      <pubDate>Sun, 04 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/04/1181462/</guid>
+      <description>Python中按一定的格式取出某字符串中的子字符串，使用struck.unpack是非常高效的。 设置fomat格式，如下: format =&#39;5s 4x 3s&#39;使用s</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(7) - 连接字符串(join %)</title>
+      <link>https://blog.coderzh.com/2008/05/03/1180563/</link>
+      <pubDate>Sat, 03 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/03/1180563/</guid>
+      <description>join 方法用于连接字符串数组 print&#39;&amp;lsquo;.join(s) print&#39;-&#39;.join(s)输出结果： abcd a-b-c-d 使用 % 连接多个变量 b =&#39;python&#39;c =1print&#39;%s %s %s %s&#39;%(a, b, c, s)输出结果： hello python 1 [&amp;lsquo;a&amp;rsquo;, &amp;lsquo;b&amp;rsquo;, &amp;lsquo;c&amp;rsquo;, &amp;lsquo;d&amp;rsquo;] Python 天天</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(8) - 字符串中的字符倒转</title>
+      <link>https://blog.coderzh.com/2008/05/03/1180584/</link>
+      <pubDate>Sat, 03 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/03/1180584/</guid>
+      <description>方法一，使用[::-1]： prints[::-1] 方法二，使用reverse()方法： l.reverse() print&#39;&amp;lsquo;.join(l)输出结果： nohtyp nohtyp Python 天天美味系列（总</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(9) - translator</title>
+      <link>https://blog.coderzh.com/2008/05/03/1180705/</link>
+      <pubDate>Sat, 03 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/03/1180705/</guid>
+      <description>1.string.maketrans设置字符串转换规则表(translation table) aTob = string.maketrans(&amp;lsquo;a&amp;r</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(3) - 字符转换</title>
+      <link>https://blog.coderzh.com/2008/05/02/1179593/</link>
+      <pubDate>Fri, 02 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/02/1179593/</guid>
+      <description>Python提供了ord和chr两个内置的函数，用于字符与ASCII码之间的转换。如： 97&amp;gt;&amp;gt;&amp;gt;printchr(97) a下面我们可以开始来设计我们的大小写转换的程序了： #coding=utf-8defUCaseChar(ch):</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(4) - isinstance判断对象类型</title>
+      <link>https://blog.coderzh.com/2008/05/02/1179609/</link>
+      <pubDate>Fri, 02 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/02/1179609/</guid>
+      <description>Python中判度对象类型方法非常简单，不需要像别的语言一样使用如下的判断方法： { //TODO}在Python中只需要使用内置的函数isin</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(5) - ljust rjust center</title>
+      <link>https://blog.coderzh.com/2008/05/02/1179709/</link>
+      <pubDate>Fri, 02 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/02/1179709/</guid>
+      <description>Python中打印字符串时可以调用ljust（左对齐），rjust（右对齐），center（中间对齐）来输出整齐美观的字符串，使用起来非常简</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(6) - strip lstrip rstrip</title>
+      <link>https://blog.coderzh.com/2008/05/02/1179725/</link>
+      <pubDate>Fri, 02 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/05/02/1179725/</guid>
+      <description>Python中的strip用于去除字符串的首位字符，同理，lstrip用于去除左边的字符，rstrip用于去除右边的字符。这三个函数都可传入</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(2) - 字符遍历的艺术</title>
+      <link>https://blog.coderzh.com/2008/04/30/1177677/</link>
+      <pubDate>Wed, 30 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/04/30/1177677/</guid>
+      <description>通常我们要遍历一个字符串中的每个字符，都要先获取字符串的长度，然后用一个For循环把每个字符取出，进行处理。但是，又是我们的Python，为</description>
+    </item>
+    
+    <item>
+      <title>Python天天美味(1) - 交换变量</title>
+      <link>https://blog.coderzh.com/2008/04/29/1176878/</link>
+      <pubDate>Tue, 29 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/04/29/1176878/</guid>
+      <description>Python美味第一顿，来个方便快捷的变量交换！为什么是Python？！因为Python中交换变量不需要临时变量！如： 来个复杂一点的例子，再</description>
+    </item>
+    
+    <item>
+      <title>华山论剑 - VB6函数调用</title>
+      <link>https://blog.coderzh.com/2008/04/07/1140895/</link>
+      <pubDate>Mon, 07 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/04/07/1140895/</guid>
+      <description>论剑 啥也不说了，接题： a =a +1End Functionc =1&#39;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;md</description>
+    </item>
+    
+    <item>
+      <title>悟透LoadRunner - 如何让多个场景顺序执行？</title>
+      <link>https://blog.coderzh.com/2008/04/02/1135076/</link>
+      <pubDate>Wed, 02 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/04/02/1135076/</guid>
+      <description>引言 实现 Controller(wlrun.exe)支持命令行参数，所有你只需要通过命令行给wlrun.exe传入场景文件的路径参数，实现多多</description>
+    </item>
+    
+    <item>
+      <title>悟透LoadRunner - 调用外部DLL的点点滴滴</title>
+      <link>https://blog.coderzh.com/2008/04/02/1135118/</link>
+      <pubDate>Wed, 02 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/04/02/1135118/</guid>
+      <description>引言 调用外部DLL的方法有两种： （单个脚本中）在脚本中是使用 lr_load_dll函数。 （全局设置，所有脚本）通过修改mdrv.dat 文件实</description>
+    </item>
+    
+    <item>
+      <title>悟透LoadRunner - 什么是性能测试？</title>
+      <link>https://blog.coderzh.com/2008/04/01/1133637/</link>
+      <pubDate>Tue, 01 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/04/01/1133637/</guid>
+      <description>引言 客户乙（使用后……）：“果然不错！合作愉快！” ……（一个星期后） 客户乙：“我要退款，你们的系统反应太慢了！我们的员工简直无法忍受！” 项目</description>
+    </item>
+    
+    <item>
+      <title>悟透LoadRunner(总)</title>
+      <link>https://blog.coderzh.com/2008/04/01/1133158/</link>
+      <pubDate>Tue, 01 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/04/01/1133158/</guid>
+      <description>引言 1.自己学习LoadRunner性能测试的总结和积累。 2.鞭策自己不断学习，不浪费光阴。 3.提高自己写作能力的途径。 4.希望能对别人有稍</description>
+    </item>
+    
+    <item>
+      <title>初识UI Automation库进行UI自动化测试</title>
+      <link>https://blog.coderzh.com/2008/03/09/1097891/</link>
+      <pubDate>Sun, 09 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/03/09/1097891/</guid>
+      <description>通常，我们在进行UI自动化测试时通常采用的方法有两种： 1.使用成熟的商业化软件，比如QTP。 2.自己编码，调用WINAPI来进行UI测试。 使</description>
+    </item>
+    
+    <item>
+      <title>2008到了！我的博客由原来的DeViL→Ivy改名为EverGreen！</title>
+      <link>https://blog.coderzh.com/2008/02/23/1078968/</link>
+      <pubDate>Sat, 23 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/02/23/1078968/</guid>
+      <description>08年要更加努力学习，将更多的心得体会拿出来分享！将更加严格遵守每周至少一篇专心，精心的学习心得文章。 [温馨提示]：该文章由原博客园导入而来</description>
+    </item>
+    
+    <item>
+      <title>希望2008</title>
+      <link>https://blog.coderzh.com/2008/01/01/1022532/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2008/01/01/1022532/</guid>
+      <description>2007年，过的好快，以下是07年大事件： 1.过年后去公司实习近2个月。 2.回校做“高速公路选线设计”毕业设计 3.顺利毕业，到公司工作至今，</description>
+    </item>
+    
+    <item>
+      <title>C#程序实现动态调用DLL的研究(转载)</title>
+      <link>https://blog.coderzh.com/2007/12/27/1016924/</link>
+      <pubDate>Thu, 27 Dec 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/12/27/1016924/</guid>
+      <description>C#程序实现动态调用DLL****的研究 摘要：在《csdn开发高手》2004年第03期中的《化功大法——将DLL嵌入EXE》一文，介绍了如何</description>
+    </item>
+    
+    <item>
+      <title>保证程序只有一个实例运行并且先将旧实例关闭再运行新实例</title>
+      <link>https://blog.coderzh.com/2007/12/10/989375/</link>
+      <pubDate>Mon, 10 Dec 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/12/10/989375/</guid>
+      <description>usingSystem.Collections.Generic; usingSystem.Windows.Forms; usingSystem.Threading; usingSystem.Diagnostics; usingSystem.Reflection; namespaceMyClient { staticclassProgram { ///&amp;lt;summary&amp;gt; ///The main entry point for the application. ///&amp;lt;/summary&amp;gt;[STAThread] staticvoidMain(string[] args) { Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false); //bool blnCreate;//Another method to make sure only one instance //Mutex m = new Mutex(true, &amp;ldquo;MyClient&amp;rdquo;, out blnCreate); //if (blnCreate)CloseRunningInstance(); Application.Run(newMainFrm()); } //Close the existed instance of my applicationstaticvoidCloseRunningInstance() { Process current =Process.GetCurrentProcess(); Process[] processes =Process.GetProcessesByName(current.ProcessName); //Loop through the running processes in with the same name foreach(Process process</description>
+    </item>
+    
+    <item>
+      <title>VBS获取本机IP地址</title>
+      <link>https://blog.coderzh.com/2007/12/03/981119/</link>
+      <pubDate>Mon, 03 Dec 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/12/03/981119/</guid>
+      <description>&amp;lsquo;owner DeViL &amp;lsquo;return 本机的IP地址 PublicFunctionGetIP ComputerName=&amp;quot;.&amp;quot; DimobjWMIService,colItems,objItem,objAddress SetobjWMIService =GetObject(&amp;quot;winmgmts:\&amp;quot;&amp;amp;ComputerName &amp;amp;&amp;quot;\root\cimv2&amp;quot;) SetcolItems =objWMIService.ExecQuery(&amp;quot;Select * From Win32_NetworkAdapterConfiguration Where IPEnabled = True&amp;quot;) ForEachobjItem in colItems ForEachobjAddress in objItem.IPAddress IfobjAddress &amp;lt;&amp;gt;&amp;quot;&amp;ldquo;then GetIP =objAddress ExitFunction EndIf Next NextEnd Function[温馨提示]：该文章由原博客园导入而来，如排版</description>
+    </item>
+    
+    <item>
+      <title>VBS获取系统路径</title>
+      <link>https://blog.coderzh.com/2007/11/22/968581/</link>
+      <pubDate>Thu, 22 Nov 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/11/22/968581/</guid>
+      <description>2path = fso.GetSpecialFolder(0)GetSpecialFolder可以传几个参数，如下： [温馨提示]：该文章由原博客园导入而</description>
+    </item>
+    
+    <item>
+      <title>(收藏)网上搜集的一系列C#面试题(持续更新……)</title>
+      <link>https://blog.coderzh.com/2007/11/04/948750/</link>
+      <pubDate>Sun, 04 Nov 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/11/04/948750/</guid>
+      <description>1.请你说说.NET中类和结构的区别? 答：结构和类具有大体的语法，但是结构受到的限制比类要多。结构不能申明有默认的构造函 数，为结构的副本是又</description>
+    </item>
+    
+    <item>
+      <title>《Windows核心编程》学习笔记系列</title>
+      <link>https://blog.coderzh.com/2007/11/04/948769/</link>
+      <pubDate>Sun, 04 Nov 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/11/04/948769/</guid>
+      <description>相信对于这本书，很多人都已经读过很多遍，因为它太经典了。 因此我也不能错过这么一本好书，最近也一直在学习Windows相关的知识，而这本书犹如</description>
+    </item>
+    
+    <item>
+      <title>《C#高级编程》笔记系列--点滴记录（持续更新中……）</title>
+      <link>https://blog.coderzh.com/2007/10/28/940352/</link>
+      <pubDate>Sun, 28 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/10/28/940352/</guid>
+      <description>1.C#本身不是.NET的一部分。.NET支持的一些特性，C#并不支持。而C#支持的另一些特性，.NET却不支持（例如运算符重载） 2.编译分</description>
+    </item>
+    
+    <item>
+      <title>《C#高级编程》笔记系列第三弹-partial关键字</title>
+      <link>https://blog.coderzh.com/2007/10/28/940444/</link>
+      <pubDate>Sun, 28 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/10/28/940444/</guid>
+      <description>我们在开发WinForm时，经常会看到partial关键字，比如，我们新建一个Windows Form时，后台代码自动添加如下： 2{ 3publicForm1() 4{ 5InitializeComponent(); 6} 7} 《</description>
+    </item>
+    
+    <item>
+      <title>.NET代码执行顺序探讨</title>
+      <link>https://blog.coderzh.com/2007/10/27/939702/</link>
+      <pubDate>Sat, 27 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/10/27/939702/</guid>
+      <description>通常我们设计一个.NET应用程序，无需考虑过多就可以让我们的程序正确的跑起来。但是，当我们的设计日益复杂时，稍不小心就会因为不清楚.NET代</description>
+    </item>
+    
+    <item>
+      <title>VBS脚本获取安全标识符SID（Security Identifiers）的方法</title>
+      <link>https://blog.coderzh.com/2007/10/17/927315/</link>
+      <pubDate>Wed, 17 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/10/17/927315/</guid>
+      <description>一、SID简介 SID也就是安全标识符（Security Identifiers），是标识用户、组和计算机帐户的唯一的号码。在第一次创建该帐户时</description>
+    </item>
+    
+    <item>
+      <title>《C#高级编程》笔记系列</title>
+      <link>https://blog.coderzh.com/2007/10/15/925277/</link>
+      <pubDate>Mon, 15 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/10/15/925277/</guid>
+      <description>由于书中包含很多基础的知识，书中已经介绍非常详细，我这里也没有必要从书中摘抄。因此以后这个专题中的内容将会是在读书过程遇到的以前不了解的东西</description>
+    </item>
+    
+    <item>
+      <title>爱如空气</title>
+      <link>https://blog.coderzh.com/2007/10/13/922972/</link>
+      <pubDate>Sat, 13 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/10/13/922972/</guid>
+      <description>幸福就像花期 开到荼靡 爱情留在秋天 独自叹息 九月的天气 下起大雨 淋湿我的思绪 雨后的花瓣 散落一地 把它做成书签 藏在日记 时光冲淡往事 鲜艳褪去 留下泛黄的痕</description>
+    </item>
+    
+    <item>
+      <title>《C#高级编程》笔记系列第二弹-初探</title>
+      <link>https://blog.coderzh.com/2007/10/01/912518/</link>
+      <pubDate>Mon, 01 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/10/01/912518/</guid>
+      <description>C#是一门年轻的语言，不像C，C++那么源远流长，而C#的一个重要特点是和.net Framework这个强大的平台结合了起来，使得我们在使用</description>
+    </item>
+    
+    <item>
+      <title>《C#高级编程》笔记系列第一弹-开篇</title>
+      <link>https://blog.coderzh.com/2007/09/22/902626/</link>
+      <pubDate>Sat, 22 Sep 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coderzh.com/2007/09/22/902626/</guid>
+      <description>虽然以前做过的C#项目也不少了，做过ASP.NET的BS架构的，也做过Winform的CS架构。有一天一位同事给我们看了下面的一个简单的De</description>
+    </item>
+    
+  </channel>
+</rss>

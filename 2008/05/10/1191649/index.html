@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="&#34;&#34;&#34;Cache&nbsp;lines&nbsp;from&nbsp;files. This&nbsp;is&nbsp;intended&nbsp;to&nbsp;read&nbsp;lines&nbsp;from&nbsp;modules&nbsp;imported&nbsp;--&nbsp;hence&nbsp;if&nbsp;a&nbsp;filename is&nbsp;not&nbsp;found,&nbsp;it&nbsp;will&nbsp;look&nbsp;down&nbsp;the&nbsp;module&nbsp;search&nbsp;path&nbsp;for&nbsp;a&nbsp;file&nbsp;by that&nbsp;name. &#34;&#34;&#34;import&nbsp;sys import&nbsp;os __all__&nbsp;=&nbsp;[&#34;getline&#34;,&nbsp;&#34;clearcache&#34;,&nbsp;&#34;checkcache&#34;] def&nbsp;getline(filename,&nbsp;lineno,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;lines&nbsp;=&nbsp;getlines(filename,&nbsp;module_globals) &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;1&nbsp;&lt;=&nbsp;lineno&nbsp;&lt;=&nbsp;len(lines): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;lines[lineno-1] &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&#39;&#39;#&nbsp;The&nbsp;cachecache&nbsp;=&nbsp;{}&nbsp;#&nbsp;The&nbsp;cachedef&nbsp;clearcache(): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Clear&nbsp;the&nbsp;cache&nbsp;entirely.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;cache &nbsp;&nbsp;&nbsp;&nbsp;cache&nbsp;=&nbsp;{} def&nbsp;getlines(filename,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Get&nbsp;the&nbsp;lines&nbsp;for&nbsp;a&nbsp;file&nbsp;from&nbsp;the&nbsp;cache. &nbsp;&nbsp;&nbsp;&nbsp;Update&nbsp;the&nbsp;cache&nbsp;if&nbsp;it&nbsp;doesn&#39;t&nbsp;contain&nbsp;an&nbsp;entry&nbsp;for&nbsp;this&nbsp;file&nbsp;already.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cache[filename][2] &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;updatecache(filename,&nbsp;module_globals) def&nbsp;checkcache(filename=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Discard&nbsp;cache&nbsp;entries&nbsp;that&nbsp;are&nbsp;out&nbsp;of&nbsp;date. &nbsp;&nbsp;&nbsp;&nbsp;(This&nbsp;is&nbsp;not&nbsp;checked&nbsp;upon&nbsp;each&nbsp;call!)&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;=&nbsp;cache.keys() &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;=&nbsp;[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;filename&nbsp;in&nbsp;filenames: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size,&nbsp;mtime,&nbsp;lines,&nbsp;fullname&nbsp;=&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;mtime&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;&nbsp;&nbsp;#&nbsp;no-op&nbsp;for&nbsp;files&nbsp;loaded&nbsp;via&nbsp;a&nbsp;__loader__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;=&nbsp;os.stat(fullname) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;os.error: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;size&nbsp;!=&nbsp;stat.st_size&nbsp;or&nbsp;mtime&nbsp;!=&nbsp;stat.st_mtime: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] def&nbsp;updatecache(filename,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Update&nbsp;a&nbsp;cache&nbsp;entry&nbsp;and&nbsp;return&nbsp;its&nbsp;list&nbsp;of&nbsp;lines. &nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;something&#39;s&nbsp;wrong,&nbsp;print&nbsp;a&nbsp;message,&nbsp;discard&nbsp;the&nbsp;cache&nbsp;entry, &nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;return&nbsp;an&nbsp;empty&nbsp;list.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;not&nbsp;filename&nbsp;or&nbsp;filename[0]&nbsp;&#43;&nbsp;filename[-1]&nbsp;==&nbsp;&#39;&lt;&gt;&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[] &nbsp;&nbsp;&nbsp;&nbsp;fullname&nbsp;=&nbsp;filename &nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;=&nbsp;os.stat(fullname) &nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;os.error,&nbsp;msg: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;=&nbsp;os.path.split(filename)[1] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Try&nbsp;for&nbsp;a&nbsp;__loader__,&nbsp;if&nbsp;available&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;module_globals&nbsp;and&nbsp;&#39;__loader__&#39;&nbsp;in&nbsp;module_globals: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;module_globals.get(&#39;__name__&#39;) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loader&nbsp;=&nbsp;module_globals[&#39;__loader__&#39;] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get_source&nbsp;=&nbsp;getattr(loader,&nbsp;&#39;get_source&#39;,&nbsp;None) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;name&nbsp;and&nbsp;get_source: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;basename.startswith(name.split(&#39;.&#39;)[-1]&#43;&#39;.&#39;): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;get_source(name) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;(ImportError,&nbsp;IOError): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;data&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;No&nbsp;luck,&nbsp;the&nbsp;PEP302&nbsp;loader&nbsp;cannot&nbsp;find&nbsp;the&nbsp;source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;for&nbsp;this&nbsp;module.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache[filename]&nbsp;=&nbsp;( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(data),&nbsp;None, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[line&#43;&#39;\n&#39;&nbsp;for&nbsp;line&nbsp;in&nbsp;data.splitlines()],&nbsp;fullname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cache[filename][2] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Try&nbsp;looking&nbsp;through&nbsp;the&nbsp;module&nbsp;search&nbsp;path,&nbsp;taking&nbsp;care&nbsp;to&nbsp;handle&nbsp;packages.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;basename&nbsp;==&nbsp;&#39;__init__.py&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;filename&nbsp;referes&nbsp;to&nbsp;a&nbsp;package&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;=&nbsp;filename &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;dirname&nbsp;in&nbsp;sys.path:">
+<meta name="description" content="This is intended to read lines from modules imported &ndash; hence if a filename is not found, it will look down the module search path for a file by that name. &quot;&ldquo;&ldquo;importsys importos __all__=[&quot;getline&quot;, &quot;clearcache&quot;, &quot;checkcache&quot;] defgetline(filename, lineno, module_globals=None): lines =getlines(filename, module_globals) if1&lt;=lineno &lt;=len(lines): returnlines[lineno-1] else: return&#39;&lsquo;#The cachecache ={} #The cachedefclearcache(): &quot;&ldquo;&ldquo;Clear the cache entirely.&quot;&ldquo;&ldquo; globalcache cache ={} defgetlines(filename, module_globals=None): &quot;&ldquo;&ldquo;Get the lines for a file from the cache. Update">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="linecache.py - CoderZh Blog">
-<meta itemprop="description" content="&#34;&#34;&#34;Cache&nbsp;lines&nbsp;from&nbsp;files. This&nbsp;is&nbsp;intended&nbsp;to&nbsp;read&nbsp;lines&nbsp;from&nbsp;modules&nbsp;imported&nbsp;--&nbsp;hence&nbsp;if&nbsp;a&nbsp;filename is&nbsp;not&nbsp;found,&nbsp;it&nbsp;will&nbsp;look&nbsp;down&nbsp;the&nbsp;module&nbsp;search&nbsp;path&nbsp;for&nbsp;a&nbsp;file&nbsp;by that&nbsp;name. &#34;&#34;&#34;import&nbsp;sys import&nbsp;os __all__&nbsp;=&nbsp;[&#34;getline&#34;,&nbsp;&#34;clearcache&#34;,&nbsp;&#34;checkcache&#34;] def&nbsp;getline(filename,&nbsp;lineno,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;lines&nbsp;=&nbsp;getlines(filename,&nbsp;module_globals) &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;1&nbsp;&lt;=&nbsp;lineno&nbsp;&lt;=&nbsp;len(lines): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;lines[lineno-1] &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&#39;&#39;#&nbsp;The&nbsp;cachecache&nbsp;=&nbsp;{}&nbsp;#&nbsp;The&nbsp;cachedef&nbsp;clearcache(): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Clear&nbsp;the&nbsp;cache&nbsp;entirely.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;cache &nbsp;&nbsp;&nbsp;&nbsp;cache&nbsp;=&nbsp;{} def&nbsp;getlines(filename,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Get&nbsp;the&nbsp;lines&nbsp;for&nbsp;a&nbsp;file&nbsp;from&nbsp;the&nbsp;cache. &nbsp;&nbsp;&nbsp;&nbsp;Update&nbsp;the&nbsp;cache&nbsp;if&nbsp;it&nbsp;doesn&#39;t&nbsp;contain&nbsp;an&nbsp;entry&nbsp;for&nbsp;this&nbsp;file&nbsp;already.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cache[filename][2] &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;updatecache(filename,&nbsp;module_globals) def&nbsp;checkcache(filename=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Discard&nbsp;cache&nbsp;entries&nbsp;that&nbsp;are&nbsp;out&nbsp;of&nbsp;date. &nbsp;&nbsp;&nbsp;&nbsp;(This&nbsp;is&nbsp;not&nbsp;checked&nbsp;upon&nbsp;each&nbsp;call!)&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;=&nbsp;cache.keys() &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;=&nbsp;[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;filename&nbsp;in&nbsp;filenames: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size,&nbsp;mtime,&nbsp;lines,&nbsp;fullname&nbsp;=&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;mtime&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;&nbsp;&nbsp;#&nbsp;no-op&nbsp;for&nbsp;files&nbsp;loaded&nbsp;via&nbsp;a&nbsp;__loader__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;=&nbsp;os.stat(fullname) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;os.error: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;size&nbsp;!=&nbsp;stat.st_size&nbsp;or&nbsp;mtime&nbsp;!=&nbsp;stat.st_mtime: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] def&nbsp;updatecache(filename,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Update&nbsp;a&nbsp;cache&nbsp;entry&nbsp;and&nbsp;return&nbsp;its&nbsp;list&nbsp;of&nbsp;lines. &nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;something&#39;s&nbsp;wrong,&nbsp;print&nbsp;a&nbsp;message,&nbsp;discard&nbsp;the&nbsp;cache&nbsp;entry, &nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;return&nbsp;an&nbsp;empty&nbsp;list.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;not&nbsp;filename&nbsp;or&nbsp;filename[0]&nbsp;&#43;&nbsp;filename[-1]&nbsp;==&nbsp;&#39;&lt;&gt;&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[] &nbsp;&nbsp;&nbsp;&nbsp;fullname&nbsp;=&nbsp;filename &nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;=&nbsp;os.stat(fullname) &nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;os.error,&nbsp;msg: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;=&nbsp;os.path.split(filename)[1] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Try&nbsp;for&nbsp;a&nbsp;__loader__,&nbsp;if&nbsp;available&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;module_globals&nbsp;and&nbsp;&#39;__loader__&#39;&nbsp;in&nbsp;module_globals: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;module_globals.get(&#39;__name__&#39;) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loader&nbsp;=&nbsp;module_globals[&#39;__loader__&#39;] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get_source&nbsp;=&nbsp;getattr(loader,&nbsp;&#39;get_source&#39;,&nbsp;None) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;name&nbsp;and&nbsp;get_source: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;basename.startswith(name.split(&#39;.&#39;)[-1]&#43;&#39;.&#39;): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;get_source(name) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;(ImportError,&nbsp;IOError): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;data&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;No&nbsp;luck,&nbsp;the&nbsp;PEP302&nbsp;loader&nbsp;cannot&nbsp;find&nbsp;the&nbsp;source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;for&nbsp;this&nbsp;module.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache[filename]&nbsp;=&nbsp;( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(data),&nbsp;None, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[line&#43;&#39;\n&#39;&nbsp;for&nbsp;line&nbsp;in&nbsp;data.splitlines()],&nbsp;fullname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cache[filename][2] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Try&nbsp;looking&nbsp;through&nbsp;the&nbsp;module&nbsp;search&nbsp;path,&nbsp;taking&nbsp;care&nbsp;to&nbsp;handle&nbsp;packages.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;basename&nbsp;==&nbsp;&#39;__init__.py&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;filename&nbsp;referes&nbsp;to&nbsp;a&nbsp;package&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;=&nbsp;filename &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;dirname&nbsp;in&nbsp;sys.path:">
+<meta itemprop="description" content="This is intended to read lines from modules imported &ndash; hence if a filename is not found, it will look down the module search path for a file by that name. &quot;&ldquo;&ldquo;importsys importos __all__=[&quot;getline&quot;, &quot;clearcache&quot;, &quot;checkcache&quot;] defgetline(filename, lineno, module_globals=None): lines =getlines(filename, module_globals) if1&lt;=lineno &lt;=len(lines): returnlines[lineno-1] else: return&#39;&lsquo;#The cachecache ={} #The cachedefclearcache(): &quot;&ldquo;&ldquo;Clear the cache entirely.&quot;&ldquo;&ldquo; globalcache cache ={} defgetlines(filename, module_globals=None): &quot;&ldquo;&ldquo;Get the lines for a file from the cache. Update">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="linecache.py - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2008/05/10/1191649/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="&#34;&#34;&#34;Cache&nbsp;lines&nbsp;from&nbsp;files. This&nbsp;is&nbsp;intended&nbsp;to&nbsp;read&nbsp;lines&nbsp;from&nbsp;modules&nbsp;imported&nbsp;--&nbsp;hence&nbsp;if&nbsp;a&nbsp;filename is&nbsp;not&nbsp;found,&nbsp;it&nbsp;will&nbsp;look&nbsp;down&nbsp;the&nbsp;module&nbsp;search&nbsp;path&nbsp;for&nbsp;a&nbsp;file&nbsp;by that&nbsp;name. &#34;&#34;&#34;import&nbsp;sys import&nbsp;os __all__&nbsp;=&nbsp;[&#34;getline&#34;,&nbsp;&#34;clearcache&#34;,&nbsp;&#34;checkcache&#34;] def&nbsp;getline(filename,&nbsp;lineno,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;lines&nbsp;=&nbsp;getlines(filename,&nbsp;module_globals) &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;1&nbsp;&lt;=&nbsp;lineno&nbsp;&lt;=&nbsp;len(lines): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;lines[lineno-1] &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&#39;&#39;#&nbsp;The&nbsp;cachecache&nbsp;=&nbsp;{}&nbsp;#&nbsp;The&nbsp;cachedef&nbsp;clearcache(): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Clear&nbsp;the&nbsp;cache&nbsp;entirely.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;cache &nbsp;&nbsp;&nbsp;&nbsp;cache&nbsp;=&nbsp;{} def&nbsp;getlines(filename,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Get&nbsp;the&nbsp;lines&nbsp;for&nbsp;a&nbsp;file&nbsp;from&nbsp;the&nbsp;cache. &nbsp;&nbsp;&nbsp;&nbsp;Update&nbsp;the&nbsp;cache&nbsp;if&nbsp;it&nbsp;doesn&#39;t&nbsp;contain&nbsp;an&nbsp;entry&nbsp;for&nbsp;this&nbsp;file&nbsp;already.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cache[filename][2] &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;updatecache(filename,&nbsp;module_globals) def&nbsp;checkcache(filename=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Discard&nbsp;cache&nbsp;entries&nbsp;that&nbsp;are&nbsp;out&nbsp;of&nbsp;date. &nbsp;&nbsp;&nbsp;&nbsp;(This&nbsp;is&nbsp;not&nbsp;checked&nbsp;upon&nbsp;each&nbsp;call!)&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;=&nbsp;cache.keys() &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;=&nbsp;[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;filename&nbsp;in&nbsp;filenames: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size,&nbsp;mtime,&nbsp;lines,&nbsp;fullname&nbsp;=&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;mtime&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;&nbsp;&nbsp;#&nbsp;no-op&nbsp;for&nbsp;files&nbsp;loaded&nbsp;via&nbsp;a&nbsp;__loader__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;=&nbsp;os.stat(fullname) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;os.error: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;size&nbsp;!=&nbsp;stat.st_size&nbsp;or&nbsp;mtime&nbsp;!=&nbsp;stat.st_mtime: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] def&nbsp;updatecache(filename,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Update&nbsp;a&nbsp;cache&nbsp;entry&nbsp;and&nbsp;return&nbsp;its&nbsp;list&nbsp;of&nbsp;lines. &nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;something&#39;s&nbsp;wrong,&nbsp;print&nbsp;a&nbsp;message,&nbsp;discard&nbsp;the&nbsp;cache&nbsp;entry, &nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;return&nbsp;an&nbsp;empty&nbsp;list.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;not&nbsp;filename&nbsp;or&nbsp;filename[0]&nbsp;&#43;&nbsp;filename[-1]&nbsp;==&nbsp;&#39;&lt;&gt;&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[] &nbsp;&nbsp;&nbsp;&nbsp;fullname&nbsp;=&nbsp;filename &nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;=&nbsp;os.stat(fullname) &nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;os.error,&nbsp;msg: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;=&nbsp;os.path.split(filename)[1] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Try&nbsp;for&nbsp;a&nbsp;__loader__,&nbsp;if&nbsp;available&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;module_globals&nbsp;and&nbsp;&#39;__loader__&#39;&nbsp;in&nbsp;module_globals: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;module_globals.get(&#39;__name__&#39;) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loader&nbsp;=&nbsp;module_globals[&#39;__loader__&#39;] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get_source&nbsp;=&nbsp;getattr(loader,&nbsp;&#39;get_source&#39;,&nbsp;None) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;name&nbsp;and&nbsp;get_source: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;basename.startswith(name.split(&#39;.&#39;)[-1]&#43;&#39;.&#39;): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;get_source(name) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;(ImportError,&nbsp;IOError): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;data&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;No&nbsp;luck,&nbsp;the&nbsp;PEP302&nbsp;loader&nbsp;cannot&nbsp;find&nbsp;the&nbsp;source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;for&nbsp;this&nbsp;module.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache[filename]&nbsp;=&nbsp;( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(data),&nbsp;None, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[line&#43;&#39;\n&#39;&nbsp;for&nbsp;line&nbsp;in&nbsp;data.splitlines()],&nbsp;fullname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cache[filename][2] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Try&nbsp;looking&nbsp;through&nbsp;the&nbsp;module&nbsp;search&nbsp;path,&nbsp;taking&nbsp;care&nbsp;to&nbsp;handle&nbsp;packages.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;basename&nbsp;==&nbsp;&#39;__init__.py&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;filename&nbsp;referes&nbsp;to&nbsp;a&nbsp;package&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;=&nbsp;filename &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;dirname&nbsp;in&nbsp;sys.path:">
+<meta property="og:description" content="This is intended to read lines from modules imported &ndash; hence if a filename is not found, it will look down the module search path for a file by that name. &quot;&ldquo;&ldquo;importsys importos __all__=[&quot;getline&quot;, &quot;clearcache&quot;, &quot;checkcache&quot;] defgetline(filename, lineno, module_globals=None): lines =getlines(filename, module_globals) if1&lt;=lineno &lt;=len(lines): returnlines[lineno-1] else: return&#39;&lsquo;#The cachecache ={} #The cachedefclearcache(): &quot;&ldquo;&ldquo;Clear the cache entirely.&quot;&ldquo;&ldquo; globalcache cache ={} defgetlines(filename, module_globals=None): &quot;&ldquo;&ldquo;Get the lines for a file from the cache. Update">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="linecache.py - CoderZh Blog">
-<meta name="twitter:description" content="&#34;&#34;&#34;Cache&nbsp;lines&nbsp;from&nbsp;files. This&nbsp;is&nbsp;intended&nbsp;to&nbsp;read&nbsp;lines&nbsp;from&nbsp;modules&nbsp;imported&nbsp;--&nbsp;hence&nbsp;if&nbsp;a&nbsp;filename is&nbsp;not&nbsp;found,&nbsp;it&nbsp;will&nbsp;look&nbsp;down&nbsp;the&nbsp;module&nbsp;search&nbsp;path&nbsp;for&nbsp;a&nbsp;file&nbsp;by that&nbsp;name. &#34;&#34;&#34;import&nbsp;sys import&nbsp;os __all__&nbsp;=&nbsp;[&#34;getline&#34;,&nbsp;&#34;clearcache&#34;,&nbsp;&#34;checkcache&#34;] def&nbsp;getline(filename,&nbsp;lineno,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;lines&nbsp;=&nbsp;getlines(filename,&nbsp;module_globals) &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;1&nbsp;&lt;=&nbsp;lineno&nbsp;&lt;=&nbsp;len(lines): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;lines[lineno-1] &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&#39;&#39;#&nbsp;The&nbsp;cachecache&nbsp;=&nbsp;{}&nbsp;#&nbsp;The&nbsp;cachedef&nbsp;clearcache(): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Clear&nbsp;the&nbsp;cache&nbsp;entirely.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;cache &nbsp;&nbsp;&nbsp;&nbsp;cache&nbsp;=&nbsp;{} def&nbsp;getlines(filename,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Get&nbsp;the&nbsp;lines&nbsp;for&nbsp;a&nbsp;file&nbsp;from&nbsp;the&nbsp;cache. &nbsp;&nbsp;&nbsp;&nbsp;Update&nbsp;the&nbsp;cache&nbsp;if&nbsp;it&nbsp;doesn&#39;t&nbsp;contain&nbsp;an&nbsp;entry&nbsp;for&nbsp;this&nbsp;file&nbsp;already.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cache[filename][2] &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;updatecache(filename,&nbsp;module_globals) def&nbsp;checkcache(filename=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Discard&nbsp;cache&nbsp;entries&nbsp;that&nbsp;are&nbsp;out&nbsp;of&nbsp;date. &nbsp;&nbsp;&nbsp;&nbsp;(This&nbsp;is&nbsp;not&nbsp;checked&nbsp;upon&nbsp;each&nbsp;call!)&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;=&nbsp;cache.keys() &nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;=&nbsp;[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;filename&nbsp;in&nbsp;filenames: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size,&nbsp;mtime,&nbsp;lines,&nbsp;fullname&nbsp;=&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;mtime&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;&nbsp;&nbsp;#&nbsp;no-op&nbsp;for&nbsp;files&nbsp;loaded&nbsp;via&nbsp;a&nbsp;__loader__&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;=&nbsp;os.stat(fullname) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;os.error: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;size&nbsp;!=&nbsp;stat.st_size&nbsp;or&nbsp;mtime&nbsp;!=&nbsp;stat.st_mtime: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] def&nbsp;updatecache(filename,&nbsp;module_globals=None): &nbsp;&nbsp;&nbsp;&nbsp;&#34;&#34;&#34;Update&nbsp;a&nbsp;cache&nbsp;entry&nbsp;and&nbsp;return&nbsp;its&nbsp;list&nbsp;of&nbsp;lines. &nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;something&#39;s&nbsp;wrong,&nbsp;print&nbsp;a&nbsp;message,&nbsp;discard&nbsp;the&nbsp;cache&nbsp;entry, &nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;return&nbsp;an&nbsp;empty&nbsp;list.&#34;&#34;&#34;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;filename&nbsp;in&nbsp;cache: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;cache[filename] &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;not&nbsp;filename&nbsp;or&nbsp;filename[0]&nbsp;&#43;&nbsp;filename[-1]&nbsp;==&nbsp;&#39;&lt;&gt;&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[] &nbsp;&nbsp;&nbsp;&nbsp;fullname&nbsp;=&nbsp;filename &nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;=&nbsp;os.stat(fullname) &nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;os.error,&nbsp;msg: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;=&nbsp;os.path.split(filename)[1] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Try&nbsp;for&nbsp;a&nbsp;__loader__,&nbsp;if&nbsp;available&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;module_globals&nbsp;and&nbsp;&#39;__loader__&#39;&nbsp;in&nbsp;module_globals: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;=&nbsp;module_globals.get(&#39;__name__&#39;) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loader&nbsp;=&nbsp;module_globals[&#39;__loader__&#39;] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get_source&nbsp;=&nbsp;getattr(loader,&nbsp;&#39;get_source&#39;,&nbsp;None) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;name&nbsp;and&nbsp;get_source: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;basename.startswith(name.split(&#39;.&#39;)[-1]&#43;&#39;.&#39;): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;get_source(name) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;(ImportError,&nbsp;IOError): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;data&nbsp;is&nbsp;None: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;No&nbsp;luck,&nbsp;the&nbsp;PEP302&nbsp;loader&nbsp;cannot&nbsp;find&nbsp;the&nbsp;source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;for&nbsp;this&nbsp;module.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache[filename]&nbsp;=&nbsp;( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(data),&nbsp;None, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[line&#43;&#39;\n&#39;&nbsp;for&nbsp;line&nbsp;in&nbsp;data.splitlines()],&nbsp;fullname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cache[filename][2] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Try&nbsp;looking&nbsp;through&nbsp;the&nbsp;module&nbsp;search&nbsp;path,&nbsp;taking&nbsp;care&nbsp;to&nbsp;handle&nbsp;packages.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;basename&nbsp;==&nbsp;&#39;__init__.py&#39;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;filename&nbsp;referes&nbsp;to&nbsp;a&nbsp;package&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;=&nbsp;filename &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;dirname&nbsp;in&nbsp;sys.path:">
+<meta name="twitter:description" content="This is intended to read lines from modules imported &ndash; hence if a filename is not found, it will look down the module search path for a file by that name. &quot;&ldquo;&ldquo;importsys importos __all__=[&quot;getline&quot;, &quot;clearcache&quot;, &quot;checkcache&quot;] defgetline(filename, lineno, module_globals=None): lines =getlines(filename, module_globals) if1&lt;=lineno &lt;=len(lines): returnlines[lineno-1] else: return&#39;&lsquo;#The cachecache ={} #The cachedefclearcache(): &quot;&ldquo;&ldquo;Clear the cache entirely.&quot;&ldquo;&ldquo; globalcache cache ={} defgetlines(filename, module_globals=None): &quot;&ldquo;&ldquo;Get the lines for a file from the cache. Update">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">linecache.py</h1>
 
                   <p class="post-byline">
-                    by  · 2008年05月10日 · 182 Words ·
+                    by  · 2008年05月10日 · 419 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-05-10-1191649.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,288 +189,124 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #800000;">"""</span><span style="color: #800000;">Cache&nbsp;lines&nbsp;from&nbsp;files.
-
-
-
-This&nbsp;is&nbsp;intended&nbsp;to&nbsp;read&nbsp;lines&nbsp;from&nbsp;modules&nbsp;imported&nbsp;--&nbsp;hence&nbsp;if&nbsp;a&nbsp;filename
-
-is&nbsp;not&nbsp;found,&nbsp;it&nbsp;will&nbsp;look&nbsp;down&nbsp;the&nbsp;module&nbsp;search&nbsp;path&nbsp;for&nbsp;a&nbsp;file&nbsp;by
-
-that&nbsp;name.
-
-</span><span style="color: #800000;">"""</span><span style="color: #000000;">
-
-
-
-</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;sys
-
-</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;os
-
-
-
-</span><span style="color: #800080;">__all__</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;[</span><span style="color: #800000;">"</span><span style="color: #800000;">getline</span><span style="color: #800000;">"</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">"</span><span style="color: #800000;">clearcache</span><span style="color: #800000;">"</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">"</span><span style="color: #800000;">checkcache</span><span style="color: #800000;">"</span><span style="color: #000000;">]
-
-
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;getline(filename,&nbsp;lineno,&nbsp;module_globals</span><span style="color: #000000;">=</span><span style="color: #000000;">None):
-
-&nbsp;&nbsp;&nbsp;&nbsp;lines&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;getlines(filename,&nbsp;module_globals)
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">1</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">&lt;=</span><span style="color: #000000;">&nbsp;lineno&nbsp;</span><span style="color: #000000;">&lt;=</span><span style="color: #000000;">&nbsp;len(lines):
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;lines[lineno</span><span style="color: #000000;">-</span><span style="color: #000000;">1</span><span style="color: #000000;">]
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">''</span><span style="color: #000000;">
-
-
-
-
-
-</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;The&nbsp;cache</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">
-
-cache&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;{}&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;The&nbsp;cache</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">
-
-
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;clearcache():
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #800000;">"""</span><span style="color: #800000;">Clear&nbsp;the&nbsp;cache&nbsp;entirely.</span><span style="color: #800000;">"""</span><span style="color: #000000;">
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">global</span><span style="color: #000000;">&nbsp;cache
-
-&nbsp;&nbsp;&nbsp;&nbsp;cache&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;{}
-
-
-
-
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;getlines(filename,&nbsp;module_globals</span><span style="color: #000000;">=</span><span style="color: #000000;">None):
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #800000;">"""</span><span style="color: #800000;">Get&nbsp;the&nbsp;lines&nbsp;for&nbsp;a&nbsp;file&nbsp;from&nbsp;the&nbsp;cache.
-
-&nbsp;&nbsp;&nbsp;&nbsp;Update&nbsp;the&nbsp;cache&nbsp;if&nbsp;it&nbsp;doesn't&nbsp;contain&nbsp;an&nbsp;entry&nbsp;for&nbsp;this&nbsp;file&nbsp;already.</span><span style="color: #800000;">"""</span><span style="color: #000000;">
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;filename&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;cache:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;cache[filename][</span><span style="color: #000000;">2</span><span style="color: #000000;">]
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;updatecache(filename,&nbsp;module_globals)
-
-
-
-
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;checkcache(filename</span><span style="color: #000000;">=</span><span style="color: #000000;">None):
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #800000;">"""</span><span style="color: #800000;">Discard&nbsp;cache&nbsp;entries&nbsp;that&nbsp;are&nbsp;out&nbsp;of&nbsp;date.
-
-&nbsp;&nbsp;&nbsp;&nbsp;(This&nbsp;is&nbsp;not&nbsp;checked&nbsp;upon&nbsp;each&nbsp;call!)</span><span style="color: #800000;">"""</span><span style="color: #000000;">
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;filename&nbsp;</span><span style="color: #0000ff;">is</span><span style="color: #000000;">&nbsp;None:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;cache.keys()
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;filename&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;cache:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filenames&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;[filename]
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">for</span><span style="color: #000000;">&nbsp;filename&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;filenames:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size,&nbsp;mtime,&nbsp;lines,&nbsp;fullname&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;cache[filename]
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;mtime&nbsp;</span><span style="color: #0000ff;">is</span><span style="color: #000000;">&nbsp;None:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">continue</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;no-op&nbsp;for&nbsp;files&nbsp;loaded&nbsp;via&nbsp;a&nbsp;__loader__</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">try</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;os.stat(fullname)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">except</span><span style="color: #000000;">&nbsp;os.error:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">del</span><span style="color: #000000;">&nbsp;cache[filename]
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">continue</span><span style="color: #000000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;size&nbsp;</span><span style="color: #000000;">!=</span><span style="color: #000000;">&nbsp;stat.st_size&nbsp;</span><span style="color: #0000ff;">or</span><span style="color: #000000;">&nbsp;mtime&nbsp;</span><span style="color: #000000;">!=</span><span style="color: #000000;">&nbsp;stat.st_mtime:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">del</span><span style="color: #000000;">&nbsp;cache[filename]
-
-
-
-
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;updatecache(filename,&nbsp;module_globals</span><span style="color: #000000;">=</span><span style="color: #000000;">None):
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #800000;">"""</span><span style="color: #800000;">Update&nbsp;a&nbsp;cache&nbsp;entry&nbsp;and&nbsp;return&nbsp;its&nbsp;list&nbsp;of&nbsp;lines.
-
-&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;something's&nbsp;wrong,&nbsp;print&nbsp;a&nbsp;message,&nbsp;discard&nbsp;the&nbsp;cache&nbsp;entry,
-
-&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;return&nbsp;an&nbsp;empty&nbsp;list.</span><span style="color: #800000;">"""</span><span style="color: #000000;">
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;filename&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;cache:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">del</span><span style="color: #000000;">&nbsp;cache[filename]
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">not</span><span style="color: #000000;">&nbsp;filename&nbsp;</span><span style="color: #0000ff;">or</span><span style="color: #000000;">&nbsp;filename[0]&nbsp;</span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;filename[</span><span style="color: #000000;">-</span><span style="color: #000000;">1</span><span style="color: #000000;">]&nbsp;</span><span style="color: #000000;">==</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">&lt;&gt;</span><span style="color: #800000;">'</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;[]
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;fullname&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;filename
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">try</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;os.stat(fullname)
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">except</span><span style="color: #000000;">&nbsp;os.error,&nbsp;msg:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;os.path.split(filename)[</span><span style="color: #000000;">1</span><span style="color: #000000;">]
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;Try&nbsp;for&nbsp;a&nbsp;__loader__,&nbsp;if&nbsp;available</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;module_globals&nbsp;</span><span style="color: #0000ff;">and</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">__loader__</span><span style="color: #800000;">'</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;module_globals:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;module_globals.get(</span><span style="color: #800000;">'</span><span style="color: #800000;">__name__</span><span style="color: #800000;">'</span><span style="color: #000000;">)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loader&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;module_globals[</span><span style="color: #800000;">'</span><span style="color: #800000;">__loader__</span><span style="color: #800000;">'</span><span style="color: #000000;">]
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get_source&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;getattr(loader,&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">get_source</span><span style="color: #800000;">'</span><span style="color: #000000;">,&nbsp;None)
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;name&nbsp;</span><span style="color: #0000ff;">and</span><span style="color: #000000;">&nbsp;get_source:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;basename.startswith(name.split(</span><span style="color: #800000;">'</span><span style="color: #800000;">.</span><span style="color: #800000;">'</span><span style="color: #000000;">)[</span><span style="color: #000000;">-</span><span style="color: #000000;">1</span><span style="color: #000000;">]</span><span style="color: #000000;">+</span><span style="color: #800000;">'</span><span style="color: #800000;">.</span><span style="color: #800000;">'</span><span style="color: #000000;">):
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">try</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;get_source(name)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">except</span><span style="color: #000000;">&nbsp;(ImportError,&nbsp;IOError):
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">pass</span><span style="color: #000000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;data&nbsp;</span><span style="color: #0000ff;">is</span><span style="color: #000000;">&nbsp;None:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;No&nbsp;luck,&nbsp;the&nbsp;PEP302&nbsp;loader&nbsp;cannot&nbsp;find&nbsp;the&nbsp;source</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;for&nbsp;this&nbsp;module.</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;[]
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache[filename]&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;(
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(data),&nbsp;None,
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[line</span><span style="color: #000000;">+</span><span style="color: #800000;">'</span><span style="color: #800000;">\n</span><span style="color: #800000;">'</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">for</span><span style="color: #000000;">&nbsp;line&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;data.splitlines()],&nbsp;fullname
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;cache[filename][</span><span style="color: #000000;">2</span><span style="color: #000000;">]
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;Try&nbsp;looking&nbsp;through&nbsp;the&nbsp;module&nbsp;search&nbsp;path,&nbsp;taking&nbsp;care&nbsp;to&nbsp;handle&nbsp;packages.</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;basename&nbsp;</span><span style="color: #000000;">==</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">__init__.py</span><span style="color: #800000;">'</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;filename&nbsp;referes&nbsp;to&nbsp;a&nbsp;package</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basename&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;filename
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">for</span><span style="color: #000000;">&nbsp;dirname&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;sys.path:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;When&nbsp;using&nbsp;imputil,&nbsp;sys.path&nbsp;may&nbsp;contain&nbsp;things&nbsp;other&nbsp;than</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;strings;&nbsp;ignore&nbsp;them&nbsp;when&nbsp;it&nbsp;happens.</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">try</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fullname&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;os.path.join(dirname,&nbsp;basename)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">except</span><span style="color: #000000;">&nbsp;(TypeError,&nbsp;AttributeError):
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;Not&nbsp;sufficiently&nbsp;string-like&nbsp;to&nbsp;do&nbsp;anything&nbsp;useful&nbsp;with.</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">pass</span><span style="color: #000000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">try</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;os.stat(fullname)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">break</span><span style="color: #000000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">except</span><span style="color: #000000;">&nbsp;os.error:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">pass</span><span style="color: #000000;">
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;No&nbsp;luck</span><span style="color: #008000;">
-
-#</span><span style="color: #008000;">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'***&nbsp;Cannot&nbsp;stat',&nbsp;filename,&nbsp;':',&nbsp;msg</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;[]
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">try</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fp&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;open(fullname,&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">rU</span><span style="color: #800000;">'</span><span style="color: #000000;">)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lines&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;fp.readlines()
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fp.close()
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">except</span><span style="color: #000000;">&nbsp;IOError,&nbsp;msg:
-
-</span><span style="color: #008000;">#</span><span style="color: #008000;">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'***&nbsp;Cannot&nbsp;open',&nbsp;fullname,&nbsp;':',&nbsp;msg</span><span style="color: #008000;">
-
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;[]
-
-&nbsp;&nbsp;&nbsp;&nbsp;size,&nbsp;mtime&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;stat.st_size,&nbsp;stat.st_mtime
-
-&nbsp;&nbsp;&nbsp;&nbsp;cache[filename]&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;size,&nbsp;mtime,&nbsp;lines,&nbsp;fullname
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;lines
-
-</span></div>
-
+                      <!-- raw HTML omitted -->
+<p>This is intended to read lines from modules imported &ndash; hence if a filename</p>
+<p>is not found, it will look down the module search path for a file by</p>
+<p>that name.</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->import<!-- raw HTML omitted --><!-- raw HTML omitted --> sys</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->import<!-- raw HTML omitted --><!-- raw HTML omitted --> os</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->__all__<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> [<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->getline<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->, <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->clearcache<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->, <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->checkcache<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->]</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> getline(filename, lineno, module_globals<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->None):</p>
+<p>    lines <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> getlines(filename, module_globals)</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;=<!-- raw HTML omitted --><!-- raw HTML omitted --> lineno <!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;=<!-- raw HTML omitted --><!-- raw HTML omitted --> len(lines):</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> lines[lineno<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'&lsquo;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> The cache<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>cache <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> {} <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> The cache<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> clearcache():</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->Clear the cache entirely.<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->global<!-- raw HTML omitted --><!-- raw HTML omitted --> cache</p>
+<p>    cache <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> {}</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> getlines(filename, module_globals<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->None):</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->Get the lines for a file from the cache.</p>
+<p>    Update the cache if it doesn&rsquo;t contain an entry for this file already.<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> filename <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> cache:</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> cache[filename][<!-- raw HTML omitted --><!-- raw HTML omitted -->2<!-- raw HTML omitted --><!-- raw HTML omitted -->]</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> updatecache(filename, module_globals)</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> checkcache(filename<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->None):</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->Discard cache entries that are out of date.</p>
+<p>    (This is not checked upon each call!)<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> filename <!-- raw HTML omitted --><!-- raw HTML omitted -->is<!-- raw HTML omitted --><!-- raw HTML omitted --> None:</p>
+<p>        filenames <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> cache.keys()</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> filename <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> cache:</p>
+<p>            filenames <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> [filename]</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --><!-- raw HTML omitted --> filename <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> filenames:</p>
+<p>        size, mtime, lines, fullname <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> cache[filename]</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> mtime <!-- raw HTML omitted --><!-- raw HTML omitted -->is<!-- raw HTML omitted --><!-- raw HTML omitted --> None:</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->continue<!-- raw HTML omitted --><!-- raw HTML omitted -->   <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> no-op for files loaded via a __loader__<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->try<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>            stat <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> os.stat(fullname)</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->except<!-- raw HTML omitted --><!-- raw HTML omitted --> os.error:</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->del<!-- raw HTML omitted --><!-- raw HTML omitted --> cache[filename]</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->continue<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> size <!-- raw HTML omitted --><!-- raw HTML omitted -->!=<!-- raw HTML omitted --><!-- raw HTML omitted --> stat.st_size <!-- raw HTML omitted --><!-- raw HTML omitted -->or<!-- raw HTML omitted --><!-- raw HTML omitted --> mtime <!-- raw HTML omitted --><!-- raw HTML omitted -->!=<!-- raw HTML omitted --><!-- raw HTML omitted --> stat.st_mtime:</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->del<!-- raw HTML omitted --><!-- raw HTML omitted --> cache[filename]</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> updatecache(filename, module_globals<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->None):</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->Update a cache entry and return its list of lines.</p>
+<p>    If something&rsquo;s wrong, print a message, discard the cache entry,</p>
+<p>    and return an empty list.<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> filename <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> cache:</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->del<!-- raw HTML omitted --><!-- raw HTML omitted --> cache[filename]</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->not<!-- raw HTML omitted --><!-- raw HTML omitted --> filename <!-- raw HTML omitted --><!-- raw HTML omitted -->or<!-- raw HTML omitted --><!-- raw HTML omitted --> filename[0] <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> filename[<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->] <!-- raw HTML omitted --><!-- raw HTML omitted -->==<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;&gt;<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> []</p>
+<p>    fullname <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> filename</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->try<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>        stat <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> os.stat(fullname)</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->except<!-- raw HTML omitted --><!-- raw HTML omitted --> os.error, msg:</p>
+<p>        basename <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> os.path.split(filename)[<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> Try for a <strong>loader</strong>, if available<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> module_globals <!-- raw HTML omitted --><!-- raw HTML omitted -->and<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->__loader__<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> module_globals:</p>
+<p>            name <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> module_globals.get(<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->__name__<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p>            loader <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> module_globals[<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->__loader__<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->]</p>
+<p>            get_source <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> getattr(loader, <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->get_source<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->, None)</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> name <!-- raw HTML omitted --><!-- raw HTML omitted -->and<!-- raw HTML omitted --><!-- raw HTML omitted --> get_source:</p>
+<p>                <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> basename.startswith(name.split(<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)[<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->):</p>
+<p>                    <!-- raw HTML omitted --><!-- raw HTML omitted -->try<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>                        data <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> get_source(name)</p>
+<p>                    <!-- raw HTML omitted --><!-- raw HTML omitted -->except<!-- raw HTML omitted --><!-- raw HTML omitted --> (ImportError, IOError):</p>
+<p>                        <!-- raw HTML omitted --><!-- raw HTML omitted -->pass<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>                    <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>                        <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> data <!-- raw HTML omitted --><!-- raw HTML omitted -->is<!-- raw HTML omitted --><!-- raw HTML omitted --> None:</p>
+<p>                            <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> No luck, the PEP302 loader cannot find the source<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->                            <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> for this module.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->                            <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> []</p>
+<p>                        cache[filename] <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> (</p>
+<p>                            len(data), None,</p>
+<p>                            [line<!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->\n<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --><!-- raw HTML omitted --> line <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> data.splitlines()], fullname</p>
+<p>                        )</p>
+<p>                        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> cache[filename][<!-- raw HTML omitted --><!-- raw HTML omitted -->2<!-- raw HTML omitted --><!-- raw HTML omitted -->]</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> Try looking through the module search path, taking care to handle packages.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> basename <!-- raw HTML omitted --><!-- raw HTML omitted -->==<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->__init__.py<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> filename referes to a package<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->            basename <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> filename</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --><!-- raw HTML omitted --> dirname <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> sys.path:</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> When using imputil, sys.path may contain things other than<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> strings; ignore them when it happens.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->try<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>                fullname <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> os.path.join(dirname, basename)</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->except<!-- raw HTML omitted --><!-- raw HTML omitted --> (TypeError, AttributeError):</p>
+<p>                <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> Not sufficiently string-like to do anything useful with.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->pass<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>                <!-- raw HTML omitted --><!-- raw HTML omitted -->try<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>                    stat <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> os.stat(fullname)</p>
+<p>                    <!-- raw HTML omitted --><!-- raw HTML omitted -->break<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>                <!-- raw HTML omitted --><!-- raw HTML omitted -->except<!-- raw HTML omitted --><!-- raw HTML omitted --> os.error:</p>
+<p>                    <!-- raw HTML omitted --><!-- raw HTML omitted -->pass<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted --> No luck<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>#<!-- raw HTML omitted --><!-- raw HTML omitted -->#          print '*** Cannot stat&rsquo;, filename, ':', msg<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> []</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->try<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>        fp <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> open(fullname, <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->rU<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p>        lines <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> fp.readlines()</p>
+<p>        fp.close()</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->except<!-- raw HTML omitted --><!-- raw HTML omitted --> IOError, msg:</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted -->#      print '*** Cannot open&rsquo;, fullname, ':', msg<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> []</p>
+<p>    size, mtime <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> stat.st_size, stat.st_mtime</p>
+<p>    cache[filename] <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> size, mtime, lines, fullname</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> lines</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191649.html">http://www.cnblogs.com/coderzh/archive/2008/05/10/1191649.html</a></strong></p>
 
                       
@@ -482,7 +318,7 @@ cache&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/05/10/1191649/">https://blog.coderzh.com/2008/05/10/1191649/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -537,19 +373,19 @@ cache&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/05/09/1190173/" rel="next">
+        <a href="https://blog.coderzh.com/2008/05/13/1194445/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Python天天美味(16) - 过滤字符串的技巧,map与itertools.imap</span>
+          <span>Ken Thompson爷爷的经典复制自身代码程序 - Python版本(只用两行！)</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/05/10/1191641/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/05/10/1191410/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>Python天天美味(18) - linecache.getline()读取文件中特定一行</span>
+          <span>Python天天美味(17) - open读写文件</span>
         </a>
         
       </li>

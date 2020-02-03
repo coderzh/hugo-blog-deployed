@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Emacs中打造强大的Python IDE</h1>
 
                   <p class="post-byline">
-                    by  · 2009年12月26日 · 1316 Words ·
+                    by  · 2009年12月26日 · 1019 Words ·
                     ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-12-26-emacspythonide.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,161 +189,71 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>本文将介绍，在Emacs中，通过各种扩展，打造强大的Python IDE环境，包括<span style="color: #0000ff;">Snippet工具，智能提示，自动补全，重构工具，调试以及GAE的调试</span>，等等。以下各工具的安装前提是你对Emacs的配置文件有一定的了解，所有相关的el文件都必须放在load_path能够加载的地方。</p>
-
-<h4 id="span-1-yasnippet-http-code-google-com-p-yasnippet-span"><span><a href="http://code.google.com/p/yasnippet/">1. YASnippet</a> </span></h4>
-
+                      <p>本文将介绍，在Emacs中，通过各种扩展，打造强大的Python IDE环境，包括<!-- raw HTML omitted -->Snippet工具，智能提示，自动补全，重构工具，调试以及GAE的调试<!-- raw HTML omitted -->，等等。以下各工具的安装前提是你对Emacs的配置文件有一定的了解，所有相关的el文件都必须放在load_path能够加载的地方。</p>
+<h4 id="span1-yasnippethttpcodegooglecompyasnippet-span"><!-- raw HTML omitted --><a href="http://code.google.com/p/yasnippet/">1. YASnippet</a> <!-- raw HTML omitted --></h4>
 <p>snippet工具，可自定义一些模板，必不可少的好东西！看了下面这个很酷的演示动画就明白了：</p>
-
-<p>[<a href="http://yasnippet.googlecode.com/files/yasnippet.avi">http://yasnippet.googlecode.com/files/yasnippet.avi</a></p>
-
+<p>[http://yasnippet.googlecode.com/files/yasnippet.avi</p>
 <p>](<a href="http://yasnippet.googlecode.com/files/yasnippet.avi">http://yasnippet.googlecode.com/files/yasnippet.avi</a>)</p>
-
 <p>安装方法：</p>
-
-<div class="cnblogs_code"><div><span style="color: #000000;">(</span><span style="color: #0000ff;">require</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000; font-weight: bold;">'</span><span style="color: #000000; font-weight: bold;">yasnippet)
-(yas/initialize)
-(yas/load-directory&nbsp;"~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")</span></div></div>
-
-<h4 id="toc_1">[</h4>
-
-<ol>
+<!-- raw HTML omitted -->
+<h4 id="heading">[</h4>
+<ol start="2">
 <li>AutoComplete](<a href="http://www.emacswiki.org/emacs/AutoComplete">http://www.emacswiki.org/emacs/AutoComplete</a>)</li>
 </ol>
-
 <p>自动完成工具，会像VS里一样，弹出一个列表框让你去选择。</p>
-
-<p><img src="http://www.emacswiki.org/pics/static/AutoCompleteScreenshot.png" alt="" />&lsquo;</p>
-
-<p>安装方法：
-<div class="cnblogs_code" onclick="cnblogs_code_show('af09c201-90fc-4bbd-95f8-878f5b7405e9')"><img src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" /><div id="cnblogs_code_open_af09c201-90fc-4bbd-95f8-878f5b7405e9"><div><span style="color: #000000;">(</span><span style="color: #0000ff;">require</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">auto-complete)
-(require&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">auto</span><span style="color: #000000;">-</span><span style="color: #000000;">complete</span><span style="color: #000000;">-</span><span style="color: #000000;">config)
-(global</span><span style="color: #000000;">-</span><span style="color: #000000;">auto</span><span style="color: #000000;">-</span><span style="color: #000000;">complete</span><span style="color: #000000;">-</span><span style="color: #000000;">mode&nbsp;t)
-(setq</span><span style="color: #000000;">-</span><span style="color: #000000;">default&nbsp;ac</span><span style="color: #000000;">-</span><span style="color: #000000;">sources&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">(ac-source-words-in-same-mode-buffers))
-(add-hook&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">emacs</span><span style="color: #000000;">-</span><span style="color: #000000;">lisp</span><span style="color: #000000;">-</span><span style="color: #000000;">mode</span><span style="color: #000000;">-</span><span style="color: #000000;">hook&nbsp;(lambda&nbsp;()&nbsp;(add</span><span style="color: #000000;">-</span><span style="color: #000000;">to</span><span style="color: #000000;">-</span><span style="color: #000000;">list&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">ac-sources&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">ac</span><span style="color: #000000;">-</span><span style="color: #000000;">source</span><span style="color: #000000;">-</span><span style="color: #000000;">symbols)))
-(add</span><span style="color: #000000;">-</span><span style="color: #000000;">hook&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">auto-complete-mode-hook&nbsp;(lambda&nbsp;()&nbsp;(add-to-list&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">ac</span><span style="color: #000000;">-</span><span style="color: #000000;">sources&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">ac-source-filename)))
-(set-face-background&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">ac</span><span style="color: #000000;">-</span><span style="color: #000000;">candidate</span><span style="color: #000000;">-</span><span style="color: #000000;">face&nbsp;</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000; font-weight: bold;">lightgray</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000;">)
-(set</span><span style="color: #000000;">-</span><span style="color: #000000;">face</span><span style="color: #000000;">-</span><span style="color: #000000;">underline&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">ac-candidate-face&nbsp;&ldquo;darkgray&rdquo;)
-(set-face-background&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">ac</span><span style="color: #000000;">-</span><span style="color: #000000;">selection</span><span style="color: #000000;">-</span><span style="color: #000000;">face&nbsp;</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000; font-weight: bold;">steelblue</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000;">) ;;; </span><strong><span style="color: #008000;">设置比上面截图中更好看的背景颜色</span></strong><span style="color: #000000;">
-(define</span><span style="color: #000000;">-</span><span style="color: #000000;">key&nbsp;ac</span><span style="color: #000000;">-</span><span style="color: #000000;">completing</span><span style="color: #000000;">-</span><span style="color: #0000ff;">map</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000; font-weight: bold;">\M-n</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">ac-next)&nbsp;&nbsp;;;;&nbsp;</span><span style="color: #008000; font-weight: bold;">列表中通过按M-n来向下移动</span><span style="color: #000000; font-weight: bold;">
-(define-key&nbsp;ac-completing-map&nbsp;&ldquo;\M-p&rdquo;&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">ac</span><span style="color: #000000;">-</span><span style="color: #000000;">previous)
-(setq&nbsp;ac</span><span style="color: #000000;">-</span><span style="color: #000000;">auto</span><span style="color: #000000;">-</span><span style="color: #000000;">start&nbsp;</span><span style="color: #800000;">2</span><span style="color: #000000;">)
-(setq&nbsp;ac</span><span style="color: #000000;">-</span><span style="color: #000000;">dwim&nbsp;t)
-(define</span><span style="color: #000000;">-</span><span style="color: #000000;">key&nbsp;ac</span><span style="color: #000000;">-</span><span style="color: #000000;">mode</span><span style="color: #000000;">-</span><span style="color: #0000ff;">map</span><span style="color: #000000;">&nbsp;(kbd&nbsp;</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000; font-weight: bold;">M-TAB</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000;">)&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">auto-complete)</span></div></div></div></p>
-
-<h4 id="span"><span>[</h4>
-
-<ol>
-<li>Rope and Ropemacs](<a href="http://rope.sourceforge.net/ropemacs.html">http://rope.sourceforge.net/ropemacs.html</a>)     </span></li>
+<p><img src="http://www.emacswiki.org/pics/static/AutoCompleteScreenshot.png" alt="">&rsquo;</p>
+<p>安装方法：</p>
+<!-- raw HTML omitted -->
+<h4 id="span"><!-- raw HTML omitted -->[</h4>
+<ol start="3">
+<li>Rope and Ropemacs](<a href="http://rope.sourceforge.net/ropemacs.html">http://rope.sourceforge.net/ropemacs.html</a>)     <!-- raw HTML omitted --></li>
 </ol>
-
 <p>非常棒的重构工具，比如rename,move,extract method等等。还有非常好用的goto difinition(跳到定义)，show documents(显示文档)等等。安装Ropemacs前，必须先安装<a href="http://rope.sf.net/">rope</a>和<a href="http://pymacs.progiciels-bpi.ca/pymacs.html">pymacs</a> 。</p>
-
-<p><a href="http://rope.sf.net/"><strong>rope</strong></a>的安装方法：
-<div class="cnblogs_code"><div><span style="color: #000000;">python&nbsp;setup.py install</span></div></div></p>
-
+<p><a href="http://rope.sf.net/"><strong>rope</strong></a>的安装方法：</p>
+<!-- raw HTML omitted -->
 <p><a href="http://pymacs.progiciels-bpi.ca/pymacs.html"><strong>pymacs</strong></a>的安装方法：
-<br />
-<div class="cnblogs_code"><div><span style="color: #000000;">python&nbsp;setup.py&nbsp;install</span></div></div>
-<br />
-.emacs中：
-<div class="cnblogs_code"><div><span style="color: #000000;">(autoload&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">pymacs-apply&nbsp;&ldquo;pymacs&rdquo;)
-(autoload&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">pymacs</span><span style="color: #000000;">-</span><span style="color: #000000;">call&nbsp;</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000; font-weight: bold;">pymacs</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000;">)
-(autoload&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">pymacs-eval&nbsp;&ldquo;pymacs&rdquo;&nbsp;nil&nbsp;t)
-(autoload&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000;">pymacs</span><span style="color: #000000;">-</span><span style="color: #0000ff;">exec</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000; font-weight: bold;">pymacs</span><span style="color: #000000; font-weight: bold;">&ldquo;</span><span style="color: #000000;">&nbsp;nil&nbsp;t)
-(autoload&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">pymacs-load&nbsp;&ldquo;pymacs&rdquo;&nbsp;nil&nbsp;t)</span></div></div></p>
-
-<p><strong><a href="http://rope.sourceforge.net/ropemacs.html">Ropmacs</a></strong>的安装方法：</p>
-
-<div class="cnblogs_code"><div><span style="color: #000000;">python&nbsp;setup.py&nbsp;install</span></div></div>
-<br />
-.emacs中：
-<br />
-<div class="cnblogs_code"><div><span style="color: #000000;">(pymacs</span><span style="color: #000000;">-</span><span style="color: #000000;">load&nbsp;</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000; font-weight: bold;">ropemacs</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000; font-weight: bold;">rope-</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000;">)
-(setq&nbsp;ropemacs</span><span style="color: #000000;">-</span><span style="color: #000000;">enable</span><span style="color: #000000;">-</span><span style="color: #000000;">autoimport&nbsp;t)</span></div></div>
-
-<h4 id="toc_3">[</h4>
-
-<ol>
+<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>**<a href="http://rope.sourceforge.net/ropemacs.html">Ropmacs</a>**的安装方法：</p>
+<!-- raw HTML omitted -->
+<h4 id="heading-1">[</h4>
+<ol start="4">
 <li>pycomplete](<a href="http://www.rwdev.eu/articles/emacspyeng">http://www.rwdev.eu/articles/emacspyeng</a>)</li>
 </ol>
-
 <p>一个更加强大的智能提示工具，比如，输入time.cl 然后按TAB键，会列出time模块所有cl开头的函数名。在调用函数时，还会在mini buffer中提示函数的参数类型。这个东西需要先安装pymacs。</p>
-
 <p>安装方法：</p>
-
 <ol>
-<li><p>拷贝 <a href="http://www.rwdev.eu/python/pycomplete/python-mode.el">python-mode.el</a> and <a href="http://www.rwdev.eu/python/pycomplete/pycomplete.el">pycomplete.el</a> 到Emacs的load_path中。</p></li>
-
-<li><p>拷贝  <a href="http://www.rwdev.eu/python/pycomplete/pycomplete.py">pycomplete.py</a> 到<cite>PYTHONPATH</cite> (比如： c:/<cite>python25/Lib/site-packages</cite>)</p></li>
-
-<li><p>.emacs中添加：</p></li>
+<li>
+<p>拷贝 <a href="http://www.rwdev.eu/python/pycomplete/python-mode.el">python-mode.el</a> and <a href="http://www.rwdev.eu/python/pycomplete/pycomplete.el">pycomplete.el</a> 到Emacs的load_path中。</p>
+</li>
+<li>
+<p>拷贝  <a href="http://www.rwdev.eu/python/pycomplete/pycomplete.py">pycomplete.py</a> 到<!-- raw HTML omitted -->PYTHONPATH<!-- raw HTML omitted --> (比如： c:/<!-- raw HTML omitted -->python25/Lib/site-packages<!-- raw HTML omitted -->)</p>
+</li>
+<li>
+<p>.emacs中添加：</p>
+</li>
 </ol>
-
-<div class="cnblogs_code" onclick="cnblogs_code_show('b63ff589-0b0f-4325-8fd6-8790b097202d')">![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)<div id="cnblogs_code_open_b63ff589-0b0f-4325-8fd6-8790b097202d"><div><span style="color: #000000;">(</span><span style="color: #0000ff;">require</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000; font-weight: bold;">'</span><span style="color: #000000; font-weight: bold;">pycomplete)
-(setq&nbsp;auto-mode-alist&nbsp;(cons&nbsp;</span><span style="color: #000000; font-weight: bold;">'</span><span style="color: #000000;">(</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000; font-weight: bold;">\\.py$</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">.</span><span style="color: #000000;">&nbsp;python</span><span style="color: #000000;">-</span><span style="color: #000000;">mode)&nbsp;auto</span><span style="color: #000000;">-</span><span style="color: #000000;">mode</span><span style="color: #000000;">-</span><span style="color: #000000;">alist))
-(autoload&nbsp;</span><span style="color: #000000; font-weight: bold;">'</span><span style="color: #000000; font-weight: bold;">python-mode&nbsp;"python-mode"&nbsp;"Python&nbsp;editing&nbsp;mode."&nbsp;t)
-(setq&nbsp;interpreter-mode-alist(cons&nbsp;</span><span style="color: #000000; font-weight: bold;">'</span><span style="color: #000000;">(</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000; font-weight: bold;">python</span><span style="color: #000000; font-weight: bold;">"</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">.</span><span style="color: #000000;">&nbsp;python</span><span style="color: #000000;">-</span><span style="color: #000000;">mode)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interpreter</span><span style="color: #000000;">-</span><span style="color: #000000;">mode</span><span style="color: #000000;">-</span><span style="color: #000000;">alist))</span></div></div></div>
-
+<!-- raw HTML omitted -->
 <h4 id="5-pdb调试">5. pdb调试</h4>
-
 <p>在Emacs中，通过M-x pdb可调出pdb对python代码进行调试。但是发现在Windows系统中，总进入不了调试模式。主要原因有：</p>
-
 <ol>
-<li><p>windows中，找不到pdb.py位置。需自己制定pdb的路径。可以通过下面的方法设置pdb的路径：
-<div class="cnblogs_code" onclick="cnblogs_code_show('5223831d-7326-4397-84e7-3797b11b65ec')"><img src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt="" /><div id="cnblogs_code_open_5223831d-7326-4397-84e7-3797b11b65ec"><div><span style="color: #000000;">;;&nbsp;pdb&nbsp;setup</span><span style="color: #000000;">,</span><span style="color: #000000;">&nbsp;note&nbsp;the&nbsp;python&nbsp;version
-(setq&nbsp;pdb</span><span style="color: #000000;">-</span><span style="color: #000000;">path&nbsp;</span><span style="color: #000000; font-weight: bold;">&lsquo;</span><span style="color: #000000; font-weight: bold;">c:/python25/Lib/pdb.py
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gud-pdb-command-name&nbsp;(symbol-name&nbsp;pdb-path))
-&nbsp;(defadvice&nbsp;pdb&nbsp;(before&nbsp;gud-query-cmdline&nbsp;activate)
-&nbsp;&nbsp;&nbsp;&ldquo;Provide&nbsp;a&nbsp;better&nbsp;default&nbsp;command&nbsp;line&nbsp;when&nbsp;called&nbsp;interactively.&rdquo;
-&nbsp;&nbsp;&nbsp;(interactive
-&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;(gud-query-cmdline&nbsp;pdb-path
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(file-name-nondirectory&nbsp;buffer-file-name)))))</span></div></div></div></p></li>
-
-<li><p>windows中，调用pdb时，未使用<span style="color: red;">python -i</span> 参数。</p></li>
+<li>windows中，找不到pdb.py位置。需自己制定pdb的路径。可以通过下面的方法设置pdb的路径：</li>
 </ol>
-
-<p>针对上面两个问题，我的解决办法是，不设置pdb具体路径，M-x pdb 回车后，出现下面命令:
-<div class="cnblogs_code"><div><span style="color: #000000;">Run&nbsp;pdb&nbsp;(like&nbsp;this):&nbsp;pdb&nbsp;</span></div></div>
-<br />
-然后手动修改一下：
-<br />
-<div class="cnblogs_code"><div><span style="color: #000000;">Run&nbsp;pdb&nbsp;(like&nbsp;this):&nbsp;</span><span style="color: red;">python&nbsp;</span><span style="color: red;">-</span><span style="color: red;">i&nbsp;</span><span style="color: red;">-</span><span style="color: red;">m</span><span style="color: #000000;">&nbsp;pdb&nbsp;test.py</span></div></div>
-<br />
-这样就搞定了。
-<br /></p>
-
-<h4 id="6-如何调试gae程序">6. 如何调试GAE程序</h4>
-
-<p><br />
-GAE是一个Web应用，需要跨线程进行调试，而pdb本身对线程调试支持不好。使用pdb进行线程调试时，只有在需要调试的地方插入下面代码：
-<div class="cnblogs_code"><div><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;pdb
-pdb.set_trace()</span></div></div></p>
-
+<!-- raw HTML omitted -->
+<ol start="2">
+<li>windows中，调用pdb时，未使用<!-- raw HTML omitted -->python -i<!-- raw HTML omitted --> 参数。</li>
+</ol>
+<p>针对上面两个问题，我的解决办法是，不设置pdb具体路径，M-x pdb 回车后，出现下面命令:</p>
+<!-- raw HTML omitted -->
 <p>然后直接运行被调试代码，而不是通过python pdb来执行，就可以多线程代码进行调试了。</p>
-
-<p>但是Google App Engine这样的Web应用，使用这个方法还是不能调试，和stdin和stdout有关，最后找到一个很好的解决方法：
-<div class="cnblogs_code"><div><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;set_trace():
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;pdb,&nbsp;sys
-&nbsp;&nbsp;&nbsp;&nbsp;debugger&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;pdb.Pdb(stdin</span><span style="color: #000000;">=</span><span style="color: #000000;">sys.</span><span style="color: #800080;"><strong>stdin</strong></span><span style="color: #000000;">,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stdout</span><span style="color: #000000;">=</span><span style="color: #000000;">sys.</span><span style="color: #800080;"><strong>stdout</strong></span><span style="color: #000000;">)
-&nbsp;&nbsp;&nbsp;&nbsp;debugger.set_trace(sys._getframe().f_back)</span></div></div></p>
-
+<p>但是Google App Engine这样的Web应用，使用这个方法还是不能调试，和stdin和stdout有关，最后找到一个很好的解决方法：</p>
+<!-- raw HTML omitted -->
 <p>在任何需要调试的地方，调用上面的set_trace()函数。</p>
-
-<p><span style="color: #0000ff;">如果你还有更好玩的东西，一定要告诉我！</span></p>
-
+<p><!-- raw HTML omitted -->如果你还有更好玩的东西，一定要告诉我！<!-- raw HTML omitted --></p>
 <p>参考文档：</p>
-
 <p><a href="http://www.emacswiki.org/emacs/PythonMode">http://www.emacswiki.org/emacs/PythonMode</a></p>
-
-<p><a href="http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/">http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/</a>&nbsp;</p>
-
-<p><a href="http://jjinux.blogspot.com/2008/05/python-debugging-google-app-engine-apps.html">http://jjinux.blogspot.com/2008/05/python-debugging-google-app-engine-apps.html&nbsp;</a></p>
-
+<p><a href="http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/">http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/</a> </p>
+<p><a href="http://jjinux.blogspot.com/2008/05/python-debugging-google-app-engine-apps.html">http://jjinux.blogspot.com/2008/05/python-debugging-google-app-engine-apps.html </a></p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2009/12/26/emacspythonide.html">http://www.cnblogs.com/coderzh/archive/2009/12/26/emacspythonide.html</a></strong></p>
 
                       
@@ -355,7 +265,7 @@ pdb.set_trace()</span></div></div></p>
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2009/12/26/emacspythonide/">https://blog.coderzh.com/2009/12/26/emacspythonide/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -410,19 +320,19 @@ pdb.set_trace()</span></div></div></p>
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2009/12/26/CommonEmacs/" rel="next">
+        <a href="https://blog.coderzh.com/2010/01/01/Tornado-Unit-Testing/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>最常用的Emacs的基本操作</span>
+          <span>Tornado Unit Testing - Tornado应用的单元测试</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2010/01/01/Tornado-Unit-Testing/" rel="prev">
+        <a href="https://blog.coderzh.com/2009/12/26/CommonEmacs/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>Tornado Unit Testing - Tornado应用的单元测试</span>
+          <span>最常用的Emacs的基本操作</span>
         </a>
         
       </li>

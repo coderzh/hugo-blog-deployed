@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python天天美味(19) - 时间处理datetime</h1>
 
                   <p class="post-byline">
-                    by  · 2008年05月16日 · 361 Words ·
+                    by  · 2008年05月16日 · 419 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-05-16-1201074.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,59 +189,28 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>Python Cook书中有很多章节都是针对某个库的使用进行介绍或是通过组合多个函数实现一些复杂的功能。我这里直接跳过了上一章节中对于文件处理的一些章节，直接进入对时间操作的章节。同时，关于datetime也是简单介绍。因为有很多东西需要自己去使用，去查帮助才最有效。</p>
-
+                      <p>Python Cook书中有很多章节都是针对某个库的使用进行介绍或是通过组合多个函数实现一些复杂的功能。我这里直接跳过了上一章节中对于文件处理的一些章节，直接进入对时间操作的章节。同时，关于datetime也是简单介绍。因为有很多东西需要自己去使用，去查帮助才最有效。</p>
 <p>例子：</p>
-
 <p>计算上一个星期五并输出。</p>
-
 <p>解答：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;datetime,&nbsp;calendar
-
-
-
-lastFriday&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;datetime.date.today(&nbsp;)
-
-oneday&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;datetime.timedelta(days</span><span style="color: #000000;">=</span><span style="color: #000000;">1</span><span style="color: #000000;">)
-
-lastFriday&nbsp;</span><span style="color: #000000;">-=</span><span style="color: #000000;">&nbsp;oneday
-
-</span><span style="color: #0000ff;">while</span><span style="color: #000000;">&nbsp;lastFriday.weekday(&nbsp;)&nbsp;</span><span style="color: #000000;">!=</span><span style="color: #000000;">&nbsp;calendar.FRIDAY:
-
-&nbsp;&nbsp;&nbsp;&nbsp;lastFriday&nbsp;</span><span style="color: #000000;">-=</span><span style="color: #000000;">&nbsp;oneday
-
-</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;lastFriday.strftime(</span><span style="color: #800000;">'</span><span style="color: #800000;">%A,&nbsp;%d-%b-%Y</span><span style="color: #800000;">'</span><span style="color: #000000;">)</span></div>
-输出结果：
-
-Friday, 09-May-2008
-
-获取当前时间并计算时间差：
-
-<div class="cnblogs_code"><span style="color: #000000;">t1&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;datetime.datetime.now()
-<br />
-quickshort(data,&nbsp;0,&nbsp;len(data)&nbsp;</span><span style="color: #000000;">-</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">1</span><span style="color: #000000;">)
-<br />
-t2&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;datetime.datetime.now()
-<br />
-</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;t1&nbsp;</span><span style="color: #000000;">-</span><span style="color: #000000;">&nbsp;t2</span></div>
-
-<p>&nbsp;</p>
-
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191410.html">Python    天天美味(17) - open读写文件</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191641.html">Python    天天美味(18) - linecache.getline()读取文件中特定一行</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201074.html">Python    天天美味(19) - 时间处理datetime</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201079.html">Python    天天美味(20) - 命令行参数sys.argv</a>&nbsp; &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201449.html">Python    天天美味(21) - httplib，smtplib</a> &nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p>lastFriday <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> datetime.date.today( )</p>
+<p>oneday <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> datetime.timedelta(days<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p>lastFriday <!-- raw HTML omitted --><!-- raw HTML omitted -->-=<!-- raw HTML omitted --><!-- raw HTML omitted --> oneday</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --><!-- raw HTML omitted --> lastFriday.weekday( ) <!-- raw HTML omitted --><!-- raw HTML omitted -->!=<!-- raw HTML omitted --><!-- raw HTML omitted --> calendar.FRIDAY:</p>
+<p>    lastFriday <!-- raw HTML omitted --><!-- raw HTML omitted -->-=<!-- raw HTML omitted --><!-- raw HTML omitted --> oneday</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --><!-- raw HTML omitted --> lastFriday.strftime(<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->%A, %d-%b-%Y<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --><!-- raw HTML omitted -->
+输出结果：</p>
+<p>Friday, 09-May-2008</p>
+<p>获取当前时间并计算时间差：</p>
+<!-- raw HTML omitted -->
+<p> </p>
+<h4 id="python--天天美味系列总httpwwwcnblogscomcoderzharchive20080708pythoncookbookhtml"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191410.html">Python    天天美味(17) - open读写文件</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191641.html">Python    天天美味(18) - linecache.getline()读取文件中特定一行</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201074.html">Python    天天美味(19) - 时间处理datetime</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201079.html">Python    天天美味(20) - 命令行参数sys.argv</a>   </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201449.html">Python    天天美味(21) - httplib，smtplib</a>  </p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201074.html">http://www.cnblogs.com/coderzh/archive/2008/05/16/1201074.html</a></strong></p>
 
                       
@@ -253,7 +222,7 @@ t2&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/05/16/1201074/">https://blog.coderzh.com/2008/05/16/1201074/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -308,19 +277,19 @@ t2&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/05/16/1201079/" rel="next">
+        <a href="https://blog.coderzh.com/2008/05/17/1201319/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Python天天美味(20) - 命令行参数sys.argv</span>
+          <span>试用IronPython</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/05/17/1201319/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/05/16/1201079/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>试用IronPython</span>
+          <span>Python天天美味(20) - 命令行参数sys.argv</span>
         </a>
         
       </li>

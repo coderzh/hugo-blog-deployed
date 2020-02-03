@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python天天美味(16) - 过滤字符串的技巧,map与itertools.imap</h1>
 
                   <p class="post-byline">
-                    by  · 2008年05月09日 · 828 Words ·
+                    by  · 2008年05月09日 · 826 Words ·
                     ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-05-09-1190173.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,118 +189,60 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>Python中的map函数非常有用，在字符转换和字符遍历两节都出现过，现在，它又出现了，会给我们带来什么样的惊喜呢？是不是要告诉我们，map是非常棒的，以后要多找它玩呢？</p>
-
+                      <p>Python中的map函数非常有用，在字符转换和字符遍历两节都出现过，现在，它又出现了，会给我们带来什么样的惊喜呢？是不是要告诉我们，map是非常棒的，以后要多找它玩呢？</p>
+<h3 id="heading"></h3>
 <p>具体的实例</p>
-
-<p>我们需要在目录中遍历，包括子目录（哈哈），找出所有后缀为：rmvb ，avi&nbsp; ，pmp 的文件。（天哪？！你要干什么？这可是我的隐私啊～～）</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;os
-
-
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;anyTrue(predicate,&nbsp;sequence):
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;True&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;map(predicate,&nbsp;sequence)
-
-
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;filterFiles(folder,&nbsp;exts):
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">for</span><span style="color: #000000;">&nbsp;fileName&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;os.listdir(folder):
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;os.path.isdir(folder&nbsp;</span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">/</span><span style="color: #800000;">'</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;fileName):
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filterFiles(folder&nbsp;</span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">/</span><span style="color: #800000;">'</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;fileName,&nbsp;exts)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">elif</span><span style="color: #000000;">&nbsp;anyTrue(fileName.endswith,&nbsp;exts):
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;fileName
-
-
-
-exts&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;[</span><span style="color: #800000;">'</span><span style="color: #800000;">.rmvb</span><span style="color: #800000;">'</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">.avi</span><span style="color: #800000;">'</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">.pmp</span><span style="color: #800000;">'</span><span style="color: #000000;">]
-
-filterFiles(</span><span style="color: #800000;">'</span><span style="color: #800000;">/media/Personal/Movie</span><span style="color: #800000;">'</span><span style="color: #000000;">,&nbsp;exts)</span></div>
-
+<p>我们需要在目录中遍历，包括子目录（哈哈），找出所有后缀为：rmvb ，avi  ，pmp 的文件。（天哪？！你要干什么？这可是我的隐私啊～～）</p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> anyTrue(predicate, sequence):</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> True <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> map(predicate, sequence)</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> filterFiles(folder, exts):</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --><!-- raw HTML omitted --> fileName <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> os.listdir(folder):</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> os.path.isdir(folder <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->/<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> fileName):</p>
+<p>            filterFiles(folder <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->/<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> fileName, exts)</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->elif<!-- raw HTML omitted --><!-- raw HTML omitted --> anyTrue(fileName.endswith, exts):</p>
+<p>            <!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --><!-- raw HTML omitted --> fileName</p>
+<p>exts <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> [<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->.rmvb<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->, <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->.avi<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->, <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->.pmp<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->]</p>
+<p>filterFiles(<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->/media/Personal/Movie<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->, exts)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="输出结果">输出结果</h3>
-
 <p>来看看有什么好东东：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">[66影视www.66ys.cn]迷失第四季04.rmvb
-
-[迷失.第4季].Lost.S04E00.rmvb
-
-[迷失Lost第四季][第02集][中文字幕].rmvb
-
-《迷失Lost第四季》第05集[中文字幕].rmvb
-
-《迷失Lost第四季》第06集[中文字幕].rmvb
-
-《迷失Lost第四季》第07集[中文字幕].rmvb
-
-天赐第2季01.rmvb
-
-天赐第2季02.rmvb
-
-天赐第2季03.rmvb
-
-天赐第2季04.rmvb
-
-天赐第2季05.rmvb</span><span style="color: #000000;">
-
-影视帝国(bbs.cnxp.com).美丽心灵.A.Beautiful.Mind.</span><span style="color: #000000;">2001</span><span style="color: #000000;">.CD1.rmvb</span><span style="color: #000000;">
-
-( ... 太多了，不要全输出来吧～～)
-
-</span></div>
-
+<!-- raw HTML omitted -->
+<p>[迷失.第4季].Lost.S04E00.rmvb</p>
+<p>[迷失Lost第四季][第02集][中文字幕].rmvb</p>
+<p>《迷失Lost第四季》第05集[中文字幕].rmvb</p>
+<p>《迷失Lost第四季》第06集[中文字幕].rmvb</p>
+<p>《迷失Lost第四季》第07集[中文字幕].rmvb</p>
+<p>天赐第2季01.rmvb</p>
+<p>天赐第2季02.rmvb</p>
+<p>天赐第2季03.rmvb</p>
+<p>天赐第2季04.rmvb</p>
+<p>天赐第2季05.rmvb<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>影视帝国(bbs.cnxp.com).美丽心灵.A.Beautiful.Mind.<!-- raw HTML omitted --><!-- raw HTML omitted -->2001<!-- raw HTML omitted --><!-- raw HTML omitted -->.CD1.rmvb<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>( &hellip; 太多了，不要全输出来吧～～)</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="heading-1"></h3>
 <p>扩展</p>
-
 <p>CookBook一书中，提供的是itertools.imap来实现对字符串的过滤。imap和map不同的是，imap返回的是一个iteration对象，而map返回的是一个list对象。代码如下：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;itertools
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;anyTrue(predicate,&nbsp;sequence):
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;True&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;itertools.imap(predicate,&nbsp;sequence)
-
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;endsWith(s,&nbsp;</span><span style="color: #000000;">*</span><span style="color: #000000;">endings):
-
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;anyTrue(s.endswith,&nbsp;endings)</span></div>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> anyTrue(predicate, sequence):</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> True <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> itertools.imap(predicate, sequence)</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> endsWith(s, <!-- raw HTML omitted --><!-- raw HTML omitted -->*<!-- raw HTML omitted --><!-- raw HTML omitted -->endings):</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> anyTrue(s.endswith, endings)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>imap 等价于：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;imap(function,&nbsp;</span><span style="color: #000000;">*</span><span style="color: #000000;">iterables):
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterables&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;map(iter,&nbsp;iterables)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">while</span><span style="color: #000000;">&nbsp;True:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;args&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;[i.next()&nbsp;</span><span style="color: #0000ff;">for</span><span style="color: #000000;">&nbsp;i&nbsp;</span><span style="color: #0000ff;">in</span><span style="color: #000000;">&nbsp;iterables]
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;function&nbsp;</span><span style="color: #0000ff;">is</span><span style="color: #000000;">&nbsp;None:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">yield</span><span style="color: #000000;">&nbsp;tuple(args)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">yield</span><span style="color: #000000;">&nbsp;function(</span><span style="color: #000000;">*</span><span style="color: #000000;">args)</span></div>
-
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/05/1183967.html">Python    天天美味(14) - splitlines</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/06/1185755.html">Python    天天美味(15) - Python正则表达式操作指南(re使用)(转)</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/09/1190173.html">Python    天天美味(16) - 过滤字符串的技巧,map与itertools.imap</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191410.html">Python    天天美味(17) - open读写文件</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191641.html">Python    天天美味(18) - linecache.getline()读取文件中特定一行</a> &nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p>         iterables <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> map(iter, iterables)</p>
+<p>         <!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --><!-- raw HTML omitted --> True:</p>
+<p>             args <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> [i.next() <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --><!-- raw HTML omitted --> i <!-- raw HTML omitted --><!-- raw HTML omitted -->in<!-- raw HTML omitted --><!-- raw HTML omitted --> iterables]</p>
+<p>             <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> function <!-- raw HTML omitted --><!-- raw HTML omitted -->is<!-- raw HTML omitted --><!-- raw HTML omitted --> None:</p>
+<p>                 <!-- raw HTML omitted --><!-- raw HTML omitted -->yield<!-- raw HTML omitted --><!-- raw HTML omitted --> tuple(args)</p>
+<p>             <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>                 <!-- raw HTML omitted --><!-- raw HTML omitted -->yield<!-- raw HTML omitted --><!-- raw HTML omitted --> function(<!-- raw HTML omitted --><!-- raw HTML omitted -->*<!-- raw HTML omitted --><!-- raw HTML omitted -->args)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="python--天天美味系列总httpwwwcnblogscomcoderzharchive20080708pythoncookbookhtml"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/05/1183967.html">Python    天天美味(14) - splitlines</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/06/1185755.html">Python    天天美味(15) - Python正则表达式操作指南(re使用)(转)</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/09/1190173.html">Python    天天美味(16) - 过滤字符串的技巧,map与itertools.imap</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191410.html">Python    天天美味(17) - open读写文件</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/10/1191641.html">Python    天天美味(18) - linecache.getline()读取文件中特定一行</a>  </p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/05/09/1190173.html">http://www.cnblogs.com/coderzh/archive/2008/05/09/1190173.html</a></strong></p>
 
                       
@@ -312,7 +254,7 @@ filterFiles(</span><span style="color: #800000;">'</span><span style="color: #80
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/05/09/1190173/">https://blog.coderzh.com/2008/05/09/1190173/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -367,19 +309,19 @@ filterFiles(</span><span style="color: #800000;">'</span><span style="color: #80
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/05/06/1185755/" rel="next">
+        <a href="https://blog.coderzh.com/2008/05/10/1191641/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Python天天美味(15) - Python正则表达式操作指南(re使用)(转)</span>
+          <span>Python天天美味(18) - linecache.getline()读取文件中特定一行</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/05/10/1191649/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/05/06/1185755/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>linecache.py</span>
+          <span>Python天天美味(15) - Python正则表达式操作指南(re使用)(转)</span>
         </a>
         
       </li>

@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="Some software embed ie control in win32 window as the User Interface, such as Internet Explorer_Server. We can hardly identify the html control inner Internet Explorer_Server through Spy&#43;&#43;. So it takes a great pain to ui automation. This post, I will introduce a way for Internet Explorer_Server automation. Get IHTMLDocument2 interface Also see：http://support">
+<meta name="description" content="Get IHTMLDocument2 interface Also see：http://support.microsoft.com/kb/249232 Here is my python implentment： Multithreading IHTMLDocument2 is thread safe, we can not">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Get IHTMLDocument2 for UI Automation in Python - CoderZh Blog">
-<meta itemprop="description" content="Some software embed ie control in win32 window as the User Interface, such as Internet Explorer_Server. We can hardly identify the html control inner Internet Explorer_Server through Spy&#43;&#43;. So it takes a great pain to ui automation. This post, I will introduce a way for Internet Explorer_Server automation. Get IHTMLDocument2 interface Also see：http://support">
+<meta itemprop="description" content="Get IHTMLDocument2 interface Also see：http://support.microsoft.com/kb/249232 Here is my python implentment： Multithreading IHTMLDocument2 is thread safe, we can not">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Get IHTMLDocument2 for UI Automation in Python - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2010/05/05/Get-IHTMLDocument2-UIAutomation-Python/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="Some software embed ie control in win32 window as the User Interface, such as Internet Explorer_Server. We can hardly identify the html control inner Internet Explorer_Server through Spy&#43;&#43;. So it takes a great pain to ui automation. This post, I will introduce a way for Internet Explorer_Server automation. Get IHTMLDocument2 interface Also see：http://support">
+<meta property="og:description" content="Get IHTMLDocument2 interface Also see：http://support.microsoft.com/kb/249232 Here is my python implentment： Multithreading IHTMLDocument2 is thread safe, we can not">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Get IHTMLDocument2 for UI Automation in Python - CoderZh Blog">
-<meta name="twitter:description" content="Some software embed ie control in win32 window as the User Interface, such as Internet Explorer_Server. We can hardly identify the html control inner Internet Explorer_Server through Spy&#43;&#43;. So it takes a great pain to ui automation. This post, I will introduce a way for Internet Explorer_Server automation. Get IHTMLDocument2 interface Also see：http://support">
+<meta name="twitter:description" content="Get IHTMLDocument2 interface Also see：http://support.microsoft.com/kb/249232 Here is my python implentment： Multithreading IHTMLDocument2 is thread safe, we can not">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Get IHTMLDocument2 for UI Automation in Python</h1>
 
                   <p class="post-byline">
-                    by  · 2010年05月05日 · 384 Words ·
+                    by  · 2010年05月05日 · 335 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-05-05-Get-IHTMLDocument2-UIAutomation-Python.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,71 +189,20 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<div>Some software embed ie control in win32 window as the User Interface, such as Internet   Explorer_Server. We can hardly identify the html control inner Internet   Explorer_Server through Spy++. So it takes a great pain to ui automation. This post, I will introduce a way for Internet   Explorer_Server automation. 
-
-</div>
-
+                      <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h4 id="get-ihtmldocument2-interface">Get IHTMLDocument2 interface</h4>
-
 <p>Also see：<a href="http://support.microsoft.com/kb/249232">http://support.microsoft.com/kb/249232</a></p>
-
-<p>Here is my python implentment：
-<div><div><div class="cnblogs_code"><div><span style="color: #008000;">#</span><span style="color: #008000;">!/usr/bin/env&nbsp;python</span><span style="color: #008000;">
-#</span><span style="color: #008000;">coding:utf-8</span><span style="color: #008000;">
-</span><span style="color: #000000;">
-</span><span style="color: #800080;"><strong>author</strong></span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">CoderZh</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">
-<br />
-</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;sys
-<br />
-</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;Important&nbsp;for&nbsp;multithreading</span><span style="color: #008000;">
-</span><span style="color: #000000;">sys.coinit_flags&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;0&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;pythoncom.COINIT_MULTITHREADED</span><span style="color: #008000;">
-</span><span style="color: #000000;">
-</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;win32com
-</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;win32com.client
-</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;win32gui
-</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;win32con
-</span><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;pythoncom
-<br />
-</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;getIEServer(hwnd,&nbsp;ieServer):
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;win32gui.GetClassName(hwnd)&nbsp;</span><span style="color: #000000;">==</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">Internet&nbsp;Explorer_Server</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ieServer.append(hwnd)
-<br />
-</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;</span><span style="color: #800080;"><strong>name</strong></span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">==</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;"><strong>main</strong></span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">:
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">pythoncom.CoInitializeEx(0)&nbsp;#&nbsp;not&nbsp;use&nbsp;this&nbsp;for&nbsp;multithreading</span><span style="color: #008000;">
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;mainHwnd&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;win32gui.FindWindow(</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">windowclass</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">windowtitle</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">)
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;mainHwnd:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ieServers&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;[]
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;win32gui.EnumChildWindows(mainHwnd,&nbsp;getIEServer,&nbsp;ieServers)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;len(ieServers)&nbsp;</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">&nbsp;0:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ieServer&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;ieServers[0]
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;win32gui.RegisterWindowMessage(</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">WM_HTML_GETOBJECT</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret,&nbsp;result&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;win32gui.SendMessageTimeout(ieServer,&nbsp;msg,&nbsp;0,&nbsp;0,&nbsp;win32con.SMTO_ABORTIFHUNG,&nbsp;</span><span style="color: #000000;">1000</span><span style="color: #000000;">)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ob&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;pythoncom.ObjectFromLresult(result,&nbsp;pythoncom.IID_IDispatch,&nbsp;0)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;win32com.client.dynamic.Dispatch(ob)
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;doc.url
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc.all[</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">id</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">].click()
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">pythoncom.CoUninitialize()</span></div></div><span style="color: #008000;"></span></div></div></p>
-
+<p>Here is my python implentment：</p>
+<!-- raw HTML omitted -->
 <h4 id="multithreading">Multithreading</h4>
-
-<p>IHTMLDocument2 is thread safe, we can not use it in any other thread except the main thread by default. If you want to use it in multi threads, write these code at the top of your file, and remenber do not explicit call pythoncom.CoInitializeEx(0) and pythoncom.CoUninitialize() :
-<div><div><div class="cnblogs_code"><div><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;Important&nbsp;for&nbsp;multithreading</span><span style="color: #008000;">
-</span><span style="color: #000000;">sys.coinit_flags&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;0&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">&nbsp;pythoncom.COINIT_MULTITHREADED</span></div></div><span style="color: #008000;"></span></div></div></p>
-
+<p>IHTMLDocument2 is thread safe, we can not use it in any other thread except the main thread by default. If you want to use it in multi threads, write these code at the top of your file, and remenber do not explicit call pythoncom.CoInitializeEx(0) and pythoncom.CoUninitialize() :</p>
+<!-- raw HTML omitted -->
 <p>Also see：<a href="http://bytes.com/topic/python/answers/26897-multithreaded-com-server-problem" title="http://bytes.com/topic/python/answers/26897-multithreaded-com-server-problem">http://bytes.com/topic/python/answers/26897-multithreaded-com-server-problem</a></p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <h4 id="ihtmldocument2-for-ui-automation">IHTMLDocument2 for UI Automation</h4>
-
 <p>Also see : <a href="http://msdn.microsoft.com/en-us/library/aa752574%28VS.85%29.aspx" title="http://msdn.microsoft.com/en-us/library/aa752574%28VS.85%29.aspx">http://msdn.microsoft.com/en-us/library/aa752574%28VS.85%29.aspx</a></p>
-
 <p>Now, you can write your own UI Automation framework by IHTMLDocument2.</p>
-
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2010/05/05/Get-IHTMLDocument2-UIAutomation-Python.html">http://www.cnblogs.com/coderzh/archive/2010/05/05/Get-IHTMLDocument2-UIAutomation-Python.html</a></strong></p>
 
                       
@@ -265,7 +214,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2010/05/05/Get-IHTMLDocument2-UIAutomation-Python/">https://blog.coderzh.com/2010/05/05/Get-IHTMLDocument2-UIAutomation-Python/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -320,19 +269,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2010/05/05/python-IHTMLDocument2-automation/" rel="next">
+        <a href="https://blog.coderzh.com/2010/06/05/1752141/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Python操作IHTMLDocument2用于自动化测试</span>
+          <span>Python获取IAccessible接口</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2010/06/05/1752141/" rel="prev">
+        <a href="https://blog.coderzh.com/2010/05/05/python-IHTMLDocument2-automation/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>Python获取IAccessible接口</span>
+          <span>Python操作IHTMLDocument2用于自动化测试</span>
         </a>
         
       </li>

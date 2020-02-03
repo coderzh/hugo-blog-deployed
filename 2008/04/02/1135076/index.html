@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="引言 我们经常遇到这样的情况，一个系统采用了不同的算法，或是服务器使用了不同的设置，要求我们对不同的算法或服务器设置都设置测试场景进行测试，通">
+<meta name="description" content="引言 实现 Controller(wlrun.exe)支持命令行参数，所有你只需要通过命令行给wlrun.exe传入场景文件的路径参数，实现多多">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="悟透LoadRunner - 如何让多个场景顺序执行？ - CoderZh Blog">
-<meta itemprop="description" content="引言 我们经常遇到这样的情况，一个系统采用了不同的算法，或是服务器使用了不同的设置，要求我们对不同的算法或服务器设置都设置测试场景进行测试，通">
+<meta itemprop="description" content="引言 实现 Controller(wlrun.exe)支持命令行参数，所有你只需要通过命令行给wlrun.exe传入场景文件的路径参数，实现多多">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="悟透LoadRunner - 如何让多个场景顺序执行？ - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2008/04/02/1135076/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="引言 我们经常遇到这样的情况，一个系统采用了不同的算法，或是服务器使用了不同的设置，要求我们对不同的算法或服务器设置都设置测试场景进行测试，通">
+<meta property="og:description" content="引言 实现 Controller(wlrun.exe)支持命令行参数，所有你只需要通过命令行给wlrun.exe传入场景文件的路径参数，实现多多">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="悟透LoadRunner - 如何让多个场景顺序执行？ - CoderZh Blog">
-<meta name="twitter:description" content="引言 我们经常遇到这样的情况，一个系统采用了不同的算法，或是服务器使用了不同的设置，要求我们对不同的算法或服务器设置都设置测试场景进行测试，通">
+<meta name="twitter:description" content="引言 实现 Controller(wlrun.exe)支持命令行参数，所有你只需要通过命令行给wlrun.exe传入场景文件的路径参数，实现多多">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">悟透LoadRunner - 如何让多个场景顺序执行？</h1>
 
                   <p class="post-byline">
-                    by  · 2008年04月02日 · 435 Words ·
+                    by  · 2008年04月02日 · 370 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-04-02-1135076.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,35 +189,20 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<h3 id="引言">引言</h3>
-
-<fieldset>我们经常遇到这样的情况，一个系统采用了不同的算法，或是服务器使用了不同的设置，要求我们对不同的算法或服务器设置都设置测试场景进行测试，通过不同场景的测试结果得出最佳的算法或服务器设置。假设有100个这样的场景，你是否会去手动一个一个运行这100个场景呢？</fieldset>
-
+                      <h3 id="引言">引言</h3>
+<!-- raw HTML omitted -->
 <h3 id="实现">实现</h3>
-
-<p>&nbsp;&nbsp;&nbsp; Controller(wlrun.exe)支持命令行参数，所有你只需要通过命令行给wlrun.exe传入场景文件的路径参数，实现多多个场景顺序执行。</p>
-
-<p>&nbsp;&nbsp;&nbsp; 1.新建并保存所有要执行的场景，注意：每个场景必须设置结果存放路径，菜单&rdquo;Results - Results Settings&rdquo;,设置结果路径，然后勾选&#8220;Automatically create a results directory for each scenario execution&#8221;</p>
-
-<p>&nbsp;&nbsp;&nbsp; 2.新建一个bat文件，写入如下内容：</p>
-
-<p><div style="border: 1px solid rgb(204, 204, 204); padding: 4px 5px 4px 4px; background-color: rgb(238, 238, 238); font-size: 13px; width: 98%;"><span style="color: rgb(0, 0, 255);">&nbsp;&nbsp;&nbsp; SET</span><span style="color: rgb(0, 0, 0);">&nbsp;LR_PATH</span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);">&ldquo;</span><span style="color: rgb(0, 0, 0);">D:\Mercury\LoadRunner\bin\wlrun.exe</span><span style="color: rgb(0, 0, 0);">&ldquo;</span><span style="color: rgb(0, 0, 0);"></p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;%LR_PATH%</span><span style="color: rgb(0, 0, 0);">&lt;/span&gt;<span style="color: rgb(0, 0, 0);">wlrun</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">exe&nbsp;-TestPath&nbsp;</span><span style="color: rgb(0, 0, 0);">&ldquo;</span><span style="color: rgb(0, 0, 0);">E:\Test\Scenario01.lrs</span><span style="color: rgb(0, 0, 0);">&ldquo;</span><span style="color: rgb(0, 0, 0);">&nbsp;-</span><span style="color: rgb(0, 0, 255);">Run</span><span style="color: rgb(0, 0, 0);"></p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;%LR_PATH%</span><span style="color: rgb(0, 0, 0);">&lt;/span&gt;<span style="color: rgb(0, 0, 0);">wlrun</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">exe&nbsp;-TestPath&nbsp;</span><span style="color: rgb(0, 0, 0);">&ldquo;</span><span style="color: rgb(0, 0, 0);">E:\Test\Scenario02.lrs</span><span style="color: rgb(0, 0, 0);">&ldquo;</span><span style="color: rgb(0, 0, 0);">&nbsp;-</span><span style="color: rgb(0, 0, 255);">Run</span><span style="color: rgb(0, 0, 0);"></p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;%LR_PATH%</span><span style="color: rgb(0, 0, 0);">&lt;/span&gt;<span style="color: rgb(0, 0, 0);">wlrun</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">exe&nbsp;-TestPath&nbsp;</span><span style="color: rgb(0, 0, 0);">&ldquo;</span><span style="color: rgb(0, 0, 0);">E:\Test\Scenario03.lrs</span><span style="color: rgb(0, 0, 0);">&ldquo;</span><span style="color: rgb(0, 0, 0);">&nbsp;-</span><span style="color: rgb(0, 0, 255);">Run</span></div>
-&nbsp;&nbsp;&nbsp;</p>
-
-<p>&nbsp;&nbsp;&nbsp; 3.双击bat文件运行。</p>
-
+<p>    Controller(wlrun.exe)支持命令行参数，所有你只需要通过命令行给wlrun.exe传入场景文件的路径参数，实现多多个场景顺序执行。</p>
+<p>    1.新建并保存所有要执行的场景，注意：每个场景必须设置结果存放路径，菜单&quot;Results - Results Settings&rdquo;,设置结果路径，然后勾选“Automatically create a results directory for each scenario execution”</p>
+<p>    2.新建一个bat文件，写入如下内容：</p>
+<!-- raw HTML omitted -->
+<p>    %LR_PATH%<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;/span&gt;<!-- raw HTML omitted -->wlrun<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->exe -TestPath <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->E:\Test\Scenario01.lrs<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> -<!-- raw HTML omitted --><!-- raw HTML omitted -->Run<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>    %LR_PATH%<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;/span&gt;<!-- raw HTML omitted -->wlrun<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->exe -TestPath <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->E:\Test\Scenario02.lrs<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> -<!-- raw HTML omitted --><!-- raw HTML omitted -->Run<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>    %LR_PATH%<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;/span&gt;<!-- raw HTML omitted -->wlrun<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->exe -TestPath <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->E:\Test\Scenario03.lrs<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> -<!-- raw HTML omitted --><!-- raw HTML omitted -->Run<!-- raw HTML omitted --><!-- raw HTML omitted -->
+   </p>
+<p>    3.双击bat文件运行。</p>
 <h3 id="说明">说明</h3>
-
-<p>&nbsp;&nbsp;&nbsp; 关于wlrun.exe的参数说明在Loadrunner中没有找到，是否还支持其他参数尚不清楚。</p>
-
+<p>    关于wlrun.exe的参数说明在Loadrunner中没有找到，是否还支持其他参数尚不清楚。</p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/04/02/1135076.html">http://www.cnblogs.com/coderzh/archive/2008/04/02/1135076.html</a></strong></p>
 
                       
@@ -229,7 +214,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/04/02/1135076/">https://blog.coderzh.com/2008/04/02/1135076/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -284,19 +269,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/04/02/1135118/" rel="next">
+        <a href="https://blog.coderzh.com/2008/04/07/1140895/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>悟透LoadRunner - 调用外部DLL的点点滴滴</span>
+          <span>华山论剑 - VB6函数调用</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/04/07/1140895/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/04/02/1135118/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>华山论剑 - VB6函数调用</span>
+          <span>悟透LoadRunner - 调用外部DLL的点点滴滴</span>
         </a>
         
       </li>

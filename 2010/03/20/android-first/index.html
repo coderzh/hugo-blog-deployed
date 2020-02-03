@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Android应用开发初印象</h1>
 
                   <p class="post-byline">
-                    by  · 2010年03月20日 · 2018 Words ·
+                    by  · 2010年03月20日 · 2197 Words ·
                     ~5min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2010-03-20-android-first.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,129 +189,72 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>前段时间终于拿下了蓄谋已久的HTC G2 TIM，并且在手机上安装了各种各样的软件好好的玩了一把。总体感觉Android的应用相对来说还是少了一些，耐玩的游戏还不多。其中钻石迷情(jewels)还算是比较耐玩的，时间模式下我现在的最高分是<span style="color: #3366ff;">46230</span>，和高手比起来，不知道这个分数是不是还低了些呢，呵呵。我非常期待popcap的植物大战僵尸能够尽快移植到Android平台，这款游戏深受广大玩家的喜爱，原因就是非常的耐玩，并且考验智力。</p>
-
+                      <p>前段时间终于拿下了蓄谋已久的HTC G2 TIM，并且在手机上安装了各种各样的软件好好的玩了一把。总体感觉Android的应用相对来说还是少了一些，耐玩的游戏还不多。其中钻石迷情(jewels)还算是比较耐玩的，时间模式下我现在的最高分是<!-- raw HTML omitted -->46230<!-- raw HTML omitted -->，和高手比起来，不知道这个分数是不是还低了些呢，呵呵。我非常期待popcap的植物大战僵尸能够尽快移植到Android平台，这款游戏深受广大玩家的喜爱，原因就是非常的耐玩，并且考验智力。</p>
 <p>智能手机的好处就是可以自己装软件，甚至是自己写在手机里运行的软件。Android的程序需要使用Java开发，这点让我有些不爽。因为一直以来我对Java都不太感冒，虽然在语法上看起来和C#很相似。但是没办法，我还是决定硬着头皮把eclipse装上，决定学习一下Android应用程序的开发，并且，打算第一个项目把之前使用Python写的NancyGLines游戏移植到Android中。这对我来说是一个激动人心的项目，第一次学习手机软件的开发，希望NancyGLines能够早点出来，放到Android Market里。</p>
-
 <p>为了我的开山之作，自然要先了解Android开发的知识。于是，我在网上找了一圈，发现资料还不少，下面是我找到的电子书列表，都可以Google到，找不到的可以留言问我要：</p>
-
-<p>Android-A-Programmer&#8217;s-Guide</p>
-
+<p>Android-A-Programmer’s-Guide</p>
 <p>Android-Essentials</p>
-
 <p>Introduction-To-Android</p>
-
 <p>Professional_Android_2_Application_Development</p>
-
 <p>Android.Application.Development.-.Programming.With.The.Google.Sdk.(O&rsquo;reilly,.2009,.0596521472)</p>
-
 <p>由于刚入门，我还是选择先看Android的官方文档：</p>
-
 <p><a href="http://developer.android.com/guide/index.html" title="http://developer.android.com/guide/index.html">http://developer.android.com/guide/index.html</a></p>
-
 <p>官方的文档非常的详细，从基础介绍，内部架构，到入门教学示例，到每个API的说明，都非常详细。因此，我花了2个晚上的时间，把Android开发的一些基础文章以及入门示例都看了一遍，对Android开发有了一些初印象，在这里做为自己的学习笔记记录一下。</p>
-
 <p>工欲善其事必先利其器，首先我需要把Android的开发环境配置好。相信也有很多朋友和我一样，在这里耽误了不少了时间。其实官方的文档中已经写的很详细，只能怪我没有仔细的看清楚。ADT插件老是安装不少，最后的原因是没有安装JDK。</p>
-
 <p>步骤如下：</p>
-
 <ol>
-<li><p>下载并安装<a href="http://java.sun.com/javase/downloads/index.jsp">JDK</a>(5或6)。</p></li>
-
-<li><p>下载并解压<a href="http://www.eclipse.org/downloads/">Eclipse</a>。</p></li>
-
-<li><p>下载Android的<a href="http://developer.android.com/sdk/index.html">SDK</a>，解压后，设置环境变量PATH到Tool目录。</p></li>
-
-<li><p>在Eclipse中通过<code>[https://dl-ssl.google.com/android/eclipse/](https://dl-ssl.google.com/android/eclipse/)</code>下载并安装Android Development Tools (ADT) Plugin。</p></li>
-
-<li><p>装好重启Eclipse后，在Window - Preference中设置Android SDK的路径。</p></li>
-
-<li><p>打开Android SDK and AVD Manager，安装不同平台的Android SDK版本，比如Andoid2.1 Android1.6。</p></li>
+<li>
+<p>下载并安装<a href="http://java.sun.com/javase/downloads/index.jsp">JDK</a>(5或6)。</p>
+</li>
+<li>
+<p>下载并解压<a href="http://www.eclipse.org/downloads/">Eclipse</a>。</p>
+</li>
+<li>
+<p>下载Android的<a href="http://developer.android.com/sdk/index.html">SDK</a>，解压后，设置环境变量PATH到Tool目录。</p>
+</li>
+<li>
+<p>在Eclipse中通过<code>[https://dl-ssl.google.com/android/eclipse/](https://dl-ssl.google.com/android/eclipse/)</code>下载并安装Android Development Tools (ADT) Plugin。</p>
+</li>
+<li>
+<p>装好重启Eclipse后，在Window - Preference中设置Android SDK的路径。</p>
+</li>
+<li>
+<p>打开Android SDK and AVD Manager，安装不同平台的Android SDK版本，比如Andoid2.1 Android1.6。</p>
+</li>
 </ol>
-
 <p>完成了，其实并不复杂。接下来了解一下Android的架构：</p>
-
-<p><img src="http://developer.android.com/images/system-architecture.jpg" alt="" /></p>
-
+<p><img src="http://developer.android.com/images/system-architecture.jpg" alt=""></p>
 <p>由于是入门，看上面这张图还不是很有感觉。随着以后的深入，再回过头来看这张图，应该会更有感觉。</p>
-
 <p>开发环境配置好后，最行之有效的学习方法是看官方的Tutorials，包括：</p>
-
 <ul>
 <li><a href="http://developer.android.com/resources/tutorials/hello-world.html">Hello World </a></li>
 <li><a href="http://developer.android.com/resources/tutorials/views/index.html">Hello Views </a></li>
 <li><a href="http://developer.android.com/resources/tutorials/localization/index.html">Hello Localization </a></li>
-<li><a href="http://developer.android.com/resources/tutorials/notepad/index.html">Notepad Tutorial </a><br /></li>
+<li><a href="http://developer.android.com/resources/tutorials/notepad/index.html">Notepad Tutorial </a></li>
 </ul>
-
 <p>通过上面的示例，我会了解到以下东西：</p>
-
 <h4 id="1-activity">1. Activity</h4>
-
 <p>Activity控制用户界面操作的实体，一个应用程序可以有多个Activity，但同时只能有一个Activity的用户界面呈现在用户面前。我们需要实现一个类，继承自Activity类，通过重写父类的一些特定方法，就能实现在某些事件发生下，执行一些特定的代码。比如，用户按键，触摸屏幕的某个点等等。其中，关于Activity的几个状态，需要重点搞清楚，见下图：</p>
-
-<p><img src="http://developer.android.com/images/activity_lifecycle.png" alt="" />&nbsp;</p>
-
+<p><img src="http://developer.android.com/images/activity_lifecycle.png" alt=""> </p>
 <h4 id="2-view">2. View</h4>
-
 <p>用户界面布局是通过xml来描述的，比如：</p>
-
-<div class="cnblogs_code" onclick="cnblogs_code_show('8cc75034-9171-4f0b-9a86-ca570fe26a9a')">![](http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif)<div id="cnblogs_code_open_8cc75034-9171-4f0b-9a86-ca570fe26a9a"><div><span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml&nbsp;version="1.0"&nbsp;encoding="utf-8"</span><span style="color: #0000ff;">?&gt;</span><span style="color: #000000;">
-</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">LinearLayout&nbsp;</span><span style="color: #ff0000;">xmlns:android</span><span style="color: #0000ff;">="http://schemas.android.com/apk/res/android"</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width</span><span style="color: #0000ff;">="wrap_content"</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height</span><span style="color: #0000ff;">="wrap_content"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">ListView&nbsp;</span><span style="color: #ff0000;">android:id</span><span style="color: #0000ff;">="@android:id/list"</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width</span><span style="color: #0000ff;">="wrap_content"</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height</span><span style="color: #0000ff;">="wrap_content"</span><span style="color: #0000ff;">/&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">TextView&nbsp;</span><span style="color: #ff0000;">android:id</span><span style="color: #0000ff;">="@android:id/empty"</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width</span><span style="color: #0000ff;">="wrap_content"</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height</span><span style="color: #0000ff;">="wrap_content"</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:text</span><span style="color: #0000ff;">="@string/no_notes"</span><span style="color: #0000ff;">/&gt;</span><span style="color: #000000;">
-
-</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">LinearLayout</span><span style="color: #0000ff;">&gt;</span></div></div></div>
-
-<p>里面的ListView ，TextView可以理解为自带的一些控件。同时，我们也可以实现自己自定义的View，只要继承自View类。比如：
-  <div class="cnblogs_code"><div><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">com.coderzh.nancyglines.GLinesView
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #ff0000;">android:id</span><span style="color: #0000ff;">=&ldquo;@+id/glines&rdquo;</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width</span><span style="color: #0000ff;">=&ldquo;fill_parent&rdquo;</span><span style="color: #ff0000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height</span><span style="color: #0000ff;">=&ldquo;fill_parent&rdquo;</span><span style="color: #0000ff;">/&gt;</span></div></div></p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;/<!-- raw HTML omitted --><!-- raw HTML omitted -->LinearLayout<!-- raw HTML omitted --><!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>里面的ListView ，TextView可以理解为自带的一些控件。同时，我们也可以实现自己自定义的View，只要继承自View类。比如：</p>
+<!-- raw HTML omitted -->
 <p>然后实现GLinesView类：</p>
-
-<div class="cnblogs_code"><div><span style="color: #0000ff;">public</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;GLinesView&nbsp;</span><span style="color: #0000ff;">extends</span><span style="color: #000000;">&nbsp;View&nbsp;{
-<br />
-}</span></div></div>
-
-<p>其中一个最重要的方法就是onDraw，用来画想要呈现的用户内容。比如，我想在屏幕上写一个Hello。
-  <div class="cnblogs_code"><div><span style="color: #000000;">@Override
-</span><span style="color: #0000ff;">protected</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">void</span><span style="color: #000000;">&nbsp;onDraw(Canvas&nbsp;canvas)&nbsp;{
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;TODO&nbsp;Auto-generated&nbsp;method&nbsp;stub</span><span style="color: #008000;">
-</span><span style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">super</span><span style="color: #000000;">.onDraw(canvas);
-&nbsp;&nbsp;&nbsp;&nbsp;mPaint.setTextSize(</span><span style="color: #000000;">20</span><span style="color: #000000;">);
-&nbsp;&nbsp;&nbsp;&nbsp;mPaint.setColor(Color.BLUE);
-&nbsp;&nbsp;&nbsp;&nbsp;canvas.drawText(</span><span style="color: #000000;">&ldquo;</span><span style="color: #000000;">Hello</span><span style="color: #000000;">&ldquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #000000;">20</span><span style="color: #000000;">,&nbsp;</span><span style="color: #000000;">20</span><span style="color: #000000;">,&nbsp;mPaint);
-}</span></div></div></p>
-
+<!-- raw HTML omitted -->
+<p>其中一个最重要的方法就是onDraw，用来画想要呈现的用户内容。比如，我想在屏幕上写一个Hello。</p>
+<!-- raw HTML omitted -->
 <h4 id="3-intent">3. Intent</h4>
-
 <p>Intent表示你想要做什么，AndroidManifest.xml中的filterIntent表示你的应用程序能够处理什么样的Intent。有时，还可以通过Intent来实现不同窗体间互相传递信息。</p>
-
-<h4 id="4-androidmanifest-xml文件">4. AndroidManifest.xml文件</h4>
-
+<h4 id="4-androidmanifestxml文件">4. AndroidManifest.xml文件</h4>
 <p>相当于ASP.NET的Web.config文件了，全局的一些配置。比如，设置Activity，filterIntent等等。</p>
-
-<h4 id="5-资源访问的r-java">5. 资源访问的R.java</h4>
-
+<h4 id="5-资源访问的rjava">5. 资源访问的R.java</h4>
 <p>Android里访问资源非常简单，当我们添加了资源到res目录后，ADT插件会自动更新R.java文件，通过R类，就能轻松的访问到任何res中的资源。同时，也可以界面的xml中方面的使用。</p>
-
 <h4 id="6-数据库">6. 数据库</h4>
-
 <p>使用sqlite，有现成的SQLiteDatabase类可用来操作数据库。</p>
-
 <p>上面都只是非常粗略的介绍，想要更深的理解还需要更多的实践。不过，通过了解上面的基本内容，我们可以大致了解开发过程中的一些步骤的实施方式。比如，界面布局在哪里设置，事件如何触发，数据如何保存，资源如何使用等等。以后若有所得，再来总结了。</p>
-
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2010/03/20/android-first.html">http://www.cnblogs.com/coderzh/archive/2010/03/20/android-first.html</a></strong></p>
 
                       
@@ -323,7 +266,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2010/03/20/android-first/">https://blog.coderzh.com/2010/03/20/android-first/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -378,19 +321,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2010/03/19/gtest_demo/" rel="next">
+        <a href="https://blog.coderzh.com/2010/03/23/android-nancyglines-design/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>gtest参数化测试代码示例</span>
+          <span>Android游戏开发 - NancyGLines设计</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2010/03/23/android-nancyglines-design/" rel="prev">
+        <a href="https://blog.coderzh.com/2010/03/19/gtest_demo/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>Android游戏开发 - NancyGLines设计</span>
+          <span>gtest参数化测试代码示例</span>
         </a>
         
       </li>

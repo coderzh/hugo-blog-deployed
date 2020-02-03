@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">xmlrcp学习 - python中使用xmlrpc</h1>
 
                   <p class="post-byline">
-                    by  · 2008年12月03日 · 353 Words ·
+                    by  · 2008年12月03日 · 314 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-12-03-1346994.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,60 +189,14 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<h4 id="一-简介">一、简介</h4>
-
+                      <h4 id="一简介">一、简介</h4>
 <p>为了解决在系统的80端口提供RPC的服务，而又不影响正在执行的WEB服务，人们想出了用HTTP协议传输RPC包的办法。对于几乎是专门用于传输文本的HTTP协议，要在其上传输RPC封包，最方便的方法莫过于把RPC封包编码成文本形式——例如XML文件。</p>
-
-<p>XML- RPC（<a href="http://www.xml-rpc.com）是由美国UserLand公司指定的一个RPC协议。它将RPC信息封包编码为XML，然后通过">http://www.xml-rpc.com）是由美国UserLand公司指定的一个RPC协议。它将RPC信息封包编码为XML，然后通过</a> HTTP传输封包；</p>
-
+<p>XML- RPC（http://www.xml-rpc.com）是由美国UserLand公司指定的一个RPC协议。它将RPC信息封包编码为XML，然后通过 HTTP传输封包；</p>
 <p>简单的理解：</p>
-
-<div class="cnblogs_code"><span style="color: #000000;">将数据定义为xml格式，通过http协议进行远程传输。</span></div>
-<br />
-&nbsp;
-<br />
-#### 二、好处
-<br />
-1. 传输复杂的数据。
-<br />
-2. 通过程序语言的封装，实现远程对象的调用。
-<br />
-#### 三、Python中xmlrpc应用
-<br />
-服务端：
-<br />
-<div class="cnblogs_code"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;SimpleXMLRPCServer
-<br />
-</span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;MyObject:
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;sayHello(self):
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">"</span><span style="color: #800000;">hello&nbsp;xmlprc</span><span style="color: #800000;">"</span><span style="color: #000000;">
-<br />
-obj&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;MyObject()
-<br />
-server&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;SimpleXMLRPCServer.SimpleXMLRPCServer((</span><span style="color: #800000;">"</span><span style="color: #800000;">localhost</span><span style="color: #800000;">"</span><span style="color: #000000;">,&nbsp;</span><span style="color: #000000;">80</span><span style="color: #000000;">))
-<br />
-server.register_instance(obj)
-<br />
-</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">"</span><span style="color: #800000;">Listening&nbsp;on&nbsp;port&nbsp;80</span><span style="color: #800000;">"</span><span style="color: #000000;">
-<br />
-server.serve_forever()</span></div>
-
+<!-- raw HTML omitted -->
 <p>客户端：</p>
-
-<div class="cnblogs_code"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;xmlrpclib
-<br />
-server&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;xmlrpclib.ServerProxy(</span><span style="color: #800000;">"</span><span style="color: #800000;">http://localhost:80</span><span style="color: #800000;">"</span><span style="color: #000000;">)
-<br />
-words&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;server.sayHello()
-<br />
-</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">"</span><span style="color: #800000;">result:</span><span style="color: #800000;">"</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">+</span><span style="color: #000000;">&nbsp;words</span></div>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p> </p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/12/03/1346994.html">http://www.cnblogs.com/coderzh/archive/2008/12/03/1346994.html</a></strong></p>
 
                       
@@ -254,7 +208,7 @@ words&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/12/03/1346994/">https://blog.coderzh.com/2008/12/03/1346994/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -309,19 +263,19 @@ words&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/12/03/1347120/" rel="next">
+        <a href="https://blog.coderzh.com/2008/12/07/1349735/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>没有计划 - 之CoderZh也流水账</span>
+          <span>Python天天美味(33) - 五分钟理解元类（Metaclasses）[转]</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/12/07/1349735/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/12/03/1347120/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>Python天天美味(33) - 五分钟理解元类（Metaclasses）[转]</span>
+          <span>没有计划 - 之CoderZh也流水账</span>
         </a>
         
       </li>

@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">博客园仿真足球竞赛平台Python版SDK</h1>
 
                   <p class="post-byline">
-                    by  · 2008年09月11日 · 833 Words ·
+                    by  · 2008年09月11日 · 913 Words ·
                     ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-09-11-1289302.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,172 +189,91 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>为了方便喜欢Python的同学能使用Python开发自己的球队，所以编写了此SDK。这个SDK基本上是参照C#版SDK改过来的，除了一些复杂的几何算法没有实现外，其他功能都已实现。喜欢的朋友可以自己下了慢慢改善，我也会不断更新这个SDK。下面介绍一下基本的使用吧。</p>
-
-<h3 id="一-导入soccer模块">一、导入soccer模块</h3>
-
+                      <p>为了方便喜欢Python的同学能使用Python开发自己的球队，所以编写了此SDK。这个SDK基本上是参照C#版SDK改过来的，除了一些复杂的几何算法没有实现外，其他功能都已实现。喜欢的朋友可以自己下了慢慢改善，我也会不断更新这个SDK。下面介绍一下基本的使用吧。</p>
+<h3 id="一导入soccer模块">一、导入soccer模块</h3>
 <p>不需要过多的import导入语句，轻轻松松，简简单单，只需要一句导入语句：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;">from <span style="color: #0e84b5; font-weight: bold;">soccer</span> import *</div>
-
-<p>&nbsp;</p>
-
-<h3 id="二-模块介绍">二、模块介绍</h3>
-
+<!-- raw HTML omitted -->
+<p> </p>
+<h3 id="二模块介绍">二、模块介绍</h3>
 <ol>
 <li>导入soccer后，我们可以使用如下的一些实例对象：</li>
 </ol>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">field_settings</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#球场设置信息</span>
-
-<span style="color: #ffffff;">game_settings</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#比赛设置信息</span>
-
-<span style="color: #ffffff;">rule_settings</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#规则设置信息</span>
-
-<span style="color: #ffffff;">server_settings</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#服务器设置信息</span>
-
-<span style="color: #ffffff;">communicator</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#通信对象</span></div>
-
-<p>&nbsp;</p>
-
-<ol>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->game_settings<!-- raw HTML omitted --><!-- raw HTML omitted -->          <!-- raw HTML omitted --><!-- raw HTML omitted -->#比赛设置信息<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->rule_settings<!-- raw HTML omitted --><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->#规则设置信息<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->server_settings<!-- raw HTML omitted --><!-- raw HTML omitted -->         <!-- raw HTML omitted --><!-- raw HTML omitted -->#服务器设置信息<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->communicator<!-- raw HTML omitted --><!-- raw HTML omitted -->         <!-- raw HTML omitted --><!-- raw HTML omitted -->#通信对象<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
+<ol start="2">
 <li>类对象如下：</li>
 </ol>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">Vector2f</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#二维坐标</span>
-
-<span style="color: #ffffff;">GameState</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#比赛状态(比分信息)</span>
-
-<span style="color: #ffffff;">ClientInfo</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#球队信息(球队名，作者)</span></div>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->GameState<!-- raw HTML omitted --><!-- raw HTML omitted -->               <!-- raw HTML omitted --><!-- raw HTML omitted -->#比赛状态(比分信息)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->ClientInfo<!-- raw HTML omitted --><!-- raw HTML omitted -->                 <!-- raw HTML omitted --><!-- raw HTML omitted -->#球队信息(球队名，作者)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>命令相关的对象及常量如下：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">Command</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#命令</span>
-
-<span style="color: #ffffff;">CommandType_Catch</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">'Catch'</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#扑球</span>
-
-<span style="color: #ffffff;">CommandType_Dash</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">'Dash'</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#跑</span>
-
-<span style="color: #ffffff;">CommandType_Turn</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">'Turn'</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#转身</span>
-
-<span style="color: #ffffff;">CommandType_Stay</span> <span style="color: #ffffff;">=</span><span style="color: #ffffff;">'Stay'</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#原地不动</span>
-
-<span style="color: #ffffff;">CommandType_Kick</span> <span style="color: #ffffff;">=</span>&nbsp;<span style="color: #ffffff;">'Kick'</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#踢球</span>
-
-<span style="color: #ffffff;">CommandType_Unknow</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">'Unknow'</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#未知命令</span></div>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->CommandType_Catch<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->'Catch'<!-- raw HTML omitted --><!-- raw HTML omitted -->         <!-- raw HTML omitted --><!-- raw HTML omitted -->#扑球<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->CommandType_Dash<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->'Dash'<!-- raw HTML omitted --><!-- raw HTML omitted -->           <!-- raw HTML omitted --><!-- raw HTML omitted -->#跑<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->CommandType_Turn<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->'Turn'<!-- raw HTML omitted --><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->#转身<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->CommandType_Stay<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->'Stay'<!-- raw HTML omitted --><!-- raw HTML omitted -->              <!-- raw HTML omitted --><!-- raw HTML omitted -->#原地不动<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->CommandType_Kick<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->'Kick'<!-- raw HTML omitted --><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->#踢球<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->CommandType_Unknow<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->'Unknow'<!-- raw HTML omitted --><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->#未知命令<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
 <p>所有实现了的类和C#版SDK基本一致，比如Vector2f的操作符重载等。上面列的是主要的一些类和对象，除此之外还包括比如一些角度计算的模块(anglehelper)，矩形对象(rectangle) 等。</p>
-
-<h3 id="三-创建球队实例">三、创建球队实例</h3>
-
+<h3 id="三创建球队实例">三、创建球队实例</h3>
 <p>创建方法和C#版本基本一样，下面的代码应该不需要过多解释：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #fb660a; font-weight: bold;">if</span> <span style="color: #ffffff;">__name__</span> <span style="color: #ffffff;">==</span> <span style="color: #0086d2;">"__main__"</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #0086d2;">"""</span>
-
-<span style="color: #0086d2;">&nbsp;&nbsp;&nbsp; entry point of the great team!</span>
-
-<span style="color: #0086d2;">&nbsp;&nbsp;&nbsp; """</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">myteam</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">TeamNancy</span><span style="color: #ffffff;">(</span><span style="color: #0086d2;">'NancyTeam'</span><span style="color: #ffffff;">,</span> <span style="color: #0086d2;">'CoderZh'</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">if</span> <span style="color: #ffffff;">communicator</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">connect</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">myteam</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">info</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">print</span> <span style="color: #0086d2;">'Platform Connected!!!'</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">while</span> <span style="color: #ffffff;">True</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #0086d2;">"""</span>
-
-<span style="color: #0086d2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start the game cycle</span>
-
-<span style="color: #0086d2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; """</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">wmdata</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">communicator</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">getworldmodel</span><span style="color: #ffffff;">()</span><span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #008800; font-style: italic; background-color: #0f140f;">#get the infomation from the server</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">if</span> <span style="color: #ffffff;">(</span><span style="color: #ffffff;">wmdata</span> <span style="color: #ffffff;">==</span> <span style="color: #ffffff;">None</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">print</span> <span style="color: #0086d2;">'Game Over!'</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">exit</span><span style="color: #ffffff;">()</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #008800; font-style: italic; background-color: #0f140f;">#get the infomation of the game to my team</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">myteam</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">getworldmodel</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">wmdata</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #008800; font-style: italic; background-color: #0f140f;">#my team think for a while and send the commands to the server</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">communicator</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">send_commands</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">myteam</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">think</span><span style="color: #ffffff;">())</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">else</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">print</span> <span style="color: #0086d2;">'Connect Fail!!!'</span></div>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    entry point of the great team!<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    &ldquo;&ldquo;&ldquo;<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->myteam<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->TeamNancy<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->'NancyTeam'<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->'CoderZh'<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->communicator<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->connect<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->myteam<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->info<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --> <!-- raw HTML omitted -->'Platform Connected!!!&lsquo;<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --> <!-- raw HTML omitted -->True<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;&ldquo;<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            Start the game cycle<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            &ldquo;&ldquo;&ldquo;<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->wmdata<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->communicator<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->getworldmodel<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --><!-- raw HTML omitted -->       <!-- raw HTML omitted --><!-- raw HTML omitted -->#get the infomation from the server<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->           <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->wmdata<!-- raw HTML omitted --> <!-- raw HTML omitted -->==<!-- raw HTML omitted --> <!-- raw HTML omitted -->None<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --> <!-- raw HTML omitted -->'Game Over!&lsquo;<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->exit<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->#get the infomation of the game to my team<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->myteam<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->getworldmodel<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->wmdata<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->           <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->#my team think for a while and send the commands to the server<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->communicator<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->send_commands<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->myteam<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->think<!-- raw HTML omitted --><!-- raw HTML omitted -->())<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --> <!-- raw HTML omitted -->'Connect Fail!!!&lsquo;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
 <p>再来看看如何创建自己的AI球队的类：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #fb660a; font-weight: bold;">class</span> <span style="color: #ffffff;">TeamNancy</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">object</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">def</span> <span style="color: #ff0086; font-weight: bold;">__init__</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">teamname</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">author</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">info</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">ClientInfo</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">teamname</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">author</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">wm</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">WorldModel</span><span style="color: #ffffff;">()</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">[</span><span style="color: #ffffff;">Command</span><span style="color: #ffffff;">()</span> <span style="color: #fb660a; font-weight: bold;">for</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #0086f7; font-weight: bold;">5</span><span style="color: #ffffff;">)]</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">def</span> <span style="color: #ff0086; font-weight: bold;">getworldmodel</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">wmdata</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">wm</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">wmdata</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">def</span> <span style="color: #ff0086; font-weight: bold;">think</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">for</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">rule_settings</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">AgentNum</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">temppos</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">wm</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">ball</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">pos</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">wm</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">MyAgents</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">pos</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">if</span> <span style="color: #ffffff;">temppos</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">getlength</span><span style="color: #ffffff;">()</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #ffffff;">rule_settings</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">MaxKickBallDistance</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">type</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">CommandType_Kick</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">param1</span> <span style="color: #ffffff;">=</span> <span style="color: #0086f7; font-weight: bold;">1.0</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">param2</span> <span style="color: #ffffff;">=</span> <span style="color: #0086f7; font-weight: bold;">0</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">elif</span> <span style="color: #ffffff;">math</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">fabs</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">temppos</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">getdirection</span><span style="color: #ffffff;">()</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">wm</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">MyAgents</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">dir</span><span style="color: #ffffff;">)</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #0086f7; font-weight: bold;">2</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">type</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">CommandType_Dash</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">param1</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">rule_settings</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">MaxDashVel</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">else</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">type</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">CommandType_Turn</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">param1</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">temppos</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">getdirection</span><span style="color: #ffffff;">()</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #fb660a; font-weight: bold;">return</span> <span style="color: #ffffff;">self</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">cmds</span><span style="color: #ffffff;">;</span></div>
-
-<p>&nbsp;</p>
-
-<h3 id="四-下载sdk">四、下载SDK</h3>
-
-<p>&nbsp;<a href="http://files.cnblogs.com/coderzh/SoccerSDK.rar">http://files.cnblogs.com/coderzh/SoccerSDK.rar</a></p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --> <!-- raw HTML omitted -->__init__<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->teamname<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->author<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->info<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->ClientInfo<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->teamname<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->author<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->wm<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->WorldModel<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->Command<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --> <!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->5<!-- raw HTML omitted --><!-- raw HTML omitted -->)]<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --> <!-- raw HTML omitted -->getworldmodel<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->wmdata<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->wm<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->wmdata<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --> <!-- raw HTML omitted -->think<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->rule_settings<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->AgentNum<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->temppos<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->wm<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->ball<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->pos<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->wm<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->MyAgents<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->pos<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->temppos<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->getlength<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->rule_settings<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->MaxKickBallDistance<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->type<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->CommandType_Kick<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->param1<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->1.0<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->param2<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->0<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->elif<!-- raw HTML omitted --> <!-- raw HTML omitted -->math<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->fabs<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->temppos<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->getdirection<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->wm<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->MyAgents<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->dir<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->2<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->type<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->CommandType_Dash<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->param1<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->rule_settings<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->MaxDashVel<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->else<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->type<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->CommandType_Turn<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->param1<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->temppos<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->getdirection<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --> <!-- raw HTML omitted -->self<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->cmds<!-- raw HTML omitted --><!-- raw HTML omitted -->;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
+<h3 id="四下载sdk">四、下载SDK</h3>
+<p> <a href="http://files.cnblogs.com/coderzh/SoccerSDK.rar">http://files.cnblogs.com/coderzh/SoccerSDK.rar</a></p>
+<h3 id="heading"></h3>
 <p>五、感谢</p>
-
 <p>感谢 <a href="http://www.cnblogs.com/gpcuster/">逖靖寒</a> 同学给我们带来了那么好玩的游戏，丰富了我们的生活，带来了很多乐趣。同时希望此Python版SDK能给同学们带来一些帮助，也希望同学们提出宝贵意见，不断的完善这个SDK。谢谢！！</p>
-
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/09/11/1289302.html">http://www.cnblogs.com/coderzh/archive/2008/09/11/1289302.html</a></strong></p>
 
                       
@@ -366,7 +285,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/09/11/1289302/">https://blog.coderzh.com/2008/09/11/1289302/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -421,19 +340,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/09/10/1288044/" rel="next">
+        <a href="https://blog.coderzh.com/2008/09/17/1292808/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Matplotlib Notes</span>
+          <span>(原创)攻击方式学习之(4) - 拒绝服务(DOS/DDOS/DRDOS)</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/09/17/1292808/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/09/10/1288044/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>(原创)攻击方式学习之(4) - 拒绝服务(DOS/DDOS/DRDOS)</span>
+          <span>Matplotlib Notes</span>
         </a>
         
       </li>

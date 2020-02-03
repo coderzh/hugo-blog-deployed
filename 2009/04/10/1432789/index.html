@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之六 - 运行参数</h1>
 
                   <p class="post-byline">
-                    by  · 2009年04月10日 · 3104 Words ·
+                    by  · 2009年04月10日 · 3185 Words ·
                     ~7min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2009-04-10-1432789.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,296 +189,183 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<h4 id="一-前言">一、前言</h4>
-
+                      <h4 id="一前言">一、前言</h4>
 <p>使用gtest编写的测试案例通常本身就是一个可执行文件，因此运行起来非常方便。同时，gtest也为我们提供了一系列的运行参数（环境变量、命令行参数或代码里指定），使得我们可以对案例的执行进行一些有效的控制。</p>
-
-<h4 id="二-基本介绍">二、基本介绍</h4>
-
+<h4 id="二基本介绍">二、基本介绍</h4>
 <p>前面提到，对于运行参数，gtest提供了三种设置的途径：</p>
-
 <ol>
-<li><p>系统环境变量</p></li>
-
-<li><p>命令行参数</p></li>
-
-<li><p>代码中指定FLAG</p></li>
+<li>
+<p>系统环境变量</p>
+</li>
+<li>
+<p>命令行参数</p>
+</li>
+<li>
+<p>代码中指定FLAG</p>
+</li>
 </ol>
-
 <p>因为提供了三种途径，就会有优先级的问题， 有一个原则是，最后设置的那个会生效。不过总结一下，通常情况下，比较理想的优先级为：</p>
-
 <p>命令行参数 &gt; 代码中指定FLAG &gt; 系统环境变量</p>
-
 <p>为什么我们编写的测试案例能够处理这些命令行参数呢？是因为我们在main函数中，将命令行参数交给了gtest，由gtest来搞定命令行参数的问题。</p>
-
-<div class="cnblogs_code"><span style="color: #0000ff;">int</span><span style="color: #000000;">&nbsp;_tmain(</span><span style="color: #0000ff;">int</span><span style="color: #000000;">&nbsp;argc,&nbsp;_TCHAR</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;argv[])
-<br />
-{
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;testing::InitGoogleTest(</span><span style="color: #000000;">&amp;</span><span style="color: #000000;">argc,&nbsp;argv);
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;RUN_ALL_TESTS();
-<br />
-}</span></div>
-
-<p>&nbsp;</p>
-
-<p>这样，我们就拥有了接收和响应gtest命令行参数的能力。如果需要在代码中指定FLAG，可以使用testing::GTEST_FLAG这个宏来设置。比如相对于命令行参数&ndash;gtest_output，可以使用testing::GTEST_FLAG(output) = &ldquo;xml:&ldquo;;来设置。注意到了，不需要加&ndash;gtest前缀了。同时，推荐将这句放置InitGoogleTest之前，这样就可以使得对于同样的参数，命令行参数优先级高于代码中指定。</p>
-
-<div class="cnblogs_code"><span style="color: #0000ff;">int</span><span style="color: #000000;">&nbsp;_tmain(</span><span style="color: #0000ff;">int</span><span style="color: #000000;">&nbsp;argc,&nbsp;_TCHAR</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;argv[])
-<br />
-{
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;testing::GTEST_FLAG(output)&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">"</span><span style="color: #800000;">xml:</span><span style="color: #800000;">"</span><span style="color: #000000;">;
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;testing::InitGoogleTest(</span><span style="color: #000000;">&amp;</span><span style="color: #000000;">argc,&nbsp;argv);
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;RUN_ALL_TESTS();
-<br />
-}</span></div>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p> </p>
+<p>这样，我们就拥有了接收和响应gtest命令行参数的能力。如果需要在代码中指定FLAG，可以使用testing::GTEST_FLAG这个宏来设置。比如相对于命令行参数&ndash;gtest_output，可以使用testing::GTEST_FLAG(output) = &ldquo;xml:&quot;;来设置。注意到了，不需要加&ndash;gtest前缀了。同时，推荐将这句放置InitGoogleTest之前，这样就可以使得对于同样的参数，命令行参数优先级高于代码中指定。</p>
+<!-- raw HTML omitted -->
+<p> </p>
 <p>最后再来说下第一种设置方式-系统环境变量。如果需要gtest的设置系统环境变量，必须注意的是：</p>
-
 <ol>
 <li>系统环境变量全大写，比如对于&ndash;gtest_output，响应的系统环境变量为：GTEST_OUTPUT</li>
 </ol>
-
-<p>2.&nbsp; 有一个命令行参数例外，那就是&ndash;gtest_list_tests，它是不接受系统环境变量的。（只是用来罗列测试案例名称）</p>
-
-<h4 id="三-参数列表">三、参数列表</h4>
-
+<p>2.  有一个命令行参数例外，那就是&ndash;gtest_list_tests，它是不接受系统环境变量的。（只是用来罗列测试案例名称）</p>
+<h4 id="三参数列表">三、参数列表</h4>
 <p>了解了上面的内容，我这里就直接将所有命令行参数总结和罗列一下。如果想要获得详细的命令行说明，直接运行你的案例，输入命令行参数：/? 或 &ndash;help 或 -help</p>
-
 <ol>
 <li>测试案例集合</li>
 </ol>
+<!-- raw HTML omitted -->
+<pre><code>     &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;--gtest_filter&lt;/td&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;
+</code></pre>
+<p>对执行的测试案例进行过滤，支持通配符</p>
+<p>?    单个字符</p>
+<p>*    任意字符</p>
+<ul>
+<li>   排除，如，-a 表示除了a</li>
+</ul>
+<p>:    取或，如，a:b 表示a或b</p>
+<p>比如下面的例子：</p>
+<p>./foo_test 没有指定过滤条件，运行所有案例</p>
+<pre><code>     ./foo_test --gtest_filter=* 使用通配符*，表示运行所有案例
 
-<table width="1019">
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">**命令行参数** </td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;"> **说明** </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_list_tests</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">使用这个参数时，将不会执行里面的测试案例，而是输出一个案例的列表。
+     ./foo_test --gtest_filter=FooTest.* 运行所有&amp;#8220;测试案例名称(testcase_name)&amp;#8221;为FooTest的案例
 
-         </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_filter</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">
+     ./foo_test --gtest_filter=*Null*:*Constructor* 运行所有&amp;#8220;测试案例名称(testcase_name)&amp;#8221;或&amp;#8220;测试名称(test_name)&amp;#8221;包含Null或Constructor的案例。
 
-对执行的测试案例进行过滤，支持通配符
+     ./foo_test --gtest_filter=-*DeathTest.* 运行所有非死亡测试案例。
 
-?&nbsp;&nbsp;&nbsp; 单个字符
+     ./foo_test --gtest_filter=FooTest.*-FooTest.Bar 运行所有&amp;#8220;测试案例名称(testcase_name)&amp;#8221;为FooTest的案例，但是除了FooTest.Bar这个案例
 
-*&nbsp;&nbsp;&nbsp; 任意字符
+     &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;--gtest_also_run_disabled_tests&lt;/td&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;
+</code></pre>
+<p>执行案例时，同时也执行被置为无效的测试案例。关于设置测试案例无效的方法为：</p>
+<p>在测试案例名称或测试名称中添加<!-- raw HTML omitted -->DISABLED前缀，比如：<!-- raw HTML omitted --></p>
+<pre><code>     &lt;div class=&quot;cnblogs_code&quot;&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;&amp;nbsp;Tests&amp;nbsp;that&amp;nbsp;Foo&amp;nbsp;does&amp;nbsp;Abc.&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;
+</code></pre>
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --><!-- raw HTML omitted -->TEST(FooTest, DISABLED_DoesAbc) { <img src="http://www.cnblogs.com/Images/dot.gif" alt=""> }
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted --><!-- raw HTML omitted -->class<!-- raw HTML omitted --><!-- raw HTML omitted --> DISABLED_BarTest : <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> testing::Test { <img src="http://www.cnblogs.com/Images/dot.gif" alt=""> };
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted --> Tests that Bar does Xyz.<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted --><!-- raw HTML omitted -->TEST_F(DISABLED_BarTest, DoesXyz) { <img src="http://www.cnblogs.com/Images/dot.gif" alt=""> }<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->&ndash;gtest_repeat=[COUNT]<!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<p>设置案例重复运行次数，非常棒的功能！比如：</p>
+<p>&ndash;gtest_repeat=1000      重复执行1000次，即使中途出现错误。</p>
+<pre><code>     --gtest_repeat=-1 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 无限次数执行。。。。
 
-- &nbsp;&nbsp; 排除，如，-a 表示除了a
+     --gtest_repeat=1000 --gtest_break_on_failure &amp;nbsp;&amp;nbsp;&amp;nbsp; 重复执行1000次，并且在第一个错误发生时立即停止。这个功能对调试非常有用。
 
-:&nbsp;&nbsp;&nbsp; 取或，如，a:b 表示a或b
+     --gtest_repeat=1000 --gtest_filter=FooBar &amp;nbsp;&amp;nbsp;&amp;nbsp; 重复执行1000次测试案例名称为FooBar的案例。
 
-比如下面的例子：
-
-./foo_test 没有指定过滤条件，运行所有案例
-
-         ./foo_test --gtest_filter=* 使用通配符*，表示运行所有案例
-
-         ./foo_test --gtest_filter=FooTest.* 运行所有&#8220;测试案例名称(testcase_name)&#8221;为FooTest的案例
-
-         ./foo_test --gtest_filter=*Null*:*Constructor* 运行所有&#8220;测试案例名称(testcase_name)&#8221;或&#8220;测试名称(test_name)&#8221;包含Null或Constructor的案例。
-
-         ./foo_test --gtest_filter=-*DeathTest.* 运行所有非死亡测试案例。
-
-         ./foo_test --gtest_filter=FooTest.*-FooTest.Bar 运行所有&#8220;测试案例名称(testcase_name)&#8221;为FooTest的案例，但是除了FooTest.Bar这个案例
-
-         </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_also_run_disabled_tests</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">
-
-执行案例时，同时也执行被置为无效的测试案例。关于设置测试案例无效的方法为：
-
-在测试案例名称或测试名称中添加<a name="Temporarily_Disabling_Tests">DISABLED前缀，比如：</a>
-
-         <div class="cnblogs_code"><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;Tests&nbsp;that&nbsp;Foo&nbsp;does&nbsp;Abc.</span><span style="color: #008000;">
-<br />
-         </span><span style="color: #000000;">TEST(FooTest,&nbsp;DISABLED_DoesAbc)&nbsp;{&nbsp;![](http://www.cnblogs.com/Images/dot.gif)&nbsp;}
-<br />
-         </span><span style="color: #0000ff;">class</span><span style="color: #000000;">&nbsp;DISABLED_BarTest&nbsp;:&nbsp;</span><span style="color: #0000ff;">public</span><span style="color: #000000;">&nbsp;testing::Test&nbsp;{&nbsp;![](http://www.cnblogs.com/Images/dot.gif)&nbsp;};
-<br />
-         </span><span style="color: #008000;">//</span><span style="color: #008000;">&nbsp;Tests&nbsp;that&nbsp;Bar&nbsp;does&nbsp;Xyz.</span><span style="color: #008000;">
-<br />
-         </span><span style="color: #000000;">TEST_F(DISABLED_BarTest,&nbsp;DoesXyz)&nbsp;{&nbsp;![](http://www.cnblogs.com/Images/dot.gif)&nbsp;}</span></div>
-         </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_repeat=[COUNT]</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">
-
-设置案例重复运行次数，非常棒的功能！比如：
-
---gtest_repeat=1000 &nbsp;&nbsp; &nbsp; 重复执行1000次，即使中途出现错误。
-
-         --gtest_repeat=-1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 无限次数执行。。。。
-
-         --gtest_repeat=1000 --gtest_break_on_failure &nbsp;&nbsp;&nbsp; 重复执行1000次，并且在第一个错误发生时立即停止。这个功能对调试非常有用。
-
-         --gtest_repeat=1000 --gtest_filter=FooBar &nbsp;&nbsp;&nbsp; 重复执行1000次测试案例名称为FooBar的案例。
-
-         </td>
-     </tr>
-</table>
-
-<p>&nbsp;</p>
-
-<ol>
+     &lt;/td&gt;
+ &lt;/tr&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<p> </p>
+<ol start="2">
 <li>测试案例输出</li>
 </ol>
+<!-- raw HTML omitted -->
+<pre><code>     &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;--gtest_print_time&lt;/td&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;输出命令行时是否打印每个测试案例的执行时间。默认是不打印的。
 
-<table width="1019">
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">**命令行参数** </td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;"> **说明** </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_color=(yes|no|auto)</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">输出命令行时是否使用一些五颜六色的颜色。默认是auto。
-
-         </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_print_time</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">输出命令行时是否打印每个测试案例的执行时间。默认是不打印的。
-
-         </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_output=xml[:DIRECTORY_PATH\|:FILE_PATH]</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">
-
-将测试结果输出到一个xml中。
-
-1.--gtest_output=xml: &nbsp;&nbsp; 不指定输出路径时，默认为案例当前路径。
-
-2.--gtest_output=xml:d:\ 指定输出到某个目录 
-
-3.--gtest_output=xml:d:\foo.xml 指定输出到d:\foo.xml
-
-如果不是指定了特定的文件路径，gtest每次输出的报告不会覆盖，而会以数字后缀的方式创建。xml的输出内容后面介绍吧。 
-
-         </td>
-     </tr>
-</table>
-
-<p>&nbsp;</p>
-
-<ol>
+     &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;--gtest_output=xml[:DIRECTORY_PATH\|:FILE_PATH]&lt;/td&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;
+</code></pre>
+<p>将测试结果输出到一个xml中。</p>
+<p>1.&ndash;gtest_output=xml:    不指定输出路径时，默认为案例当前路径。</p>
+<p>2.&ndash;gtest_output=xml:d:\ 指定输出到某个目录</p>
+<p>3.&ndash;gtest_output=xml:d:\foo.xml 指定输出到d:\foo.xml</p>
+<p>如果不是指定了特定的文件路径，gtest每次输出的报告不会覆盖，而会以数字后缀的方式创建。xml的输出内容后面介绍吧。</p>
+<pre><code>     &lt;/td&gt;
+ &lt;/tr&gt;
+</code></pre>
+<!-- raw HTML omitted -->
+<p> </p>
+<ol start="3">
 <li>对案例的异常处理</li>
 </ol>
+<!-- raw HTML omitted -->
+<pre><code>     &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;--gtest_throw_on_failure&lt;/td&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;当案例失败时以C++异常的方式抛出
 
-<table width="1019">
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">**命令行参数** </td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;"> **说明** </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_break_on_failure</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">调试模式下，当案例失败时停止，方便调试
-
-         </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_throw_on_failure</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">当案例失败时以C++异常的方式抛出
-
-         </td>
-     </tr>
-     <tr>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">--gtest_catch_exceptions</td>
-         <td style="border: 1px solid #aaaaaa; padding: 5px;">
-
-是否捕捉异常。gtest默认是不捕捉异常的，因此假如你的测试案例抛了一个异常，很可能会弹出一个对话框，这非常的不友好，同时也阻碍了测试案例的运行。如果想不弹这个框，可以通过设置这个参数来实现。如将--gtest_catch_exceptions设置为一个非零的数。
-
-注意：这个参数只在Windows下有效。
-
-</td>
-     </tr>
-</table>
-
-<h4 id="四-xml报告输出格式">四、XML报告输出格式</h4>
-
-<div class="cnblogs_code"><span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml&nbsp;version="1.0"&nbsp;encoding="UTF-8"</span><span style="color: #0000ff;">?&gt;</span><span style="color: #000000;">
-</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">testsuites&nbsp;</span><span style="color: #ff0000;">tests</span><span style="color: #0000ff;">="3"</span><span style="color: #ff0000;">&nbsp;failures</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;">&nbsp;errors</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;">&nbsp;time</span><span style="color: #0000ff;">="35"</span><span style="color: #ff0000;">&nbsp;name</span><span style="color: #0000ff;">="AllTests"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">testsuite&nbsp;</span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="MathTest"</span><span style="color: #ff0000;">&nbsp;tests</span><span style="color: #0000ff;">="2"</span><span style="color: #ff0000;">&nbsp;failures</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;">*&nbsp;errors</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;">&nbsp;time</span><span style="color: #0000ff;">="15"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">testcase&nbsp;</span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="Addition"</span><span style="color: #ff0000;">&nbsp;status</span><span style="color: #0000ff;">="run"</span><span style="color: #ff0000;">&nbsp;time</span><span style="color: #0000ff;">="7"</span><span style="color: #ff0000;">&nbsp;classname</span><span style="color: #0000ff;">=""</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">failure&nbsp;</span><span style="color: #ff0000;">message</span><span style="color: #0000ff;">="Value&nbsp;of:&nbsp;add(1,&nbsp;1)
-&nbsp;Actual:&nbsp;3
-Expected:&nbsp;2"</span><span style="color: #ff0000;">&nbsp;type</span><span style="color: #0000ff;">=""</span><span style="color: #0000ff;">/&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">failure&nbsp;</span><span style="color: #ff0000;">message</span><span style="color: #0000ff;">="Value&nbsp;of:&nbsp;add(1,&nbsp;-1)
-&nbsp;Actual:&nbsp;1
-Expected:&nbsp;0"</span><span style="color: #ff0000;">&nbsp;type</span><span style="color: #0000ff;">=""</span><span style="color: #0000ff;">/&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">testcase</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">testcase&nbsp;</span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="Subtraction"</span><span style="color: #ff0000;">&nbsp;status</span><span style="color: #0000ff;">="run"</span><span style="color: #ff0000;">&nbsp;time</span><span style="color: #0000ff;">="5"</span><span style="color: #ff0000;">&nbsp;classname</span><span style="color: #0000ff;">=""</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">testcase</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">testsuite</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">testsuite&nbsp;</span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="LogicTest"</span><span style="color: #ff0000;">&nbsp;tests</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;">&nbsp;failures</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;">&nbsp;errors</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;">&nbsp;time</span><span style="color: #0000ff;">="5"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">testcase&nbsp;</span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="NonContradiction"</span><span style="color: #ff0000;">&nbsp;status</span><span style="color: #0000ff;">="run"</span><span style="color: #ff0000;">&nbsp;time</span><span style="color: #0000ff;">="5"</span><span style="color: #ff0000;">&nbsp;classname</span><span style="color: #0000ff;">=""</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">testcase</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-&nbsp;&nbsp;</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">testsuite</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
-</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">testsuites</span><span style="color: #0000ff;">&gt;</span></div>
-
+     &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;--gtest_catch_exceptions&lt;/td&gt;
+     &lt;td style=&quot;border: 1px solid #aaaaaa; padding: 5px;&quot;&gt;
+</code></pre>
+<p>是否捕捉异常。gtest默认是不捕捉异常的，因此假如你的测试案例抛了一个异常，很可能会弹出一个对话框，这非常的不友好，同时也阻碍了测试案例的运行。如果想不弹这个框，可以通过设置这个参数来实现。如将&ndash;gtest_catch_exceptions设置为一个非零的数。</p>
+<p>注意：这个参数只在Windows下有效。</p>
+<!-- raw HTML omitted -->
+<h4 id="四xml报告输出格式">四、XML报告输出格式</h4>
+<!-- raw HTML omitted -->
 <p>从报告里可以看出，我们之前在TEST等宏中定义的测试案例名称(testcase_name)在xml测试报告中其实是一个testsuite name，而宏中的测试名称(test_name)在xml测试报告中是一个testcase name，概念上似乎有点混淆，就看你怎么看吧。</p>
-
 <p>当检查点通过时，不会输出任何检查点的信息。当检查点失败时，会有详细的失败信息输出来failure节点。</p>
-
-<p>在我使用过程中发现一个问题，当我同时设置了&ndash;gtest_filter参数时，输出的xml报告中还是会包含所有测试案例的信息，只不过那些不被执行的测试案例的status值为&#8220;notrun&#8221;。而我之前认为的输出的xml报告应该只包含我需要运行的测试案例的信息。不知是否可提供一个只输出需要执行的测试案例的xml报告。因为当我需要在1000个案例中执行其中1个案例时，在报告中很难找到我运行的那个案例，虽然可以查找，但还是很麻烦。</p>
-
-<h4 id="五-总结">五、总结</h4>
-
+<p>在我使用过程中发现一个问题，当我同时设置了&ndash;gtest_filter参数时，输出的xml报告中还是会包含所有测试案例的信息，只不过那些不被执行的测试案例的status值为“notrun”。而我之前认为的输出的xml报告应该只包含我需要运行的测试案例的信息。不知是否可提供一个只输出需要执行的测试案例的xml报告。因为当我需要在1000个案例中执行其中1个案例时，在报告中很难找到我运行的那个案例，虽然可以查找，但还是很麻烦。</p>
+<h4 id="五总结">五、总结</h4>
 <p>本篇主要介绍了gtest案例执行时提供的一些参数的使用方法，这些参数都非常有用。在实际编写gtest测试案例时肯定会需要用到的时候。至少我现在比较常用的就是：</p>
-
 <ol>
-<li><p>&ndash;gtest_filter</p></li>
-
-<li><p>&ndash;gtest_output=xml[:DIRECTORY_PATH|:FILE_PATH]</p></li>
-
-<li><p>&ndash;gtest_catch_exceptions</p></li>
+<li>
+<p>&ndash;gtest_filter</p>
+</li>
+<li>
+<p>&ndash;gtest_output=xml[:DIRECTORY_PATH|:FILE_PATH]</p>
+</li>
+<li>
+<p>&ndash;gtest_catch_exceptions</p>
+</li>
 </ol>
-
 <p>最后再总结一下我使用过程中遇到的几个问题:</p>
-
 <ol>
-<li><p>同时使用&ndash;gtest_filter和&ndash;gtest_output=xml:时，在xml测试报告中能否只包含过滤后的测试案例的信息。</p></li>
-
-<li><p>有时，我在代码中设置 testing::GTEST_FLAG(catch_exceptions) = 1和我在命令行中使用&ndash;gtest_catch_exceptions结果稍有不同，在代码中设置FLAG方式有时候捕捉不了某些异常，但是通过命令行参数的方式一般都不会有问题。这是我曾经遇到过的一个问题，最后我的处理办法是既在代码中设置FLAG，又在命令行参数中传入&ndash;gtest_catch_exceptions。不知道是gtest在catch_exceptions方面不够稳定，还是我自己测试案例的问题。</p></li>
+<li>
+<p>同时使用&ndash;gtest_filter和&ndash;gtest_output=xml:时，在xml测试报告中能否只包含过滤后的测试案例的信息。</p>
+</li>
+<li>
+<p>有时，我在代码中设置 testing::GTEST_FLAG(catch_exceptions) = 1和我在命令行中使用&ndash;gtest_catch_exceptions结果稍有不同，在代码中设置FLAG方式有时候捕捉不了某些异常，但是通过命令行参数的方式一般都不会有问题。这是我曾经遇到过的一个问题，最后我的处理办法是既在代码中设置FLAG，又在命令行参数中传入&ndash;gtest_catch_exceptions。不知道是gtest在catch_exceptions方面不够稳定，还是我自己测试案例的问题。</p>
+</li>
 </ol>
-
 <p>系列链接：</p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2009/03/31/1426758.html">1.玩转Google开源C++单元测试框架Google Test系列(gtest)之一 - 初识gtest</a></p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1430364.html">2.玩转Google开源C++单元测试框架Google Test系列(gtest)之二 - 断言</a></p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1430396.html">3.玩转Google开源C++单元测试框架Google Test系列(gtest)之三 - 事件机制</a></p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2009/04/08/1431297.html">4.玩转Google开源C++单元测试框架Google Test系列(gtest)之四 - 参数化</a></p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2009/04/08/1432043.html">5.玩转Google开源C++单元测试框架Google Test系列(gtest)之五 - 死亡测试</a></p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2009/04/10/1432789.html">6.玩转Google开源C++单元测试框架Google Test系列(gtest)之六 - 运行参数</a></p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2009/04/11/1433744.html">7.玩转Google开源C++单元测试框架Google Test系列(gtest)之七 - 深入解析gtest</a></p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2009/04/12/1434155.html">8.玩转Google开源C++单元测试框架Google Test系列(gtest)之八 - 打造自己的单元测试框架</a></p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2009/04/10/1432789.html">http://www.cnblogs.com/coderzh/archive/2009/04/10/1432789.html</a></strong></p>
 
                       
@@ -490,7 +377,7 @@ Expected:&nbsp;0"</span><span style="color: #ff0000;">&nbsp;type</span><span sty
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2009/04/10/1432789/">https://blog.coderzh.com/2009/04/10/1432789/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -545,19 +432,19 @@ Expected:&nbsp;0"</span><span style="color: #ff0000;">&nbsp;type</span><span sty
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2009/04/08/1431954/" rel="next">
+        <a href="https://blog.coderzh.com/2009/04/11/1433744/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Google App Engine已经支持JAVA了</span>
+          <span>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之七 - 深入解析gtest</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2009/04/11/1433744/" rel="prev">
+        <a href="https://blog.coderzh.com/2009/04/08/1431954/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>玩转Google开源C&#43;&#43;单元测试框架Google Test系列(gtest)之七 - 深入解析gtest</span>
+          <span>Google App Engine已经支持JAVA了</span>
         </a>
         
       </li>

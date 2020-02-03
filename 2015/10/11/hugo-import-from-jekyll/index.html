@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -189,43 +189,28 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p><img src="http://image.coderzh.com/HugoImportJekyll.png-wt" alt="HugoImportJekyll" /></p>
-
-<p></p>
-
+                      <p><img src="http://image.coderzh.com/HugoImportJekyll.png-wt" alt="HugoImportJekyll"></p>
 <p>国庆长假期间，给Hugo提了几个PR，其中最主要的一个是给Hugo增加了内置的Jekyll迁移工具。这样之前的Jekyll用户可以通过一个简单的命令就可以将网站转化成Hugo站点：</p>
-
-<pre><code class="language-bash">$ hugo import jekyll your-jekyll-dir target-dir
-</code></pre>
-
-<p>得益于Hugo代码可读性非常好，原来计划需要几天来完成的功能1天左右的时间就完成了。完整的PR过程请见：<a href="https://github.com/spf13/hugo/pull/1469">https://github.com/spf13/hugo/pull/1469</a></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo import jekyll your-jekyll-dir target-dir
+</code></pre></div><p>得益于Hugo代码可读性非常好，原来计划需要几天来完成的功能1天左右的时间就完成了。完整的PR过程请见：<a href="https://github.com/spf13/hugo/pull/1469">https://github.com/spf13/hugo/pull/1469</a></p>
 <h3 id="hugo-import">Hugo Import</h3>
-
 <p>主要实现了将原来的Jeklly网站一键转换为Hugo网站，具体实现了如下功能：</p>
-
 <ol>
 <li>生成新的Hugo站点结构。(hugo new site)</li>
 <li>读取Jeklly的_config.yml，相应内容转化到Hugo的config.yaml。</li>
 <li>转换所有MarkDown的文章。（具体转换规则见下文）</li>
 <li>拷贝Jekyll其他目录及文件到Hugo的static目录。</li>
 </ol>
-
 <p>@bep在他的OS X上做了一些测试：</p>
-
-<pre><code class="language-bash">$ hugo import jekyll qrush.github.com qr2
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo import jekyll qrush.github.com qr2
   Importing...
-  Congratulations! 72 posts imported!
+  Congratulations! <span class="m">72</span> posts imported!
   Now, start Hugo by yourself:
   $ git clone https://github.com/spf13/herring-cove.git qr2/themes/herring-cove
-  $ cd qr2
-  $ hugo server -w --theme=herring-cove
-</code></pre>
-
-<h3 id="markdown文章转换规则">MarkDown文章转换规则</h3>
-
+  $ <span class="nb">cd</span> qr2
+  $ hugo server -w --theme<span class="o">=</span>herring-cove
+</code></pre></div><h3 id="markdown文章转换规则">MarkDown文章转换规则</h3>
 <p>Hugo和Jekyll都是使用MarkDown来写文章的，文章内容基本上是兼容的，除了一些FrontMatter的细节和局部细节。Hugo Import Jekyll主要的转换规则如下：</p>
-
 <ol>
 <li>保持原Jekyll文章目录结构及文件名不变，将文章拷贝到了content/post目录下。</li>
 <li>尽量保持原Jekyll文章链接地址不变，在文章的FrontMatter自动填入url字段。</li>
@@ -237,29 +222,17 @@
 <li>删除<code>{% raw %}{% endraw %}</code>标签。</li>
 <li>替换<code>{% highlight %}{% endhighlight %}</code>标签为 {{&lt; highlight &gt;}}{{&lt; / highlight &gt;}}</li>
 </ol>
-
 <h3 id="代码">代码</h3>
-
 <p>import.go:</p>
-
 <p><a href="https://github.com/spf13/hugo/blob/master/commands/import.go">https://github.com/spf13/hugo/blob/master/commands/import.go</a></p>
-
 <p>import_test.go:</p>
-
 <p><a href="https://github.com/spf13/hugo/blob/master/commands/import_test.go">https://github.com/spf13/hugo/blob/master/commands/import_test.go</a></p>
-
 <p>我fork的Hugo Repo（我的最新改动都在这里）：</p>
-
 <p><a href="https://github.com/coderzh/hugo">https://github.com/coderzh/hugo</a></p>
-
 <h3 id="最后">最后</h3>
-
 <p>这个功能将会在下个正式版推出，现在需要使用的同学自行pull最新的Hugo代码编译吧：</p>
-
-<pre><code class="language-bash">$ go get -u -v github.com/spf13/hugo
-</code></pre>
-
-<p>欢迎试用，并且提出意见或建议！谢谢！</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ go get -u -v github.com/spf13/hugo
+</code></pre></div><p>欢迎试用，并且提出意见或建议！谢谢！</p>
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
@@ -269,7 +242,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/">https://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -324,19 +297,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2015/09/28/go-tips/" rel="next">
+        <a href="https://blog.coderzh.com/2015/10/11/open-source-thinking/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Go语言极速入门手册.go</span>
+          <span>关于开源的思考</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2015/10/11/open-source-thinking/" rel="prev">
+        <a href="https://blog.coderzh.com/2015/09/28/go-tips/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>关于开源的思考</span>
+          <span>Go语言极速入门手册.go</span>
         </a>
         
       </li>

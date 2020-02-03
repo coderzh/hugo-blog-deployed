@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>思想感悟 on CoderZh Blog</title>
+    <link>https://blog.coderzh.com/categories/%E6%80%9D%E6%83%B3%E6%84%9F%E6%82%9F/</link>
+    <description>Recent content in 思想感悟 on CoderZh Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 19 Jun 2016 18:53:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.coderzh.com/categories/%E6%80%9D%E6%83%B3%E6%84%9F%E6%82%9F/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>聊聊播客</title>
+      <link>https://blog.coderzh.com/2016/06/19/podcasts/</link>
+      <pubDate>Sun, 19 Jun 2016 18:53:33 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2016/06/19/podcasts/</guid>
+      <description>播客（Podcast）已经不是什么新鲜的东西了。记得大概在 06 年左右，我经常逛博客园，当时 .NET 圈有个人开了一个独立播客，每篇文章就是一段录好的音</description>
+    </item>
+    
+  </channel>
+</rss>

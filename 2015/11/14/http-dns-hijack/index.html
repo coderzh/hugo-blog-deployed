@@ -17,33 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="http 劫持,">
-<meta name="description" content="最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。
-
-">
+<meta name="description" content="最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="网站被随机挂广告，疑似被 HTTP 劫持 - CoderZh Blog">
-<meta itemprop="description" content="最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。
-
-">
+<meta itemprop="description" content="最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="网站被随机挂广告，疑似被 HTTP 劫持 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2015/11/14/http-dns-hijack/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。
-
-">
+<meta property="og:description" content="最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="网站被随机挂广告，疑似被 HTTP 劫持 - CoderZh Blog">
-<meta name="twitter:description" content="最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。
-
-">
+<meta name="twitter:description" content="最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -109,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -198,122 +190,72 @@
                     <div class="entry-inner">
                       
                       <p>最近发现我的博客网站随机的会在右下角出现一个 google 的广告，郁闷至极，我的博客网站根本没有任何广告。于是今天特意去查了查，这广告到底从何而来。</p>
-
-<p></p>
-
 <h2 id="现象">现象</h2>
-
 <p>首先，广告长这样：</p>
-
-<p><img src="http://image.coderzh.com/blogads.jpg" alt="blogads" /></p>
-
+<p><img src="http://image.coderzh.com/blogads.jpg" alt="blogads"></p>
 <p>太可恨了！我的网站是 <a href="http://blog.coderzh.com/">http://blog.coderzh.com/</a>， 检查了网站的源文件，没有被修改的痕迹，也根本不会有什么广告代码。所以怀疑是被运营商劫持了！</p>
-
 <p>我使用的是广州电信100M光纤，被挂广告只有在家里上电信光纤时会出现，连手机里访问也会有广告：</p>
-
-<p><img src="http://image.coderzh.com/phoneads.jpg" alt="phoneads" /></p>
-
+<p><img src="http://image.coderzh.com/phoneads.jpg" alt="phoneads"></p>
 <p>但是如果手机连的是联通4G，就没有一点问题！</p>
-
 <p>后来在追查过程中，发现遇到这个问题的不止我一个人，比如，云风在他的新浪微博里说到：</p>
-
 <p><a href="http://weibo.com/2388714105/D2013qUSo?type=comment#_rnd1447506909896">http://weibo.com/2388714105/D2013qUSo?type=comment#_rnd1447506909896</a></p>
-
-<p><img src="http://image.coderzh.com/yunfengads.jpg-ws" alt="yunfengads" /></p>
-
+<p><img src="http://image.coderzh.com/yunfengads.jpg-ws" alt="yunfengads"></p>
 <p>另一个博主也遇到这个问题：<a href="http://www.lovefcwr.com/20151110-google-ca-pub-8129816473729933">网站被黑了随机挂ca-pub-8129816473729933的google广告，怎么办？</a></p>
-
 <p>还有一个用户在 Google Adsens 也举报了这个广告主：<a href="https://productforums.google.com/forum/#!topic/adsense/qeeYrD7kvUA;context-place=forum/adsense">Please help us to stop this Google Adsense user </a></p>
-
 <h2 id="初步分析">初步分析</h2>
-
 <p>这个问题出现在最近1，2个月，被插入广告的都属于同一个广告主：ca-pub-8129816473729933 。</p>
-
 <p>很多网站广告插入的方式和表现是完全一致的。广告隔断时间会出现一次，刷新网页后就消失了。</p>
-
 <p>我和云风使用的宽带都是广州电信！（我手机换成联通移动 4G 就没问题。）</p>
-
 <p>所以，不得不怀疑是电信做了手脚，对访问的网站进行了劫持！电信也不是第一次做 <strong>HTTP 劫持</strong> 这种事。</p>
-
 <p>于是，我捕捉了一些现场证据，分析了劫持的脚本和基本原理，然后拨通了中国电信 10000 号。</p>
-
 <h2 id="10000-号">10000 号</h2>
-
 <p>电信工作人员矢口否认进行了 HTTP 劫持，把原因归咎到电脑是否中毒了，WIFI 路由器被做了手脚等等。我说我的电脑杀过毒并没有问题，不仅电脑，iPhone 手机访问网页也会被嵌入广告，你是说我的 iPhone 也中毒了吗？而且切换成联通 4G 就没有问题，你说和你们没关系？ WIFI 路由器我也试了把 DNS 设置成各种不同的，包括默认的，甚至把路由器恢复出厂设置，通通没用！</p>
-
 <p>最后他说可能和我拨号分配到的 IP 是内网 IP有关，帮我恢复到公网 IP 试试。 What ! 难道我的网络之前一直属于你们的局域网？？不应该默认就是公网 IP 吗？？</p>
-
 <p>然而，切换公网 IP 后也并没有什么用！（中间还出现切换出错，导致我几个小时拨号不成功上不了网，哭了~~）</p>
-
 <p>打 10000 号目前还未解决问题，解决不了去工信部投诉去。</p>
-
 <h2 id="深入分析">深入分析</h2>
-
 <p>访问一个网站，网站的内容都是被恶意篡改过的，这多么可怕。</p>
-
 <p>于是在 Chrome 里 “审查元素”里跟踪了一下，看看到底是如何篡改的。通过查看 Elements ，发现 html 里被嵌入了以下代码：</p>
-
-<p><img src="http://image.coderzh.com/adsjs2.jpg-w" alt="adjs2" /></p>
-
+<p><img src="http://image.coderzh.com/adsjs2.jpg-w" alt="adjs2"></p>
 <p>picturefill.min.js 是我网站使用的一个正常的 js 文件，查看网页源码发现，出现了两条关于 picturefill.min.js 的代码：</p>
-
-<pre><code class="language-javascript">&lt;script type=&quot;text/javascript&quot; src=&quot;assets/picturefill/picturefill.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://blog.coderzh.com/assets/picturefill/picturefill.min.js?_Ax144746802655173=xxA.baidu.com&quot;&gt;&lt;/script&gt;
-</code></pre>
-
-<p>然后再查看请求 picturefill.min.js 时返回了什么：</p>
-
-<p><img src="http://image.coderzh.com/fakejs.jpg-w" alt="fakejs" /></p>
-
-<p><img src="http://image.coderzh.com/rightjs.jpg-w" alt="rightjs" /></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;assets/picturefill/picturefill.min.js&#34;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">s</span><span class="err">c</span><span class="err">r</span><span class="err">i</span><span class="err">p</span><span class="err">t</span><span class="err">&gt;</span><span class="err"></span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;http://blog.coderzh.com/assets/picturefill/picturefill.min.js?_Ax144746802655173=xxA.baidu.com&#34;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">s</span><span class="err">c</span><span class="err">r</span><span class="err">i</span><span class="err">p</span><span class="err">t</span><span class="err">&gt;</span><span class="err"></span>
+</code></pre></div><p>然后再查看请求 picturefill.min.js 时返回了什么：</p>
+<p><img src="http://image.coderzh.com/fakejs.jpg-w" alt="fakejs"></p>
+<p><img src="http://image.coderzh.com/rightjs.jpg-w" alt="rightjs"></p>
 <p>上面显示，请求 picturefill.min.js 时，返回的竟然是被篡改的内容，被篡改的内容里，先是再次请求了一次原版的 picturefill.min.js ，然后就是插入 google 的广告代码。</p>
-
 <p>从 google 的广告代码看出，广告主的 ID 是：ca-pub-8129816473729933 ， 正是和云风及之前一位博主说到的广告主是同一个！ Google 你还不赶紧查查他！</p>
-
 <p>最后这段恶意篡改的 js 代码生成出来的嵌入广告是这样的：</p>
-
-<p><img src="http://image.coderzh.com/adsjs.jpg-w" alt="adjs" /></p>
-
+<p><img src="http://image.coderzh.com/adsjs.jpg-w" alt="adjs"></p>
 <p>之后又试验了多次，总结了进行 HTTP 劫持的基本套路：</p>
-
 <ol>
 <li>劫持任一 js 的请求，返回包含原 js 及恶意代码的假的 js 内容。</li>
 <li>假的 js 通过 DOM 操作，强行在原来的网页内植入广告。</li>
 </ol>
-
 <p>这种恶意修改 DOM 的方式，和之前常见的把原网站套入一个 iframe 的方式有所不同。基本很难防范。</p>
-
 <h2 id="解决方法">解决方法</h2>
-
 <p>打 10000 号，投诉，投诉，再投诉。</p>
-
 <p>工信部投诉地址：<a href="http://www.chinatcc.gov.cn:8080/cms/shensus/">http://www.chinatcc.gov.cn:8080/cms/shensus/</a></p>
-
 <p>为了找出哪一层路由做了手脚，大家通过 traceroute ( Windows 里是 tracert ) 看看访问被植入广告的网站到底经过哪些路由。下面是我的 tracert 结果：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">D:<span class="se">\C</span>ode<span class="se">\G</span>o<span class="se">\c</span>oderzh-hugo-blog&gt;tracert blog.coderzh.com
 
-<pre><code class="language-bash">D:\Code\Go\coderzh-hugo-blog&gt;tracert blog.coderzh.com
+通过最多 <span class="m">30</span> 个跃点跟踪
+到 github.map.fastly.net <span class="o">[</span>103.245.222.133<span class="o">]</span> 的路由:
 
-通过最多 30 个跃点跟踪
-到 github.map.fastly.net [103.245.222.133] 的路由:
-
-  1    &lt;1 毫秒   &lt;1 毫秒   &lt;1 毫秒 192.168.0.1
-  2    12 ms     2 ms     1 ms  113.109.112.1
-  3     3 ms     3 ms     3 ms  183.56.38.209
-  4     5 ms     3 ms     3 ms  183.56.30.21
-  5     9 ms     8 ms     8 ms  202.97.34.114
-  6     9 ms     8 ms     7 ms  202.97.34.74
-  7   156 ms   158 ms   156 ms  202.97.60.214
-  8   158 ms   168 ms   166 ms  ae-1.r30.tokyjp05.jp.bb.gin.ntt.net [129.250.2.157]
-  9   164 ms   176 ms   175 ms  ae-17.r01.tokyjp03.jp.bb.gin.ntt.net [129.250.6.117]
- 10     *        *        *     请求超时。
- 11   164 ms   164 ms   163 ms  103.245.222.133
+  <span class="m">1</span>    &lt;<span class="m">1</span> 毫秒   &lt;<span class="m">1</span> 毫秒   &lt;<span class="m">1</span> 毫秒 192.168.0.1
+  <span class="m">2</span>    <span class="m">12</span> ms     <span class="m">2</span> ms     <span class="m">1</span> ms  113.109.112.1
+  <span class="m">3</span>     <span class="m">3</span> ms     <span class="m">3</span> ms     <span class="m">3</span> ms  183.56.38.209
+  <span class="m">4</span>     <span class="m">5</span> ms     <span class="m">3</span> ms     <span class="m">3</span> ms  183.56.30.21
+  <span class="m">5</span>     <span class="m">9</span> ms     <span class="m">8</span> ms     <span class="m">8</span> ms  202.97.34.114
+  <span class="m">6</span>     <span class="m">9</span> ms     <span class="m">8</span> ms     <span class="m">7</span> ms  202.97.34.74
+  <span class="m">7</span>   <span class="m">156</span> ms   <span class="m">158</span> ms   <span class="m">156</span> ms  202.97.60.214
+  <span class="m">8</span>   <span class="m">158</span> ms   <span class="m">168</span> ms   <span class="m">166</span> ms  ae-1.r30.tokyjp05.jp.bb.gin.ntt.net <span class="o">[</span>129.250.2.157<span class="o">]</span>
+  <span class="m">9</span>   <span class="m">164</span> ms   <span class="m">176</span> ms   <span class="m">175</span> ms  ae-17.r01.tokyjp03.jp.bb.gin.ntt.net <span class="o">[</span>129.250.6.117<span class="o">]</span>
+ <span class="m">10</span>     *        *        *     请求超时。
+ <span class="m">11</span>   <span class="m">164</span> ms   <span class="m">164</span> ms   <span class="m">163</span> ms  103.245.222.133
 
 跟踪完成。
-</code></pre>
-
-<p>假如你不是对一个网站很熟悉，你压根发现不了这广告根本不是网站主投放的。</p>
-
+</code></pre></div><p>假如你不是对一个网站很熟悉，你压根发现不了这广告根本不是网站主投放的。</p>
 <p>这种强行修改你访问网页的内容来植入广告的方式，非常可怕。使得我们在上网的时候没有一点安全感。如果你访问一个网站，都不能保证获取到的内容是该网站原版的内容，而是被肆意的插入广告，被修改的内容。那么之后他很可能会骗取你的账号密码，偷走你的隐私，拿走你的存款，这是多么可怕和不可接受的事。</p>
                       
                     </div>
@@ -324,7 +266,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2015/11/14/http-dns-hijack/">https://blog.coderzh.com/2015/11/14/http-dns-hijack/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -379,19 +321,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2015/11/07/front-end-dev/" rel="next">
+        <a href="https://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>走进前端开发之：框架的演变</span>
+          <span>走进前端开发之：Vue.js</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2015/11/15/front-end-dev-vuejs/" rel="prev">
+        <a href="https://blog.coderzh.com/2015/11/07/front-end-dev/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>走进前端开发之：Vue.js</span>
+          <span>走进前端开发之：框架的演变</span>
         </a>
         
       </li>

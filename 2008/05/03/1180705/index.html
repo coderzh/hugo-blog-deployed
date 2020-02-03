@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="1.string.maketrans设置字符串转换规则表(translation table) allchars&nbsp;=&nbsp;string.m">
+<meta name="description" content="1.string.maketrans设置字符串转换规则表(translation table) aTob = string.maketrans(&lsquo;a&r">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(9) - translator - CoderZh Blog">
-<meta itemprop="description" content="1.string.maketrans设置字符串转换规则表(translation table) allchars&nbsp;=&nbsp;string.m">
+<meta itemprop="description" content="1.string.maketrans设置字符串转换规则表(translation table) aTob = string.maketrans(&lsquo;a&r">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(9) - translator - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2008/05/03/1180705/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="1.string.maketrans设置字符串转换规则表(translation table) allchars&nbsp;=&nbsp;string.m">
+<meta property="og:description" content="1.string.maketrans设置字符串转换规则表(translation table) aTob = string.maketrans(&lsquo;a&r">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(9) - translator - CoderZh Blog">
-<meta name="twitter:description" content="1.string.maketrans设置字符串转换规则表(translation table) allchars&nbsp;=&nbsp;string.m">
+<meta name="twitter:description" content="1.string.maketrans设置字符串转换规则表(translation table) aTob = string.maketrans(&lsquo;a&r">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python天天美味(9) - translator</h1>
 
                   <p class="post-byline">
-                    by  · 2008年05月03日 · 556 Words ·
+                    by  · 2008年05月03日 · 624 Words ·
                     ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-05-03-1180705.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,90 +189,53 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
+                      <h3 id="heading"></h3>
 <p>1.string.maketrans设置字符串转换规则表(translation table)</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">allchars&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;string.maketrans(</span><span style="color: #800000;">''</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">''</span><span style="color: #000000;">)</span><span style="color: #008000;">#</span><span style="color: #008000;">所有的字符串，即不替换字符串
-
-&nbsp;&nbsp; </span>aTob = string.maketrans('a','b')<span style="color: #008000;">#将字符a转换为字符b</span></div>
-
+<!-- raw HTML omitted -->
+<p>   <!-- raw HTML omitted -->aTob = string.maketrans(&lsquo;a&rsquo;,&lsquo;b&rsquo;)<!-- raw HTML omitted -->#将字符a转换为字符b<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="heading-1"></h3>
 <p>2.translate函数进行字符串的替换和删除，第一个参数是字符串转换规则表(translation table)，第二个参数是要删除的字符串。比如，要将字符串s中的所有e替换为a，同时要删除所有的o</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">aTob&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;string.maketrans(</span><span style="color: #800000;">'</span><span style="color: #800000;">e</span><span style="color: #800000;">'</span><span style="color: #000000;">,</span><span style="color: #800000;">'</span><span style="color: #800000;">a</span><span style="color: #800000;">'</span><span style="color: #000000;">)
-
-s&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">hello&nbsp;python</span><span style="color: #800000;">'</span><span style="color: #000000;">
-
-</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;s.translate(aTob,&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">o</span><span style="color: #800000;">'</span><span style="color: #000000;">)</span></div>
-
+<!-- raw HTML omitted -->
+<p>s <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->hello python<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --><!-- raw HTML omitted --> s.translate(aTob, <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->o<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>输出结果：</p>
-
 <p>hall pythn</p>
-
+<h3 id="heading-2"></h3>
 <p>3.假如我们这样使用</p>
-
-<p><div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">allchars&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;string.maketrans(</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">)</p>
-
-<p>k&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;allchars.translate(allchars,&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">a</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">)</span></div>
+<!-- raw HTML omitted -->
+<p>k <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> allchars.translate(allchars, <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->a<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --><!-- raw HTML omitted -->
 allchars表示所有的字符串，而k表示从所有的字符串中去除掉字符a，就是说所有的字符，除了a，因此，我们再调用如下方法时：</p>
-
-<p><div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">s&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">abc</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;"></p>
-
-<p></span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;s.translate(allchars,&nbsp;k)</span></div>
-字面意思是，输出&#8220;字符串s中除去任何不是字符a的字符&rdquo;,即，只输出字符a，因此输出结果为：</p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --><!-- raw HTML omitted --> s.translate(allchars, k)<!-- raw HTML omitted --><!-- raw HTML omitted -->
+字面意思是，输出“字符串s中除去任何不是字符a的字符&rdquo;,即，只输出字符a，因此输出结果为：</p>
 <p>a</p>
-
+<h3 id="heading-3"></h3>
 <p>4.现在，已经不难理解下面这个函数了</p>
-
-<p><div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;string</p>
-
-<p></span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;translator(frm</span><span style="color: #000000;">=</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">,&nbsp;to</span><span style="color: #000000;">=</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">,&nbsp;delete</span><span style="color: #000000;">=</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">,&nbsp;keep</span><span style="color: #000000;">=</span><span style="color: #000000;">None):</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;len(to)&nbsp;</span><span style="color: #000000;">==</span><span style="color: #000000;">&nbsp;</span><span style="color: #000000;">1</span><span style="color: #000000;">:</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;to&nbsp;</span><span style="color: #000000;">*</span><span style="color: #000000;">&nbsp;len(frm)</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;trans&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;string.maketrans(frm,&nbsp;to)</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">if</span><span style="color: #000000;">&nbsp;keep&nbsp;</span><span style="color: #0000ff;">is</span><span style="color: #000000;">&nbsp;</span><span style="color: #0000ff;">not</span><span style="color: #000000;">&nbsp;None:</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;allchars&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;string.maketrans(</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">&ldquo;</span><span style="color: #000000;">)</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;allchars.translate(allchars,&nbsp;keep.translate(allchars,&nbsp;delete))</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">def</span><span style="color: #000000;">&nbsp;translate(s):</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;s.translate(trans,&nbsp;delete)</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000ff;">return</span><span style="color: #000000;">&nbsp;translate</span></div>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> translator(frm<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->'&lsquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->, to<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->'&lsquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->, delete<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->'&lsquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->, keep<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->None):</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> len(to) <!-- raw HTML omitted --><!-- raw HTML omitted -->==<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->:</p>
+<p>        to <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> to <!-- raw HTML omitted --><!-- raw HTML omitted -->*<!-- raw HTML omitted --><!-- raw HTML omitted --> len(frm)</p>
+<p>    trans <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> string.maketrans(frm, to)</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --><!-- raw HTML omitted --> keep <!-- raw HTML omitted --><!-- raw HTML omitted -->is<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->not<!-- raw HTML omitted --><!-- raw HTML omitted --> None:</p>
+<p>        allchars <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> string.maketrans(<!-- raw HTML omitted --><!-- raw HTML omitted -->'&lsquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->, <!-- raw HTML omitted --><!-- raw HTML omitted -->'&lsquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p>        delete <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> allchars.translate(allchars, keep.translate(allchars, delete))</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->def<!-- raw HTML omitted --><!-- raw HTML omitted --> translate(s):</p>
+<p>        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> s.translate(trans, delete)</p>
+<p>    <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> translate<!-- raw HTML omitted --><!-- raw HTML omitted -->
 调用：</p>
-
-<p><div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #000000;">digits_only&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;translator(keep</span><span style="color: #000000;">=</span><span style="color: #000000;">string.digits)</p>
-
-<p></span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;digits_only(</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">Chris&nbsp;Perkins&nbsp;:&nbsp;224-7992</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">)</p>
-
-<p>digits_to_hash&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;translator(frm</span><span style="color: #000000;">=</span><span style="color: #000000;">string.digits,&nbsp;to</span><span style="color: #000000;">=</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">#</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">)</p>
-
-<p></span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;digits_to_hash(</span><span style="color: #800000;">&lsquo;</span><span style="color: #800000;">Chris&nbsp;Perkins&nbsp;:&nbsp;224-7992</span><span style="color: #800000;">&lsquo;</span><span style="color: #000000;">)</span></div>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --><!-- raw HTML omitted --> digits_only(<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->Chris Perkins : 224-7992<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p>digits_to_hash <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> translator(frm<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->string.digits, to<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --><!-- raw HTML omitted --> digits_to_hash(<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->Chris Perkins : 224-7992<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --><!-- raw HTML omitted -->
 输出结果：</p>
-
 <p>2247992</p>
-
 <p>Chris Perkins : ###-####</p>
-
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/03/1180563.html">Python    天天美味(7) - 连接字符串(join %)</a> &nbsp;</p>
-
+<h4 id="python--天天美味系列总httpwwwcnblogscomcoderzharchive20080708pythoncookbookhtml"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/03/1180563.html">Python    天天美味(7) - 连接字符串(join %)</a>  </p>
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/03/1180584.html">Python    天天美味(8) - 字符串中的字符倒转</a></p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/03/1180705.html">Python    天天美味(9) - translator</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/04/1181250.html">Python    天天美味(10) - 除法小技巧</a> &nbsp;</p>
-
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/03/1180705.html">Python    天天美味(9) - translator</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/04/1181250.html">Python    天天美味(10) - 除法小技巧</a>  </p>
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/04/1181340.html">Python    天天美味(11) - 可爱的大小写</a></p>
-
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/05/03/1180705.html">http://www.cnblogs.com/coderzh/archive/2008/05/03/1180705.html</a></strong></p>
 
                       
@@ -284,7 +247,7 @@ allchars表示所有的字符串，而k表示从所有的字符串中去除掉�
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/05/03/1180705/">https://blog.coderzh.com/2008/05/03/1180705/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -339,19 +302,19 @@ allchars表示所有的字符串，而k表示从所有的字符串中去除掉�
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/05/02/1179593/" rel="next">
+        <a href="https://blog.coderzh.com/2008/05/03/1180584/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Python天天美味(3) - 字符转换</span>
+          <span>Python天天美味(8) - 字符串中的字符倒转</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/05/03/1180584/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/05/02/1179593/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>Python天天美味(8) - 字符串中的字符倒转</span>
+          <span>Python天天美味(3) - 字符转换</span>
         </a>
         
       </li>

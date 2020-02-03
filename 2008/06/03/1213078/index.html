@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT\&rdquo;*&rdquo;\shellex">
+<meta name="description" content="最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT&quot;*&quot;\shellex被破坏">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="开始使用Emacs - CoderZh Blog">
-<meta itemprop="description" content="最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT\&rdquo;*&rdquo;\shellex">
+<meta itemprop="description" content="最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT&quot;*&quot;\shellex被破坏">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="开始使用Emacs - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2008/06/03/1213078/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT\&rdquo;*&rdquo;\shellex">
+<meta property="og:description" content="最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT&quot;*&quot;\shellex被破坏">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="开始使用Emacs - CoderZh Blog">
-<meta name="twitter:description" content="最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT\&rdquo;*&rdquo;\shellex">
+<meta name="twitter:description" content="最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT&quot;*&quot;\shellex被破坏">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,8 +178,8 @@
                   <h1 class="post-title">开始使用Emacs</h1>
 
                   <p class="post-byline">
-                    by  · 2008年06月03日 · 428 Words ·
-                    ~1min reading time |
+                    by  · 2008年06月03日 · 600 Words ·
+                    ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-06-03-1213078.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -189,70 +189,38 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p>最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT\&rdquo;*&rdquo;\shellex被破坏，因此索性把ContextMenuHandlers和PropertySheetHandlers删掉了。选择文件，点击右键，奇快无比。后发现EmEditor没了，索性把EmEditor删掉，开始用Emacs。开始用的时候会比较困难，自己勉励一下自己，坚持一下吧！</p>
-
+                      <p>最近发现右键菜单弹出好慢，找了很多原因，后来发现是注册表中HKEY_CLASSES_ROOT&quot;*&quot;\shellex被破坏，因此索性把ContextMenuHandlers和PropertySheetHandlers删掉了。选择文件，点击右键，奇快无比。后发现EmEditor没了，索性把EmEditor删掉，开始用Emacs。开始用的时候会比较困难，自己勉励一下自己，坚持一下吧！</p>
 <p>先记一下基本的命令吧，有了如下的命令基本可以正常使用Emacs了：</p>
-
-<hr />
-
-<p>C-x C-f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 寻找文件。</p>
-
-<p>C-x C-s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 保存文件。</p>
-
-<p>C-x C-b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 列出缓冲区。</p>
-
-<p>C-x C-c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 离开 Emacs。</p>
-
-<p>C-x 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 关掉其它所有窗格，只保留一个。</p>
-
-<p>C-x u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 撤销。</p>
-
-<p>C-s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 搜索</p>
-
-<p>C-x h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 全选</p>
-
-<p>M-w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 复制</p>
-
-<p>C-y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 粘贴</p>
-
-<p>C-w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 剪切</p>
-
-<hr />
-
+<hr>
+<p>C-x C-f          寻找文件。</p>
+<p>C-x C-s          保存文件。</p>
+<p>C-x C-b         列出缓冲区。</p>
+<p>C-x C-c         离开 Emacs。</p>
+<p>C-x 1            关掉其它所有窗格，只保留一个。</p>
+<p>C-x u            撤销。</p>
+<p>C-s             搜索</p>
+<p>C-x h           全选</p>
+<p>M-w             复制</p>
+<p>C-y             粘贴</p>
+<p>C-w             剪切</p>
+<hr>
 <p>其中.emacs是重要的配置文件，通过C-x C-f ~/.emacs来打开进行编辑，可以进行一些个性化的设置。我一上来就设置了如下几个好用的东东：</p>
-
 <p>1.修改选择区域快捷键，我修改为Control - C 然后按空格。</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">(</span><span style="color: #fb660a; font-weight: bold;">global</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">set</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">key</span> <span style="color: #ffffff;">(</span><span style="color: #ffffff;">kbd</span> <span style="color: #0086d2;">"C-c &lt;SPC&gt;"</span><span style="color: #ffffff;">)</span> <span style="color: #0086d2;">'set-mark-command)</span></div>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p> </p>
 <p>2.高亮显示选择的区域</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">(</span><span style="color: #ffffff;">transient</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">mark</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">mode</span> <span style="color: #ffffff;">t</span><span style="color: #ffffff;">)</span></div>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p> </p>
 <p>3.Emacs启动后最大化</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #ffffff;"><span style="color: #ffffff;">(</span><span style="color: #ffffff;">defun</span> <span style="color: #ffffff;">w32</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">restore</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">frame</span> <span style="color: #ffffff;">()</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #0086d2;">"Restore a minimized frame"</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">interactive</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">w32</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">send</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">sys</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">command</span> <span style="color: #0086f7; font-weight: bold;">61728</span><span style="color: #ffffff;">))</span>
-
-<span style="color: #ffffff;">(</span><span style="color: #ffffff;">defun</span> <span style="color: #ffffff;">w32</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">maximize</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">frame</span> <span style="color: #ffffff;">()</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #0086d2;">"Maximize the current frame"</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">interactive</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">w32</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">send</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">sys</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">command</span> <span style="color: #0086f7; font-weight: bold;">61488</span><span style="color: #ffffff;">))</span>
-
-<span style="color: #ffffff;">(</span><span style="color: #ffffff;">w32</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">maximize</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">frame</span><span style="color: #ffffff;">)</span></div>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;Restore a minimized frame&quot;<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->interactive<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->w32<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->send<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->sys<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->command<!-- raw HTML omitted --> <!-- raw HTML omitted -->61728<!-- raw HTML omitted --><!-- raw HTML omitted -->))<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->defun<!-- raw HTML omitted --> <!-- raw HTML omitted -->w32<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->maximize<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->frame<!-- raw HTML omitted --> <!-- raw HTML omitted -->()<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;Maximize the current frame&quot;<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->interactive<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->w32<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->send<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->sys<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->command<!-- raw HTML omitted --> <!-- raw HTML omitted -->61488<!-- raw HTML omitted --><!-- raw HTML omitted -->))<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->w32<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->maximize<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->frame<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/06/03/1213078.html">http://www.cnblogs.com/coderzh/archive/2008/06/03/1213078.html</a></strong></p>
 
                       
@@ -264,7 +232,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/06/03/1213078/">https://blog.coderzh.com/2008/06/03/1213078/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -319,19 +287,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/06/02/1212410/" rel="next">
+        <a href="https://blog.coderzh.com/2008/06/07/1215657/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>SaveFileDialog与Castle(ActiveRecord)有冲突？？</span>
+          <span>Python天天美味(28) - urlopen</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/06/07/1215657/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/06/02/1212410/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>Python天天美味(28) - urlopen</span>
+          <span>SaveFileDialog与Castle(ActiveRecord)有冲突？？</span>
         </a>
         
       </li>

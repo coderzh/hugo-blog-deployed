@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">《C#高级编程》笔记系列--点滴记录（持续更新中……）</h1>
 
                   <p class="post-byline">
-                    by  · 2007年10月28日 · 928 Words ·
+                    by  · 2007年10月28日 · 955 Words ·
                     ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2007-10-28-940352.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -190,59 +190,36 @@
                     <div class="entry-inner">
                       
                       <p>1.C#本身不是.NET的一部分。.NET支持的一些特性，C#并不支持。而C#支持的另一些特性，.NET却不支持（例如运算符重载）</p>
-
 <p>2.编译分两个阶段：</p>
-
-<p>&nbsp;&nbsp;
+<p>  
 （1）把源代码编译为Microsoft中间语言（IL）。</p>
-
-<p>&nbsp;&nbsp;
+<p>  
 （2）CLR把IL编译为平台专用的代码。</p>
-
 <p>3.通用类型系统(CTS)，将不同语言的类型映射为中间语言的类型，从而提供了语言的互操作性。</p>
-
 <p>4.修饰符(public,static)，操作符(==,&gt;,&lt;)</p>
-
 <p>5.变量的作用域</p>
-
-<p>&nbsp;
+<p> 
 （1）同名的局部变量不能在同一作用域中申明两次。</p>
-
-<p>&nbsp; （2）类的字段和局部变量允许使用相同的名字。</p>
-
-<p>6.常量<font color="#0000ff">Const</font>总是静态的，不必也不允许加<font color="#0000ff">Static</font>修饰符</p>
-
-<p>7.常量<font color="#0000ff">Const</font>和<font color="#0000ff">ReadOnly</font>字段的区别在于只读字段可以从一个变量中提取的值去初始化常量。</p>
-
-<p>8.<font color="#0000ff">值类型</font>存储在堆栈中，而<font color="#0000ff">引用类型</font>存储在托管堆上。C#中，简单数据类型（<font color="#0000ff">int</font>，<font color="#0000ff">float</font>，<font color="#0000ff">byte</font>）、枚举类型和结构（<font color="#0000ff">struct</font>）类型都是值类型。包含在引用类型内的值类型不会被存储在栈中，而是堆中，它被包含于引用类型对象中。值类型数组（例如双精度或整型数组）是在堆中存放，而不是栈中。只有保存数组引用的值是存放在栈中。这是因为所有数组类型都隐含派生于<font color="#0000ff">System</font>.<font color="#0000ff">Array</font>，它们都是引用类型。</p>
-
-<p>9.<font color="#0000ff">decimal</font>
-类型不是基本类型，所以在计算时使用该类型会有性能损失。<font color="#0000ff">float</font> 32位 <font color="#0000ff">double</font> 64位 <font color="#0000ff">decimal</font>
+<p>  （2）类的字段和局部变量允许使用相同的名字。</p>
+<p>6.常量<!-- raw HTML omitted -->Const<!-- raw HTML omitted -->总是静态的，不必也不允许加<!-- raw HTML omitted -->Static<!-- raw HTML omitted -->修饰符</p>
+<p>7.常量<!-- raw HTML omitted -->Const<!-- raw HTML omitted -->和<!-- raw HTML omitted -->ReadOnly<!-- raw HTML omitted -->字段的区别在于只读字段可以从一个变量中提取的值去初始化常量。</p>
+<p>8.<!-- raw HTML omitted -->值类型<!-- raw HTML omitted -->存储在堆栈中，而<!-- raw HTML omitted -->引用类型<!-- raw HTML omitted -->存储在托管堆上。C#中，简单数据类型（<!-- raw HTML omitted -->int<!-- raw HTML omitted -->，<!-- raw HTML omitted -->float<!-- raw HTML omitted -->，<!-- raw HTML omitted -->byte<!-- raw HTML omitted -->）、枚举类型和结构（<!-- raw HTML omitted -->struct<!-- raw HTML omitted -->）类型都是值类型。包含在引用类型内的值类型不会被存储在栈中，而是堆中，它被包含于引用类型对象中。值类型数组（例如双精度或整型数组）是在堆中存放，而不是栈中。只有保存数组引用的值是存放在栈中。这是因为所有数组类型都隐含派生于<!-- raw HTML omitted -->System<!-- raw HTML omitted -->.<!-- raw HTML omitted -->Array<!-- raw HTML omitted -->，它们都是引用类型。</p>
+<p>9.<!-- raw HTML omitted -->decimal<!-- raw HTML omitted -->
+类型不是基本类型，所以在计算时使用该类型会有性能损失。<!-- raw HTML omitted -->float<!-- raw HTML omitted --> 32位 <!-- raw HTML omitted -->double<!-- raw HTML omitted --> 64位 <!-- raw HTML omitted -->decimal<!-- raw HTML omitted -->
 128位</p>
-
 <p>10.可以在字符串字面量的前面加上字符@，甚至允许在字符串字面量中包含换行符：</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000ff">string</font>
-jabberwocky=@&ldquo;&lsquo;Twasbrilligandtheslithytoves</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Didgyreandgimbleinthewabe.&ldquo;;</p>
-
-<p>11.<font color="#0000ff">Foreach</font>集合中迭代的各项的值不能改变，但若为对象，其属性是可以改变。</p>
-
-<p>12.<font color="#0000ff">Continue</font>语句退出当前循环，执行下一次循环</p>
-
-<p>13.预处理指令<font color="#0000ff">#define #undef #if #elif #else #endif #warning #error #pragma
-<font color="#000000">warning disable 169</font> #line #region</font></p>
-
-<p>14.<font color="#0000ff">out</font> 关键字的用法。</p>
-
+<p>      <!-- raw HTML omitted -->string<!-- raw HTML omitted -->
+jabberwocky=@&quot;&lsquo;Twasbrilligandtheslithytoves</p>
+<p>                                        
+Didgyreandgimbleinthewabe.&quot;;</p>
+<p>11.<!-- raw HTML omitted -->Foreach<!-- raw HTML omitted -->集合中迭代的各项的值不能改变，但若为对象，其属性是可以改变。</p>
+<p>12.<!-- raw HTML omitted -->Continue<!-- raw HTML omitted -->语句退出当前循环，执行下一次循环</p>
+<p>13.预处理指令<!-- raw HTML omitted -->#define #undef #if #elif #else #endif #warning #error #pragma
+<!-- raw HTML omitted -->warning disable 169<!-- raw HTML omitted --> #line #region<!-- raw HTML omitted --></p>
+<p>14.<!-- raw HTML omitted -->out<!-- raw HTML omitted --> 关键字的用法。</p>
 <p>15.C#的不支持可选参数。</p>
-
-<p>16.所有的.NET类都派生于<span style="color:blue;">System.Object</span>。我们定义类时，假定没有指定基类，编译器会自动假定这个类派生于<span style="color:blue;">System.Object</span>基类</p>
-
+<p>16.所有的.NET类都派生于<!-- raw HTML omitted -->System.Object<!-- raw HTML omitted -->。我们定义类时，假定没有指定基类，编译器会自动假定这个类派生于<!-- raw HTML omitted -->System.Object<!-- raw HTML omitted -->基类</p>
 <p>(最后更新于2007-10-28 14:00)</p>
-
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2007/10/28/940352.html">http://www.cnblogs.com/coderzh/archive/2007/10/28/940352.html</a></strong></p>
 
                       
@@ -254,7 +231,7 @@ Didgyreandgimbleinthewabe.&ldquo;;</p>
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2007/10/28/940352/">https://blog.coderzh.com/2007/10/28/940352/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -309,19 +286,19 @@ Didgyreandgimbleinthewabe.&ldquo;;</p>
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2007/10/28/940444/" rel="next">
+        <a href="https://blog.coderzh.com/2007/11/04/948769/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>《C#高级编程》笔记系列第三弹-partial关键字</span>
+          <span>《Windows核心编程》学习笔记系列</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2007/11/04/948769/" rel="prev">
+        <a href="https://blog.coderzh.com/2007/10/28/940444/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>《Windows核心编程》学习笔记系列</span>
+          <span>《C#高级编程》笔记系列第三弹-partial关键字</span>
         </a>
         
       </li>

@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -190,50 +190,40 @@
                     <div class="entry-inner">
                       
                       <p>在发出前两篇安全相关的文章（<a href="http://blog.coderzh.com/2016/01/03/security-design/">设计安全的账号系统的正确姿势</a> ，<a href="http://blog.coderzh.com/2016/01/10/a-password-security-design-example/">即使被拖库，也可以保证密码不泄露</a>）后，我陆续收到了不少的反馈。我的文章本意是引起大家对密码安全的重视，给大家设计账号安全系统时提供一些参考和思路。</p>
-
 <p>正如张小龙说的，“我所说的一切都是错的”。</p>
-
 <p>所以，我更希望大家从辩证的角度去看待前两篇文章，然后结合自身项目的情况去做相应的设计。同时，我收到不少有价值的反馈，我觉得有必要将这些反馈整理一下，给大家一些参考，也算是对前面文章的补充。</p>
-
 <p>上篇文章没有提到 <a href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE">HTTPS</a>（SSL/TLS），是我疏漏了。作为一个安全的系统，在保证传输安全时强烈建议直接上 HTTPS（SSL/TLS）。文章中使用 <a href="https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx">ECDH</a> 交换密钥传输的过程其实和 HTTPS（SSL/TLS）是类似的，只不过 HTTPS（SSL/TLS）实现的要完善太多。</p>
-
 <p>正如一位朋友反馈所说：“14年的时候 openssl 爆出过一个名为 <a href="https://zh.wikipedia.org/wiki/%E5%BF%83%E8%84%8F%E5%87%BA%E8%A1%80%E6%BC%8F%E6%B4%9E">Heartbleed</a> 的漏洞，可见良好的算法不一定被良好的实现，所以从开发者的角度还是不要觉得存在绝对安全的算法比较好。” 所以可以认为我的方案是在 HTTPS（SSL/TLS）基础上再一层加固，当然，如果你认为这一层加固没必要也可以去掉。</p>
-
 <p>另一方面，目前大量网站还在使用 HTTP ，很多游戏设计时也并未使用 TLS ，所以，我上篇文章使用的方法还是有一定的意义的。</p>
-
 <h3 id="反馈汇总">反馈汇总</h3>
-
 <ol>
-<li><p><strong>“应该从源头上禁止用户使用简单密码”</strong></p>
-
-<p>回复：非常同意！</p></li>
-
-<li><p><strong>“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”</strong></p>
-
-<p>回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。</p></li>
-
-<li><p><strong>“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”</strong></p>
-
-<p>回复：理论上是足够了，而且推荐使用。 如果你的项目安全级别非常高，本着不信任绝对安全的角度可考虑再一层加固。</p></li>
-
-<li><p><strong>“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”</strong></p>
-
-<p>回复：同意，确实不是很必要。</p></li>
-
-<li><p><strong>“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”</strong></p>
-
-<p>回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？</p></li>
-
-<li><p><strong>“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”</strong></p>
-
-<p>回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 <a href="https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx">ECDH</a>，并没有重新发明什么。文章<strong>重点是对密码的两次加盐哈希以及密码的验证方式</strong>。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。</p></li>
+<li>
+<p><strong>“应该从源头上禁止用户使用简单密码”</strong></p>
+<p>回复：非常同意！</p>
+</li>
+<li>
+<p><strong>“获取 salt 并不需要啥验证，那么还有必要分开存储么，脱裤者直接根据uid调一遍接口不就拿到了？相当于就是公开的吧？”</strong></p>
+<p>回复：确实是这样。salt 相当于公开的了，没有必要分开存储了。如果你有更好的方法，请告诉我。</p>
+</li>
+<li>
+<p><strong>“使用 HTTPS(SSL/TLS) 来保障传输的安全是不是就可以了？”</strong></p>
+<p>回复：理论上是足够了，而且推荐使用。 如果你的项目安全级别非常高，本着不信任绝对安全的角度可考虑再一层加固。</p>
+</li>
+<li>
+<p><strong>“salt 使用密码学安全的随机数生成就够了，不需要使用 uid 。”</strong></p>
+<p>回复：同意，确实不是很必要。</p>
+</li>
+<li>
+<p><strong>“服务器性能够强劲，bcrypt 放在服务端执行也没什么问题。”</strong></p>
+<p>回复：通过调整 bcrypt 参数让服务端执行在可接受的时间范围内确实可以。但是把这种耗时的操作放到客户端去做不是更好吗？</p>
+</li>
+<li>
+<p><strong>“不知攻焉知防，还是使用现有的算法和协议比较好，不要自己发明。即使自己发明，也需要经过实践的检验不断迭代才行。”</strong></p>
+<p>回复：首先，文中用到的都是现有的成熟算法，如 bcrypt，SHA-512， AES ，包括 <a href="https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx">ECDH</a>，并没有重新发明什么。文章<strong>重点是对密码的两次加盐哈希以及密码的验证方式</strong>。当然，方案需要在实践中不断迭代优化，我也是不能同意再多。</p>
+</li>
 </ol>
-
 <p>有一位朋友说的非常好，很多互联网公司对安全不重视，近年来密码安全事故频繁发生，导致密码泄露后被拿去撞库，用户利益受损。<strong>应该去推动一下密码安全的业界标准，避免企业犯错用户买单</strong>。同时，<strong>互联网没有绝对的安全，强烈建议用户不要用同一个密码，密码定期改！</strong></p>
-
 <p>好了，我所说的也都是错的。欢迎继续交流。</p>
-
-<p></p>
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
@@ -243,7 +233,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2016/01/13/password-security-additional/">https://blog.coderzh.com/2016/01/13/password-security-additional/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -298,19 +288,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2016/01/10/a-password-security-design-example/" rel="next">
+        <a href="https://blog.coderzh.com/2016/01/16/coding-style-share/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>即使被拖库，也可以保证密码不泄露</span>
+          <span>谁也挡不住程序员在微信群里玩起了直播分享</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2016/01/16/coding-style-share/" rel="prev">
+        <a href="https://blog.coderzh.com/2016/01/10/a-password-security-design-example/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>谁也挡不住程序员在微信群里玩起了直播分享</span>
+          <span>即使被拖库，也可以保证密码不泄露</span>
         </a>
         
       </li>

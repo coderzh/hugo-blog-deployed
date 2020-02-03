@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="例一：使用httplib访问某个url然后获取返回的内容： import&nbsp;httplib conn=httplib.HTTPConnection(&#34;www.cnblogs.com&#34;) conn.request(&#34;GET&#34;,&nbsp;&#34;/coderzh/archive/2008/05/13/1194445.html&#34;) r=conn.getresponse() print&nbsp;r.read()&nbsp;#获取所有内容 例二：使用">
+<meta name="description" content="例一：使用httplib访问某个url然后获取返回的内容： conn=httplib.HTTPConnection(&quot;www.cnblogs.com&quot;) conn.request(&quot;GET&quot;, &quot;/coderzh/archive/2008/05/13/1194445.html&quot;) r=conn.getresponse() printr.read() #获取所有内容例二：使用smtplib发送邮件 smtpServer =&#39;smtp.xxx.com&#39;fromaddr =&#39;foo@xxx.com&#39;toaddrs =&#39;your@xxx.com&#39;msg =&#39;Subject: xxxxxxxxx&#39;server =smtplib.SMTP(smtpServer) server.sendmail(fromaddr, toaddrs, msg) server.quit( )Python 天">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(21) - httplib，smtplib - CoderZh Blog">
-<meta itemprop="description" content="例一：使用httplib访问某个url然后获取返回的内容： import&nbsp;httplib conn=httplib.HTTPConnection(&#34;www.cnblogs.com&#34;) conn.request(&#34;GET&#34;,&nbsp;&#34;/coderzh/archive/2008/05/13/1194445.html&#34;) r=conn.getresponse() print&nbsp;r.read()&nbsp;#获取所有内容 例二：使用">
+<meta itemprop="description" content="例一：使用httplib访问某个url然后获取返回的内容： conn=httplib.HTTPConnection(&quot;www.cnblogs.com&quot;) conn.request(&quot;GET&quot;, &quot;/coderzh/archive/2008/05/13/1194445.html&quot;) r=conn.getresponse() printr.read() #获取所有内容例二：使用smtplib发送邮件 smtpServer =&#39;smtp.xxx.com&#39;fromaddr =&#39;foo@xxx.com&#39;toaddrs =&#39;your@xxx.com&#39;msg =&#39;Subject: xxxxxxxxx&#39;server =smtplib.SMTP(smtpServer) server.sendmail(fromaddr, toaddrs, msg) server.quit( )Python 天">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(21) - httplib，smtplib - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2008/05/17/1201449/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="例一：使用httplib访问某个url然后获取返回的内容： import&nbsp;httplib conn=httplib.HTTPConnection(&#34;www.cnblogs.com&#34;) conn.request(&#34;GET&#34;,&nbsp;&#34;/coderzh/archive/2008/05/13/1194445.html&#34;) r=conn.getresponse() print&nbsp;r.read()&nbsp;#获取所有内容 例二：使用">
+<meta property="og:description" content="例一：使用httplib访问某个url然后获取返回的内容： conn=httplib.HTTPConnection(&quot;www.cnblogs.com&quot;) conn.request(&quot;GET&quot;, &quot;/coderzh/archive/2008/05/13/1194445.html&quot;) r=conn.getresponse() printr.read() #获取所有内容例二：使用smtplib发送邮件 smtpServer =&#39;smtp.xxx.com&#39;fromaddr =&#39;foo@xxx.com&#39;toaddrs =&#39;your@xxx.com&#39;msg =&#39;Subject: xxxxxxxxx&#39;server =smtplib.SMTP(smtpServer) server.sendmail(fromaddr, toaddrs, msg) server.quit( )Python 天">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(21) - httplib，smtplib - CoderZh Blog">
-<meta name="twitter:description" content="例一：使用httplib访问某个url然后获取返回的内容： import&nbsp;httplib conn=httplib.HTTPConnection(&#34;www.cnblogs.com&#34;) conn.request(&#34;GET&#34;,&nbsp;&#34;/coderzh/archive/2008/05/13/1194445.html&#34;) r=conn.getresponse() print&nbsp;r.read()&nbsp;#获取所有内容 例二：使用">
+<meta name="twitter:description" content="例一：使用httplib访问某个url然后获取返回的内容： conn=httplib.HTTPConnection(&quot;www.cnblogs.com&quot;) conn.request(&quot;GET&quot;, &quot;/coderzh/archive/2008/05/13/1194445.html&quot;) r=conn.getresponse() printr.read() #获取所有内容例二：使用smtplib发送邮件 smtpServer =&#39;smtp.xxx.com&#39;fromaddr =&#39;foo@xxx.com&#39;toaddrs =&#39;your@xxx.com&#39;msg =&#39;Subject: xxxxxxxxx&#39;server =smtplib.SMTP(smtpServer) server.sendmail(fromaddr, toaddrs, msg) server.quit( )Python 天">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Python天天美味(21) - httplib，smtplib</h1>
 
                   <p class="post-byline">
-                    by  · 2008年05月17日 · 316 Words ·
+                    by  · 2008年05月17日 · 300 Words ·
                     ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-05-17-1201449.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,52 +189,27 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>例一：使用httplib访问某个url然后获取返回的内容：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;httplib
-
-
-
-conn</span><span style="color: #000000;">=</span><span style="color: #000000;">httplib.HTTPConnection(</span><span style="color: #800000;">"</span><span style="color: #800000;">www.cnblogs.com</span><span style="color: #800000;">"</span><span style="color: #000000;">)
-
-conn.request(</span><span style="color: #800000;">"</span><span style="color: #800000;">GET</span><span style="color: #800000;">"</span><span style="color: #000000;">,&nbsp;</span><span style="color: #800000;">"</span><span style="color: #800000;">/coderzh/archive/2008/05/13/1194445.html</span><span style="color: #800000;">"</span><span style="color: #000000;">)
-
-r</span><span style="color: #000000;">=</span><span style="color: #000000;">conn.getresponse()
-
-</span><span style="color: #0000ff;">print</span><span style="color: #000000;">&nbsp;r.read()&nbsp;</span><span style="color: #008000;">#</span><span style="color: #008000;">获取所有内容</span></div>
-
+                      <p>例一：使用httplib访问某个url然后获取返回的内容：</p>
+<!-- raw HTML omitted -->
+<p>conn<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->httplib.HTTPConnection(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --><a href="http://www.cnblogs.com">www.cnblogs.com</a><!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p>conn.request(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->GET<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->, <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->/coderzh/archive/2008/05/13/1194445.html<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p>r<!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted -->conn.getresponse()</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --><!-- raw HTML omitted --> r.read() <!-- raw HTML omitted --><!-- raw HTML omitted -->#<!-- raw HTML omitted --><!-- raw HTML omitted -->获取所有内容<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>例二：使用smtplib发送邮件</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 4px; background-color: #eeeeee; font-size: 13px; width: 98%;"><span style="color: #0000ff;">import</span><span style="color: #000000;">&nbsp;smtplib
-
-smtpServer&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">smtp.xxx.com</span><span style="color: #800000;">'</span><span style="color: #000000;">
-
-fromaddr&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">foo@xxx.com</span><span style="color: #800000;">'</span><span style="color: #000000;">
-
-toaddrs&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">your@xxx.com</span><span style="color: #800000;">'</span><span style="color: #000000;">
-
-msg&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;</span><span style="color: #800000;">'</span><span style="color: #800000;">Subject:&nbsp;xxxxxxxxx</span><span style="color: #800000;">'</span><span style="color: #000000;">
-
-server&nbsp;</span><span style="color: #000000;">=</span><span style="color: #000000;">&nbsp;smtplib.SMTP(smtpServer)
-
-server.sendmail(fromaddr,&nbsp;toaddrs,&nbsp;msg)
-
-server.quit(&nbsp;)</span></div>
-
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201074.html">Python    天天美味(19) - 时间处理datetime</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201079.html">Python    天天美味(20) - 命令行参数sys.argv</a>&nbsp; &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201449.html">Python    天天美味(21) - httplib，smtplib</a> &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201506.html">Python    天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）</a> &nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p>smtpServer <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->smtp.xxx.com<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>fromaddr <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --><a href="mailto:foo@xxx.com">foo@xxx.com</a><!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>toaddrs <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --><a href="mailto:your@xxx.com">your@xxx.com</a><!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>msg <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted -->Subject: xxxxxxxxx<!-- raw HTML omitted --><!-- raw HTML omitted -->'<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>server <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> smtplib.SMTP(smtpServer)</p>
+<p>server.sendmail(fromaddr, toaddrs, msg)</p>
+<p>server.quit( )<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="python--天天美味系列总httpwwwcnblogscomcoderzharchive20080708pythoncookbookhtml"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python  天天美味系列（总）</a></h4>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201074.html">Python    天天美味(19) - 时间处理datetime</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/16/1201079.html">Python    天天美味(20) - 命令行参数sys.argv</a>   </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201449.html">Python    天天美味(21) - httplib，smtplib</a>  </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201506.html">Python    天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）</a>  </p>
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201509.html">Python    天天美味(23) - enumerate遍历数组</a></p>
-
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/05/17/1201449.html">http://www.cnblogs.com/coderzh/archive/2008/05/17/1201449.html</a></strong></p>
 
                       
@@ -246,7 +221,7 @@ server.quit(&nbsp;)</span></div>
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/05/17/1201449/">https://blog.coderzh.com/2008/05/17/1201449/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -301,19 +276,19 @@ server.quit(&nbsp;)</span></div>
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/05/17/1201506/" rel="next">
+        <a href="https://blog.coderzh.com/2008/05/18/1201983/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）</span>
+          <span>推荐一款非常酷的学习笔记软件 - Basket Note Pads</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/05/18/1201983/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/05/17/1201506/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>推荐一款非常酷的学习笔记软件 - Basket Note Pads</span>
+          <span>Python天天美味(22) - 拷贝对象（深拷贝deepcopy与浅拷贝copy）</span>
         </a>
         
       </li>

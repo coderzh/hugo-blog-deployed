@@ -17,33 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="Hugo,">
-<meta name="description" content="给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。
-
-">
+<meta name="description" content="给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="给Hugo提交了一个PR - CoderZh Blog">
-<meta itemprop="description" content="给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。
-
-">
+<meta itemprop="description" content="给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="给Hugo提交了一个PR - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2015/09/03/a-hugo-pull-request/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。
-
-">
+<meta property="og:description" content="给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="给Hugo提交了一个PR - CoderZh Blog">
-<meta name="twitter:description" content="给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。
-
-">
+<meta name="twitter:description" content="给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -109,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -198,65 +190,37 @@
                     <div class="entry-inner">
                       
                       <p>给Hugo提交了一个Pull Request，并且通过了，记录一下。PR的内容是在config里增加了disablePathToLower选项，可以配置是否需要阻止Hugo自动将路径转换为小写。在站点从旧的系统里迁移到Hugo中时会非常有用。</p>
-
-<p></p>
-
 <p>在上一篇博客<a href="http://blog.coderzh.com/2015/08/29/hugo/">使用hugo搭建个人博客站点</a>  里提到，Hugo强制将所有路径都变成了小写。小写路径虽好，但是如果之前你的网站路径不是全小写的，迁移过来路径发生变化，将会导致路径失效，是不可接受的。</p>
-
 <p>上文提到，我硬改了Hugo代码，让它不要强制转换小写路径。这样的做法不够优雅，假如别人也和我有一样的需求怎么办？我们还是希望Hugo本身就能够提供这样的功能。于是，我决定把代码改的优雅一些，给Hugo作者提交一个Pull Request，将这个功能合并到Hugo代码里。</p>
-
 <p>于是，我在config文件里增加了一个选项：</p>
-
-<pre><code class="language-python"># Do not make the url/path to lowercase
-disablePathToLower: true 
-</code></pre>
-
-<p>增加一个开关其实很简单，只需要在command/hugo.go里的LoadDefaultSettings函数里增加一行：</p>
-
-<pre><code class="language-go">viper.SetDefault(&quot;DisablePathToLower&quot;, false)
-</code></pre>
-
-<p>开关生效的实现也很简单，找到最终转换为小写的函数，加入disablePathToLower开关的判断：</p>
-
-<pre><code class="language-go">func MakePathSanitized(s string) string {
-    if viper.GetBool(&quot;DisablePathToLower&quot;) {
-        return MakePath(s)
-    } else {
-        return strings.ToLower(MakePath(s))
-    }
-}
-</code></pre>
-
-<p>之前的函数名叫MakePathToLower，由于我在内部加了个开关，于是名字不适用了，于是修改为了：MakePathSanitized。</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Do not make the url/path to lowercase</span>
+<span class="n">disablePathToLower</span><span class="p">:</span> <span class="n">true</span> 
+</code></pre></div><p>增加一个开关其实很简单，只需要在command/hugo.go里的LoadDefaultSettings函数里增加一行：</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">viper</span><span class="p">.</span><span class="nf">SetDefault</span><span class="p">(</span><span class="s">&#34;DisablePathToLower&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+</code></pre></div><p>开关生效的实现也很简单，找到最终转换为小写的函数，加入disablePathToLower开关的判断：</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">MakePathSanitized</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">viper</span><span class="p">.</span><span class="nf">GetBool</span><span class="p">(</span><span class="s">&#34;DisablePathToLower&#34;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">MakePath</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="nf">MakePath</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>之前的函数名叫MakePathToLower，由于我在内部加了个开关，于是名字不适用了，于是修改为了：MakePathSanitized。</p>
 <p>修改完成之后，需要把测试案例跑一遍，保证你的修改不会破坏原来的逻辑。</p>
-
-<pre><code class="language-go">go test ./...
-</code></pre>
-
-<p>当然，也要保证编译是成功的：</p>
-
-<pre><code class="language-go">go build
-</code></pre>
-
-<p>在我修改的第一个版本时，我犯了一个错误，导致测试案例没有通过。原因是第一个版本我增加的配置选项是PathToLower，默认值是true。而有些测试案例是没有去设置PathToLower的，默认读到的会是false，从而导致执行失败的执行结果。所以，config里增加的选项，默认值尽量是false吧，也会好理解一些。于是就有了：disablePathToLower</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">test</span> <span class="p">.</span><span class="o">/</span><span class="o">...</span>
+</code></pre></div><p>当然，也要保证编译是成功的：</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">build</span>
+</code></pre></div><p>在我修改的第一个版本时，我犯了一个错误，导致测试案例没有通过。原因是第一个版本我增加的配置选项是PathToLower，默认值是true。而有些测试案例是没有去设置PathToLower的，默认读到的会是false，从而导致执行失败的执行结果。所以，config里增加的选项，默认值尽量是false吧，也会好理解一些。于是就有了：disablePathToLower</p>
 <p>提交Pull Request时，有几点需要注意的：</p>
-
 <ol>
 <li>将自己的修改合并成一个commit再提交Pull Request。（这样在主Resp里更加规范和整洁）</li>
 <li>commit message里的描述尽量简洁清晰，如果有对应的issue ID，最好加上：See #1234 or Fixes #1234 之类的。这样可以自动关联起来。</li>
 <li>不要在自己的master分支上修改提交PR，而是应该自己开一个单独分支，由该分支提交Pull Request到原Repo的master。</li>
 </ol>
-
 <p>最后，我提交了这么一个Pull Request：<a href="https://github.com/spf13/hugo/pull/1392">add configuration variable: &ldquo;disablePathToLower&rdquo; See #557</a></p>
-
 <p>不久后，Hugo的主要维护者之一通过了我的PR，很友善的将我蹩脚的中国式英语的commit message调整了一下合并到了Hugo的master：</p>
-
-<p><img src="http://image.coderzh.com/HugoPR.png-w" alt="HugoPR" /></p>
-
+<p><img src="http://image.coderzh.com/HugoPR.png-w" alt="HugoPR"></p>
 <p>commit: <a href="https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006">https://github.com/spf13/hugo/commit/52d94fa67578f6b63035e73b236ca8abd40d0006</a></p>
-
 <p>这就是开源项目的好处，开源社区的魅力所在：<strong>你可以使用它，修改它，贡献自己的代码，参与其中，让它变好，让所有人受益</strong>。</p>
                       
                     </div>
@@ -267,7 +231,7 @@ disablePathToLower: true
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2015/09/03/a-hugo-pull-request/">https://blog.coderzh.com/2015/09/03/a-hugo-pull-request/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -322,19 +286,19 @@ disablePathToLower: true
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2015/08/29/hugo/" rel="next">
+        <a href="https://blog.coderzh.com/2015/09/05/busy-weekend/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>使用hugo搭建个人博客站点</span>
+          <span>周末折腾的各种东西</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2015/09/05/busy-weekend/" rel="prev">
+        <a href="https://blog.coderzh.com/2015/08/29/hugo/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>周末折腾的各种东西</span>
+          <span>使用hugo搭建个人博客站点</span>
         </a>
         
       </li>

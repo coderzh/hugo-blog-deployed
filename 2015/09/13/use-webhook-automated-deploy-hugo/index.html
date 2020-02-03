@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -190,60 +190,33 @@
                     <div class="entry-inner">
                       
                       <p>本文的主要内容如标题所示，通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages。如果你正好有这个需求，看这篇文章正好，可以节省你不少时间。如果不是，了解一下也无妨。</p>
-
-<p></p>
-
 <p>首先，必须解释一下，为什么需要自动部署，以及为什么需要需要同时部署到GitHub Pages和GitCafe Pages。</p>
-
 <h3 id="为什么要自动部署">为什么要自动部署</h3>
-
 <p>使用Hugo生成的静态页面是在public文件夹里，部署的时候需要把public文件夹里的内容push到GitHub的gh-pages分支里。每次写完文章，除了push markdown格式的文章，还需要单独push生成的public文件夹里的东西，步骤稍显麻烦。</p>
-
 <p>之前参照了官方的做法，使用subtree来push public，步骤简化不少。然而，这还是不够简单。因为每次修改文章之后，必须依赖一个脚本才能正确提交和部署。假如你在手机里浏览时，发现一个错别字，顺手就在GitHub的Web界面就把错别字改了，然而这样并不会重新生成静态页面和部署。有些不方便。</p>
-
 <p>Hugo生成静态页面和部署的过程应该让机器自动来完成。<strong>写作应该是一个相对单纯的事情，使用Hugo的人应该更专注于写作。</strong></p>
-
 <h3 id="为什么需要同时部署到github-pages和gitcafe-pages">为什么需要同时部署到GitHub Pages和GitCafe Pages</h3>
-
 <p>大公司很喜欢的一个词：容灾。GitHub出现不可访问的事情在国内也是常有的，而GitCafe作为国内的代码托管厂商，是否是一个稳定的存在也不好说。所以，将网站同时部署到这两个上面。通过DnsPod里CNAME设置线路“国内”和“国外”，不仅起到了任何一个挂掉，另一个可以继续工作的目的，还起到了CDN就近访问的作用。</p>
-
 <p>使用GitCafe还有另外一个原因。GitHub Pages拒绝了一切百度的爬虫，所以，百度无法索引到GitHub Pages的网页。对于国内的搜索市场来说，百度的份额还是比较大的，虽然我认为看我的博客的人都不应该使用百度，但现实总是残酷的。如果希望网站被百度收录，就必须放到GitHub以外的地方。GitCafe就是一种比较好的选择。</p>
-
 <p><a href="http://gitcafe.com">http://gitcafe.com</a></p>
-
 <p>如果，你只是希望使用官方的Hugo自动化部署到GitHub Pages，下面的内容你可以不用看了。你可以直接使用Wercker的服务来自动部署。</p>
-
 <p>文档见：<a href="http://gohugo.io/tutorials/automated-deployments/">
 http://gohugo.io/tutorials/automated-deployments/</a></p>
-
 <p>由于Wercker还不支持GitCafe的部署，以及我需要使用特定的修改版本的Hugo来生成静态网页，并且希望这些步骤比较可控，所以，还是自己来折腾整个过程吧。</p>
-
 <h3 id="webhook">webhook</h3>
-
 <p>webhook是GitHub上提供的Git的一种Hook机制，当代码发生变化时，比如代码被Push到GitHub的Repo时，GitHub会自动请求一个你指定的网页，并且把变更相关的参数都传递过来。入口在Repo的Settings - webhooks &amp; services</p>
-
-<p><img src="http://image.coderzh.com/WebHook.png-w" alt="webhook" /></p>
-
+<p><img src="http://image.coderzh.com/WebHook.png-w" alt="webhook"></p>
 <p>说明文档：<a href="https://developer.github.com/webhooks/">https://developer.github.com/webhooks/</a></p>
-
 <p>借助webhook的机制，我们就可实现当有新的文章Push之后，自动通知远程的一台机器执行一个脚本，脚本的内容就是生成静态页面和Push部署到最终的服务器。</p>
-
 <p>webhook的Server接收webhook通知，然后执行一个脚本。这样的需求太普遍了，以至于完全不需要自己来实现。在GitHub里搜webhook可以搜出来很多。我主要挑选了Go语言的版本。主要有两个：</p>
-
 <ul>
 <li><a href="https://github.com/qiniu/webhook">https://github.com/qiniu/webhook</a></li>
 <li><a href="https://github.com/adnanh/webhook">https://github.com/adnanh/webhook</a></li>
 </ul>
-
 <p>第一个是七牛写的，代码很简单，用法也很简单。开始打算用七牛的版本。最后调试的时候发现json解析失败，完全不可用啊！有点坑爹。于是换成了第二个，这个Repo有200多个Star。还是靠谱很多，最后部署，调试，非常顺利。</p>
-
 <p>用法也很简单，首先安装webhook：</p>
-
 <pre><code>$ go get github.com/adnanh/webhook
-</code></pre>
-
-<p>写一个配置文件hooks.json，里面指定需要执行的脚本：</p>
-
+</code></pre><p>写一个配置文件hooks.json，里面指定需要执行的脚本：</p>
 <pre><code>[
   {
     &quot;id&quot;: &quot;redeploy-webhook&quot;,
@@ -251,55 +224,31 @@ http://gohugo.io/tutorials/automated-deployments/</a></p>
     &quot;command-working-directory&quot;: &quot;/var/webhook&quot;
   }
 ]
-</code></pre>
-
-<p>指定端口启动：</p>
-
+</code></pre><p>指定端口启动：</p>
 <pre><code>$ /path/to/webhook -hooks hooks.json -port=9876 -verbose
-</code></pre>
-
-<p>然后它将接受webhook地址：（把它填到GitHub里的webhook里）</p>
-
+</code></pre><p>然后它将接受webhook地址：（把它填到GitHub里的webhook里）</p>
 <pre><code>http://yourserver:9876/hooks/redeploy-webhook
-</code></pre>
-
-<h3 id="自动部署">自动部署</h3>
-
-<p><img src="http://image.coderzh.com/AutoDeploy.png-w" alt="AutoDeploy" /></p>
-
+</code></pre><h3 id="自动部署">自动部署</h3>
+<p><img src="http://image.coderzh.com/AutoDeploy.png-w" alt="AutoDeploy"></p>
 <p>大致的流程如上图。上图的DigitalOcean是一台VPS服务器，我用了很长时间了，速度和稳定性都不错。需要的同学使用这个链接购买，可以获得10美元的优惠：<a href="https://www.digitalocean.com/?refcode=e131e2bba197">https://www.digitalocean.com/?refcode=e131e2bba197</a></p>
-
 <p>整个流程中，复杂度主要是在DigitalOcean的VPS上部署服务和脚本。</p>
-
 <p>部署的脚本可以在我的GitHub上看到：<a href="https://github.com/coderzh/coderzh-hugo-blog">https://github.com/coderzh/coderzh-hugo-blog</a></p>
-
 <p>需要的同学可以参考下，代码见：<a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/deploy.py">deploy.py</a></p>
-
 <p>deploy.py放到你的主工程，也就是你写markdown的Repo下。比如：/var/coderzh-hugo-blog/下</p>
-
 <p>adnanh-webhook的配置文件：</p>
-
 <pre><code>[
   {
     &quot;id&quot;: &quot;hugo-deploy&quot;,
     &quot;execute-command&quot;: &quot;/var/webhook/hugo-deploy.sh&quot;
   }
 ]
-</code></pre>
-
-<p>hugo-deploy.sh里执行deploy.py：</p>
-
+</code></pre><p>hugo-deploy.sh里执行deploy.py：</p>
 <pre><code>#!/bin/bash
  
 python /var/coderzh-hugo-blog/deploy.py --auto
-</code></pre>
-
-<p>剩下的是怎么在DigitalOcean的VPS上把这套东西部署起来。我使用nginx + supervisor搭建webhook的Server。</p>
-
+</code></pre><p>剩下的是怎么在DigitalOcean的VPS上把这套东西部署起来。我使用nginx + supervisor搭建webhook的Server。</p>
 <p>关于nginx和supervisor可以参考之前的一篇文章：<a href="http://blog.coderzh.com/2014/05/19/digitalocean/">http://blog.coderzh.com/2014/05/19/digitalocean/</a></p>
-
 <p>supervisor的配置如下：</p>
-
 <pre><code>[program:webhook]
 command=/root/gocode/bin/webhook -hooks /var/webhook/hooks.json -verbose -port=9876
 user=root
@@ -307,14 +256,9 @@ directory=/var/webhook
 autorestart=true
 redirect_stderr=true
 environment=HOME=&quot;/root&quot;,USER=&quot;root&quot;
-</code></pre>
-
-<p>关于VPS上SSH Key的设置，见：<a href="https://help.github.com/articles/generating-ssh-keys/">https://help.github.com/articles/generating-ssh-keys/</a>  为了自动部署方便，可以不设置密码。</p>
-
+</code></pre><p>关于VPS上SSH Key的设置，见：<a href="https://help.github.com/articles/generating-ssh-keys/">https://help.github.com/articles/generating-ssh-keys/</a>  为了自动部署方便，可以不设置密码。</p>
 <p>当然，还有个大前提，在VPS上安装最新版本的golang。推荐使用gvm来安装。（记得安装1.5之前必须先把1.4先装上）</p>
-
 <p>golang 安装：</p>
-
 <pre><code>bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 source ~/.bashrc
 gvm version
@@ -322,9 +266,7 @@ gvm install go1.4
 gvm install go1.5.1
 gvm use go1.5.1 --default
 go version
-</code></pre>
-
-<p>最后，Good Luck！</p>
+</code></pre><p>最后，Good Luck！</p>
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
@@ -334,7 +276,7 @@ go version
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/">https://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -389,19 +331,19 @@ go version
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2015/09/05/busy-weekend/" rel="next">
+        <a href="https://blog.coderzh.com/2015/09/18/holy-shit-duoshuo/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>周末折腾的各种东西</span>
+          <span>坑爹的多说评论</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2015/09/18/holy-shit-duoshuo/" rel="prev">
+        <a href="https://blog.coderzh.com/2015/09/05/busy-weekend/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>坑爹的多说评论</span>
+          <span>周末折腾的各种东西</span>
         </a>
         
       </li>

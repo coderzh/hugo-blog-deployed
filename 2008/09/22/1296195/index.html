@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<meta name="description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230; def selection_sort(data): &nbsp;&nbsp;&nbsp; for">
+<meta name="description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，…… foriinrange(len(data)-1):min=data[i]k=iforjinrange(i,len(data)):ifdata[j]&lt;min:min=data[j]k=jifi&lt;&gt;k:data[i],data[k]=data[k],data[i] 堆排序 堆排序的原理将数组调整成">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="Python天天美味(32) - python数据结构与算法之堆排序 - CoderZh Blog">
-<meta itemprop="description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230; def selection_sort(data): &nbsp;&nbsp;&nbsp; for">
+<meta itemprop="description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，…… foriinrange(len(data)-1):min=data[i]k=iforjinrange(i,len(data)):ifdata[j]&lt;min:min=data[j]k=jifi&lt;&gt;k:data[i],data[k]=data[k],data[i] 堆排序 堆排序的原理将数组调整成">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="Python天天美味(32) - python数据结构与算法之堆排序 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2008/09/22/1296195/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230; def selection_sort(data): &nbsp;&nbsp;&nbsp; for">
+<meta property="og:description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，…… foriinrange(len(data)-1):min=data[i]k=iforjinrange(i,len(data)):ifdata[j]&lt;min:min=data[j]k=jifi&lt;&gt;k:data[i],data[k]=data[k],data[i] 堆排序 堆排序的原理将数组调整成">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="Python天天美味(32) - python数据结构与算法之堆排序 - CoderZh Blog">
-<meta name="twitter:description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230; def selection_sort(data): &nbsp;&nbsp;&nbsp; for">
+<meta name="twitter:description" content="1. 选择排序 选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，…… foriinrange(len(data)-1):min=data[i]k=iforjinrange(i,len(data)):ifdata[j]&lt;min:min=data[j]k=jifi&lt;&gt;k:data[i],data[k]=data[k],data[i] 堆排序 堆排序的原理将数组调整成">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,8 +178,8 @@
                   <h1 class="post-title">Python天天美味(32) - python数据结构与算法之堆排序</h1>
 
                   <p class="post-byline">
-                    by  · 2008年09月22日 · 611 Words ·
-                    ~2min reading time |
+                    by  · 2008年09月22日 · 397 Words ·
+                    ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-09-22-1296195.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -189,100 +189,56 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<h3 id="1-选择排序">1. 选择排序</h3>
-
-<p>选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，&#8230;&#8230;</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;"><span style="color: #f0e68c;">def</span> <span style="color: #ffffff;">selection_sort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">for</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">len</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">)</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">min</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">k</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">i</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">for</span> <span style="color: #ffffff;">j</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">len</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">)):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #ffffff;">min</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">min</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span><span style="color: #ffffff;">]</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">k</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">j</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">&lt;&gt;</span> <span style="color: #ffffff;">k</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">k</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">k</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span></div>
-
-<ol>
+                      <h3 id="1-选择排序">1. 选择排序</h3>
+<p>选择排序原理是先选出最小的数，与第一个数交换，然后从第二个数开始再选择最小的数与第二个数交换，……</p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->len<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->min<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->k<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->len<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->min<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->min<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->k<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->k<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->k<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->k<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="heading"></h3>
+<ol start="2">
 <li>堆排序</li>
 </ol>
-
-<p>堆排序的原理将数组调整成堆，然后将堆顶元素与最后一个元素交换，然后将最后一个节点剔除出堆，再将剩下的数组调整成堆，然后再交换堆顶元素与最后一个元素&#8230;&#8230;</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;"><span style="color: #f0e68c;">def</span> <span style="color: #ffffff;">heap_adjust</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">s</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">m</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">2</span> <span style="color: #ffffff;">*</span> <span style="color: #ffffff;">s</span> <span style="color: #ffffff;">&gt;</span> <span style="color: #ffffff;">m</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">return</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">temp</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">s</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">2</span><span style="color: #ffffff;">*</span><span style="color: #ffffff;">s</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">&gt;</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">temp</span><span style="color: #ffffff;">]:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">temp</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">2</span> <span style="color: #ffffff;">*</span> <span style="color: #ffffff;">s</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">2</span> <span style="color: #ffffff;">*</span> <span style="color: #ffffff;">s</span> <span style="color: #ffffff;">&lt;=</span> <span style="color: #ffffff;">m</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span> <span style="color: #ffffff;">and</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">2</span><span style="color: #ffffff;">*</span><span style="color: #ffffff;">s</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">&gt;</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">temp</span><span style="color: #ffffff;">]:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">temp</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">2</span> <span style="color: #ffffff;">*</span> <span style="color: #ffffff;">s</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">temp</span> <span style="color: #ffffff;">&lt;&gt;</span> <span style="color: #ffffff;">s</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">s</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">temp</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">temp</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">s</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">]</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">heap_adjust</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">temp</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">m</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #f0e68c;">def</span> <span style="color: #ffffff;">heap_sort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">m</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">len</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">)</span> <span style="color: #ffffff;">/</span> <span style="color: #ffffff;">2</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">for</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">m</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">0</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">-</span><span style="color: #ffffff;">1</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">heap_adjust</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">i</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">len</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">))</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">0</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">1</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">-</span><span style="color: #ffffff;">1</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">0</span><span style="color: #ffffff;">]</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">for</span> <span style="color: #ffffff;">n</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">len</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">)</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">-</span><span style="color: #ffffff;">1</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">heap_adjust</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">n</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">0</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">n</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">n</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">0</span><span style="color: #ffffff;">]</span></div>
-
-<ol>
+<p>堆排序的原理将数组调整成堆，然后将堆顶元素与最后一个元素交换，然后将最后一个节点剔除出堆，再将剩下的数组调整成堆，然后再交换堆顶元素与最后一个元素……</p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->2<!-- raw HTML omitted --> <!-- raw HTML omitted -->*<!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->m<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->temp<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->2<!-- raw HTML omitted --><!-- raw HTML omitted -->*<!-- raw HTML omitted --><!-- raw HTML omitted -->s<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->temp<!-- raw HTML omitted --><!-- raw HTML omitted -->]:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->temp<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->2<!-- raw HTML omitted --> <!-- raw HTML omitted -->*<!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->2<!-- raw HTML omitted --> <!-- raw HTML omitted --><em><!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;=<!-- raw HTML omitted --> <!-- raw HTML omitted -->m<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --> <!-- raw HTML omitted -->and<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->2<!-- raw HTML omitted --><!-- raw HTML omitted --></em><!-- raw HTML omitted --><!-- raw HTML omitted -->s<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->temp<!-- raw HTML omitted --><!-- raw HTML omitted -->]:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->temp<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->2<!-- raw HTML omitted --> <!-- raw HTML omitted -->*<!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->temp<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->s<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->temp<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->temp<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->s<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->heap_adjust<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->temp<!-- raw HTML omitted --> <!-- raw HTML omitted -->+<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->m<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->def<!-- raw HTML omitted --> <!-- raw HTML omitted -->heap_sort<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->m<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->len<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --> <!-- raw HTML omitted -->/<!-- raw HTML omitted --> <!-- raw HTML omitted -->2<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->m<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->heap_adjust<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->len<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->))<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->n<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->len<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->heap_adjust<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->n<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->n<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->n<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="heading-1"></h3>
+<ol start="3">
 <li>效率</li>
 </ol>
-
 <p>堆排序的效率还是蛮高的，结果如下：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;">selection_sort <span style="color: #00ff00;">0:00:02.219000</span>
-
-heap_sort <span style="color: #ffff00;">0:00:00.157000</span></div>
-
-<p>&nbsp;</p>
-
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python    天天美味系列（总）</a></h4>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/20/1294947.html">Python      天天美味(30) - python数据结构与算法之快速排序</a>&nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/21/1295434.html">Python      天天美味(31) - python数据结构与算法之插入排序</a>&nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/22/1296195.html">Python      天天美味(32) - python数据结构与算法之堆排序</a>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p>heap_sort <!-- raw HTML omitted -->0:00:00.157000<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
+<h4 id="python----天天美味系列总httpwwwcnblogscomcoderzharchive20080708pythoncookbookhtml"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python    天天美味系列（总）</a></h4>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/20/1294947.html">Python      天天美味(30) - python数据结构与算法之快速排序</a> </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/21/1295434.html">Python      天天美味(31) - python数据结构与算法之插入排序</a> </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/22/1296195.html">Python      天天美味(32) - python数据结构与算法之堆排序</a> </p>
 <p><a href="http://www.cnblogs.com/coderzh/archive/2008/12/07/1349735.html">Python      天天美味(33) - 五分钟理解元类（Metaclasses）[转]</a></p>
-
 <p><a href="http://www.cnblogs.com/coderzh/archive/2010/04/27/python-cookbook33-Decorators.html">Python      天天美味(34) - Decorators详解</a></p>
-
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/09/22/1296195.html">http://www.cnblogs.com/coderzh/archive/2008/09/22/1296195.html</a></strong></p>
 
                       
@@ -294,7 +250,7 @@ heap_sort <span style="color: #ffff00;">0:00:00.157000</span></div>
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/09/22/1296195/">https://blog.coderzh.com/2008/09/22/1296195/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -349,19 +305,19 @@ heap_sort <span style="color: #ffff00;">0:00:00.157000</span></div>
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/09/21/1295434/" rel="next">
+        <a href="https://blog.coderzh.com/2008/11/18/1335753/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Python天天美味(31) - python数据结构与算法之插入排序</span>
+          <span>LoadRunner</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/11/18/1335752/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/09/21/1295434/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>jQuery</span>
+          <span>Python天天美味(31) - python数据结构与算法之插入排序</span>
         </a>
         
       </li>

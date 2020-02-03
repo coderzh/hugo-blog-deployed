@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">CoderZh首款Python联机对战游戏 - NancyTetris1.0倾情发布（一）</h1>
 
                   <p class="post-byline">
-                    by  · 2008年07月28日 · 805 Words ·
+                    by  · 2008年07月28日 · 557 Words ·
                     ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-07-28-1255061.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -190,69 +190,47 @@
                     <div class="entry-inner">
                       
                       <p>第一次写游戏，第一次用Python写游戏，所以决定写个俄罗斯，还支持联机对战！</p>
-
 <p>由于在游戏编写的数据结构及算法设计上经验不足，同时在实现联机对战过程中仅仅使用了一些简单TCP/IP数据传输的机制，所以肯定有很多地方有待改进。</p>
-
 <p>具体的代码实现及算法分析过程稍后补上(下面有Python源码下载)，这里先接受大家砖头和鸡蛋，希望多提意见和建议！</p>
-
 <p>游戏截图如下：</p>
-
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/NancyTetris.JPG" alt="" />&nbsp;</p>
-
-<p>&nbsp;</p>
-
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/NancyTetris.JPG" alt=""> </p>
+<p> </p>
 <p>=========== Nancy Tetris 说明文档 =================</p>
-
 <ol>
-<li><p>src里源代码，运行需要安装pygame库</p></li>
-
-<li><p>NancyTeris目录中为编译的exe版本，可直接运行tetris.exe</p></li>
+<li>
+<p>src里源代码，运行需要安装pygame库</p>
+</li>
+<li>
+<p>NancyTeris目录中为编译的exe版本，可直接运行tetris.exe</p>
+</li>
 </ol>
-
 <p>Nancy Tetris 说明</p>
-
-<hr />
-
+<hr>
 <ol>
-<li><p>单机游戏&nbsp; &ndash; 直接运行 tetris.exe</p></li>
-
-<li><p>联机对战（只支持两人对战）</p></li>
+<li>
+<p>单机游戏  &ndash; 直接运行 tetris.exe</p>
+</li>
+<li>
+<p>联机对战（只支持两人对战）</p>
+</li>
 </ol>
-
-<p>&nbsp;&nbsp; 2.1 主机加命令行参数运行：</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tetris.exe server</p>
-
-<p>&nbsp;&nbsp; 2.2 另一台机器加主机IP命令行参数运行：</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tetris.exe 192.168.XX.XX</p>
-
+<p>   2.1 主机加命令行参数运行：</p>
+<p>       tetris.exe server</p>
+<p>   2.2 另一台机器加主机IP命令行参数运行：</p>
+<p>       tetris.exe 192.168.XX.XX</p>
 <p>操作说明</p>
-
-<hr />
-
-<p>&mdash;&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#8593;&nbsp;&nbsp;&nbsp; 变形&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;&mdash;</p>
-
-<p>&mdash;&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#8592;&nbsp;&nbsp;&nbsp; 左移&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;&mdash;</p>
-
-<p>&mdash;&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#8594;&nbsp;&nbsp;&nbsp; 右移&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;&mdash;</p>
-
-<p>&mdash;&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#8595;&nbsp;&nbsp;&nbsp; 加速&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;&mdash;</p>
-
-<p>&mdash;&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Space&nbsp; 直接掉落&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;&mdash;</p>
-
-<p>&mdash;&ndash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter&nbsp; 重新开始&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &mdash;&mdash;&nbsp; &nbsp;</p>
-
-<hr />
-
+<hr>
+<p>&mdash;&ndash;       ↑    变形          &mdash;&mdash;</p>
+<p>&mdash;&ndash;       ←    左移          &mdash;&mdash;</p>
+<p>&mdash;&ndash;       →    右移          &mdash;&mdash;</p>
+<p>&mdash;&ndash;       ↓    加速          &mdash;&mdash;</p>
+<p>&mdash;&ndash;      Space  直接掉落      &mdash;&mdash;</p>
+<p>&mdash;&ndash;      Enter  重新开始      &mdash;&mdash;   </p>
+<hr>
 <p>游戏源码及二进制版本下载：</p>
-
-<p>[<a href="http://files.cnblogs.com/coderzh/NancyTetris.rar">http://files.cnblogs.com/coderzh/NancyTetris.rar</a></p>
-
-<p>](<a href="http://files.cnblogs.com/coderzh/NancyTetris.rar)游戏UI库使用的是著名的Pygame，NancyTetris已经在pygame.org立项，版本更新敬请关注：">http://files.cnblogs.com/coderzh/NancyTetris.rar)游戏UI库使用的是著名的Pygame，NancyTetris已经在pygame.org立项，版本更新敬请关注：</a></p>
-
-<p>&nbsp;<a href="http://www.pygame.org/project/825/?release_id=1421">http://www.pygame.org/project/825/?release_id=1421</a></p>
-
+<p>[http://files.cnblogs.com/coderzh/NancyTetris.rar</p>
+<p>](<a href="http://files.cnblogs.com/coderzh/NancyTetris.rar">http://files.cnblogs.com/coderzh/NancyTetris.rar</a>)游戏UI库使用的是著名的Pygame，NancyTetris已经在pygame.org立项，版本更新敬请关注：</p>
+<p> <a href="http://www.pygame.org/project/825/?release_id=1421">http://www.pygame.org/project/825/?release_id=1421</a></p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/07/28/1255061.html">http://www.cnblogs.com/coderzh/archive/2008/07/28/1255061.html</a></strong></p>
 
                       
@@ -264,7 +242,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/07/28/1255061/">https://blog.coderzh.com/2008/07/28/1255061/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -319,19 +297,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/07/23/1249919/" rel="next">
+        <a href="https://blog.coderzh.com/2008/08/01/1258114/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL)</span>
+          <span>GAE申请成功！</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/08/01/1258114/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/07/23/1249919/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>GAE申请成功！</span>
+          <span>Python天天美味(29) - 调用VC&#43;&#43;的动态链接库(DLL)</span>
         </a>
         
       </li>

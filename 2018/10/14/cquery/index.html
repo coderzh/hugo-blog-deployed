@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,7 +178,7 @@
                   <h1 class="post-title">Mac 上配置 VSCode 的 cquery 插件</h1>
 
                   <p class="post-byline">
-                    by  · 2018年10月14日 · 711 Words ·
+                    by  · 2018年10月14日 · 730 Words ·
                     ~2min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2018/2018-10-14-cquery.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,56 +189,34 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>VSCode 已经成了我的主力编辑器，包括用来写 C++。虽然默认的 cpptools 插件已经很好用了，但 cquery 插件更加强大，极力推荐。</p>
-
+                      <p>VSCode 已经成了我的主力编辑器，包括用来写 C++。虽然默认的 cpptools 插件已经很好用了，但 cquery 插件更加强大，极力推荐。</p>
 <p><a href="https://github.com/cquery-project/cquery">cquery</a> 是基于 LSP（Language-Server-Protocol）的。LSP 是微软推出的开源的语言服务器协定，语言服务端提供索引代码的服务，编辑器直接调用，用来实现语法补全及各种索引重构功能。</p>
-
 <p>cquery 就是其中一种 C/C++/Objective-C 的 language server。它的特点是速度非常非常的快，延迟特别低，它设计出来就是为了在大型的代码工程里也能很好的使用。比如 Chromium、V8 这样的大型工程。</p>
-
 <p>心动不如行动，赶紧折腾起来吧，以我的 Mac 为例：</p>
-
 <h3 id="1-编译-cquery">1. 编译 cquery</h3>
-
 <pre><code>git clone https://github.com/cquery-project/cquery.git --recursive
 cd cquery
 git submodule update --init
 mkdir build &amp;&amp; cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=release -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
 make install -j8
-</code></pre>
-
-<p>问题来了，最新的 cquery 默认依赖 clang 7.0.0，而我的 Mac 上是 6.0.0。所以上面的 cmake 命令执行后，会报下面的错：</p>
-
+</code></pre><p>问题来了，最新的 cquery 默认依赖 clang 7.0.0，而我的 Mac 上是 6.0.0。所以上面的 cmake 命令执行后，会报下面的错：</p>
 <pre><code>No SHA256 hash available for the current platform (Darwin) + clang version
   (6.0.0) combination.
-</code></pre>
-
-<p>看了下 cquery 的编译脚本，解决方法也很简单，手工创建一个 6.0.0 的 SHA256 文件：</p>
-
+</code></pre><p>看了下 cquery 的编译脚本，解决方法也很简单，手工创建一个 6.0.0 的 SHA256 文件：</p>
 <pre><code>cd cquery
 echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &gt; clang_archive_hashes/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz.SHA256
-</code></pre>
-
-<p>再执行 cmake 会自动下载 clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz。但是下载很慢，可以手工下载(<a href="https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz">https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz</a>
+</code></pre><p>再执行 cmake 会自动下载 clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz。但是下载很慢，可以手工下载(<a href="https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz">https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz</a>
 )好，并解压到 build 目录，然后上面的命令就可以顺利的进行下去了。</p>
-
 <p>编译后的二进制会在 <code>release/bin</code> 目录，稍后把路径填入 VSCode 的配置中。</p>
-
 <h3 id="2-vscode-安装-cquery-插件">2. VSCode 安装 cquery 插件</h3>
-
 <p>直接在 VSCode 里搜 cquery 插件安装即可。然后在 VSCode 里设置：</p>
-
 <pre><code>{
     &quot;cquery.launch.command&quot;: &quot;/absolute/path/to/cquery/release/bin/cquery&quot;,
     &quot;cquery.cacheDirectory&quot;: &quot;/User/your-name/.cquery-cache/&quot;,
     &quot;cquery.completion.include.blacklist&quot;: [&quot;.*/.vscache/.*&quot;, &quot;/tmp.*&quot;, &quot;build/.*&quot;],
 }
-</code></pre>
-
-<p>其他相关设置，可参考一下（关掉 cpptools 相关设置）</p>
-
+</code></pre><p>其他相关设置，可参考一下（关掉 cpptools 相关设置）</p>
 <pre><code>{
   &quot;C_Cpp.autocomplete&quot;: &quot;Disabled&quot;,
   &quot;C_Cpp.formatting&quot;: &quot;Disabled&quot;,
@@ -246,20 +224,12 @@ echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &gt; clang
   &quot;C_Cpp.intelliSenseEngine&quot;: &quot;Disabled&quot;,
   &quot;editor.autoClosingBrackets&quot;: &quot;never&quot;,
 }
-</code></pre>
-
-<h3 id="3-生成-compile-commands-json">3. 生成 compile_commands.json</h3>
-
+</code></pre><h3 id="3-生成-compile_commandsjson">3. 生成 compile_commands.json</h3>
 <p><code>compile_commands.json</code> 文件是 cquery 用来索引你的代码工程所需要的。它可以从 cmake 里直接生成出来，只需要在 cmake 的编译参数里加：</p>
-
 <pre><code>-DCMAKE_EXPORT_COMPILE_COMMANDS=YES
-</code></pre>
-
-<p>然后把生成的 compile_commands.json 拷到工程的根目录。</p>
-
+</code></pre><p>然后把生成的 compile_commands.json 拷到工程的根目录。</p>
 <h3 id="4-可以开心愉快的玩耍了">4. 可以开心愉快的玩耍了</h3>
-
-<p><img src="http://image.coderzh.com/cquery.png" alt="cquery" /></p>
+<p><img src="http://image.coderzh.com/cquery.png" alt="cquery"></p>
 
                       
                     </div>
@@ -270,7 +240,7 @@ echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &gt; clang
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2018/10/14/cquery/">https://blog.coderzh.com/2018/10/14/cquery/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -325,19 +295,19 @@ echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &gt; clang
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2018/10/13/short/" rel="next">
+        <a href="https://blog.coderzh.com/2019/02/23/my-2018/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>短内容博客</span>
+          <span>我的 2018</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2019/02/23/my-2018/" rel="prev">
+        <a href="https://blog.coderzh.com/2018/10/13/short/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>我的 2018</span>
+          <span>短内容博客</span>
         </a>
         
       </li>

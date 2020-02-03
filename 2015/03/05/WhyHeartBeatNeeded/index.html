@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -189,40 +189,24 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p><img src="http://image.coderzh.com/Heartbeats.jpg-w" alt="HeartBeat" /></p>
-
+                      <p><img src="http://image.coderzh.com/Heartbeats.jpg-w" alt="HeartBeat"></p>
 <p>几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？</p>
-
-<p></p>
-
 <p>由于连接丢失时，TCP不会立即通知应用程序。比如说，客户端程序断线了，服务端的TCP连接不会检测到断线，而是一直处于连接状态。这就带来了很大的麻烦，明明客户端已经断了，服务端还维护着客户端的连接，照常执行着该玩家的游戏逻辑……</p>
-
 <p>心跳包就是用来及时检测是否断线的一种机制，通过每间隔一定时间发送心跳数据，来检测对方是否连接。是属于应用程序协议的一部分。</p>
-
 <p><strong>问题1： TCP为什么不自己提供断线检测？</strong></p>
-
 <p>首先，断线检测需要轮询发送检测报文，会消耗一定的网络带宽和暂用一定的网络资源。如果把它做成TCP的底层默认功能，那些不需要断线检测的应用程序将会浪费不必要的带宽资源。</p>
-
 <p>另外，TCP不提供连接丢失及时通知的最重要原因与其主要设计目的目标之一有关：出现网络故障时维护通信的能力。TCP是美国国防部赞助研究的，一种即使发生战争或自然灾害这种严重网络损坏情况下，也能维护可靠网络通信的网络协议。通常，网络故障只是暂时的，有时路由器会在TCP临时连接丢失后默默的重新连上。所以，TCP本身并不提供那么及时的断线检测。</p>
-
 <p><strong>问题2： TCP的KeepAlive机制可以用来及时检测连接状态吗？</strong></p>
-
 <p>TCP有个KeepAlive开关，打开后可以用来检测死连接。通常默认是2小时，可以自己设置。但是注意，这是TCP的全局设置。假如为了能更及时的检测出断开的连接，把<code>tcp_keepalive_time</code>和<code>tcp_keepalive_intvl</code>的时间改小（参考：<a href="http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/usingkeepalive.html">Link</a>），该机器上所有应用程序的KeepAlive检测间隔都会变小，显然是不能接受的。因为不同应用程序的需求是不一样的。</p>
-
 <p>(在某些平台的Socket实现已经支持为每条连接单独设置KeepAlive参数)</p>
-
 <p>KeepAlive本质上来说，是用来检测长时间不活跃的连接的。所以，不适合用来及时检测连接的状态。</p>
-
 <p><strong>问题3：心跳包（HeartBeat）为什么是好的方式及时检测连接状态？</strong></p>
-
 <ol>
 <li>具有更大的灵活性，可以自己控制检测的间隔，检测的方式等等。</li>
 <li>心跳包同时适用于TCP和UDP，在切换TCP和UDP时，上层的心跳包功能都适用。（其实这种情况很少遇到）</li>
 <li>有些情况下，心跳包可以附带一些其他信息，定时在服务端和客户端之间同步。（比如帧数同步）</li>
 </ol>
-
 <h3 id="结论">结论</h3>
-
 <p>需要及时检测TCP连接状态，心跳包(HeartBeat)还是必须的。</p>
                       
                     </div>
@@ -233,7 +217,7 @@
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/">https://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -288,19 +272,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2015/03/01/HackerAndPainter/" rel="next">
+        <a href="https://blog.coderzh.com/2015/03/15/NewStart/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>《黑客与画家》杂想</span>
+          <span>新的开始，新的挑战</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2015/03/15/NewStart/" rel="prev">
+        <a href="https://blog.coderzh.com/2015/03/01/HackerAndPainter/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>新的开始，新的挑战</span>
+          <span>《黑客与画家》杂想</span>
         </a>
         
       </li>

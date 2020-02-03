@@ -101,10 +101,10 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="" type="application/rss+xml" target="_blank">订阅</a>
+          
         </li>
         <li class="menu-item menu-item-type-post_type menu-item-text">
-        一个程序员的思考与总结
+        做个独立思考的程序员
         </li>
       </ul>
     </div>
@@ -178,8 +178,8 @@
                   <h1 class="post-title">Python天天美味(30) - python数据结构与算法之快速排序</h1>
 
                   <p class="post-byline">
-                    by  · 2008年09月20日 · 624 Words ·
-                    ~2min reading time |
+                    by  · 2008年09月20日 · 465 Words ·
+                    ~1min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/cnblogs/2008-09-20-1294947.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
@@ -189,131 +189,68 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
-
-<p>快速排序的原理是将取出第一个数，将整个数组分为两波，一拨都大于这个数，另一波都小于这个数，然后递归用同样的方法处理第一波数字和第二波数字。都说是&#8220;快速排序&#8221;，效率肯定比其他的一般排序算法高，下面我们就来验证一把，比较一下所谓的&#8220;快速排序&#8221;和&#8220;冒泡排序&#8221;的性能差异。</p>
-
+                      <p>快速排序的原理是将取出第一个数，将整个数组分为两波，一拨都大于这个数，另一波都小于这个数，然后递归用同样的方法处理第一波数字和第二波数字。都说是“快速排序”，效率肯定比其他的一般排序算法高，下面我们就来验证一把，比较一下所谓的“快速排序”和“冒泡排序”的性能差异。</p>
 <h3 id="1-快速排序">1. 快速排序</h3>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;"><span style="color: #f0e68c;">def</span> <span style="color: #ffffff;">quicksort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">low</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">0</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">high</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">None</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">high</span> <span style="color: #ffffff;">==</span> <span style="color: #ffffff;">None</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">high</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">len</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">)</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">low</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #ffffff;">high</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">s</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">i</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">j</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">low</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">low</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">high</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">while</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #ffffff;">j</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">while</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #ffffff;">j</span> <span style="color: #ffffff;">and</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">&gt;=</span> <span style="color: #ffffff;">s</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">j</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">j</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #ffffff;">j</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span><span style="color: #ffffff;">]</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">i</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">1</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">while</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #ffffff;">j</span> <span style="color: #ffffff;">and</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">&lt;=</span> <span style="color: #ffffff;">s</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">i</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">1</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">&lt;</span> <span style="color: #ffffff;">j</span><span style="color: #ffffff;">:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">j</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">j</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">i</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">s</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">quicksort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">low</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">quicksort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">high</span><span style="color: #ffffff;">)</span></div>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->high<!-- raw HTML omitted --> <!-- raw HTML omitted -->==<!-- raw HTML omitted --> <!-- raw HTML omitted -->None<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->high<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->len<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->low<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->high<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->s<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->low<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->low<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->high<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->and<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;=<!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->+<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->and<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;=<!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->+<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->s<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->quicksort<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->low<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->quicksort<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->+<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->high<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="2-冒泡排序">2. 冒泡排序</h3>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;"><span style="color: #f0e68c;">def</span> <span style="color: #ffffff;">bubblesort</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">for</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">len</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">)</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">0</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">-</span><span style="color: #ffffff;">1</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">for</span> <span style="color: #ffffff;">j</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">0</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">i</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">if</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">&gt;</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">]:</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">]</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span> <span style="color: #ffffff;">+</span> <span style="color: #ffffff;">1</span><span style="color: #ffffff;">],</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">[</span><span style="color: #ffffff;">j</span><span style="color: #ffffff;">]</span></div>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->len<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->        <!-- raw HTML omitted --><!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->            <!-- raw HTML omitted --><!-- raw HTML omitted -->if<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->+<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->                <!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->+<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --> <!-- raw HTML omitted -->+<!-- raw HTML omitted --> <!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->],<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->j<!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
 <h3 id="3-性能比较">3. 性能比较</h3>
-
 <p>上面看来，冒泡排序只需要5行，够简洁的，但性能咋样呢？来比较一下吧：</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;"><span style="color: #ffffff;">import</span> <span style="color: #ffffff;">random</span>
-
-<span style="color: #ffffff;">import</span> <span style="color: #ffffff;">datetime</span>
-
-<span style="color: #ffffff;">import</span> <span style="color: #ffffff;">copy</span>
-
-<span style="color: #f0e68c;">def</span> <span style="color: #ffffff;">sort_perfmon</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">sortfunc</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">):</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">sort_data</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">copy</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">deepcopy</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">data</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">t1</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">datetime</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">datetime</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">now</span><span style="color: #ffffff;">()</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">sortfunc</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">sort_data</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #ffffff;">t2</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">datetime</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">datetime</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">now</span><span style="color: #ffffff;">()</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #f0e68c;">print</span> <span style="color: #ffffff;">sortfunc</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">__name__</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">t2</span> <span style="color: #ffffff;">-</span> <span style="color: #ffffff;">t1</span>
-
-<span style="color: #ffffff;">&nbsp;&nbsp;&nbsp; </span><span style="color: #87ceeb;">#print sort_data</span>
-
-<span style="color: #ffffff;">data</span> <span style="color: #ffffff;">=</span> <span style="color: #ffffff;">[</span><span style="color: #ffffff;">random</span><span style="color: #ffffff;">.</span><span style="color: #ffffff;">randint</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">0</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">65536</span><span style="color: #ffffff;">)</span> <span style="color: #f0e68c;">for</span> <span style="color: #ffffff;">i</span> <span style="color: #ffffff;">in</span> <span style="color: #ffffff;">range</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">2000</span><span style="color: #ffffff;">)]</span>
-
-<span style="color: #87ceeb;">#print data</span>
-
-<span style="color: #ffffff;">sort_perfmon</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">quicksort</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">)</span>
-
-<span style="color: #ffffff;">sort_perfmon</span><span style="color: #ffffff;">(</span><span style="color: #ffffff;">bubblesort</span><span style="color: #ffffff;">,</span> <span style="color: #ffffff;">data</span><span style="color: #ffffff;">)</span></div>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->import<!-- raw HTML omitted --> <!-- raw HTML omitted -->datetime<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->import<!-- raw HTML omitted --> <!-- raw HTML omitted -->copy<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->def<!-- raw HTML omitted --> <!-- raw HTML omitted -->sort_perfmon<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->sortfunc<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->sort_data<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->copy<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->deepcopy<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->t1<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->datetime<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->datetime<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->now<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->sortfunc<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->sort_data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->t2<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->datetime<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->datetime<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->now<!-- raw HTML omitted --><!-- raw HTML omitted -->()<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->print<!-- raw HTML omitted --> <!-- raw HTML omitted -->sortfunc<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->__name__<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->t2<!-- raw HTML omitted --> <!-- raw HTML omitted -->-<!-- raw HTML omitted --> <!-- raw HTML omitted -->t1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->    <!-- raw HTML omitted --><!-- raw HTML omitted -->#print sort_data<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->data<!-- raw HTML omitted --> <!-- raw HTML omitted -->=<!-- raw HTML omitted --> <!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->random<!-- raw HTML omitted --><!-- raw HTML omitted -->.<!-- raw HTML omitted --><!-- raw HTML omitted -->randint<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->65536<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --> <!-- raw HTML omitted -->for<!-- raw HTML omitted --> <!-- raw HTML omitted -->i<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted --> <!-- raw HTML omitted -->range<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->2000<!-- raw HTML omitted --><!-- raw HTML omitted -->)]<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->#print data<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->sort_perfmon<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->quicksort<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->sort_perfmon<!-- raw HTML omitted --><!-- raw HTML omitted -->(<!-- raw HTML omitted --><!-- raw HTML omitted -->bubblesort<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --> <!-- raw HTML omitted -->data<!-- raw HTML omitted --><!-- raw HTML omitted -->)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
 <h3 id="4-结果">4. 结果</h3>
-
 <p>通过对随机的2000个数字进行排序，下面的结果可非常容易的看出，快速排序的优势是非常大的。</p>
-
-<div style="border: 1px solid #cccccc; padding: 4px 5px 4px 14px; background-color: #333333; color: #cccccc;">quicksort <span style="color: #ffff00;">0:00:00.062000</span>
-
-bubblesort <span style="color: #00ff00;">0:00:03.563000</span></div>
-
-<p>&nbsp;</p>
-
-<ol>
-<li>代码下载
-<br /></li>
+<!-- raw HTML omitted -->
+<p>bubblesort <!-- raw HTML omitted -->0:00:03.563000<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
+<ol start="5">
+<li>代码下载</li>
 </ol>
-
-<p><a href="http://files.cnblogs.com/coderzh/Code/sorttest.rar">http://files.cnblogs.com/coderzh/Code/sorttest.rar</a>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<h4 id="python-天天美味系列-总-http-www-cnblogs-com-coderzh-archive-2008-07-08-pythoncookbook-html"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python    天天美味系列（总）</a></h4>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/06/07/1215657.html">Python      天天美味(28) - urlopen</a>&nbsp;&nbsp; &nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/07/23/1249919.html">Python      天天美味(29) - 调用VC++的动态链接库(DLL)</a>&nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/20/1294947.html">Python      天天美味(30) - python数据结构与算法之快速排序</a>&nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/21/1295434.html">Python      天天美味(31) - python数据结构与算法之插入排序</a>&nbsp;</p>
-
-<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/22/1296195.html">Python      天天美味(32) - python数据结构与算法之堆排序</a>&nbsp;</p>
-
+<p><a href="http://files.cnblogs.com/coderzh/Code/sorttest.rar">http://files.cnblogs.com/coderzh/Code/sorttest.rar</a> </p>
+<p> </p>
+<p> </p>
+<h4 id="python----天天美味系列总httpwwwcnblogscomcoderzharchive20080708pythoncookbookhtml"><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python    天天美味系列（总）</a></h4>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/06/07/1215657.html">Python      天天美味(28) - urlopen</a>    </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/07/23/1249919.html">Python      天天美味(29) - 调用VC++的动态链接库(DLL)</a> </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/20/1294947.html">Python      天天美味(30) - python数据结构与算法之快速排序</a> </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/21/1295434.html">Python      天天美味(31) - python数据结构与算法之插入排序</a> </p>
+<p><a href="http://www.cnblogs.com/coderzh/archive/2008/09/22/1296195.html">Python      天天美味(32) - python数据结构与算法之堆排序</a> </p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/09/20/1294947.html">http://www.cnblogs.com/coderzh/archive/2008/09/20/1294947.html</a></strong></p>
 
                       
@@ -325,7 +262,7 @@ bubblesort <span style="color: #00ff00;">0:00:03.563000</span></div>
                         </div>
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
-                            <br />微信关注：hacker-thinking （一个程序员的思考）
+                            <br />微信关注：hacker-thinking （程序员思考者）
                             <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2008/09/20/1294947/">https://blog.coderzh.com/2008/09/20/1294947/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
@@ -380,19 +317,19 @@ bubblesort <span style="color: #00ff00;">0:00:03.563000</span></div>
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2008/09/17/1292808/" rel="next">
+        <a href="https://blog.coderzh.com/2008/09/21/1295434/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>(原创)攻击方式学习之(4) - 拒绝服务(DOS/DDOS/DRDOS)</span>
+          <span>Python天天美味(31) - python数据结构与算法之插入排序</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2008/09/21/1295434/" rel="prev">
+        <a href="https://blog.coderzh.com/2008/09/17/1292808/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>Python天天美味(31) - python数据结构与算法之插入排序</span>
+          <span>(原创)攻击方式学习之(4) - 拒绝服务(DOS/DDOS/DRDOS)</span>
         </a>
         
       </li>
