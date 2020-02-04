@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 14 Jul 2019 08:31:18 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 18:50:36 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我的 2019</title>
+      <link>https://blog.coderzh.com/2020/02/03/my-2019/</link>
+      <pubDate>Mon, 03 Feb 2020 18:50:36 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2020/02/03/my-2019/</guid>
+      <description>这次的春节假期，由于武汉新型冠状病毒的影响，延期后长达了 18 天，外加一周的远程办公。感染人数还在增加，我们正以全国之力与病毒抗争，相信我们一</description>
+    </item>
     
     <item>
       <title>由 QuickJS 想到的</title>
