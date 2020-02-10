@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 03 Feb 2020 18:50:36 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2020 20:29:06 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/post/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>开通了个微信视频号</title>
+      <link>https://blog.coderzh.com/2020/02/10/small-code/</link>
+      <pubDate>Mon, 10 Feb 2020 20:29:06 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2020/02/10/small-code/</guid>
+      <description>由于新冠病毒疫情，春节假期放了 18 天。今天开始远程工作了，由于很早之前已经试过在家办公，拉代码、编包、各种代理、远程机器啥的都不是问题。在家办</description>
+    </item>
     
     <item>
       <title>我的 2019</title>
