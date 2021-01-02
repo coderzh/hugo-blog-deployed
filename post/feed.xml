@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 10 Feb 2020 20:29:06 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 23:35:23 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/post/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2020</title>
+      <link>https://blog.coderzh.com/2021/01/01/2020/</link>
+      <pubDate>Fri, 01 Jan 2021 23:35:23 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2021/01/01/2020/</guid>
+      <description>2020 是神奇的一年，仿佛一转眼之间，它又这么过去了。春节期间疫情爆发，武汉封城，恐慌加剧，各地开始限制出入，口罩难求，于是春节我们选择了没回老家</description>
+    </item>
     
     <item>
       <title>开通了个微信视频号</title>
