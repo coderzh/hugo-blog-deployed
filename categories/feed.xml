@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 01 Jan 2021 23:35:23 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Jan 2021 22:13:12 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>技术文章</title>
+      <link>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 16 Jan 2021 22:13:12 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>思考感悟</title>
@@ -18,15 +27,6 @@
       <pubDate>Fri, 01 Jan 2021 23:35:23 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>技术文章</title>
-      <link>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</link>
-      <pubDate>Sun, 24 Feb 2019 21:01:02 +0800</pubDate>
-      
-      <guid>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</guid>
       <description></description>
     </item>
     

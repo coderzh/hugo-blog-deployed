@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 24 Feb 2019 21:01:02 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Jan 2021 22:13:12 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>认识 V8 引擎（1）</title>
+      <link>https://blog.coderzh.com/2021/01/16/v8-1/</link>
+      <pubDate>Sat, 16 Jan 2021 22:13:12 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2021/01/16/v8-1/</guid>
+      <description>V8 是一个由 Google 开发的，开源的，高性能的， JavaScript 及 WebAssembly 引擎，使用 C++ 编写。广泛应用于 Google Chrome 浏览器、Node.js 等等。跨平台支持 Windows(Win7以</description>
+    </item>
     
     <item>
       <title>C&#43;&#43; 的指定初始化器</title>

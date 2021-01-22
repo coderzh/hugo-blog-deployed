@@ -1,22 +1,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>https://blog.coderzh.com/2021/01/01/2020/</loc>
-        <lastmod>2021-01-01T23:35:23+08:00</lastmod>
-    </url>
-    
-    <url>
         <loc>https://blog.coderzh.com/categories/</loc>
-        <lastmod>2021-01-01T23:35:23+08:00</lastmod>
+        <lastmod>2021-01-16T22:13:12+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/</loc>
-        <lastmod>2021-01-01T23:35:23+08:00</lastmod>
+        <lastmod>2021-01-16T22:13:12+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/post/</loc>
+        <lastmod>2021-01-16T22:13:12+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</loc>
+        <lastmod>2021-01-16T22:13:12+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/2021/01/16/v8-1/</loc>
+        <lastmod>2021-01-16T22:13:12+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/2021/01/01/2020/</loc>
         <lastmod>2021-01-01T23:35:23+08:00</lastmod>
     </url>
     
@@ -52,11 +62,6 @@
     
     <url>
         <loc>https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/</loc>
-        <lastmod>2019-02-24T21:01:02+08:00</lastmod>
-    </url>
-    
-    <url>
-        <loc>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</loc>
         <lastmod>2019-02-24T21:01:02+08:00</lastmod>
     </url>
     
