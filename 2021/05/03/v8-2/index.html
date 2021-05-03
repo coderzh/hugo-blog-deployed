@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>认识 V8 引擎（2）- 编译跑通 12 年前的 V8 - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="keywords" content="V8,">
+<meta name="description" content="我认为，学习开源代码最好的方式，是编译过代码后，可以进行单步调试，一步一步洞悉内部所发生的一切。从上篇我们知道，V8 从 2008 年就已经面世，到目前">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="认识 V8 引擎（2）- 编译跑通 12 年前的 V8 - CoderZh Blog">
+<meta itemprop="description" content="我认为，学习开源代码最好的方式，是编译过代码后，可以进行单步调试，一步一步洞悉内部所发生的一切。从上篇我们知道，V8 从 2008 年就已经面世，到目前">
+<meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="认识 V8 引擎（2）- 编译跑通 12 年前的 V8 - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.coderzh.com/2021/05/03/v8-2/" />
+<meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="我认为，学习开源代码最好的方式，是编译过代码后，可以进行单步调试，一步一步洞悉内部所发生的一切。从上篇我们知道，V8 从 2008 年就已经面世，到目前">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="认识 V8 引擎（2）- 编译跑通 12 年前的 V8 - CoderZh Blog">
+<meta name="twitter:description" content="我认为，学习开源代码最好的方式，是编译过代码后，可以进行单步调试，一步一步洞悉内部所发生的一切。从上篇我们知道，V8 从 2008 年就已经面世，到目前">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="https://blog.coderzh.com/2021/05/03/v8-2/">
+  <link rel='shortlink' href="https://blog.coderzh.com/2021/05/03/v8-2/"/>
+  <link rel="shortcut icon" href="https://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="https://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="https://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="https://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="https://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="https://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="https://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="https://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="https://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="https://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        做个独立思考的程序员
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="https://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">认识 V8 引擎（2）- 编译跑通 12 年前的 V8</h1>
+
+                  <p class="post-byline">
+                    by  · 2021年05月03日 · 1434 Words ·
+                    ~3min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2021/2021-05-03-v8-2.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      <p>我认为，学习开源代码最好的方式，是编译过代码后，可以进行单步调试，一步一步洞悉内部所发生的一切。从上篇我们知道，V8 从 2008 年就已经面世，到目前为止已经有 13 年之久。这 13 年以来，科技经历的变革是巨大的，同样，V8 代码的复杂度变化也是巨大的。如果直接从现在的 V8 代码入手，学习，无疑是非常困难的。</p>
+<p>困难的不是把 V8 的代码编过，而是 V8 复杂的代码结构，难以一眼看清它本质的核心脉络。V8 最早的开源版本是 2008 年的 0.1.5 版本，那时的代码结构还相对简单，从代码阅读和学习的角度，这是一个非常好的版本。于是一开始我的努力方向，就是把 0.1.5 版本在 Mac 上编过，并且能将简单的 Hello World 跑起来。</p>
+<p>早期的 V8 编译脚本是用 <a href="https://scons.org/">SCons</a> 写的，而不是现在的 <a href="https://gn.googlesource.com/gn/">GN</a> + <a href="https://github.com/ninja-build/ninja">Ninja</a> 的系统。我尝试也安装 SCons 看能不能编过，然后发现根本就不过了。原因是今天的 SCons 版本和 V8 团队当年用的 SCons 版本已经发生了巨大的改变。比如早期的 Options 函数已经废弃，甚至连当年的文档都难以追溯。同时当年的 SCons 编译脚本是用 Python 2.X 的版本写的，用今天的 Python3 来跑，也遇到各种兼容性的问题。当然，这些都是可以解决的。然而我并不想解决 SCons 编译的问题。因为我想用现在更好的方式将它编过，就是 <a href="https://cmake.org/">CMake</a>。</p>
+<p>参考了源码中 SConscript 里的编译过程，我重写了一份 CMakeLists.txt。在经历了一个又一个编译错误之后，我终于把 V8 0.1.5 版本在 Mac 上编过了（我平常几乎只用 Mac，所以没管其他的平台）。然后写了个简单的 Hello World 代码，用当时 V8 的 API。</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// test/main.cc
+</span><span class="c1"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&#34;v8.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[</span><span class="p">]</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">hello v8</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">init_result</span> <span class="o">=</span> <span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">V8</span><span class="o">:</span><span class="o">:</span><span class="n">Initialize</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">init_result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">v8 initialize failed</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">auto</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">Context</span><span class="o">:</span><span class="o">:</span><span class="n">New</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+  <span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">HandleScope</span> <span class="n">hs</span><span class="p">;</span>
+  <span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">Local</span><span class="o">&lt;</span><span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">String</span><span class="o">:</span><span class="o">:</span><span class="n">New</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">1+1</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+  <span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">Local</span><span class="o">&lt;</span><span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">Value</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">Script</span><span class="o">:</span><span class="o">:</span><span class="n">Compile</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">-</span><span class="o">&gt;</span><span class="n">Run</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+  <span class="n">v8</span><span class="o">:</span><span class="o">:</span><span class="n">String</span><span class="o">:</span><span class="o">:</span><span class="n">AsciiValue</span> <span class="n">str</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="p">;</span>
+  <span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">1+1=%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="n">str</span><span class="p">)</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>从上面的代码可以看出，早期的 V8 API 和现在的几乎是接近的。首先需要通过 V8::Initialize() 对 V8 进行全局初始化。然后有 V8::Context 的概念，甚至已经有了 HandleScope 自动管理 Local 变量。当然从上面代码也可以看出区别，今天非常重要的 v8::Isolate 概念还没有，以及 v8::Context::Scope 也还没有出现。</p>
+<p>上面代码运行之后，发现 v8::V8::Initialize() 就失败了。因为可以调试，定位到了这么这个函数：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">bool</span> <span class="n">VirtualMemory</span><span class="o">:</span><span class="o">:</span><span class="n">Commit</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">address</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">MAP_FAILED</span> <span class="o">=</span><span class="o">=</span> <span class="n">mmap</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span> <span class="o">|</span> <span class="n">PROT_EXEC</span><span class="p">,</span>
+                         <span class="n">MAP_PRIVATE</span> <span class="o">|</span> <span class="n">MAP_ANON</span> <span class="o">|</span> <span class="n">MAP_FIXED</span><span class="p">,</span>
+                         <span class="n">kMmapFd</span><span class="p">,</span> <span class="n">kMmapFdOffset</span><span class="p">)</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="sa"></span><span class="s">&#34;</span><span class="s">mmap size=%ld fd=%d failed %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+                <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">size</span><span class="p">,</span> <span class="n">kMmapFd</span><span class="p">,</span> <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+    <span class="c1">// 这里失败了，打印的错误是：
+</span><span class="c1"></span>    <span class="c1">// mmap size=262144 fd=-1 failed Cannot allocate memory
+</span><span class="c1"></span>    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">UpdateAllocatedSpaceLimits</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>遇到 mmap 内存分配失败时，我是有点一脸懵的。在仔细查看了 Commit 函数上下文，以及了解 mmap 每个参数之后，我发现的竟然是另一个严肃的问题。我编的这份代码是 08 年所写的，只支持编译 32位的版本。而我编译的时候，选择的是编译的 64位。于是我想，在 CMakeLists 里指定编 -m32 版本吧。然后发现切到 32位之后更是更多的编译不过。如今在 PC 上已经很少有编 32位的程序了，我不是很想去解决 32位编译的问题。我不如去看看 V8 的代码历史记录，看看从哪个版本开始支持了 64位。</p>
+<p>于是我找到了最早支持 64位的版本：<a href="https://github.com/v8/v8/tree/1.2.14.20">1.2.14.20</a>。我重新整理了 CMakeLists 编译脚本，解决了几个代码的编译问题之后，It works! Yes!</p>
+<p>1.2 版本的 V8 是 09 年的代码，距今也有 12 年，代码还保持了简单的结构。相对前面 0.1.5 版本，有了 <code>v8::Context::Scope</code> 的概念。多了很多测试代码，甚至，连强大的 <code>d8</code> 工具也面世了。在 tools 目录下，甚至有 Xcode 工程文件以及 Visual Studio 工程文件，当然还包括了 gyp 文件。我简单尝试了 Xcode 工程编译，似乎编的还是 32位代码，没有成功。我不想继续尝试了，也包括 Visual Studio。因为我已经通过 CMakeLists 编过了 64位版本，并且可以愉快的调试了。</p>
+<p>我想现在这份 12 年前的 V8 代码，应该是最适合学习和了解 V8 的。毕竟，它只有几十个文件，编译一次只要几十秒钟。</p>
+<p>最后，我也将这份可以编过跑过的代码放到了 GitHub 上。有兴趣的小伙伴，可以一起来学习交流：</p>
+<p><a href="https://github.com/coderzh/v8-1.2">https://github.com/coderzh/v8-1.2</a></p>
+<p>git clone 之后，用 VSCode 打开，通过我配置好的编译设置，按下 Cmd+Shift+b 就可以编译，按下 F5 就可以进入调试，岂不快哉。</p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="https://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫交流</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （程序员思考者）
+                            <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2021/05/03/v8-2/">https://blog.coderzh.com/2021/05/03/v8-2/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+              <div class="clear"></div>
+              
+              
+              
+            </div>
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="https://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p> 微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking <br /></p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+      </li>
+      <li class="previous">
+        
+        <a href="https://blog.coderzh.com/2021/01/16/v8-1/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>认识 V8 引擎（1）- V8 的由来</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+              <p>Copyright (c) 2017. All rights reserved.  <a href='http://www.miitbeian.gov.cn/'>粤ICP备17074587号-1</a><br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+</body>
+</html>
+

@@ -5,7 +5,61 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sat, 16 Jan 2021 22:13:12 CST</updated>
+        <updated>Mon, 03 May 2021 09:41:59 CST</updated>
+        
+        <item>
+            <title>认识 V8 引擎（2）- 编译跑通 12 年前的 V8</title>
+            <link>https://blog.coderzh.com/2021/05/03/v8-2/</link>
+            <pubDate>Mon, 03 May 2021 09:41:59 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>https://blog.coderzh.com/2021/05/03/v8-2/</guid>
+            <description>&lt;p&gt;我认为，学习开源代码最好的方式，是编译过代码后，可以进行单步调试，一步一步洞悉内部所发生的一切。从上篇我们知道，V8 从 2008 年就已经面世，到目前为止已经有 13 年之久。这 13 年以来，科技经历的变革是巨大的，同样，V8 代码的复杂度变化也是巨大的。如果直接从现在的 V8 代码入手，学习，无疑是非常困难的。&lt;/p&gt;
+&lt;p&gt;困难的不是把 V8 的代码编过，而是 V8 复杂的代码结构，难以一眼看清它本质的核心脉络。V8 最早的开源版本是 2008 年的 0.1.5 版本，那时的代码结构还相对简单，从代码阅读和学习的角度，这是一个非常好的版本。于是一开始我的努力方向，就是把 0.1.5 版本在 Mac 上编过，并且能将简单的 Hello World 跑起来。&lt;/p&gt;
+&lt;p&gt;早期的 V8 编译脚本是用 &lt;a href=&#34;https://scons.org/&#34;&gt;SCons&lt;/a&gt; 写的，而不是现在的 &lt;a href=&#34;https://gn.googlesource.com/gn/&#34;&gt;GN&lt;/a&gt; + &lt;a href=&#34;https://github.com/ninja-build/ninja&#34;&gt;Ninja&lt;/a&gt; 的系统。我尝试也安装 SCons 看能不能编过，然后发现根本就不过了。原因是今天的 SCons 版本和 V8 团队当年用的 SCons 版本已经发生了巨大的改变。比如早期的 Options 函数已经废弃，甚至连当年的文档都难以追溯。同时当年的 SCons 编译脚本是用 Python 2.X 的版本写的，用今天的 Python3 来跑，也遇到各种兼容性的问题。当然，这些都是可以解决的。然而我并不想解决 SCons 编译的问题。因为我想用现在更好的方式将它编过，就是 &lt;a href=&#34;https://cmake.org/&#34;&gt;CMake&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;参考了源码中 SConscript 里的编译过程，我重写了一份 CMakeLists.txt。在经历了一个又一个编译错误之后，我终于把 V8 0.1.5 版本在 Mac 上编过了（我平常几乎只用 Mac，所以没管其他的平台）。然后写了个简单的 Hello World 代码，用当时 V8 的 API。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// test/main.cc
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;#34;v8.h&amp;#34;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;hello v8&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init_result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;V8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Initialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;init_result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;v8 initialize failed&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;HandleScope&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;1+1&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Script&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AsciiValue&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;1+1=%s&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;从上面的代码可以看出，早期的 V8 API 和现在的几乎是接近的。首先需要通过 V8::Initialize() 对 V8 进行全局初始化。然后有 V8::Context 的概念，甚至已经有了 HandleScope 自动管理 Local 变量。当然从上面代码也可以看出区别，今天非常重要的 v8::Isolate 概念还没有，以及 v8::Context::Scope 也还没有出现。&lt;/p&gt;
+&lt;p&gt;上面代码运行之后，发现 v8::V8::Initialize() 就失败了。因为可以调试，定位到了这么这个函数：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;VirtualMemory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Commit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MAP_FAILED&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mmap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PROT_READ&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PROT_WRITE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PROT_EXEC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                         &lt;span class=&#34;n&#34;&gt;MAP_PRIVATE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MAP_ANON&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MAP_FIXED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                         &lt;span class=&#34;n&#34;&gt;kMmapFd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kMmapFdOffset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;fprintf&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stderr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;mmap size=%ld fd=%d failed %s&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kMmapFd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;strerror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;errno&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// 这里失败了，打印的错误是：
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// mmap size=262144 fd=-1 failed Cannot allocate memory
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;UpdateAllocatedSpaceLimits&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;遇到 mmap 内存分配失败时，我是有点一脸懵的。在仔细查看了 Commit 函数上下文，以及了解 mmap 每个参数之后，我发现的竟然是另一个严肃的问题。我编的这份代码是 08 年所写的，只支持编译 32位的版本。而我编译的时候，选择的是编译的 64位。于是我想，在 CMakeLists 里指定编 -m32 版本吧。然后发现切到 32位之后更是更多的编译不过。如今在 PC 上已经很少有编 32位的程序了，我不是很想去解决 32位编译的问题。我不如去看看 V8 的代码历史记录，看看从哪个版本开始支持了 64位。&lt;/p&gt;
+&lt;p&gt;于是我找到了最早支持 64位的版本：&lt;a href=&#34;https://github.com/v8/v8/tree/1.2.14.20&#34;&gt;1.2.14.20&lt;/a&gt;。我重新整理了 CMakeLists 编译脚本，解决了几个代码的编译问题之后，It works! Yes!&lt;/p&gt;
+&lt;p&gt;1.2 版本的 V8 是 09 年的代码，距今也有 12 年，代码还保持了简单的结构。相对前面 0.1.5 版本，有了 &lt;code&gt;v8::Context::Scope&lt;/code&gt; 的概念。多了很多测试代码，甚至，连强大的 &lt;code&gt;d8&lt;/code&gt; 工具也面世了。在 tools 目录下，甚至有 Xcode 工程文件以及 Visual Studio 工程文件，当然还包括了 gyp 文件。我简单尝试了 Xcode 工程编译，似乎编的还是 32位代码，没有成功。我不想继续尝试了，也包括 Visual Studio。因为我已经通过 CMakeLists 编过了 64位版本，并且可以愉快的调试了。&lt;/p&gt;
+&lt;p&gt;我想现在这份 12 年前的 V8 代码，应该是最适合学习和了解 V8 的。毕竟，它只有几十个文件，编译一次只要几十秒钟。&lt;/p&gt;
+&lt;p&gt;最后，我也将这份可以编过跑过的代码放到了 GitHub 上。有兴趣的小伙伴，可以一起来学习交流：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/v8-1.2&#34;&gt;https://github.com/coderzh/v8-1.2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;git clone 之后，用 VSCode 打开，通过我配置好的编译设置，按下 Cmd+Shift+b 就可以编译，按下 F5 就可以进入调试，岂不快哉。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>认识 V8 引擎（1）- V8 的由来</title>
@@ -514,43 +568,6 @@ echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &amp;gt; c
 &lt;p&gt;所以，我的一个感悟是，这个世界正在以你难以想象的速度在向前发展，不管你看得见还是看不见。所以你一定要保持前进，保持进步，不然等你回过神来，会发现已经被远远的抛在后面。&lt;/p&gt;
 &lt;h3 id=&#34;重点&#34;&gt;重点&lt;/h3&gt;
 &lt;p&gt;没错，前面说的都不重要。保持身体健康，心情愉快，家庭和谐才是最重要的。所以，2018 年的一个小目标是：坚持锻炼身体。对了，去年买的佳明 Forerunner 235 手表不知道放哪里去了，我要去找找了，再见。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>我的 2016</title>
-            <link>https://blog.coderzh.com/2017/01/01/my-2016/</link>
-            <pubDate>Sun, 01 Jan 2017 00:00:00 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>https://blog.coderzh.com/2017/01/01/my-2016/</guid>
-            <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/baseball.JPG&#34; alt=&#34;baseball&#34;&gt;&lt;/p&gt;
-&lt;p&gt;光阴似箭，岁月如梭，仿佛去年写「我的 2015」就在昨日，然而时间的确在滴滴答答中度过了 365 天。这一年里，经历了一些事，读了一些书，努力过，收获过，感恩 2016。&lt;/p&gt;
-&lt;h4 id=&#34;公众号&#34;&gt;公众号&lt;/h4&gt;
-&lt;p&gt;其中一个变化是，我的公众号（博客）的更新频率越来越低了。2016 年我总共写了 20 多篇文章，平均算下来，2 周才有 1 篇。相比去年的 1 周 1 篇少了不少。&lt;/p&gt;
-&lt;p&gt;这其中有几个原因，首先，工作占据了我更多的时间。有的时候为了解决问题，不可避免的把工作带回了家。其次，随着小孩的长大，周末需要花更多的时间带小孩，陪家人。第三，见识了越多优秀的人，越发现自己的无知，与其为了 1 周 凑上 1 篇，还不如多沉下心学习，做些更深入的研究，多读点书，多写点代码，多存点干货再来分享。第四，还是因为懒。&lt;/p&gt;
-&lt;h4 id=&#34;读书&#34;&gt;读书&lt;/h4&gt;
-&lt;p&gt;2016 年，我读了以下书：《必然》、《MacTalk 跨越边界》、《7 Eleven零售的哲学》、《改变未来的九大算法》、《重来》、《马克·扎克伯格传》、《硅谷钢铁侠：埃隆·马斯克》、《途客圈创业记》、《福特自传》、《人类简史：从动物到上帝》、《Google 重新定义公司》、《Android 软件安全与逆向分析》、《第二次机器革命》、《接纳不完美的自己》、《黑客》、《成为乔布斯》……&lt;/p&gt;
-&lt;p&gt;其中的《人类简史》开阔了我的思维认识，也是张小龙极力推荐的。但对我的思维改变最大的，是《接纳不完美的自己》这本书。书中提到一个形象的比喻：每个人刚出生时内心都有一座很大的城堡，城堡里有很多的房间，各式各样的房间，每个房间代表一种特质，比如：善良、勇敢、正直、激情，当然也包括了：自私、胆小、愚蠢，奸诈等不好的特质。开始每扇门都是对外敞开的。随着慢慢的长大，你去了别人的城堡，发现有些不好的特质是别人没有的（或许是被藏起来了），于是你把不好特质的门锁上，不让别人进去，甚至是自己。慢慢的，越来越多的门被锁上，偌大的一座城堡，最后你只能在很少的房间活动。&lt;/p&gt;
-&lt;p&gt;那些被锁上的房间，正是不完美的自己。有些人选择把锁住的房间遗忘，而一旦发现别人表现出不好的特质，则会异常的激动和排斥。比如，你认为某个人非常的小气，甚至为此感到不齿，其实恰恰说明了你自己正是一个小气之人。因为你害怕别人说你小气，于是小气之门被你严严锁死，一旦你发现某个人表现出小气的特质时，你就会异常的激动，拼命的表现出不齿的感觉以和小气撇清关系。&lt;/p&gt;
-&lt;p&gt;所以，接纳不完美的自己，第一步是把自己内心深处的房间打开。每当你觉得别人怎么怎么样时，你越是激动，越要想一想，我是不是越是一样，只是我把门锁上了(直白一点：你越认为别人笨，其实越是你笨。你越是认为别人心机婊，其实你越是心机婊)。于是你会对别人的缺点更加宽容，也能更好的反思自我。第二步是必要时利用你的缺点。比如有人要非法拆迁你的房子，你是不是表现的无赖一些反而会更好。&lt;/p&gt;
-&lt;h4 id=&#34;代码&#34;&gt;代码&lt;/h4&gt;
-&lt;p&gt;写代码依然是一件非常有意思的事情。2016 年的一个重大变化是，我的开发环境已经全面转向了 Mac。我深刻的感受到了《成为乔布斯》书中提到的乔布斯对艺术和美的追求。一句话：用更好看的 Mac，写代码不折腾。&lt;/p&gt;
-&lt;p&gt;编程语言方面，Go 和 Swift 走马观花了一下，node.js 有初步涉及。主力语言还是 Python 和 C++，有时也会被老板用枪指着写点 Java。&lt;/p&gt;
-&lt;p&gt;机器学习粗浅了解，还未入门，来年要加大学习投入。&lt;/p&gt;
-&lt;p&gt;从 GitHub 统计的我过去一年的贡献活跃度可以看出，下半年开始，我变得非常的不活跃，来年争取填满更多的格子。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/github2016.png&#34; alt=&#34;github2016&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;工作&#34;&gt;工作&lt;/h4&gt;
-&lt;p&gt;依然认为是最棒的公司。来年继续加油。&lt;/p&gt;
-&lt;h4 id=&#34;不足&#34;&gt;不足&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;公众号（博客）写少了。&lt;/li&gt;
-&lt;li&gt;GitHub 代码写少了。&lt;/li&gt;
-&lt;li&gt;运动少了。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;展望&#34;&gt;展望&lt;/h4&gt;
-&lt;p&gt;好的习惯继续发扬，不足要改掉，健身的重要性要提高一个 Level。&lt;/p&gt;
-&lt;h4 id=&#34;最后&#34;&gt;最后&lt;/h4&gt;
-&lt;p&gt;感谢你们！如此低的更新频率下还没有退订，感谢！Happy 2017!&lt;/p&gt;
 </description>
         </item>
         

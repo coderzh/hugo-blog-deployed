@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 16 Jan 2021 22:13:12 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 May 2021 09:41:59 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>认识 V8 引擎（2）- 编译跑通 12 年前的 V8</title>
+      <link>https://blog.coderzh.com/2021/05/03/v8-2/</link>
+      <pubDate>Mon, 03 May 2021 09:41:59 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2021/05/03/v8-2/</guid>
+      <description>我认为，学习开源代码最好的方式，是编译过代码后，可以进行单步调试，一步一步洞悉内部所发生的一切。从上篇我们知道，V8 从 2008 年就已经面世，到目前</description>
+    </item>
     
     <item>
       <title>认识 V8 引擎（1）- V8 的由来</title>
