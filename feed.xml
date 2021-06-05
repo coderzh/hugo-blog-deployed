@@ -23,14 +23,14 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果隔断时间被自动恢复了就再设置一次&lt;/p&gt;
 &lt;h3 id=&#34;002-升级-android-gradle-plugin-4-后编译不过&#34;&gt;002. 升级 Android Gradle Plugin 4 后编译不过&lt;/h3&gt;
 &lt;p&gt;在 Android Gradle Plugin 4.0 之前，CMake 里通过 IMPORTED 链接预编译好的 so 文件，只有将这些 so 文件放在 jniLibs 目录里，才能打包到 APK 里，其他路径的 so 将会自动被忽略。&lt;/p&gt;
-&lt;p&gt;在 Android Gradle Plugin 4.0 之后，只要在 CMake 里 IMPORTED 的 so 都会自动打包到 APK 里。而如果这个 so 又刚好也在 jniLibs 目录里的话，将出出现如下错误：&lt;/p&gt;
+&lt;p&gt;在 Android Gradle Plugin 4.0 之后，只要在 CMake 里 IMPORTED 的 so 都会自动打包到 APK 里。而如果这个 so 又刚好也在 jniLibs 目录里的话，将会出现如下错误：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;* What went wrong:
 Execution failed for task &#39;:app:mergeDebugNativeLibs&#39;.
 &amp;gt; A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
    &amp;gt; More than one file was found with OS independent path &#39;lib/armeabi-v7a/libprebuilt.so&#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;知道了原因后，解决就很简单了，对于在 CMake 中 IMPORT 到 so：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;知道了原因后，解决就很简单了，对于在 CMake 中 IMPORTED 的 so：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;如果 so 需要打包进 APK 里，把 so 放到 jniLibs 之外到目录，或者在 build.gradle 里设置 packFirst&lt;/li&gt;
+&lt;li&gt;如果 so 需要打包进 APK 里，把 so 放到 jniLibs 之外的目录，或者在 build.gradle 里设置 packFirst&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code&gt;android {
   ...
@@ -48,9 +48,9 @@ Execution failed for task &#39;:app:mergeDebugNativeLibs&#39;.
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;003-mesonbuild-文件是什么&#34;&gt;003. meson.build 文件是什么？&lt;/h3&gt;
-&lt;p&gt;在 Github 上有些工程有 meson.build 文件，表示它使用到是 &lt;a href=&#34;https://mesonbuild.com/&#34;&gt;meson&lt;/a&gt; 构建系统。meson 是用 Python 写到构建系统，和 CMake 类似。meson 会生成对应系统到构建配置，比如：GNU/Linux 到 ninja，Windows 到 Visual Studio，MacOS 上的 Xcode。&lt;/p&gt;
-&lt;p&gt;使用 meson 构建到知名工程：&lt;a href=&#34;https://qemu.org/&#34;&gt;QEMU&lt;/a&gt;, &lt;a href=&#34;https://github.com/systemd/systemd&#34;&gt;systemd&lt;/a&gt;，&lt;a href=&#34;https://github.com/simd-everywhere/simde&#34;&gt;simde&lt;/a&gt;, 以及很多 &lt;a href=&#34;https://wiki.gnome.org/Initiatives/GnomeGoals/MesonPorting&#34;&gt;GNOME&lt;/a&gt; 项目都支持里 meson。&lt;/p&gt;
-&lt;p&gt;简单几步编译使用 meson.build 到工程：&lt;/p&gt;
+&lt;p&gt;在 Github 上有些工程有 meson.build 文件，表示它使用到是 &lt;a href=&#34;https://mesonbuild.com/&#34;&gt;meson&lt;/a&gt; 构建系统。meson 是用 Python 写的构建系统，和 CMake 类似。meson 会生成对应系统的构建配置，比如：GNU/Linux 的 ninja，Windows 的 Visual Studio，MacOS 上的 Xcode。&lt;/p&gt;
+&lt;p&gt;使用 meson 构建的知名工程：&lt;a href=&#34;https://qemu.org/&#34;&gt;QEMU&lt;/a&gt;, &lt;a href=&#34;https://github.com/systemd/systemd&#34;&gt;systemd&lt;/a&gt;，&lt;a href=&#34;https://github.com/simd-everywhere/simde&#34;&gt;simde&lt;/a&gt;, 以及很多 &lt;a href=&#34;https://wiki.gnome.org/Initiatives/GnomeGoals/MesonPorting&#34;&gt;GNOME&lt;/a&gt; 项目都支持里 meson。&lt;/p&gt;
+&lt;p&gt;简单几步编译使用 meson.build 的工程：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;安装&lt;/li&gt;
 &lt;/ol&gt;
@@ -59,7 +59,7 @@ Execution failed for task &#39;:app:mergeDebugNativeLibs&#39;.
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;编译 &amp;amp; 测试&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;$ meson 
+&lt;pre&gt;&lt;code&gt;$ cd /path/to/source/root
 $ meson builddir &amp;amp;&amp;amp; cd builddir
 $ meson compile
 $ meson test
