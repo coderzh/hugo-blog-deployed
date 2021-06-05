@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 03 May 2021 09:41:59 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 05 Jun 2021 11:55:46 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/post/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>代码小贴士001</title>
+      <link>https://blog.coderzh.com/2021/06/05/code-tips-1/</link>
+      <pubDate>Sat, 05 Jun 2021 11:55:46 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2021/06/05/code-tips-1/</guid>
+      <description>001. 为什么我的 adb 老是断开连接？ 开着 Android Studio 连着手机，刷着 logcat，突然就出现： read: unexpected EOF! 这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。</description>
+    </item>
     
     <item>
       <title>认识 V8 引擎（2）- 编译跑通 12 年前的 V8</title>

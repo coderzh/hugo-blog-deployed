@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>代码小贴士001 - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="keywords" content="Android,">
+<meta name="description" content="001. 为什么我的 adb 老是断开连接？ 开着 Android Studio 连着手机，刷着 logcat，突然就出现： read: unexpected EOF! 这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="代码小贴士001 - CoderZh Blog">
+<meta itemprop="description" content="001. 为什么我的 adb 老是断开连接？ 开着 Android Studio 连着手机，刷着 logcat，突然就出现： read: unexpected EOF! 这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。">
+<meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="代码小贴士001 - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.coderzh.com/2021/06/05/code-tips-1/" />
+<meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="001. 为什么我的 adb 老是断开连接？ 开着 Android Studio 连着手机，刷着 logcat，突然就出现： read: unexpected EOF! 这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="代码小贴士001 - CoderZh Blog">
+<meta name="twitter:description" content="001. 为什么我的 adb 老是断开连接？ 开着 Android Studio 连着手机，刷着 logcat，突然就出现： read: unexpected EOF! 这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="https://blog.coderzh.com/2021/06/05/code-tips-1/">
+  <link rel='shortlink' href="https://blog.coderzh.com/2021/06/05/code-tips-1/"/>
+  <link rel="shortcut icon" href="https://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="https://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="https://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="https://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="https://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="https://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="https://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="https://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="https://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="https://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        做个独立思考的程序员
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="https://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">代码小贴士001</h1>
+
+                  <p class="post-byline">
+                    by  · 2021年06月05日 · 620 Words ·
+                    ~2min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2021/2021-06-05-code-tips-1.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      <h3 id="001-为什么我的-adb-老是断开连接">001. 为什么我的 adb 老是断开连接？</h3>
+<p>开着 Android Studio 连着手机，刷着 logcat，突然就出现：</p>
+<pre><code>read: unexpected EOF!
+</code></pre><p>这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。根本原因是手机 adb logcat 的缓冲区不够了，解决方法其实很简单，设大一些就可以了：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ adb logcat -G 20M
+</code></pre></div><p>查看现在缓冲区多大：</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ adb logcat -g
+</code></pre></div><p>如果隔断时间被自动恢复了就再设置一次</p>
+<h3 id="002-升级-android-gradle-plugin-4-后编译不过">002. 升级 Android Gradle Plugin 4 后编译不过</h3>
+<p>在 Android Gradle Plugin 4.0 之前，CMake 里通过 IMPORTED 链接预编译好的 so 文件，只有将这些 so 文件放在 jniLibs 目录里，才能打包到 APK 里，其他路径的 so 将会自动被忽略。</p>
+<p>在 Android Gradle Plugin 4.0 之后，只要在 CMake 里 IMPORTED 的 so 都会自动打包到 APK 里。而如果这个 so 又刚好也在 jniLibs 目录里的话，将出出现如下错误：</p>
+<pre><code>* What went wrong:
+Execution failed for task ':app:mergeDebugNativeLibs'.
+&gt; A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
+   &gt; More than one file was found with OS independent path 'lib/armeabi-v7a/libprebuilt.so'
+</code></pre><p>知道了原因后，解决就很简单了，对于在 CMake 中 IMPORT 到 so：</p>
+<ol>
+<li>如果 so 需要打包进 APK 里，把 so 放到 jniLibs 之外到目录，或者在 build.gradle 里设置 packFirst</li>
+</ol>
+<pre><code>android {
+  ...
+  packagingOptions {
+    pickFirst &quot;**/libprebuilt.so&quot;
+  }
+}
+</code></pre><ol start="2">
+<li>如果 so 不需要打包进 APK 里，在 build.gradle 里设置 exclude</li>
+</ol>
+<pre><code>android {
+  ...
+  packagingOptions {
+    exclude &quot;**/libprebuilt.so&quot;
+  }
+}
+</code></pre><h3 id="003-mesonbuild-文件是什么">003. meson.build 文件是什么？</h3>
+<p>在 Github 上有些工程有 meson.build 文件，表示它使用到是 <a href="https://mesonbuild.com/">meson</a> 构建系统。meson 是用 Python 写到构建系统，和 CMake 类似。meson 会生成对应系统到构建配置，比如：GNU/Linux 到 ninja，Windows 到 Visual Studio，MacOS 上的 Xcode。</p>
+<p>使用 meson 构建到知名工程：<a href="https://qemu.org/">QEMU</a>, <a href="https://github.com/systemd/systemd">systemd</a>，<a href="https://github.com/simd-everywhere/simde">simde</a>, 以及很多 <a href="https://wiki.gnome.org/Initiatives/GnomeGoals/MesonPorting">GNOME</a> 项目都支持里 meson。</p>
+<p>简单几步编译使用 meson.build 到工程：</p>
+<ol>
+<li>安装</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pip install --user meson ninja
+</code></pre></div><p>安装后按提示将 meson 所在路径加到 PATH 环境变量里。</p>
+<ol start="2">
+<li>编译 &amp; 测试</li>
+</ol>
+<pre><code>$ meson 
+$ meson builddir &amp;&amp; cd builddir
+$ meson compile
+$ meson test
+</code></pre>
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="https://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫交流</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （程序员思考者）
+                            <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2021/06/05/code-tips-1/">https://blog.coderzh.com/2021/06/05/code-tips-1/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+              <div class="clear"></div>
+              
+              
+              
+            </div>
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="https://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p> 微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking <br /></p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+      </li>
+      <li class="previous">
+        
+        <a href="https://blog.coderzh.com/2021/05/03/v8-2/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>认识 V8 引擎（2）- 编译跑通 12 年前的 V8</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+              <p>Copyright (c) 2017. All rights reserved.  <a href='http://www.miitbeian.gov.cn/'>粤ICP备17074587号-1</a><br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+</body>
+</html>
+
