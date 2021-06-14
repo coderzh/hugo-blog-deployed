@@ -178,7 +178,7 @@
                   <h1 class="post-title">认识 V8 引擎（3）- 编译 V8 9.1</h1>
 
                   <p class="post-byline">
-                    by  · 2021年06月14日 · 2728 Words ·
+                    by  · 2021年06月14日 · 2727 Words ·
                     ~6min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2021/2021-06-14-v8-3.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -311,7 +311,7 @@ Running: gclient sync --with_branch_heads
 <pre><code class="language-bash">$ gn gen out/x64.debug
 </code></pre>
 <p>这里要解释下 gn 和 Ninja 的关系了。首先是 Ninja，它是一个专注于速度的小型构建系统。它的诞生是源自 Google Chrome 团队的成员觉得使用 make 编译 Chrome 太慢了，于是开发了比 make 更快的 Ninja。使用 Ninja 后，Chrome 增量构建的时间降到了 6秒。可见，Ninja 相比 make，做了各种优化，比如依赖分析，这样增量构建时能编译尽量少的编译单元。</p>
-<p>Ninja 的编译配置可读性很好，但是人肉写起来非常麻烦。麻烦到很多受不了后，又写出一个又一个工具，用来生成 Ninja 的编译配置文件。于是 gn 这个工具就诞生了，并且成为了主力军。当然，类似的工具还有 CMake、meson。</p>
+<p>Ninja 的编译配置可读性很好，但是人肉写起来非常麻烦。于是很多人受不了，又写出一个又一个工具，用来生成 Ninja 的编译配置文件。于是 gn 这个工具就诞生了，并且成为了主力军。当然，类似的工具还有 CMake、meson。</p>
 <p>执行了上面的命令后，会生成一个空的编译参数文件(<code>out/x64.debug/args.gn</code>)，我们在这个文件里填具体的编译选项。</p>
 <pre><code>is_debug = true
 target_cpu = &quot;x64&quot;
