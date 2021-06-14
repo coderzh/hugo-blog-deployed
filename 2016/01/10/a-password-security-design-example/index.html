@@ -220,10 +220,12 @@
 <p>这是最重要的一步了。客户端拿到 Salt1 和 Salt2 之后，可以计算出两个加盐哈希：</p>
 <pre><code>SaltHash1 = bcrypt(SHA512(password), uid + salt1, 10)
 SaltHash2 = SHA512(SaltHash1 + uid + salt2)
-</code></pre><p>使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：</p>
+</code></pre>
+<p>使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：</p>
 <pre><code>Ticket = AES(SaltHash2, uid + time + SaltHash1 + RandKey)
 AES(SharedKey, Ticket)
-</code></pre><p>服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。</p>
+</code></pre>
+<p>服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。</p>
 <p>校验两个哈希值是否相等时，使用时间恒定的比较函数，防止试探性攻击。</p>
 <p>time 用于记录数据包发送的时间，用来防止录制回放攻击。</p>
 <p><strong>4. 加密传输</strong></p>

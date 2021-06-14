@@ -209,7 +209,8 @@ sudo apt-get install supervisor
 sudo pip install tornado
 sudo pip install pymongo
 sudo pip install beautifulsoup4
-</code></pre><p>（我安装了beautifulsoup是因为我做了个工具把博客园的博客导入过来。）
+</code></pre>
+<p>（我安装了beautifulsoup是因为我做了个工具把博客园的博客导入过来。）
 mongodb 安装：http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/</p>
 <h3 id="博客程序">博客程序</h3>
 <p>之前我用python+tornado+pymongo写了一套博客程序，只是给我自己使用，所以我放在了私有仓库<a href="http://bitbucket.org">bitbucket</a>上。
@@ -217,31 +218,38 @@ mongodb 安装：http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubun
 <pre><code>sudo mkdir /var/www
 cd /var/www
 git clone https://xxxxx.xxxx.xxx
-</code></pre><h3 id="mongodb">MongoDB</h3>
+</code></pre>
+<h3 id="mongodb">MongoDB</h3>
 <p>由于我的程序没有使用MongoDB默认的端口27017，所以我需要修改端口的设置。找到MongoDB的配置文件，修改port字段：</p>
 <pre><code>vim /etc/mongodb.conf
 #修改port=27017部分 
-</code></pre><p>停止和重启mongodb：</p>
+</code></pre>
+<p>停止和重启mongodb：</p>
 <pre><code>sudo service mongodb stop
 sudo service mongodb start
-</code></pre><h3 id="运行博客程序">运行博客程序</h3>
+</code></pre>
+<h3 id="运行博客程序">运行博客程序</h3>
 <p>博客程序运行需要的环境已经基本配置好，这时运行博客程序看是否能正常起来：</p>
 <pre><code>sudo python /var/www/coderzh/main.py --port 8001
-</code></pre><p>打开浏览器试试能不能访问: <code>http://服务器IP:8001</code>   OK，太棒了，一起正常。</p>
+</code></pre>
+<p>打开浏览器试试能不能访问: <code>http://服务器IP:8001</code>   OK，太棒了，一起正常。</p>
 <h3 id="supervisor">Supervisor</h3>
 <p>停掉刚才的main.py，这时候要上一个好东西。它就是Supervisor，它是一个进程监控守护程序。它负责开机时自动启动你配置好的程序，并且在你的程序莫名其妙挂掉时，Supervisor会自动去重启他们。可以说，它是网站稳定运行的后勤保障啊。</p>
 <p>新建一个Supervisor配置文件，放到/ect/supervisor/conf.d目录下，因为/etc/supervisor/supervisord.conf里配置了自动读取conf.d目录下的文件：</p>
 <pre><code>vim /ect/supervisor/conf.d/coderzh.conf
-</code></pre><p>编辑coderzh.conf</p>
+</code></pre>
+<p>编辑coderzh.conf</p>
 <pre><code>[program:coderzh]
 command=python /var/www/coderzh/main.py --port=8001
 directory=/var/www/coderzh
 autorestart=true
 redirect_stderr=true
-</code></pre><p>重载配置，重启Supervisior：</p>
+</code></pre>
+<p>重载配置，重启Supervisior：</p>
 <pre><code>supervisorctl reload 
 supervisorctl start all
-</code></pre><p>再次访问: <code>http://服务器IP:8001</code>   试试，嗯，一起正常。Supervisor工作了。</p>
+</code></pre>
+<p>再次访问: <code>http://服务器IP:8001</code>   试试，嗯，一起正常。Supervisor工作了。</p>
 <h3 id="nginx">Nginx</h3>
 <p>接下来上Nginx，它是一个HTTP和反向代理服务器。最终网站的访问经过域名解析到服务器后，都要通过Nginx将访问请求转到main.py中处理。理解Nginx的配置文件很重要，好吧，说实话，我当初摸Nginx，Apache之类的东西时都是一头雾水的。Nginx的主要配置文件路径在：/etc/nginx/nginx.conf</p>
 <p>为了让Nginx支持多域名，多Web服务。我修改/etc/nginx/nginx.conf 内容如下：</p>
@@ -275,7 +283,8 @@ http {
 
     include /etc/nginx/conf.d/*;
 }
-</code></pre><p>注意最后一行：include /etc/nginx/conf.d/*，所以在conf.d目录里，可以为每个网站都配置一个.conf文件。我为博客程序生产的配置：vim /etc/nginx/conf.d/coderzh.conf</p>
+</code></pre>
+<p>注意最后一行：include /etc/nginx/conf.d/*，所以在conf.d目录里，可以为每个网站都配置一个.conf文件。我为博客程序生产的配置：vim /etc/nginx/conf.d/coderzh.conf</p>
 <pre><code>upstream coderzh {
     server 127.0.0.1:8001;
 }
@@ -300,9 +309,11 @@ server {
         proxy_pass http://coderzh;
     }
 }
-</code></pre><p>重新启动nginx</p>
+</code></pre>
+<p>重新启动nginx</p>
 <pre><code>service nginx restart
-</code></pre><p>这时已经可以用80端口访问了。</p>
+</code></pre>
+<p>这时已经可以用80端口访问了。</p>
 <h3 id="dnspod">DnsPod</h3>
 <p>接下来就是通过DnsPod将域名解析到这台VPS服务器。应该不是什么问题，有问题可以查看DnsPod帮助。</p>
 <h3 id="部署完成">部署完成</h3>

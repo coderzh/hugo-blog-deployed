@@ -201,7 +201,7 @@
 <p>前两个都是习惯问题，即使改变，慢慢也就适应了。但 JIT 技术的引入，几乎解决了 JavaScript 的性能问题，使得 JavaScript 的地位更加的牢固。在 JavaScript 中应用 JIT 的典型代表，就是我们今天的主角：V8。在引入我们的主题之前，我还要简要的介绍一下什么是 JIT 技术。</p>
 <p>JIT 的全程是 just-in-time compilation，又译即时编译或实时编译。在 JIT 出现之前，高级编程语言要被计算机执行，通常通过两种方式来实现：AOT 和解释器。AOT 全程 ahead-of-time compilation，即代码预先通过编译器的编译，直接生成目标机器的机器码。因此它的运行效率最高，比如我们常用的 C/C++ 代码，通过 gcc/clang/msvc 等编译器，直接编译出机器码的二进制文件，其运行性能我们称之为原生性能。</p>
 <p>既然 AOT 性能最高，全都用 AOT 不就得了？也不尽然。AOT 要求编译的代码是静态类型的，比如一个变量的类型在运行期间不允许变成另一种类型，也不允许动态的往类型里增加属性。而 JavaScript 是动态类型的，比如下面一段代码，变量 foo 的类型可以运行时随时变化：</p>
-<pre><code>var foo = 1; // foo is a int
+<pre><code class="language-js">var foo = 1; // foo is a int
 foo = &quot;hello&quot;; // foo change to a string
 
 function Point() {
@@ -210,7 +210,8 @@ function Point() {
 foo = new Point(); // foo change to a Point
 foo.x = 10;  // foo add x property
 foo.y = 10;  // foo add y property
-</code></pre><p>foo 类型总是变来变去，给 AOT 编译器增加了很大的麻烦。同时，AOT 还有编译时间长，生成的目标文件大的问题。它不能像 Java 一样『一次编译，到处运行』，而是针对不同平台『编译多次，到处运行』。如果想像 JavaScript 一样做到『一次编写，到处运行』，就需要在用户的浏览器端，运行时实时的进行编译。这样一来，缓慢的编译过程又拖慢了代码的启动速度。</p>
+</code></pre>
+<p>foo 类型总是变来变去，给 AOT 编译器增加了很大的麻烦。同时，AOT 还有编译时间长，生成的目标文件大的问题。它不能像 Java 一样『一次编译，到处运行』，而是针对不同平台『编译多次，到处运行』。如果想像 JavaScript 一样做到『一次编写，到处运行』，就需要在用户的浏览器端，运行时实时的进行编译。这样一来，缓慢的编译过程又拖慢了代码的启动速度。</p>
 <p>JIT 结合了 AOT 和解释器两者的优势。它可以运行时根据情况在两者之间切换。比如首次启动时，使用解释器来执行，这样保证了代码的启动速度，对于一些短小的一次性执行的代码非常友好。当代码运行一段时间，编译器发现某些代码频繁的反复执行，则切换到 JIT 模式即时的将这部分代码编译成机器码，之后再运行到这类代码时，则可以做到几乎以原生的速度执行。</p>
 <p>现代语言的虚拟机几乎都拥有了 JIT 的能力。如 JVM JIT，LuaJIT。几大 JavaScript 引擎，例如微软的 Chakra、Mozilla 的 SpiderMonkey、苹果的 JavaScriptCore、谷歌的 V8，JIT 已经成了标配功能。而其中谷歌的 V8，是所有的 JavaScript 引擎的佼佼者。</p>
 <p>为什么 V8 能做到这么优秀呢？我们后面慢慢来讲。我们先来看看 V8 是怎样诞生出来的。从维基百科里了解到，V8 的创建者是一名叫 Lars Bak 的丹麦程序员。我们来看看这位大神的履历：</p>

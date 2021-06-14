@@ -178,7 +178,7 @@
                   <h1 class="post-title">程序员的黄金时代</h1>
 
                   <p class="post-byline">
-                    by  · 2016年04月17日 · 4112 Words ·
+                    by  · 2016年04月17日 · 4104 Words ·
                     ~9min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-04-17-gold-time-of-programmer.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -203,23 +203,27 @@
 <p>我想一定是搞错了，解雇老板的可能性或许还要高一些，要解雇我，必须给我一个理由。我思前想后，觉得不对劲。距离上次我在软件出错对话框里弹老板裸照已经过去一年了，虽然我只设了老板一个人的白名单，同事也一直没有揭发过我。</p>
 <p>我想是「二蛋」告的密，他一定是眼红我。但我还是要找老板问个究竟。我找到老板，老板「啪」的一声拿出一叠打印好的 A4 纸，说到：「看看！这都是什么！」</p>
 <p>我只见最上面的一张纸工工整整的写到：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">secret_key</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">6ICB5p2/5piv5Liq5aSnU0I=</span><span class="s1">&#39;</span>
-</code></pre></div><p>我大惊失色，「老板，这可是掌握公司上亿数据的加密密钥，可不带这么随便打印出来，万一让人捡了去，可不好了。」</p>
+<pre><code class="language-python">secret_key = '6ICB5p2/5piv5Liq5aSnU0I='
+</code></pre>
+<p>我大惊失色，「老板，这可是掌握公司上亿数据的加密密钥，可不带这么随便打印出来，万一让人捡了去，可不好了。」</p>
 <p>老板根本没有理睬我，继续问道：「这行代码是你写的不？」</p>
 <p>对于公司保密性最高的代码，也只能是我写的了，我只好承认。</p>
 <p>这时老板哼了一声，显得有点得意：「别以为我不知道，这段密钥是一个 Base64 加密过的字符串，我写了一个小程序，解密了一下，你过来看看！」</p>
 <p>我很好奇老板居然懂 Base64 加密，更好奇他还会写代码。我知道了，一定是二蛋写好的代码发给了老板。我凑过去看，老板找了半天没找到点哪个按钮可以执行，然后我告诉了他。接着，屏幕的赫赫的输出了解密的结果：</p>
 <pre><code>老板是个大SB
-</code></pre><p>我突然想起来了，确实有这么回事，但我不能承认，说到：「老板，这你也相信？」</p>
+</code></pre>
+<p>我突然想起来了，确实有这么回事，但我不能承认，说到：「老板，这你也相信？」</p>
 <p>老板：「这程序执行的结果千真万确，『老板是个大SB』绝对没错。 」</p>
 <p>我噗呲一笑，又感觉不太好，气氛有点尴尬，正想怎么把这事推到二蛋身上。老板继续发飙起来，你看看后面的，比如这个：</p>
 <pre><code>&lt;html&gt;
 &lt;!-- 老板是个大SB --&gt;
 &lt;/html&gt;
-</code></pre><p>还有这个单元测试案例：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">test_stupid_boss</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">老板是个大SB</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">dog_company</span><span class="p">(</span><span class="p">)</span><span class="o">.</span><span class="n">get_boss</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-</code></pre></div><p>我看着这些代码，心里想着我的代码写的还是不错的，代码工整，命名也很规范。我和老板说：「有人要诬陷我。」</p>
+</code></pre>
+<p>还有这个单元测试案例：</p>
+<pre><code class="language-python">def test_stupid_boss(self):
+    self.assertEquals('老板是个大SB', dog_company().get_boss())
+</code></pre>
+<p>我看着这些代码，心里想着我的代码写的还是不错的，代码工整，命名也很规范。我和老板说：「有人要诬陷我。」</p>
 <p>「整个公司就你写单元测试，刚才的测试代码除了你写的，还能有谁？」</p>
 <p>这时老板的逻辑性变的强了起来。的确，这一点我无可辩驳，暗暗发誓以后再也不写什么单元测试了，都是害人的东西。</p>
 <p>「那你怎么确认不是别人偷偷改了我的代码？」</p>

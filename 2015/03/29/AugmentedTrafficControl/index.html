@@ -213,48 +213,56 @@
 <p>首先，必须安装Python2.7以上版本，然后安装pip：</p>
 <pre><code>sudo apt-get install python-pip python-dev build-essential）
 sudo pip install --upgrade pip 
-</code></pre><p>然后，使用pip直接安装好ATC所有组件：</p>
+</code></pre>
+<p>然后，使用pip直接安装好ATC所有组件：</p>
 <pre><code>pip install atc_thrift atcd django-atc-api django-atc-demo-ui django-atc-profile-storage
-</code></pre><p>接下来部署Django的web工程，提供手机访问并用来配置和切换网络用的。</p>
+</code></pre>
+<p>接下来部署Django的web工程，提供手机访问并用来配置和切换网络用的。</p>
 <p>1.使用django-admin生成一个新的django工程：</p>
 <pre><code>django-admin startproject atcui
 cd atcui
-</code></pre><p>2.修改atcui/settings.py，加入ATC相关的内容：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="o">.</span><span class="o">.</span><span class="o">.</span>
-    <span class="c1"># Django ATC API</span>
-    <span class="sa"></span><span class="s1">&#39;</span><span class="s1">rest_framework</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="sa"></span><span class="s1">&#39;</span><span class="s1">atc_api</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="c1"># Django ATC Demo UI</span>
-    <span class="sa"></span><span class="s1">&#39;</span><span class="s1">bootstrap_themes</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="sa"></span><span class="s1">&#39;</span><span class="s1">django_static_jquery</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="sa"></span><span class="s1">&#39;</span><span class="s1">atc_demo_ui</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="c1"># Django ATC Profile Storage</span>
-    <span class="sa"></span><span class="s1">&#39;</span><span class="s1">atc_profile_storage</span><span class="s1">&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div><p>3.修改atcui/urls.py，urlpatterns 中加入atc的url页面：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">.</span><span class="o">.</span><span class="o">.</span>
-<span class="o">.</span><span class="o">.</span><span class="o">.</span>
-<span class="kn">from</span> <span class="nn">django.views.generic.base</span> <span class="kn">import</span> <span class="n">RedirectView</span>
+</code></pre>
+<p>2.修改atcui/settings.py，加入ATC相关的内容：</p>
+<pre><code class="language-python">INSTALLED_APPS = (
+    ...
+    # Django ATC API
+    'rest_framework',
+    'atc_api',
+    # Django ATC Demo UI
+    'bootstrap_themes',
+    'django_static_jquery',
+    'atc_demo_ui',
+    # Django ATC Profile Storage
+    'atc_profile_storage',
+)
+</code></pre>
+<p>3.修改atcui/urls.py，urlpatterns 中加入atc的url页面：</p>
+<pre><code class="language-python">...
+...
+from django.views.generic.base import RedirectView
  
-<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="o">.</span><span class="o">.</span><span class="o">.</span>
-    <span class="c1"># Django ATC API</span>
-    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;</span><span class="s1">^api/v1/</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">atc_api.urls</span><span class="s1">&#39;</span><span class="p">)</span><span class="p">)</span><span class="p">,</span>
-    <span class="c1"># Django ATC Demo UI</span>
-    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;</span><span class="s1">^atc_demo_ui/</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">atc_demo_ui.urls</span><span class="s1">&#39;</span><span class="p">)</span><span class="p">)</span><span class="p">,</span>
-    <span class="c1"># Django ATC profile storage</span>
-    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;</span><span class="s1">^api/v1/profiles/</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">atc_profile_storage.urls</span><span class="s1">&#39;</span><span class="p">)</span><span class="p">)</span><span class="p">,</span>
-    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;</span><span class="s1">^$</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">RedirectView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">/atc_demo_ui/</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">permanent</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="p">)</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div><p>4.更新一下数据库：</p>
+urlpatterns = patterns('',
+    ...
+    # Django ATC API
+    url(r'^api/v1/', include('atc_api.urls')),
+    # Django ATC Demo UI
+    url(r'^atc_demo_ui/', include('atc_demo_ui.urls')),
+    # Django ATC profile storage
+    url(r'^api/v1/profiles/', include('atc_profile_storage.urls')),
+    url(r'^$', RedirectView.as_view(url='/atc_demo_ui/', permanent=False)),
+)
+</code></pre>
+<p>4.更新一下数据库：</p>
 <pre><code>python manage.py migrate
-</code></pre><p><strong>万事俱备，就差启动了……</strong></p>
+</code></pre>
+<p><strong>万事俱备，就差启动了……</strong></p>
 <p>前面设置WiFI热点时，你还记得设置的无线网卡的名字吗？嗯，就是wlan0，这个很重要。接下来要启动网络控制的核心组件atcd，需要通过参数指定提供Wifi热点的内网用的网卡名字，外网访问的网卡名默认是eth0（如果不是也需要通过&ndash;atcd-wan指定）</p>
 <pre><code>sudo atcd --atcd-lan wlan0
-</code></pre><p>然后，启动Django的工程：</p>
+</code></pre>
+<p>然后，启动Django的工程：</p>
 <pre><code>sudo python manage.py runserver 0.0.0.0:8000
-</code></pre><p>用手机连接上去试试吧。看看虚拟机的IP，比如我设置的是192.168.6.1，手机浏览器里访问：http://192.168.6.1:8000</p>
+</code></pre>
+<p>用手机连接上去试试吧。看看虚拟机的IP，比如我设置的是192.168.6.1，手机浏览器里访问：http://192.168.6.1:8000</p>
 <p><img src="http://image.coderzh.com/ATCWeb.jpg-w" alt="ATCWeb"></p>
 <p>在手机的界面里，你可以分别对网络上行下行进行设置，主要设置的参数有：</p>
 <ol>

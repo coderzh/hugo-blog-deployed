@@ -191,55 +191,63 @@
                       
                       <h3 id="001-为什么我的-adb-老是断开连接">001. 为什么我的 adb 老是断开连接？</h3>
 <p>开着 Android Studio 连着手机，刷着 logcat，突然就出现：</p>
-<pre><code>read: unexpected EOF!
-</code></pre><p>这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。根本原因是手机 adb logcat 的缓冲区不够了，解决方法其实很简单，设大一些就可以了：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ adb logcat -G 20M
-</code></pre></div><p>查看现在缓冲区多大：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ adb logcat -g
-</code></pre></div><p>如果隔断时间被自动恢复了就再设置一次</p>
+<pre><code class="language-bash">read: unexpected EOF!
+</code></pre>
+<p>这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。根本原因是手机 adb logcat 的缓冲区不够了，解决方法其实很简单，设大一些就可以了：</p>
+<pre><code class="language-bash">$ adb logcat -G 20M
+</code></pre>
+<p>查看现在缓冲区多大：</p>
+<pre><code class="language-bash">$ adb logcat -g
+</code></pre>
+<p>如果隔断时间被自动恢复了就再设置一次</p>
 <h3 id="002-升级-android-gradle-plugin-4-后编译不过">002. 升级 Android Gradle Plugin 4 后编译不过</h3>
 <p>在 Android Gradle Plugin 4.0 之前，CMake 里通过 IMPORTED 链接预编译好的 so 文件，只有将这些 so 文件放在 jniLibs 目录里，才能打包到 APK 里，其他路径的 so 将会自动被忽略。</p>
 <p>在 Android Gradle Plugin 4.0 之后，只要在 CMake 里 IMPORTED 的 so 都会自动打包到 APK 里。而如果这个 so 又刚好也在 jniLibs 目录里的话，将会出现如下错误：</p>
-<pre><code>* What went wrong:
+<pre><code class="language-bash">* What went wrong:
 Execution failed for task ':app:mergeDebugNativeLibs'.
 &gt; A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
    &gt; More than one file was found with OS independent path 'lib/armeabi-v7a/libprebuilt.so'
-</code></pre><p>知道了原因后，解决就很简单了，对于在 CMake 中 IMPORTED 的 so：</p>
+</code></pre>
+<p>知道了原因后，解决就很简单了，对于在 CMake 中 IMPORTED 的 so：</p>
 <ol>
 <li>如果 so 需要打包进 APK 里，把 so 放到 jniLibs 之外的目录，或者在 build.gradle 里设置 packFirst</li>
 </ol>
-<pre><code>android {
+<pre><code class="language-groovy">android {
   ...
   packagingOptions {
     pickFirst &quot;**/libprebuilt.so&quot;
   }
 }
-</code></pre><ol start="2">
+</code></pre>
+<ol start="2">
 <li>如果 so 不需要打包进 APK 里，在 build.gradle 里设置 exclude</li>
 </ol>
-<pre><code>android {
+<pre><code class="language-groovy">android {
   ...
   packagingOptions {
     exclude &quot;**/libprebuilt.so&quot;
   }
 }
-</code></pre><h3 id="003-mesonbuild-文件是什么">003. meson.build 文件是什么？</h3>
+</code></pre>
+<h3 id="003-mesonbuild-文件是什么">003. meson.build 文件是什么？</h3>
 <p>在 Github 上有些工程有 meson.build 文件，表示它使用到是 <a href="https://mesonbuild.com/">meson</a> 构建系统。meson 是用 Python 写的构建系统，和 CMake 类似。meson 会生成对应系统的构建配置，比如：GNU/Linux 的 ninja，Windows 的 Visual Studio，MacOS 上的 Xcode。</p>
 <p>使用 meson 构建的知名工程：<a href="https://qemu.org/">QEMU</a>, <a href="https://github.com/systemd/systemd">systemd</a>，<a href="https://github.com/simd-everywhere/simde">simde</a>, 以及很多 <a href="https://wiki.gnome.org/Initiatives/GnomeGoals/MesonPorting">GNOME</a> 项目都支持里 meson。</p>
 <p>简单几步编译使用 meson.build 的工程：</p>
 <ol>
 <li>安装</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pip install --user meson ninja
-</code></pre></div><p>安装后按提示将 meson 所在路径加到 PATH 环境变量里。</p>
+<pre><code class="language-bash">$ pip install --user meson ninja
+</code></pre>
+<p>安装后按提示将 meson 所在路径加到 PATH 环境变量里。</p>
 <ol start="2">
 <li>编译 &amp; 测试</li>
 </ol>
-<pre><code>$ cd /path/to/source/root
+<pre><code class="language-bash">$ cd /path/to/source/root
 $ meson builddir &amp;&amp; cd builddir
 $ meson compile
 $ meson test
 </code></pre>
+
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

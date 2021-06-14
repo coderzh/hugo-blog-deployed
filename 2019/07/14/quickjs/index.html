@@ -195,47 +195,50 @@
 <p>这让我更加有兴趣去拜读一下他的代码了。QuickJS 的主页介绍简单明了，代码直接是一个压缩包，名字里带着创建的日期：<code>quickjs-2019-07-09.tar.xz</code>。这大概是我在十几年前常见的代码共享的方式，而现在已经 2019 年了，大神也没有选择 GitHub 之类的开源协作的平台，甚至让我怀疑他开发过程中是不是有使用 git 之类的源代码管理工具。大神总是特立独行的，直接丢一个压缩包，大概是在说：这就是我所有代码了，有任何问题和疑问，直接给我发邮件吧，不接受任何社交媒体联系方式。</p>
 <p>我隐约觉得我的关注重点应该还是他的代码，而不是他的人，也许他本人也是这么认为的。代码解压后，代码是用 C89 写的，不是 C++，甚至不是 C99。这大概是一种技术偏执，在 C 和 C++ 中选择 C 的神级程序员也不在少数，比如开发了 skynet 的云风，还有游戏引擎大牛 Andre Weissflog。在 Andre 的 twitter 上，他贴了一条自己的编程语言使用历程：</p>
 <pre><code>Z80 asm =&gt; 68k asm =&gt; pre-C89 =&gt; post-C89 =&gt; C++98 =&gt; C++11 =&gt; C99
-</code></pre><p>经历过 C++11 的各种便利和绚丽，最后还是返璞归真的选择了 C99，或许也给我带来了一些深层的思考：什么才是程序的本质。和 Fabrice 不同，Andre 是一个社交型程序员，甚至使得我有一种感觉，他整天都在发 twitter，但发现他的代码居然一行也没有少写。</p>
+</code></pre>
+<p>经历过 C++11 的各种便利和绚丽，最后还是返璞归真的选择了 C99，或许也给我带来了一些深层的思考：什么才是程序的本质。和 Fabrice 不同，Andre 是一个社交型程序员，甚至使得我有一种感觉，他整天都在发 twitter，但发现他的代码居然一行也没有少写。</p>
 <p>这样看来 Fabrice 选择 C89，也没有什么让人奇怪的地方了。代码解压后，自然是先编译一通。没有用 CMake，只有 MakeFile，嗯，一点问题也没有，大概我们都是被 CMake 惯坏了吧，离了它几乎都不懂得怎样编译代码了。大神总是以一种最原始最直接的方式，去组织和掌控着一切。在 linux 上，直接 make 编译，不用多长时间就顺利编过了。</p>
 <p>据说 Fabrice 是从 2017 年开启的这个 Side Project，现在的我看他的代码，由如管中窥豹，只能看到一些粗浅的东西，更多东西还得花时间细细研读。但就 QuickJS 而言，在目前的版本里，它是没有 JIT 的，所以和 Google 的 V8 性能比起来，还是有很大差距的。它将一段 JS 代码编译生成一个可执行二进制的方式，是先将 JS 编译成字节码，然后将字节码嵌入到一段 c 的代码里，然后解释执行这段字节码。</p>
 <p>比如，hello.js 代码：</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World&#34;</span><span class="p">)</span><span class="p">;</span>
-</code></pre></div><p>经过 qjsc 编译后，会生成一个这样的 hello.c 代码：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* File generated automatically by the QuickJS compiler. */</span>
+<pre><code class="language-js">console.log(&quot;Hello World&quot;);
+</code></pre>
+<p>经过 qjsc 编译后，会生成一个这样的 hello.c 代码：</p>
+<pre><code class="language-c">/* File generated automatically by the QuickJS compiler. */
 
-<span class="cp">#</span><span class="cp">include</span> <span class="cpf">&#34;quickjs-libc.h&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="k">const</span> <span class="n">uint32_t</span> <span class="n">hello_size</span> <span class="o">=</span> <span class="mi">87</span><span class="p">;</span>
+#include &quot;quickjs-libc.h&quot;
 
-<span class="k">const</span> <span class="n">uint8_t</span> <span class="n">hello</span><span class="p">[</span><span class="mi">87</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
- <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x04</span><span class="p">,</span> <span class="mh">0x0e</span><span class="p">,</span> <span class="mh">0x63</span><span class="p">,</span> <span class="mh">0x6f</span><span class="p">,</span> <span class="mh">0x6e</span><span class="p">,</span> <span class="mh">0x73</span><span class="p">,</span> <span class="mh">0x6f</span><span class="p">,</span>
- <span class="mh">0x6c</span><span class="p">,</span> <span class="mh">0x65</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x6c</span><span class="p">,</span> <span class="mh">0x6f</span><span class="p">,</span> <span class="mh">0x67</span><span class="p">,</span> <span class="mh">0x16</span><span class="p">,</span> <span class="mh">0x48</span><span class="p">,</span>
- <span class="mh">0x65</span><span class="p">,</span> <span class="mh">0x6c</span><span class="p">,</span> <span class="mh">0x6c</span><span class="p">,</span> <span class="mh">0x6f</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x57</span><span class="p">,</span> <span class="mh">0x6f</span><span class="p">,</span> <span class="mh">0x72</span><span class="p">,</span>
- <span class="mh">0x6c</span><span class="p">,</span> <span class="mh">0x64</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x65</span><span class="p">,</span> <span class="mh">0x78</span><span class="p">,</span> <span class="mh">0x61</span><span class="p">,</span> <span class="mh">0x6d</span><span class="p">,</span> <span class="mh">0x70</span><span class="p">,</span>
- <span class="mh">0x6c</span><span class="p">,</span> <span class="mh">0x65</span><span class="p">,</span> <span class="mh">0x73</span><span class="p">,</span> <span class="mh">0x2f</span><span class="p">,</span> <span class="mh">0x68</span><span class="p">,</span> <span class="mh">0x65</span><span class="p">,</span> <span class="mh">0x6c</span><span class="p">,</span> <span class="mh">0x6c</span><span class="p">,</span>
- <span class="mh">0x6f</span><span class="p">,</span> <span class="mh">0x2e</span><span class="p">,</span> <span class="mh">0x6a</span><span class="p">,</span> <span class="mh">0x73</span><span class="p">,</span> <span class="mh">0x0d</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>
- <span class="mh">0x9e</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x03</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>
- <span class="mh">0x14</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0xa0</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x38</span><span class="p">,</span>
- <span class="mh">0xc4</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">,</span> <span class="mh">0xc5</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>
- <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x04</span><span class="p">,</span> <span class="mh">0xc6</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x27</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span>
- <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0xd2</span><span class="p">,</span> <span class="mh">0x2b</span><span class="p">,</span> <span class="mh">0x8e</span><span class="p">,</span> <span class="mh">0x03</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>
-<span class="p">}</span><span class="p">;</span>
+const uint32_t hello_size = 87;
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="o">*</span><span class="n">argv</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">JSRuntime</span> <span class="o">*</span><span class="n">rt</span><span class="p">;</span>
-  <span class="n">JSContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">;</span>
-  <span class="n">rt</span> <span class="o">=</span> <span class="n">JS_NewRuntime</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
-  <span class="n">ctx</span> <span class="o">=</span> <span class="n">JS_NewContextRaw</span><span class="p">(</span><span class="n">rt</span><span class="p">)</span><span class="p">;</span>
-  <span class="n">JS_AddIntrinsicBaseObjects</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span><span class="p">;</span>
-  <span class="n">js_std_add_helpers</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">)</span><span class="p">;</span>
-  <span class="n">js_std_eval_binary</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">hello</span><span class="p">,</span> <span class="n">hello_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="p">;</span>
-  <span class="n">js_std_loop</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span><span class="p">;</span>
-  <span class="n">JS_FreeContext</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span><span class="p">;</span>
-  <span class="n">JS_FreeRuntime</span><span class="p">(</span><span class="n">rt</span><span class="p">)</span><span class="p">;</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><p>所有相关的 opcode 可以在 quickjs-opcode.h 里找到。最核心的 quickjs.c 有 47842 行。作为一个完整的 JS 引擎，代码已经是相当的精炼了，活生生的一本教科书。不过，现在的 QuickJS 在性能要求高的场景和 V8 还是没有可比性，希望这个东西不仅仅是大神闲暇之余的玩具，期待之后能带来更大的惊喜吧。</p>
+const uint8_t hello[87] = {
+ 0x01, 0x04, 0x0e, 0x63, 0x6f, 0x6e, 0x73, 0x6f,
+ 0x6c, 0x65, 0x06, 0x6c, 0x6f, 0x67, 0x16, 0x48,
+ 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72,
+ 0x6c, 0x64, 0x22, 0x65, 0x78, 0x61, 0x6d, 0x70,
+ 0x6c, 0x65, 0x73, 0x2f, 0x68, 0x65, 0x6c, 0x6c,
+ 0x6f, 0x2e, 0x6a, 0x73, 0x0d, 0x00, 0x02, 0x00,
+ 0x9e, 0x01, 0x00, 0x01, 0x00, 0x03, 0x00, 0x00,
+ 0x14, 0x01, 0xa0, 0x01, 0x00, 0x00, 0x00, 0x38,
+ 0xc4, 0x00, 0x00, 0x00, 0x42, 0xc5, 0x00, 0x00,
+ 0x00, 0x04, 0xc6, 0x00, 0x00, 0x00, 0x27, 0x01,
+ 0x00, 0xd2, 0x2b, 0x8e, 0x03, 0x01, 0x00,
+};
+
+int main(int argc, char **argv)
+{
+  JSRuntime *rt;
+  JSContext *ctx;
+  rt = JS_NewRuntime();
+  ctx = JS_NewContextRaw(rt);
+  JS_AddIntrinsicBaseObjects(ctx);
+  js_std_add_helpers(ctx, argc, argv);
+  js_std_eval_binary(ctx, hello, hello_size, 0);
+  js_std_loop(ctx);
+  JS_FreeContext(ctx);
+  JS_FreeRuntime(rt);
+  return 0;
+}
+</code></pre>
+<p>所有相关的 opcode 可以在 quickjs-opcode.h 里找到。最核心的 quickjs.c 有 47842 行。作为一个完整的 JS 引擎，代码已经是相当的精炼了，活生生的一本教科书。不过，现在的 QuickJS 在性能要求高的场景和 V8 还是没有可比性，希望这个东西不仅仅是大神闲暇之余的玩具，期待之后能带来更大的惊喜吧。</p>
 <p>有人说， Fabrice 就是 10x Engineer，即工作效率相当于 10 个程序员。立马有人站出来反对，分明是 100x Engineer 嘛。这个世界就是这样，有些人比你聪明，比你有天赋，工作效率是你的 10 倍，同时还比你努力。当你在上班划水时，他在写代码，你在吃鸡落地成盒，他又调通了一个核心模块。</p>
 
                       

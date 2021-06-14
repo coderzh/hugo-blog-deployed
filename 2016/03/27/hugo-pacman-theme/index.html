@@ -178,7 +178,7 @@
                   <h1 class="post-title">做了一个 Hugo 的主题：hugo-pacman-theme</h1>
 
                   <p class="post-byline">
-                    by  · 2016年03月27日 · 1184 Words ·
+                    by  · 2016年03月27日 · 1211 Words ·
                     ~3min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-03-27-hugo-pacman-theme.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -219,79 +219,82 @@
 <li>
 <p>首先，确保安装了最新版 Hugo。下载地址：<a href="https://github.com/spf13/hugo/releases">Hugo Release</a>，如果使用 Mac ，直接用 Homebrew 安装：</p>
 <pre><code>$ brew install hugo
-</code></pre></li>
+</code></pre>
+</li>
 <li>
 <p>把 hugo-pacman-theme clone 下来，放到你的 Hugo 站点的 themes 目录里（Hugo 的使用方法详见：<a href="http://www.gohugo.org/">http://www.gohugo.org/</a>）。</p>
 <pre><code>$ cd themes
 $ git clone https://github.com/coderzh/hugo-pacman-theme
-</code></pre></li>
+</code></pre>
+</li>
 <li>
 <p>配置文件，拷贝一份或者参考：<code>hugo-pacman-theme/exampleSite/config.toml</code>，配置如下：</p>
-<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">BaseURL</span> <span class="p">=</span> <span class="s2">&#34;http://coderzh.github.io/&#34;</span>
-<span class="nx">LanguageCode</span> <span class="p">=</span> <span class="s2">&#34;zh-CN&#34;</span>
-<span class="nx">HasCJKLanguage</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="nx">Title</span> <span class="p">=</span> <span class="s2">&#34;Hugo PacMan Theme Demo&#34;</span>
-<span class="nx">Theme</span> <span class="p">=</span> <span class="s2">&#34;hugo-pacman-theme&#34;</span>
-<span class="nx">pygmentsStyle</span> <span class="p">=</span> <span class="s2">&#34;default&#34;</span>
-<span class="nx">pygmentsUseClasses</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="nx">RSSUri</span> <span class="p">=</span> <span class="s2">&#34;feed.xml&#34;</span>
+<pre><code class="language-toml">BaseURL = &quot;http://coderzh.github.io/&quot;
+LanguageCode = &quot;zh-CN&quot;
+HasCJKLanguage = true
+Title = &quot;Hugo PacMan Theme Demo&quot;
+Theme = &quot;hugo-pacman-theme&quot;
+pygmentsStyle = &quot;default&quot;
+pygmentsUseClasses = true
+RSSUri = &quot;feed.xml&quot;
 
-<span class="p">[</span><span class="nx">Author</span><span class="p">]</span>
-  <span class="nx">Name</span> <span class="p">=</span> <span class="s2">&#34;coderzh&#34;</span>
+[Author]
+  Name = &quot;coderzh&quot;
 
-<span class="p">[</span><span class="nx">Params</span><span class="p">]</span>
-  <span class="nx">AuthorHomepage</span> <span class="p">=</span> <span class="s2">&#34;http://blog.coderzh.com&#34;</span>
-  <span class="nx">BottomIntroduce</span> <span class="p">=</span> <span class="s2">&#34;Introduce1 &lt;br/&gt; Introduce2&#34;</span>
-  <span class="nx">Description</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
-  <span class="nx">Subtitle</span> <span class="p">=</span> <span class="s2">&#34;subtitle&#34;</span>
-  <span class="nx">Weibo</span> <span class="p">=</span> <span class="s2">&#34;coderzh&#34;</span>
-  <span class="nx">WeiboID</span> <span class="p">=</span> <span class="mi">1816308191</span>
-  <span class="nx">Twitter</span> <span class="p">=</span> <span class="s2">&#34;coderzh&#34;</span>
-  <span class="nx">GitHub</span> <span class="p">=</span> <span class="s2">&#34;coderzh&#34;</span>
-  <span class="nx">Facebook</span> <span class="p">=</span> <span class="s2">&#34;coderzh&#34;</span>
-  <span class="nx">LinkIn</span> <span class="p">=</span> <span class="s2">&#34;coderzh&#34;</span>
-  <span class="nx">Imglogo</span> <span class="p">=</span> <span class="s2">&#34;img/logo.svg&#34;</span>
-  <span class="nx">AuthorImg</span> <span class="p">=</span> <span class="s2">&#34;img/author.jpg&#34;</span>
-  <span class="c"># 日期时间格式</span>
-  <span class="nx">DateFormat</span> <span class="p">=</span> <span class="s2">&#34;2006年01月02日&#34;</span>
-  <span class="nx">MonthFormat</span> <span class="p">=</span> <span class="s2">&#34;2006年01月&#34;</span>
-  <span class="nx">FancyBox</span> <span class="p">=</span> <span class="kc">true</span>
+[Params]
+  AuthorHomepage = &quot;http://blog.coderzh.com&quot;
+  BottomIntroduce = &quot;Introduce1 &lt;br/&gt; Introduce2&quot;
+  Description = &quot;&quot;
+  Subtitle = &quot;subtitle&quot;
+  Weibo = &quot;coderzh&quot;
+  WeiboID = 1816308191
+  Twitter = &quot;coderzh&quot;
+  GitHub = &quot;coderzh&quot;
+  Facebook = &quot;coderzh&quot;
+  LinkIn = &quot;coderzh&quot;
+  Imglogo = &quot;img/logo.svg&quot;
+  AuthorImg = &quot;img/author.jpg&quot;
+  # 日期时间格式
+  DateFormat = &quot;2006年01月02日&quot;
+  MonthFormat = &quot;2006年01月&quot;
+  FancyBox = true
 
-  <span class="c"># 使用多说评论</span>
-  <span class="c">#[Params.DuoShuo]</span>
-  <span class="c">#  ShortName = &#34;coderzh&#34;</span>
+  # 使用多说评论
+  #[Params.DuoShuo]
+  #  ShortName = &quot;coderzh&quot;
 
-  <span class="c"># 使用 Disqus 评论</span>
-  <span class="p">[</span><span class="nx">Params</span><span class="p">.</span><span class="nx">Disqus</span><span class="p">]</span>
-    <span class="nx">ShortName</span> <span class="p">=</span> <span class="s2">&#34;coderzh&#34;</span>
+  # 使用 Disqus 评论
+  [Params.Disqus]
+    ShortName = &quot;coderzh&quot;
 
-  <span class="c"># Google 统计</span>
-  <span class="p">[</span><span class="nx">Params</span><span class="p">.</span><span class="nx">GoogleAnalytics</span><span class="p">]</span>
-    <span class="nx">ID</span> <span class="p">=</span> <span class="s2">&#34;UA-10147768-2&#34;</span>
+  # Google 统计
+  [Params.GoogleAnalytics]
+    ID = &quot;UA-10147768-2&quot;
 
-  <span class="c"># 多语言字符串</span>
-  <span class="p">[</span><span class="nx">Params</span><span class="p">.</span><span class="nx">Strings</span><span class="p">]</span>
-    <span class="nx">Search</span> <span class="p">=</span> <span class="s2">&#34;搜索&#34;</span>
-    <span class="nx">PageNotFound</span> <span class="p">=</span> <span class="s2">&#34;你访问的页面不存在&#34;</span>
-    <span class="nx">ShowSideBar</span> <span class="p">=</span> <span class="s2">&#34;显示侧边栏&#34;</span>
-    <span class="nx">HideSideBar</span> <span class="p">=</span> <span class="s2">&#34;隐藏侧边栏&#34;</span>
-    <span class="nx">Categories</span> <span class="p">=</span> <span class="s2">&#34;分类&#34;</span>
-    <span class="nx">Archive</span> <span class="p">=</span> <span class="s2">&#34;归档&#34;</span>
-    <span class="nx">Tags</span> <span class="p">=</span> <span class="s2">&#34;标签&#34;</span>
-    <span class="nx">TagCloud</span> <span class="p">=</span> <span class="s2">&#34;标签云&#34;</span>
-    <span class="nx">Rss</span> <span class="p">=</span> <span class="s2">&#34;RSS 订阅&#34;</span>
-    <span class="nx">TableOfContents</span> <span class="p">=</span> <span class="s2">&#34;文章目录&#34;</span>
+  # 多语言字符串
+  [Params.Strings]
+    Search = &quot;搜索&quot;
+    PageNotFound = &quot;你访问的页面不存在&quot;
+    ShowSideBar = &quot;显示侧边栏&quot;
+    HideSideBar = &quot;隐藏侧边栏&quot;
+    Categories = &quot;分类&quot;
+    Archive = &quot;归档&quot;
+    Tags = &quot;标签&quot;
+    TagCloud = &quot;标签云&quot;
+    Rss = &quot;RSS 订阅&quot;
+    TableOfContents = &quot;文章目录&quot;
 
-<span class="p">[</span><span class="nx">Menu</span><span class="p">]</span>
-  <span class="p">[</span><span class="p">[</span><span class="nx">Menu</span><span class="p">.</span><span class="nx">Main</span><span class="p">]</span><span class="p">]</span>
-    <span class="nx">Name</span> <span class="p">=</span> <span class="s2">&#34;首页&#34;</span>
-    <span class="nx">URL</span> <span class="p">=</span> <span class="s2">&#34;/&#34;</span>
-    <span class="nx">Weight</span> <span class="p">=</span> <span class="mi">1</span>
-  <span class="p">[</span><span class="p">[</span><span class="nx">Menu</span><span class="p">.</span><span class="nx">Main</span><span class="p">]</span><span class="p">]</span>
-    <span class="nx">Name</span> <span class="p">=</span> <span class="s2">&#34;关于&#34;</span>
-    <span class="nx">URL</span> <span class="p">=</span> <span class="s2">&#34;/about&#34;</span>
-    <span class="nx">Weight</span> <span class="p">=</span> <span class="mi">2</span>
-</code></pre></div></li>
+[Menu]
+  [[Menu.Main]]
+    Name = &quot;首页&quot;
+    URL = &quot;/&quot;
+    Weight = 1
+  [[Menu.Main]]
+    Name = &quot;关于&quot;
+    URL = &quot;/about&quot;
+    Weight = 2
+</code></pre>
+</li>
 </ol>
 <h3 id="最后">最后</h3>
 <p>该主题参考的 <a href="https://github.com/A-limon/pacman">Pacman</a>，使用 Hugo 的模板语法纯手工一行一行打造。有需要的朋友尽管拿去使用，有问题欢迎反馈：</p>

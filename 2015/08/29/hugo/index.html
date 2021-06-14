@@ -223,29 +223,35 @@
 <p>Hugo的安装方式有两种，一种是直接下载编译好的Hugo二进制文件。如果只是使用Hugo推荐用这种方式。另一种方式是获取Hugo的源码，自己编译。由于各种不可预料的网络问题，第二种方式不是那么轻易能成功，虽然最后我还是折腾出来了。</p>
 <p>Hugo二进制下载地址：<a href="https://github.com/spf13/hugo/releases">https://github.com/spf13/hugo/releases</a></p>
 <p>下载下来后，只有一个叫hugo或者hugo.exe的程序，接下来开始生成自己的站点：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo new site mysite
-</code></pre></div><p>然后hugo会自动生成这样一个目录结构：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  ▸ archetypes/
+<pre><code class="language-bash">$ hugo new site mysite
+</code></pre>
+<p>然后hugo会自动生成这样一个目录结构：</p>
+<pre><code class="language-bash">  ▸ archetypes/
   ▸ content/
   ▸ layouts/
   ▸ static/
     config.toml
-</code></pre></div><p>简要介绍一下，config.toml是网站的配置文件，这是一个TOML文件，全称是Tom&rsquo;s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。如果你不喜欢这种格式，你可以将config.toml替换为YAML格式的config.yaml，或者json格式的config.json。hugo都支持。</p>
+</code></pre>
+<p>简要介绍一下，config.toml是网站的配置文件，这是一个TOML文件，全称是Tom&rsquo;s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。如果你不喜欢这种格式，你可以将config.toml替换为YAML格式的config.yaml，或者json格式的config.json。hugo都支持。</p>
 <p>content目录里放的是你写的markdown文章，layouts目录里放的是网站的模板文件，static目录里放的是一些图片、css、js等资源。</p>
 <p>进入生成的site目录：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> mysite
-</code></pre></div><p>创建一个页面：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo new about.md
-</code></pre></div><p>如果是博客日志，最好将md文件放在content的post目录里。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo new post/first.md
-</code></pre></div><p>执行完后，会在content/post目录自动生成一个MarkDown格式的first.md文件：</p>
+<pre><code class="language-bash">$ cd mysite
+</code></pre>
+<p>创建一个页面：</p>
+<pre><code class="language-bash">$ hugo new about.md
+</code></pre>
+<p>如果是博客日志，最好将md文件放在content的post目录里。</p>
+<pre><code class="language-bash">$ hugo new post/first.md
+</code></pre>
+<p>执行完后，会在content/post目录自动生成一个MarkDown格式的first.md文件：</p>
 <pre><code>+++
 date = &quot;2015-01-08T08:36:54-07:00&quot;
 draft = true
 title = &quot;first&quot;
  
 +++
-</code></pre><p>+++可以替换为Jekyll一样的---，里面的内容是这篇文章的一些信息。下面就可以开始写你的文章内容，比如：</p>
+</code></pre>
+<p>+++可以替换为Jekyll一样的---，里面的内容是这篇文章的一些信息。下面就可以开始写你的文章内容，比如：</p>
 <pre><code>+++
 date = &quot;2015-01-08T08:36:54-07:00&quot;
 draft = true
@@ -259,15 +265,19 @@ title = &quot;first&quot;
  1. bbb
  1. ccc
 
-</code></pre><p>OK，刚才的about.md也有内容，该看看最后的效果了。然后你屁颠屁颠的使用hugo server启动，打开浏览器里一看，发现毛都没有！这是肿么了！</p>
+</code></pre>
+<p>OK，刚才的about.md也有内容，该看看最后的效果了。然后你屁颠屁颠的使用hugo server启动，打开浏览器里一看，发现毛都没有！这是肿么了！</p>
 <p>这是Hugo对初学者非常不友好的地方，默认生成的网站是没有任何皮肤模板的。为了看看第一个写的示例，还得去Github上把一个网页模板下载下来。如果你网络够好，网速够快，你可以在刚才的目录将Hugo官方的所有模板都下载下来：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone --recursive https://github.com/spf13/hugoThemes themes
-</code></pre></div><p>我尝试过，也失败过，且从未成功一次性将所有的模板下载下来。所以，我们还是老老实实只下载其中一个模板来看看效果吧：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> themes
+<pre><code class="language-bash">$ git clone --recursive https://github.com/spf13/hugoThemes themes
+</code></pre>
+<p>我尝试过，也失败过，且从未成功一次性将所有的模板下载下来。所以，我们还是老老实实只下载其中一个模板来看看效果吧：</p>
+<pre><code class="language-bash">$ cd themes
 $ git clone https://github.com/spf13/hyde.git
-</code></pre></div><p>启动本地调试：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo server --theme<span class="o">=</span>hyde --buildDrafts --watch
-</code></pre></div><p>浏览器里打开：http://127.0.0.1:1313</p>
+</code></pre>
+<p>启动本地调试：</p>
+<pre><code class="language-bash">$ hugo server --theme=hyde --buildDrafts --watch
+</code></pre>
+<p>浏览器里打开：http://127.0.0.1:1313</p>
 <p><img src="http://image.coderzh.com/HugoFirstPost.png-w" alt="HugoFirstPost"></p>
 <p>&ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动去刷新浏览器，不需要自己手工去刷新浏览器，非常方便。</p>
 <p>如果你看了上面的说明已经有冲动去试一试Hugo了，我的目的也算达到了，接下来你需要的只是查看官方的说明文档就够了，所以具体的一些设置我就不重复了。</p>
@@ -295,7 +305,8 @@ Update(2015-09-03): 已经提交<a href="https://github.com/spf13/hugo/pull/1392
 解决方法：在config.yaml里加入：</li>
 </ol>
 <pre><code>rssuri: &quot;feed.xml&quot;
-</code></pre><h3 id="jekyll迁移到hugo">Jekyll迁移到Hugo</h3>
+</code></pre>
+<h3 id="jekyll迁移到hugo">Jekyll迁移到Hugo</h3>
 <p>Jekyll的文章内容迁移到Hugo中，大部分内容是兼容的，但也有一些地方是不兼容的。主要有以下几个地方需要修改：</p>
 <ol>
 <li>Jekyll文章能从文件名里的日期部分读取到日期，并将剩余的部分当做的页面url的名称，比如：2015-08-29-first.md。而Hugo只认md文件里的date字段，url的名称如果用文件名的话将会使用完整的文件名（不会去除日期部分）。为了兼容，必须在md的Front Matter里写入url字段，用来说明该页面的相对url地址，从而保持兼容。</li>
@@ -312,20 +323,23 @@ Update(2015-09-03): 已经提交<a href="https://github.com/spf13/hugo/pull/1392
 <p>Blog地址：<a href="http://blog.coderzh.com">http://blog.coderzh.com</a></p>
 <p>Github: <a href="https://github.com/coderzh/coderzh-hugo-blog">https://github.com/coderzh/coderzh-hugo-blog</a></p>
 <p><strong>Update(2015-10-08) 国庆在家给Hugo提了个PR，已经将Jekyll迁移功能集成到了Hugo里，pull最新的Hugo代码，编译Hugo，然后可以执行：</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo import jekyll YourJekyllDir TargetDir
-</code></pre></div><p>将自动把你的Jekyll站点转换成Hugo的站点。欢迎试用并反馈。</p>
+<pre><code class="language-bash">$ hugo import jekyll YourJekyllDir TargetDir
+</code></pre>
+<p>将自动把你的Jekyll站点转换成Hugo的站点。欢迎试用并反馈。</p>
 <h3 id="关于部署">关于部署</h3>
 <p>假设你需要部署在 <code>GitHub Pages</code> 上，首先在GitHub上创建一个Repository，命名为：<code>coderzh.github.io</code> （coderzh替换为你的github用户名）。</p>
 <p>在站点根目录执行 <code>Hugo</code> 命令生成最终页面：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --theme<span class="o">=</span>hyde --baseUrl<span class="o">=</span><span class="s2">&#34;http://coderzh.github.io/&#34;</span>
-</code></pre></div><p>如果一切顺利，所有静态页面都会生成到 <code>public</code> 目录，将pubilc目录里所有文件 <code>push</code> 到刚创建的Repository的 <code>master</code> 分支。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> public
+<pre><code class="language-bash">$ hugo --theme=hyde --baseUrl=&quot;http://coderzh.github.io/&quot;
+</code></pre>
+<p>如果一切顺利，所有静态页面都会生成到 <code>public</code> 目录，将pubilc目录里所有文件 <code>push</code> 到刚创建的Repository的 <code>master</code> 分支。</p>
+<pre><code class="language-bash">$ cd public
 $ git init
 $ git remote add origin https://github.com/coderzh/coderzh.github.io.git
 $ git add -A
-$ git commit -m <span class="s2">&#34;first commit&#34;</span>
+$ git commit -m &quot;first commit&quot;
 $ git push -u origin master
-</code></pre></div><p>浏览器里访问：<code>http://coderzh.github.io/</code></p>
+</code></pre>
+<p>浏览器里访问：<code>http://coderzh.github.io/</code></p>
 <p>自动部署的脚本可以参考我的Repo里的<code>deploy.py</code>脚本：<a href="https://github.com/coderzh/coderzh-hugo-blog">https://github.com/coderzh/coderzh-hugo-blog</a></p>
 <p>全自动化部署到GitHub和GitCafe，见我的另一篇博客：<a href="http://blog.coderzh.com/2015/09/13/use-webhook-automated-deploy-hugo/">通过webhook将Hugo自动部署至GitHub Pages和GitCafe Pages</a></p>
 <h3 id="hugo中文文档">Hugo中文文档</h3>

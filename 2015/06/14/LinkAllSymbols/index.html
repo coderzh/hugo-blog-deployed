@@ -206,14 +206,16 @@
 <p>使用/INCLUDE 指定某个符号强制链接是可以的。但是，假如静态库中有成百上千个符号需要强制/INCLUDE，怎么办？</p>
 <p>所以，最好的方法，也是上面讨论/OPT:NOREF BUG的帖子里有人提到的方法，就是在代码中使用：</p>
 <pre><code>#pragma comment(linker, &quot;/include:?emptyreference@Noisy@@QAEXXZ&quot;)
-</code></pre><p>通过上面的方法，可以让链接器强制include一个符号，include:后面的是符号名称。如果要强制include静态库中所有符号，需要把静态库中的所有符号找出来，然后通过上面的方法强制include。</p>
+</code></pre>
+<p>通过上面的方法，可以让链接器强制include一个符号，include:后面的是符号名称。如果要强制include静态库中所有符号，需要把静态库中的所有符号找出来，然后通过上面的方法强制include。</p>
 <p>人手工找出所有Symbols，然后添加上面的代码是不太靠谱的。一方面Symbols的格式可读性太差不好维护，另一方面假如静态库符号信息修改了，这个维护代价就更大了。所以，必须让这个过程自动完成。</p>
 <p>查看静态库所有符号列表，Linux里可以使用<a href="https://sourceware.org/binutils/docs/binutils/nm.html">nm</a> ，Windows平台可以使用<a href="https://support.microsoft.com/en-us/kb/177429">dumpbin</a>。</p>
 <p>执行dumbin.exe需要注意，必须在Visual Studio的开发命令行环境才能执行。不过有个小技巧可以让你不必在Developer Command Prompt执行，就是假如是VS2013环境，建一个批处理，在开头加上：</p>
 <pre><code>@echo off
 if defined VS120COMNTOOLS (
     call &quot;%VS120COMNTOOLS%\vsvars32.bat&quot;)
-</code></pre><p>我们使用dumpbin /LINKERMEMBER xxx.lib，可以列出所有的符号名字，比如查看静态库MyLib.lib所有符号：</p>
+</code></pre>
+<p>我们使用dumpbin /LINKERMEMBER xxx.lib，可以列出所有的符号名字，比如查看静态库MyLib.lib所有符号：</p>
 <pre><code>d:\Code\Cpp\LinkAllSymbols\Debug&gt;dumpbin.exe /linkermember:1 MyLib.lib
 Microsoft (R) COFF/PE Dumper Version 12.00.30501.0
 Copyright (C) Microsoft Corporation.  All rights reserved.
@@ -252,53 +254,56 @@ correct header end
            C .rtc$IMZ
            C .rtc$TMZ
          15A .text$mn
-</code></pre><p>因此，只需要执行dumpbin，并且在输出结果中抽取出所有的符号名称，然后自动生成#pragma comment(linker, &ldquo;/include:xxx&rdquo;)代码即可。</p>
+</code></pre>
+<p>因此，只需要执行dumpbin，并且在输出结果中抽取出所有的符号名称，然后自动生成#pragma comment(linker, &ldquo;/include:xxx&rdquo;)代码即可。</p>
 <p>于是，我写了一个Python脚本，执行dumpbin，然后通过正则表达式拿到所有符号名称，自动生成强制include了所有符号的头文件。关键代码如下：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">re</span>
+<pre><code class="language-python">import re
  
-<span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;</span><span class="s2">\</span><span class="s2">s+.*</span><span class="s2">\</span><span class="s2">s([</span><span class="s2">\</span><span class="s2">?_]+.*)</span><span class="s2">&#34;</span><span class="p">)</span>
+regex = re.compile(r&quot;\s+.*\s([\?_]+.*)&quot;)
  
-<span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span>
+exclude = []
  
-<span class="k">def</span> <span class="nf">gen_header_file_for_lib</span><span class="p">(</span><span class="n">lib_path</span><span class="p">,</span> <span class="n">header_path</span><span class="p">)</span><span class="p">:</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">dumpbin.exe</span><span class="s1">&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;</span><span class="s1">/linkermember:1</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">lib_path</span><span class="p">]</span>
-    <span class="n">lines</span> <span class="o">=</span> <span class="n">execute_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
-    <span class="n">symbols</span> <span class="o">=</span> <span class="n">find_matches</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">regex</span><span class="p">,</span> <span class="n">exclude</span><span class="p">)</span>
+def gen_header_file_for_lib(lib_path, header_path):
+    cmd = ['dumpbin.exe','/linkermember:1', lib_path]
+    lines = execute_command(cmd)
+    symbols = find_matches(lines, regex, exclude)
  
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">header_path</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">w</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">header_guard</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;</span><span class="s2">LINK_ALL_SYMBOLS_H_</span><span class="s2">&#34;</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">#ifndef </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">header_guard</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">#define </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">header_guard</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">// Generated by GenLinkerSymbols.py. Do not modify! </span><span class="se">\n</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+    with open(header_path, 'w') as f:
+        header_guard = &quot;LINK_ALL_SYMBOLS_H_&quot;
+        f.write(&quot;#ifndef &quot; + header_guard + '\n')
+        f.write(&quot;#define &quot; + header_guard + '\n')
+        f.write(&quot;// Generated by GenLinkerSymbols.py. Do not modify! \n\n&quot;)
  
-        <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
-            <span class="n">pragma_line</span> <span class="o">=</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">#pragma comment(linker, </span><span class="s1">&#34;</span><span class="s1">/include:</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">symbol</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="s1">&#34;</span><span class="s1">)</span><span class="s1">&#39;</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pragma_line</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">#endif // </span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">header_guard</span> <span class="o">+</span> <span class="sa"></span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        for symbol in symbols:
+            pragma_line = '#pragma comment(linker, &quot;/include:' + symbol + '&quot;)'
+            f.write(pragma_line + '\n')
+        f.write(&quot;\n#endif // &quot; + header_guard + '\n')
  
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="s2">Link symbols count: </span><span class="si">%s</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span><span class="p">)</span>
+    print(&quot;Link symbols count: %s&quot; % len(symbols))
  
-<span class="k">def</span> <span class="nf">find_matches</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">regex</span><span class="p">,</span> <span class="n">exclude_list</span><span class="p">)</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="p">:</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="p">)</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">return</span> <span class="bp">None</span>
+def find_matches(lines, regex, exclude_list):
+    def match(line):
+        m = regex.match(line)
+        if m:
+            return m.group(1).split()[0]
+        return None
  
-    <span class="k">def</span> <span class="nf">exclude_filter</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
+    def exclude_filter(line):
+        if not line:
+            return False
  
-        <span class="k">for</span> <span class="n">exclude</span> <span class="ow">in</span> <span class="n">exclude_list</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">exclude</span><span class="p">)</span> <span class="o">&gt;</span><span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">False</span>
-        <span class="k">return</span> <span class="bp">True</span>
+        for exclude in exclude_list:
+            if line.find(exclude) &gt;= 0:
+                return False
+        return True
  
-    <span class="n">matches</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">exclude_filter</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">lines</span><span class="p">)</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span><span class="p">)</span>
-</code></pre></div><p>结合Visual Studio工程配置里的Post-Build Event，就可以在编译静态库之后自动更新头文件了。比如：</p>
+    matches = filter(exclude_filter, map(match, lines))
+    return list(set(matches))
+</code></pre>
+<p>结合Visual Studio工程配置里的Post-Build Event，就可以在编译静态库之后自动更新头文件了。比如：</p>
 <pre><code>python ..\GenSymbolsHeader.py $(OutDir)$(TargetName)$(TargetExt) ..\Include\LinkAllSymbols.h
-</code></pre><p>在使用该静态库的工程代码中，只需要#include &ldquo;LinkAllSymbols.h&rdquo; 就可以了。</p>
+</code></pre>
+<p>在使用该静态库的工程代码中，只需要#include &ldquo;LinkAllSymbols.h&rdquo; 就可以了。</p>
 <h3 id="对比">对比</h3>
 <p>使用OpenCppCoverage进行代码覆盖率测试，对比如下：</p>
 <p>正常情况下，不强制在linker时include静态库所有符号时，代码覆盖率结果为：</p>

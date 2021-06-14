@@ -193,24 +193,29 @@
 <p>在上一篇博客<a href="http://blog.coderzh.com/2015/08/29/hugo/">使用hugo搭建个人博客站点</a>  里提到，Hugo强制将所有路径都变成了小写。小写路径虽好，但是如果之前你的网站路径不是全小写的，迁移过来路径发生变化，将会导致路径失效，是不可接受的。</p>
 <p>上文提到，我硬改了Hugo代码，让它不要强制转换小写路径。这样的做法不够优雅，假如别人也和我有一样的需求怎么办？我们还是希望Hugo本身就能够提供这样的功能。于是，我决定把代码改的优雅一些，给Hugo作者提交一个Pull Request，将这个功能合并到Hugo代码里。</p>
 <p>于是，我在config文件里增加了一个选项：</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Do not make the url/path to lowercase</span>
-<span class="n">disablePathToLower</span><span class="p">:</span> <span class="n">true</span> 
-</code></pre></div><p>增加一个开关其实很简单，只需要在command/hugo.go里的LoadDefaultSettings函数里增加一行：</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">viper</span><span class="p">.</span><span class="nf">SetDefault</span><span class="p">(</span><span class="s">&#34;DisablePathToLower&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
-</code></pre></div><p>开关生效的实现也很简单，找到最终转换为小写的函数，加入disablePathToLower开关的判断：</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">MakePathSanitized</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">viper</span><span class="p">.</span><span class="nf">GetBool</span><span class="p">(</span><span class="s">&#34;DisablePathToLower&#34;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nf">MakePath</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="nf">MakePath</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>之前的函数名叫MakePathToLower，由于我在内部加了个开关，于是名字不适用了，于是修改为了：MakePathSanitized。</p>
+<pre><code class="language-python"># Do not make the url/path to lowercase
+disablePathToLower: true 
+</code></pre>
+<p>增加一个开关其实很简单，只需要在command/hugo.go里的LoadDefaultSettings函数里增加一行：</p>
+<pre><code class="language-go">viper.SetDefault(&quot;DisablePathToLower&quot;, false)
+</code></pre>
+<p>开关生效的实现也很简单，找到最终转换为小写的函数，加入disablePathToLower开关的判断：</p>
+<pre><code class="language-go">func MakePathSanitized(s string) string {
+    if viper.GetBool(&quot;DisablePathToLower&quot;) {
+        return MakePath(s)
+    } else {
+        return strings.ToLower(MakePath(s))
+    }
+}
+</code></pre>
+<p>之前的函数名叫MakePathToLower，由于我在内部加了个开关，于是名字不适用了，于是修改为了：MakePathSanitized。</p>
 <p>修改完成之后，需要把测试案例跑一遍，保证你的修改不会破坏原来的逻辑。</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">test</span> <span class="p">.</span><span class="o">/</span><span class="o">...</span>
-</code></pre></div><p>当然，也要保证编译是成功的：</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">build</span>
-</code></pre></div><p>在我修改的第一个版本时，我犯了一个错误，导致测试案例没有通过。原因是第一个版本我增加的配置选项是PathToLower，默认值是true。而有些测试案例是没有去设置PathToLower的，默认读到的会是false，从而导致执行失败的执行结果。所以，config里增加的选项，默认值尽量是false吧，也会好理解一些。于是就有了：disablePathToLower</p>
+<pre><code class="language-go">go test ./...
+</code></pre>
+<p>当然，也要保证编译是成功的：</p>
+<pre><code class="language-go">go build
+</code></pre>
+<p>在我修改的第一个版本时，我犯了一个错误，导致测试案例没有通过。原因是第一个版本我增加的配置选项是PathToLower，默认值是true。而有些测试案例是没有去设置PathToLower的，默认读到的会是false，从而导致执行失败的执行结果。所以，config里增加的选项，默认值尽量是false吧，也会好理解一些。于是就有了：disablePathToLower</p>
 <p>提交Pull Request时，有几点需要注意的：</p>
 <ol>
 <li>将自己的修改合并成一个commit再提交Pull Request。（这样在主Resp里更加规范和整洁）</li>

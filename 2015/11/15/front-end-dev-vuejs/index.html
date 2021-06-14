@@ -197,13 +197,15 @@
   &lt;p&gt;{{message}}&lt;/p&gt;
   &lt;input v-model=&quot;message&quot;&gt;
 &lt;/div&gt;
-</code></pre><div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">demo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">(</span><span class="p">{</span>
-  <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#demo&#39;</span><span class="p">,</span>
-  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Hello Vue.js!&#39;</span>
-  <span class="p">}</span>
-<span class="p">}</span><span class="p">)</span>
-</code></pre></div><p>上面例子的效果是在 input 里输入任何内容，会自动出现在 <code>&lt;p&gt;</code> 里。非常简单直观的进行了数据绑定，只要数据发生变化， View 会自动发生变化。这就是数据驱动的。</p>
+</code></pre>
+<pre><code class="language-javascript">var demo = new Vue({
+  el: '#demo',
+  data: {
+    message: 'Hello Vue.js!'
+  }
+})
+</code></pre>
+<p>上面例子的效果是在 input 里输入任何内容，会自动出现在 <code>&lt;p&gt;</code> 里。非常简单直观的进行了数据绑定，只要数据发生变化， View 会自动发生变化。这就是数据驱动的。</p>
 <p>并不是每个人都需要或者有机会去开发一个大型的 Web 应用，那些流行的框架又需要一定的学习曲线，而且很多功能并不需要使用到。或者说，你只想干一件简单的事情，但是由于引入了那些框架，使得自己不得不按照框架的规定定义一个又一个东西，最后仅仅是为了实现一个简单的功能。</p>
 <p>所以，<a href="http://cn.vuejs.org/">Vue.js</a> 非常适合用于一些小型项目（当然，大型项目也适合。），因为可以快速上手，简单的看下它的文档就可以开始动手了。而且， Vue.js 的执行速度也非常的快。</p>
 <p>在 <a href="https://github.com/lhorie/todomvc-perf-comparison">TodoMVC Benchmark</a> 的评测中，得出的综合评价：Mercury, <strong>Vue</strong> and Mithril are king.</p>

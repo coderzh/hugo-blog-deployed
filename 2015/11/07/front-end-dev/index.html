@@ -204,22 +204,23 @@
 <p><img src="http://image.coderzh.com/ajax.jpg" alt="Ajax"></p>
 <p>Ajax 的全称是 Asynchronous JavaScript and XML , 即异步 JavaScript 和 XML 技术。当时炒的神乎其神，而其根本本质其实很简单，就是 XMLHttpRequest ，然后配合 DOM 的操作，就可以变化出各种不同的花样出来。 XMLHttpRequest 负责和服务器交互，返回数据后通过 DOM 的操作动态实时的更新界面元素。</p>
 <p>然而，一个简简单单的 Ajax ，各个浏览器的支持却不同。为了兼容不同的浏览器，导致写 Ajax 变得异常痛苦。比如，一个 XmlHttpRequest 的跨浏览器的通用写法就必须写成这样：</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Provide the XMLHttpRequest class for IE 5.x-6.x:
-</span><span class="c1"></span><span class="c1">// Other browsers (including IE 7.x-8.x) ignore this
-</span><span class="c1"></span><span class="c1">//   when XMLHttpRequest is predefined
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">xmlHttp</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">XMLHttpRequest</span> <span class="o">!=</span> <span class="s2">&#34;undefined&#34;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">xmlHttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">aVersions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;Msxml2.XMLHttp.5.0&#34;</span><span class="p">,</span> <span class="s2">&#34;Msxml2.XMLHttp.4.0&#34;</span><span class="p">,</span> <span class="s2">&#34;Msxml2.XMLHttp.3.0&#34;</span><span class="p">,</span> <span class="s2">&#34;Msxml2.XMLHttp&#34;</span><span class="p">,</span> <span class="s2">&#34;Microsoft.XMLHttp&#34;</span><span class="p">]</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">aVersions</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">try</span> <span class="p">{</span>
-            <span class="nx">xmlHttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="nx">aVersions</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span><span class="p">;</span>
-            <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span><span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>单单一个 XmlHttpRequest 就让前端程序员百苦难辩，更别说跨浏览器的 DOM 选择与操作、 CSS 的差异…… 前端程序员只能默默檫干眼泪，为了解决这些问题， jQuery 横空出世。</p>
+<pre><code class="language-javascript">// Provide the XMLHttpRequest class for IE 5.x-6.x:
+// Other browsers (including IE 7.x-8.x) ignore this
+//   when XMLHttpRequest is predefined
+var xmlHttp;
+if (typeof XMLHttpRequest != &quot;undefined&quot;) {
+    xmlHttp = new XMLHttpRequest();
+} else if (window.ActiveXObject) {
+    var aVersions = [&quot;Msxml2.XMLHttp.5.0&quot;, &quot;Msxml2.XMLHttp.4.0&quot;, &quot;Msxml2.XMLHttp.3.0&quot;, &quot;Msxml2.XMLHttp&quot;, &quot;Microsoft.XMLHttp&quot;];
+    for (var i = 0; i &lt; aVersions.length; i++) {
+        try {
+            xmlHttp = new ActiveXObject(aVersions[i]);
+            break;
+        } catch (e) {}
+    }
+}
+</code></pre>
+<p>单单一个 XmlHttpRequest 就让前端程序员百苦难辩，更别说跨浏览器的 DOM 选择与操作、 CSS 的差异…… 前端程序员只能默默檫干眼泪，为了解决这些问题， jQuery 横空出世。</p>
 <h3 id="jquery">jQuery</h3>
 <p><img src="http://image.coderzh.com/jQuery.jpg" alt="jQuery"></p>
 <p>jQuery 是一套跨浏览器的 JavaScript 库，既然大家都这么痛苦要处理兼容问题，那何不让我一个人来承受。自 jQuery 从 2006 年 1 月发布第一个版本以来，现在已完全占领市场。据统计，全球前10,000个访问最高的网站中，有65%使用了jQuery 。</p>
@@ -288,31 +289,33 @@
 </table>
 <p>从上面的数据可以看出， <strong>Angular.js 、 Backbone.js 、 React.js</strong> 几乎占据了半壁江山。</p>
 <p><a href="https://angularjs.org/">Angular.js</a> 由 Google 推出，从上面的 Fork 数据看出， Angular 在社区支持和贡献上最为突出。从首页的介绍示例看出， Angular 使用简单，代码逻辑清晰一看就明白，比如数据双向绑定的示例：</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="o">!</span><span class="nx">doctype</span> <span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">html</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">app</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js&#34;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="err">/</span><span class="err">s</span><span class="err">c</span><span class="err">r</span><span class="err">i</span><span class="err">p</span><span class="err">t</span><span class="err">&gt;</span><span class="err"></span>
-  <span class="o">&lt;</span><span class="err">/</span><span class="err">h</span><span class="err">e</span><span class="err">a</span><span class="err">d</span><span class="err">&gt;</span><span class="err"></span>
-  <span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Name</span><span class="o">:</span><span class="o">&lt;</span><span class="err">/</span><span class="err">l</span><span class="err">a</span><span class="err">b</span><span class="err">e</span><span class="err">l</span><span class="err">&gt;</span><span class="err"></span>
-      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text&#34;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">&#34;yourName&#34;</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">&#34;Enter a name here&#34;</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">hr</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span><span class="p">{</span><span class="nx">yourName</span><span class="p">}</span><span class="p">}</span><span class="o">!</span><span class="o">&lt;</span><span class="err">/</span><span class="err">h</span><span class="err">1</span><span class="err">&gt;</span><span class="err"></span>
-    <span class="o">&lt;</span><span class="err">/</span><span class="err">d</span><span class="err">i</span><span class="err">v</span><span class="err">&gt;</span><span class="err"></span>
-  <span class="o">&lt;</span><span class="err">/</span><span class="err">b</span><span class="err">o</span><span class="err">d</span><span class="err">y</span><span class="err">&gt;</span><span class="err"></span>
-<span class="o">&lt;</span><span class="err">/</span><span class="err">h</span><span class="err">t</span><span class="err">m</span><span class="err">l</span><span class="err">&gt;</span><span class="err"></span>
-</code></pre></div><p><a href="http://backbonejs.org/">Backbone.js</a> 是一个老牌的 JavaScript 框架了，据说后来的 JavaScript 框架都受了它的影响。它的特点是简单、灵活，但是很多事情却要你自己来做。我只是不明白，为什么 Backbone.js 的 Getting Started 会写的那么冗长，对于初学者真的好吗？也许真的是应该是老牌框架的原因吧。</p>
+<pre><code class="language-javascript">&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;label&gt;Name:&lt;/label&gt;
+      &lt;input type=&quot;text&quot; ng-model=&quot;yourName&quot; placeholder=&quot;Enter a name here&quot;&gt;
+      &lt;hr&gt;
+      &lt;h1&gt;Hello {{yourName}}!&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><a href="http://backbonejs.org/">Backbone.js</a> 是一个老牌的 JavaScript 框架了，据说后来的 JavaScript 框架都受了它的影响。它的特点是简单、灵活，但是很多事情却要你自己来做。我只是不明白，为什么 Backbone.js 的 Getting Started 会写的那么冗长，对于初学者真的好吗？也许真的是应该是老牌框架的原因吧。</p>
 <p><a href="https://facebook.github.io/react/">React.js</a> 由 FaceBook 开发，现在也是火的不行。 React.js 让人为之眼前一亮的功能是 <strong>虚拟 DOM</strong> 的机制。前面提到，为了能支持局部刷新，就需要通过 DOM 操作局部更新元素，一旦项目变大需求变的复杂，也会变得难以维护。而虚拟 DOM 解决了这一问题，通过虚拟 DOM ，你只需要关注整体的 DOM ，当数据发生变化时， React 会重新构建整个 DOM 树， 然后与上一次的 DOM 树进行对比，自己计算出需要变化的部分。由于虚拟 DOM 都是在内存中操作，所以性能会非常好。</p>
 <p>React 推崇组件化开发，提供了专有的语言 JSX ，不过并非必须。一个简单的 React 组件的例子：</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">HelloMessage</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">(</span><span class="p">{</span>
-  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/</span><span class="err">d</span><span class="err">i</span><span class="err">v</span><span class="err">&gt;</span><span class="err">;</span><span class="err"></span>
-  <span class="p">}</span>
-<span class="p">}</span><span class="p">)</span><span class="p">;</span>
+<pre><code class="language-javascript">var HelloMessage = React.createClass({
+  render: function() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+  }
+});
 
-<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">HelloMessage</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;John&#34;</span> <span class="o">/</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">mountNode</span><span class="p">)</span><span class="p">;</span>
-</code></pre></div><h3 id="趋势">趋势</h3>
+ReactDOM.render(&lt;HelloMessage name=&quot;John&quot; /&gt;, mountNode);
+</code></pre>
+<h3 id="趋势">趋势</h3>
 <p>关于 Angular.js 、 Backbone.js 、 React.js ， 如果你是这三种的使用者，也许更有发言权一些。我在百度指数里对比了 angularjs , backbone , react 这三个关键字：</p>
 <p><img src="http://image.coderzh.com/angular-backbone-react.jpg-ws" alt="angular-backbone-react"></p>
 <p>可见 Angular 一经推出便先发制人增长迅猛，而 React 开始阶段和 Backbone几乎并列，但从 2015 年开始爆发，增长速度直指 Angular ， 发展不可估量。</p>

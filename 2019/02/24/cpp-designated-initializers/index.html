@@ -191,36 +191,42 @@
                       
                       <p>C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。</p>
 <p>比如下面的结构体：</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">Rect</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">width</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">Rect</span><span class="p">;</span>
-</code></pre></div><p>可以这样初始化：</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Rect</span> <span class="n">r</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
-<span class="p">}</span><span class="p">;</span>
-</code></pre></div><p>其中 x, y 未指定的话，会自动初始化为 0。花括号里的字段顺序也没有要求。如果要初始化一个全是 0 的结构体，可以这样：</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Rect</span> <span class="n">r</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="p">;</span>
-<span class="c1">// Or
-</span><span class="c1"></span><span class="n">Rect</span> <span class="n">r1</span> <span class="o">=</span> <span class="p">{</span><span class="p">}</span><span class="p">;</span>
-</code></pre></div><p>需要特别注意的是，第一种写法 <code>{0}</code>，里的 0，并不是说每个字段都赋值成 0，而是说第一个字段赋值为 0，其余字段用默认值（刚好也是 0）。</p>
+<pre><code class="language-cpp">typedef struct Rect {
+    int x;
+    int y;
+    int width;
+    int height;
+} Rect;
+</code></pre>
+<p>可以这样初始化：</p>
+<pre><code class="language-cpp">Rect r = {
+    .width = 100,
+    .height = 100,
+};
+</code></pre>
+<p>其中 x, y 未指定的话，会自动初始化为 0。花括号里的字段顺序也没有要求。如果要初始化一个全是 0 的结构体，可以这样：</p>
+<pre><code class="language-cpp">Rect r = {0};
+// Or
+Rect r1 = {};
+</code></pre>
+<p>需要特别注意的是，第一种写法 <code>{0}</code>，里的 0，并不是说每个字段都赋值成 0，而是说第一个字段赋值为 0，其余字段用默认值（刚好也是 0）。</p>
 <p>假如我们写成：</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Rect</span> <span class="n">r</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="p">;</span>
-<span class="c1">// r will be { 1, 0, 0, 0}, not {1, 1, 1, 1}
-</span></code></pre></div><p>再来看看几个数组初始化的列子：</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span> <span class="p">}</span><span class="p">;</span>
-<span class="c1">// Or
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="mi">25</span> <span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="mi">15</span> <span class="p">}</span><span class="p">;</span>
-<span class="c1">// Equals
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">}</span><span class="p">;</span>
-</code></pre></div><p>甚至可以用 <code>[first...last]=value</code> 来指定一个区间的值：</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="p">[</span><span class="mi">2</span> <span class="p">.</span><span class="p">.</span><span class="p">.</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span><span class="p">}</span><span class="p">;</span>
-<span class="c1">// Equals
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span> <span class="p">}</span>
-</code></pre></div><p>注意 <code>[first...last]</code> 是从 first 到 last 的闭区间。</p>
+<pre><code class="language-cpp">Rect r = {1};
+// r will be { 1, 0, 0, 0}, not {1, 1, 1, 1}
+</code></pre>
+<p>再来看看几个数组初始化的列子：</p>
+<pre><code class="language-cpp">int a[8] = {[5] = 25, [2] = 15 };
+// Or
+int a[8] = {[5]25 , [2]15 };
+// Equals
+int a[8] = { 0, 0, 15, 0, 0, 25, 0, 0 };
+</code></pre>
+<p>甚至可以用 <code>[first...last]=value</code> 来指定一个区间的值：</p>
+<pre><code class="language-cpp">int a[] = {[2 ... 3] = 2, [5] = 25};
+// Equals
+int a[] = { 0, 0, 2, 2, 0, 25 }
+</code></pre>
+<p>注意 <code>[first...last]</code> 是从 first 到 last 的闭区间。</p>
 <p>指定初始化甚至还可以嵌套，假如结构体定义是这样的：</p>
 <pre><code>typedef struct Point {
   int x;
@@ -232,16 +238,18 @@ typedef struct PointCloud {
   int width;
   int height;
 } PointCloud;
-</code></pre><p>可以这样初始化 PointCloud:</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Rect</span> <span class="n">r</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="p">.</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="p">.</span><span class="n">x</span><span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
-        <span class="p">.</span><span class="n">y</span><span class="o">=</span> <span class="mi">10</span>
-    <span class="p">}</span><span class="p">,</span>
-    <span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="p">}</span><span class="p">;</span>
-</code></pre></div><p>然后，甚至可以写出像这样的代码：</p>
+</code></pre>
+<p>可以这样初始化 PointCloud:</p>
+<pre><code class="language-cpp">Rect r = {
+    .p[0] = {
+        .x= 10,
+        .y= 10
+    },
+    .width = 100,
+    .height = 100
+};
+</code></pre>
+<p>然后，甚至可以写出像这样的代码：</p>
 <pre><code>void init_some(PointCloud* p) {
   // do some init
 }
@@ -258,14 +266,16 @@ int main(int argc, char* argv[]) {
   });
   // ...
 }
-</code></pre><blockquote>
+</code></pre>
+<blockquote>
 <p>上面代码如果使用 C++ 编译，会报错：<code>error: taking the address of a temporary object of type 'PointCloud' [-Waddress-of-temporary]</code>，可以加编译参数 -Wno-address-of-temporary 解决。不过不是很推荐这么做，关掉这个可能会带来其他隐藏的 BUG。</p>
 </blockquote>
 <p>上面的代码看上去已经不像 C 了，像是另外一门语言。但是简化了初始化的过程。</p>
 <p>好了，看上去非常酷，但前面的代码都是纯 C 的，那 C++ 支不支持指定初始化器呢？遗憾的是，直到 C++20 才开始支持指定初始化器（都什么年代了，别人家的 C，99 年就支持了）。</p>
 <p>如果在 linux 上用 gcc C++11 去编译上面的代码，会报下面的错：</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sorry, unimplemented: non-trivial designated initializers not supported
-</code></pre></div><p>也别太难过，好消息是作为现代编译器的 <code>clang</code>，早早的就通过扩展的方式实现了指定初始化器。所以，即使是 C++11，使用 clang 编译和跑上面的代码，也是没有问题的。（Windows 的 MSVC 大概是指望不上了）</p>
+<pre><code class="language-shell">sorry, unimplemented: non-trivial designated initializers not supported
+</code></pre>
+<p>也别太难过，好消息是作为现代编译器的 <code>clang</code>，早早的就通过扩展的方式实现了指定初始化器。所以，即使是 C++11，使用 clang 编译和跑上面的代码，也是没有问题的。（Windows 的 MSVC 大概是指望不上了）</p>
 <p>回到移动平台，Android NDK 开发时，能不能使用这一特性呢？Android NDK r11 开始就建议大家从 GCC 切到 clang，而且从 NDK r13 开始，默认使用 clang 编译。所以，只要 NDK r13 及以上，都可以愉快的使用这一特性。</p>
 
                       

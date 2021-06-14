@@ -191,19 +191,24 @@
                       
                       <p>今天才发现，Jekyll官方就支持ReadMore摘要功能，记录一下。</p>
 <p>我之前的方法，在index.html中</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"> {{ post.content ||split:&#39;<span class="c">&lt;!--</span><span class="c">more</span><span class="c">--&gt;</span>&#39; | first }} 
-</code></pre></div><p>然后在Post里，需要分隔的摘要后面加<code>&lt;!--more--&gt;。</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">摘要内容...
-<span class="c">&lt;!--</span><span class="c">more</span><span class="c">--&gt;</span>
+<pre><code class="language-html"> {{ post.content ||split:'&lt;!--more--&gt;' | first }} 
+</code></pre>
+<p>然后在Post里，需要分隔的摘要后面加<code>&lt;!--more--&gt;。</code></p>
+<pre><code class="language-html">摘要内容...
+&lt;!--more--&gt;
 正文内容...
-</code></pre></div><h3 id="官方做法-excerpt">官方做法: excerpt</h3>
+</code></pre>
+<h3 id="官方做法-excerpt">官方做法: excerpt</h3>
 <p>官方的方法是，在_config.yml里，指定摘要的分隔符：</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">excerpt_separator:  &#39;<span class="c">&lt;!--</span><span class="c">more</span><span class="c">--&gt;</span>&#39;
-</code></pre></div><p>然后，在index.html中：</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"> {{ post.excerpt }} 
-</code></pre></div><p>一般情况下，摘要需要去掉html标签，所以一般这样用：</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">  {{ post.excerpt | strip_html }} 
-</code></pre></div><p>然后，和前一种方法一样，在摘要后面加<code>&lt;!--more--&gt;</code>  即可。</p>
+<pre><code class="language-html">excerpt_separator:  '&lt;!--more--&gt;'
+</code></pre>
+<p>然后，在index.html中：</p>
+<pre><code class="language-html"> {{ post.excerpt }} 
+</code></pre>
+<p>一般情况下，摘要需要去掉html标签，所以一般这样用：</p>
+<pre><code class="language-html">  {{ post.excerpt | strip_html }} 
+</code></pre>
+<p>然后，和前一种方法一样，在摘要后面加<code>&lt;!--more--&gt;</code>  即可。</p>
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

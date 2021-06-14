@@ -216,7 +216,8 @@ http://gohugo.io/tutorials/automated-deployments/</a></p>
 <p>第一个是七牛写的，代码很简单，用法也很简单。开始打算用七牛的版本。最后调试的时候发现json解析失败，完全不可用啊！有点坑爹。于是换成了第二个，这个Repo有200多个Star。还是靠谱很多，最后部署，调试，非常顺利。</p>
 <p>用法也很简单，首先安装webhook：</p>
 <pre><code>$ go get github.com/adnanh/webhook
-</code></pre><p>写一个配置文件hooks.json，里面指定需要执行的脚本：</p>
+</code></pre>
+<p>写一个配置文件hooks.json，里面指定需要执行的脚本：</p>
 <pre><code>[
   {
     &quot;id&quot;: &quot;redeploy-webhook&quot;,
@@ -224,11 +225,14 @@ http://gohugo.io/tutorials/automated-deployments/</a></p>
     &quot;command-working-directory&quot;: &quot;/var/webhook&quot;
   }
 ]
-</code></pre><p>指定端口启动：</p>
+</code></pre>
+<p>指定端口启动：</p>
 <pre><code>$ /path/to/webhook -hooks hooks.json -port=9876 -verbose
-</code></pre><p>然后它将接受webhook地址：（把它填到GitHub里的webhook里）</p>
+</code></pre>
+<p>然后它将接受webhook地址：（把它填到GitHub里的webhook里）</p>
 <pre><code>http://yourserver:9876/hooks/redeploy-webhook
-</code></pre><h3 id="自动部署">自动部署</h3>
+</code></pre>
+<h3 id="自动部署">自动部署</h3>
 <p><img src="http://image.coderzh.com/AutoDeploy.png-w" alt="AutoDeploy"></p>
 <p>大致的流程如上图。上图的DigitalOcean是一台VPS服务器，我用了很长时间了，速度和稳定性都不错。需要的同学使用这个链接购买，可以获得10美元的优惠：<a href="https://www.digitalocean.com/?refcode=e131e2bba197">https://www.digitalocean.com/?refcode=e131e2bba197</a></p>
 <p>整个流程中，复杂度主要是在DigitalOcean的VPS上部署服务和脚本。</p>
@@ -242,11 +246,13 @@ http://gohugo.io/tutorials/automated-deployments/</a></p>
     &quot;execute-command&quot;: &quot;/var/webhook/hugo-deploy.sh&quot;
   }
 ]
-</code></pre><p>hugo-deploy.sh里执行deploy.py：</p>
+</code></pre>
+<p>hugo-deploy.sh里执行deploy.py：</p>
 <pre><code>#!/bin/bash
  
 python /var/coderzh-hugo-blog/deploy.py --auto
-</code></pre><p>剩下的是怎么在DigitalOcean的VPS上把这套东西部署起来。我使用nginx + supervisor搭建webhook的Server。</p>
+</code></pre>
+<p>剩下的是怎么在DigitalOcean的VPS上把这套东西部署起来。我使用nginx + supervisor搭建webhook的Server。</p>
 <p>关于nginx和supervisor可以参考之前的一篇文章：<a href="http://blog.coderzh.com/2014/05/19/digitalocean/">http://blog.coderzh.com/2014/05/19/digitalocean/</a></p>
 <p>supervisor的配置如下：</p>
 <pre><code>[program:webhook]
@@ -256,7 +262,8 @@ directory=/var/webhook
 autorestart=true
 redirect_stderr=true
 environment=HOME=&quot;/root&quot;,USER=&quot;root&quot;
-</code></pre><p>关于VPS上SSH Key的设置，见：<a href="https://help.github.com/articles/generating-ssh-keys/">https://help.github.com/articles/generating-ssh-keys/</a>  为了自动部署方便，可以不设置密码。</p>
+</code></pre>
+<p>关于VPS上SSH Key的设置，见：<a href="https://help.github.com/articles/generating-ssh-keys/">https://help.github.com/articles/generating-ssh-keys/</a>  为了自动部署方便，可以不设置密码。</p>
 <p>当然，还有个大前提，在VPS上安装最新版本的golang。推荐使用gvm来安装。（记得安装1.5之前必须先把1.4先装上）</p>
 <p>golang 安装：</p>
 <pre><code>bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
@@ -266,7 +273,8 @@ gvm install go1.4
 gvm install go1.5.1
 gvm use go1.5.1 --default
 go version
-</code></pre><p>最后，Good Luck！</p>
+</code></pre>
+<p>最后，Good Luck！</p>
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

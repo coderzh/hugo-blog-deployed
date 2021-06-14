@@ -392,18 +392,21 @@
 &lt;h3 id=&#34;step2-create-your-site&#34;&gt;Step2 Create your site&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;hugo new site your-blog-name
 cd your-blog-name
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step3-clone-the-theme-repo&#34;&gt;Step3 Clone the theme repo&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;step3-clone-the-theme-repo&#34;&gt;Step3 Clone the theme repo&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;git clone https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-rapid-theme
 
 # replace config file
 rm config.toml
 cp themes/hugo-rapid-theme/config.yaml .
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step4-start-your-site&#34;&gt;Step4 Start your site&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;step4-start-your-site&#34;&gt;Step4 Start your site&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;# new content
 hugo new about.md
 # start server
 hugo server
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step5-have-fun&#34;&gt;Step5 Have Fun&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;step5-have-fun&#34;&gt;Step5 Have Fun&lt;/h3&gt;
 &lt;p&gt;Now you can open &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Modify the config.yaml and other things, and have fun!&lt;/p&gt;
 &lt;p&gt;You can also make this repo as submodule:&lt;/p&gt;
@@ -587,10 +590,12 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
 &lt;p&gt;这是最重要的一步了。客户端拿到 Salt1 和 Salt2 之后，可以计算出两个加盐哈希：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;SaltHash1 = bcrypt(SHA512(password), uid + salt1, 10)
 SaltHash2 = SHA512(SaltHash1 + uid + salt2)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用 SaltHash2 做为 AES 密钥，加密包括 uid，time，SaltHash1，RandKey 等内容传输给服务端：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Ticket = AES(SaltHash2, uid + time + SaltHash1 + RandKey)
 AES(SharedKey, Ticket)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;服务端使用 SharedKey 解密出 Ticket 之后，再从数据库中找到该 uid 对应的 SaltHash2 ，解密 Ticket ，得到 SaltHash1 ，使用 SaltHash1 重新计算 SaltHash2 看是否和数据库中的 SaltHash2 一致，从而验证密码是否正确。&lt;/p&gt;
 &lt;p&gt;校验两个哈希值是否相等时，使用时间恒定的比较函数，防止试探性攻击。&lt;/p&gt;
 &lt;p&gt;time 用于记录数据包发送的时间，用来防止录制回放攻击。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;4. 加密传输&lt;/strong&gt;&lt;/p&gt;

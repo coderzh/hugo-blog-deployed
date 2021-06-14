@@ -15,55 +15,63 @@
             <guid>https://blog.coderzh.com/2021/06/05/code-tips-1/</guid>
             <description>&lt;h3 id=&#34;001-为什么我的-adb-老是断开连接&#34;&gt;001. 为什么我的 adb 老是断开连接？&lt;/h3&gt;
 &lt;p&gt;开着 Android Studio 连着手机，刷着 logcat，突然就出现：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;read: unexpected EOF!
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。根本原因是手机 adb logcat 的缓冲区不够了，解决方法其实很简单，设大一些就可以了：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ adb logcat -G 20M
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看现在缓冲区多大：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ adb logcat -g
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果隔断时间被自动恢复了就再设置一次&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;read: unexpected EOF!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候拔插一下手机数据线又恢复了，但老这么拔插也不是办法。根本原因是手机 adb logcat 的缓冲区不够了，解决方法其实很简单，设大一些就可以了：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ adb logcat -G 20M
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看现在缓冲区多大：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ adb logcat -g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果隔断时间被自动恢复了就再设置一次&lt;/p&gt;
 &lt;h3 id=&#34;002-升级-android-gradle-plugin-4-后编译不过&#34;&gt;002. 升级 Android Gradle Plugin 4 后编译不过&lt;/h3&gt;
 &lt;p&gt;在 Android Gradle Plugin 4.0 之前，CMake 里通过 IMPORTED 链接预编译好的 so 文件，只有将这些 so 文件放在 jniLibs 目录里，才能打包到 APK 里，其他路径的 so 将会自动被忽略。&lt;/p&gt;
 &lt;p&gt;在 Android Gradle Plugin 4.0 之后，只要在 CMake 里 IMPORTED 的 so 都会自动打包到 APK 里。而如果这个 so 又刚好也在 jniLibs 目录里的话，将会出现如下错误：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;* What went wrong:
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;* What went wrong:
 Execution failed for task &#39;:app:mergeDebugNativeLibs&#39;.
 &amp;gt; A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
    &amp;gt; More than one file was found with OS independent path &#39;lib/armeabi-v7a/libprebuilt.so&#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;知道了原因后，解决就很简单了，对于在 CMake 中 IMPORTED 的 so：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;知道了原因后，解决就很简单了，对于在 CMake 中 IMPORTED 的 so：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;如果 so 需要打包进 APK 里，把 so 放到 jniLibs 之外的目录，或者在 build.gradle 里设置 packFirst&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;android {
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;android {
   ...
   packagingOptions {
     pickFirst &amp;quot;**/libprebuilt.so&amp;quot;
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;如果 so 不需要打包进 APK 里，在 build.gradle 里设置 exclude&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;android {
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;android {
   ...
   packagingOptions {
     exclude &amp;quot;**/libprebuilt.so&amp;quot;
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;003-mesonbuild-文件是什么&#34;&gt;003. meson.build 文件是什么？&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;003-mesonbuild-文件是什么&#34;&gt;003. meson.build 文件是什么？&lt;/h3&gt;
 &lt;p&gt;在 Github 上有些工程有 meson.build 文件，表示它使用到是 &lt;a href=&#34;https://mesonbuild.com/&#34;&gt;meson&lt;/a&gt; 构建系统。meson 是用 Python 写的构建系统，和 CMake 类似。meson 会生成对应系统的构建配置，比如：GNU/Linux 的 ninja，Windows 的 Visual Studio，MacOS 上的 Xcode。&lt;/p&gt;
 &lt;p&gt;使用 meson 构建的知名工程：&lt;a href=&#34;https://qemu.org/&#34;&gt;QEMU&lt;/a&gt;, &lt;a href=&#34;https://github.com/systemd/systemd&#34;&gt;systemd&lt;/a&gt;，&lt;a href=&#34;https://github.com/simd-everywhere/simde&#34;&gt;simde&lt;/a&gt;, 以及很多 &lt;a href=&#34;https://wiki.gnome.org/Initiatives/GnomeGoals/MesonPorting&#34;&gt;GNOME&lt;/a&gt; 项目都支持里 meson。&lt;/p&gt;
 &lt;p&gt;简单几步编译使用 meson.build 的工程：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;安装&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ pip install --user meson ninja
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装后按提示将 meson 所在路径加到 PATH 环境变量里。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ pip install --user meson ninja
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装后按提示将 meson 所在路径加到 PATH 环境变量里。&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;编译 &amp;amp; 测试&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;$ cd /path/to/source/root
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /path/to/source/root
 $ meson builddir &amp;amp;&amp;amp; cd builddir
 $ meson compile
 $ meson test
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+</description>
         </item>
         
         <item>
@@ -76,41 +84,43 @@ $ meson test
 &lt;p&gt;困难的不是把 V8 的代码编过，而是 V8 复杂的代码结构，难以一眼看清它本质的核心脉络。V8 最早的开源版本是 2008 年的 0.1.5 版本，那时的代码结构还相对简单，从代码阅读和学习的角度，这是一个非常好的版本。于是一开始我的努力方向，就是把 0.1.5 版本在 Mac 上编过，并且能将简单的 Hello World 跑起来。&lt;/p&gt;
 &lt;p&gt;早期的 V8 编译脚本是用 &lt;a href=&#34;https://scons.org/&#34;&gt;SCons&lt;/a&gt; 写的，而不是现在的 &lt;a href=&#34;https://gn.googlesource.com/gn/&#34;&gt;GN&lt;/a&gt; + &lt;a href=&#34;https://github.com/ninja-build/ninja&#34;&gt;Ninja&lt;/a&gt; 的系统。我尝试也安装 SCons 看能不能编过，然后发现根本就不过了。原因是今天的 SCons 版本和 V8 团队当年用的 SCons 版本已经发生了巨大的改变。比如早期的 Options 函数已经废弃，甚至连当年的文档都难以追溯。同时当年的 SCons 编译脚本是用 Python 2.X 的版本写的，用今天的 Python3 来跑，也遇到各种兼容性的问题。当然，这些都是可以解决的。然而我并不想解决 SCons 编译的问题。因为我想用现在更好的方式将它编过，就是 &lt;a href=&#34;https://cmake.org/&#34;&gt;CMake&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;参考了源码中 SConscript 里的编译过程，我重写了一份 CMakeLists.txt。在经历了一个又一个编译错误之后，我终于把 V8 0.1.5 版本在 Mac 上编过了（我平常几乎只用 Mac，所以没管其他的平台）。然后写了个简单的 Hello World 代码，用当时 V8 的 API。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// test/main.cc
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;#34;v8.h&amp;#34;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;hello v8&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init_result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;V8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Initialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;init_result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;v8 initialize failed&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Context&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;HandleScope&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;1+1&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Local&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Script&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;source&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;v8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AsciiValue&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;1+1=%s&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;从上面的代码可以看出，早期的 V8 API 和现在的几乎是接近的。首先需要通过 V8::Initialize() 对 V8 进行全局初始化。然后有 V8::Context 的概念，甚至已经有了 HandleScope 自动管理 Local 变量。当然从上面代码也可以看出区别，今天非常重要的 v8::Isolate 概念还没有，以及 v8::Context::Scope 也还没有出现。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// test/main.cc
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;quot;v8.h&amp;quot;
+
+int main(int argc, char* argv[]) {
+  printf(&amp;quot;hello v8\n&amp;quot;);
+  bool init_result = v8::V8::Initialize();
+  if (!init_result) {
+    printf(&amp;quot;v8 initialize failed\n&amp;quot;);
+    return -1;
+  }
+  auto ctx = v8::Context::New();
+  v8::HandleScope hs;
+  v8::Local&amp;lt;v8::String&amp;gt; source = v8::String::New(&amp;quot;1+1&amp;quot;);
+  v8::Local&amp;lt;v8::Value&amp;gt; result = v8::Script::Compile(source)-&amp;gt;Run();
+  v8::String::AsciiValue str(result);
+  printf(&amp;quot;1+1=%s\n&amp;quot;, *str);
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从上面的代码可以看出，早期的 V8 API 和现在的几乎是接近的。首先需要通过 V8::Initialize() 对 V8 进行全局初始化。然后有 V8::Context 的概念，甚至已经有了 HandleScope 自动管理 Local 变量。当然从上面代码也可以看出区别，今天非常重要的 v8::Isolate 概念还没有，以及 v8::Context::Scope 也还没有出现。&lt;/p&gt;
 &lt;p&gt;上面代码运行之后，发现 v8::V8::Initialize() 就失败了。因为可以调试，定位到了这么这个函数：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;VirtualMemory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Commit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MAP_FAILED&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mmap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PROT_READ&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PROT_WRITE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PROT_EXEC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-                         &lt;span class=&#34;n&#34;&gt;MAP_PRIVATE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MAP_ANON&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MAP_FIXED&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-                         &lt;span class=&#34;n&#34;&gt;kMmapFd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kMmapFdOffset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;fprintf&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stderr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;mmap size=%ld fd=%d failed %s&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-                &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kMmapFd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;strerror&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;errno&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// 这里失败了，打印的错误是：
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// mmap size=262144 fd=-1 failed Cannot allocate memory
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;UpdateAllocatedSpaceLimits&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;遇到 mmap 内存分配失败时，我是有点一脸懵的。在仔细查看了 Commit 函数上下文，以及了解 mmap 每个参数之后，我发现的竟然是另一个严肃的问题。我编的这份代码是 08 年所写的，只支持编译 32位的版本。而我编译的时候，选择的是编译的 64位。于是我想，在 CMakeLists 里指定编 -m32 版本吧。然后发现切到 32位之后更是更多的编译不过。如今在 PC 上已经很少有编 32位的程序了，我不是很想去解决 32位编译的问题。我不如去看看 V8 的代码历史记录，看看从哪个版本开始支持了 64位。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;bool VirtualMemory::Commit(void* address, size_t size) {
+  if (MAP_FAILED == mmap(address, size, PROT_READ | PROT_WRITE | PROT_EXEC,
+                         MAP_PRIVATE | MAP_ANON | MAP_FIXED,
+                         kMmapFd, kMmapFdOffset)) {
+    fprintf (stderr, &amp;quot;mmap size=%ld fd=%d failed %s\n&amp;quot;,
+                (long)size, kMmapFd, strerror(errno));
+    // 这里失败了，打印的错误是：
+    // mmap size=262144 fd=-1 failed Cannot allocate memory
+    return false;
+  }
+  UpdateAllocatedSpaceLimits(address, size);
+  return true;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;遇到 mmap 内存分配失败时，我是有点一脸懵的。在仔细查看了 Commit 函数上下文，以及了解 mmap 每个参数之后，我发现的竟然是另一个严肃的问题。我编的这份代码是 08 年所写的，只支持编译 32位的版本。而我编译的时候，选择的是编译的 64位。于是我想，在 CMakeLists 里指定编 -m32 版本吧。然后发现切到 32位之后更是更多的编译不过。如今在 PC 上已经很少有编 32位的程序了，我不是很想去解决 32位编译的问题。我不如去看看 V8 的代码历史记录，看看从哪个版本开始支持了 64位。&lt;/p&gt;
 &lt;p&gt;于是我找到了最早支持 64位的版本：&lt;a href=&#34;https://github.com/v8/v8/tree/1.2.14.20&#34;&gt;1.2.14.20&lt;/a&gt;。我重新整理了 CMakeLists 编译脚本，解决了几个代码的编译问题之后，It works! Yes!&lt;/p&gt;
 &lt;p&gt;1.2 版本的 V8 是 09 年的代码，距今也有 12 年，代码还保持了简单的结构。相对前面 0.1.5 版本，有了 &lt;code&gt;v8::Context::Scope&lt;/code&gt; 的概念。多了很多测试代码，甚至，连强大的 &lt;code&gt;d8&lt;/code&gt; 工具也面世了。在 tools 目录下，甚至有 Xcode 工程文件以及 Visual Studio 工程文件，当然还包括了 gyp 文件。我简单尝试了 Xcode 工程编译，似乎编的还是 32位代码，没有成功。我不想继续尝试了，也包括 Visual Studio。因为我已经通过 CMakeLists 编过了 64位版本，并且可以愉快的调试了。&lt;/p&gt;
 &lt;p&gt;我想现在这份 12 年前的 V8 代码，应该是最适合学习和了解 V8 的。毕竟，它只有几十个文件，编译一次只要几十秒钟。&lt;/p&gt;
@@ -138,7 +148,7 @@ $ meson test
 &lt;p&gt;前两个都是习惯问题，即使改变，慢慢也就适应了。但 JIT 技术的引入，几乎解决了 JavaScript 的性能问题，使得 JavaScript 的地位更加的牢固。在 JavaScript 中应用 JIT 的典型代表，就是我们今天的主角：V8。在引入我们的主题之前，我还要简要的介绍一下什么是 JIT 技术。&lt;/p&gt;
 &lt;p&gt;JIT 的全程是 just-in-time compilation，又译即时编译或实时编译。在 JIT 出现之前，高级编程语言要被计算机执行，通常通过两种方式来实现：AOT 和解释器。AOT 全程 ahead-of-time compilation，即代码预先通过编译器的编译，直接生成目标机器的机器码。因此它的运行效率最高，比如我们常用的 C/C++ 代码，通过 gcc/clang/msvc 等编译器，直接编译出机器码的二进制文件，其运行性能我们称之为原生性能。&lt;/p&gt;
 &lt;p&gt;既然 AOT 性能最高，全都用 AOT 不就得了？也不尽然。AOT 要求编译的代码是静态类型的，比如一个变量的类型在运行期间不允许变成另一种类型，也不允许动态的往类型里增加属性。而 JavaScript 是动态类型的，比如下面一段代码，变量 foo 的类型可以运行时随时变化：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var foo = 1; // foo is a int
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var foo = 1; // foo is a int
 foo = &amp;quot;hello&amp;quot;; // foo change to a string
 
 function Point() {
@@ -147,7 +157,8 @@ function Point() {
 foo = new Point(); // foo change to a Point
 foo.x = 10;  // foo add x property
 foo.y = 10;  // foo add y property
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;foo 类型总是变来变去，给 AOT 编译器增加了很大的麻烦。同时，AOT 还有编译时间长，生成的目标文件大的问题。它不能像 Java 一样『一次编译，到处运行』，而是针对不同平台『编译多次，到处运行』。如果想像 JavaScript 一样做到『一次编写，到处运行』，就需要在用户的浏览器端，运行时实时的进行编译。这样一来，缓慢的编译过程又拖慢了代码的启动速度。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;foo 类型总是变来变去，给 AOT 编译器增加了很大的麻烦。同时，AOT 还有编译时间长，生成的目标文件大的问题。它不能像 Java 一样『一次编译，到处运行』，而是针对不同平台『编译多次，到处运行』。如果想像 JavaScript 一样做到『一次编写，到处运行』，就需要在用户的浏览器端，运行时实时的进行编译。这样一来，缓慢的编译过程又拖慢了代码的启动速度。&lt;/p&gt;
 &lt;p&gt;JIT 结合了 AOT 和解释器两者的优势。它可以运行时根据情况在两者之间切换。比如首次启动时，使用解释器来执行，这样保证了代码的启动速度，对于一些短小的一次性执行的代码非常友好。当代码运行一段时间，编译器发现某些代码频繁的反复执行，则切换到 JIT 模式即时的将这部分代码编译成机器码，之后再运行到这类代码时，则可以做到几乎以原生的速度执行。&lt;/p&gt;
 &lt;p&gt;现代语言的虚拟机几乎都拥有了 JIT 的能力。如 JVM JIT，LuaJIT。几大 JavaScript 引擎，例如微软的 Chakra、Mozilla 的 SpiderMonkey、苹果的 JavaScriptCore、谷歌的 V8，JIT 已经成了标配功能。而其中谷歌的 V8，是所有的 JavaScript 引擎的佼佼者。&lt;/p&gt;
 &lt;p&gt;为什么 V8 能做到这么优秀呢？我们后面慢慢来讲。我们先来看看 V8 是怎样诞生出来的。从维基百科里了解到，V8 的创建者是一名叫 Lars Bak 的丹麦程序员。我们来看看这位大神的履历：&lt;/p&gt;
@@ -261,47 +272,50 @@ foo.y = 10;  // foo add y property
 &lt;p&gt;这让我更加有兴趣去拜读一下他的代码了。QuickJS 的主页介绍简单明了，代码直接是一个压缩包，名字里带着创建的日期：&lt;code&gt;quickjs-2019-07-09.tar.xz&lt;/code&gt;。这大概是我在十几年前常见的代码共享的方式，而现在已经 2019 年了，大神也没有选择 GitHub 之类的开源协作的平台，甚至让我怀疑他开发过程中是不是有使用 git 之类的源代码管理工具。大神总是特立独行的，直接丢一个压缩包，大概是在说：这就是我所有代码了，有任何问题和疑问，直接给我发邮件吧，不接受任何社交媒体联系方式。&lt;/p&gt;
 &lt;p&gt;我隐约觉得我的关注重点应该还是他的代码，而不是他的人，也许他本人也是这么认为的。代码解压后，代码是用 C89 写的，不是 C++，甚至不是 C99。这大概是一种技术偏执，在 C 和 C++ 中选择 C 的神级程序员也不在少数，比如开发了 skynet 的云风，还有游戏引擎大牛 Andre Weissflog。在 Andre 的 twitter 上，他贴了一条自己的编程语言使用历程：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Z80 asm =&amp;gt; 68k asm =&amp;gt; pre-C89 =&amp;gt; post-C89 =&amp;gt; C++98 =&amp;gt; C++11 =&amp;gt; C99
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;经历过 C++11 的各种便利和绚丽，最后还是返璞归真的选择了 C99，或许也给我带来了一些深层的思考：什么才是程序的本质。和 Fabrice 不同，Andre 是一个社交型程序员，甚至使得我有一种感觉，他整天都在发 twitter，但发现他的代码居然一行也没有少写。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;经历过 C++11 的各种便利和绚丽，最后还是返璞归真的选择了 C99，或许也给我带来了一些深层的思考：什么才是程序的本质。和 Fabrice 不同，Andre 是一个社交型程序员，甚至使得我有一种感觉，他整天都在发 twitter，但发现他的代码居然一行也没有少写。&lt;/p&gt;
 &lt;p&gt;这样看来 Fabrice 选择 C89，也没有什么让人奇怪的地方了。代码解压后，自然是先编译一通。没有用 CMake，只有 MakeFile，嗯，一点问题也没有，大概我们都是被 CMake 惯坏了吧，离了它几乎都不懂得怎样编译代码了。大神总是以一种最原始最直接的方式，去组织和掌控着一切。在 linux 上，直接 make 编译，不用多长时间就顺利编过了。&lt;/p&gt;
 &lt;p&gt;据说 Fabrice 是从 2017 年开启的这个 Side Project，现在的我看他的代码，由如管中窥豹，只能看到一些粗浅的东西，更多东西还得花时间细细研读。但就 QuickJS 而言，在目前的版本里，它是没有 JIT 的，所以和 Google 的 V8 性能比起来，还是有很大差距的。它将一段 JS 代码编译生成一个可执行二进制的方式，是先将 JS 编译成字节码，然后将字节码嵌入到一段 c 的代码里，然后解释执行这段字节码。&lt;/p&gt;
 &lt;p&gt;比如，hello.js 代码：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello World&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;经过 qjsc 编译后，会生成一个这样的 hello.c 代码：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* File generated automatically by the QuickJS compiler. */&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;console.log(&amp;quot;Hello World&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;经过 qjsc 编译后，会生成一个这样的 hello.c 代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;/* File generated automatically by the QuickJS compiler. */
 
-&lt;span class=&#34;cp&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;#34;quickjs-libc.h&amp;#34;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uint32_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hello_size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;87&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+#include &amp;quot;quickjs-libc.h&amp;quot;
 
-&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uint8_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;87&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x04&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x0e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x63&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x73&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x6c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x65&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x06&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x67&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x48&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x65&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x57&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x72&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x6c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x22&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x65&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x78&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x61&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x70&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x6c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x65&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x73&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x2f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x68&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x65&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x6f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x2e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x6a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x73&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x0d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x02&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x9e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x03&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x14&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xa0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x38&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0xc4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x04&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x27&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
- &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xd2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x2b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x8e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x03&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+const uint32_t hello_size = 87;
 
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;JSRuntime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;JSContext&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;rt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JS_NewRuntime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JS_NewContextRaw&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;JS_AddIntrinsicBaseObjects&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;js_std_add_helpers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;js_std_eval_binary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hello_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;js_std_loop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;JS_FreeContext&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;JS_FreeRuntime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;所有相关的 opcode 可以在 quickjs-opcode.h 里找到。最核心的 quickjs.c 有 47842 行。作为一个完整的 JS 引擎，代码已经是相当的精炼了，活生生的一本教科书。不过，现在的 QuickJS 在性能要求高的场景和 V8 还是没有可比性，希望这个东西不仅仅是大神闲暇之余的玩具，期待之后能带来更大的惊喜吧。&lt;/p&gt;
+const uint8_t hello[87] = {
+ 0x01, 0x04, 0x0e, 0x63, 0x6f, 0x6e, 0x73, 0x6f,
+ 0x6c, 0x65, 0x06, 0x6c, 0x6f, 0x67, 0x16, 0x48,
+ 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72,
+ 0x6c, 0x64, 0x22, 0x65, 0x78, 0x61, 0x6d, 0x70,
+ 0x6c, 0x65, 0x73, 0x2f, 0x68, 0x65, 0x6c, 0x6c,
+ 0x6f, 0x2e, 0x6a, 0x73, 0x0d, 0x00, 0x02, 0x00,
+ 0x9e, 0x01, 0x00, 0x01, 0x00, 0x03, 0x00, 0x00,
+ 0x14, 0x01, 0xa0, 0x01, 0x00, 0x00, 0x00, 0x38,
+ 0xc4, 0x00, 0x00, 0x00, 0x42, 0xc5, 0x00, 0x00,
+ 0x00, 0x04, 0xc6, 0x00, 0x00, 0x00, 0x27, 0x01,
+ 0x00, 0xd2, 0x2b, 0x8e, 0x03, 0x01, 0x00,
+};
+
+int main(int argc, char **argv)
+{
+  JSRuntime *rt;
+  JSContext *ctx;
+  rt = JS_NewRuntime();
+  ctx = JS_NewContextRaw(rt);
+  JS_AddIntrinsicBaseObjects(ctx);
+  js_std_add_helpers(ctx, argc, argv);
+  js_std_eval_binary(ctx, hello, hello_size, 0);
+  js_std_loop(ctx);
+  JS_FreeContext(ctx);
+  JS_FreeRuntime(rt);
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有相关的 opcode 可以在 quickjs-opcode.h 里找到。最核心的 quickjs.c 有 47842 行。作为一个完整的 JS 引擎，代码已经是相当的精炼了，活生生的一本教科书。不过，现在的 QuickJS 在性能要求高的场景和 V8 还是没有可比性，希望这个东西不仅仅是大神闲暇之余的玩具，期待之后能带来更大的惊喜吧。&lt;/p&gt;
 &lt;p&gt;有人说， Fabrice 就是 10x Engineer，即工作效率相当于 10 个程序员。立马有人站出来反对，分明是 100x Engineer 嘛。这个世界就是这样，有些人比你聪明，比你有天赋，工作效率是你的 10 倍，同时还比你努力。当你在上班划水时，他在写代码，你在吃鸡落地成盒，他又调通了一个核心模块。&lt;/p&gt;
 </description>
         </item>
@@ -401,36 +415,42 @@ foo.y = 10;  // foo add y property
             <guid>https://blog.coderzh.com/2019/02/24/cpp-designated-initializers/</guid>
             <description>&lt;p&gt;C99 开始支持了指定初始化器（Designated Initializers），用来方便的初始化结构体或者数组数据。&lt;/p&gt;
 &lt;p&gt;比如下面的结构体：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Rect&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Rect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以这样初始化：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;n&#34;&gt;Rect&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中 x, y 未指定的话，会自动初始化为 0。花括号里的字段顺序也没有要求。如果要初始化一个全是 0 的结构体，可以这样：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;n&#34;&gt;Rect&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// Or
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Rect&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;需要特别注意的是，第一种写法 &lt;code&gt;{0}&lt;/code&gt;，里的 0，并不是说每个字段都赋值成 0，而是说第一个字段赋值为 0，其余字段用默认值（刚好也是 0）。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;typedef struct Rect {
+    int x;
+    int y;
+    int width;
+    int height;
+} Rect;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以这样初始化：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;Rect r = {
+    .width = 100,
+    .height = 100,
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中 x, y 未指定的话，会自动初始化为 0。花括号里的字段顺序也没有要求。如果要初始化一个全是 0 的结构体，可以这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;Rect r = {0};
+// Or
+Rect r1 = {};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要特别注意的是，第一种写法 &lt;code&gt;{0}&lt;/code&gt;，里的 0，并不是说每个字段都赋值成 0，而是说第一个字段赋值为 0，其余字段用默认值（刚好也是 0）。&lt;/p&gt;
 &lt;p&gt;假如我们写成：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;n&#34;&gt;Rect&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// r will be { 1, 0, 0, 0}, not {1, 1, 1, 1}
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;再来看看几个数组初始化的列子：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// Or
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// Equals
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;甚至可以用 &lt;code&gt;[first...last]=value&lt;/code&gt; 来指定一个区间的值：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// Equals
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意 &lt;code&gt;[first...last]&lt;/code&gt; 是从 first 到 last 的闭区间。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;Rect r = {1};
+// r will be { 1, 0, 0, 0}, not {1, 1, 1, 1}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再来看看几个数组初始化的列子：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int a[8] = {[5] = 25, [2] = 15 };
+// Or
+int a[8] = {[5]25 , [2]15 };
+// Equals
+int a[8] = { 0, 0, 15, 0, 0, 25, 0, 0 };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;甚至可以用 &lt;code&gt;[first...last]=value&lt;/code&gt; 来指定一个区间的值：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int a[] = {[2 ... 3] = 2, [5] = 25};
+// Equals
+int a[] = { 0, 0, 2, 2, 0, 25 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意 &lt;code&gt;[first...last]&lt;/code&gt; 是从 first 到 last 的闭区间。&lt;/p&gt;
 &lt;p&gt;指定初始化甚至还可以嵌套，假如结构体定义是这样的：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;typedef struct Point {
   int x;
@@ -442,16 +462,18 @@ typedef struct PointCloud {
   int width;
   int height;
 } PointCloud;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以这样初始化 PointCloud:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;n&#34;&gt;Rect&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后，甚至可以写出像这样的代码：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以这样初始化 PointCloud:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;Rect r = {
+    .p[0] = {
+        .x= 10,
+        .y= 10
+    },
+    .width = 100,
+    .height = 100
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后，甚至可以写出像这样的代码：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;void init_some(PointCloud* p) {
   // do some init
 }
@@ -468,14 +490,16 @@ int main(int argc, char* argv[]) {
   });
   // ...
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
 &lt;p&gt;上面代码如果使用 C++ 编译，会报错：&lt;code&gt;error: taking the address of a temporary object of type &#39;PointCloud&#39; [-Waddress-of-temporary]&lt;/code&gt;，可以加编译参数 -Wno-address-of-temporary 解决。不过不是很推荐这么做，关掉这个可能会带来其他隐藏的 BUG。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;上面的代码看上去已经不像 C 了，像是另外一门语言。但是简化了初始化的过程。&lt;/p&gt;
 &lt;p&gt;好了，看上去非常酷，但前面的代码都是纯 C 的，那 C++ 支不支持指定初始化器呢？遗憾的是，直到 C++20 才开始支持指定初始化器（都什么年代了，别人家的 C，99 年就支持了）。&lt;/p&gt;
 &lt;p&gt;如果在 linux 上用 gcc C++11 去编译上面的代码，会报下面的错：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sorry, unimplemented: non-trivial designated initializers not supported
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;也别太难过，好消息是作为现代编译器的 &lt;code&gt;clang&lt;/code&gt;，早早的就通过扩展的方式实现了指定初始化器。所以，即使是 C++11，使用 clang 编译和跑上面的代码，也是没有问题的。（Windows 的 MSVC 大概是指望不上了）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sorry, unimplemented: non-trivial designated initializers not supported
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也别太难过，好消息是作为现代编译器的 &lt;code&gt;clang&lt;/code&gt;，早早的就通过扩展的方式实现了指定初始化器。所以，即使是 C++11，使用 clang 编译和跑上面的代码，也是没有问题的。（Windows 的 MSVC 大概是指望不上了）&lt;/p&gt;
 &lt;p&gt;回到移动平台，Android NDK 开发时，能不能使用这一特性呢？Android NDK r11 开始就建议大家从 GCC 切到 clang，而且从 NDK r13 开始，默认使用 clang 编译。所以，只要 NDK r13 及以上，都可以愉快的使用这一特性。&lt;/p&gt;
 </description>
         </item>
@@ -522,13 +546,16 @@ git submodule update --init
 mkdir build &amp;amp;&amp;amp; cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=release -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
 make install -j8
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;问题来了，最新的 cquery 默认依赖 clang 7.0.0，而我的 Mac 上是 6.0.0。所以上面的 cmake 命令执行后，会报下面的错：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;问题来了，最新的 cquery 默认依赖 clang 7.0.0，而我的 Mac 上是 6.0.0。所以上面的 cmake 命令执行后，会报下面的错：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;No SHA256 hash available for the current platform (Darwin) + clang version
   (6.0.0) combination.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看了下 cquery 的编译脚本，解决方法也很简单，手工创建一个 6.0.0 的 SHA256 文件：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看了下 cquery 的编译脚本，解决方法也很简单，手工创建一个 6.0.0 的 SHA256 文件：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cd cquery
 echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &amp;gt; clang_archive_hashes/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz.SHA256
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;再执行 cmake 会自动下载 clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz。但是下载很慢，可以手工下载(&lt;a href=&#34;https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz&#34;&gt;https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz&lt;/a&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再执行 cmake 会自动下载 clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz。但是下载很慢，可以手工下载(&lt;a href=&#34;https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz&#34;&gt;https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz&lt;/a&gt;
 )好，并解压到 build 目录，然后上面的命令就可以顺利的进行下去了。&lt;/p&gt;
 &lt;p&gt;编译后的二进制会在 &lt;code&gt;release/bin&lt;/code&gt; 目录，稍后把路径填入 VSCode 的配置中。&lt;/p&gt;
 &lt;h3 id=&#34;2-vscode-安装-cquery-插件&#34;&gt;2. VSCode 安装 cquery 插件&lt;/h3&gt;
@@ -538,7 +565,8 @@ echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &amp;gt; c
     &amp;quot;cquery.cacheDirectory&amp;quot;: &amp;quot;/User/your-name/.cquery-cache/&amp;quot;,
     &amp;quot;cquery.completion.include.blacklist&amp;quot;: [&amp;quot;.*/.vscache/.*&amp;quot;, &amp;quot;/tmp.*&amp;quot;, &amp;quot;build/.*&amp;quot;],
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其他相关设置，可参考一下（关掉 cpptools 相关设置）&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其他相关设置，可参考一下（关掉 cpptools 相关设置）&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{
   &amp;quot;C_Cpp.autocomplete&amp;quot;: &amp;quot;Disabled&amp;quot;,
   &amp;quot;C_Cpp.formatting&amp;quot;: &amp;quot;Disabled&amp;quot;,
@@ -546,10 +574,12 @@ echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &amp;gt; c
   &amp;quot;C_Cpp.intelliSenseEngine&amp;quot;: &amp;quot;Disabled&amp;quot;,
   &amp;quot;editor.autoClosingBrackets&amp;quot;: &amp;quot;never&amp;quot;,
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;3-生成-compile_commandsjson&#34;&gt;3. 生成 compile_commands.json&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-生成-compile_commandsjson&#34;&gt;3. 生成 compile_commands.json&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;compile_commands.json&lt;/code&gt; 文件是 cquery 用来索引你的代码工程所需要的。它可以从 cmake 里直接生成出来，只需要在 cmake 的编译参数里加：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-DCMAKE_EXPORT_COMPILE_COMMANDS=YES
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后把生成的 compile_commands.json 拷到工程的根目录。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后把生成的 compile_commands.json 拷到工程的根目录。&lt;/p&gt;
 &lt;h3 id=&#34;4-可以开心愉快的玩耍了&#34;&gt;4. 可以开心愉快的玩耍了&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/cquery.png&#34; alt=&#34;cquery&#34;&gt;&lt;/p&gt;
 </description>

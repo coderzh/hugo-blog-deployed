@@ -198,25 +198,28 @@
 <p>于是，我借助utf8库里的一些方法，近似的实现了中英文文字的字数统计和摘要截取算法。说近似，因为实现方法不是很严谨，我不懂其他国家的语言，不知道其他国家语言在这样的算法下是否能保证正确。但我还是抱着试一试的态度，将我的修改给Hugo又提了一个Pull Request。</p>
 <p>在和Hugo主要维护者之一bep多次沟通之后，他提出，我的实现的确不是很严谨，不能保证所有语言都适用。而且，关于字数统计，他之前已经实现过一个类似的方法：RuneCount。于是我又回去把漏看的代码又看了一遍，果然已经有一个RuneCount的方法，用来统计有多个Rune。对，是Rune，不是Word，所以“Hello 中国”RuneCount的结果是7（空格会被忽略）。而我要的结果是3啊。</p>
 <p>后来我仔细一想，我真的这么在意有多少个英文单词和汉字吗？我在意的只是不要简单的根据空格分隔来统计字数，在意的只是说好的70个字的摘要，结果把整篇给做成了摘要。所以，使用RuneCount也OK啊，于是我就把之前的字数统计代码的改动还原了。bep提供了按Rune统计字数，但是没有提供按Rune截取摘要，于是我把之前稍微有些复杂的改动还原，提供了一个简短的按字符截取摘要的方法，并且补充了相应的测试案例。</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">TruncateStringByRune</span><span class="p">(</span><span class="nx">str</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">max</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">str</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Fields</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">)</span>
-    <span class="nx">count</span> <span class="o">:=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="nx">index</span><span class="p">,</span> <span class="kt">rune</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">str</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">count</span> <span class="o">&gt;=</span> <span class="nx">max</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">str</span><span class="p">[</span><span class="p">:</span><span class="nx">index</span><span class="p">]</span><span class="p">,</span> <span class="kc">true</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">!</span><span class="nf">IsWhitespace</span><span class="p">(</span><span class="kt">rune</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">count</span><span class="o">++</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<pre><code class="language-go">func TruncateStringByRune(str string, max int) (string, bool) {
+    str = strings.Join(strings.Fields(str), &quot; &quot;)
+    count := 0
+    for index, rune := range str {
+        if count &gt;= max {
+            return str[:index], true
+        }
+        if !IsWhitespace(rune) {
+            count++
+        }
+    }
  
-    <span class="k">return</span> <span class="nx">str</span><span class="p">,</span> <span class="kc">false</span>
-<span class="p">}</span>
-</code></pre></div><p>做完这次修改后，继续Pull Request啊，可是现在的Pull Request状态显示我有两次commit，而且前一次已经Push了。于是又学了一招如何将新的commit和之前已经Push的commit合并成一个commit。首先我的修改是在单独分支commit和push的，当前的master是并没有这两次commit，这时就可以通过</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git rebase -i master
-</code></pre></div><p>然后编辑里面的commits，将需要被合并的pick改成squash，保存退出后再重新编辑commit message，然后就变成了一个commit，这时再来个强制push：</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git push origin coderzh-hugo -f
-</code></pre></div><p>于是一开始了和挪威程序员bep的多次交涉，他又提出他开始后悔当初提供了RuneCount方法，他认为Hugo提供的方法应该越少越好，干同样一件事情不应该有多个不同的实现版本。而且他不但不认为我又加了一个RuneSummary方法是对的，他还打算把原来的RuneCount方法也删除，并且他十分确信能提供一个统一的版本，既能处理西方文字也能正确的处理中文、日文等其他语言文字。</p>
+    return str, false
+}
+</code></pre>
+<p>做完这次修改后，继续Pull Request啊，可是现在的Pull Request状态显示我有两次commit，而且前一次已经Push了。于是又学了一招如何将新的commit和之前已经Push的commit合并成一个commit。首先我的修改是在单独分支commit和push的，当前的master是并没有这两次commit，这时就可以通过</p>
+<pre><code class="language-bash">$ git rebase -i master
+</code></pre>
+<p>然后编辑里面的commits，将需要被合并的pick改成squash，保存退出后再重新编辑commit message，然后就变成了一个commit，这时再来个强制push：</p>
+<pre><code class="language-bash">$ git push origin coderzh-hugo -f
+</code></pre>
+<p>于是一开始了和挪威程序员bep的多次交涉，他又提出他开始后悔当初提供了RuneCount方法，他认为Hugo提供的方法应该越少越好，干同样一件事情不应该有多个不同的实现版本。而且他不但不认为我又加了一个RuneSummary方法是对的，他还打算把原来的RuneCount方法也删除，并且他十分确信能提供一个统一的版本，既能处理西方文字也能正确的处理中文、日文等其他语言文字。</p>
 <p>我虽然有些沮丧，但还是同意他的，于是我给他回复了我的想法（当然，原回复是英文的）</p>
 <blockquote>
 <p>“我完全同意你的观点。但是我加了个RuneSummary方法也是有我的考虑的：</p>

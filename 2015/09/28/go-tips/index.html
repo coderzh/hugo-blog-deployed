@@ -178,7 +178,7 @@
                   <h1 class="post-title">Go语言极速入门手册.go</h1>
 
                   <p class="post-byline">
-                    by  · 2015年09月28日 · 2022 Words ·
+                    by  · 2015年09月28日 · 2023 Words ·
                     ~5min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2015/2015-09-28-go-tips.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -191,635 +191,635 @@
                       
                       <p><img src="http://image.coderzh.com/golang.jpg" alt="golang"></p>
 <p>Github: <a href="https://github.com/coderzh/CodeTips">https://github.com/coderzh/CodeTips</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="cm">/*
-</span><span class="cm">gotips_test.go:
-</span><span class="cm">  Golang速学速查速用代码手册
-</span><span class="cm">
-</span><span class="cm">Source: github.com/coderzh/CodeTips/blob/master/gotips_test.go
-</span><span class="cm">
-</span><span class="cm">Author: coderzh(github.com/coderzh)
-</span><span class="cm">Blog: http://blog.coderzh.com
-</span><span class="cm">参考：《Go语言编程》
-</span><span class="cm">*/</span>
-
-<span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-	<span class="s">&#34;errors&#34;</span>
-	<span class="s">&#34;fmt&#34;</span>
-	<span class="s">&#34;github.com/stretchr/testify/assert&#34;</span>
-	<span class="s">&#34;io&#34;</span>
-	<span class="s">&#34;io/ioutil&#34;</span>
-	<span class="s">&#34;log&#34;</span>
-	<span class="s">&#34;math&#34;</span>
-	<span class="s">&#34;os&#34;</span>
-	<span class="s">&#34;path/filepath&#34;</span>
-	<span class="s">&#34;regexp&#34;</span>
-	<span class="s">&#34;strings&#34;</span>
-	<span class="s">&#34;sync&#34;</span>
-	<span class="s">&#34;testing&#34;</span>
-	<span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// 0. 注释
-</span><span class="c1"></span><span class="cm">/*
-</span><span class="cm">规范：
-</span><span class="cm"> 1. 命名：骆驼命名法（不要用下划线）
-</span><span class="cm">
-</span><span class="cm">命令:
-</span><span class="cm"> go get github.com/coderzh/xxx
-</span><span class="cm"> go build calc
-</span><span class="cm"> go run xxx.go
-</span><span class="cm"> go install calc
-</span><span class="cm">*/</span>
-
-<span class="c1">// 1. Hello World
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">helloWorld</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Hello, 世界&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 2.变量类型
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">typeDemo</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// 变量声明
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">v1</span> <span class="kt">int</span>
-	<span class="kd">var</span> <span class="p">(</span>
-		<span class="nx">v2</span> <span class="kt">int</span>
-		<span class="nx">v3</span> <span class="kt">string</span>
-	<span class="p">)</span>
-	<span class="c1">//var p *int // 指针类型
-</span><span class="c1"></span>
-	<span class="c1">// 变量初始化
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">v4</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span>
-	<span class="c1">// 等价于:
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">v5</span> <span class="p">=</span> <span class="mi">10</span>
-	<span class="c1">// 一般这样就好
-</span><span class="c1"></span>	<span class="nx">v6</span> <span class="o">:=</span> <span class="mi">10</span>
-
-	<span class="c1">// 赋值，多重赋值
-</span><span class="c1"></span>	<span class="nx">v1</span> <span class="p">=</span> <span class="mi">10</span>
-	<span class="nx">v2</span><span class="p">,</span> <span class="nx">v3</span> <span class="p">=</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&#34;test&#34;</span>
-	<span class="c1">// 匿名变量 _
-</span><span class="c1"></span>	<span class="nx">_</span><span class="p">,</span> <span class="nx">v4</span> <span class="p">=</span> <span class="nx">v5</span><span class="p">,</span> <span class="nx">v6</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">v1</span><span class="p">,</span> <span class="nx">v2</span><span class="p">,</span> <span class="nx">v3</span><span class="p">,</span> <span class="nx">v4</span><span class="p">)</span>
-
-	<span class="c1">// 常量
-</span><span class="c1"></span>	<span class="kd">const</span> <span class="nx">Pi</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">3.1415926</span>
-	<span class="kd">const</span> <span class="nx">MaxPlayer</span> <span class="p">=</span> <span class="mi">10</span>
-
-	<span class="c1">// 枚举
-</span><span class="c1"></span>	<span class="kd">const</span> <span class="p">(</span>
-		<span class="nx">Sunday</span> <span class="p">=</span> <span class="kc">iota</span> <span class="c1">// iota从0递增
-</span><span class="c1"></span>		<span class="nx">Mondy</span>
-		<span class="nx">Tuesday</span>
-		<span class="c1">// ...
-</span><span class="c1"></span>	<span class="p">)</span>
-
-	<span class="c1">// 类型
-</span><span class="c1"></span>	<span class="c1">// 1. 布尔
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">b1</span> <span class="kt">bool</span>
-	<span class="nx">b1</span> <span class="p">=</span> <span class="kc">true</span>
-	<span class="nx">b1</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">b1</span><span class="p">)</span>
-
-	<span class="c1">// 2. 整形
-</span><span class="c1"></span>	<span class="c1">// int8 uint8 int16 uint16 int32 uint32 int64 uint64 int uint uintptr
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">i32</span> <span class="kt">int32</span>
-	<span class="c1">// 强制转换
-</span><span class="c1"></span>	<span class="nx">i32</span> <span class="p">=</span> <span class="nb">int32</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
-	<span class="c1">// 运算：+, -, *, /, %（求余）
-</span><span class="c1"></span>	<span class="c1">// 比较：&gt;, &lt;, ==, &gt;=, &lt;=, !=
-</span><span class="c1"></span>	<span class="c1">// 位运算：x &lt;&lt; y, x &gt;&gt; y, x ^ y, x &amp; y, x | y, ^x （取反）
-</span><span class="c1"></span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i32</span><span class="p">)</span>
-
-	<span class="c1">// 3. 浮点
-</span><span class="c1"></span>	<span class="c1">// float32, float64
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">f1</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">1.0001</span>
-	<span class="kd">var</span> <span class="nx">f2</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mf">1.0002</span>
-	<span class="c1">// 浮点比较
-</span><span class="c1"></span>	<span class="nx">isEqual</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nf">Dim</span><span class="p">(</span><span class="nx">f1</span><span class="p">,</span> <span class="nx">f2</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mf">0.0001</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">isEqual</span><span class="p">)</span>
-
-	<span class="c1">// 4. 字符串
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">s1</span> <span class="kt">string</span>
-	<span class="nx">s1</span> <span class="p">=</span> <span class="s">&#34;abc&#34;</span>
-	<span class="c1">// 字符串连接
-</span><span class="c1"></span>	<span class="nx">s1</span> <span class="p">=</span> <span class="nx">s1</span> <span class="o">+</span> <span class="s">&#34;ddd&#34;</span>
-	<span class="c1">// 取长度
-</span><span class="c1"></span>	<span class="nx">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">)</span>
-	<span class="c1">// 取字符
-</span><span class="c1"></span>	<span class="nx">c1</span> <span class="o">:=</span> <span class="nx">s1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-	<span class="c1">// 反引号，不转义，常用于正则表达式
-</span><span class="c1"></span>	<span class="nx">s1</span> <span class="p">=</span> <span class="s">`</span><span class="s">\w+</span><span class="s">`</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c1</span><span class="p">)</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="s">&#34;prefix&#34;</span><span class="p">,</span> <span class="s">&#34;pre&#34;</span><span class="p">)</span><span class="p">)</span> <span class="c1">// true
-</span><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">HasSuffix</span><span class="p">(</span><span class="s">&#34;suffix&#34;</span><span class="p">,</span> <span class="s">&#34;fix&#34;</span><span class="p">)</span><span class="p">)</span> <span class="c1">// true
-</span><span class="c1"></span>
-	<span class="c1">// 字节遍历
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">ch</span> <span class="o">:=</span> <span class="nx">s1</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ch</span><span class="p">)</span>
-	<span class="p">}</span>
-	<span class="c1">// Unicode字符遍历
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">ch</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s1</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">ch</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 5. 数组
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">arr1</span> <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">int</span>
-	<span class="c1">//var arr2 [3][8]int // 二维数组
-</span><span class="c1"></span>	<span class="c1">// 初始化
-</span><span class="c1"></span>	<span class="nx">arr1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">}</span>
-	<span class="nx">array</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
-	<span class="c1">// 临时结构体数组
-</span><span class="c1"></span>	<span class="nx">structArray</span> <span class="o">:=</span> <span class="p">[</span><span class="p">]</span><span class="kd">struct</span> <span class="p">{</span>
-		<span class="nx">name</span> <span class="kt">string</span>
-		<span class="nx">age</span>  <span class="kt">int</span>
-	<span class="p">}</span><span class="p">{</span><span class="p">{</span><span class="s">&#34;Tim&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">}</span><span class="p">,</span> <span class="p">{</span><span class="s">&#34;Jim&#34;</span><span class="p">,</span> <span class="mi">20</span><span class="p">}</span><span class="p">}</span>
-
-	<span class="c1">// 数组遍历
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span>
-	<span class="p">}</span>
-	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">structArray</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-	<span class="p">}</span>
-	<span class="c1">// 数组是值类型，每次参数传递都是一份拷贝
-</span><span class="c1"></span>
-	<span class="c1">// 数组切片Slice
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">mySlice</span> <span class="p">[</span><span class="p">]</span><span class="kt">int</span> <span class="p">=</span> <span class="nx">arr1</span><span class="p">[</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-	<span class="nx">mySlice1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-	<span class="nx">mySlice2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;len(mySlice2:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">mySlice2</span><span class="p">)</span><span class="p">)</span> <span class="c1">// 5
-</span><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;cap(mySlice2:&#34;</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">mySlice2</span><span class="p">)</span><span class="p">)</span> <span class="c1">// 10
-</span><span class="c1"></span>
-	<span class="nx">mySlice3</span> <span class="o">:=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">mySlice</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-	<span class="nx">mySlice4</span> <span class="o">:=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">mySlice</span><span class="p">,</span> <span class="nx">mySlice1</span><span class="o">...</span><span class="p">)</span>
-
-	<span class="nb">copy</span><span class="p">(</span><span class="nx">mySlice3</span><span class="p">,</span> <span class="nx">mySlice4</span><span class="p">)</span>
-
-	<span class="c1">// 6. Map
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">m</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span>
-	<span class="nx">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;ddd&#34;</span>
-	<span class="nx">m1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-	<span class="nx">m2</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-		<span class="mi">1</span><span class="p">:</span> <span class="s">&#34;a&#34;</span><span class="p">,</span>
-		<span class="mi">2</span><span class="p">:</span> <span class="s">&#34;b&#34;</span><span class="p">,</span>
-	<span class="p">}</span>
-
-	<span class="nb">delete</span><span class="p">(</span><span class="nx">m2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-	<span class="nx">value</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-	<span class="k">if</span> <span class="nx">ok</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">m2</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-	<span class="p">}</span>
-
-<span class="p">}</span>
-
-<span class="c1">// 3. 流程控制
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">flowDemo</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// if else
-</span><span class="c1"></span>	<span class="nx">a</span> <span class="o">:=</span> <span class="mi">10</span>
-	<span class="k">if</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">10</span> <span class="p">{</span>
-		<span class="c1">// ..
-</span><span class="c1"></span>	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-		<span class="c1">// ..
-</span><span class="c1"></span>	<span class="p">}</span>
-
-	<span class="c1">// switch
-</span><span class="c1"></span>	<span class="k">switch</span> <span class="nx">a</span> <span class="p">{</span>
-	<span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;0&#34;</span><span class="p">)</span>
-	<span class="k">case</span> <span class="mi">10</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;10&#34;</span><span class="p">)</span>
-	<span class="k">default</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;default&#34;</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="k">switch</span> <span class="p">{</span>
-	<span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&lt;10&#34;</span><span class="p">)</span>
-	<span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">20</span><span class="p">:</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;&lt;20&#34;</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 循环
-</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-	<span class="p">}</span>
-	<span class="c1">// 无限循环
-</span><span class="c1"></span>	<span class="nx">sum</span> <span class="o">:=</span> <span class="mi">0</span>
-	<span class="k">for</span> <span class="p">{</span>
-		<span class="nx">sum</span><span class="o">++</span>
-		<span class="k">if</span> <span class="nx">sum</span> <span class="p">&gt;</span> <span class="mi">10</span> <span class="p">{</span>
-			<span class="k">break</span>
-			<span class="c1">// 指定break
-</span><span class="c1"></span>			<span class="c1">// break JLoop
-</span><span class="c1"></span>		<span class="p">}</span>
-	<span class="p">}</span>
-
-	<span class="k">goto</span> <span class="nx">JLoop</span>
-
-<span class="nx">JLoop</span><span class="p">:</span>
-	<span class="c1">// break to here
-</span><span class="c1"></span>
-<span class="p">}</span>
-
-<span class="c1">// 4. 函数
-</span><span class="c1"></span><span class="c1">// func 函数名(参数列表)(返回值列表) {
-</span><span class="c1"></span><span class="c1">// }
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">sum1</span><span class="p">(</span><span class="nx">value1</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">value2</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">result</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// err = errors.New(&#34;xxxx&#34;)
-</span><span class="c1"></span>	<span class="k">return</span> <span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">,</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">sum2</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span>
-<span class="p">}</span>
-
-<span class="c1">// 不定参数
-</span><span class="c1"></span><span class="c1">// myFunc(1, 2, 3, 4, 5)
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">myFunc</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">arg</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">args</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span>
-	<span class="p">}</span>
-	<span class="c1">// 传递
-</span><span class="c1"></span>	<span class="c1">// myFunc2(args...)
-</span><span class="c1"></span>	<span class="c1">// myFunc2(args[1:]...)
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="c1">// 任意类型的不定参数
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">myPrintf</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{</span><span class="p">}</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">arg</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">args</span> <span class="p">{</span>
-		<span class="k">switch</span> <span class="nx">arg</span><span class="p">.</span><span class="p">(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
-			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arg</span><span class="p">,</span> <span class="s">&#34;is int&#34;</span><span class="p">)</span>
-		<span class="k">case</span> <span class="kt">string</span><span class="p">:</span>
-			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arg</span><span class="p">,</span> <span class="s">&#34;is string&#34;</span><span class="p">)</span>
-		<span class="k">default</span><span class="p">:</span>
-			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arg</span><span class="p">,</span> <span class="s">&#34;is unknown&#34;</span><span class="p">)</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 匿名函数
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">anonymousFunc</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">f</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
-	<span class="p">}</span>
-
-	<span class="nf">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// defer
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">deferDemo</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span>
-	<span class="p">}</span>
-
-	<span class="k">defer</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Close</span><span class="p">(</span><span class="p">)</span>
-	<span class="c1">// or
-</span><span class="c1"></span>	<span class="k">defer</span> <span class="kd">func</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">(</span><span class="p">)</span><span class="p">;</span> <span class="nx">r</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Runtime error caught: %v&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
-		<span class="p">}</span>
-	<span class="p">}</span><span class="p">(</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 5. 结构体
-</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Rect</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="c1">// 小写为private
-</span><span class="c1"></span>	<span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">float64</span>
-	<span class="c1">// 大写为public
-</span><span class="c1"></span>	<span class="nx">Width</span><span class="p">,</span> <span class="nx">Height</span> <span class="kt">float64</span>
-<span class="p">}</span>
-
-<span class="c1">// 大写方法为public，小写为private
-</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">Rect</span><span class="p">)</span> <span class="nf">Area</span><span class="p">(</span><span class="p">)</span> <span class="kt">float64</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">Width</span> <span class="o">*</span> <span class="nx">r</span><span class="p">.</span><span class="nx">Height</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">netRect</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">float64</span><span class="p">)</span> <span class="o">*</span><span class="nx">Rect</span> <span class="p">{</span>
-	<span class="c1">// 实例化结构体
-</span><span class="c1"></span>	<span class="c1">// rect1 := new(Rect)
-</span><span class="c1"></span>	<span class="c1">// rect2 := &amp;Rect{}
-</span><span class="c1"></span>	<span class="c1">// rect3 := &amp;Rect{Width:100, Height:200}
-</span><span class="c1"></span>	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">Rect</span><span class="p">{</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 匿名组合
-</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Base</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="nx">Name</span> <span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">base</span> <span class="o">*</span><span class="nx">Base</span><span class="p">)</span> <span class="nf">Foo</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span><span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">base</span> <span class="o">*</span><span class="nx">Base</span><span class="p">)</span> <span class="nf">Bar</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span><span class="p">}</span>
-
-<span class="kd">type</span> <span class="nx">Foo</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="nx">Base</span>
-	<span class="o">*</span><span class="nx">log</span><span class="p">.</span><span class="nx">Logger</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">foo</span> <span class="o">*</span><span class="nx">Foo</span><span class="p">)</span> <span class="nf">Bar</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">foo</span><span class="p">.</span><span class="nx">Base</span><span class="p">.</span><span class="nf">Bar</span><span class="p">(</span><span class="p">)</span>
-	<span class="c1">// ...
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="c1">// 非侵入式接口
-</span><span class="c1"></span><span class="kd">type</span> <span class="nx">IFile</span> <span class="kd">interface</span> <span class="p">{</span>
-	<span class="nf">Read</span><span class="p">(</span><span class="nx">buf</span> <span class="p">[</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span>
-	<span class="nf">Write</span><span class="p">(</span><span class="nx">buf</span> <span class="p">[</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">type</span> <span class="nx">File</span> <span class="kd">struct</span> <span class="p">{</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">file</span> <span class="o">*</span><span class="nx">File</span><span class="p">)</span> <span class="nf">Read</span><span class="p">(</span><span class="nx">buf</span> <span class="p">[</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">file</span> <span class="o">*</span><span class="nx">File</span><span class="p">)</span> <span class="nf">Write</span><span class="p">(</span><span class="nx">buf</span> <span class="p">[</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">interfaceDemo</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// 只要实现了Read, Write方法即可
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">file</span> <span class="nx">IFile</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">File</span><span class="p">)</span>
-
-	<span class="c1">// 接口查询
-</span><span class="c1"></span>	<span class="c1">// 是否实现了IFile接口
-</span><span class="c1"></span>	<span class="k">if</span> <span class="nx">file2</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">file</span><span class="p">.</span><span class="p">(</span><span class="nx">IFile</span><span class="p">)</span><span class="p">;</span> <span class="nx">ok</span> <span class="p">{</span>
-		<span class="nx">file2</span><span class="p">.</span><span class="nf">Read</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kt">byte</span><span class="p">{</span><span class="p">}</span><span class="p">)</span>
-	<span class="p">}</span>
-	<span class="c1">// 实例类型是否是File
-</span><span class="c1"></span>	<span class="k">if</span> <span class="nx">file3</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">file</span><span class="p">.</span><span class="p">(</span><span class="o">*</span><span class="nx">File</span><span class="p">)</span><span class="p">;</span> <span class="nx">ok</span> <span class="p">{</span>
-		<span class="nx">file3</span><span class="p">.</span><span class="nf">Read</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kt">byte</span><span class="p">{</span><span class="p">}</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 类型查询
-</span><span class="c1"></span>	<span class="k">switch</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">file</span><span class="p">.</span><span class="p">(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 6. 并发编程
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">counting</span><span class="p">(</span><span class="nx">ch</span> <span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">ch</span> <span class="o">&lt;-</span> <span class="mi">1</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;counting&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">channelDemo</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">chs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">chs</span><span class="p">)</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-		<span class="nx">chs</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
-		<span class="c1">// 带缓冲区大小
-</span><span class="c1"></span>		<span class="c1">// c: = make(chan int, 1024)
-</span><span class="c1"></span>		<span class="c1">// for i:= range c {
-</span><span class="c1"></span>		<span class="c1">// }
-</span><span class="c1"></span>		<span class="k">go</span> <span class="nf">counting</span><span class="p">(</span><span class="nx">chs</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ch</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">chs</span> <span class="p">{</span>
-		<span class="o">&lt;-</span><span class="nx">ch</span>
-		<span class="c1">// channel select
-</span><span class="c1"></span>		<span class="cm">/*
-</span><span class="cm">			select {
-</span><span class="cm">			case &lt;-ch:
-</span><span class="cm">				// ...
-</span><span class="cm">			case ch &lt;- 1:
-</span><span class="cm">			}
-</span><span class="cm">		*/</span>
-	<span class="p">}</span>
-
-	<span class="c1">// 单向Channel
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">ch1</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="kt">int</span> <span class="c1">// 只能写入int
-</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">ch2</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="kt">int</span> <span class="c1">// 只能读出int
-</span><span class="c1"></span>
-	<span class="c1">// 关闭Channel
-</span><span class="c1"></span>	<span class="nb">close</span><span class="p">(</span><span class="nx">ch1</span><span class="p">)</span>
-	<span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch2</span>
-	<span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
-		<span class="c1">// already closed
-</span><span class="c1"></span>	<span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 锁
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">m</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
-
-<span class="kd">func</span> <span class="nf">lockDemo</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m</span><span class="p">.</span><span class="nf">Lock</span><span class="p">(</span><span class="p">)</span>
-	<span class="c1">// do something
-</span><span class="c1"></span>	<span class="k">defer</span> <span class="nx">m</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">(</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 全局唯一操作
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">once</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
-
-<span class="c1">// once.Do(someFunction)
-</span><span class="c1"></span>
-<span class="c1">// 7. 网络编程
-</span><span class="c1"></span><span class="c1">// import &#34;net&#34;
-</span><span class="c1"></span><span class="c1">// net.Dial(&#34;tcp&#34;, &#34;127.0.0.1:8080&#34;)
-</span><span class="c1"></span>
-<span class="c1">// 8. json处理
-</span><span class="c1"></span><span class="c1">// import &#34;encoding/json&#34;
-</span><span class="c1"></span><span class="c1">// json.Marshal(obj) 序列化
-</span><span class="c1"></span><span class="c1">// json.Unmarshal() 反序列化
-</span><span class="c1"></span>
-<span class="c1">// 9. Web开发
-</span><span class="c1"></span><span class="c1">// import &#34;net/http&#34;
-</span><span class="c1"></span><span class="c1">// 模板
-</span><span class="c1"></span><span class="c1">// import &#34;html/template&#34;
-</span><span class="c1"></span>
-<span class="c1">// 10. 常用库
-</span><span class="c1"></span><span class="c1">// import &#34;os&#34;
-</span><span class="c1"></span><span class="c1">// import &#34;io&#34;
-</span><span class="c1"></span><span class="c1">// import &#34;flag&#34;
-</span><span class="c1"></span><span class="c1">// import &#34;strconv&#34;
-</span><span class="c1"></span><span class="c1">// import &#34;crypto/sha1&#34;
-</span><span class="c1"></span><span class="c1">// import &#34;crypto/md5&#34;
-</span><span class="c1"></span>
-<span class="c1">// 11. 单元测试
-</span><span class="c1"></span><span class="c1">// _test结尾的go文件： xxx_test.go
-</span><span class="c1"></span><span class="c1">// 函数名以Test开头
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">TestDemo</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">r</span> <span class="o">:=</span> <span class="nf">sum2</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">r</span> <span class="o">!=</span> <span class="mi">5</span> <span class="p">{</span>
-		<span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;sum2(2, 3) failed. Got %d, expect 5.&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="nx">assert</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 12. 性能测试
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">benchmarkAdd</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">b</span><span class="p">.</span><span class="nf">StopTimer</span><span class="p">(</span><span class="p">)</span>
-	<span class="c1">// dosometing
-</span><span class="c1"></span>	<span class="nx">b</span><span class="p">.</span><span class="nf">StartTimer</span><span class="p">(</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="cm">/*
-</span><span class="cm"> 其他常用的代码片段
-</span><span class="cm">*/</span>
-
-<span class="c1">// 1. 遍历文件 filepath.Walk
-</span><span class="c1"></span><span class="c1">// import &#34;path/filepath&#34;
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">doHashWalk</span><span class="p">(</span><span class="nx">dirPath</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-
-	<span class="nx">fullPath</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="nx">dirPath</span><span class="p">)</span>
-
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">err</span>
-	<span class="p">}</span>
-
-	<span class="nx">callback</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fi</span> <span class="nx">os</span><span class="p">.</span><span class="nx">FileInfo</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nf">hashFile</span><span class="p">(</span><span class="nx">fullPath</span><span class="p">,</span> <span class="nx">path</span><span class="p">,</span> <span class="nx">fi</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="k">return</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Walk</span><span class="p">(</span><span class="nx">fullPath</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">hashFile</span><span class="p">(</span><span class="nx">root</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fi</span> <span class="nx">os</span><span class="p">.</span><span class="nx">FileInfo</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-	<span class="k">if</span> <span class="nx">fi</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="kc">nil</span>
-	<span class="p">}</span>
-	<span class="nx">rel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Rel</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">err</span>
-	<span class="p">}</span>
-	<span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hash rel:&#34;</span><span class="p">,</span> <span class="nx">rel</span><span class="p">,</span> <span class="s">&#34;abs:&#34;</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
-	<span class="k">return</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="c1">// 2. 读取文件
-</span><span class="c1"></span><span class="c1">// import &#34;io/ioutil&#34;
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">readFileDemo</span><span class="p">(</span><span class="nx">filename</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">content</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="c1">//Do something
-</span><span class="c1"></span>	<span class="p">}</span>
-	<span class="nx">lines</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span><span class="p">,</span> <span class="s">&#34;\n&#34;</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;line count:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">lines</span><span class="p">)</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 判断目录或文件是否存在
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">existsPathCheck</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">bool</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// 判断不存在
-</span><span class="c1"></span>	<span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Stat</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span><span class="p">;</span> <span class="nx">os</span><span class="p">.</span><span class="nf">IsNotExist</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-		<span class="c1">// 不存在
-</span><span class="c1"></span>	<span class="p">}</span>
-
-	<span class="c1">// 判断是否存在
-</span><span class="c1"></span>	<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Stat</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">nil</span>
-	<span class="p">}</span>
-	<span class="k">if</span> <span class="nx">os</span><span class="p">.</span><span class="nf">IsNotExist</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">nil</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">err</span>
-<span class="p">}</span>
-
-<span class="c1">// 文件目录操作
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">fileDirDemo</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// 级联创建目录
-</span><span class="c1"></span>	<span class="nx">os</span><span class="p">.</span><span class="nf">MkdirAll</span><span class="p">(</span><span class="s">&#34;/path/to/create&#34;</span><span class="p">,</span> <span class="mo">0777</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 拷贝文件
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">copyFile</span><span class="p">(</span><span class="nx">source</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">dest</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">sf</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="nx">source</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">err</span>
-	<span class="p">}</span>
-	<span class="k">defer</span> <span class="nx">sf</span><span class="p">.</span><span class="nf">Close</span><span class="p">(</span><span class="p">)</span>
-	<span class="nx">df</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="nx">dest</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">err</span>
-	<span class="p">}</span>
-	<span class="k">defer</span> <span class="nx">df</span><span class="p">.</span><span class="nf">Close</span><span class="p">(</span><span class="p">)</span>
-	<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">Copy</span><span class="p">(</span><span class="nx">df</span><span class="p">,</span> <span class="nx">sf</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="nx">si</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Stat</span><span class="p">(</span><span class="nx">source</span><span class="p">)</span>
-		<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-			<span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Chmod</span><span class="p">(</span><span class="nx">dest</span><span class="p">,</span> <span class="nx">si</span><span class="p">.</span><span class="nf">Mode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-		<span class="p">}</span>
-
-	<span class="p">}</span>
-	<span class="k">return</span>
-<span class="p">}</span>
-
-<span class="c1">// 拷贝目录
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">copyDir</span><span class="p">(</span><span class="nx">source</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">dest</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">fi</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Stat</span><span class="p">(</span><span class="nx">source</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">err</span>
-	<span class="p">}</span>
-	<span class="k">if</span> <span class="p">!</span><span class="nx">fi</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">source</span> <span class="o">+</span> <span class="s">&#34; is not a directory&#34;</span><span class="p">)</span>
-	<span class="p">}</span>
-	<span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">MkdirAll</span><span class="p">(</span><span class="nx">dest</span><span class="p">,</span> <span class="nx">fi</span><span class="p">.</span><span class="nf">Mode</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">err</span>
-	<span class="p">}</span>
-	<span class="nx">entries</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadDir</span><span class="p">(</span><span class="nx">source</span><span class="p">)</span>
-	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">entry</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">entries</span> <span class="p">{</span>
-		<span class="nx">sfp</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-		<span class="nx">dfp</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">dest</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">Name</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
-		<span class="k">if</span> <span class="nx">entry</span><span class="p">.</span><span class="nf">IsDir</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">err</span> <span class="p">=</span> <span class="nf">copyDir</span><span class="p">(</span><span class="nx">sfp</span><span class="p">,</span> <span class="nx">dfp</span><span class="p">)</span>
-			<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-				<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-			<span class="p">}</span>
-		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-			<span class="nx">err</span> <span class="p">=</span> <span class="nf">copyFile</span><span class="p">(</span><span class="nx">sfp</span><span class="p">,</span> <span class="nx">dfp</span><span class="p">)</span>
-			<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-				<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-			<span class="p">}</span>
-		<span class="p">}</span>
-
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="c1">// 3. 时间处理
-</span><span class="c1"></span><span class="c1">// import &#34;time&#34;
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">TestTimeDemo</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// Parse
-</span><span class="c1"></span>	<span class="nx">postDate</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="s">&#34;2015-09-30 19:19:00&#34;</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">postDate</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-
-	<span class="c1">// Format
-</span><span class="c1"></span>	<span class="nx">assert</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="s">&#34;2015/Sep/30 07:19:00&#34;</span><span class="p">,</span> <span class="nx">postDate</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006/Jan/02 03:04:05&#34;</span><span class="p">)</span><span class="p">)</span>
-	<span class="nx">assert</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="s">&#34;2015-09-30T19:19:00Z&#34;</span><span class="p">,</span> <span class="nx">postDate</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">)</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// 4. 正则表达式
-</span><span class="c1"></span><span class="c1">// import &#34;regexp&#34;
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">TestRegexp</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// 查找匹配
-</span><span class="c1"></span>	<span class="nx">re</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">MustCompile</span><span class="p">(</span><span class="s">`</span><span class="s">(\d+)-(\d+)</span><span class="s">`</span><span class="p">)</span>
-	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">re</span><span class="p">.</span><span class="nf">FindAllStringSubmatch</span><span class="p">(</span><span class="s">&#34;123-666&#34;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-	<span class="nx">assert</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="p">)</span>
-	<span class="nx">assert</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="s">&#34;123&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span>
-	<span class="nx">assert</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="s">&#34;666&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">)</span>
-
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nf">helloWorld</span><span class="p">(</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre><code class="language-go">/*
+gotips_test.go:
+  Golang速学速查速用代码手册
+
+Source: github.com/coderzh/CodeTips/blob/master/gotips_test.go
+
+Author: coderzh(github.com/coderzh)
+Blog: http://blog.coderzh.com
+参考：《Go语言编程》
+*/
+
+package main
+
+import (
+	&quot;errors&quot;
+	&quot;fmt&quot;
+	&quot;github.com/stretchr/testify/assert&quot;
+	&quot;io&quot;
+	&quot;io/ioutil&quot;
+	&quot;log&quot;
+	&quot;math&quot;
+	&quot;os&quot;
+	&quot;path/filepath&quot;
+	&quot;regexp&quot;
+	&quot;strings&quot;
+	&quot;sync&quot;
+	&quot;testing&quot;
+	&quot;time&quot;
+)
+
+// 0. 注释
+/*
+规范：
+ 1. 命名：骆驼命名法（不要用下划线）
+
+命令:
+ go get github.com/coderzh/xxx
+ go build calc
+ go run xxx.go
+ go install calc
+*/
+
+// 1. Hello World
+func helloWorld() {
+	fmt.Println(&quot;Hello, 世界&quot;)
+}
+
+// 2.变量类型
+func typeDemo() {
+	// 变量声明
+	var v1 int
+	var (
+		v2 int
+		v3 string
+	)
+	//var p *int // 指针类型
+
+	// 变量初始化
+	var v4 int = 10
+	// 等价于:
+	var v5 = 10
+	// 一般这样就好
+	v6 := 10
+
+	// 赋值，多重赋值
+	v1 = 10
+	v2, v3 = 20, &quot;test&quot;
+	// 匿名变量 _
+	_, v4 = v5, v6
+
+	fmt.Println(v1, v2, v3, v4)
+
+	// 常量
+	const Pi float64 = 3.1415926
+	const MaxPlayer = 10
+
+	// 枚举
+	const (
+		Sunday = iota // iota从0递增
+		Mondy
+		Tuesday
+		// ...
+	)
+
+	// 类型
+	// 1. 布尔
+	var b1 bool
+	b1 = true
+	b1 = (1 == 2)
+
+	fmt.Println(b1)
+
+	// 2. 整形
+	// int8 uint8 int16 uint16 int32 uint32 int64 uint64 int uint uintptr
+	var i32 int32
+	// 强制转换
+	i32 = int32(64)
+	// 运算：+, -, *, /, %（求余）
+	// 比较：&gt;, &lt;, ==, &gt;=, &lt;=, !=
+	// 位运算：x &lt;&lt; y, x &gt;&gt; y, x ^ y, x &amp; y, x | y, ^x （取反）
+
+	fmt.Println(i32)
+
+	// 3. 浮点
+	// float32, float64
+	var f1 float64 = 1.0001
+	var f2 float64 = 1.0002
+	// 浮点比较
+	isEqual := math.Dim(f1, f2) &lt; 0.0001
+
+	fmt.Println(isEqual)
+
+	// 4. 字符串
+	var s1 string
+	s1 = &quot;abc&quot;
+	// 字符串连接
+	s1 = s1 + &quot;ddd&quot;
+	// 取长度
+	n := len(s1)
+	// 取字符
+	c1 := s1[0]
+	// 反引号，不转义，常用于正则表达式
+	s1 = `\w+`
+
+	fmt.Println(c1)
+
+	fmt.Println(strings.HasPrefix(&quot;prefix&quot;, &quot;pre&quot;)) // true
+	fmt.Println(strings.HasSuffix(&quot;suffix&quot;, &quot;fix&quot;)) // true
+
+	// 字节遍历
+	for i := 0; i &lt; n; i++ {
+		ch := s1[i]
+		fmt.Println(ch)
+	}
+	// Unicode字符遍历
+	for i, ch := range s1 {
+		fmt.Println(i, ch)
+	}
+
+	// 5. 数组
+	var arr1 [32]int
+	//var arr2 [3][8]int // 二维数组
+	// 初始化
+	arr1 = [32]int{0}
+	array := [5]int{1, 2, 3, 4, 5}
+	// 临时结构体数组
+	structArray := []struct {
+		name string
+		age  int
+	}{{&quot;Tim&quot;, 18}, {&quot;Jim&quot;, 20}}
+
+	// 数组遍历
+	for i := 0; i &lt; len(array); i++ {
+		fmt.Println(array[i])
+	}
+	for i, v := range structArray {
+		fmt.Println(i, v)
+	}
+	// 数组是值类型，每次参数传递都是一份拷贝
+
+	// 数组切片Slice
+	var mySlice []int = arr1[:2]
+	mySlice1 := make([]int, 5)
+	mySlice2 := make([]int, 5, 10)
+
+	fmt.Println(&quot;len(mySlice2:&quot;, len(mySlice2)) // 5
+	fmt.Println(&quot;cap(mySlice2:&quot;, cap(mySlice2)) // 10
+
+	mySlice3 := append(mySlice, 2, 3, 4)
+	mySlice4 := append(mySlice, mySlice1...)
+
+	copy(mySlice3, mySlice4)
+
+	// 6. Map
+	var m map[int]string
+	m[1] = &quot;ddd&quot;
+	m1 := make(map[int]string)
+	m2 := map[int]string{
+		1: &quot;a&quot;,
+		2: &quot;b&quot;,
+	}
+
+	delete(m2, 1)
+
+	value, ok := m1[1]
+	if ok {
+		fmt.Println(value)
+	}
+
+	for k, v := range m2 {
+		fmt.Println(k, v)
+	}
+
+}
+
+// 3. 流程控制
+func flowDemo() {
+	// if else
+	a := 10
+	if a &lt; 10 {
+		// ..
+	} else {
+		// ..
+	}
+
+	// switch
+	switch a {
+	case 0:
+		fmt.Println(&quot;0&quot;)
+	case 10:
+		fmt.Println(&quot;10&quot;)
+	default:
+		fmt.Println(&quot;default&quot;)
+	}
+
+	switch {
+	case a &lt; 10:
+		fmt.Println(&quot;&lt;10&quot;)
+	case a &lt; 20:
+		fmt.Println(&quot;&lt;20&quot;)
+	}
+
+	// 循环
+	for i := 0; i &lt; 10; i++ {
+	}
+	// 无限循环
+	sum := 0
+	for {
+		sum++
+		if sum &gt; 10 {
+			break
+			// 指定break
+			// break JLoop
+		}
+	}
+
+	goto JLoop
+
+JLoop:
+	// break to here
+
+}
+
+// 4. 函数
+// func 函数名(参数列表)(返回值列表) {
+// }
+func sum1(value1 int, value2 int) (result int, err error) {
+	// err = errors.New(&quot;xxxx&quot;)
+	return value1 + value2, nil
+}
+
+func sum2(value1, value2 int) int {
+	return value1 + value2
+}
+
+// 不定参数
+// myFunc(1, 2, 3, 4, 5)
+func myFunc(args ...int) {
+	for _, arg := range args {
+		fmt.Println(arg)
+	}
+	// 传递
+	// myFunc2(args...)
+	// myFunc2(args[1:]...)
+}
+
+// 任意类型的不定参数
+func myPrintf(args ...interface{}) {
+	for _, arg := range args {
+		switch arg.(type) {
+		case int:
+			fmt.Println(arg, &quot;is int&quot;)
+		case string:
+			fmt.Println(arg, &quot;is string&quot;)
+		default:
+			fmt.Println(arg, &quot;is unknown&quot;)
+		}
+	}
+}
+
+// 匿名函数
+func anonymousFunc() {
+	f := func(a, b int) int {
+		return a + b
+	}
+
+	f(1, 2)
+}
+
+// defer
+func deferDemo(path string) {
+	f, err := os.Open(path)
+	if err != nil {
+		return
+	}
+
+	defer f.Close()
+	// or
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Printf(&quot;Runtime error caught: %v&quot;, r)
+		}
+	}()
+}
+
+// 5. 结构体
+type Rect struct {
+	// 小写为private
+	x, y float64
+	// 大写为public
+	Width, Height float64
+}
+
+// 大写方法为public，小写为private
+func (r *Rect) Area() float64 {
+	return r.Width * r.Height
+}
+
+func netRect(x, y, width, height float64) *Rect {
+	// 实例化结构体
+	// rect1 := new(Rect)
+	// rect2 := &amp;Rect{}
+	// rect3 := &amp;Rect{Width:100, Height:200}
+	return &amp;Rect{x, y, width, height}
+}
+
+// 匿名组合
+type Base struct {
+	Name string
+}
+
+func (base *Base) Foo() {}
+func (base *Base) Bar() {}
+
+type Foo struct {
+	Base
+	*log.Logger
+}
+
+func (foo *Foo) Bar() {
+	foo.Base.Bar()
+	// ...
+}
+
+// 非侵入式接口
+type IFile interface {
+	Read(buf []byte) (n int, err error)
+	Write(buf []byte) (n int, err error)
+}
+
+type File struct {
+}
+
+func (file *File) Read(buf []byte) (n int, err error) {
+	return 0, nil
+}
+
+func (file *File) Write(buf []byte) (n int, err error) {
+	return 0, nil
+}
+
+func interfaceDemo() {
+	// 只要实现了Read, Write方法即可
+	var file IFile = new(File)
+
+	// 接口查询
+	// 是否实现了IFile接口
+	if file2, ok := file.(IFile); ok {
+		file2.Read([]byte{})
+	}
+	// 实例类型是否是File
+	if file3, ok := file.(*File); ok {
+		file3.Read([]byte{})
+	}
+
+	// 类型查询
+	switch v := file.(type) {
+	}
+}
+
+// 6. 并发编程
+func counting(ch chan int) {
+	ch &lt;- 1
+	fmt.Println(&quot;counting&quot;)
+}
+
+func channelDemo() {
+	chs := make([]chan int, 10)
+	for i := 0; i &lt; len(chs); i++ {
+		chs[i] = make(chan int)
+		// 带缓冲区大小
+		// c: = make(chan int, 1024)
+		// for i:= range c {
+		// }
+		go counting(chs[i])
+	}
+
+	for _, ch := range chs {
+		&lt;-ch
+		// channel select
+		/*
+			select {
+			case &lt;-ch:
+				// ...
+			case ch &lt;- 1:
+			}
+		*/
+	}
+
+	// 单向Channel
+	var ch1 chan&lt;- int // 只能写入int
+	var ch2 &lt;-chan int // 只能读出int
+
+	// 关闭Channel
+	close(ch1)
+	_, ok := &lt;-ch2
+	if !ok {
+		// already closed
+	}
+}
+
+// 锁
+var m sync.Mutex
+
+func lockDemo() {
+	m.Lock()
+	// do something
+	defer m.Unlock()
+}
+
+// 全局唯一操作
+var once sync.Once
+
+// once.Do(someFunction)
+
+// 7. 网络编程
+// import &quot;net&quot;
+// net.Dial(&quot;tcp&quot;, &quot;127.0.0.1:8080&quot;)
+
+// 8. json处理
+// import &quot;encoding/json&quot;
+// json.Marshal(obj) 序列化
+// json.Unmarshal() 反序列化
+
+// 9. Web开发
+// import &quot;net/http&quot;
+// 模板
+// import &quot;html/template&quot;
+
+// 10. 常用库
+// import &quot;os&quot;
+// import &quot;io&quot;
+// import &quot;flag&quot;
+// import &quot;strconv&quot;
+// import &quot;crypto/sha1&quot;
+// import &quot;crypto/md5&quot;
+
+// 11. 单元测试
+// _test结尾的go文件： xxx_test.go
+// 函数名以Test开头
+func TestDemo(t *testing.T) {
+	r := sum2(2, 3)
+	if r != 5 {
+		t.Errorf(&quot;sum2(2, 3) failed. Got %d, expect 5.&quot;, r)
+	}
+
+	assert.Equal(t, 1, 1)
+}
+
+// 12. 性能测试
+func benchmarkAdd(b *testing.B) {
+	b.StopTimer()
+	// dosometing
+	b.StartTimer()
+}
+
+/*
+ 其他常用的代码片段
+*/
+
+// 1. 遍历文件 filepath.Walk
+// import &quot;path/filepath&quot;
+func doHashWalk(dirPath string) error {
+
+	fullPath, err := filepath.Abs(dirPath)
+
+	if err != nil {
+		return err
+	}
+
+	callback := func(path string, fi os.FileInfo, err error) error {
+		return hashFile(fullPath, path, fi, err)
+	}
+
+	return filepath.Walk(fullPath, callback)
+}
+
+func hashFile(root string, path string, fi os.FileInfo, err error) error {
+	if fi.IsDir() {
+		return nil
+	}
+	rel, err := filepath.Rel(root, path)
+	if err != nil {
+		return err
+	}
+	log.Println(&quot;hash rel:&quot;, rel, &quot;abs:&quot;, path)
+	return nil
+}
+
+// 2. 读取文件
+// import &quot;io/ioutil&quot;
+func readFileDemo(filename string) {
+	content, err := ioutil.ReadFile(filename)
+	if err != nil {
+		//Do something
+	}
+	lines := strings.Split(string(content), &quot;\n&quot;)
+	fmt.Println(&quot;line count:&quot;, len(lines))
+}
+
+// 判断目录或文件是否存在
+func existsPathCheck(path string) (bool, error) {
+	// 判断不存在
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		// 不存在
+	}
+
+	// 判断是否存在
+	_, err := os.Stat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return true, err
+}
+
+// 文件目录操作
+func fileDirDemo() {
+	// 级联创建目录
+	os.MkdirAll(&quot;/path/to/create&quot;, 0777)
+}
+
+// 拷贝文件
+func copyFile(source string, dest string) (err error) {
+	sf, err := os.Open(source)
+	if err != nil {
+		return err
+	}
+	defer sf.Close()
+	df, err := os.Create(dest)
+	if err != nil {
+		return err
+	}
+	defer df.Close()
+	_, err = io.Copy(df, sf)
+	if err == nil {
+		si, err := os.Stat(source)
+		if err != nil {
+			err = os.Chmod(dest, si.Mode())
+		}
+
+	}
+	return
+}
+
+// 拷贝目录
+func copyDir(source string, dest string) (err error) {
+	fi, err := os.Stat(source)
+	if err != nil {
+		return err
+	}
+	if !fi.IsDir() {
+		return errors.New(source + &quot; is not a directory&quot;)
+	}
+	err = os.MkdirAll(dest, fi.Mode())
+	if err != nil {
+		return err
+	}
+	entries, err := ioutil.ReadDir(source)
+	for _, entry := range entries {
+		sfp := filepath.Join(source, entry.Name())
+		dfp := filepath.Join(dest, entry.Name())
+		if entry.IsDir() {
+			err = copyDir(sfp, dfp)
+			if err != nil {
+				fmt.Println(err)
+			}
+		} else {
+			err = copyFile(sfp, dfp)
+			if err != nil {
+				fmt.Println(err)
+			}
+		}
+
+	}
+	return nil
+}
+
+// 3. 时间处理
+// import &quot;time&quot;
+func TestTimeDemo(t *testing.T) {
+	// Parse
+	postDate, err := time.Parse(&quot;2006-01-02 15:04:05&quot;, &quot;2015-09-30 19:19:00&quot;)
+	fmt.Println(postDate, err)
+
+	// Format
+	assert.Equal(t, &quot;2015/Sep/30 07:19:00&quot;, postDate.Format(&quot;2006/Jan/02 03:04:05&quot;))
+	assert.Equal(t, &quot;2015-09-30T19:19:00Z&quot;, postDate.Format(time.RFC3339))
+}
+
+// 4. 正则表达式
+// import &quot;regexp&quot;
+func TestRegexp(t *testing.T) {
+	// 查找匹配
+	re := regexp.MustCompile(`(\d+)-(\d+)`)
+	r := re.FindAllStringSubmatch(&quot;123-666&quot;, -1)
+
+	assert.Equal(t, 1, len(r))
+	assert.Equal(t, &quot;123&quot;, r[0][1])
+	assert.Equal(t, &quot;666&quot;, r[0][2])
+
+}
+
+func main() {
+	helloWorld()
+}
+</code></pre>
                       
                     </div>
                     <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">

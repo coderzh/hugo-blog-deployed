@@ -178,7 +178,7 @@
                   <h1 class="post-title">一次 CTF 之旅</h1>
 
                   <p class="post-byline">
-                    by  · 2016年07月11日 · 2744 Words ·
+                    by  · 2016年07月11日 · 2745 Words ·
                     ~6min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2016/2016-07-11-a-ctf-tour.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -194,11 +194,12 @@
 <p>CTF（Capture The Flag）夺旗赛，在网络安全领域中指的是网络安全技术人员之间进行技术竞技的一种比赛形式。CTF 起源于 1996 年 DEFCON 全球黑客大会，以代替之前黑客们通过互相发起真实攻击进行技术比拼的方式。</p>
 <p>这次是公司第一次举办 CTF 的比赛。而我在这之前，对 CTF 也是了解甚少。组织这次比赛的是公司 T5 大神所在的实验室，本着学习的态度，就尝试报了名。刚好队里缺 Android 逆向的小伙伴，所有我就专攻 Android 题，其他题交给其他的小伙伴。</p>
 <p>由于是第一次举办，采用了比较初级的「解题模式」。主要分为几类：隐写、逆向、Web、Mobile。举个隐写的例子就明白了。比如让你在一个浏览器页面里找藏在里面的 Flag，只要查看源码：</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">p</span><span class="p"></span><span class="p">&gt;</span>
+<pre><code class="language-html">&lt;p&gt;
 找到第一个 Flag!
-<span class="c">&lt;!--</span><span class="c"> Flag{WelcomeToCTF} </span><span class="c">--&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">p</span><span class="p">&gt;</span>
-</code></pre></div><p><code>WelcomeToCTF</code> 就是其中的 Flag。当然，这种属于最初级的题，更多的隐写 Flag 会藏在更深的地方，比如图片、MP3、PDF 等等文件里，你需要做各种数据抽离，找出其中的不同，最终发现写在里面的隐藏内容。</p>
+&lt;!-- Flag{WelcomeToCTF} --&gt;
+&lt;/p&gt;
+</code></pre>
+<p><code>WelcomeToCTF</code> 就是其中的 Flag。当然，这种属于最初级的题，更多的隐写 Flag 会藏在更深的地方，比如图片、MP3、PDF 等等文件里，你需要做各种数据抽离，找出其中的不同，最终发现写在里面的隐藏内容。</p>
 <p>对 CTF 有兴趣的同学可以自行去了解更多，这里不一一介绍了。一是我本身也专研不深，二是这次比赛我只搞了 Mobile 题。所以，接下来就只聊一聊 Mobile 题。</p>
 <p>Mobile 题主要是 Android 的逆向，Crack 破解或者是找出其中漏洞。同样举个简单的例子，比如破解一个需要序列号的 APP，通过逆向，你找到它里面判断序列号是否正确的地方，把判断条件改反，或者修改判断条件，让它永远返回 True。这样就简单的绕过了验证。</p>
 <p>而实际情况会比这种复杂的多。所以要掌握好 Android 逆向，需要了解 Android 虚拟机的原理及 Dalvik 指令集，熟悉 DEX 文件的格式及反汇编语言 smali。能读懂和理解 ARM 汇编（寄存器和各种寻址）。由于 Java 层的破解相对容易，很多 APP 会把关键功能放在 Android NDK 的 so 里。所以，分析反汇编的 so 代码也是必须要掌握的。</p>
@@ -213,7 +214,8 @@
 <p>我不太可能把 Mac 再装个 Windows 双系统，而且我也不会那样做。最后，为了能在虚拟机里使用 IDA Pro 动态调试 Android，我折腾出如下方法：虚拟机同时设置 NAT 模式和 Host-Only 模式，NAT 模式是为了能够上网，Host-Only 模式是为了能访问宿主机器。有了 Host-Only 模式，可以访问到宿主机了，但是还是没办法直接连接到 android_server 的调试端口。</p>
 <p>原理是这样的，android_server 的调试端口 23946 是在手机上开启的，为了在 PC 上能连接这个端口，所有的教程都教你需要输入如下指令：</p>
 <pre><code>adb forward tcp:23946 tcp:23946
-</code></pre><p>即，将 PC 机上的 23946 端口的数据全部转发到手机的 23946 端口上。在虚拟机的 IDA Pro 里，我直接设置主机的 IP 和端口，是无法连接上的，因为主机只负责转发来自 127.0.0.1 的 23946 端口的数据。于是，我拿出了 nginx 杀手锏，开启了一个监听端口 23950，然后配置成自动转发到本地的 127.0.0.1:23946 上：</p>
+</code></pre>
+<p>即，将 PC 机上的 23946 端口的数据全部转发到手机的 23946 端口上。在虚拟机的 IDA Pro 里，我直接设置主机的 IP 和端口，是无法连接上的，因为主机只负责转发来自 127.0.0.1 的 23946 端口的数据。于是，我拿出了 nginx 杀手锏，开启了一个监听端口 23950，然后配置成自动转发到本地的 127.0.0.1:23946 上：</p>
 <pre><code>stream {
     upstream dbg_socket {
         hash $remote_addr consistent;
@@ -227,7 +229,8 @@
        proxy_pass dbg_socket;
     }
 }
-</code></pre><p>然后在 IDA Pro 里设主机的 IP 和端口 23950，it works!</p>
+</code></pre>
+<p>然后在 IDA Pro 里设主机的 IP 和端口 23950，it works!</p>
 <p>第一次参加 CTF 的我真是有点伤不起啊。<strong>如果再来一次，我会告诉自己，带上几台真机，放下你的 Mac，老老实实的带个 Windows 本子去吧。</strong></p>
 <p>至于解题思路方面，需要平时多关注一些安全相关的文章，同时要有开放性的思维。</p>
 <p>这就是我这次 CTF 之旅的血泪史，虽然最后我的成绩不尽人意，但还是收获满满。主要是队友给力，通过比赛，认识了一群 Nice、聪明、激情又好学的朋友，你可以想象我的队友在刚刷出题目 5 秒钟就告诉我们解出来了吗？这就是 CTF！</p>
