@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 05 Jun 2021 11:55:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jun 2021 13:33:50 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>认识 V8 引擎（3）- 编译 V8 9.1</title>
+      <link>https://blog.coderzh.com/2021/06/14/v8-3/</link>
+      <pubDate>Mon, 14 Jun 2021 13:33:50 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2021/06/14/v8-3/</guid>
+      <description>上篇中，我们编译过了早期的 V8 1.2 版本。那个版本代码相对简单，是非常好的学习材料。这篇我们来编译当前最新稳定版 V8，即 V8 9.1.269.36。</description>
+    </item>
     
     <item>
       <title>代码小贴士001</title>
