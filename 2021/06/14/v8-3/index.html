@@ -323,58 +323,58 @@ target_cpu = &quot;x64&quot;
 <table>
 <thead>
 <tr>
-<th align="center">参数</th>
-<th align="center">说明</th>
+<th align="left">参数</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">is_debug</td>
-<td align="center">默认 true，是否编 debug 版</td>
+<td align="left">is_debug</td>
+<td align="left">默认 true，是否编 debug 版</td>
 </tr>
 <tr>
-<td align="center">target_cpu</td>
-<td align="center">必填，编译目标的平台: x64、arm、arm64</td>
+<td align="left">target_cpu</td>
+<td align="left">必填，编译目标的平台: x64、arm、arm64</td>
 </tr>
 <tr>
-<td align="center">target_os</td>
-<td align="center">默认可不填，安卓平台可填：android</td>
+<td align="left">target_os</td>
+<td align="left">默认可不填，安卓平台可填：android</td>
 </tr>
 <tr>
-<td align="center">is_component_build</td>
-<td align="center">默认 true，是否编动态库</td>
+<td align="left">is_component_build</td>
+<td align="left">默认 true，是否编动态库</td>
 </tr>
 <tr>
-<td align="center">v8_static_library</td>
-<td align="center">默认 false，是否编静态库（编出多个.a）</td>
+<td align="left">v8_static_library</td>
+<td align="left">默认 false，是否编静态库（编出多个.a）</td>
 </tr>
 <tr>
-<td align="center">v8_monolithic</td>
-<td align="center">默认 false, 编译单个静态库</td>
+<td align="left">v8_monolithic</td>
+<td align="left">默认 false, 编译单个静态库</td>
 </tr>
 <tr>
-<td align="center">v8_use_external_startup_data</td>
-<td align="center">默认 true，使用外部传入的 snapshot 文件</td>
+<td align="left">v8_use_external_startup_data</td>
+<td align="left">默认 true，使用外部传入的 snapshot 文件</td>
 </tr>
 <tr>
-<td align="center">v8_enable_i18n_support</td>
-<td align="center">默认 true，国际化API支持，开启的话需要加载额外的 icu 库和文件。一般不开启</td>
+<td align="left">v8_enable_i18n_support</td>
+<td align="left">默认 true，国际化API支持，开启的话需要加载额外的 icu 库和文件。一般不开启</td>
 </tr>
 <tr>
-<td align="center">symbol_level</td>
-<td align="center">默认-1(自动)，决定编译目标带多少符号信息，可减少编译目标大小。2: 常规符号。1: 最小符号，仅堆栈回溯。0: 不带符号，crash 时仅有最后一行堆栈</td>
+<td align="left">symbol_level</td>
+<td align="left">默认-1(自动)，决定编译目标带多少符号信息，可减少编译目标大小。2: 常规符号。1: 最小符号，仅堆栈回溯。0: 不带符号，crash 时仅有最后一行堆栈</td>
 </tr>
 <tr>
-<td align="center">strip_debug_info</td>
-<td align="center">默认 fales，Android only，是否要 strip 掉 debug info，可减少编译目标大小</td>
+<td align="left">strip_debug_info</td>
+<td align="left">默认 fales，Android only，是否要 strip 掉 debug info，可减少编译目标大小</td>
 </tr>
 <tr>
-<td align="center">v8_enable_fast_mksnapshot</td>
-<td align="center">默认 false，mksnapshot 运行加速</td>
+<td align="left">v8_enable_fast_mksnapshot</td>
+<td align="left">默认 false，mksnapshot 运行加速</td>
 </tr>
 <tr>
-<td align="center">use_custom_libcxx</td>
-<td align="center">默认 true，是否使用 V8 buildtools/third_party 里自带的那份自定义的 libc++ 库</td>
+<td align="left">use_custom_libcxx</td>
+<td align="left">默认 true，是否使用 V8 buildtools/third_party 里自带的那份自定义的 libc++ 库</td>
 </tr>
 </tbody>
 </table>
