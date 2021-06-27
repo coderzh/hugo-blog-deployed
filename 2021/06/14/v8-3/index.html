@@ -178,7 +178,7 @@
                   <h1 class="post-title">认识 V8 引擎（3）- 编译 V8 9.1</h1>
 
                   <p class="post-byline">
-                    by  · 2021年06月14日 · 2727 Words ·
+                    by  · 2021年06月14日 · 2730 Words ·
                     ~6min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2021/2021-06-14-v8-3.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -388,6 +388,7 @@ v8_use_external_startup_data = false
 v8_enable_i18n_support = false
 symbol_level = 0
 v8_enable_fast_mksnapshot = true
+use_custom_libcxx = false
 </code></pre>
 <p>主要是设置编译 release 版本，并且把 symbol_level 设置成 0。</p>
 <p>然后，执行编译指令：</p>
