@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;http://www.miitbeian.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 14 Jun 2021 13:33:50 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Aug 2021 16:30:00 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/post/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>认识 V8 引擎（4）- 基本概念</title>
+      <link>https://blog.coderzh.com/2021/08/22/v8-4/</link>
+      <pubDate>Sun, 22 Aug 2021 16:30:00 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2021/08/22/v8-4/</guid>
+      <description>上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一</description>
+    </item>
     
     <item>
       <title>认识 V8 引擎（3）- 编译 V8 9.1</title>

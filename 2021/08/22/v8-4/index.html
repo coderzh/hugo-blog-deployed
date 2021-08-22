@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://blog.coderzh.com/">
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+  </script>
+  <title>认识 V8 引擎（4）- 基本概念 - CoderZh Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="keywords" content="V8,">
+<meta name="description" content="上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一">
+<meta name="author" content="coderzh">
+<meta name="publisher" content="coderzh">
+<meta name="generator" content="http://gohugo.io/"/>
+
+<meta itemprop="name" content="认识 V8 引擎（4）- 基本概念 - CoderZh Blog">
+<meta itemprop="description" content="上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一">
+<meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
+
+<meta property="og:title" content="认识 V8 引擎（4）- 基本概念 - CoderZh Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.coderzh.com/2021/08/22/v8-4/" />
+<meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
+<meta property="og:description" content="上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@coderzh">
+<meta name="twitter:title" content="认识 V8 引擎（4）- 基本概念 - CoderZh Blog">
+<meta name="twitter:description" content="上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一">
+<meta name="twitter:creator" content="@coderzh">
+<meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <link rel="canonical" href="https://blog.coderzh.com/2021/08/22/v8-4/">
+  <link rel='shortlink' href="https://blog.coderzh.com/2021/08/22/v8-4/"/>
+  <link rel="shortcut icon" href="https://blog.coderzh.com/public/favicon.ico"/>
+  
+<link rel="stylesheet" id="human-style-css" href="https://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="https://blog.coderzh.com/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="https://blog.coderzh.com/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="https://blog.coderzh.com/wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="https://blog.coderzh.com/public/highlight/styles/github.css">
+<script src="https://blog.coderzh.com/public/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" id="human-style-css3" href="https://blog.coderzh.com/wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="public/font/hack/css/hack.min.css">
+
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a rel="nofollow" href="https://blog.coderzh.com/" class="nav-cs-icon">
+        <img width="40" height="40" src="https://blog.coderzh.com/public/coderzh.jpg" alt="coderzh" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://blog.coderzh.com/about/">关于我</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        做个独立思考的程序员
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://blog.coderzh.com/" rel="home">
+              <img style="border-radius: 50%;width:72px;height:72px;margin:0 auto;" alt="coderzh" src="https://blog.coderzh.com/public/coderzh.jpg"></img>
+              CoderZh Blog
+            </a>
+          </h1>
+          <p class="site-description"> 如果你没有感觉到时间不够用时，你多半正在虚度光阴。 </p>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">认识 V8 引擎（4）- 基本概念</h1>
+
+                  <p class="post-byline">
+                    by  · 2021年08月22日 · 2558 Words ·
+                    ~6min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2021/2021-08-22-v8-4.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      <p>上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一个 <code>main.cc</code> 文件，编译我们的第一个 Hello World。</p>
+<p>目录结构如下：</p>
+<pre><code>v8-demo
+|-- include
+|   |-- v8.h
+|   |-- ...
+|-- libs
+|   |-- libv8_monolith.a
+|-- src
+|   |-- main.cc
+|-- CMakeLists.txt
+</code></pre>
+<p>CMakeLists.txt 内容：</p>
+<pre><code>cmake_minimum_required(VERSION 3.11)
+project (v8_demo)
+
+set(CMAKE_CXX_STANDARD 14)
+add_definitions(-DV8_COMPRESS_POINTERS)
+
+link_directories(${CMAKE_SOURCE_DIR}/libs)
+include_directories(include)
+
+add_executable(v8_demo src/main.cc)
+target_link_libraries(v8_demo v8_monolith)
+</code></pre>
+<p><code>main.cc</code> 内容：</p>
+<pre><code class="language-cpp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &quot;include/libplatform/libplatform.h&quot;
+#include &quot;include/v8.h&quot;
+
+int main(int argc, char* argv[]) {
+  // Initialize V8.
+  std::unique_ptr&lt;v8::Platform&gt; platform = v8::platform::NewDefaultPlatform();
+  v8::V8::InitializePlatform(platform.get());
+  v8::V8::Initialize();
+  // Create a new Isolate and make it the current one.
+  v8::Isolate::CreateParams create_params;
+  create_params.array_buffer_allocator =
+      v8::ArrayBuffer::Allocator::NewDefaultAllocator();
+  v8::Isolate* isolate = v8::Isolate::New(create_params);
+  {
+    v8::Isolate::Scope isolate_scope(isolate);
+    // Create a stack-allocated handle scope.
+    v8::HandleScope handle_scope(isolate);
+    // Create a new context.
+    v8::Local&lt;v8::Context&gt; context = v8::Context::New(isolate);
+    // Enter the context for compiling and running the hello world script.
+    v8::Context::Scope context_scope(context);
+    // Create a string containing the JavaScript source code.
+    v8::Local&lt;v8::String&gt; source =
+        v8::String::NewFromUtf8(isolate, &quot;'Hello' + ', World!'&quot;,
+                                v8::NewStringType::kNormal)
+            .ToLocalChecked();
+    // Compile the source code.
+    v8::Local&lt;v8::Script&gt; script =
+        v8::Script::Compile(context, source).ToLocalChecked();
+    // Run the script to get the result.
+    v8::Local&lt;v8::Value&gt; result = script-&gt;Run(context).ToLocalChecked();
+    // Convert the result to an UTF8 string and print it.
+    v8::String::Utf8Value utf8(isolate, result);
+    printf(&quot;%s\n&quot;, *utf8);
+  }
+  // Dispose the isolate and tear down V8.
+  isolate-&gt;Dispose();
+  v8::V8::Dispose();
+  v8::V8::ShutdownPlatform();
+  delete create_params.array_buffer_allocator;
+  return 0;
+}
+</code></pre>
+<p>编译，执行：</p>
+<pre><code class="language-bash">$ mkdir -p build
+$ cd build
+$ cmake ..
+$ make
+$ ./v8-demo
+Hello, World!
+</code></pre>
+<p>可以看到，使用 V8 主要分为几步：</p>
+<ol>
+<li>初始化 V8</li>
+<li>创建 v8::Isolate</li>
+<li>创建 v8::Context</li>
+<li>执行 JS</li>
+<li>环境清理</li>
+</ol>
+<h3 id="1-初始化-v8">1. 初始化 V8</h3>
+<p>V8 的初始化在一个进程内，仅且仅可初始化一次。由于我们之前编译的时候选择了：</p>
+<pre><code>v8_enable_i18n_support = false
+v8_use_external_startup_data = false
+</code></pre>
+<p>所以，初始化的时候，不需要指定 ICU 多语言文件以及外部传入的 Snapshot 的 StartupData 文件。所以，初始化的必要步骤仅下面两步：</p>
+<pre><code class="language-cpp">std::unique_ptr&lt;v8::Platform&gt; platform = v8::platform::NewDefaultPlatform();
+v8::V8::InitializePlatform(platform.get());
+v8::V8::Initialize();
+</code></pre>
+<p>第一步是初始化传入 v8::Platform。啥是 Platform 呢？</p>
+<h4 id="概念1v8platform">概念1：v8::Platform</h4>
+<p>v8::Platform 可以定制诸如内存页分配（PageAllocator），任务调度（NumberOfWorkerThreads、CallOnWorkerThread、IdleTasks、PostJob）等规则。详细可查看 v8-platform.h 的接口内容。通常情况下，这些都不需要定制，只使用默认的设置的话，可以通过 <code>v8::platform::NewDefaultPlatform()</code> 创建一个默认的配置。</p>
+<pre><code class="language-cpp">/**
+ * Returns a new instance of the default v8::Platform implementation.
+ *
+ * The caller will take ownership of the returned pointer. |thread_pool_size|
+ * is the number of worker threads to allocate for background jobs. If a value
+ * of zero is passed, a suitable default based on the current number of
+ * processors online will be chosen.
+ * If |idle_task_support| is enabled then the platform will accept idle
+ * tasks (IdleTasksEnabled will return true) and will rely on the embedder
+ * calling v8::platform::RunIdleTasks to process the idle tasks.
+ * If |tracing_controller| is nullptr, the default platform will create a
+ * v8::platform::TracingController instance and use it.
+ */
+V8_PLATFORM_EXPORT std::unique_ptr&lt;v8::Platform&gt; NewDefaultPlatform(
+    int thread_pool_size = 0,
+    IdleTaskSupport idle_task_support = IdleTaskSupport::kDisabled,
+    InProcessStackDumping in_process_stack_dumping =
+        InProcessStackDumping::kDisabled,
+    std::unique_ptr&lt;v8::TracingController&gt; tracing_controller = {});
+</code></pre>
+<p>从上面的函数定义及注释可以看出，即使用默认的 Platform，也可以定制线程池大小（thread_pool_size），空闲任务（idle_task_suuport），TracingController 等。</p>
+<h3 id="2-创建-v8isolate">2. 创建 v8::Isolate</h3>
+<pre><code class="language-cpp">v8::Isolate::CreateParams create_params;
+create_params.array_buffer_allocator =
+    v8::ArrayBuffer::Allocator::NewDefaultAllocator();
+v8::Isolate* isolate = v8::Isolate::New(create_params);
+</code></pre>
+<p>创建 v8::Isolate 时，需传入 CreateParams，可以指定 JavaScript 里的 ArrayBuffer 的内存分配器，这样可以对 JavaScript 的 ArrayBuffer 内存进行灵活的管理。当然也可以使用默认的分配器，如上面代码的 <code>NewDefaultAllocator</code>。</p>
+<h4 id="概念2v8isolate">概念2：v8::Isolate</h4>
+<p><code>Isolate</code> 字面意思是隔离的意思，在 V8 中表示的是一个隔离的运行时环境，拥有自己的堆内存。多个不同的 Isolate 运行时可以<code>并行</code>执行，互不干扰，数据也完全隔离不可互相访问，就像多个沙箱的运行环境。</p>
+<p>通常，在一个线程中只会创建一个 Isolate 实例。创建 Isolate 后，需要<code>进入</code> Isolate 才可对 Isolate 做进一步操作，在使用完毕后，需要再<code>退出</code> Isolate。为了方便进入和自动退出，可以使用 <code>v8::Isolate::Scope</code> 进入和自动退出 Isolate。</p>
+<h3 id="3-创建-v8context">3. 创建 v8::Context</h3>
+<pre><code class="language-cpp">v8::HandleScope handle_scope(isolate);
+// Create a new context.
+v8::Local&lt;v8::Context&gt; context = v8::Context::New(isolate);
+// Enter the context for compiling and running the hello world script.
+v8::Context::Scope context_scope(context);
+</code></pre>
+<h4 id="概念3v8context">概念3：v8::Context</h4>
+<p>可以从具体某个 Isolate 实例中创建一个新的 Context。 v8::Isolate 主要负责堆内存的隔离和管理，有点类似进程的概念。我们知道，需要执行代码的话，还需要有线程的概念。当然 v8 的 Context 和线程也不完全一样。v8::Context 包含了 JavaScript 代码执行所需的上下文信息，包括全局变量、函数等。可以这样简单理解，如果需要执行 JavaScript 代码，则需要有一个 Context 环境。</p>
+<ul>
+<li>要点1：一个 Isolate 中可以创建多个 Context。</li>
+<li>要点2：同个 Isolate 内的多个 Context 如果要在不同线程执行，需加 <code>v8::Locker</code> 锁</li>
+<li>要点3：<code>尽量让 Context 在同个线程中执行</code>，如果需要在不同线程执行，也需要加 <code>v8::Locker</code> 锁</li>
+</ul>
+<p>和 Isolate 一样，Context 也需要进入才能正常操作，并在使用完毕后退出，可以使用 <code>v8::Context::Scope</code> 进入和自动退出。</p>
+<p>我们注意到，<code>v8::Context::New(isolate)</code> 返回的类型是 <code>v8::Local&lt;v8::Context&gt;</code>。为什么不是返回 <code>v8::Context*</code>? 这和 V8 的内存对象管理有关。一方面，V8 不希望使用者直接访问 V8 对象的裸的指针地址。因为如果这些对象回收后，可能导致内存的非法访问。另一方面，也不利于 V8 在进行垃圾回收时，对 V8 对象在内存中进行移动(compact)。</p>
+<p>因此，V8 返回的对象都通过 v8::Handle 来包一层，有点类似智能指针。v8::Local 是当前栈上的临时 handle，退出栈之后将不可再使用。为了让所有临时 handle 能自动回收，需要使用 v8::HandleScope 再包裹一层。</p>
+<p>如果某个函数需要把某个 v8::Local 对象作为返回值返回出去，可以使用 <code>v8::EscapableHandleScope</code> 避免返回对象被自动回收：</p>
+<pre><code class="language-cpp">Local&lt;Array&gt; NewPointArray(int x, int y, int z) {
+  v8::Isolate* isolate = v8::Isolate::GetCurrent();
+
+  // We will be creating temporary handles so we use a handle scope.
+  v8::EscapableHandleScope handle_scope(isolate);
+
+  // Create a new empty array.
+  v8::Local&lt;v8::Array&gt; array = v8::Array::New(isolate, 3);
+
+  // Return an empty result if there was an error creating the array.
+  if (array.IsEmpty())
+    return v8::Local&lt;v8::Array&gt;();
+
+  // Fill out the values
+  array-&gt;Set(0, Integer::New(isolate, x));
+  array-&gt;Set(1, Integer::New(isolate, y));
+  array-&gt;Set(2, Integer::New(isolate, z));
+
+  // Return the value through Escape.
+  return handle_scope.Escape(array);
+}
+</code></pre>
+<h4 id="概念4v8-handle">概念4：v8 handle</h4>
+<p>前面已经讲了 v8::Local 这种临时 handle，除此之外，还包含其他类型的 handle：</p>
+<ol>
+<li>Local handle: v8::Local</li>
+<li>Persistent handle: v8::UniquePersistent 和 v8::Persistent</li>
+<li>v8::Eternal</li>
+</ol>
+<p>当某个对象需要持有住，在后来的某个实际再去使用，可以使用 Persistent handle。v8::UniquePersistent 和 v8::Persistent 都是不可复制的。唯一的区别是，v8::UniquePersistent 会在析构时自动解除对该 JS 对象的引用。v8::Persistent 则需要开发者手动调用 Persistent::Reset 解除。</p>
+<p>v8::Eternal 使用的很少，用于创建永远不会被 GC 的对象，直到环境被销毁。</p>
+<h3 id="4-执行-js">4. 执行 JS</h3>
+<pre><code class="language-cpp">v8::Local&lt;v8::String&gt; source =
+    v8::String::NewFromUtf8(isolate, &quot;'Hello' + ', World!'&quot;,
+                            v8::NewStringType::kNormal)
+        .ToLocalChecked();
+// Compile the source code.
+v8::Local&lt;v8::Script&gt; script =
+    v8::Script::Compile(context, source).ToLocalChecked();
+// Run the script to get the result.
+v8::Local&lt;v8::Value&gt; result = script-&gt;Run(context).ToLocalChecked();
+// Convert the result to an UTF8 string and print it.
+v8::String::Utf8Value utf8(isolate, result);
+printf(&quot;%s\n&quot;, *utf8);
+</code></pre>
+<p>将 C/C++ 字符串转成 JS 的字符串，需要使用 v8::String::NewFromUtf8。然后通过 v8::Script::Compile 对 JS 源码字符串进行编译，得到 v8::Script 对象，然后执行 Run 方法，执行该代码并拿到 v8::Value 结果。最后，将 v8::Value 转回 v8::String::Utf8Value 字符串对象，并打印。</p>
+<p>这里涉及到了 C/C++ 中的基础类型和 V8 JS 对象的互相转换。举例如下：</p>
+<pre><code class="language-cpp">// bool
+v8::Local&lt;v8::Boolean&gt; js_bool_value = v8::Boolean::New(isolate, true);
+bool bool_value = js_bool_value-&gt;BooleanValue(isolate);
+
+// int
+v8::Local&lt;v8::Number&gt; js_number = v8::Integer::New(isolate, 12);
+int number = js_number-&gt;Int32Value(isolate);
+
+// float
+v8::Local&lt;v8::Number&gt; js_float_number = v8::Number::New(isolate, 12.25);
+float float_number = static_cast&lt;float&gt;(js_float_number-&gt;NumberValue(isolate));
+
+// string
+v8::Local&lt;v8::String&gt; js_string_value = v8::String::NewFromUtf8(isolate, &quot;str&quot;, v8::NewStringType::kNormal);
+v8::String::Utf8Value const utf8(isolate, js_string_value);
+std::string string_value(*utf8, utf8.length());
+</code></pre>
+<p>涉及到更复杂的数据结构转换的话，比如 list, map, ArrayBuffer，以及对象映射，到后面再介绍。</p>
+<h3 id="5-环境清理">5. 环境清理</h3>
+<pre><code class="language-cpp">// Dispose the isolate and tear down V8.
+isolate-&gt;Dispose();
+v8::V8::Dispose();
+v8::V8::ShutdownPlatform();
+delete create_params.array_buffer_allocator;
+</code></pre>
+<p>需对 isolate 执行 Dispose 清理，以及整个 V8 环境进行清理。（Context 不需要主动清理，因为 Context 是包含在 isolate 内的）</p>
+<h3 id="总结">总结</h3>
+<p>代码示例见：<a href="https://github.com/coderzh/v8-demo">https://github.com/coderzh/v8-demo</a></p>
+<p>本篇介绍了 V8 的基本使用方法以及几个基本概念，可以此为基础快速了解 V8 引擎的基本使用。后面将逐步深入到 V8 内部，尽请期待。</p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+                        <div style="float:left;margin-top:0px;">
+                        <img src="https://blog.coderzh.com/public/qrcode.jpg" width="129px" height="129px"/>
+                        <div style="text-align:center;">微信扫一扫交流</div>
+                        </div>
+                        <div>
+                            <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
+                            <br />微信关注：hacker-thinking （程序员思考者）
+                            <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2021/08/22/v8-4/">https://blog.coderzh.com/2021/08/22/v8-4/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
+              
+              <div class="clear"></div>
+              
+              
+              
+            </div>
+          </section>
+          <div class="sidebar s1">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+    </div>
+    <div class="widget qrcode">
+    <img src="https://blog.coderzh.com/public/qrcode.jpg" alt="qrcode" width="172px" height="172px"/>
+    <p> 微信扫一扫：<br/> 关注我的公众号： <br /> hacker-thinking <br /></p>
+</div>
+
+    <ul class="post-nav group">
+      <li class="next">
+        
+      </li>
+      <li class="previous">
+        
+        <a href="https://blog.coderzh.com/2021/06/14/v8-3/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>认识 V8 引擎（3）- 编译 V8 9.1</span>
+        </a>
+        
+      </li>
+    </ul>
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+  <div class="sidebar-content">
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</a>
+          </li>
+        
+          <li class="cat-item cat-item-1">
+            <a rel="nofollow" href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/">思考感悟</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+      <div class="pad group">
+        <div class="grid one-half">
+          <div id="copyright">
+              <p>Copyright (c) 2017. All rights reserved.  <a href='http://www.miitbeian.gov.cn/'>粤ICP备17074587号-1</a><br>Powered by
+              <a rel="nofollow" href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a rel="nofollow" href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-half last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On WeiBo"
+        href="http://weibo.com/coderzh" target="_blank">
+        <i class="fa fa-weibo"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On Twitter" rel="nofollow"
+        href="https://twitter.com/coderzh" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub"
+        href="https://github.com/coderzh" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+</body>
+</html>
+
