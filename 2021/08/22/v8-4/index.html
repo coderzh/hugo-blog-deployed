@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="V8,">
-<meta name="description" content="上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一">
+<meta name="description" content="上篇 V8 代码编译过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="认识 V8 引擎（4）- 基本概念 - CoderZh Blog">
-<meta itemprop="description" content="上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一">
+<meta itemprop="description" content="上篇 V8 代码编译过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
 <meta property="og:title" content="认识 V8 引擎（4）- 基本概念 - CoderZh Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.coderzh.com/2021/08/22/v8-4/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一">
+<meta property="og:description" content="上篇 V8 代码编译过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
 <meta name="twitter:title" content="认识 V8 引擎（4）- 基本概念 - CoderZh Blog">
-<meta name="twitter:description" content="上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一">
+<meta name="twitter:description" content="上篇 V8 代码编译过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
@@ -178,7 +178,7 @@
                   <h1 class="post-title">认识 V8 引擎（4）- 基本概念</h1>
 
                   <p class="post-byline">
-                    by  · 2021年08月22日 · 2558 Words ·
+                    by  · 2021年08月22日 · 2559 Words ·
                     ~6min reading time |
                     <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2021/2021-08-22-v8-4.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -189,7 +189,7 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p>上篇 V8 代码遍过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一个 <code>main.cc</code> 文件，编译我们的第一个 Hello World。</p>
+                      <p>上篇 V8 代码编译过之后，接下来就是把 Hello World 跑起来。我们之前已经编译出单个的 V8 静态库：libv8_monolith.a，然后再配合 V8 的头文件，创建一个 <code>main.cc</code> 文件，编译我们的第一个 Hello World。</p>
 <p>目录结构如下：</p>
 <pre><code>v8-demo
 |-- include
