@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;https://beian.miit.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 22 Aug 2021 16:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 Feb 2022 15:06:39 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/post/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我的 2021</title>
+      <link>https://blog.coderzh.com/2022/02/06/my2021/</link>
+      <pubDate>Sun, 06 Feb 2022 15:06:39 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2022/02/06/my2021/</guid>
+      <description>春节假期就要到尾声，抓紧这个时间写个总结吧，毕竟，这个总结系列，从 2015 年开始，坚持到了现在，我不想中断。每年到这个时候，都会感叹时光飞逝，一年</description>
+    </item>
     
     <item>
       <title>认识 V8 引擎（4）- 基本概念</title>
@@ -58,7 +67,7 @@
     </item>
     
     <item>
-      <title>2020</title>
+      <title>我的 2020</title>
       <link>https://blog.coderzh.com/2021/01/01/2020/</link>
       <pubDate>Fri, 01 Jan 2021 23:35:23 +0800</pubDate>
       
