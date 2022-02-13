@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.  &lt;a href=&#39;https://beian.miit.gov.cn/&#39;&gt;粤ICP备17074587号-1&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 22 Aug 2021 16:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 13 Feb 2022 10:48:03 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>懒程序员和他的 dotfiles (2022)</title>
+      <link>https://blog.coderzh.com/2022/02/13/mac-dotfiles/</link>
+      <pubDate>Sun, 13 Feb 2022 10:48:03 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2022/02/13/mac-dotfiles/</guid>
+      <description>如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles</description>
+    </item>
     
     <item>
       <title>认识 V8 引擎（4）- 基本概念</title>

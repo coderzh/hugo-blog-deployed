@@ -5,7 +5,85 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 06 Feb 2022 15:06:39 CST</updated>
+        <updated>Sun, 13 Feb 2022 10:48:03 CST</updated>
+        
+        <item>
+            <title>懒程序员和他的 dotfiles (2022)</title>
+            <link>https://blog.coderzh.com/2022/02/13/mac-dotfiles/</link>
+            <pubDate>Sun, 13 Feb 2022 10:48:03 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>https://blog.coderzh.com/2022/02/13/mac-dotfiles/</guid>
+            <description>&lt;p&gt;如果你不知道什么是 dotfiles，那你就不会知道什么是 dotfiles。如果你知道什么是 dotfiles，那你就知道什么是 dotfiles。&lt;/p&gt;
+&lt;p&gt;16 年曾经写过一篇《&lt;a href=&#34;https://blog.coderzh.com/2016/03/19/dotfiles/&#34;&gt;懒程序员和他的 dotfiles&lt;/a&gt;》，这篇是 6 年后的更新版本。这些年来，软件有发生很多变化。比如编译器软件 atom 日渐没落，vscode 已经成了主流。Homebrew casks 也默认集成进了 Homebrew 主程序。&lt;/p&gt;
+&lt;p&gt;之前曾用 mackup 软件用了自动备份和恢复各软件的配置。到今天，已经越来越多软件支持了云端同步配置。比如 vscode 的云端同步设置就非常好用，只要登录 Github 账号，所有的设置，插件瞬间恢复了。&lt;/p&gt;
+&lt;p&gt;这几天再试验 mackup，发现虽然它支持的软件很多，但难免对某些软件的设置备份存在问题。比如 iTerm2 的设置不能自动备份和恢复。如果需要经常对 mackup 的软件备份规则进行自定义，则维护的成本太高。随着软件的不断更新，通过 mackup 来维护配置会变得越来越困难。&lt;/p&gt;
+&lt;p&gt;所以，我打算放弃 mackup 备份配置文件。需要恢复设置的软件主要有两类：一类是常用的必要软件，比如 oh-my-zsh, vim 等，这类可以通过 dotfiles 脚本自动做软链恢复。另一类是通过软件本身的云端同步能力，或者配置导出/导入功能。手工导出和导入虽然麻烦一些，但操作不算频繁也是能接受的。&lt;/p&gt;
+&lt;p&gt;对于一台新装的电脑，这里主要指 Mac。我主要需要哪些软件和设置，这是 dotfiles 自动脚本要解决的问题。所以这里的 dotfiles 是根据我自己的开发和使用习惯定制的，而且是比较基础的一些设置。如果你觉得有用，完全可以针对自己的习惯再做定制。&lt;/p&gt;
+&lt;p&gt;对于我来说，新装电脑有几样东西对我来说是很重要的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;输入法&lt;/li&gt;
+&lt;li&gt;Chrome 浏览器&lt;/li&gt;
+&lt;li&gt;Alfred + Iterm2 + oh-my-zsh&lt;/li&gt;
+&lt;li&gt;vim + vscode&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有这几个东西，基本可以工作了。接下来才是一些常用的软件：Dropbox、Lemon、QQ、微信、IINA播放器等等。这些都可以通过 brew 或者 brew cask 来自动安装。&lt;/p&gt;
+&lt;p&gt;还有一类是 Mac 的系统设置，非常实用的设置如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 关闭开机 Duang~ 的声音
+sudo nvram SystemAudioVolume=&amp;quot; &amp;quot;
+
+# 电池显示是百分百
+defaults write com.apple.menuextra.battery -bool true
+
+# 设置键盘按键重复的延迟
+defaults write NSGlobalDomain KeyRepeat -int 3
+
+# 支持长按连续输入
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# 禁止自动拼写纠正
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Finder 显示状态栏
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Finder 显示地址栏
+defaults write com.apple.finder ShowPathbar -bool true
+
+# 禁止在网络驱动器上生成 .DS_Store 文件 
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# 设置日期时间格式为 24 小时制
+defaults write com.apple.menuextra.clock &amp;quot;DateFormat&amp;quot; &amp;quot;EEE MMM d  H:mm&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;我的-dotfiles&#34;&gt;我的 dotfiles&lt;/h3&gt;
+&lt;p&gt;repo: &lt;a href=&#34;https://github.com/coderzh/dotfiles&#34;&gt;https://github.com/coderzh/dotfiles&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用方法，打开终端程序，执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 1. Install XCode
+$ sudo softwareupdate -i -a
+$ xcode-select --install
+
+# 2. Install
+$ bash -c &amp;quot;$(curl -LsS https://raw.githubusercontent.com/coderzh/dotfiles/master/setup.sh)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果下载 githubusercontent.com 有问题，请先设置好代理。或者，先 git clone 下再执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd ~
+$ git clone https://github.com/coderzh/dotfiles
+$ cd dotfile; sh setup.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;执行后，会发生什么？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 dotfiles 软链：.gitconfig .gitignore .vim .vimrc .zshrc&lt;/li&gt;
+&lt;li&gt;设置各种 Mac OS 的系统设置：install/macos/osx.sh&lt;/li&gt;
+&lt;li&gt;安装字体：Menlo for Powerline&lt;/li&gt;
+&lt;li&gt;安装 Homebrew，以及各软件：install/macos/brew.sh&lt;/li&gt;
+&lt;li&gt;安装设置 oh-my-zsh：install/oh-my-zsh.sh&lt;/li&gt;
+&lt;li&gt;安装 npm 及相关的包：install/npm.sh&lt;/li&gt;
+&lt;li&gt;安装 Pip 及相关的包：install/pip.sh&lt;/li&gt;
+&lt;li&gt;安装 Vim 插件：install/vim.sh&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;images/dotfiles.jpg&#34; alt=&#34;dotfiles&#34;&gt;&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>我的 2021</title>
@@ -1042,62 +1120,6 @@ int main(int argc, char* argv[]) {
 &lt;p&gt;2018 有不足，也有惊喜。&lt;/p&gt;
 &lt;p&gt;《动物世界》电影里有句台词：『该打的仗我已经打过了，该跑的路我也跑到了尽头，老子信的道老子自己来守。』&lt;/p&gt;
 &lt;p&gt;2019，继续守自己的道，心态上全新出发，希望在更多方面能够有所突破，加油！&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>Mac 上配置 VSCode 的 cquery 插件</title>
-            <link>https://blog.coderzh.com/2018/10/14/cquery/</link>
-            <pubDate>Sun, 14 Oct 2018 17:56:47 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>https://blog.coderzh.com/2018/10/14/cquery/</guid>
-            <description>&lt;p&gt;VSCode 已经成了我的主力编辑器，包括用来写 C++。虽然默认的 cpptools 插件已经很好用了，但 cquery 插件更加强大，极力推荐。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/cquery-project/cquery&#34;&gt;cquery&lt;/a&gt; 是基于 LSP（Language-Server-Protocol）的。LSP 是微软推出的开源的语言服务器协定，语言服务端提供索引代码的服务，编辑器直接调用，用来实现语法补全及各种索引重构功能。&lt;/p&gt;
-&lt;p&gt;cquery 就是其中一种 C/C++/Objective-C 的 language server。它的特点是速度非常非常的快，延迟特别低，它设计出来就是为了在大型的代码工程里也能很好的使用。比如 Chromium、V8 这样的大型工程。&lt;/p&gt;
-&lt;p&gt;心动不如行动，赶紧折腾起来吧，以我的 Mac 为例：&lt;/p&gt;
-&lt;h3 id=&#34;1-编译-cquery&#34;&gt;1. 编译 cquery&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/cquery-project/cquery.git --recursive
-cd cquery
-git submodule update --init
-mkdir build &amp;amp;&amp;amp; cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=release -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
-make install -j8
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;问题来了，最新的 cquery 默认依赖 clang 7.0.0，而我的 Mac 上是 6.0.0。所以上面的 cmake 命令执行后，会报下面的错：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;No SHA256 hash available for the current platform (Darwin) + clang version
-  (6.0.0) combination.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;看了下 cquery 的编译脚本，解决方法也很简单，手工创建一个 6.0.0 的 SHA256 文件：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd cquery
-echo 0ef8e99e9c9b262a53ab8f2821e2391d041615dd3f3ff36fdf5370916b0f4268 &amp;gt; clang_archive_hashes/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz.SHA256
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;再执行 cmake 会自动下载 clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz。但是下载很慢，可以手工下载(&lt;a href=&#34;https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz&#34;&gt;https://releases.llvm.org/6.0.0/clang+llvm-6.0.0-x86_64-apple-darwin.tar.xz&lt;/a&gt;
-)好，并解压到 build 目录，然后上面的命令就可以顺利的进行下去了。&lt;/p&gt;
-&lt;p&gt;编译后的二进制会在 &lt;code&gt;release/bin&lt;/code&gt; 目录，稍后把路径填入 VSCode 的配置中。&lt;/p&gt;
-&lt;h3 id=&#34;2-vscode-安装-cquery-插件&#34;&gt;2. VSCode 安装 cquery 插件&lt;/h3&gt;
-&lt;p&gt;直接在 VSCode 里搜 cquery 插件安装即可。然后在 VSCode 里设置：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;cquery.launch.command&amp;quot;: &amp;quot;/absolute/path/to/cquery/release/bin/cquery&amp;quot;,
-    &amp;quot;cquery.cacheDirectory&amp;quot;: &amp;quot;/User/your-name/.cquery-cache/&amp;quot;,
-    &amp;quot;cquery.completion.include.blacklist&amp;quot;: [&amp;quot;.*/.vscache/.*&amp;quot;, &amp;quot;/tmp.*&amp;quot;, &amp;quot;build/.*&amp;quot;],
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;其他相关设置，可参考一下（关掉 cpptools 相关设置）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{
-  &amp;quot;C_Cpp.autocomplete&amp;quot;: &amp;quot;Disabled&amp;quot;,
-  &amp;quot;C_Cpp.formatting&amp;quot;: &amp;quot;Disabled&amp;quot;,
-  &amp;quot;C_Cpp.errorSquiggles&amp;quot;: &amp;quot;Disabled&amp;quot;,
-  &amp;quot;C_Cpp.intelliSenseEngine&amp;quot;: &amp;quot;Disabled&amp;quot;,
-  &amp;quot;editor.autoClosingBrackets&amp;quot;: &amp;quot;never&amp;quot;,
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;3-生成-compile_commandsjson&#34;&gt;3. 生成 compile_commands.json&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;compile_commands.json&lt;/code&gt; 文件是 cquery 用来索引你的代码工程所需要的。它可以从 cmake 里直接生成出来，只需要在 cmake 的编译参数里加：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;-DCMAKE_EXPORT_COMPILE_COMMANDS=YES
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然后把生成的 compile_commands.json 拷到工程的根目录。&lt;/p&gt;
-&lt;h3 id=&#34;4-可以开心愉快的玩耍了&#34;&gt;4. 可以开心愉快的玩耍了&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/cquery.png&#34; alt=&#34;cquery&#34;&gt;&lt;/p&gt;
 </description>
         </item>
         
