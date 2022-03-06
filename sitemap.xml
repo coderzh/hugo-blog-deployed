@@ -2,17 +2,27 @@
     
     <url>
         <loc>https://blog.coderzh.com/categories/</loc>
-        <lastmod>2022-02-13T23:57:31+08:00</lastmod>
+        <lastmod>2022-03-06T11:30:31+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/</loc>
-        <lastmod>2022-02-13T23:57:31+08:00</lastmod>
+        <lastmod>2022-03-06T11:30:31+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/post/</loc>
-        <lastmod>2022-02-13T23:57:31+08:00</lastmod>
+        <lastmod>2022-03-06T11:30:31+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</loc>
+        <lastmod>2022-03-06T11:30:31+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/2022/03/06/vscode-cpp/</loc>
+        <lastmod>2022-03-06T11:30:31+08:00</lastmod>
     </url>
     
     <url>
@@ -27,11 +37,6 @@
     
     <url>
         <loc>https://blog.coderzh.com/2022/02/13/mac-dotfiles/</loc>
-        <lastmod>2022-02-13T10:48:03+08:00</lastmod>
-    </url>
-    
-    <url>
-        <loc>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</loc>
         <lastmod>2022-02-13T10:48:03+08:00</lastmod>
     </url>
     
