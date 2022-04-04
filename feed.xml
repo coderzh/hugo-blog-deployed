@@ -5,7 +5,173 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 06 Mar 2022 11:30:31 CST</updated>
+        <updated>Sun, 03 Apr 2022 22:52:04 CST</updated>
+        
+        <item>
+            <title>libuv 避坑指南</title>
+            <link>https://blog.coderzh.com/2022/04/03/libuv/</link>
+            <pubDate>Sun, 03 Apr 2022 22:52:04 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>https://blog.coderzh.com/2022/04/03/libuv/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;images/libuv.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;libuv 的 uv 是 Unicorn Velociraptor（独角伶盗龙）的缩写，所以它的 Logo 是一只独角伶盗龙的图片。&lt;/p&gt;
+&lt;p&gt;libuv 是一个跨平台的专注于异步 IO 的库。主要设计用于 Node.js，像 electron 是基于 Node.js 的，vscode 又是基于 electron 的，所以 libuv 是一个使用广泛，影响力很大的一个库。除了 Node.js 里的应用，在其他软件里也应用广泛。&lt;/p&gt;
+&lt;p&gt;它提供了基于事件循环的异步 IO 支持。它支持 epoll、kqueue、Windows 的 IOCP 和 Solaris 的事件端口。最初它是 libev 和 IOCP 上的抽象。其中 libev 又是参考了 libevent（2002年第一个版本），能查到的最早的 1.85 版本 libev 是 2007 年。libev 最大的一个问题是不支持 Windows 的 IOCP，所以才会有后来的 libuv。&lt;/p&gt;
+&lt;p&gt;libuv 能下载到的最早版本是 2013 年的 v0.10.10。 Node.js 在 v0.9.0 版本（2012年）的 libuv 里去除了对 libev 的依赖，为了更好的适配 Windows 平。所以可以理解为 libuv 第一个重大意义的版本应该是在 2012 年。&lt;/p&gt;
+&lt;p&gt;梳理一下时间线：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/libuv-roadmap.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;libuv 使用 C 语言编写，使用起来也比较简单。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;uv.h&amp;gt;
+
+int main() {
+  uv_loop_t* loop = (uv_loop_t*)malloc(sizeof(uv_loop_t));
+  uv_loop_init(loop);
+
+  printf(&amp;quot;Now quitting.\n&amp;quot;);
+  uv_run(loop, UV_RUN_DEFAULT);
+
+  uv_loop_close(loop);
+  free(loop);
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面例子由于没有任何事件发生，所以 uv_run 里的事件循环马上就退出了。&lt;/p&gt;
+&lt;p&gt;当我们对特定的事件感兴趣时，比如：计时器、I/O设备、TCP/UDP、异步事件等等，我们需要创建相应的 handle，类型的名字使用 uv_TYPE_t 的形式：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct uv_handle_s uv_handle_t;
+typedef struct uv_tcp_s uv_tcp_t;
+typedef struct uv_udp_s uv_udp_t;
+typedef struct uv_pipe_s uv_pipe_t;
+typedef struct uv_timer_s uv_timer_t;
+typedef struct uv_idle_s uv_idle_t;
+typedef struct uv_async_s uv_async_t;
+// ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;uv_TYPE_t 结构包含了事件所需的数据，同时各类 uv_TYPE_t 在内存布局上，拥有相同的起始内存布局（uv_handle_t）。以 uv_idle_t 举例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;struct uv_idle_s {
+  UV_HANDLE_FIELDS
+  UV_IDLE_PRIVATE_FIELDS
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再来看一个使用 uv_idle_t 的示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;uv.h&amp;gt;
+
+int64_t counter = 0;
+
+void wait_for_a_while(uv_idle_t* handle) {
+  counter++;
+
+  if (counter &amp;gt;= 10e6)
+    uv_idle_stop(handle);
+}
+
+int main() {
+  uv_idle_t idler;
+
+  uv_idle_init(uv_default_loop(), &amp;amp;idler);
+  uv_idle_start(&amp;amp;idler, wait_for_a_while);
+
+  printf(&amp;quot;Idling...\n&amp;quot;);
+  uv_run(uv_default_loop(), UV_RUN_DEFAULT);
+
+  uv_loop_close(uv_default_loop());
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面示例创建了一个 uv_idle_t 的实例，初始化（uv_idle_init）并启动了它（uv_idle_start）。每次 loop 循环里，都会触发 idle 的事件回调：wait_for_a_while。直到计数器 counter 大于等于 10000000 次，idle 时间停止，接着由于没有了任何有效的事件 handle，uv_run 内循环返回，退出。&lt;/p&gt;
+&lt;p&gt;这个例子是很好理解的，和其他 libuv 自带的例子一样。但是这些例子都没有告诉你一个事情：handle 什么时机释放？大多数例子里，handle 都是作为一个全局的静态变量存在的，或者像上面例子里的 idler 对象，都是在等待所有 uv 环境都退出，或者在进程退出前，才去释放的 handle 内存。&lt;/p&gt;
+&lt;p&gt;实际应用会比示例里的复杂，不可能将所有使用到的 handle 都放在全局对象里。当我们调用 uv_TYPE_stop 时，只是告诉 uv，这个 handle 不再是 ACTIVE 的状态。如果我们后续不再使用该 handle，应该调用 uv_close，告诉 uv 关闭这个 handle 吧，后面我们也不会再用它。&lt;/p&gt;
+&lt;p&gt;那么，我们是否在调用 uv_close 之后，就立即去释放 handle 的内存呢？这是一个容易踩坑的点。我们看 libuv 关于 uv_close 的文档：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void uv_close(uv_handle_t* handle, uv_close_cb close_cb)
+
+Request handle to be closed. `close_cb` will be called asynchronously after
+this call. This MUST be called on each handle before memory is released.
+Moreover, the memory can only be released in `close_cb` or after it has
+returned.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上面的说明有几个点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;close_cb 回调是异步被触发的。&lt;/li&gt;
+&lt;li&gt;每个 handle 都要调用 uv_close。&lt;/li&gt;
+&lt;li&gt;handle 的内存释放，必须在 close_cb 回调里，或者之后。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;文档虽然写清楚了，但又有多少人认真阅读文档并执行呢？而我认为，这是 libuv 接口设计的缺陷，它将接口和内部的实现交错在了一起，使用者需要了解其内部的潜规则，才不会用错，才不会造成 Crash。&lt;/p&gt;
+&lt;p&gt;之所以调用 uv_close 后不能立即释放 handle 内存，是因为 uv_close 内部不是立即触发 close 和 close 回调。而是先将 handle 状态修改为 closing 和非 ACTIVE，然后加入 loop 的 closing 队列里。直到循环结束前触发 &lt;code&gt;uv__run_closing_handles&lt;/code&gt;，执行真正的 close 和回调，在这之后，handle 的内存才能释放，才不会再被 libuv 使用到。&lt;/p&gt;
+&lt;p&gt;这是其中一个容易踩坑的点。另一个也是关于退出的流程。&lt;/p&gt;
+&lt;p&gt;libuv 的示例里，包含的几乎是正常的退出流程：各个 handle 都主动退出了，然后 uv_run 退出。实际遇到的情况是，handle 还处于有效的 ACTIVE 状态时，需要退出怎么办？调用 uv_loop_close ？不行，handle 还处于 ACTIVE 状态，uv_loop_close 会返回 UV_EBUSY。&lt;/p&gt;
+&lt;p&gt;正确的做法是调用 uv_stop，设置 loop 的状态为 stop，然后 uv_run 内的循环能退出出来。循环退出了，但是那些 ACTIVE 的 handle 怎么办？handle 何时 stop，内存如何释放？libuv 似乎没有明确告诉你应该怎么做。&lt;/p&gt;
+&lt;p&gt;uv_stop 前，应该通知各个模块把相关的 uv handle 都 close 掉。假设有漏网之鱼，怎么办？常见的做法是在 uv_stop 之后通过 uv_walk 遍历所有 handle，然后 close 掉。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;uv_stop(loop);
+
+auto const ensure_closing = [](uv_handle_t* handle, void*) {
+  if (!uv_is_closing(handle)) {
+    uv_close(handle, nullptr);
+  }
+};
+uv_walk(loop, ensure_closing, nullptr);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是，问题又来了，这样的兜底 uv_close 并没有传 close 回调，那 handle 的内存又如何删除？假如有漏网之鱼，就让它泄露算了？好像也没有太好的办法，只能尽量做好 handle 管理，能主动进行 uv_close，而不是等到 uv_walk 里被兜底 close。&lt;/p&gt;
+&lt;p&gt;接着又有另外一个问题，前面说到 uv_close 只是加入 loop 的 close 队列，并没有触发真正的 close 和回调。这时要确保这些 handle 被 close，则需要再次触发 uv_run 直到所有 handle close 完毕。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;for (;;)
+  if (uv_run(loop, UV_RUN_DEFAULT) == 0)
+    break;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;uv 已经要退出了，但为了执行前面的 uv__run_closing_handles，又触发了 uv_run 的执行。假设哪里处理不好，其他线程又往 uv 线程抛了新的 handle 任务，这时就是灾难，很可能 crash 就会扑面而来。所以这里一定要做好状态管理，一旦进入 uv_stop 流程，其他线程也不应该再往 uv 抛任务。&lt;/p&gt;
+&lt;p&gt;上面提到的问题不是只有新手才会犯，我们可以看看著名的 electron 项目，也是犯了同样的错误：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/electron/electron/pull/25332&#34;&gt;https://github.com/electron/electron/pull/25332&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This PR wraps the uv_async_t objects owned by NodeBindings and ElectronBindings inside a new UvHandle wrapper class which handles uv_handle_ts&amp;rsquo; specific rules about destruction:&lt;/p&gt;
+&lt;p&gt;[uv_close()] MUST be called on each handle before memory is released. Moreover, the memory can only be released in close_cb or after it has returned.&lt;/p&gt;
+&lt;p&gt;The UvHandle wrapper class handles this close-delete twostep so that client code doesn&amp;rsquo;t have to think about it. Failure to finish closing before freeing is what caused the uv_walk() crash in #25248.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;为了确保 handle 正确被释放，electron 对 uv 的 handle 做了一层包装，很好的方法，可以借鉴一下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template &amp;lt;typename T,
+          typename std::enable_if&amp;lt;
+              // these are the C-style &#39;subclasses&#39; of uv_handle_t
+              std::is_same&amp;lt;T, uv_async_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_check_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_fs_event_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_fs_poll_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_idle_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_pipe_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_poll_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_prepare_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_process_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_signal_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_stream_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_tcp_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_timer_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_tty_t&amp;gt;::value ||
+              std::is_same&amp;lt;T, uv_udp_t&amp;gt;::value&amp;gt;::type* = nullptr&amp;gt;
+class UvHandle {
+ public:
+  UvHandle() : t_(new T) {}
+  ~UvHandle() { reset(); }
+  T* get() { return t_; }
+  uv_handle_t* handle() { return reinterpret_cast&amp;lt;uv_handle_t*&amp;gt;(t_); }
+
+  void reset() {
+    auto* h = handle();
+    if (h != nullptr) {
+      DCHECK_EQ(0, uv_is_closing(h));
+      uv_close(h, OnClosed);
+      t_ = nullptr;
+    }
+  }
+
+ private:
+  static void OnClosed(uv_handle_t* handle) {
+    delete reinterpret_cast&amp;lt;T*&amp;gt;(handle);
+  }
+
+  T* t_ = {};
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这说明 libuv 还是容易踩坑的。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>用 vscode 写 C/C&#43;&#43; 代码</title>
@@ -1296,28 +1462,6 @@ int main(int argc, char **argv)
 &lt;li&gt;eSports audiences will outnumber gamers（电子竞技的观众人数将超过游戏玩家）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;如果你们对谷歌 Stadia 的 6 小时技术分享细节感兴趣，欢迎留言，也许下篇就重点讲讲了解到的一些 Stadia 技术细节了。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>GDC2019 小记（一）</title>
-            <link>https://blog.coderzh.com/2019/03/30/gdc2019/1/</link>
-            <pubDate>Sat, 30 Mar 2019 23:00:36 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>https://blog.coderzh.com/2019/03/30/gdc2019/1/</guid>
-            <description>&lt;p&gt;GDC(Game Developers Conference) 是一年一度全球性的游戏开发者盛会，期间有大量的游戏开发者的技术分享交流，同时还会有游戏展览，以及游戏奖项颁奖，比如独立游戏节，游戏开发者选择奖（Game Developers Choice Awards）。&lt;/p&gt;
-&lt;p&gt;最早的一届 GDC 在 1988 年，当时出席的只有 27 人，之后一直发展，到今年的 GDC 2019，已经有接近 27000 人参加。由于人数众多，从 2007 年开始，GDC 大会都选择在旧金山的莫斯科尼中心（Moscone Center）举行。&lt;/p&gt;
-&lt;p&gt;这是我第一次参加 GDC，也是第一次出行美国。所以，第一步当然是搞定美国签证。GDC 2019 的会议时间是 3月18日至 3月22日，当我接到通知去参加的时候已经 2月20日了，意味着我只有一个月不到的时间，需要搞定美国签证。一个更糟的情况是，我发现我的护照有效期已经不满 6 个月了，还得先办护照换发，后面还要预约面签等等。于是顿时对我能不能顺利出行产生了很大的怀疑，甚至对于不能出行还有点小遗憾。&lt;/p&gt;
-&lt;p&gt;第一时间，我网上预约了广州出入境办理护照换发，填了资料，去照相馆照了相。第二天起了个大早，由于很久没有起那么早，当我走在小区路上时，竟然发现有这么多人已经出来活动，有散步的，有跑步健身的，也包括像我一样赶早出去办事的。早上的空气也是格外的清新，一切都像在刚刚苏醒的样子，于是竟在心里冒出&lt;strong&gt;盼望着，盼望着，东风来了，春天的脚步近了。
-一切都像刚睡醒的样子，欣欣然张开了眼。山朗润起来了，水涨起来了，太阳的脸红起来了。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;早上的风景原来这么美。从那天开始，我养成了早起的习惯。清晨的空气很好，一觉醒来后也一扫前一天的疲惫，精神气爽，重要的是，可以在这段时间里不受干扰的做自己的事。&lt;/p&gt;
-&lt;p&gt;回到办护照换发。由于网上预约时已经填过资料，现场办理时不需要再填表格，现场办理效率非常高，但是如果要等护照邮寄过来，一般需要 8~10 个工作日，于是问工作人员能不能加急，得到的回答是可以，加急后只需要 3~5 个工作日，但是需要美国那边的邀请函。然而当时我还并未申请美国邀请函，所以也就不能加急。&lt;/p&gt;
-&lt;p&gt;要再赞一下广州出入境的办事效率，即使没有加急，一周后（6个工作日）我就收到了新的护照。于是开始填在线的 ds160 表格，页面经常出现超时和莫名其妙的错误，还好可以中间保存，一路艰难的填好表格拿到确认页后，hr 帮忙预约了 3个工作日后的美签面试。&lt;/p&gt;
-&lt;p&gt;面签顺利的话，还需要等领事馆寄回护照，一般也要 5~7 个工作日。所以，这次面签必须一次过，如果再约下次面签，将错过 GDC 的会议时间。于是开始练习英语口语，还发现了《潘吉Jenny告诉你》这样好的英语学习 Podcast 节目。&lt;/p&gt;
-&lt;p&gt;面签前，我阅读了一些别人的面签经验，了解了一些常被问的问题。做为一个过来人，我想给需要去面签的同学提醒一点，去面签的时候，只带上必要的资料就好，背包、手机之类的最好不要带。因为从进入美领事馆大门开始，面签资料之外的东西都不能带进去，最快也要 1~2 个小时才能出来。如果没人帮忙保管背包，就得寄存在外面的报刊亭（还有路边的大妈，实在有点不放心）。&lt;/p&gt;
-&lt;p&gt;进领事馆后，排队，安检，录指纹，然后开始面谈。我注意到一起排队面签的大都是旅游签证，还有不少中老年人，面谈时说的自然是中文，甚至还有只会粤语的，但都不影响拿到签证。我办的是商务签证，有公司背书，理论上会更容易一些。&lt;/p&gt;
-&lt;p&gt;轮到我时，面试官是一位美国男士，面带笑容态度很好。打过招呼后，先用普通话问了我：『你也是去美国旅游吗？』我说不是，公司派我去美国参加一个会议，GDC 游戏开发者大会。然后问我会不会说英语，我说会一点，然后他就开始用英文提问了。问题大致都是攻略里提到的，诸如你的学历专业是什么（直接给他简历），去美国多长时间，是不是第一去美国，有没有亲戚朋友在美国，你家住哪里，有没有小孩，你的公司是干嘛的等等。最后一个问题，他问我：『你认为去年中国的经济是变好了，还是变差了？』&lt;/p&gt;
-&lt;p&gt;亲爱的读者，这个问题你会怎么回答呢？最后，我顺利完成面谈，3天后就收到了寄来的护照（效率真高），拿到了 10 年的美国签证。然后开始定机票、酒店，提前了解美国的历史和风俗，熟悉 GDC 的议会行程，准备一周后的美国 GDC 之旅。&lt;/p&gt;
 </description>
         </item>
         
