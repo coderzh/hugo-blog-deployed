@@ -189,7 +189,7 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p><img src="http://image.coderzh.com/security.jpg-wt" alt="security"></p>
+                      <p><img src="images/security.jpg" alt="security"></p>
 <h3 id="引子">引子</h3>
 <p>最近有个虚拟练习项目，涉及到系统安全保障的设计，于是对安全保障这块做了一些更深入的了解。发现了很多有趣的东西，开阔了眼界。中间查了一些资料，于是我打算重新整理，用更加循序渐进，大家都能懂的方式，说一说如何设计一个安全的系统。</p>
 <h3 id="著名的安全事件">著名的安全事件</h3>
@@ -224,17 +224,17 @@
 <h4 id="4-正确方法加盐-hash-保存密码">4. 正确方法：加盐 hash 保存密码</h4>
 <p>加盐 hash 是指在加密密码时，不只是对密码进行 hash ，而是对密码进行调油加醋，放点盐（salt）再加密，一方面，由于你放的这点盐，让密码本身更长强度更高，彩虹表逆推的难度更大，也因你放的这点盐，让黑客进行撞库时运算量更大，破解的难度更高。</p>
 <p>如何进行加盐就是一门很重要的学问了。md5 是一种 hash 算法，以下就拿 md5 来举例。假如密码是 123456 ，md5 的结果如下：</p>
-<p><img src="http://image.coderzh.com/md5.png" alt="md5"></p>
+<p><img src="images/md5.png" alt="md5"></p>
 <p>像 123456 这样的简单密码，是很容易被逆推出来的。但是假如我们往简单密码里加点盐试试：</p>
-<p><img src="http://image.coderzh.com/md5-salt.png" alt="md5-salt"></p>
+<p><img src="images/md5-salt.png" alt="md5-salt"></p>
 <p>上面例子里的 <code>#g5Fv;0Dvk</code> 就是我们加的盐。加完之后，密码的强度更高了，彩虹表破解的难度加大了。或者进行加盐两次 md5 ：</p>
-<p><img src="http://image.coderzh.com/double-md5-salt.png" alt="double-md5-salt"></p>
+<p><img src="images/double-md5-salt.png" alt="double-md5-salt"></p>
 <p>到这里，你一定会有疑问，是不是把 md5 多做几次，或者自定义一些组合的方式就更安全了。其实不是的，黑客既然能拿到数据库里的数据，也很有可能拿到你的代码。</p>
 <p>一个健壮的、牢不可破的系统应该是：</p>
 <p><strong>即使被拿走了数据和所有的代码，也没办法破解里面的数据。</strong></p>
 <p>这也是为什么大家不必实现自己的加密算法，而是使用公开的加密算法的原因，比如：RSA、AES、DES 等等。既然无法保证加密代码不被泄露，那就使用公开的加密算法，只要保护好私钥信息，就算你知道我的加密方式也没有任何帮助。</p>
 <p>大部分情况下，使用 md5(md5(password) + salt) 方式加密基本上已经可以了：</p>
-<p><img src="http://image.coderzh.com/salt.png" alt="salt"></p>
+<p><img src="images/salt.png" alt="salt"></p>
 <p>其中，最关键的是 salt 从哪里来？ salt 该怎么设置才能安全。有几个重要的点：</p>
 <ol>
 <li>不要使用固定不变的 salt。</li>
@@ -330,14 +330,14 @@
 <li>非对称加密：需要两个密钥来进行加密和解密：公开密钥（public key，简称公钥）和私有密钥（private key，简称私钥） ，公钥加密的信息只有私钥才能解开，私钥加密的信息只有公钥才能解开。</li>
 </ol>
 <p>非对称加密是实现验证服务端合法性的基础，常见的加密算法有 <a href="http://baike.baidu.com/view/10613.htm">RSA</a> 、 <a href="http://baike.baidu.com/view/584834.htm">ECC</a> 等 。服务端生成一对公钥和私钥，公钥是公开的所有人都知道，客户端需要和服务端通信时，使用该公钥进行数据加密，由于只有真实合法的服务端才拥有对应的私钥，所有只有真实的服务端才能解密该信息，然后返回数据给客户端时，使用客户端自己生成的公钥进行加密，这样数据只有对应的客户端才能理解。</p>
-<p><img src="http://image.coderzh.com/rsa.gif" alt="rsa"></p>
+<p><img src="images/rsa.gif" alt="rsa"></p>
 <p>使用 HTTPS 时，数字证书里包含了名称和公钥信息，只要认证该证书是合法的，并且对方能理解用该公钥加密的信息，就能确定是合法的服务端。</p>
 <h4 id="2-确保通信的安全">2. 确保通信的安全</h4>
 <p>既然使用非对称加密的方式，可以保证双方安全的通信，那是不是就一直使用非对称加密传输数据就行了？理论上是可以的，但是非对称加密的效率要比对称加密的效率低很多。通常的做法是，通过非对称加密的方法，协商出一个只有双方知道的对称加密密钥。</p>
 <p>即使在不安全的通信环境下，也可以协商出一个只有双方才知道的对称加密密钥。在《改变未来的九大算法》一书里，有一个经典的描述如何交互密钥的例子（在所有沟通都是透明的情况下，如何协商出一个只有你和阿诺德才知道的颜料颜色。）：</p>
-<p><img src="http://image.coderzh.com/sharedkey.jpg" alt="sharedkey"></p>
+<p><img src="images/sharedkey.jpg" alt="sharedkey"></p>
 <p><a href="https://msdn.microsoft.com/zh-cn/library/cc488016%28v=vs.90%29.aspx">ECDH</a> 就是基于上面原理设计的密钥交换算法：</p>
-<p><img src="http://image.coderzh.com/ecdh.png" alt="ecdh"></p>
+<p><img src="images/ecdh.png" alt="ecdh"></p>
 <p>密钥协商好后，双方就可以使用该密钥进行加密传输了，比如使用 AES 、 DES。</p>
 <p>由于 ECDH 密钥交换协议不验证公钥发送者的身份，因此无法阻止中间人攻击。如果监听者 Mallory 截获了 Alice 的公钥，就可以替换为他自己的公钥，并将其发送给 Bob。Mallory 还可以截获 Bob 的公钥，替换为他自己的公钥，并将其发送给 Alice。这样，Mallory 就可以轻松地对 Alice 与 Bob 之间发送的任何消息进行解密。他可以更改消息，用他自己的密钥对消息重新加密，然后将消息发送给接收者。</p>
 <p>解决方法是，Alice 和 Bob 可以在交换公钥之前使用数字签名对公钥进行签名。</p>

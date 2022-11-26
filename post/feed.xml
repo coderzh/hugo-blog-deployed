@@ -389,7 +389,7 @@
       <pubDate>Tue, 09 Feb 2016 10:42:05 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2016/02/09/my-first-mac/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/mac.JPG-w&#34; alt=&#34;mac&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;images/mac.JPG&#34; alt=&#34;mac&#34;&gt;&lt;/p&gt;
 &lt;p&gt;新年第一篇，祝大家猴年大吉，心想事成，万事如意！&lt;/p&gt;
 &lt;p&gt;这两天在家里除了带孩子就是在摆弄新到的 MacBook Pro 了。嗯，前几天咬一咬牙，双手颤抖的点击了下单按钮，第三天就收到了。&lt;/p&gt;
 &lt;p&gt;当初在买 MBP 还是 iMac 之间纠结过，因为已经有一个台式机，所以确定了买 MBP。然后就是纠结买 13 吋还是 15 吋。之前我去广州新开的苹果体验店看过，15 吋的略大了点，13 吋的大小刚刚好，本来打算就买 13 吋的。直到下单前，又改变主意了，考虑便携性和性能，我更倾向于性能，于是最后一刻改成了 15 吋标准配置（16 G内存 512闪存）。购买时，我使用了教育商店购买，便宜了 1500 软妹币。我准备了堂弟的学生证，然而第二天苹果直接就给我发货了，并没有要求我出示学生证。后来听说是抽查的。&lt;/p&gt;
@@ -541,7 +541,7 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
       <pubDate>Mon, 18 Jan 2016 23:05:24 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2016/01/18/thoughtworks-story/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/TW.jpg-wt&#34; alt=&#34;TW&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/TW.jpg&#34; alt=&#34;TW&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -551,9 +551,9 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
       
       <guid>https://blog.coderzh.com/2016/01/16/coding-style-share/</guid>
       <description>&lt;p&gt;上次写了一篇《&lt;a href=&#34;http://blog.coderzh.com/2015/12/27/code-review/&#34;&gt;大家都应该做的 Code Review&lt;/a&gt;》，在公众号里有位朋友留言：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/comments.jpg&#34; alt=&#34;comment&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/comments.jpg&#34; alt=&#34;comment&#34;&gt;&lt;/p&gt;
 &lt;p&gt;开始的感觉是，哦，又一个在留言里推广自己网站的家伙。但在好奇心驱使下，我打开了这个 &lt;a href=&#34;http://codingstyle.cn&#34;&gt;Codingstyle.cn&lt;/a&gt; 的网站。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/coding-style.jpg&#34; alt=&#34;coding-style&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/coding-style.jpg&#34; alt=&#34;coding-style&#34;&gt;&lt;/p&gt;
 &lt;p&gt;界面挺简洁大方的，但好像在哪里见过，哦，原来是 Fork 的 &lt;a href=&#34;https://ruby-china.org/&#34;&gt;Ruby China&lt;/a&gt;。浏览了一些帖子，发现这是一个刚做不久的程序员社区，讨论的主要是敏捷、重构、编程实践、程序人生之类的话题，这位朋友还算比较用心，运营一个程序员社区实属不易，于是我就找了之前的两篇文章贴了过去。&lt;/p&gt;
 &lt;p&gt;很快，Seaborn Lee 加了我的微信，并且把我拉到了一个只有 10 几人的“匠艺社区种子用户”的微信群里。然后我发现，群里的其他人都是一些高产博主，Seaborn Lee 正在通过微信群的方式培养自己的种子用户。&lt;/p&gt;
 &lt;p&gt;匠艺社区小组每周都组织一次微信分享， Seaborn Lee 问我是否愿意分享一些东西。我婉言拒绝了，对于在微信群里进行语音分享这种事情，我还没经历过，也没有经验，&lt;strong&gt;我更多的是好奇，他们是怎样进行微信群语音分享的？&lt;/strong&gt;&lt;/p&gt;
@@ -565,7 +565,7 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
 &lt;li&gt;&lt;a href=&#34;https://codingstyle.cn/topics/81&#34;&gt;微信群分享第三期 TDD 的本质不是 TDD by 丁辉&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;我是从第二期开始参加的，一开始我非常好奇，他们是怎样在那么多人的微信群里进行直播分享的。最后发现其实方法非常简单直接，就是：&lt;strong&gt;发语音，截图，打字&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/coding-style-share.jpg&#34; alt=&#34;coding-style-share&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/coding-style-share.jpg&#34; alt=&#34;coding-style-share&#34;&gt;&lt;/p&gt;
 &lt;p&gt;分享定在每周三晚上 8:30 到 9:30 ，首先会自愿报名选出一个主持人，负责整场分享的进度把控。分享者的内容是一篇文章，会先在群里发出来，然后分享者开始发语音分享，过程中会穿插打字和截图。分享完后，进行话题讨论，最后贴出分享者的二维码，大家自愿打赏。&lt;/p&gt;
 &lt;p&gt;分享群的人数增加很快，程序员们闻风而来，很快就逼近了 500 人上限。可以确定的是，群里都是一些爱学习的程序员，不然谁晚上吃饱了不回去抱老婆还在微信群里听你的语音分享。我还发现一个有趣的现象，群里每个人进群时都加了 Seaborn Lee 好友。这就是 Growth Hack 啊！&lt;/p&gt;
 &lt;p&gt;前不久我参加了一个培训，老师让我们所有人把微信打开，查看一下自己有多少个好友。我打开一看，发现有 100 多个，其他同事多的有3，4百个。老师说，她的微信里有 1000 多个好友，并不是随便摇一摇加的好友，都是有一定相关性的好友。她给每个好友都加了标签，遇到问题时在朋友圈一发，立马就有相关的人跳出来帮忙。这就是人脉的力量。&lt;/p&gt;
@@ -634,15 +634,15 @@ git submodule add https://github.com/coderzh/hugo-rapid-theme.git themes/hugo-ra
 &lt;/ol&gt;
 &lt;p&gt;如何保障数据不被拖库，这里就不展开讲了。首先我们来说说密码加密。现在应该很少系统会直接保存用户的密码了吧，至少也是会计算密码的 md5 后保存。md5 这种不可逆的加密方法理论上已经很安全了，但是随着彩虹表的出现，使得大量长度不够的密码可以直接从彩虹表里反推出来。&lt;/p&gt;
 &lt;p&gt;所以，只对密码进行 md5 加密是肯定不够的。聪明的程序员想出了个办法，即使用户的密码很短，只要我在他的短密码后面加上一段很长的字符，再计算 md5 ，那反推出原始密码就变得非常困难了。加上的这段长字符，我们称为盐（Salt），通过这种方式加密的结果，我们称为 &lt;code&gt;加盐 Hash &lt;/code&gt; 。比如：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/salt.png&#34; alt=&#34;salt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/salt.png&#34; alt=&#34;salt&#34;&gt;&lt;/p&gt;
 &lt;p&gt;上一篇我们讲过，常用的哈希函数中，SHA-256、SHA-512 会比 md5 更安全，更难破解，出于更高安全性的考虑，我的这个方案中，会使用 SHA-512 代替 md5 。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/sha-512.png&#34; alt=&#34;salt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/sha-512.png&#34; alt=&#34;salt&#34;&gt;&lt;/p&gt;
 &lt;p&gt;通过上面的加盐哈希运算，即使攻击者拿到了最终结果，也很难反推出原始的密码。不能反推，但可以正着推，假设攻击者将 salt 值也拿到了，那么他可以枚举遍历所有 6 位数的简单密码，加盐哈希，计算出一个结果对照表，从而破解出简单的密码。这就是通常所说的暴力破解。&lt;/p&gt;
 &lt;p&gt;为了应对暴力破解，我使用了加盐的&lt;strong&gt;慢哈希&lt;/strong&gt;。慢哈希是指执行这个哈希函数非常慢，这样暴力破解需要枚举遍历所有可能结果时，就需要花上非常非常长的时间。比如：bcrypt 就是这样一个慢哈希函数：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/bcrypt.png&#34; alt=&#34;bcrypt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/bcrypt.png&#34; alt=&#34;bcrypt&#34;&gt;&lt;/p&gt;
 &lt;p&gt;通过调整 &lt;code&gt;cost&lt;/code&gt; 参数，可以调整该函数慢到什么程度。假设让 bcrypt 计算一次需要 0.5 秒，遍历 6 位的简单密码，需要的时间为：((26 * 2 + 10)^6) / 2 秒，约 900 年。&lt;/p&gt;
 &lt;p&gt;好了，有了上面的基础，来看看我的最终解决方案：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/password_security.jpg&#34; alt=&#34;password_secutity&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/password_security.jpg&#34; alt=&#34;password_secutity&#34;&gt;&lt;/p&gt;
 &lt;p&gt;上图里有很多细节，我分阶段来讲：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1. 协商密钥&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;基于非对称加密的密钥协商算法，可以在通信内容完全被公开的情况下，双方协商出一个只有双方才知道的密钥，然后使用该密钥进行对称加密传输数据。比如图中所用的 ECDH 密钥协商。&lt;/p&gt;
@@ -738,7 +738,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 03 Jan 2016 18:23:28 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2016/01/03/security-design/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/security.jpg-wt&#34; alt=&#34;security&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/security.jpg&#34; alt=&#34;security&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -747,7 +747,7 @@ AES(SharedKey, Ticket)
       <pubDate>Fri, 01 Jan 2016 00:34:08 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2016/01/01/my-2015/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/2016.jpg-wt&#34; alt=&#34;2016&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;images/2016.jpg&#34; alt=&#34;2016&#34;&gt;&lt;/p&gt;
 &lt;p&gt;2015年对我来说是意义非凡的一年，这一年里，我主要干了以下几件事：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;离开游戏创业公司加入了微信。&lt;/li&gt;
@@ -783,7 +783,7 @@ AES(SharedKey, Ticket)
       <pubDate>Mon, 21 Dec 2015 22:38:15 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/12/21/my-k12-pupil/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/math.jpeg-wt&#34; alt=&#34;math&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/math.jpeg&#34; alt=&#34;math&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -792,7 +792,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 20 Dec 2015 21:38:31 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/12/20/my-k12-escape-school/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/taoxue.jpg-wt&#34; alt=&#34;taoxue&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/taoxue.jpg&#34; alt=&#34;taoxue&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -801,7 +801,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 29 Nov 2015 21:21:35 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/11/29/hacker-thinking-mooc/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/mooc.jpg-wt&#34; alt=&#34;mooc&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/mooc.jpg&#34; alt=&#34;mooc&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -810,7 +810,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 22 Nov 2015 10:36:35 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/11/22/hacker-thinking-study/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/learning.jpg-wt&#34; alt=&#34;learning&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/learning.jpg&#34; alt=&#34;learning&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -847,7 +847,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sat, 07 Nov 2015 08:44:26 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/11/07/front-end-dev/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/angular-backbone-react-logo.jpg-wt&#34; alt=&#34;angular-backbone-react-logo&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/angular-backbone-react-logo.jpg&#34; alt=&#34;angular-backbone-react-logo&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -889,7 +889,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 01 Nov 2015 07:37:56 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/11/01/front-end-dev-bootstrap/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/bootstrap.jpg-wt&#34; alt=&#34;bootstrap&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/bootstrap.jpg&#34; alt=&#34;bootstrap&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -908,7 +908,7 @@ AES(SharedKey, Ticket)
       <pubDate>Fri, 23 Oct 2015 07:08:11 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/10/23/livecoding/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/livecoding.jpg-wt&#34; alt=&#34;livecoding&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/livecoding.jpg&#34; alt=&#34;livecoding&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -917,7 +917,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sat, 17 Oct 2015 10:16:41 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/10/17/read-growth-hacker/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/GrowthHacker.jpg-wt&#34; alt=&#34;GrowthHacker&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/GrowthHacker.jpg&#34; alt=&#34;GrowthHacker&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -926,7 +926,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 11 Oct 2015 17:17:19 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/10/11/open-source-thinking/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/OpenSource.png-wt&#34; alt=&#34;OpenSource&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/OpenSource.png&#34; alt=&#34;OpenSource&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -935,7 +935,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 11 Oct 2015 10:06:11 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/10/11/hugo-import-from-jekyll/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/HugoImportJekyll.png-wt&#34; alt=&#34;HugoImportJekyll&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/HugoImportJekyll.png&#34; alt=&#34;HugoImportJekyll&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -944,7 +944,7 @@ AES(SharedKey, Ticket)
       <pubDate>Mon, 28 Sep 2015 22:43:26 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/09/28/go-tips/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/golang.jpg&#34; alt=&#34;golang&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;images/golang.jpg&#34; alt=&#34;golang&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Github: &lt;a href=&#34;https://github.com/coderzh/CodeTips&#34;&gt;https://github.com/coderzh/CodeTips&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
@@ -954,7 +954,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sat, 26 Sep 2015 13:54:33 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/09/26/my-hhkb-pro2/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/hhkb-types.jpg&#34; alt=&#34;hhkb-types&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/hhkb-types.jpg&#34; alt=&#34;hhkb-types&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -963,7 +963,7 @@ AES(SharedKey, Ticket)
       <pubDate>Mon, 21 Sep 2015 00:56:13 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/09/21/xcode-ghost/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/xcodeghost.jpg-w&#34; alt=&#34;xcodeghost&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;images/xcodeghost.jpg&#34; alt=&#34;xcodeghost&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -972,7 +972,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 20 Sep 2015 20:37:42 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/2015/09/20/qiuniu/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://portal.qiniu.com/signup?code=3llo7yfu1ib7y&#34;&gt;&lt;img src=&#34;http://image.coderzh.com/qiniu.jpg&#34; alt=&#34;qiniu&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://portal.qiniu.com/signup?code=3llo7yfu1ib7y&#34;&gt;&lt;img src=&#34;images/qiniu.jpg&#34; alt=&#34;qiniu&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;做为一个独立博客，稳定、速度快是非常重要的指标。在博客的运营过程中，经常会不可避免的需要做迁移。比如，从WordPress到Jekyll，从Jekyll到Hugo。迁移之后，文章里的链接还能不能用，图片还能不能访问，是一个比较重要的问题。文章链接地址可以使用域名或者相对地址的方式方便迁移，而图片则稍微复杂一点点。&lt;/p&gt;</description>
     </item>
     
@@ -1174,7 +1174,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 15 Mar 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.coderzh.com/2015/03/15/NewStart/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/NewStart.jpg-w&#34; alt=&#34;NewStart&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;images/NewStart.jpg&#34; alt=&#34;NewStart&#34;&gt;&lt;/p&gt;
 &lt;p&gt;人的选择，有时候看上去是有规律或刻意的，有时候又像是自然而然的。既然选择了远方，就要鼓足勇气去面对挑战。&lt;/p&gt;</description>
     </item>
     
@@ -1184,7 +1184,7 @@ AES(SharedKey, Ticket)
       <pubDate>Thu, 05 Mar 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.coderzh.com/2015/03/05/WhyHeartBeatNeeded/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/Heartbeats.jpg-w&#34; alt=&#34;HeartBeat&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;images/Heartbeats.jpg&#34; alt=&#34;HeartBeat&#34;&gt;&lt;/p&gt;
 &lt;p&gt;几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？&lt;/p&gt;</description>
     </item>
     
@@ -1194,7 +1194,7 @@ AES(SharedKey, Ticket)
       <pubDate>Sun, 01 Mar 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.coderzh.com/2015/03/01/HackerAndPainter/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/hackerspainters.jpg&#34; alt=&#34;HackersAndPainters&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;images/hackerspainters.jpg&#34; alt=&#34;HackersAndPainters&#34;&gt;&lt;/p&gt;
 &lt;p&gt;春节前，入手了个Kindle PaperWhite。之前一直担心Pad看书已经够用了，实际用下来，发现看书还是用Kindle好。因为Kindle能让你专心看书，不易伤眼，而且续航时间很长。&lt;/p&gt;
 &lt;p&gt;之前一直想读《黑客与画家》，于是春节假期用Kindle把它读完。这本书备受赞誉，里面很多观点很好，但是我读下来，高预期之后还是有些落差。&lt;/p&gt;</description>
     </item>
@@ -1205,7 +1205,7 @@ AES(SharedKey, Ticket)
       <pubDate>Wed, 18 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.coderzh.com/2015/02/18/Starup/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://image.coderzh.com/StartUP-header.jpg-w&#34; alt=&#34;StartUp&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;images/StartUP-header.jpg&#34; alt=&#34;StartUp&#34;&gt;&lt;/p&gt;
 &lt;p&gt;有人说，现在是创业的黄金时代。有个不错的idea，有差不多靠谱的团队，一个简单的demo甚至只有想法，就可以拉来一笔投资开始干了。其实并非如此容易，至少我现在还没这勇气魄力和这分自信。不过也的确没有那么难，不然哪来这么多雨后春笋般的创业公司。&lt;/p&gt;</description>
     </item>
     

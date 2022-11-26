@@ -205,7 +205,7 @@ http://gohugo.io/tutorials/automated-deployments/</a></p>
 <p>由于Wercker还不支持GitCafe的部署，以及我需要使用特定的修改版本的Hugo来生成静态网页，并且希望这些步骤比较可控，所以，还是自己来折腾整个过程吧。</p>
 <h3 id="webhook">webhook</h3>
 <p>webhook是GitHub上提供的Git的一种Hook机制，当代码发生变化时，比如代码被Push到GitHub的Repo时，GitHub会自动请求一个你指定的网页，并且把变更相关的参数都传递过来。入口在Repo的Settings - webhooks &amp; services</p>
-<p><img src="http://image.coderzh.com/WebHook.png-w" alt="webhook"></p>
+<p><img src="images/WebHook.png" alt="webhook"></p>
 <p>说明文档：<a href="https://developer.github.com/webhooks/">https://developer.github.com/webhooks/</a></p>
 <p>借助webhook的机制，我们就可实现当有新的文章Push之后，自动通知远程的一台机器执行一个脚本，脚本的内容就是生成静态页面和Push部署到最终的服务器。</p>
 <p>webhook的Server接收webhook通知，然后执行一个脚本。这样的需求太普遍了，以至于完全不需要自己来实现。在GitHub里搜webhook可以搜出来很多。我主要挑选了Go语言的版本。主要有两个：</p>
@@ -233,7 +233,7 @@ http://gohugo.io/tutorials/automated-deployments/</a></p>
 <pre><code>http://yourserver:9876/hooks/redeploy-webhook
 </code></pre>
 <h3 id="自动部署">自动部署</h3>
-<p><img src="http://image.coderzh.com/AutoDeploy.png-w" alt="AutoDeploy"></p>
+<p><img src="images/AutoDeploy.png" alt="AutoDeploy"></p>
 <p>大致的流程如上图。上图的DigitalOcean是一台VPS服务器，我用了很长时间了，速度和稳定性都不错。需要的同学使用这个链接购买，可以获得10美元的优惠：<a href="https://www.digitalocean.com/?refcode=e131e2bba197">https://www.digitalocean.com/?refcode=e131e2bba197</a></p>
 <p>整个流程中，复杂度主要是在DigitalOcean的VPS上部署服务和脚本。</p>
 <p>部署的脚本可以在我的GitHub上看到：<a href="https://github.com/coderzh/coderzh-hugo-blog">https://github.com/coderzh/coderzh-hugo-blog</a></p>

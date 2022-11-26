@@ -189,7 +189,7 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p><img src="http://image.coderzh.com/Heartbeats.jpg-w" alt="HeartBeat"></p>
+                      <p><img src="images/Heartbeats.jpg" alt="HeartBeat"></p>
 <p>几乎所有的网游服务端都有心跳包(HeartBeat或Ping)的设计，在最近开发手游服务端时，也用到了心跳包。思考思考，心跳包是必须的吗？为什么需要心跳包？TCP没有提供断线检测的方法吗？TCP提供的KeepAlive机制可以替代HeartBeat吗？</p>
 <p>由于连接丢失时，TCP不会立即通知应用程序。比如说，客户端程序断线了，服务端的TCP连接不会检测到断线，而是一直处于连接状态。这就带来了很大的麻烦，明明客户端已经断了，服务端还维护着客户端的连接，照常执行着该玩家的游戏逻辑……</p>
 <p>心跳包就是用来及时检测是否断线的一种机制，通过每间隔一定时间发送心跳数据，来检测对方是否连接。是属于应用程序协议的一部分。</p>

@@ -219,10 +219,10 @@
 <p>Mac 下支持 Markdown 的笔记软件多如牛毛，支持本地文档库管理的笔记软件相对来说少一些，比如：Ulysses、MWeb、Farbox 等等。但是这些软件我都不用，因为我直接用 Alfred 就够了。</p>
 <p>对，没有看错，是<strong>效率神器 Alfred</strong>。</p>
 <p>在 Alfred 中我定制了一个笔记管理的 Workflow，当需要查找某一篇笔记时，只需要按下 <code>f</code> 空格，输入需要检索的标题或正文关键字，Alfred 就可以直接列出对于的笔记文件，回车后即可直接打开。</p>
-<p><img src="http://image.coderzh.com/find-notes.png-s" alt="find-notes"></p>
+<p><img src="images/find-notes.png" alt="find-notes"></p>
 <h4 id="笔记编辑">笔记编辑</h4>
 <p>当我想记录编程相关的笔记时，只需要按下 <code>np</code> 空格，输入文字标题，将自动在合适的路径创建一个新的笔记并打开编辑。（n = new，p = programming 分类）</p>
-<p><img src="http://image.coderzh.com/new-notes.png-s" alt="new-notes"></p>
+<p><img src="images/new-notes.png" alt="new-notes"></p>
 <p>我会用 Atom 来打开和编辑笔记文件，因为它真的很好用。在 Atom 里，安装如下几个插件，编辑 Markdown 的体验将会爽的飞起：</p>
 <ol>
 <li><strong>markdown-preview</strong> 默认自带，按快捷键 ctrl + shift + m 即可实时看到预览。</li>
@@ -231,17 +231,17 @@
 <li><strong>markdown-wirter</strong> 用来管理 Markdown 文档，用来写博客会很方便。</li>
 <li><strong>Zen</strong> 神器，cmd + ctrl + z 进入无干扰书写模式，其中 Typewriter 打字机模式非常不错，当你输入到屏幕中间时，可以让输入的当前行一直保持在屏幕中间。</li>
 </ol>
-<p><img src="http://image.coderzh.com/atom-markdown.png-s" alt="atom-markdown"></p>
+<p><img src="images/atom-markdown.png" alt="atom-markdown"></p>
 <h4 id="alfred-workflow">Alfred Workflow</h4>
 <p>想实现上面 <code>f</code> 和 <code>np</code> 之类的功能非常简单，通过组合 Workflow 里的 FileFilter、ScriptFilter、Run Script 即可。</p>
-<p><img src="http://image.coderzh.com/MyNotes-Workflow.png-s" alt="MyNotes-Workflow"></p>
+<p><img src="images/MyNotes-Workflow.png" alt="MyNotes-Workflow"></p>
 <p>你可以在 Alfred 的 Workflow 中定制自己的快捷键、笔记类别、笔记路径，非常的简单。如果不知道怎样定制，可以参考我的 Workflow：</p>
 <p><a href="https://github.com/coderzh/alfred-workflows">https://github.com/coderzh/alfred-workflows</a></p>
 <h4 id="笔记多平台同步">笔记多平台同步</h4>
 <p>各种网盘，综合考虑后，我选择了 Dropbox。（为了能正常使用 Dropbox 需要一点功夫。）</p>
 <h4 id="移动端同步与编辑">移动端同步与编辑</h4>
 <p>在支持 Dropbox 同步同时又支持 Markdown 编辑的 App 里选择，最后我选择了 <a href="https://bywordapp.com/">Byword</a>，因为它的 Markdown 编写体验真的很好。</p>
-<p><img src="http://image.coderzh.com/byword.PNG" alt="byword"></p>
+<p><img src="images/byword.PNG" alt="byword"></p>
 <h3 id="保证笔记文件不丢失">保证笔记文件不丢失</h3>
 <p>除了 Dropbox 同步，我会定期使用 git 进行版本管理，Push 到自己的私人仓库里。</p>
 <p>希望本文对喜欢做笔记的同学有点帮助吧。</p>
