@@ -5,7 +5,22 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 03 Apr 2022 22:52:04 CST</updated>
+        <updated>Fri, 27 Jan 2023 14:54:09 CST</updated>
+        
+        <item>
+            <title>我的 2022</title>
+            <link>https://blog.coderzh.com/2023/01/27/my2022/</link>
+            <pubDate>Fri, 27 Jan 2023 14:54:09 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>https://blog.coderzh.com/2023/01/27/my2022/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;images/weread.jpg&#34; alt=&#34;weread&#34;&gt;&lt;/p&gt;
+&lt;p&gt;又到了春节假期快结束的时候，正是 2022 年总结的时候。因为再迟些时候，就没了写总结的意境。2022 年，很多人形容为“魔幻”的一年。的确是的，新冠疫情一阵一阵，“健康码”、“做核酸”成了人们日常生活的一部分。随着 12月初的一声“放开”，奥密克戎席卷全国，阵痛之后，“健康码”退出了历史舞台，生活渐渐恢复了原本的样子。&lt;/p&gt;
+&lt;p&gt;去年的这个时候，我希望 2022 年“能够恢复正常，摘掉口罩”，现在看来，基本实现了，现在去到一些公园、商场，已经基本可以摘掉口罩了。&lt;/p&gt;
+&lt;p&gt;年底的时候，我买了个微信读书阅读器（青石灰款）。里面有张卡片，写道：“赠吾友，愿不再惧怕每个不眠之夜”，真的有感动到。我是微信读书的忠实用户，2022 年读完印象比较深刻的几本书是：《奈飞文化手册》、《生生不息》、《小米创业思考》等。我读的书还远远不够，2023 年我相信会读的更多。&lt;/p&gt;
+&lt;p&gt;在疫情最严峻，大家相继感染的期间，我们有幸观看了一届精彩的世界杯足球比赛，目睹了梅西圆梦的整个过程。像是黑暗里的一道曙光，给每个奋力前行的人以信心：只要坚持内心所热爱的，时刻保持谦逊，认真善待身边的每一个人，终有回报。&lt;/p&gt;
+&lt;p&gt;2023 年，努力做到自律，早睡、早起、锻炼、读书、工作、陪伴家人，过好每一天。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>libuv 避坑指南</title>
@@ -1397,71 +1412,6 @@ int main(int argc, char **argv)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;所有相关的 opcode 可以在 quickjs-opcode.h 里找到。最核心的 quickjs.c 有 47842 行。作为一个完整的 JS 引擎，代码已经是相当的精炼了，活生生的一本教科书。不过，现在的 QuickJS 在性能要求高的场景和 V8 还是没有可比性，希望这个东西不仅仅是大神闲暇之余的玩具，期待之后能带来更大的惊喜吧。&lt;/p&gt;
 &lt;p&gt;有人说， Fabrice 就是 10x Engineer，即工作效率相当于 10 个程序员。立马有人站出来反对，分明是 100x Engineer 嘛。这个世界就是这样，有些人比你聪明，比你有天赋，工作效率是你的 10 倍，同时还比你努力。当你在上班划水时，他在写代码，你在吃鸡落地成盒，他又调通了一个核心模块。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>GDC2019小记（二）</title>
-            <link>https://blog.coderzh.com/2019/04/01/gdc2019/2/</link>
-            <pubDate>Mon, 01 Apr 2019 06:00:13 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>https://blog.coderzh.com/2019/04/01/gdc2019/2/</guid>
-            <description>&lt;p&gt;前面讲到了曲折的签证过程，这篇本来再打算讲讲美国的风土人情，人文历史，旧金山及周边的风貌等等。但是一想，这些东西，除非亲身经历，感受不会太深。如果想从文章或者书本中系统的了解美国这个国家，极力推荐林达的《近距离看美国》系列丛书。&lt;/p&gt;
-&lt;p&gt;所以这篇，打算直接切入 GDC 主题。前面讲到，GDC 期间有大量的游戏开发者的技术分享交流。这个所谓『大量』是真的很大量！可以打开这个网址感受一下庞大的 Session 列表： &lt;a href=&#34;https://schedule.gdconf.com/pass-type/all-access&#34;&gt;https://schedule.gdconf.com/pass-type/all-access&lt;/a&gt; 持续 5 天，总共有近 800 场技术分享，每天平均有 160 场。这么多讲座，根本听不过来，所以每天都要计划好每个时间点去听哪个讲座。当然，也不是所有讲座都有权限去听的。GDC 的门票类型主要有 6 种，分别的价格也不一样：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Pass Type&lt;/th&gt;
-&lt;th&gt;Price($)&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;All Access&lt;/td&gt;
-&lt;td&gt;2399&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;GDC Conference + Summits&lt;/td&gt;
-&lt;td&gt;2099&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;GDC Conference&lt;/td&gt;
-&lt;td&gt;1449&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;GDC Summits&lt;/td&gt;
-&lt;td&gt;949&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Expo Plus&lt;/td&gt;
-&lt;td&gt;349&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Expo&lt;/td&gt;
-&lt;td&gt;249&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;这个价格也感受一下，All Access 的门票换成人民币将近 16000 元！由于我们公司是其中的参展商（Exhibitor），所以我拿的是 Expo Plus 的通行证，有权限听的 Session 大约有 300 场。看了下感兴趣的主题基本有权限去听，也足够了。同时可以在手机上安装 GDC 的官方 APP，上面有所有的课程列表，可以定制好自己的听课计划。&lt;/p&gt;
-&lt;p&gt;如果错过了某些课程，或者没有机会来到 GDC，还可以通过 GDC Vault(&lt;a href=&#34;https://www.gdcvault.com/&#34;&gt;https://www.gdcvault.com/&lt;/a&gt;) 看视频回看。&lt;/p&gt;
-&lt;p&gt;我主要关心的是 Programming 类型的课程，偏游戏渲染方面的，比如：Vulkan、glTF、OpenXR，RTX、GPU 相关的。同时也了解了下 Facebook、Google 在游戏商业化上的一些策略。&lt;/p&gt;
-&lt;p&gt;GDC 第二天几乎成了 Google 专场，上午由 CEO 劈柴哥亲自站台，高调宣布正式加入微软、索尼、任天堂所在价值 1400 亿美元的游戏行业。同时发布 Stadia 云游戏平台，只需要一个浏览器，就可以玩《刺客信条：奥德赛》、《毁灭战士：永恒》之类的重型游戏。 下午 Google 又包了 12:00 ~ 18:00 的场，全面系统的介绍 Stadia 平台。鉴于上午劈柴哥那场的火爆程度，我们早早就去谷歌专场排了队进场，因此也错过了同时间其他几场有意思的课程。会场展台还可以直接体验 Stadia，我试玩下奥德赛，延迟确实很低，手感也不错。&lt;/p&gt;
-&lt;p&gt;但是云游戏这东西最后的落地效果怎样，还真不好说。早在 2010 年，我就浅浅的研究过这个方向，当时还写了几篇文章（可以在我的博客里找到这几篇文章）：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.coderzh.com/2010/09/11/thincilent/&#34;&gt;瘦客户端那些事 - 开篇&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.coderzh.com/2010/09/24/thinclient-protocol/&#34;&gt;瘦客户端那些事 - 远程传输协议&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.coderzh.com/2010/10/07/thinclient-secret-of-nomachine/&#34;&gt;瘦客户端那些事 - NoMachine的秘密&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;当然，现在已经是 9102 年了，这些年云技术快速发展，渲染技术也层出不穷，随着之后 5G 网络的普及，也许解决云游戏延迟的问题是早晚的事了。&lt;/p&gt;
-&lt;p&gt;除了 Google 高调宣布进入云游戏领域，腾讯也宣布和英特尔联手推出云游戏平台（https://start.qq.com/） ，还有微软的 xCloud 云游戏。第四天微软有个专场讲 xCloud 云游戏，和谷歌相比起来显得低调很多，甚至务实很多。xCloud 有个非常大的亮点是现有的主机游戏可以非常简单的移植到 xCloud 平台上来，似乎简单到只需要定义好游戏操作的 layout 布局即可。&lt;/p&gt;
-&lt;p&gt;后面还听了个吹水课程，预测了 2021 年游戏领域的4大趋势：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;5G reaches initial inflection point（5G 达到初始拐点）&lt;/li&gt;
-&lt;li&gt;Gamer culture hits peak mainstream culture（玩家文化达到了主流文化的顶峰）&lt;/li&gt;
-&lt;li&gt;AR is forecasted to overtake VR（预计AR将超过VR）&lt;/li&gt;
-&lt;li&gt;eSports audiences will outnumber gamers（电子竞技的观众人数将超过游戏玩家）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如果你们对谷歌 Stadia 的 6 小时技术分享细节感兴趣，欢迎留言，也许下篇就重点讲讲了解到的一些 Stadia 技术细节了。&lt;/p&gt;
 </description>
         </item>
         

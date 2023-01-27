@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 06 Feb 2022 15:06:39 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Jan 2023 14:54:09 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我的 2022</title>
+      <link>https://blog.coderzh.com/2023/01/27/my2022/</link>
+      <pubDate>Fri, 27 Jan 2023 14:54:09 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2023/01/27/my2022/</guid>
+      <description>又到了春节假期快结束的时候，正是 2022 年总结的时候。因为再迟些时候，就没了写总结的意境。2022 年，很多人形容为“魔幻”的一年。的确是的，新冠疫</description>
+    </item>
     
     <item>
       <title>我的 2021</title>

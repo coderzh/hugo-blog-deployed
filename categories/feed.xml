@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 03 Apr 2022 22:52:04 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Jan 2023 14:54:09 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>思考感悟</title>
+      <link>https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</link>
+      <pubDate>Fri, 27 Jan 2023 14:54:09 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>技术文章</title>
@@ -27,15 +36,6 @@
       <pubDate>Sun, 13 Feb 2022 23:57:31 +0800</pubDate>
       
       <guid>https://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>思考感悟</title>
-      <link>https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</link>
-      <pubDate>Sun, 06 Feb 2022 15:06:39 +0800</pubDate>
-      
-      <guid>https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</guid>
       <description></description>
     </item>
     
