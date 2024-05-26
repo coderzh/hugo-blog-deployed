@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 03 Apr 2022 22:52:04 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 08 Apr 2023 20:50:21 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WebAssembly 的尾调用</title>
+      <link>https://blog.coderzh.com/2023/04/08/wasm-tail-call/</link>
+      <pubDate>Sat, 08 Apr 2023 20:50:21 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2023/04/08/wasm-tail-call/</guid>
+      <description>V8 团队最新一篇博客里提到，在 V8 的 v11.2 版本里，支持了 WebAssembly 的尾调用指令。这一篇里，我们来看看尾调用相关的内容。首先，我们来看看，什么是尾调用。 首先，</description>
+    </item>
     
     <item>
       <title>libuv 避坑指南</title>

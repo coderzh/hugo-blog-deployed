@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>我的 2022 - CoderZh Blog</title>
+  <title>WebAssembly 的尾调用 - CoderZh Blog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="年终总结,">
-<meta name="description" content="又到了春节假期快结束的时候，正是 2022 年总结的时候。因为再迟些时候，就没了写总结的意境。2022 年，很多人形容为“魔幻”的一年。的确是的，新冠疫">
+<meta name="keywords" content="尾调用,WebAssembly,tail call,">
+<meta name="description" content="V8 团队最新一篇博客里提到，在 V8 的 v11.2 版本里，支持了 WebAssembly 的尾调用指令。这一篇里，我们来看看尾调用相关的内容。首先，我们来看看，什么是尾调用。 首先，">
 <meta name="author" content="coderzh">
 <meta name="publisher" content="coderzh">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="我的 2022 - CoderZh Blog">
-<meta itemprop="description" content="又到了春节假期快结束的时候，正是 2022 年总结的时候。因为再迟些时候，就没了写总结的意境。2022 年，很多人形容为“魔幻”的一年。的确是的，新冠疫">
+<meta itemprop="name" content="WebAssembly 的尾调用 - CoderZh Blog">
+<meta itemprop="description" content="V8 团队最新一篇博客里提到，在 V8 的 v11.2 版本里，支持了 WebAssembly 的尾调用指令。这一篇里，我们来看看尾调用相关的内容。首先，我们来看看，什么是尾调用。 首先，">
 <meta itemprop="image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
-<meta property="og:title" content="我的 2022 - CoderZh Blog" />
+<meta property="og:title" content="WebAssembly 的尾调用 - CoderZh Blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.coderzh.com/2023/01/27/my2022/" />
+<meta property="og:url" content="https://blog.coderzh.com/2023/04/08/wasm-tail-call/" />
 <meta property="og:image" content="https://blog.coderzh.com/public/coderzh.jpg" />
-<meta property="og:description" content="又到了春节假期快结束的时候，正是 2022 年总结的时候。因为再迟些时候，就没了写总结的意境。2022 年，很多人形容为“魔幻”的一年。的确是的，新冠疫">
+<meta property="og:description" content="V8 团队最新一篇博客里提到，在 V8 的 v11.2 版本里，支持了 WebAssembly 的尾调用指令。这一篇里，我们来看看尾调用相关的内容。首先，我们来看看，什么是尾调用。 首先，">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@coderzh">
-<meta name="twitter:title" content="我的 2022 - CoderZh Blog">
-<meta name="twitter:description" content="又到了春节假期快结束的时候，正是 2022 年总结的时候。因为再迟些时候，就没了写总结的意境。2022 年，很多人形容为“魔幻”的一年。的确是的，新冠疫">
+<meta name="twitter:title" content="WebAssembly 的尾调用 - CoderZh Blog">
+<meta name="twitter:description" content="V8 团队最新一篇博客里提到，在 V8 的 v11.2 版本里，支持了 WebAssembly 的尾调用指令。这一篇里，我们来看看尾调用相关的内容。首先，我们来看看，什么是尾调用。 首先，">
 <meta name="twitter:creator" content="@coderzh">
 <meta name="twitter:image" content="https://blog.coderzh.com/public/coderzh.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="https://blog.coderzh.com/2023/01/27/my2022/">
-  <link rel='shortlink' href="https://blog.coderzh.com/2023/01/27/my2022/"/>
+  <link rel="canonical" href="https://blog.coderzh.com/2023/04/08/wasm-tail-call/">
+  <link rel='shortlink' href="https://blog.coderzh.com/2023/04/08/wasm-tail-call/"/>
   <link rel="shortcut icon" href="https://blog.coderzh.com/public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="https://blog.coderzh.com/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -116,7 +116,7 @@
               <ul class="meta-single group">
                 
                 <li class="category">
-                  <a href="https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/" rel="category tag">思考感悟</a>
+                  <a href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" rel="category tag">技术文章</a>
                 </li>
                 
               </ul>
@@ -128,11 +128,11 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">我的 2022</h1>
+                  <h1 class="post-title">WebAssembly 的尾调用</h1>
 
                   <p class="post-byline">
-                    by CoderZh&nbsp;&nbsp;2023年01月27日&nbsp;&nbsp;501 Words&nbsp;&nbsp;~ 1min reading time |&nbsp;
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2023/2023-01-27-my2022.md"
+                    by CoderZh&nbsp;&nbsp;2023年04月08日&nbsp;&nbsp;536 Words&nbsp;&nbsp;~ 2min reading time |&nbsp;
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/2023/2023-04-08-wasm-tail-call.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -141,12 +141,71 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p><img src="images/weread.jpg" alt="weread"></p>
-<p>又到了春节假期快结束的时候，正是 2022 年总结的时候。因为再迟些时候，就没了写总结的意境。2022 年，很多人形容为“魔幻”的一年。的确是的，新冠疫情一阵一阵，“健康码”、“做核酸”成了人们日常生活的一部分。随着 12月初的一声“放开”，奥密克戎席卷全国，阵痛之后，“健康码”退出了历史舞台，生活渐渐恢复了原本的样子。</p>
-<p>去年的这个时候，我希望 2022 年“能够恢复正常，摘掉口罩”，现在看来，基本实现了，现在去到一些公园、商场，已经基本可以摘掉口罩了。</p>
-<p>年底的时候，我买了个微信读书阅读器（青石灰款）。里面有张卡片，写道：“赠吾友，愿不再惧怕每个不眠之夜”，真的有感动到。我是微信读书的忠实用户，2022 年读完印象比较深刻的几本书是：《奈飞文化手册》、《生生不息》、《小米创业思考》等。我读的书还远远不够，2023 年我相信会读的更多。</p>
-<p>在疫情最严峻，大家相继感染的期间，我们有幸观看了一届精彩的世界杯足球比赛，目睹了梅西圆梦的整个过程。像是黑暗里的一道曙光，给每个奋力前行的人以信心：只要坚持内心所热爱的，时刻保持谦逊，认真善待身边的每一个人，终有回报。</p>
-<p>2023 年，努力做到自律，早睡、早起、锻炼、读书、工作、陪伴家人，过好每一天。</p>
+                      <p>V8 团队最新一篇<a href="https://v8.dev/blog/wasm-tail-call">博客</a>里提到，在 V8 的 v11.2 版本里，支持了 WebAssembly 的尾调用指令。这一篇里，我们来看看尾调用相关的内容。首先，我们来看看，什么是尾调用。</p>
+<p>首先，来看这样一段代码：</p>
+<pre><code class="language-c">int sum(List* list, int acc) {
+  if (list == nullptr) return acc;
+  return sum(list-&gt;next, acc + list-&gt;val);
+}
+</code></pre>
+<p>上面的代码可以看到，这是一个递归的调用。每调用一次 <code>sum</code> 函数，调用的堆栈就要多一层。当函数堆栈多到一定数量，栈就会爆掉，出现 Stack overflow，或者 segmentation fault。</p>
+<p>何为尾调用优化？</p>
+<p>就是当出现尾调用时，不去执行 call 指令进行函数跳转，而是在原函数内展开，替换为相应的 jump 跳转指令。</p>
+<p>我们来看一个具体的例子，比如下面这段代码：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+unsigned fib_rec(unsigned n, unsigned a, unsigned b) {
+  if (n == 0) {
+    return a;
+  }
+  return fib_rec(n - 1, b, a + b);
+}
+
+unsigned fib(unsigned n) {
+  return fib_rec(n, 0, 1);
+}
+
+int main() {
+  for (unsigned i = 0; i &lt; 10; i++) {
+    printf(&quot;fib(%d): %d\n&quot;, i, fib(i));
+  }
+
+  printf(&quot;fib(1000000): %d\n&quot;, fib(1000000));
+}
+</code></pre>
+<p>fib_rec 函数里递归调用了 fib_rec 函数，递归次数一多，函数栈就会爆。我们试试用 gcc 编译和执行：</p>
+<pre><code class="language-bash">$ gcc test.c -o test
+$ ./test
+fib(0): 0
+fib(1): 1
+fib(2): 1
+fib(3): 2
+fib(4): 3
+fib(5): 5
+fib(6): 8
+fib(7): 13
+fib(8): 21
+fib(9): 34
+[1]    57017 segmentation fault  ./test
+</code></pre>
+<p>gcc 和 clang 本身是可以对尾调用做优化的，只要编译的时候，加上 <code>-O2</code> 参数就行，我们试一试：</p>
+<pre><code class="language-bash">$ gcc -O2 test.c -o test
+$ ./test
+fib(0): 0
+fib(1): 1
+fib(2): 1
+fib(3): 2
+fib(4): 3
+fib(5): 5
+fib(6): 8
+fib(7): 13
+fib(8): 21
+fib(9): 34
+fib(1000000): 1884755131
+</code></pre>
+<p>没有出错了，所以开启 O2 优化后，尾调用被优化了。</p>
+<hr>
+<p>这是一篇未写完的文章。今天是 2024 年  5 月 26 日，看到这里，我竟然想不起来还有一篇未完的文章。这一年里，我在干嘛，我在干嘛，是一个问题。</p>
 
                       
                     </div>
@@ -158,7 +217,7 @@
                         <div>
                             <p style="margin-top:0px;">作者：<a target="_blank" href="http://blog.coderzh.com/">CoderZh</a>
                             <br />微信关注：hacker-thinking （代码随想）
-                            <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2023/01/27/my2022/">https://blog.coderzh.com/2023/01/27/my2022/</a>
+                            <br />本文出处：<a target="_blank" href="https://blog.coderzh.com/2023/04/08/wasm-tail-call/">https://blog.coderzh.com/2023/04/08/wasm-tail-call/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -212,19 +271,13 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="https://blog.coderzh.com/2023/04/08/wasm-tail-call/" rel="next">
-          <i class="fa fa-chevron-right"></i>
-          <strong>Next post</strong>
-          <span>WebAssembly 的尾调用</span>
-        </a>
-        
       </li>
       <li class="previous">
         
-        <a href="https://blog.coderzh.com/2022/04/03/libuv/" rel="prev">
+        <a href="https://blog.coderzh.com/2023/01/27/my2022/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>libuv 避坑指南</span>
+          <span>我的 2022</span>
         </a>
         
       </li>
