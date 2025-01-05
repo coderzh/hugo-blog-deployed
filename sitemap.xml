@@ -1,6 +1,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://blog.coderzh.com/2025/01/04/my2024/</loc>
+        <lastmod>2025-01-04T17:13:44+08:00</lastmod>
+    </url>
+    
+    <url>
         <loc>https://blog.coderzh.com/categories/</loc>
         <lastmod>2025-01-04T17:13:44+08:00</lastmod>
     </url>
@@ -17,11 +22,6 @@
     
     <url>
         <loc>https://blog.coderzh.com/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</loc>
-        <lastmod>2025-01-04T17:13:44+08:00</lastmod>
-    </url>
-    
-    <url>
-        <loc>https://blog.coderzh.com/2025/01/04/my2024/</loc>
         <lastmod>2025-01-04T17:13:44+08:00</lastmod>
     </url>
     
