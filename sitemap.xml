@@ -1,22 +1,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>https://blog.coderzh.com/2025/01/04/my2024/</loc>
-        <lastmod>2025-01-04T17:13:44+08:00</lastmod>
+        <loc>https://blog.coderzh.com/2026/03/22/openclaw-weixin/</loc>
+        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/categories/</loc>
-        <lastmod>2025-01-04T17:13:44+08:00</lastmod>
+        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/</loc>
-        <lastmod>2025-01-04T17:13:44+08:00</lastmod>
+        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/post/</loc>
+        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</loc>
+        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/2025/01/04/my2024/</loc>
         <lastmod>2025-01-04T17:13:44+08:00</lastmod>
     </url>
     
@@ -27,11 +37,6 @@
     
     <url>
         <loc>https://blog.coderzh.com/2023/04/08/wasm-tail-call/</loc>
-        <lastmod>2023-04-08T20:50:21+08:00</lastmod>
-    </url>
-    
-    <url>
-        <loc>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</loc>
         <lastmod>2023-04-08T20:50:21+08:00</lastmod>
     </url>
     
