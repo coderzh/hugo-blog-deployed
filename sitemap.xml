@@ -1,27 +1,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>https://blog.coderzh.com/2026/03/22/openclaw-weixin/</loc>
-        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
-    </url>
-    
-    <url>
         <loc>https://blog.coderzh.com/categories/</loc>
-        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
+        <lastmod>2026-03-29T11:13:49+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/</loc>
-        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
+        <lastmod>2026-03-29T11:13:49+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/post/</loc>
-        <lastmod>2026-03-22T11:29:08+08:00</lastmod>
+        <lastmod>2026-03-29T11:13:49+08:00</lastmod>
     </url>
     
     <url>
         <loc>https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</loc>
+        <lastmod>2026-03-29T11:13:49+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/2026/03/29/glm5-1/</loc>
+        <lastmod>2026-03-29T11:13:49+08:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>https://blog.coderzh.com/2026/03/22/openclaw-weixin/</loc>
         <lastmod>2026-03-22T11:29:08+08:00</lastmod>
     </url>
     

@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 22 Mar 2026 11:29:08 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 11:13:49 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>用上了最新编程模型 GLM-5.1</title>
+      <link>https://blog.coderzh.com/2026/03/29/glm5-1/</link>
+      <pubDate>Sun, 29 Mar 2026 11:13:49 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2026/03/29/glm5-1/</guid>
+      <description>在我的日常开发中，使用的最多的模型之一就是 GLM-5，应该是目前国内最好的编程语言模型了。当然，如果算上国外的模型，最好的还是 Claude Opus 4.6。但</description>
+    </item>
     
     <item>
       <title>AI 时代来临，我用微信联系上了小龙虾</title>
