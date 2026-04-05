@@ -143,7 +143,8 @@
                       
                       <p>OpenSTA 基于CORBA的分布式软件测试构架。使用OpenSTA，测试人员可以模拟大量的虚拟用户。OpenSTA的结果分析包括虚拟用户响应时间、web服务器的资源使用情况、数据库服务器的使用情况，可以精确的度量负载测试的结果。详细官方文档：<a href="http://www.opensta.org/docs/gsg/index.htm">OpenSTA教程</a></p>
 <h2 id="总括">总括</h2>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/OpenSTABlack.jpeg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/OpenSTABlack.jpeg" alt="" />
+</p>
 <h2 id="本文内容">本文内容</h2>
 <p>本文针对OpenSTA中的几个重要部分进行详细介绍，关于其他部分的内容请查看官方文档。本文中，将重点介绍：</p>
 <ol>
@@ -173,7 +174,8 @@
 <h3 id="2-script基本介绍">2. Script基本介绍</h3>
 <p>首先声明一 下，OpenSTA的脚本使用的是其专有的SCL(Script Control Language)语言，语法比较复杂，使用起来相当的困难。所以，我对OpenSTA的定位是：脚本以录制为主，小部分修改，参数设置为辅。我们现在录 制一个最基本的脚本，看看是什么样，比如：访问一个静态页面（最简单的一个页面，输出几个字符），录制脚本如下：</p>
 <ul>
-<li><img src="http://images.cnblogs.com/cnblogs_com/coderzh/OpenSTA_Script.JPG" alt=""></li>
+<li><img src="http://images.cnblogs.com/cnblogs_com/coderzh/OpenSTA_Script.JPG" alt="" />
+</li>
 </ul>
 <p>我 们只是录制一个简单的访问一个静态页面的脚本，竟然自动生成了那么多代码！不要慌，让我们在仔细看看上图。其实，我们把代码分解一下，可以将脚本分为三个 部分：Environment, Definitions, Code。通过上图也知道了各部分的大致内容和作用，因此，如果我们撇开其他部分不看，而只看Code部分的PRIMARY GET URI 语句，是不是简单了很多呢？！</p>
 <p>在PRIMARY GET URI语句后面我们看到了“ON 1”的代码，而且在而且在脚本最后几行有“DISCONNECT FROM 1”语句。这里的“ON 1”是用来标示TCP连接，“DISCONNECT FROM 1”用来关闭TCP连接。这都是OpenSTA根据Http协议下的真实情况录制出来的。</p>
@@ -183,7 +185,8 @@
 <p>通过Script Modeler的菜单 Variables - Create 来创建变量，如下图：</p>
 <ul>
 <li>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/OpenSTA_Variables.JPG" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/OpenSTA_Variables.JPG" alt="" />
+</p>
 <pre><code>1.  **Name** -- 变量名称
 </code></pre>
 <ol start="2">
@@ -200,7 +203,8 @@
 <p>Script</p>
 <pre><code>        *   变量范围设置为Script，则表示运行时所有虚拟用户共用同一个Script里的变量。比如4个用户虚拟用户一起运行脚本A，假设脚本A中有一个设置为Script范围的变量B，则4个虚拟用户共用变量B，如果有人对变量B进行修改，则会影响到其他人。如下图：
 </code></pre>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/os-modea.png" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/os-modea.png" alt="" />
+</p>
 </li>
 <li>
 <p>Thread</p>
@@ -211,13 +215,15 @@
  &lt;/div&gt;
  Thread范围的变量范围使用如下图：
 </code></pre>
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/os-mod19.png" alt=""></p>
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/os-mod19.png" alt="" />
+</p>
 </li>
 <li>
 <p>Global</p>
 <pre><code>        *   设置为Global的变量可想而知范围最大，即变量在所有虚拟用户，所有脚本中共享。同样，变量必须在每个脚本中定义或是在Global_Variables.INC中定义。如下图：
 </code></pre>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/os-mod38.png" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/os-mod38.png" alt="" />
+</p>
 </li>
 </ul>
 </li>
@@ -261,11 +267,13 @@
 <h3 id="4-dom对象实现关联">4. DOM对象实现关联</h3>
 <p>DOM是Document Object Model文档对象模型的缩写。DOM是一种与浏览器，平台，语言无关的接口，使得你可以访问页面其他的标准组件。通过DOM，我们可以动态的获取返回的 HTML或XML，并方便的取出里面相应节点的内容进行检查或他用。OpenSTA在录制时会把这些信息记录在一个后缀为.ALL的文件中，光标定位到 PRIMARY POST URI 或是 PRIMARY GET URI处，点击工具栏黄色右箭头按钮，如图：</p>
 <ul>
-<li><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_DOM_TAB.JPG" alt=""></li>
+<li><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_DOM_TAB.JPG" alt="" />
+</li>
 </ul>
 <p>现在我们要动态的获取页面的返回值：“You are Great!”，我们选中DOM tab中的HTML Tree，找到“You are Great!”，选中，右键点击“Address”，如图：</p>
 <ul>
-<li><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_DOM.JPG" alt=""></li>
+<li><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_DOM.JPG" alt="" />
+</li>
 </ul>
 <p>在弹出的对话框中输入变量的名字，比如：ReturnText，确定后，代码中添加了如下内容：</p>
 <ul>
@@ -292,7 +300,8 @@
 <p>首先看看Task Group有哪些列：</p>
 <ul>
 <li>
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_TaskGroup.JPG" alt=""></p>
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_TaskGroup.JPG" alt="" />
+</p>
 </li>
 <li>
 <p><strong>Task Group</strong>列是Task Group的名称和说明信息。</p>
@@ -318,7 +327,8 @@
  然而，在同一批内的五个虚拟用户是如何执行的呢？ 是在10秒内同时并发执行一次？多次？还是10秒内按顺序执行？经过试验，发现同一批内的五个虚拟用户是按顺序来执行的，因为每批用户数是5，每批运行时 间是10秒，因此，按顺序执行平均分下来每个用户需要执行10/5=2秒，在2秒内，虚拟用户只执行一次，然后2秒后，下一个用户开始执行。同一批内用户 执行情况如下图：&amp;nbsp;
 </code></pre>
 <ul>
-<li><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_OneBatch.jpg" alt=""></li>
+<li><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/OpenSTA_OneBatch.jpg" alt="" />
+</li>
 </ul>
 </li>
 </ul>

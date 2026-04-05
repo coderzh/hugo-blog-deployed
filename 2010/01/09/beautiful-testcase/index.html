@@ -148,7 +148,8 @@
 <p>案例的可维护性也是非常重要，如果做到上面的8点，自然也就做到了可维护性。下面来分享一下我对于上面8点的经验：</p>
 <h4 id="1-案例的层次结构一定要清晰">1. 案例的层次结构一定要清晰</h4>
 <p>所谓层次结构，至少要让人一眼就能分辨出被测代码和测试代码。简单的说，就是知道你在测什么。由于是进行接口测试，我已经习惯了如下的案例层次：</p>
-<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/GTest_999B/gtestproject_3.jpg"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/GTest_999B/gtestproject_thumb_2.jpg" alt="gtestproject" title="gtestproject"></a></p>
+<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/GTest_999B/gtestproject_3.jpg"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/GTest_999B/gtestproject_thumb_2.jpg" alt="gtestproject" title="gtestproject"/>
+</a></p>
 <p><strong>DataDefine</strong></p>
 <p>我会将测试案例所需要的数据，以及数据之间的联系全部在预先定义好。测试数据与案例逻辑的分离，有利于维护和扩展测试案例。同时，GTest先天就支持测试数据参数化，为测试数据的分离提供了进一步的便捷。什么是测试数据参数化？就是你可以预先定义好一批各种各样的数据，而你只需要编写一个测试案例的逻辑代码，gtest会将定义好的数据逐个套入测试案例中进行执行。具体的做法请见：<a href="http://www.cnblogs.com/coderzh/archive/2009/04/08/1431297.html">玩转Google开源C++单元测试框架Google Test系列(gtest)之四 - 参数化</a></p>
 <p><strong>SUT</strong></p>

@@ -5,7 +5,50 @@
         <language>zh-CN</language>
         <author>CoderZh</author>
         <rights>Copyright (c) 2015, CoderZh; all rights reserved.</rights>
-        <updated>Sun, 29 Mar 2026 11:13:49 CST</updated>
+        <updated>Sat, 04 Apr 2026 16:19:07 CST</updated>
+        
+        <item>
+            <title>哈萨比斯：谷歌 AI 之脑，AGI 造梦者（上）</title>
+            <link>https://blog.coderzh.com/2026/04/04/hassabis/</link>
+            <pubDate>Sat, 04 Apr 2026 16:19:07 CST</pubDate>
+            <author>CoderZh</author>
+            <guid>https://blog.coderzh.com/2026/04/04/hassabis/</guid>
+            <description>&lt;p&gt;最近买了一本实体书《&lt;strong&gt;哈萨比斯 谷歌 AI 之脑&lt;/strong&gt;》，利用周末和平时的零碎时间看完了。看完收获不小，记录一下。&lt;/p&gt;
+&lt;p&gt;说到哈萨比斯（Hassabis），你是否还记得 2016 年 3 月的那一幕——韩国首尔，一间不大的房间里，一场人类与机器的对决正在进行。一方是人类顶级围棋选手李世石，另一方，是谷歌 DeepMind 开发的 AlphaGo。&lt;/p&gt;
+&lt;p&gt;弈至第 36 手，李世石起身休息，回来再研究局势。就在他离场期间，AlphaGo 下出了惊人的第 37 手——落子在一个违背所有围棋大师直觉的位置，一片几乎空旷的区域。&lt;/p&gt;
+&lt;p&gt;在后台观战的哈萨比斯，此刻一定屏住了呼吸。他坚信，由他一手打造的 AlphaGo 必将突破人类围棋的极限，从而终结 AI 领域默默无闻、低调谦逊的纯真时代。&lt;/p&gt;
+&lt;p&gt;后面的故事我们都知道了：AlphaGo 战胜了李世石，之后又战胜了中国顶级棋手柯洁。而哈萨比斯的故事，同样要从下棋讲起。&lt;/p&gt;
+&lt;h2 id=&#34;一天才的顿悟时刻&#34;&gt;一、天才的顿悟时刻&lt;/h2&gt;
+&lt;p&gt;看名人传记，我尤其喜欢看他们小时候的故事。哈萨比斯 1976 年出生于伦敦的一个普通家庭。父亲虽上过大学，但生性洒脱，一心想做创作型歌手，还走街串巷卖过玩具。母亲在百货公司做销售助理，也做过兼职清洁工。&lt;/p&gt;
+&lt;p&gt;4 岁时，哈萨比斯爬上椅子看父亲和叔叔下国际象棋，展现出惊人的天赋。5 岁开始参加比赛，6 岁便获得了参加英国 14 岁以下国际象棋锦标赛的资格。&lt;/p&gt;
+&lt;p&gt;当时著名的国际象棋专栏作家巴登评价他：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;「哈萨比斯是我见过最优秀的 6 岁棋手。」&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从此，父亲开始频繁带小哈萨比斯四处参赛，母亲则靠做多份兼职养家。&lt;/p&gt;
+&lt;p&gt;9 岁时，哈萨比斯成为英国 11 岁以下国际象棋队队长。13 岁，晋升国际象棋大师，在全球同年龄段选手中排名第二。&lt;/p&gt;
+&lt;p&gt;然而，就在 11 岁那年，一场耗时 10 小时的比赛残局，让他顿悟，决心去探索更大的世界。&lt;/p&gt;
+&lt;p&gt;那是一场国际比赛，对手是一位丹麦象棋大师。棋局持续了整整 10 个小时，哈萨比斯看着棋盘，再看着和他父亲年纪相仿的对手，疲惫渐渐涌上来。他心里一定在不断冒出念头：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;「我是谁？」&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;「我在哪？」&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;「我在干什么？」&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;最终，他选择了认输。面对旁人的嘲笑，他似乎已经麻木了。第二天早上，他突然&lt;strong&gt;顿悟&lt;/strong&gt;了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;列支敦士登附近的那个锦标赛大厅里，挤满了聪明绝顶的人，他们在黑白棋盘上激烈角逐，直到耗尽所有精力。这样巨大的集体智力投入，难道不应该用在更崇高的事业上吗？比如科学或医学？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;「我觉得我们是在浪费自己的头脑。」哈萨比斯后来说道。&lt;/p&gt;
+&lt;p&gt;从此，哈萨比斯不再被国际象棋束缚，开始探索更大的世界。其中最大的兴趣，就是研究计算机。&lt;/p&gt;
+&lt;h2 id=&#34;二尽最大努力&#34;&gt;二、尽最大努力&lt;/h2&gt;
+&lt;p&gt;哈萨比斯对「尽最大努力」的看法，让我印象深刻。&lt;/p&gt;
+&lt;p&gt;前面提到，父亲经常开车带他去各地比赛。比赛有输赢，当哈萨比斯输掉比赛时，父亲会表现得很生气。但为了不影响他，父亲会对他说：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;「无论输赢，重要的是尽最大努力。」&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在常人看来，这是一句安慰的话，就像我们常说的「友谊第一，比赛第二」——但谁不想拿第一名呢？哈萨比斯心里在想：我输掉了比赛，可怎么知道自己是不是真的尽了最大努力？&lt;/p&gt;
+&lt;p&gt;「尽最大努力」的标准是什么？哈萨比斯给出了自己的答案：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;「我唯一知道真的尽了最大努力的方法，就是把自己逼到濒临崩溃的边缘。因为只有到那一刻，你才算真正尽了全力。如果你倒下了——我说的倒下，是指精力耗尽之类的情况，那就说明你稍微过度了。」&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;「这就像跑马拉松。你基本上要拼到冲过终点线就倒下的程度……理想情况下，你应该被送进医院，但不能死掉。只有这样，你才能说自己尽了最大努力。但如果你还有一丝力气，还能站起来，那可能意味着你还能再努力一点。」&lt;/p&gt;
+&lt;p&gt;从小拥有如此专注、全身心投入、拼尽全力的品质，似乎注定了他后来探索人工智能领域时将一路披荆斩棘，取得卓越成就。&lt;/p&gt;
+&lt;h2 id=&#34;三总结&#34;&gt;三、总结&lt;/h2&gt;
+&lt;p&gt;本篇分享了哈萨比斯小时候关于顿悟和努力的小故事。读书不在厚，不在多，而在于能记住里面的几个小故事，就已经足够了。也像写公众号，不在篇幅长、有多深入，只要对人有一点启发，足矣。&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>用上了最新编程模型 GLM-5.1</title>
@@ -15,7 +58,8 @@
             <guid>https://blog.coderzh.com/2026/03/29/glm5-1/</guid>
             <description>&lt;p&gt;在我的日常开发中，使用的最多的模型之一就是 GLM-5，应该是目前国内最好的编程语言模型了。当然，如果算上国外的模型，最好的还是 Claude Opus 4.6。但是 Opus 4.6 最大的问题，就是它的价格太贵，没办法实现 Token 自由。有次，我只给 Opus 4.6 发了两个字：“好的”，就花费了 &lt;strong&gt;1.7$&lt;/strong&gt;，心疼的要死。&lt;/p&gt;
 &lt;p&gt;但是 Opus 编程强是真的强，很多时候可以一遍过，而 GLM-5 需要反复修改，和 Opus 还有一些差距。最近，智谱上线了全新的 GLM-5.1，编程能力得到巨大的提升，和 Opus 4.6  已经非常接近了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/glm51.jpeg&#34; alt=&#34;glm51&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.coderzh.com/images/glm51.jpeg&#34; alt=&#34;glm51&#34; /&gt;
+&lt;/p&gt;
 &lt;p&gt;我买的是智谱的 Coding Plan Pro 版本，所以第一时间用上了 GLM-5.1。只需要把之前模型配置里的 GLM-5，改成 GLM-5.1 即可生效。国内各大厂商都推出了自己的 Coding Plan，我来讲讲为什么我选择了智谱。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;国内编程能力最好的模型了&lt;/li&gt;
@@ -31,7 +75,8 @@
 &lt;p&gt;比如 OpenClaw 里的心跳任务，以及 cron 计划任务，我会把它配置成免费的模型。免费的模型从哪里来？其实是有的，就是 OpenRouter。注册新建 API Key 之后，是有不少免费模型可以选的，比如：&lt;code&gt;z-ai/glm-4.5-air:free&lt;/code&gt; 以及 &lt;code&gt;minimax/minimax-m2.5:free&lt;/code&gt; 等等。对于执行一些简单计划任务，已经足够了，关键还是免费。&lt;/p&gt;
 &lt;p&gt;GLM-5.1 模型我还在体验中，如果你也想第一时间上手，欢迎使用我的邀请链接进行购买。首购低至 8 折再减 5%：&lt;/p&gt;
 &lt;p&gt;链接：&lt;a href=&#34;https://www.bigmodel.cn/glm-coding?ic=MRJ3AYGDEG&#34;&gt;https://www.bigmodel.cn/glm-coding?ic=MRJ3AYGDEG&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/BigmodelPoster.png&#34; alt=&#34;glm&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.coderzh.com/images/BigmodelPoster.png&#34; alt=&#34;glm&#34; /&gt;
+&lt;/p&gt;
 </description>
         </item>
         
@@ -41,7 +86,7 @@
             <pubDate>Sun, 22 Mar 2026 11:29:08 CST</pubDate>
             <author>CoderZh</author>
             <guid>https://blog.coderzh.com/2026/03/22/openclaw-weixin/</guid>
-            <description>&lt;p&gt;“AI 来的太快就像龙卷风，离不开 AI Coding 来不及逃，我不能再 Vibe，我不能再 Vibe，我不我不，我不能再 Vibe Coding～“&lt;/p&gt;
+            <description>&lt;p&gt;「AI 来的太快就像龙卷风，离不开 AI Coding 来不及逃，我不能再 Vibe，我不能再 Vibe，我不我不，我不能再 Vibe Coding～」&lt;/p&gt;
 &lt;p&gt;开头一曲，自证本文纯手工打造，绝不掺杂 AI 味道。如今 AI 迅猛发展，日新月异，不仅可以回答问题，查阅资料，还可以画图、生成视频、写文章、打代码。传统编程已经被戏称为“古法编程“，我们也即将成为最后一代掌握“古法编程“的人类。&lt;/p&gt;
 &lt;p&gt;作为人类非物质文化遗产，前 AI 时代的人类的传统技艺：古法编程，需要有人传承。当然不是说的我，能传承这种古法技艺必须是大才，通才，全才。上知徒手撸 HTML，下知 C++ 断点调汇编。而我能做的，不过是沧海一粟，不过是 AI 洋洋洒洒生成大量代码中，依然能辨别什么是代码之美。&lt;/p&gt;
 &lt;p&gt;说远了。最近兴起一阵养龙虾🦞的热潮，我也不能免俗的收养了一只。我叫它“小爪“，为了和小爪联系上，我使用了飞书。当时收养时，还不能连接微信，所以，按照指引配置了飞书渠道，步骤虽多，但很顺利。今天，微信上线了官方的 OpenClaw 插件，只需要两步，就可以和小爪联系上。我第一时间就用上了。&lt;/p&gt;
@@ -49,9 +94,11 @@
 &lt;p&gt;微信是我日常使用最多的 APP，如果能在微信里和 AI 对话，体验会比切换到别的 APP 流畅很多。先来看下，用微信连接上龙虾下爪，一共要几步。&lt;/p&gt;
 &lt;h4 id=&#34;第一步更新最新微信版本-8070&#34;&gt;第一步：更新最新微信版本 8.0.70&lt;/h4&gt;
 &lt;p&gt;在 “我 - 设置 - 插件“ 界面，会出现“微信 ClawBot“ 的插件。如果没有这个插件，杀掉进程重进几次试试。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/clawbot.png&#34; alt=&#34;clawbot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.coderzh.com/images/clawbot.png&#34; alt=&#34;clawbot&#34; /&gt;
+&lt;/p&gt;
 &lt;p&gt;进去之后，是个连接的指引：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/clawbot-detail.png&#34; alt=&#34;clawbot-detail&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.coderzh.com/images/clawbot-detail.png&#34; alt=&#34;clawbot-detail&#34; /&gt;
+&lt;/p&gt;
 &lt;h4 id=&#34;第二步openclaw-上安装微信插件&#34;&gt;第二步：OpenClaw 上安装微信插件&lt;/h4&gt;
 &lt;p&gt;我是古法编程程序员，这一步对我来说，就是 2 秒钟的事情。&lt;/p&gt;
 &lt;p&gt;第 1 秒，ssh 连接上我的龙虾服务器：&lt;/p&gt;
@@ -64,7 +111,8 @@
 &lt;p&gt;如果你不懂古法编程，不会登录服务器终端，也没关系。直接问你的小龙虾，让它自己想办法。&lt;/p&gt;
 &lt;h4 id=&#34;第三步微信扫二维码完成&#34;&gt;第三步：微信扫二维码，完成&lt;/h4&gt;
 &lt;p&gt;扫码完成后，可以查找到新的好友：搜索“微信ClawBot“，就可以开始对话了。当然，也是可以给你的小助手改名字的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/clawbot-profile.png&#34; alt=&#34;clawbot-profile&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.coderzh.com/images/clawbot-profile.png&#34; alt=&#34;clawbot-profile&#34; /&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;进阶使用&#34;&gt;进阶使用&lt;/h3&gt;
 &lt;h4 id=&#34;多-agent-使用&#34;&gt;多 Agent 使用&lt;/h4&gt;
 &lt;p&gt;总的来说，微信的龙虾插件安装使用起来非常简单，值得点赞。&lt;/p&gt;
@@ -96,7 +144,8 @@
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openclaw gateway restart
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;微信里试下和小爪说一句“你好“：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/clawbot-hello.png&#34; alt=&#34;clawbot-hello&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.coderzh.com/images/clawbot-hello.png&#34; alt=&#34;clawbot-hello&#34; /&gt;
+&lt;/p&gt;
 &lt;p&gt;看到龙虾问你名字，就成功了，一个全新的龙虾就创建好了，它拥有单独的人格，工作区等等。&lt;/p&gt;
 &lt;h4 id=&#34;待改善的地方&#34;&gt;待改善的地方&lt;/h4&gt;
 &lt;p&gt;PC 微信里找不到小龙虾账号，PC 微信里找不到小龙虾账号，PC 微信里找不到小龙虾账号…&lt;/p&gt;
@@ -219,7 +268,8 @@ fib(1000000): 1884755131
             <pubDate>Fri, 27 Jan 2023 14:54:09 CST</pubDate>
             <author>CoderZh</author>
             <guid>https://blog.coderzh.com/2023/01/27/my2022/</guid>
-            <description>&lt;p&gt;&lt;img src=&#34;images/weread.jpg&#34; alt=&#34;weread&#34;&gt;&lt;/p&gt;
+            <description>&lt;p&gt;&lt;img src=&#34;images/weread.jpg&#34; alt=&#34;weread&#34; /&gt;
+&lt;/p&gt;
 &lt;p&gt;又到了春节假期快结束的时候，正是 2022 年总结的时候。因为再迟些时候，就没了写总结的意境。2022 年，很多人形容为“魔幻”的一年。的确是的，新冠疫情一阵一阵，“健康码”、“做核酸”成了人们日常生活的一部分。随着 12月初的一声“放开”，奥密克戎席卷全国，阵痛之后，“健康码”退出了历史舞台，生活渐渐恢复了原本的样子。&lt;/p&gt;
 &lt;p&gt;去年的这个时候，我希望 2022 年“能够恢复正常，摘掉口罩”，现在看来，基本实现了，现在去到一些公园、商场，已经基本可以摘掉口罩了。&lt;/p&gt;
 &lt;p&gt;年底的时候，我买了个微信读书阅读器（青石灰款）。里面有张卡片，写道：“赠吾友，愿不再惧怕每个不眠之夜”，真的有感动到。我是微信读书的忠实用户，2022 年读完印象比较深刻的几本书是：《奈飞文化手册》、《生生不息》、《小米创业思考》等。我读的书还远远不够，2023 年我相信会读的更多。&lt;/p&gt;
@@ -234,13 +284,15 @@ fib(1000000): 1884755131
             <pubDate>Sun, 03 Apr 2022 22:52:04 CST</pubDate>
             <author>CoderZh</author>
             <guid>https://blog.coderzh.com/2022/04/03/libuv/</guid>
-            <description>&lt;p&gt;&lt;img src=&#34;images/libuv.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+            <description>&lt;p&gt;&lt;img src=&#34;images/libuv.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
 &lt;p&gt;libuv 的 uv 是 Unicorn Velociraptor（独角伶盗龙）的缩写，所以它的 Logo 是一只独角伶盗龙的图片。&lt;/p&gt;
 &lt;p&gt;libuv 是一个跨平台的专注于异步 IO 的库。主要设计用于 Node.js，像 electron 是基于 Node.js 的，vscode 又是基于 electron 的，所以 libuv 是一个使用广泛，影响力很大的一个库。除了 Node.js 里的应用，在其他软件里也应用广泛。&lt;/p&gt;
 &lt;p&gt;它提供了基于事件循环的异步 IO 支持。它支持 epoll、kqueue、Windows 的 IOCP 和 Solaris 的事件端口。最初它是 libev 和 IOCP 上的抽象。其中 libev 又是参考了 libevent（2002年第一个版本），能查到的最早的 1.85 版本 libev 是 2007 年。libev 最大的一个问题是不支持 Windows 的 IOCP，所以才会有后来的 libuv。&lt;/p&gt;
 &lt;p&gt;libuv 能下载到的最早版本是 2013 年的 v0.10.10。 Node.js 在 v0.9.0 版本（2012年）的 libuv 里去除了对 libev 的依赖，为了更好适配 Windows 平台。所以可以理解为 libuv 第一个重大意义的版本应该是在 2012 年。&lt;/p&gt;
 &lt;p&gt;梳理一下时间线：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/libuv-roadmap.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/libuv-roadmap.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
 &lt;p&gt;libuv 使用 C 语言编写，使用起来也比较简单。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
 #include &amp;lt;stdlib.h&amp;gt;
@@ -426,7 +478,8 @@ class UvHandle {
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;vscode 安装 clangd 插件，搜索&amp;quot;clangd&amp;quot;安装即可&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;images/clangd.jpg&#34; alt=&#34;clangd&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/clangd.jpg&#34; alt=&#34;clangd&#34; /&gt;
+&lt;/p&gt;
 &lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;vscode 官方的 C/C++ 插件还是需要的，因为我们调试等功能还需要用到。但是需要关闭它的智能提示功能：&lt;/li&gt;
 &lt;/ol&gt;
@@ -448,7 +501,8 @@ class UvHandle {
 &lt;li&gt;重启 vscode，或者 CMD+Shift+P 输入 Reload Window&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;我们以著名开源代码 libuv 为例，生成 compile_commands.json 后，打开工程， 所有头文件，符号都能正确的索引和跳转：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/vscode-clangd.jpg&#34; alt=&#34;vscode-clangd&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/vscode-clangd.jpg&#34; alt=&#34;vscode-clangd&#34; /&gt;
+&lt;/p&gt;
 &lt;h5 id=&#34;关于-python-和-c-的一则趣闻&#34;&gt;关于 Python 和 C++ 的一则趣闻&lt;/h5&gt;
 &lt;p&gt;Python 的作者 &lt;a href=&#34;http://neopythonic.blogspot.com/2022/02/meeting-mike-burrows.html&#34;&gt;Guido van Rossum&lt;/a&gt; 的博客几年没更新了，最新更新了一篇文章，翻译过来就是：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -788,7 +842,8 @@ $ cd dotfile; sh setup.sh
 &lt;li&gt;安装 Pip 及相关的包：install/pip.sh&lt;/li&gt;
 &lt;li&gt;安装 Vim 插件：install/vim.sh&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;images/dotfiles.jpg&#34; alt=&#34;dotfiles&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/dotfiles.jpg&#34; alt=&#34;dotfiles&#34; /&gt;
+&lt;/p&gt;
 </description>
         </item>
         
@@ -1428,59 +1483,6 @@ int main(int argc, char* argv[]) {
 &lt;p&gt;最后，我也将这份可以编过跑过的代码放到了 GitHub 上。有兴趣的小伙伴，可以一起来学习交流：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/coderzh/v8-1.2&#34;&gt;https://github.com/coderzh/v8-1.2&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;git clone 之后，用 VSCode 打开，通过我配置好的编译设置，按下 Cmd+Shift+b 就可以编译，按下 F5 就可以进入调试，岂不快哉。&lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>认识 V8 引擎（1）- V8 的由来</title>
-            <link>https://blog.coderzh.com/2021/01/16/v8-1/</link>
-            <pubDate>Sat, 16 Jan 2021 22:13:12 CST</pubDate>
-            <author>CoderZh</author>
-            <guid>https://blog.coderzh.com/2021/01/16/v8-1/</guid>
-            <description>&lt;p&gt;V8 是一个由 Google 开发的，开源的，高性能的， JavaScript 及 WebAssembly 引擎，使用 C++ 编写。广泛应用于 Google Chrome 浏览器、Node.js 等等。跨平台支持 Windows(Win7以上)、macOS(10.12+)，以及各种 Linux 系统，包括 ARM 的手机系统。同时，V8 也可以独立的运行使用，嵌入集成到 C++ 的应用中。&lt;/p&gt;
-&lt;p&gt;JavaScript 引擎的主要作用是执行 JavaScript 代码。世界上第一款 JavaScript 引擎是 SpiderMonkey，由布兰登·艾克在网景公司开发，用于 Netscape Navigator 网页浏览器。传闻艾克在 1995年 5 月仅花了十天就把原型设计了出来。&lt;/p&gt;
-&lt;p&gt;早期的 JavaScript 引擎是通过解释器的方式解释执行，比如将源码转成抽象语法树（AST），然后解释执行，其运行效率并不高。但由于早期的浏览器网页还是以静态网页（HTML）为主，JavaScript 并未被广泛重度的应用，所以解释执行并未遇到太大问题。后来随着动态网页兴起，网页里开始运行越来越多复杂的应用，JavaScript 的瓶颈凸显了出来。&lt;/p&gt;
-&lt;p&gt;既然 JavaScript 运行性能不行，为什么不替换它呢？换成 Lua，Python 不香吗？或者再重新精心设计另外一门专用语言（WebAssembly）。其实替换 JavaScript 的尝试一直都在进行，但是JavaScript 在浏览器里的地位至今无人能撼动。主要原因我认为有三个：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;经过几十年的应用，JavaScript 已经成为事实标准，改变不易&lt;/li&gt;
-&lt;li&gt;JavaScript 对开发者非常友好，上手较其他语言更容易&lt;/li&gt;
-&lt;li&gt;随着 JIT 技术的引入，JavaScript 的性能已经不再是问题&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;前两个都是习惯问题，即使改变，慢慢也就适应了。但 JIT 技术的引入，几乎解决了 JavaScript 的性能问题，使得 JavaScript 的地位更加的牢固。在 JavaScript 中应用 JIT 的典型代表，就是我们今天的主角：V8。在引入我们的主题之前，我还要简要的介绍一下什么是 JIT 技术。&lt;/p&gt;
-&lt;p&gt;JIT 的全程是 just-in-time compilation，又译即时编译或实时编译。在 JIT 出现之前，高级编程语言要被计算机执行，通常通过两种方式来实现：AOT 和解释器。AOT 全程 ahead-of-time compilation，即代码预先通过编译器的编译，直接生成目标机器的机器码。因此它的运行效率最高，比如我们常用的 C/C++ 代码，通过 gcc/clang/msvc 等编译器，直接编译出机器码的二进制文件，其运行性能我们称之为原生性能。&lt;/p&gt;
-&lt;p&gt;既然 AOT 性能最高，全都用 AOT 不就得了？也不尽然。AOT 要求编译的代码是静态类型的，比如一个变量的类型在运行期间不允许变成另一种类型，也不允许动态的往类型里增加属性。而 JavaScript 是动态类型的，比如下面一段代码，变量 foo 的类型可以运行时随时变化：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var foo = 1; // foo is a int
-foo = &amp;quot;hello&amp;quot;; // foo change to a string
-
-function Point() {
-
-}
-foo = new Point(); // foo change to a Point
-foo.x = 10;  // foo add x property
-foo.y = 10;  // foo add y property
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;foo 类型总是变来变去，给 AOT 编译器增加了很大的麻烦。同时，AOT 还有编译时间长，生成的目标文件大的问题。它不能像 Java 一样『一次编译，到处运行』，而是针对不同平台『编译多次，到处运行』。如果想像 JavaScript 一样做到『一次编写，到处运行』，就需要在用户的浏览器端，运行时实时的进行编译。这样一来，缓慢的编译过程又拖慢了代码的启动速度。&lt;/p&gt;
-&lt;p&gt;JIT 结合了 AOT 和解释器两者的优势。它可以运行时根据情况在两者之间切换。比如首次启动时，使用解释器来执行，这样保证了代码的启动速度，对于一些短小的一次性执行的代码非常友好。当代码运行一段时间，编译器发现某些代码频繁的反复执行，则切换到 JIT 模式即时的将这部分代码编译成机器码，之后再运行到这类代码时，则可以做到几乎以原生的速度执行。&lt;/p&gt;
-&lt;p&gt;现代语言的虚拟机几乎都拥有了 JIT 的能力。如 JVM JIT，LuaJIT。几大 JavaScript 引擎，例如微软的 Chakra、Mozilla 的 SpiderMonkey、苹果的 JavaScriptCore、谷歌的 V8，JIT 已经成了标配功能。而其中谷歌的 V8，是所有的 JavaScript 引擎的佼佼者。&lt;/p&gt;
-&lt;p&gt;为什么 V8 能做到这么优秀呢？我们后面慢慢来讲。我们先来看看 V8 是怎样诞生出来的。从维基百科里了解到，V8 的创建者是一名叫 Lars Bak 的丹麦程序员。我们来看看这位大神的履历：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;1991 年在 Sun 工作，开发 Self 虚拟机，成为业界最佳程序员之一&lt;/li&gt;
-&lt;li&gt;1994 年，离开 Sun，加入 LongView，设计和开发了高性能虚拟机 StrongTalk&lt;/li&gt;
-&lt;li&gt;1997 年，LongView 被 Sun 收购，主导开发了著名的 Java 虚拟机 HotSpot&lt;/li&gt;
-&lt;li&gt;2002 年回到丹麦，创立名叫 OOVM 的公司。2004年将公司卖给一家瑞士公司 Esmertec，随后又在该公司干了两年&lt;/li&gt;
-&lt;li&gt;2006 年加入谷歌，在丹麦自己的农场开始开发 V8 引擎&lt;/li&gt;
-&lt;li&gt;2008 年，开发的 V8 引擎和谷歌浏览器 Chrome 一起横空出世。V8 处理 JavaScript 的速度比当时的 IE 浏览器快 56 倍&lt;/li&gt;
-&lt;li&gt;2011 年主导开发并发布 Dart 语言。如今应用火热的 Flutter 正是使用该语言进行开发&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;据说 2006 年是劈柴（Sundar Pichai，现谷歌 CEO）哥亲自给 Bak 打的电话，说谷歌正打算开发一款全新的浏览器，你来做高级经理，开发一个高性能的 JavaScript 引擎好不好？Bak 对开发 JavaScript 引擎很有兴趣，欣然接受了这份工作。但他说他不在乎当什么高级经理，在乎的是推动打破技术的边界，并且他不会回到加州，而是在丹麦自己的农场开始他的工作。他家农场距离加州总部相隔 8000 公里，相差了 9 个时区。&lt;/p&gt;
-&lt;p&gt;他在农场建立了办公室，家就在办公室对面。每天，他走过石子路到办公室，然后开始写代码。结束工作后，又穿过院子走回家，把工作彻底放下。他享受这种工作和生活分开的感觉。这也是他不想去硅谷的原因。他招募了自己的学生卡斯帕伦德一起来农场工作，命名了新的引擎名字叫 V8，以汽车 V 型 8 缸发动机命名，预示着这将是一款性能爆表的引擎。V8 从零开始开发的，一面世就秒杀了市面上所有的 JavaScript 引擎。&lt;/p&gt;
-&lt;p&gt;早期的 V8 版本，为了追求性能的极致，将源码转成抽象语法树之后，直接通过 Full-codegen 生成目标机器码。 2010 年，又推出了 Crankshaft 编译优化器，在代码执行过程中，内置的 Profiler 记录热点函数，然后提交给 Crankshaft 进行优化，生成优化后的机器码，进一步提高执行的效率。&lt;/p&gt;
-&lt;p&gt;由于直接生成目标机器码，导致了占用内存大，编译时间长导致启动速度慢，2016 年 V8 设计了中间字节码 Ignition，以让 V8 能在内存更小的安卓设备上流畅的运行。2017 年推出 V8 5.9 版本，废弃了旧的 Full-codegen+Crankshaft 的编译架构，使用了 Ignition 字节码解释器和编译优化器 TurboFan，内存使用得到进一步降低，网页加载速度也得到大幅的提升。Ignition+TurboFan 的组合沿用至今。&lt;/p&gt;
-&lt;p&gt;2017 年 V8 5.7 版本，正式支持了 WebAssembly，一个基于浏览器设计的新的字节码标准。2018 年 V8 6.9 版本，引入 WebAssembly 基线编译器 Liftoff，极大提升了首次编译的效率，配合 TurboFan 编译优化器，在启动速度和运行性能上都得到了很大的提升。&lt;/p&gt;
-&lt;p&gt;截止目前，V8 最新的版本是 8.7，并且一直在不断的迭代进化之中。&lt;/p&gt;
-&lt;h4 id=&#34;随想&#34;&gt;随想&lt;/h4&gt;
-&lt;p&gt;Lars Bak 从大学时才接触计算机，一直专注在虚拟机的领域，做出像 JVM HotSpot、V8、Dart 这样非凡的产品。这告诉我们，找准自己的兴趣和努力的方向，深耕下去，什么时候开始都不会迟。Bak 加入谷歌时，已经 41 岁。虽然之前他已经积累了不少的财富，但我相信他是由衷的不在乎谷歌的什么高级职位，在乎的只是用更好的技术，突破更多的技术边界。所以 V8 从一开始就是开源的，正如题图 2008 年 Chrome 发布时的宣传漫画里说的一样：『所以，其他浏览器也可以用它（V8），或者，如果有其他项目需要用到 JavaScript，开发者都可以直接使用 V8』&lt;/p&gt;
-&lt;p&gt;我喜欢写代码，但有时也因程序员 35 岁问题而困扰，了解了 Lars Bak 经历之后，我想，专研深耕自己的领域，专注到兴趣的事情来上，竞争力自然就加强了，也就真没有什么好焦虑了。&lt;/p&gt;
 </description>
         </item>
         

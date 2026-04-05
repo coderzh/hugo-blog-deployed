@@ -153,18 +153,24 @@
 </ol>
 <h4 id="nx使用">NX使用</h4>
 <p>NoMachien的NX主要分为两部分：NX Client和NX Server。NX Server的部署见<a href="http://www.nomachine.com/documents/server/install.php">文档</a>，还不算复杂。部署完成后，就可以使用NX Client进行连接了。NX Client有Windows版本，Linux版本，Mac版本和Solaris版本。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/NxNoMachine_thumb.png" alt="NxNoMachine" title="NxNoMachine"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/NxNoMachine_thumb.png" alt="NxNoMachine" title="NxNoMachine"/>
+</p>
 <p>点击“Configure”进行设置，可以看到，NX支持多种桌面协议。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-protocol_thumb.png" alt="nomachine-protocol" title="nomachine-protocol"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-protocol_thumb.png" alt="nomachine-protocol" title="nomachine-protocol"/>
+</p>
 <p>如果要单独运行某个远程的应用程序，点击“Settings..”进行设置，比如，运行Linux中的星际译王（stardict）</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-run-app_thumb.png" alt="nomachine-run-app" title="nomachine-run-app"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-run-app_thumb.png" alt="nomachine-run-app" title="nomachine-run-app"/>
+</p>
 <p>以下是我在Win7下运行远程服务器中的文本编辑器(gedit)和星际译王(stardict)的效果：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-demo_thumb_1.png" alt="nomachine-demo" title="nomachine-demo"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-demo_thumb_1.png" alt="nomachine-demo" title="nomachine-demo"/>
+</p>
 <p>NX可以设置共享本地磁盘，默认情况下，远程应用访问的远程设备。比如，在gedit中点击打开，可以看到</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-filesys_thumb.png" alt="nomachine-filesys" title="nomachine-filesys"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nomachine-filesys_thumb.png" alt="nomachine-filesys" title="nomachine-filesys"/>
+</p>
 <h4 id="nx组件">NX组件</h4>
 <p>我们知道，NX是在X11的基础上优化而来的。我们先来回忆以下X11的工作过程。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/x11_thumb.jpg" alt="x11" title="x11"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/x11_thumb.jpg" alt="x11" title="x11"/>
+</p>
 <p> </p>
 <p>X Server和X Client是通过X11协议直接通讯的，我们之前讲到过，NX基于X11做了如下的优化：</p>
 <ol>
@@ -176,12 +182,14 @@
 </li>
 </ol>
 <p>下面就来看看NX是如何工作的：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx_thumb.jpg" alt="nx" title="nx"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx_thumb.jpg" alt="nx" title="nx"/>
+</p>
 <p> </p>
 <p>可以看到，X Server和X Client不直接通讯了，而是通过NxProxy进行通讯。用户端的X Server误以为NxProxy就是X Client，使用原生的X11于其通讯，而用户端的NxProxy接收到X11协议数据后，经过压缩，再通过NX协议与服务端的NxProxy通讯。在服务端，NxProxy内嵌于NxAgent中，NxAgent再将NX协议与X11进行转化，并且冒充X Server与X Client进行通讯，从而达到优化的目的。NxAgent是从XNest演变过来的，既充当X Server又冒充X Client。</p>
 <p>上图还可以看到，用户端和服务端的NxProxy都对数据进行了缓存。这样，他们之前传输数据时，可以将不变的数据缓存起来，传输的只是差异数据。</p>
 <p>接下来我们来看看完整的交互过程：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nxserver_thumb.jpg" alt="nxserver" title="nxserver"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nxserver_thumb.jpg" alt="nxserver" title="nxserver"/>
+</p>
 <p>当用户端的NxClient，比如OpenNX启动连接后，会通过客户端的一个NxSsh组件与服务端的NxServer建立连接(Connect)，确认连通之后，NxSsh会向NxServer发出Start Session命令，命令包含需要启动桌面还是哪个应用程序，分辨率是多少等等。服务端收到命令后，准备好Session所需环境，然后启动NxAgent，内置的NxProxy也同时启动起来，同时，需要服务端执行的应用程序也被NxServer执行起来。随后，NxServer生成一个Xauth Cookie（相当于访问令牌）并返回给NxSsh，NxSsh收到Xauth Cookie后，再启动NxProxy，并且通过Xauth Cookie与服务端的NxProxy取得了联系。</p>
 <!-- raw HTML omitted -->
 <p>Nxservice
@@ -210,13 +218,17 @@
 <!-- raw HTML omitted -->     <!-- raw HTML omitted -->   <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h4 id="nx与vncrdp">NX与VNC，RDP</h4>
 <p>前面我们讲过，NX基于X11，同时还能兼容VNC和RDP协议，那么它是如何兼容的呢？首先，我们再回头看看NX于X11是如何结合的。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-x_thumb_1.jpg" alt="nx-x" title="nx-x"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-x_thumb_1.jpg" alt="nx-x" title="nx-x"/>
+</p>
 <p>这个图和我上面的“NX基本组件流程图”是一样的。可以看到，关键部分是nxagent，负责将X11与NX进行了转换。接下来，我们继续看通过NX连接VNC服务端的过程：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-vnc_5.jpg" alt="nx-vnc" title="nx-vnc"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-vnc_5.jpg" alt="nx-vnc" title="nx-vnc"/>
+</p>
 <p>原来还是通过agent，将NX协议与RFB协议进行了转换。这样，用户通过NX连接VNC Server，其实是通过NX Server访问VNC Server，然后再将信息通过NX协议传输回来，最终还是通过X Display Server在用户本地显示。RDP也是同样的原理：</p>
-<p> <img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-rdp_6.jpg" alt="nx-rdp" title="nx-rdp"></p>
+<p> <img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-rdp_6.jpg" alt="nx-rdp" title="nx-rdp"/>
+</p>
 <p>下面是一个完整的图：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-full_5.jpg" alt="nx-full" title="nx-full"></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/ffea4898ff31_BD68/nx-full_5.jpg" alt="nx-full" title="nx-full"/>
+</p>
 <h4 id="nx-library编译">NX Library编译</h4>
 <p>NX的Library使用GPL开源协议，意味着我们也可以使用NX Library开发我们自己的NX Server或Client。首先，我们必须解决编译的问题。NX Library的编译过程并不复杂。</p>
 <p>在Linux环境下，参考<a href="http://www.nomachine.com/documents/technology/building-components-3.x.php">官方文档</a>：编译步骤如下：</p>

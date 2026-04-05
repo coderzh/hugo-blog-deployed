@@ -186,7 +186,8 @@
 <p><!-- raw HTML omitted -->subl<!-- raw HTML omitted --> <!-- raw HTML omitted -->$<!-- raw HTML omitted --><!-- raw HTML omitted -->20<!-- raw HTML omitted --><!-- raw HTML omitted -->,<!-- raw HTML omitted --><!-- raw HTML omitted -->%<!-- raw HTML omitted --><!-- raw HTML omitted -->esp<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p> </p>
 <p>将帧指针EBP压入栈中. 然后把当前的SP复制到EBP, 使其成为新的帧指针. 我们把这个被保存的FP叫做SFP. 接下来将SP的值减小, 为局部变量保留空间. 我 们必须牢记:内存只能以字为单位寻址. 在这里一个字是4个字节, 32位. 因此5字节的缓冲区会占用8个字节(2个字)的内存空间, 而10个字节的缓冲区会占用12个字节(3个字)的内存空间. 这就是为什么SP要减掉20的原因. 这样我们就可以想象function()被调用时堆栈的模样:</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/ebp.JPG" alt=""> </p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/ebp.JPG" alt="" />
+ </p>
 <p>所以，从上图来看，假如我们输入的buffer1超长了，直接覆盖掉后面的sfp和ret，就可以修改该函数的返回地址了。下面来看一个示例吧。</p>
 <h3 id="示例">示例</h3>
 <p>关于如何编写Shell Code，如何在内存中预先准备好一段危险的执行代码以及如何精确计算通过缓冲区溢出执行那段危险代码同时又让返回地址调回原来返回地址……这中间涉及太 多的底层汇编知识，小弟不才也只是走马观花，成不了真正的黑客高手。但从黑客朋友的水平之高看来，提高我们的代码安全性是非常必要的！</p>
@@ -337,7 +338,8 @@
 <p> </p>
 <p>我们来看看是如何溢出的：</p>
 <ul>
-<li><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/simpleheep.jpg" alt=""></li>
+<li><img src="http://images.cnblogs.com/cnblogs_com/coderzh/security/simpleheep.jpg" alt="" />
+</li>
 </ul>
 <h4 id="格式化字符串错误">格式化字符串错误</h4>
 <p>这类错误是指使用printf，sprintf，fprint等函数时，没有使用格式化字符串，比如：正确用法是：</p>

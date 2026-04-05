@@ -152,7 +152,8 @@
 <h3 id="对dll的要求">对DLL的要求</h3>
 <p>       VuGen只能识别标准C编译的DLL， 所以使用VC6创建的函数必须在函数开头加上extern &ldquo;C&rdquo;，它告诉编译器对这个函数按照标准C的方式进行编译。而如果你想调用C#编译出来DLL，那就只能望而却步啦。如何想查看DLL中是否有符合要求的导出函数，可以使用微软的SDK里自带的Dependency Walker工具。如图：</p>
 <p>   </p>
-<p>        <img src="http://www.cnblogs.com/images/cnblogs_com/zcr1985/DependencyWalker.jpg" alt=""></p>
+<p>        <img src="http://www.cnblogs.com/images/cnblogs_com/zcr1985/DependencyWalker.jpg" alt="" />
+</p>
 <h3 id="dll的创建">DLL的创建</h3>
 <p>    启动VC6，新建一个Win32 Dynamic-Link Library的工程，取名：LRDllTest</p>
 <p>    在这里，我们创建一个简单的求和函数Sum，并什么为导出函数，关键代码如下：</p>

@@ -161,10 +161,13 @@
 <li>在aspx.cs文件中，给类加上命名空间。同时，aspx文件头部的Inherits属性也加上命名空间。</li>
 <li>右键aspx文件或工程名，点击&quot;Convert to Web Application&rdquo;。这时，自动生成的designer.cs文件了。（aspx页面中的控件的定义。）</li>
 </ol>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/convert-to-web-app.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/convert-to-web-app.jpg" alt="" />
+</p>
 <p>好了，添加外部的链接文件：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/add-exist-item.jpg" alt=""></p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/addlink.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/add-exist-item.jpg" alt="" />
+</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/addlink.jpg" alt="" />
+</p>
 <p>添加链接的文件很简单，也很方便。但是调试过程中，会遇到很大的麻烦。因为调试时，默认使用VS内置的Web Server，网站的根目录是源代码目录，调试时，遇到链接文件时，会因为找不到文件而出错。</p>
 <p>而如果使用”publish“菜单发布网站时，会将链接的资源文件拷贝过去，这才是我们想要的。每次调试都需要进行发布，然后在本机的iis里设置虚拟目录，太麻烦了。</p>
 <p>同时，我们希望通过MSBuild自动构建和发布网站，构建时也希望能自动的将链接的文件拷贝一份过去。MSBuild中编译ASP.NET Web Application工程的命令是：</p>

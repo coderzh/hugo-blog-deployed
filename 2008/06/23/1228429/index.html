@@ -168,13 +168,15 @@
 <p>Post方式是把要提交的数据单独放在一个地方而不是简单的放在URL中，主要用于发送一些比较大的数据。使用起来其实也很简单，如下：</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/HTTPError.JPG" alt=""></p>
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/HTTPError.JPG" alt="" />
+</p>
 <h4 id="6-cathing-data-errors">6. Cathing Data Errors</h4>
 <p>前面是捕捉了连接时的异常，同样，在读数据或写数据时，也会发生异常。有两种情况：一是当使用read()时，连接出现异常(communication error)，会抛出socket.error，这时我们捕获这个异常就可以了。二是读取的文件读到一半意外被中断，比如服务器的某个程序崩溃了，这时，连接会被正常的关闭，你接受不到任何异常的信息。这时，你就必须从header里找Content-Length，然后和自己接收的数据大小进行比较。（Content-Length在其他非HTTP协议中通常是没有的）</p>
 <!-- raw HTML omitted -->
 <p>urllib2模块不仅仅支持HTTP协议，同样支持其他非HTTP协议，比如FTP。不同的是，比如FTP协议你不会在有header的信息，因此你当你调用info()函数时会出错的。不过通常情况下，使用urllib2来进行其他非HTTP协议也是非常方便的，基本上不需要再额外做什么，比如最前面第二个例子，我们讲传入的参数设置为FTP地址，同样使用。</p>
 <!-- raw HTML omitted -->
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/FTP.JPG" alt=""></p>
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/FTP.JPG" alt="" />
+</p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/06/23/1228429.html">http://www.cnblogs.com/coderzh/archive/2008/06/23/1228429.html</a></strong></p>
 
                       

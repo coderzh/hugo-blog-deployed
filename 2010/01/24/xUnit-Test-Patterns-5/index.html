@@ -158,7 +158,8 @@
 <li>Teardown</li>
 </ol>
 <p>Fresh Fixture是指每个案例执行时，都会生成一个全新的Fixture，好处是不受其他案例的影响。避免了Interacting Tests(之前有提到的)。</p>
-<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_2.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb.png" alt="image" title="image"></a></p>
+<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_2.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb.png" alt="image" title="image"/>
+</a></p>
 <h4 id="什么是setup">什么是Setup？</h4>
 <p>Setup是案例的准备阶段，主要有三种实现方式：In-line Fixture Setup, Delegated Setup, Implicit Setup。推荐使用的是Implicit Setup。</p>
 <p><strong>In-line Fixture Setup</strong></p>
@@ -174,21 +175,25 @@
 <h4 id="heading"></h4>
 <p>什么是Teardown？</p>
 <p>为了保证每个案例都拥有一个Fresh Fixture，必须在案例的结束时做一些清理操作，这就是Teardown。和Setup一样，Teardown也有三种实现方式：In-line Fixture Teardown, Delegated Teardown, Implicit Teardown。同样，推荐使用Implicit Teardown。</p>
-<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_12.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_5.png" alt="image" title="image"></a></p>
+<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_12.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_5.png" alt="image" title="image"/>
+</a></p>
 <h4 id="heading-1"></h4>
 <p>什么是Shared Fixture？</p>
 <p>多个测试方法共用一个Fixture，这时，Setup只会在第一个测试方法执行时被执行。gtest中，同时还拥有一个公共的TearDownTestCases方法。</p>
-<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_14.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_6.png" alt="image" title="image"></a></p>
+<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_14.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_6.png" alt="image" title="image"/>
+</a></p>
 <h4 id="heading-2"></h4>
 <p>Result Verification</p>
 <p>前面说过，测试案例必须拥有Self-Checking的能力。Verification分两种：State Verification和Behavior Verification。</p>
 <p><strong>State Verification</strong></p>
 <p>执行SUT后，验证SUT的状态：</p>
-<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_16.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_7.png" alt="image" title="image"></a></p>
+<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_16.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_7.png" alt="image" title="image"/>
+</a></p>
 <p>验证时，可以使用Build-in Assertions，比如xUnit框架提供的assertTrue, assertEquals等方法。或者Custom Assertion等等。</p>
 <p><strong>Behavior Verification</strong></p>
 <p>不仅仅验证SUT的状态，同时还对SUT的行为对外部因素造成的影响进行验证。</p>
-<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_18.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_8.png" alt="image" title="image"></a></p>
+<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_18.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns5xUnit_D75E/image_thumb_8.png" alt="image" title="image"/>
+</a></p>
 <p>比如下面这个例子：</p>
 <!-- raw HTML omitted -->
 <p>除此之外，我们还可以使用一些Mock框架，使用基于行为的验证方式，这种方式，不需要我们显式的调用验证的方法。(Expected Behaivor Specification)</p>

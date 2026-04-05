@@ -149,45 +149,57 @@
 <p>更详细的列表见：<a href="http://en.wikipedia.org/wiki/Comparison_of_remote_desktop_software">http://en.wikipedia.org/wiki/Comparison_of_remote_desktop_software</a></p>
 <h4 id="heading"></h4>
 <p>RDP协议</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/Remote_desktop_connection_icon.PNG" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/Remote_desktop_connection_icon.PNG" alt="" />
+</p>
 <p>RDP全称是Remote Desktop Protocol，这就是我们平时在Windows里远程桌面使用的协议。使用mstsc.exe我们就可以远程连接到一台Windows机器的桌面进行操作了。在Windows2008里，有一个更吸引人的东西，那就是<!-- raw HTML omitted -->Terminal Services RemoteApp。</p>
 <p><!-- raw HTML omitted -->Terminal Services RemoteApp<!-- raw HTML omitted -->支持远程的执行单个应用程序，就好像这个应用程序是在本机运行的一样。有了RemoteApp，我们就可以实现在一台没有安装Office或者Visual Studio的客户端机器运行起来一个Excel或VS2010，而Excel和VS2010程序实际是安装在远程安装有RemoteApp服务端的机器。</p>
 <p>设置远程应用程序：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/remoteapp-create.png" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/remoteapp-create.png" alt="" />
+</p>
 <p>RemoeApp架构图：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/rdp.gif" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/rdp.gif" alt="" />
+</p>
 <p>客户端可以直接使用.rdp快捷方式运行远程App，也可以<!-- raw HTML omitted --><!-- raw HTML omitted -->在浏览器里里<!-- raw HTML omitted --><!-- raw HTML omitted -->通过TS Web Access运行一个远程App（远程App并不是运行在浏览器里的）。</p>
 <p>比如，在一台Vista的机器里，通过TS Web Access运行远程的WordPad（非Vista风格）。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/remoteapp-web.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/remoteapp-web.jpg" alt="" />
+</p>
 <p>运行效果如下：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/remoteapp-example.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/remoteapp-example.jpg" alt="" />
+</p>
 <p>微软的这项技术很酷，是吧。不过，RemoteApp仅限于Windows平台。</p>
 <!-- raw HTML omitted -->
 <h4 id="ica协议">ICA协议</h4>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/citrix_logo.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/citrix_logo.jpg" alt="" />
+</p>
 <p>ICA全称是Independent Computing Architecture，即独立计算架构,它把应用程序的计算/执行逻辑与显示逻辑分离开来，把程序的计算/执行100%地保留在服务器端,而把运行结果图形化/界面化并通过网络传输到客户端,对于客户端而言,也只有键盘敲击和鼠标点击等会通过网络传给服务器。</p>
 <p>ICA由Citrix公司设计的，Citrix可以算是这一领域的老大哥了，就连微软这样技术雄厚的公司，都是购买的Citrix的技术才做出上面的Remote Desktop和TS RemoteApp。技术的原创者是Citrix，因此Citrix拥有更大的优势，运用更多的创新，做出更好的产品出来。这个产品就是Citrix XenApp。</p>
 <p>XenApp是个商业工具，我没有用过，自然算不上深入了，有兴趣的同学可以访问Citrix官网了解更多。下面是我找到的一个XenApp设计图：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/XenApp.gif" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/XenApp.gif" alt="" />
+</p>
 <h4 id="heading-1"></h4>
 <p>RFB协议</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/Vnc_logo.png" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/Vnc_logo.png" alt="" />
+</p>
 <p>RFB全称是Remote Frame Buffer，它是我们常用的VNC所使用的协议。RFB是一个远程图形用户的简单协议，因为它工作在帧缓存级别上，所以它可以应用于所有的窗口系统，例如：X11，Windows和Mac系统。远程终端用户使用机器（比如显示器、键盘、鼠标）的叫做RFB客户端，提供帧缓存变化的被称做RFB服务端。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/rfb.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/rfb.jpg" alt="" />
+</p>
 <p>由于使用的是帧缓存技术，因此VNC的性能一直被人所诟病。同时，VNC只能远程控制整个桌面，还没办法做到只单独运行一个程序。</p>
 <h4 id="heading-2"></h4>
 <p>X11协议</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/100px-X11.svg.png" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/100px-X11.svg.png" alt="" />
+</p>
 <p>X11（X Window System core protocol）是由MIT于1984年设计出来的开源传输协议，一直发展至今，最新版本是X11R7.5。它是X Window System的基本协议。而X Window System系统生来就是为瘦客户服务的，从设计之初，它就被设计成计算和显示分离的架构，即程序的运行可以在一台计算机，而显示又在另外一台计算机。随着X11的不断演变发展，出现了各种不同形式的改良版本，其中最著名的就是NoMachine公司开发的NX协议，NX协议在X11的基础上，加入了缓存机制、压缩传输等，使其性能得到飞跃的提升。这也是我下一篇要重点介绍的。</p>
 <p>X11的设计原则是：<strong>create Mechanism, not Policy</strong>，所以X故意没有规范应用程式的使用者界面 ，例如按钮 、选单 和视窗的标题栏等等。这些都由视窗管理器 （window managers）、GUI 构件工具包 、桌面环境 （desktop environments）或者应用程序指定的GUI（䠋如 POS机 ）等等诸如此类的用户软件来提供。这样我们就可以理解，为什么Linux系统中会有诸多如Gnome，KDE之类桌面系统，同样使用X协议，绘制的界面却不尽相同。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/x11.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/x11.jpg" alt="" />
+</p>
 <p>要了解X11，一个非常重要的概念一定要弄清楚。就是X Server和X Client。通常Server是指服务器端，Cilent是指用户的客户端，但是X11中要反过来理解。X11中，用于显示画面的是Server，用于计算处理的是Client。所以，如果通过X11远程连接，用户端必须起一个X Server，远程应用程序实际通过远程的X Cilent来执行。</p>
 <p>X11本身并不复杂，Server和Client交互的请求一共四种：Requests, Replies, Events, Errors。</p>
 <p>   1. Request: Client请求Server端返回信息或执行动作。</p>
 <p>   2. Reply: Server针对Request的返回。不是所有Request都有返回。</p>
 <p>   3. Event: Server发送的一些界面相关的事件给Client，例如：键盘、鼠标输入，窗口移动，Resize等等。</p>
 <p>   4. Error: 当Request请求无效时，Server发送错误信息给Cilent。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/200px-Xcore-overview.svg.png" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/200px-Xcore-overview.svg.png" alt="" />
+</p>
 <p>如果你正使用X Window System，比如Linux，Debian，Ubuntu等，马上就可以试试了。运行下面的命令，就可以运行一个远程的gedit（文本编辑器）：</p>
 <!-- raw HTML omitted -->
 <p>即使不是远程显示图像，本地执行的应用程序所使用的X11的架构也是一样的，都有一个Server和Client。我们可以通过修改Display环境变量，将画面显示到别处。</p>

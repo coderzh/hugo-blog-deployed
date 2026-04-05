@@ -150,18 +150,22 @@
 <p><a href="http://googletest.googlecode.com/files/gtest-1.3.0.tar.bz2">http://googletest.googlecode.com/files/gtest-1.3.0.tar.bz2</a> </p>
 <h4 id="三编译">三、编译</h4>
 <p>下载解压后， 里面有个msvc目录：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/SourceDir.jpg" alt=""> </p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/SourceDir.jpg" alt="" />
+ </p>
 <p>使用VS的同学可以直接打开msvc里面的工程文件， 如果你在使用的是VS2005或是VS2008，打开后会提示你升级，升完级后，我们直接编译里面的“gtest”工程，可以直接编过的。</p>
 <p>这里要提醒一下的是，如果你升级为VS2008的工程，那么你的测试Demo最好也是VS2008工程，不然你会发现很郁闷，你的Demo怎么也编不过，我也曾折腾了好久，当时我升级为了VS2008工程，结果我使用VS2005工程建Demo，死活编不过。(<!-- raw HTML omitted -->这里有人误解了，并不是说只能在VS2008中编译，在VS2005中同样可以。如果要编译VS2005版本，最好保证gtest和你的测试工程都使用VS2005工程。)<!-- raw HTML omitted --></p>
 <p>编译之后，在msvc里面的Debug或是Release目录里看到编译出来的gtestd.lib或是gtest.lib文件。</p>
 <h4 id="四第一个demo">四、第一个Demo</h4>
 <p>下面我们开始建立我们的第一个Demo了，假如之前使用的VS2008编译的gtest，那么，我们在VS2008中，新建一个Win32 Console Application。接着就是设置工程属性，总结如下：</p>
 <p>1.设置gtest头文件路径</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/headfile.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/headfile.jpg" alt="" />
+</p>
 <p>2.设置gtest.lib路径</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/lib.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/lib.jpg" alt="" />
+</p>
 <p>3.Runtime Library设置</p>
-<p> <img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/mtd.jpg" alt=""></p>
+<p> <img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/mtd.jpg" alt="" />
+</p>
 <p>如果是Release版本，Runtime Library设为/MT。当然，其实你也可以选择动态链接（/MD），前提是你之前编译的gtest也使用了同样是/MD选项。</p>
 <p>工程设置后了后，我们来编写一个最简单测试案例试试，我们先来写一个被测试函数：</p>
 <!-- raw HTML omitted -->
@@ -176,7 +180,8 @@
 <p>“testing::InitGoogleTest(&amp;argc, argv);” ：gtest的测试案例允许接收一系列的命令行参数，因此，我们将命令行参数传递给gtest，进行一些初始化操作。gtest的命令行参数非常丰富，在后面我们也会详细了解到。</p>
 <p>“RUN_ALL_TESTS()” ：运行所有测试案例</p>
 <p>OK，一切就绪了，我们直接运行案例试试（一片绿色，非常爽）：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/console.jpg" alt=""></p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/coderzh/gtest/console.jpg" alt="" />
+</p>
 <h4 id="五总结">五、总结</h4>
 <p>本篇内容确实是非常的初级，目的是让从来没有接触过gtest的同学了解gtest最基本的使用。gtest还有很多更高级的使用方法，我们将会在后面讨论。总结本篇的内容的话：</p>
 <p>    1. 使用VS编译gtest.lib文件</p>

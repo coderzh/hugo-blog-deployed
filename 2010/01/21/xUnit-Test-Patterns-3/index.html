@@ -166,9 +166,11 @@
 <h4 id="outside-in-or-inside-out">Outside-In or Inside-Out?</h4>
 <p>通常，模块之间会有一些依赖和层次结构，应该从最外层的调用模块开始写案例呢，还是从最里层开始写案例呢？作者的观点是从外到里。</p>
 <p>先看下从里到外的情形：</p>
-<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_2.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_thumb.png" alt="image" title="image"></a></p>
+<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_2.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_thumb.png" alt="image" title="image"/>
+</a></p>
 <p>上图，从里到外的开发过程更像传统的开发过程，容易理解，实施起来相对简单。但是，这样的顺序有个缺点，就是上层的SUT必须依赖于已经实现的底层的SUT。如果两个模块是不同的人开发的，上层模块的开发必须等底层模块的开发编写完成才能开始工作。同时，最底层的SUT先实现的话，有可能会过度设计，设计出一些上层模块根本就不使用的一些特性。最终使得整个程序的可测性降低。因此，从外向里的过程会好一些：</p>
-<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_4.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_thumb_1.png" alt="image" title="image"></a></p>
+<p><a href="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_4.png"><img src="http://images.cnblogs.com/cnblogs_com/coderzh/WindowsLiveWriter/xUnitTestPatterns3PhilosophyofTestAutoma_12F0A/image_thumb_1.png" alt="image" title="image"/>
+</a></p>
 <p>先编写最外层的测试案例，可以使用Test Double对象替代被调用的底层模块，使得SUT天然就具备很好的可测性（依赖注入）。同时，由于时刻都是保持“从用户或调用者的角度去思考”，使得SUT对象实现起来目标更加明确，实现的更加精简，从而避免了过度的设计。</p>
 <h4 id="state-or-behavior-verification">State or Behavior Verification?</h4>
 <p>提出的问题是，应该使用基于状态的验证，还是基于行为的验证？基于状态的验证是指在调用SUT后只检查SUT的状态，比如返回值，比如一个求和函数，最后检查一下求和的结果是否正确。而基于行为的验证，通常是，SUT被调用后，不仅仅改变SUT的状态，还会产生其他影响。比如，一个用户注册的函数，除了要检查返回值是否注册成功，还要坚持数据库中是否写入了新的用户记录。BDD(behavior-driven development)，就是基于行为的验证方式。作者最后说，他主要使用基于状态的验证，但有时为了追求代码覆盖率，会使用基于行为的验证。</p>

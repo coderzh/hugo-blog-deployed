@@ -165,12 +165,15 @@
 <p> </p>
 <p>上面两个版本看上去是那么的一样，真的是一样吗？不是的！C#版本是正确的，而JAVA版本恰恰出现了RaceCondion的问题！很多Servlet开发者常常忽视了，Servlet实际上是一个单件，除非Servlet实现SingleThreadModel接口。当多线程访问时(即多个用户一起访问时)，每个线程得到的实际上是同一个Servlet实例，这样的话，他们对实例的成员变量的修改其实会影响到别人。下面是Servlet的多线程机制：</p>
 <p><!-- raw HTML omitted -->当客户端第一次请求某个Servlet时，Servlet容器将会根据 web.xml配置文件实例化这个Servlet类。当有新的客户端请求该Servlet时，一般不会再实例化该Servlet类，也就是有多个线程在使用这个实例。<!-- raw HTML omitted -->Servlet容器会自动使用线程池等技术来支持系统的运行，如下图：</p>
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/Servlet.jpg" alt=""></p>
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/Servlet.jpg" alt="" />
+</p>
 <p>因此，我们上面的例子中的userName成员变量其实被所有线程共享，其中某一个线程修改了userName，则其他线程的userName也同样修改。最后我们来试验一下：</p>
 <p>首先，我们访问测试页面，不输入任何参数，然后再开一个窗口，测试页面中传入参数c=CoderZh，两个页面显示结果如下：</p>
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/Servlet/RaceCondition1.jpg" alt=""> </p>
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/Servlet/RaceCondition1.jpg" alt="" />
+ </p>
 <p>然后，我们刷新不带参数的页面，看看显示的结果：</p>
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/Servlet/RaceCondition2.jpg" alt=""></p>
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/Servlet/RaceCondition2.jpg" alt="" />
+</p>
 <p><strong>[温馨提示]：该文章由原博客园导入而来，如排版效果不佳，请移步：<a href="http://www.cnblogs.com/coderzh/archive/2008/12/31/1365994.html">http://www.cnblogs.com/coderzh/archive/2008/12/31/1365994.html</a></strong></p>
 
                       

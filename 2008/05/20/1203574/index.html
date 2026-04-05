@@ -162,124 +162,274 @@
 <p><!-- raw HTML omitted --><!-- raw HTML omitted -->using<!-- raw HTML omitted --><!-- raw HTML omitted --> Routrek.PKI;<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>Reader类实现如下：</p>
 <!-- raw HTML omitted -->
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif" alt="">    <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHConnection _conn;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->bool<!-- raw HTML omitted --><!-- raw HTML omitted --> _ready;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt=""></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnData(<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> offset, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> length)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            System.Console.Write(Encoding.ASCII.GetString(data, offset, length));</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnDebugMessage(<!-- raw HTML omitted --><!-- raw HTML omitted -->bool<!-- raw HTML omitted --><!-- raw HTML omitted --> always_display, <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->DEBUG: <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> Encoding.ASCII.GetString(data));</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnIgnoreMessage(<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Ignore: <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> Encoding.ASCII.GetString(data));</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnAuthenticationPrompt(<!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted -->[] msg)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Auth Prompt <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> msg[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->]);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt=""></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnError(Exception error, <!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted --> msg)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->ERROR: <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> msg);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnChannelClosed()</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Channel closed<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            _conn.Disconnect(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->_conn.AsyncReceive(this);<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted -->        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnChannelEOF()</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            _pf.Close();</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Channel EOF<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnExtendedData(<!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> type, <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->EXTENDED DATA<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnConnectionClosed()</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Connection closed<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnUnknownMessage(<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted --> type, <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Unknown Message <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> type);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnChannelReady()</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            _ready <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->true<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnChannelError(Exception error, <!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted --> msg)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Channel ERROR: <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> msg);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnMiscPacket(<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted --> type, <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> offset, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> length)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt=""></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> PortForwardingCheckResult CheckPortForwardingRequest(<!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted --> host, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> port, <!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted --> originator_host, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> originator_port)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            PortForwardingCheckResult r <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> PortForwardingCheckResult();</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            r.allowed <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->true<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            r.channel <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->this<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> r;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> EstablishPortforwarding(ISSHChannelEventReceiver rec, SSHChannel channel)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            _pf <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> channel;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt=""></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHChannel _pf;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="">    }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif" alt="" />
+    <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHConnection _conn;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->bool<!-- raw HTML omitted --><!-- raw HTML omitted --> _ready;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnData(<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> offset, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> length)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            System.Console.Write(Encoding.ASCII.GetString(data, offset, length));</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnDebugMessage(<!-- raw HTML omitted --><!-- raw HTML omitted -->bool<!-- raw HTML omitted --><!-- raw HTML omitted --> always_display, <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->DEBUG: <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> Encoding.ASCII.GetString(data));</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnIgnoreMessage(<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Ignore: <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> Encoding.ASCII.GetString(data));</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnAuthenticationPrompt(<!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted -->[] msg)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Auth Prompt <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> msg[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->]);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnError(Exception error, <!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted --> msg)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->ERROR: <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> msg);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnChannelClosed()</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Channel closed<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            _conn.Disconnect(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;&ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            <!-- raw HTML omitted --><!-- raw HTML omitted -->//<!-- raw HTML omitted --><!-- raw HTML omitted -->_conn.AsyncReceive(this);<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted -->        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnChannelEOF()</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            _pf.Close();</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Channel EOF<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnExtendedData(<!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> type, <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->EXTENDED DATA<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnConnectionClosed()</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Connection closed<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnUnknownMessage(<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted --> type, <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Unknown Message <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> type);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnChannelReady()</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            _ready <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->true<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnChannelError(Exception error, <!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted --> msg)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Debug.WriteLine(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->Channel ERROR: <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->+<!-- raw HTML omitted --><!-- raw HTML omitted --> msg);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> OnMiscPacket(<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted --> type, <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> offset, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> length)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> PortForwardingCheckResult CheckPortForwardingRequest(<!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted --> host, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> port, <!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted --> originator_host, <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> originator_port)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            PortForwardingCheckResult r <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> PortForwardingCheckResult();</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            r.allowed <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->true<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            r.channel <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->this<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            <!-- raw HTML omitted --><!-- raw HTML omitted -->return<!-- raw HTML omitted --><!-- raw HTML omitted --> r;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> EstablishPortforwarding(ISSHChannelEventReceiver rec, SSHChannel channel)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            _pf <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> channel;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->public<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHChannel _pf;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" />
+    }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>3.好的，现在来测试一下：</p>
 <!-- raw HTML omitted -->
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif" alt="">    <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->private<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->static<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHConnection _conn;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted -->static<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> Main(<!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted -->[] args)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            SSHConnectionParameter f <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHConnectionParameter();</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            f.UserName <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->root<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            f.Password <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->****<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            f.Protocol <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHProtocol.SSH2;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            f.AuthenticationType <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> AuthenticationType.Password;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            f.WindowSize <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->0x1000<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Reader reader <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> Reader();</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Socket s <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            s.Connect(<!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> IPEndPoint(IPAddress.Parse(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->192.168.x.x<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->), <!-- raw HTML omitted --><!-- raw HTML omitted -->22<!-- raw HTML omitted --><!-- raw HTML omitted -->));</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            _conn <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHConnection.Connect(f, reader, s);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            reader._conn <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> _conn;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            SSHChannel ch <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> _conn.OpenShell(reader);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            reader._pf <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> ch;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            SSHConnectionInfo ci <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> _conn.ConnectionInfo;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt=""></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            Thread.Sleep(<!-- raw HTML omitted --><!-- raw HTML omitted -->1000<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            </p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] b <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->];</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">            <!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --><!-- raw HTML omitted --> (<!-- raw HTML omitted --><!-- raw HTML omitted -->true<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="">            <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">                <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> input <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Console.Read();</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">                b[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->] <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> (<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->)input;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">                reader._pf.Transmit(b);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">            }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt=""></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="">        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="">    }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif" alt="" />
+    <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->private<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->static<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHConnection _conn;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted -->static<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->void<!-- raw HTML omitted --><!-- raw HTML omitted --> Main(<!-- raw HTML omitted --><!-- raw HTML omitted -->string<!-- raw HTML omitted --><!-- raw HTML omitted -->[] args)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+        <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            SSHConnectionParameter f <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHConnectionParameter();</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            f.UserName <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->root<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            f.Password <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->****<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            f.Protocol <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHProtocol.SSH2;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            f.AuthenticationType <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> AuthenticationType.Password;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            f.WindowSize <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->0x1000<!-- raw HTML omitted --><!-- raw HTML omitted -->;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Reader reader <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> Reader();</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Socket s <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            s.Connect(<!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> IPEndPoint(IPAddress.Parse(<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->192.168.x.x<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->), <!-- raw HTML omitted --><!-- raw HTML omitted -->22<!-- raw HTML omitted --><!-- raw HTML omitted -->));</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            _conn <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> SSHConnection.Connect(f, reader, s);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            reader._conn <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> _conn;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            SSHChannel ch <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> _conn.OpenShell(reader);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            reader._pf <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> ch;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            SSHConnectionInfo ci <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> _conn.ConnectionInfo;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            Thread.Sleep(<!-- raw HTML omitted --><!-- raw HTML omitted -->1000<!-- raw HTML omitted --><!-- raw HTML omitted -->);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            </p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] b <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[<!-- raw HTML omitted --><!-- raw HTML omitted -->1<!-- raw HTML omitted --><!-- raw HTML omitted -->];</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+            <!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --><!-- raw HTML omitted --> (<!-- raw HTML omitted --><!-- raw HTML omitted -->true<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif" alt="" />
+            <!-- raw HTML omitted --><!-- raw HTML omitted --><img src="http://www.cnblogs.com/Images/dot.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+                <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> input <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Console.Read();</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+                b[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->] <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> (<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->)input;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+                reader._pf.Transmit(b);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+            }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif" alt="" />
+        }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" />
+    }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>4.执行效果如下：</p>
-<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/cmd.JPG" alt=""></p>
+<p><img src="http://www.cnblogs.com/images/cnblogs_com/coderzh/cmd.JPG" alt="" />
+</p>
 <p>5.如果你需要快速的执行某些指定的命令，则可以把上面的</p>
 <!-- raw HTML omitted -->
 <p> 
 <!-- raw HTML omitted --><!-- raw HTML omitted -->while<!-- raw HTML omitted --><!-- raw HTML omitted --> (<!-- raw HTML omitted --><!-- raw HTML omitted -->true<!-- raw HTML omitted --><!-- raw HTML omitted -->)</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt=""><img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif" alt=""><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">      <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> input <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Console.Read();</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">      b[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->] <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> (<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->)input;</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="">      reader._pf.Transmit(b);</p>
-<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt=""> }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" />
+<img src="http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif" alt="" />
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->{</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+      <!-- raw HTML omitted --><!-- raw HTML omitted -->int<!-- raw HTML omitted --><!-- raw HTML omitted --> input <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> System.Console.Read();</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+      b[<!-- raw HTML omitted --><!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->] <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> (<!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->)input;</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" />
+      reader._pf.Transmit(b);</p>
+<p><img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" />
+ }<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>替换为：</p>
 <!-- raw HTML omitted -->
 <p><!-- raw HTML omitted --><!-- raw HTML omitted -->byte<!-- raw HTML omitted --><!-- raw HTML omitted -->[] data <!-- raw HTML omitted --><!-- raw HTML omitted -->=<!-- raw HTML omitted --><!-- raw HTML omitted --> (<!-- raw HTML omitted --><!-- raw HTML omitted -->new<!-- raw HTML omitted --><!-- raw HTML omitted --> UnicodeEncoding()).GetBytes(cmd);</p>
