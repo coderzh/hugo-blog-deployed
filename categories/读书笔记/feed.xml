@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 04 Apr 2026 16:19:07 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 06 Apr 2026 10:09:41 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.coderzh.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/feed.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>哈萨比斯：谷歌 AI 之脑，AGI 造梦者（中）</title>
+      <link>https://blog.coderzh.com/2026/04/06/hassabis2/</link>
+      <pubDate>Mon, 06 Apr 2026 10:09:41 +0800</pubDate>
+      
+      <guid>https://blog.coderzh.com/2026/04/06/hassabis2/</guid>
+      <description>上一篇，我们从棋盘出发，分享了哈萨比斯的两个故事。今天，我们跟着他走进剑桥大学——在那里，又一道闪电劈中了他，产生了新的顿悟，彻底改变了他的</description>
+    </item>
     
     <item>
       <title>哈萨比斯：谷歌 AI 之脑，AGI 造梦者（上）</title>
